@@ -1,7 +1,7 @@
 # Programming Notes
 
 **Tools**
-- Linux
+- [Linux](./tools/linux.md)
 - Git
 - Docker
 
