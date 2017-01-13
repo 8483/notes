@@ -2,7 +2,7 @@
 
 **Tools**
 - [Linux](./tools/linux.md)
-- Git
+- [Git](./tools/git.md)
 - Docker
 
 **Backend**
@@ -12,7 +12,7 @@
   - MySQL
 
 **Frontend**
-- Elm
+- [Elm](./frontend/elm.md)
 - Bootstrap
 
 **Concepts**
@@ -30,6 +30,7 @@
 - Atom
   - Shortcuts
   - Packages
+- [Vi](./writing/vi.md)
 - Markdown
 
 **Networks**
