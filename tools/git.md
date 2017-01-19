@@ -96,8 +96,19 @@ Commit changes.
 
 ## Tagging  
 
-Tag a commit with a version number.  
-`git tag -a v1.4 -m "Version 1.4"`
+A reference to a specific commit, used mostly for release versioning.  
+
+Create tag.   
+`git tag -a v0.0.1 -m "Version 0.0.1"`
+
+List tags.  
+`git tag`  
+
+Open a specific version.  
+`git checkout v0.0.1`  
+
+Push tags to remote repo.  
+`git push --tags`
 
 ## See Changes
 
@@ -143,6 +154,9 @@ Add a remote i.e. bookmark a repo i.e. This NAME = this URL. The name is usually
 
 List all remotes.  
 `git remote -v`  
+
+Check a remote.  
+`git remote show origin`
 
 Remove a remote.  
 `git remote rm NAME`
@@ -199,11 +213,17 @@ Create new branch. HEAD still on master (Use checkout to switch).
 Check which branch we are on.  
 `git branch`  
 
+Check remote branches.  
+`git branch -r`
+
 Move to a specific branch (Set HEAD from master to BRANCH_NAME). This is like switching timelines.  
 `git checkout BRANCH_NAME`  
 
 Create AND move to a branch.  
 `git checkout -b BRANCH_NAME`  
+
+Create a remote branch. Usually origin.  
+`git push REPO_NAME BRANCH_NAME`
 
 Delete a branch.  
 `git branch -d BRANCH_NAME`  
