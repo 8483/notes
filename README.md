@@ -8,7 +8,7 @@
 **Backend**
 * Node
 - Express
-- MySQL
+- [MySQL](./backend/mysql.md)
 
 **Frontend**
 - [Elm](./frontend/elm.md)
@@ -17,6 +17,7 @@
 **Concepts**
 - File Organization
 - REST
+- Authentication
 - OOP
 - Use Cases
 - Unit Testing
