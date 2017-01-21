@@ -8,8 +8,7 @@
 **Backend**
 * Node
 - Express
-- SQL
-  - MySQL
+- MySQL
 
 **Frontend**
 - [Elm](./frontend/elm.md)

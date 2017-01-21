@@ -5,9 +5,13 @@ Install Elm
 
 Install Atom packages  
 
+Install dependencies  
+`elm-package install elm-lang/PACKAGE_NAME`
 
 Build  
-`elm-make Main.elm --output=../public/main.js`  
+`elm-make Main.elm --output=../public/main.js`
+
+Install dependencies
 
 ## App Build Order  
 
@@ -22,11 +26,21 @@ Build
 
 ![TEA](./pics/TEA.png)
 
-There are 3 main wiring parts between modules.
+There are 3 main wiring parts between modules. They happen in the `Model`, `Update` and `View`.
 
 ## ChildModule.elm
+
 ```elm
 module ChildModule exposing(..)
+```
+
+**Note:** In order to import a module in `Main`, the source folder (where all the modules are) needs to be added in the `elm-package.json` file under `source-directories` like so:  
+
+```json
+"source-directories": [
+        ".",
+        "src"
+    ]
 ```
 
 ## Main.elm
@@ -96,3 +110,34 @@ view model =
         div [] [ page ]
 
 ```
+
+# Coonection and Navigation
+
+After creating a `ChildModule`, exposing it and adding it to `elm-package.json`'s `source-directories`, we need to connect the module and navigate between them.  
+
+The connection is explained in **The Elm Architecture** above.  
+
+To use the navigation, we need to install the package with `elm-package install elm-lang/navigation` along with th dependencies and import the package with `include Navigation`.  
+
+After that, in the `main` function, we change the `Html.program` function call into `Navigation.program location`.  
+
+```elm
+main : Program Never Model Msg
+main =
+    -- Html.program
+    Navigation.program locationToMsg
+    { init = init
+    , update = update
+    , view = view
+    , subscriptions = subscriptions
+    }
+```
+
+`Navigation.program` takes a function as a parameter, which takes a location as a parameter.  
+
+The `locationToMsg` is called every time the URL changes. The function takes a `Navigation.Location` and returns a `Msg`.  
+
+This function needs to:
+1. Transform the URL hash into a `Page`.
+2. Return the page as part of a `Msg`.
+3. The message is fed back into the `update` function.
