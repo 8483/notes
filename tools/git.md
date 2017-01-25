@@ -12,7 +12,9 @@ Git uses vi as the default editor.
 
 This is a list of files/folders to be ignored in commits. To use it, create a `.gitignore` file in the working directory, **NOT** inside `.git`.  
 
-Each line in the file is a new ignore rule. Ex. To ignore `node_modules`, just add that as one line.  
+Each line in the file is a new ignore rule. Ex. To ignore `node_modules/`, just add that as one line.  
+
+If the ignoring is added after committing the files to be ignored, they need to be untracked. Use `git rm -r --cached .` to untrack everything, and the `git add/git commit`. **Careful as this can lose progress to files.**   
 
 Also, pattern matching can be used to ignore specific files in specific places. Ex. `*.txt` ignores all text files, while `routes/*.js` ignores all javascript files in that folder. To ingore a folder, use `FOLDER/`.
 
