@@ -14,7 +14,7 @@ This is a list of files/folders to be ignored in commits. To use it, create a `.
 
 Each line in the file is a new ignore rule. Ex. To ignore `node_modules`, just add that as one line.  
 
-Also, pattern matching can be used to ignore specific files in specific places. Ex. `*.txt` ignores all text files, while `routes/*.js` ignores all javascript files in that folder.  
+Also, pattern matching can be used to ignore specific files in specific places. Ex. `*.txt` ignores all text files, while `routes/*.js` ignores all javascript files in that folder. To ingore a folder, use `FOLDER/`.
 
 Finally, use `#` to comment.
 
