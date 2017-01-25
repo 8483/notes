@@ -8,6 +8,16 @@ Commit messages should be in the present tense instead of past. They should tell
 
 Git uses vi as the default editor.  
 
+## Git Ignore
+
+This is a list of files/folders to be ignored in commits. To use it, create a `.gitignore` file in the working directory, **NOT** inside `.git`.  
+
+Each line in the file is a new ignore rule. Ex. To ignore `node_modules`, just add that as one line.  
+
+Also, pattern matching can be used to ignore specific files in specific places. Ex. `*.txt` ignores all text files, while `routes/*.js` ignores all javascript files in that folder.  
+
+Finally, use `#` to comment.
+
 ## Workflow  
 
 it's generally considered good practice to avoid merges where possible.
