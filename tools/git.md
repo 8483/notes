@@ -1,7 +1,7 @@
 # Git
 
-- [Git Ignore](##git-ignore)
-- [Workflow](##workflow)
+- [Git Ignore](#git-ignore)
+- [Workflow](#workflow)
 
 Master branch = Timeline
 
