@@ -9,6 +9,9 @@ Install specified package.
 Install downloaded .deb file.  
 `sudo dpkg –i FILE_NAME.deb`
 
+Delete a directory and its files.  
+`rm -rf FOLDER`  
+
 Command help.  
 `man COMMAND`
 

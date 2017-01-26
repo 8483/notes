@@ -1,5 +1,8 @@
 # Git
 
+- [Git Ignore](##git-ignore)
+- [Workflow](##workflow)
+
 Master branch = Timeline
 
 HEAD = Last commit on current branch.
@@ -177,7 +180,7 @@ Remove a remote.
 
 Define which local branch (usually master) to push to which repository (usually origin). It asks for user and pass.  
 
-`git push -u REPO_NAME BRANCH_NAME`  
+`git push -u REPO_NAME BRANCH_NAME` i.e. `git push -u origin master`  
 
 `-u` remember the repo and the branch, so that only `git push` can be used.  
 
