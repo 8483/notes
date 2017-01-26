@@ -1,5 +1,19 @@
 # MySQL
 
+## Overview
+
+`Model` holds all the chemas. There can be many modes, and each can have many schemas.
+
+`Schema` defines the tables, number of columns, foreign keys...  
+
+`EER Diagram` is a visual representation of a schema with boxes for tables and lines for table relations.  
+
+`Database` is an instance of a schema. It's also where the data lives.  
+
+A database is created by forward engineering a schema. An existing database is expanded with the new schema objects, but it does not alter the existing ones.  
+
+To overwrite them, the tables need to be dropped first, which is an option during the forward engineering.
+
 ## Creating a Database in MySQL Workbench
 
 1. Create a localhost connection as root on port 3306.
