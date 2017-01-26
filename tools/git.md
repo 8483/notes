@@ -1,7 +1,27 @@
 # Git
 
+- [Tips](#tips)
 - [Git Ignore](#git-ignore)
 - [Workflow](#workflow)
+- [Example Project](#example-project)
+- [Help](#help)
+- [General](#general)
+- [Staging](#staging)
+- [Commiting](#commiting)
+- [Tagging](#tagging)
+- [See Changes](#see-changes)
+  - [Tree](#tree)
+- [Undo](#undo)
+- [Remote](#remote)
+- [Push](#push)
+- [Pull](#pull)
+  - [Pull Requests](#pull-requests)
+- [Clone](#clone)
+- [Branch](#branch)
+- [Merge](#merge)
+- [Example Workflows](#example-workflows)
+
+## Tips
 
 Master branch = Timeline
 
@@ -203,8 +223,6 @@ For example, if a developer needs help with a particular feature, all they have 
 
 Once a pull request is accepted, the actual act of publishing a feature is much the same as in the Centralized Workflow. First, you need to make sure your local master is synchronized with the upstream master. Then, you merge the feature branch into master and push the updated master back to the central repository.
 
-# Collaboration  
-
 ## Clone  
 
 Create a local repository from a remote one.  
@@ -251,10 +269,6 @@ Move (checkout) to the branch (master) you want to merge into, and use:
 Merging is very easy if the master branch is not modified. This is fast-forwarding.  
 
 If both branches were modified, a commit is created to do the merge. (Vi editor opens for the message)  
-
-## Merge Conflicts  
-
-
 
 # Example Workflows  
 
