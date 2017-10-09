@@ -2,10 +2,10 @@
 
 ### tmux
 
-Start tmux
+Start tmux  
 `tmux`
 
-Command mode
+Command mode  
 `CTRL + B`
 
 Split vertically (top/bottom): `"`
@@ -19,22 +19,22 @@ Change window: `numbers`
 
 ### Vagrant
 
-Download Vagrant
+Download Vagrant  
 `wget "URL"`
 
-Install Vagrant
+Install Vagrant  
 `sudo dpkg -i FILENAME`
 
-Download VirtualBox
+Download VirtualBox  
 `sudo apt-get install virtualbox`
 
-Download a box
+Download a box  
 `vagrant box add BOX_NAME`
 
-Prepare the box in the current folder
+Prepare the box   
 `vagrant init BOX_NAME`
 
-Start the box
+Start the box  
 `vagrant up`
 
 ### Docker
@@ -42,10 +42,10 @@ Start the box
 
 ### Various
 
-Download from URL
+Download from URL  
 `wget "URL"
 
-Install from file
+Install from file  
 `sudo dpkg -i FILENAME`
 
 
