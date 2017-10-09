@@ -15,7 +15,7 @@
 - Bootstrapgit fs
 
 **DevOps**
-- [DevOps](./devops/DevOps.md)
+- [DevOps](./devops/devops.md)
 
 **Concepts**
 - File Organization
