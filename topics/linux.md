@@ -99,7 +99,7 @@ Owner permissions trump group ones.
 `chmod u+w FILE` - Add write permission to just the owner.  
 `chmod o-r FILE` - Remove read permission to other users.  
 
-This can get very tedious for each permission, so instead, we can set the permissions by using octal numbers.  
+This can get very tedious for each permission (9 commands), so instead, we can set the permissions by using octal numbers.  
 
 First number is **owner**, second is **group**, and third is **others**.
 
@@ -121,7 +121,7 @@ Dec | Permission
 A binary mask is used to determine the numbers. Add the column values for each 1 and the sum is the decimal number.  
 
 Type | Read (4) | Write (2) | Execute (1) | Decimal
-:---: | :---: | :---: | :---: | :---: 
+:---: | :---: | :---: | :---: | :---:
 **User** | 1 | 1 | 1 | 7
 **Group** | 1 | 0 | 1 | 5
 **Other** | 1 | 0 | 0 | 4
