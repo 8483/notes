@@ -17,3 +17,6 @@
 `w` - List windows.  
 `.` - Move window. Asks for a number.  
 `&` - Close window.
+
+#### Misc
+`[` - Scrolling mode with arrows or PageUp/PageDown. Exit with `CTRL + C`.
