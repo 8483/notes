@@ -1,23 +1,18 @@
-# Programming Notes
+# Programming
 
-**Tools**
-- [Linux](./tools/linux.md)
-- [Git](./tools/git.md)
-- Docker
+#### Frontend
+- [Elm](./topics/elm.md)
+- Bootstrap
 
-**Backend**
-* Node
-- Express
-- [MySQL](./backend/mysql.md)
+#### Backend
+- Javascript
+    - Node
+        - Express
+- [MySQL](./topics/mysql.md)
 
-**Frontend**
-- [Elm](./frontend/elm.md)
-- Bootstrapgit fs
-
-**DevOps**
-- [DevOps](./devops/devops.md)
-
-**Concepts**
+#### Concepts
+- Callbacks vs Promises vs Async/Await
+- OOP vs OLOO (Inheritance vs Delegation)
 - File Organization
 - REST
 - Authentication
@@ -25,18 +20,23 @@
 - Use Cases
 - Unit Testing
 
-**Javascript**
-- Callbacks vs Promises vs Async/Await
-- OOP vs OLOO (Inheritance vs Delegation)
+# DevOps
 
-**Writing**
-- Atom
-  - Shortcuts
-  - Packages
-- [Vi](./writing/vi.md)
-- Markdown
+#### Linux
+- [Linux](./topics/linux.md)
+- tmux
+- [Vi](./topics/vi.md)
 
-**Networks**
-- OSA
-- TCP/IP
-- Subnet
+#### Version Control
+- [Git](./topics/git.md)
+
+#### Virtualization
+- Virtualbox
+- Vagrant
+
+#### Containerization
+- Docker
+
+#### Configuration Management
+- Ansible
+
