@@ -21,8 +21,13 @@
 `mv PATH/FILE PATH/FILE` - Rename or Cut & Paste a file.
 
 #### SSH
+`sudo apt-get install openssh-server` - Install SSH.  
 `ssh user@SERVER-IP-ADDRESS` - SSH to server.  
 `ssh -p PORT user@SERVER-IP-ADDRESS` - Via port.  
+
+SSH in Virtual Machine. Needs a port forwarding rule in network settings for the VM. Name `ssh`, host port `3022`, guest port `22`.
+
+`ssh -p 3022 user@127.0.0.1` - SSH to VM locally.  
 
 ## Notes
 `dpkg` is a backend for `apt-get` which is a backend for `aptitude` (GUI).
