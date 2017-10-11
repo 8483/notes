@@ -5,7 +5,7 @@
 - [Workflow](#workflow)
 - [Example Project](#example-project)
 - [Help](#help)
-- [General](#general)
+- [Basics](#basics)
 - [Staging](#staging)
 - [Commiting](#commiting)
 - [Tagging](#tagging)
@@ -20,6 +20,25 @@
 - [Branch](#branch)
 - [Merge](#merge)
 - [Example Workflows](#example-workflows)
+
+## Quick Edit
+
+Download from repository and set user.  
+
+```git
+git clone URL
+git config user.name "NAME"
+git config user.email "EMAIL"
+```
+
+Make changes and upload back.
+
+```git
+git status
+git add .
+git commit -m "MESSAGE"
+git push origin master
+```
 
 ## Tips
 
@@ -84,7 +103,7 @@ List all the commands.
 Explain a specific command.  
 `git help COMMAND`
 
-## General
+## Basics
 
 Setting up owner of changes.  
 `git config --global user.name "NAME"`  

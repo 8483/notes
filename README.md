@@ -5,14 +5,12 @@
 - Bootstrap
 
 #### Backend
-- Javascript
+- [Javascript](./topics/javascript.md)
     - Node
         - Express
 - [MySQL](./topics/mysql.md)
 
 #### Concepts
-- Callbacks vs Promises vs Async/Await
-- OOP vs OLOO (Inheritance vs Delegation)
 - File Organization
 - REST
 - Authentication
@@ -24,19 +22,18 @@
 
 #### Linux
 - [Linux](./topics/linux.md)
-- tmux
-- [Vi](./topics/vi.md)
+- [tmux](./topics/tmux.md)
+- [vim](./topics/vim.md)
 
 #### Version Control
 - [Git](./topics/git.md)
 
 #### Virtualization
 - Virtualbox
-- Vagrant
+- [Vagrant](./topics/vagrant.md)
 
 #### Containerization
 - Docker
 
 #### Configuration Management
 - Ansible
-
