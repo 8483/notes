@@ -120,8 +120,8 @@ Dec | Permission
 
 A binary mask is used to determine the numbers. Add the column values for each 1 and the sum is the decimal number.  
 
- | Read (4) | Write (2) | Execute (1) | Decimal
- :---: | :---: | :---: | :---: | :---: 
+Type | Read (4) | Write (2) | Execute (1) | Decimal
+:---: | :---: | :---: | :---: | :---: 
 **User** | 1 | 1 | 1 | 7
 **Group** | 1 | 0 | 1 | 5
 **Other** | 1 | 0 | 0 | 4
