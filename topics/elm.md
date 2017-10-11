@@ -1,17 +1,11 @@
 # Elm
 
-Install Elm  
-`sudo npm install -g elm`
+#### Install  
+`sudo npm install -g elm` - Install Elm.  
+`elm-package install elm-lang/PACKAGE_NAME` - Install dependencies.  
 
-Install Atom packages  
-
-Install dependencies  
-`elm-package install elm-lang/PACKAGE_NAME`
-
-Build  
-`elm-make Main.elm --output=../public/main.js`
-
-Install dependencies
+#### Build/Compile
+`elm-make Main.elm --output=../public/main.js` - Build
 
 ## App Build Order  
 
@@ -24,7 +18,7 @@ Install dependencies
 
 # The Elm Architecture  
 
-![TEA](./pics/TEA.png)
+![TEA](../pics/TEA.png)
 
 There are 3 main wiring parts between modules. They happen in the `Model`, `Update` and `View`.
 
