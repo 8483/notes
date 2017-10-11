@@ -1,5 +1,0 @@
-# Authentication
-
-## JWT
-
-## Basic
