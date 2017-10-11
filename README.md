@@ -22,6 +22,7 @@
 
 #### Linux
 - [Linux](./topics/linux.md)
+- [bash](./topics/bash.md)
 - [tmux](./topics/tmux.md)
 - [vim](./topics/vim.md)
 - [nginx](./topics/nginx.md)
