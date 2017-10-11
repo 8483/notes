@@ -1,10 +1,10 @@
 # Elm
 
-#### Install  
+## Install  
 `sudo npm install -g elm` - Install Elm.  
 `elm-package install elm-lang/PACKAGE_NAME` - Install dependencies.  
 
-#### Build/Compile
+## Build/Compile
 `elm-make Main.elm --output=../public/main.js` - Build
 
 ## App Build Order  

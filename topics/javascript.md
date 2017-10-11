@@ -1,5 +1,5 @@
 # Javascript
 
-#### Callbacks vs Promises vs Async/Await
+## Callbacks vs Promises vs Async/Await
 
-#### OOP vs OLOO (Inheritance vs Delegation)
+## OOP vs OLOO (Inheritance vs Delegation)

@@ -25,6 +25,7 @@
 - [tmux](./topics/tmux.md)
 - [vim](./topics/vim.md)
 - [nginx](./topics/nginx.md)
+- [systemd](./topics/systemd.md)
 
 #### Version Control
 - [Git](./topics/git.md)

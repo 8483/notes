@@ -1,29 +1,28 @@
 # Vim
 
-#### Modes
+## Modes
 `ESC` - Command  
 `i` - Insert  
 `v` - Visual
 
-### Tabs
+## Tabs
 `:tabe FILEPATH` - Open file in new tab  
 `:tabn` - Next tab  
 `:tabp` - Previous tab
 
-#### Copy & Paste
-
+## Copy & Paste
 Enter visual mode and select text.  
 `y` - copy selected  
 `p` - paste after cursor
 
-#### Save & Exit
+## Save & Exit
 `:w` - Save  
 `:q` - Quit  
 `:wq` - Save & Quit  
 `:q!` - Cancel & Quit  
 
-#### Moving
+## Moving
 `j` - Down  
 `k` - Up  
 `h` - Left  
-`l` - Right 
+`l` - Right
