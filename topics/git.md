@@ -105,7 +105,7 @@ Explain a specific command.
 
 ## Basics
 
-Setting up owner of changes for all repos.  
+Setting up owner of changes for all repos. Github contributions count only with the github email.  
 `git config --global user.name "NAME"`  
 `git config --global user.email "EMAIL"`
 
