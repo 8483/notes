@@ -62,6 +62,7 @@ SSH in Virtual Machine needs a port forwarding rule in network settings for the 
 `ssh -p 3022 user@127.0.0.1` - SSH to VM locally.  
 
 ## Configuration
+**Make a BACKUP before any edits** with `cp file file.ORIGINAL`
 
 All config files are located in `/etc/`. They are plain text files.  
 
