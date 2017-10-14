@@ -40,6 +40,12 @@ git commit -m "MESSAGE"
 git push origin master
 ```
 
+A previously cloned repo on a server can now pull just the changes (clone is used only the first time to create the local repo).  
+
+`git pull` - (`git fetch` + `git merge`)  
+
+Github repo > Clone to local > Push to Github > Pull changes to server
+
 ## Tips
 
 Master branch = Timeline
