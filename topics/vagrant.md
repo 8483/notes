@@ -4,6 +4,8 @@ Vagrant is used to avoid the tedious provisioning of Virtual Machines. Instead o
 
 Vagrant **is not** like Docker. Vagrant is used to start VMs fast, while Docker is used to containerize packages within the VMs. Vagrant avoids installing an OS, Docker avoids installing packages i.e. they just run them. This significantly speeds things up by allowing to quickly create and destroy whole environments.
 
+**Host** = Main Machine. **Guest** = Virtual Machine.  
+
 ## Install
 `wget "URL"` - Download Vagrant.   
 `sudo dpkg -i FILENAME` - Install Vagrant.  

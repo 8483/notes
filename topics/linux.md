@@ -50,6 +50,7 @@ There are 7 types of files, which can be recognized by using `ls -l` and looking
 `apt-get remove PACKAGE` - Remove a specified package.  
 `add-apt-repository REPO` - Add 3rd party repository or PPA (Personal Package Archive).  
 
+`curl URL` - Output the URL content.  
 `wget "URL"` - Download from URL.    
 `sudo dpkg –i FILE_NAME` - Install downloaded file.  
 
@@ -101,6 +102,8 @@ Use the `less` program to view configuration files, instead of an editor. Ex. `l
 
 `su - USERNAME` - Log in as a user.  
 `CTRL` + `d` - Logout.
+
+The root account is disabled by default in Ubuntu, so there is no root password, that's why `su` fails with an authentication error. To become root, use `sudo -i`.  
 
 ## Permissions
 `ls -l` - Show file permissions.  
@@ -173,3 +176,9 @@ In Linux, **everything is a file**. There are special files like **sockets** tha
 
 ## Notes
 `dpkg` is a backend for `apt-get` which is a backend for `aptitude` (GUI).
+
+## Password Generator
+
+Generate a random 14 character password by using the linux `/dev/urandom` file, a stream of mashed system data.  
+
+`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 14`

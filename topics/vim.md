@@ -12,8 +12,9 @@
 
 ## Copy & Paste
 Enter visual mode and select text.  
-`y` - copy selected  
-`p` - paste after cursor
+`y` - Copy (Yank) selected.
+`p` - Paste after cursor.
+`x` - Delete selected.
 
 ## Save & Exit
 `:w` - Save  
