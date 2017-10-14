@@ -192,6 +192,8 @@ In Linux, **everything is a file**. There are special files like **sockets** tha
 
 `cat etc/network/interfaces` - Shows the interfaces brought up after booting.  
 
+`/etc/hosts` is used to simulate a domain for an IP address. Add `127.0.0.1 domain.com` to avoid typing the IP address.  
+
 ## Notes
 `dpkg` is a backend for `apt-get` which is a backend for `aptitude` (GUI).
 
