@@ -36,7 +36,7 @@
 - [Vagrant](./topics/vagrant.md)
 
 #### Containerization
-- Docker
+- [Docker](./topics/docker.md)
 
 #### Configuration Management
 - Ansible
