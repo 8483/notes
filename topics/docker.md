@@ -4,7 +4,11 @@ Docker is used to run apps/processes without actually installing them. This is u
 
 **Container** is a running instance of an **image**, which is a template for an environment, a snapshot of a system at a certain time. It has the OS, software and application code all bundled in one file. Images are built via a **Dockerfile**, a list of steps to perform to build the image. List of steps like configure the OS, install packages, copy project files into the right places...  
 
-Dockerfile > (build) Image > (run) Container
+Dockerfile > (build) Image > (run) Container.  
+
+There should be **only one** process per container.  
+
+Localhost (127.0.0.1) for a container is itself. Containers can access each other by using their names as the domain.  
 
 Docker uses a `unix socket` which means that it runs as `root` and asks for `sudo`.  
 
@@ -41,9 +45,10 @@ Install Docker.
 
 #### Dockerfile
 `FROM <IMAGE>` - Always at top. Uses an image as a base.    
-`RUN <COMMAND>` - Run any bash commands. Can be chained with &&.  
+`RUN <COMMAND>` - Run commands on image **build**. Can be chained with &&.  
+`CMD ["<COMMAND", "<ARGS>">]` - Run a command on container **start**.   
 `COPY <SOURCE> <DESTINATION>` - Copy from local directory to container directory.  
-`EXPOSE port` - Expose a specific port.  
+`EXPOSE <PORT>` - Expose a specific port.  
 `#` - Comment.  
 
 #### Build
@@ -57,7 +62,7 @@ COPY /src /www
 ```
 
 ```
-# ./nginx.conf - Bare minimum needed to run.
+# ./nginx.conf - Bare minimum needed to run nginx.
 server {
     root /www;
 }
@@ -68,3 +73,7 @@ server {
 `sudo docker run -d -p 8080:80 --name nginx-static nginx-static` - For this to work, a port forwarding rule is needed on the VM with host `3000` and guest `8080`. Container `80` > VM `8080` > Host `3000`.  
 
 Visit the website in the host via `127.0.0.1:3000`.
+
+## Docker Compose
+
+After a while, running, starting and stopping containers gets very tedious. Instead of manually typing the docker commands, we can define a `docker-compose.yml` configuration file to do it for us.  
