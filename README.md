@@ -21,10 +21,14 @@
 # DevOps
 
 #### Linux
-- [Linux](./topics/linux.md)
+- [basics](./topics/basics.md)
+- [filesystem](./topics/filesystem.md)
 - [bash](./topics/bash.md)
 - [tmux](./topics/tmux.md)
 - [vim](./topics/vim.md)
+- [ssh](./topics/ssh.md)
+- [users](./topics/users.md)
+- [config](./topics/config.md)
 - [nginx](./topics/nginx.md)
 - [systemd](./topics/systemd.md)
 
