@@ -25,9 +25,9 @@ Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. 
 
 `http {}` block - For all incoming http requests, use these settings.
 
-## Caching
+## security
 
-Reusing page renders after they have been loaded once. Instead of everyone making a request, running a script, fetching data from the database, rendering a page and sending a response, only the first one does the work, the results is cached in a database, and everyone that wants the same is simply given the results from the database.
+
 
 ## Proxy vs Reverse Proxy
 
@@ -48,6 +48,29 @@ If you use nginx in front of node, you can run your node as a limited user on po
 It's always better to use nginx as a proxy for a node.js server; nginx can proxy to a number of node backends and should any of them die can fail-over automatically with the benefit that, if there is an issue with the node interpreter (for instance while upgrading) and it stops responding, it can serve a fall-back HTML page.
 
 Additionally, you shouldn't be using node.js for serving "static" files such as images, js/css files, etc. Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
+
+## Caching
+
+Reusing page renders after they have been loaded once. Instead of everyone making a request, running a script, fetching data from the database, rendering a page and sending a response, only the first one does the work, the results is cached in a database (for a certain amount of time), and everyone that wants the same is simply given the results from the database. **Useful for static content, not so much for dynamic i.e. web apps.**  
+
+Caching is also possible on the client side, by specifying certain HTTP headers (ETags, Last-Modified).  
+
+POST requests should not be cached.  
+
+Caching problems can be identified by appending a parameter at the end of the URL which bypasses the caching. `www.example.com/posts/1?test`  
+
+## Compression
+
+Using `gzip` can greatly reduce the traffic by compressing text files (not images) like HTML, CSS, JS, XML, which use verbose bloated formats.  
+
+Done in `/etc/nginx/nginx.conf` (trickles down to all site-specific configs in `/etc/nginx/conf.d/SITEFILE`)
+
+`gzip on` - Enable compression.  
+`gzip_min_length 512` - Only compress files bigger than 512 bytes.  
+`gzip_types text/plain application/javascript text/html text/css;` - Formats to compress.  
+`gzip_vary` - Sends vary header.
+
+It's important to use the `Vary` option in order to prevent compressed and non-compressed responses from interfering with each other i.e. two browsers download gzipped content, while only one supports it, resulting in only it being cached, making that response unusable to other non-supporting browsers.
 
 ## PHP Interpreter Setup
 

@@ -12,7 +12,8 @@
 
 ## Install
 `apt-get install PACKAGE` - Install specified package.  
-`apt-cache search NAME` - Search packages.  
+`apt-cache search PACKAGE` - Search packages.  
+`apt-cache madison PACKAGE` - List versions.  
 `apt-get update` - Update the packages list.  
 `apt-get upgrade` - Actually update the packages.  
 `apt-get remove PACKAGE` - Remove a specified package.  

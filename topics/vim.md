@@ -27,3 +27,6 @@ Enter visual mode and select text.
 `k` - Up  
 `h` - Left  
 `l` - Right
+
+### Editor
+`:set number` - Show line numbers.  

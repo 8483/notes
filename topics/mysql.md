@@ -33,3 +33,13 @@ A database is created by forward engineering a schema. An existing database is e
 To overwrite them, the tables need to be dropped first, which is an option during the forward engineering.
 
 `Meta-data` is data about the database i.e. where the schema is stored.  
+
+## Tuning
+
+`sudo apt-get install mysqltuner`  
+
+It's a utility used to find out what could be done in order to optimize MySQL for the hardware and workload.  
+
+It needs a bit of data to work properly, so a period should pass before running it, as it looks for usage patterns.  
+
+To run it, just use `mysqltuner`.
