@@ -67,3 +67,9 @@
 Generate a random 14 character password by using the linux `/dev/urandom` file, a stream of mashed system data.  
 
 `cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 14`
+
+## Ubuntu on Windows
+
+`C:\Users\User\AppData\Local\lxss\home\user` - Filesystem location.  
+
+`cd /mnt/` - Navigate to My Computer (C:, D:).  
