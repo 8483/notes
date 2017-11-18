@@ -11,7 +11,7 @@
     - Reload privilege tables.
 3. `systemctl restart mysql` or `sudo service mysql start`  
 
-## Command line
+# Command line
 
 [Digital Ocean tutorial](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)  
 Commands are **not** case sensitive, but table names are. **All commands must end with** `;`.  
@@ -20,7 +20,7 @@ Commands are **not** case sensitive, but table names are. **All commands must en
 `;` - Execute/End current command.  
 `ENTER` - Starts a new line. `;` is expected.  
 
-#### Users
+## Users
 `CREATE USER '<user>'@'localhost' IDENTIFIED BY '<password>';` - Create user.  
 `GRANT ALL PRIVILEGES ON * . * TO '<user>'@'localhost';` - Give access to certain areas. In this case, it's for everything as `*.*` stands for `<database>.<table>` i.e. all of them.  
 `FLUSH PRIVILEGES;` - Reload the privileges.  
@@ -32,7 +32,7 @@ Commands are **not** case sensitive, but table names are. **All commands must en
 
 `mysql -u <user> -p` - Log in as new user.  
 
-###### *Specific permissions*
+#### Specific permissions
 
 `GRANT <permission> ON <database>.<table> TO '<user>'@'localhost';` - Give a specific permission, for a specific table.  
 `REVOKE <permission> ON <database>.<table> FROM '<user>'@'localhost';` - Remove a permission.  
@@ -40,14 +40,14 @@ Commands are **not** case sensitive, but table names are. **All commands must en
 **Permissions:** ALL PRIVILEGES, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE, GRANT OPTION (Can give permissions).   
 
 
-#### Database
+## Database
 `SELECT database();` - Show current database.  
 `USE <database>;` - Select a database.  
 
 `CREATE DATABASE <database>;` - Create a database.  
 `DROP DATABASE <database>;` - Delete a database.  
 
-#### Tables
+## Tables
 `SHOW TABLES;` - List all tables.  
 `DESCRIBE <table>;` - Display columns and types.  
 
@@ -68,7 +68,7 @@ CREATE TABLE Users (
 
 `DROP TABLE <table>` - Delete a table.  
 
-###### *Foreign Keys*
+## Foreign Keys
 
 They are used for **data integrity** i.e. they prevent entering values that don't exist in the linked table (gives an error).  
 
@@ -96,7 +96,7 @@ WHERE
 
 `SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'Categories';` - The same in one line.  
 
-#### Records
+## Records
 `SELECT * FROM <table>` - Retrieve data.  
 
 `INSERT INTO <table> (column1, column2) VALUES (value1, value2);` - Insert a record.  
@@ -111,7 +111,9 @@ UPDATE Users SET name = 'Mike' WHERE id = `1`; -- John's id.
 ```
 `DELETE from <table> where <column> = <value>;` - Delete a record.  
 
-## Creating a Database in MySQL Workbench
+# MySQL Workbench
+
+## Creating a Database
 
 1. Create a localhost connection as root on port 3306.
 2. Create a model **AND** name it.  
@@ -134,7 +136,7 @@ To overwrite them, the tables need to be dropped first, which is an option durin
 
 `Meta-data` is data about the database i.e. where the schema is stored.  
 
-## Tuning
+# Tuning
 
 `sudo apt-get install mysqltuner`  
 
