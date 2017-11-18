@@ -31,6 +31,7 @@
 - [config](./topics/config.md)
 - [nginx](./topics/nginx.md)
 - [systemd](./topics/systemd.md)
+- [compression](./topics/compression.md)
 
 #### Version Control
 - [Git](./topics/git.md)

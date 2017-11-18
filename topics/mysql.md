@@ -110,7 +110,34 @@ VALUES (NULL, 'john', 'abc123');
 ```sql
 UPDATE Users SET name = 'Mike' WHERE id = `1`; -- John's id.
 ```
-`DELETE from <table> where <column> = <value>;` - Delete a record.  
+`DELETE FROM <table> WHERE <column> = <value>;` - Delete a record.  
+
+# Backup
+
+To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re -create the database. Use `--databases` in order to have `CREATE TABLE IF NOT EXIST` included in the dump.  
+
+`mysqldump --add-drop-table --databases [database] > backup.sql`
+
+`mysqldump --databases [database] > backup.sql` - Simplest command.  
+`mysqldump --databases [database1] [database2] > backup.sql` - Multiple databases.  
+`mysqldump --all-databases > backup.sql` - Everything.  
+
+`mysqldump -p --databases [database] > backup.sql` - Prompt for password.  
+
+**options:**
+- `--add-drop-table` - add a DROP TABLE statement before each CREATE TABLE.  
+- `--no-data` - Only database structure, without contents.   
+
+## Restore
+If the dump was created without using `--databases`, then the database must be manually created before restoring. Also, the database must be specified with `mysql [database] < backup.sql`. Otherwise, just use:  
+
+`mysql < backup.sql` - Restore a database.  
+`mysql -p < backup.sql` - Prompt for password.  
+
+`gzip -d < backup.sql.gz | mysql` - From a compressed file.    
+
+If the database already exists and we want to restore it, we can use:  
+`mysql [database] < backup.sql`
 
 # MySQL Workbench
 
