@@ -9,7 +9,28 @@
     - Disable remote root login. Root should only connect via `localhost`.
     - Remove test database and access to it.
     - Reload privilege tables.
-3. `systemctl restart mysql`
+3. `systemctl restart mysql` or `sudo service mysql start`  
+
+## Command line
+Commands are **not** case sensitive, but table names are. **All commands must end with** `;`.  
+
+`mysql -p` - Log into MySQL.  
+`;` - Execute/End current command.  
+`ENTER` - Starts a new line. `;` is expected.  
+
+#### Navigation
+`SELECT database();` - Show current database.  
+`USE <database>` - Select a database.  
+`SHOW TABLES;` - List all tables.  
+`DESCRIBE <table>` - Display columns and types.  
+
+#### Creation
+`CREATE DATABASE <database` - Create a database.  
+`CREATE TABLE <table> (column1 datatype, column2 datatype)` - Create a table.  
+
+#### Data
+`INSERT INTO <table> (column1, column2) VALUES (value1, value2)` - Insert a record.  
+`SELECT * FROM <table>` - Retrieve data.  
 
 ## Creating a Database in MySQL Workbench
 
