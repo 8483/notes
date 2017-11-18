@@ -41,6 +41,7 @@ Commands are **not** case sensitive, but table names are. **All commands must en
 
 
 ## Database
+`SHOW DATABASES;` - List databases.  
 `SELECT database();` - Show current database.  
 `USE <database>;` - Select a database.  
 
