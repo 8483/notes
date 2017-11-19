@@ -69,8 +69,11 @@ CREATE TABLE Users (
 `ALTER TABLE <table> ADD <column> DATATYPE;` - Add a column at end.  
 `ALTER TABLE <table> ADD <column> DATATYPE AFTER <column>;` - Add a column at certain location.  
 `ALTER TABLE <table> DROP <column>;` - Delete a column.  
+`ALTER TABLE tableName CHANGE 'oldcolname' 'newcolname' datatype(length)`; - Change a column name. Switch quotes with backticks.
 
 `DROP TABLE <table>` - Delete a table.  
+
+`ALTER TABLE table AUTO_INCREMENT = 1` - Reset AUTO_INCREMENT id. For this to work, the table must be empty.
 
 ## Foreign Keys
 
@@ -116,7 +119,6 @@ UPDATE Users SET name = 'Mike' WHERE id = `1`; -- John's id.
 `DELETE FROM <table> WHERE <column> = <value>;` - Delete a record.  
 
 # Backup
-
 To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re -create the database. Use `--databases` in order to have `CREATE TABLE IF NOT EXIST` included in the dump.  
 
 `mysqldump --add-drop-table --databases [database] > backup.sql`
