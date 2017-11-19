@@ -139,6 +139,14 @@ If the dump was created without using `--databases`, then the database must be m
 If the database already exists and we want to restore it, we can use:  
 `mysql [database] < backup.sql`
 
+# Naming Convention
+
+- **Singular form**. Both tables and columns.
+- Always lowercase.
+- Use underscores for spaces.
+- Avoid using only `id`. Use `user_id`.
+- No CamelCase, abreviations or prefixes.
+
 # MySQL Workbench
 
 ## Creating a Database
