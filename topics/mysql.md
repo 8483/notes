@@ -39,6 +39,9 @@ Commands are **not** case sensitive, but table names are. **All commands must en
 
 **Permissions:** ALL PRIVILEGES, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE, GRANT OPTION (Can give permissions).   
 
+#### Change password
+Log into mysql and use:  
+`ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass'; FLUSH PRIVILEGES;`
 
 ## Database
 `SHOW DATABASES;` - List databases.  
@@ -144,7 +147,6 @@ If the database already exists and we want to restore it, we can use:
 - **Singular form**. Both tables and columns.
 - Always lowercase.
 - Use underscores for spaces.
-- Avoid using only `id`. Use `user_id`.
 - No CamelCase, abreviations or prefixes.
 
 # MySQL Workbench
