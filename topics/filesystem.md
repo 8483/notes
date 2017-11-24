@@ -9,7 +9,7 @@
 - **boot**. Operating system lives here.  
 - **dev**. Where devices are mounted.  `sda` is main disk, `sdaX` are partitions (Mounted as block files).  
 
-`tree DIRECTORY` - Show directory tree. `tree .` for current.  
+`tree DIRECTORY` - Show directory tree. `tree .` for current. Needs to be donwloaded with `sudo apt-get install tree`.  
 
 #### Files
 

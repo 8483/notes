@@ -6,12 +6,13 @@ Nginx communicates with the PHP interpreter via a **unix socket** file. Nginx co
 
 To access a guest (VM) nginx from a host, set a port forwarding in Virtualbox with name `nginx`, host port `80`, guest port `80`.
 
-## Install
-`add-apt-repository ppa:nginx/stable` - Add 3rd party repo.  
-`apt-get update` - Refresh packages list.  
-`apt-get install nginx` - Install the web server.  
+# Install
+```bash
+apt-get update # Refresh packages list.  
+apt-get install nginx # Install the web server.  
+```
 
-## Configuration
+# Configuration
 
 `/usr/share/nginx/html/` has the index.html file.  
 
@@ -25,11 +26,80 @@ Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. 
 
 `http {}` block - For all incoming http requests, use these settings.
 
-## security
+## Terminology
+`Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)  
+`Vhost` - Virtual host. Defined in the `http` block.  
+
+`Directives` - Specific configuration options composed of an option name and option value. Ex. `Listen 80`  
+
+```nginx
+server {               // Block start
+    listen 80;         // Directive
+}                      // Block end
+```
+
+## mime.types
+If this file is not included in the `http` block, all the different files will be served as simple text files and thus won't be rendered. Intead of writing all cases like `http { text/html html; text/css css;}` we can simply include a list of them with `http { include mime.types; }`.  
+
+## Simplest server
+```nginx
+events {}                            # Needed to be a valid conf file.
+
+http {
+    include mime.types;              # Recognize filetypes.
+    server {
+        listen 80;
+        server_name: 127.0.0.1;      # Should be domain name.
+        root: /sites/template;       # Match URIs to files here.
+    }
+}
+```
+After that, reload with `systemctl reload nginx`.  
+
+## Location Blocks
+The most used context block in any nginx configuration, which defines the behavior of specific URIs or requests. Think of them as intercepting a request based on its value and doing something else than serving to a client.  
+
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        listen 80;
+        server_name: 127.0.0.1;
+        root: /sites/template;
+
+        location /example {
+            return 200 "Hello from location block!";
+        }
+    }
+}
+```
+
+#### Matching URIs to Location Blocks
+In order of importance. Matching occurs for everything past the value. `location /greet` will match `/greetings/something`
+
+1. `=` - Exact match.  
+2. `^~` - Preferential prefix. Same as standard (prefix), but more important than regex.  
+3. `~` or `~*` - Regex case sensitive or insensitive.  
+4. `no modifier` - Prefix standard match.
+
+Example for `/greet`:
+1. `= /greet` - Match **only** /greet.  
+2. `^~` - Override the standard match if it also happens.  
+3. `~* /greet[0-9]` - Match /greet123, /greet456 etc.  
+4. `no modifier` - Match /greet, /greeting etc.
+
+
+## Testing
+
+`curl -I http://127.0.0.1/css/bootstrap.css` - Request the response headers of a resource.  
+
+# Security
 
 
 
-## Proxy vs Reverse Proxy
+# Proxy vs Reverse Proxy
 
 **Normal:** Client > Server  
 **Proxy:** Client > Proxy > Server
@@ -49,7 +119,7 @@ It's always better to use nginx as a proxy for a node.js server; nginx can proxy
 
 Additionally, you shouldn't be using node.js for serving "static" files such as images, js/css files, etc. Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
 
-## Caching
+# Caching
 
 Reusing page renders after they have been loaded once. Instead of everyone making a request, running a script, fetching data from the database, rendering a page and sending a response, only the first one does the work, the results is cached in a database (for a certain amount of time), and everyone that wants the same is simply given the results from the database. **Useful for static content, not so much for dynamic i.e. web apps.**  
 
@@ -59,7 +129,7 @@ POST requests should not be cached.
 
 Caching problems can be identified by appending a parameter at the end of the URL which bypasses the caching. `www.example.com/posts/1?test`  
 
-## Compression
+# Compression
 
 Using `gzip` can greatly reduce the traffic by compressing text files (not images) like HTML, CSS, JS, XML, which use verbose bloated formats.  
 
@@ -72,7 +142,7 @@ Done in `/etc/nginx/nginx.conf` (trickles down to all site-specific configs in `
 
 It's important to use the `Vary` option in order to prevent compressed and non-compressed responses from interfering with each other i.e. two browsers download gzipped content, while only one supports it, resulting in only it being cached, making that response unusable to other non-supporting browsers.
 
-## PHP Interpreter Setup
+# PHP Interpreter Setup
 
 Nginx only understands static files. It doesn't know how to handle code. For that, we use an interpreter (sits behind the web-server), which communicates with nginx via a socket file.  
 

@@ -1,4 +1,5 @@
 # Vim
+If a file is read-only and can't be changed, use `sudo vim file` to open it as root.  
 
 ## Modes
 `ESC` - Command  
@@ -14,7 +15,7 @@
 Enter visual mode and select text.  
 `y` - Copy (Yank) selected.
 `p` - Paste after cursor.
-`x` - Delete selected.
+`x` or `d` - Delete selected.
 
 ## Save & Exit
 `:w` - Save  
