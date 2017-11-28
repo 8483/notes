@@ -32,6 +32,7 @@
 #### List
 `ls -a` - List all files, including hidden.  
 `cat FILE` - Show the file's content.  
+`head FILE` or `tail FILE` - Show first or last 10 lines.  
 
 #### Create
 `mkdir FOLDER` - Create a folder.   

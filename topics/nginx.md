@@ -12,6 +12,8 @@ apt-get update # Refresh packages list.
 apt-get install nginx # Install the web server.  
 ```
 
+If we want to add modules, we need to compile nginx from source and add them during the compilation phase.  
+
 # Configuration
 
 `/usr/share/nginx/html/` has the index.html file.  
@@ -30,7 +32,12 @@ Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. 
 `Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)  
 `Vhost` - Virtual host. Defined in the `http` block.  
 
-`Directives` - Specific configuration options composed of an option name and option value. Ex. `Listen 80`  
+`Directives` - Specific configuration options composed of an option name and option value. Ex. `Listen 80`. There are 4 types:  
+- **Standard** directive. Defined once, unless turned off elsewhere. `gzip on`.  
+- **Array** directive. Can be defined multiple times with different flags. `access_log logs/access.log` vs `access_log logs/access_notice.log notice;` in the same context.  
+- **Action** directive. Perform an action when hit `rewrite`, `return`.   
+- **try_files** directive. `try_files $uri index.html =404` tries finding a file and if not found, server index.html. If that also fails, send a 404 error.  
+
 
 ```nginx
 server {               // Block start
@@ -90,14 +97,85 @@ Example for `/greet`:
 3. `~* /greet[0-9]` - Match /greet123, /greet456 etc.  
 4. `no modifier` - Match /greet, /greeting etc.
 
+#### try_files
+The example below sets up a location outside of the regular server root. When someone visits `domain/downloads/file` they would get the wanted file.  
+
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        listen 80;
+        server_name: 127.0.0.1;
+        root: /sites/template;
+
+        location /downloads {
+            root /sites;
+            try_files #uri =404;
+        }
+    }
+}
+```
+
+## Logging
+
+There are two types of logs by default, located in `/var/log/nginx`.
+1. **Error** logs for anything that went wrong.  
+2. **Access** logs for all requests made.
+
+If we want specific logs for specific context, we can do that by using `error_log /var/log/nginx/log_name.log debug;`.  
+
+Also, we can disable logs for certain locations by using `access_log off` or `error_log off`. This is useful for saving resources, ex. for all .css requests.  
+
+## Inheritance
+
+Http > Server > Location
+
+It only works for standard and array directives. It doesn't work for action and try_files directives as the stop the flow and are immediately executed.  
 
 ## Testing
 
 `curl -I http://127.0.0.1/css/bootstrap.css` - Request the response headers of a resource.  
 
+# Optimization
+
+Further reading on these topics:  
+- Expires headers. Client side caching.
+- Gzip. Compression.
+- FastCGI cache. Cache backend responses.
+- Limiting. Prevent DDoS.
+- GeoIP. Location of requests and limits.
+- HTTP2. One client-server connection vs 10+ individual requests.
+
 # Security
+Here are some of the steps for hardening an nginx server:
+- Remove unused modules. Can only be done while compiling from source.
+- Turn off server tokens with `server_tokens off;`. This hides the nginx version.
+- Set buffer sizes to prevent buffer overflow attacks.
+- Block user agents. Prevents indexing and scraping.
+- Configure X-frame-options. Tells when it's ok to server to an iframe.
 
+## SSL/HTTPS
+After purchasing an SSL certificate, two files are obtained.
+- `.crt` certificate file.
+- `.key` certificate key file.
 
+We place these files into `/etc/nginx/ssl/` and use this configuration in the server/domain block.
+
+```nginx
+server {
+    listen 443 ssl;
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+}
+```
+
+SSL/HTTPS uses the `443` port vs the standard HTTP `80`.
+
+#### Let's Encrypt
+
+Certbot is used for generating certificates and automating their renewal.
 
 # Proxy vs Reverse Proxy
 
