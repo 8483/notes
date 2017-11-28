@@ -1,4 +1,4 @@
-# nginx
+# Nginx
 
 It only knows about static content. While it can serve static HTML, for dynamically generated HTML, it has to offload requests to other processes in order to generate HTML. Ex. User requests a PHP file, and nginx sends it to an interpreter, which then returns the HTML, which is sent back by nginx.
 
@@ -20,13 +20,20 @@ If we want to add modules, we need to compile nginx from source and add them dur
 
 `nginx -t` - After changes, check the syntax and run a test to make sure the web-server will work.  
 
-`systemctl reload nginx` - Load the changes because the server is running with the old config file.    
+`systemctl reload nginx` - Load the changes because the server is running with the old config file. Otherwise use `service nginx reload`.  
 
 `/etc/nginx/nginx.conf` is the main server configuration file. For each site we run, a separate file is needed, unless we want to run just one site.
 
 Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. These override any `nginx.conf` settings. These are loaded by the `include /etc/nginx/conf.d/*.conf;` line.  
 
 `http {}` block - For all incoming http requests, use these settings.
+
+## Command Line
+
+The default location nginx looks in for the configuration file is `/etc/nginx/nginx.conf`, but you can pass in an arbitrary path with the `-c` flag. Ex. `nginx -c /usr/local/nginx/conf`.  
+
+`nginx -s <signal>` - Stop or reload.  
+`nginx -c <path>` - Start with a custom configuration.  
 
 ## Terminology
 `Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)  
@@ -40,9 +47,9 @@ Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. 
 
 
 ```nginx
-server {               // Block start
-    listen 80;         // Directive
-}                      // Block end
+server {               # Block start
+    listen 80;         # Directive
+}                      # Block end
 ```
 
 ## mime.types
@@ -62,6 +69,9 @@ http {
 }
 ```
 After that, reload with `systemctl reload nginx`.  
+
+#### Start with custom configuration
+`nginx -c <RELATIVE .CONF PATH>` - Start with a .conf file.
 
 ## Location Blocks
 The most used context block in any nginx configuration, which defines the behavior of specific URIs or requests. Think of them as intercepting a request based on its value and doing something else than serving to a client.  
@@ -196,6 +206,27 @@ If you use nginx in front of node, you can run your node as a limited user on po
 It's always better to use nginx as a proxy for a node.js server; nginx can proxy to a number of node backends and should any of them die can fail-over automatically with the benefit that, if there is an issue with the node interpreter (for instance while upgrading) and it stops responding, it can serve a fall-back HTML page.
 
 Additionally, you shouldn't be using node.js for serving "static" files such as images, js/css files, etc. Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
+
+## Node Reverse Proxy
+The api would be available via `localhost:8000/app`, which forwards the request to the actual api on `3000`.  
+
+```nginx
+events {}
+
+http {
+    server {
+        listen 8000;
+
+        location / {
+            return 200 "Nginx is working!";
+        }
+
+        location /app {
+            proxy_pass 'http://localhost:3000/';
+        }
+    }
+}
+```
 
 # Caching
 

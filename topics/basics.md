@@ -1,21 +1,25 @@
 # Linux
 
-## Basics
+# Basics
 `^` - Control key.  
 `M` - Alt key.  
 
 `CTRL + a` - Go to beginning of line.  
 `CTRL + e` - Go to end of line.  
 
-## Help
+# Help
 `man COMMAND` - Command help.
 
-## Install
-`apt-get install PACKAGE` - Install specified package.  
+# Install
 `apt-cache search PACKAGE` - Search packages.  
 `apt-cache madison PACKAGE` - List versions.  
+
 `apt-get update` - Update the packages list.  
+`apt-get install PACKAGE` - Install specified package.  
 `apt-get upgrade` - Actually update the packages.  
+
+`apt list --installed` - A list of installed packages.  
+
 `apt-get remove PACKAGE` - Remove a specified package.  
 `add-apt-repository REPO` - Add 3rd party repository or PPA (Personal Package Archive).  
 
@@ -23,30 +27,36 @@
 `wget "URL"` - Download from URL.    
 `sudo dpkg –i FILE_NAME` - Install downloaded file.  
 
-## Find
+# Find
 `sudo find / -iname FOLDER/FILE.ext` - Find case insensitive.  
 `which PROGRAM` - Find path to program.
 
-## Folders & Files
+# Folders & Files
 
-#### List
+## List
 `ls -a` - List all files, including hidden.  
 `cat FILE` - Show the file's content.  
 `head FILE` or `tail FILE` - Show first or last 10 lines.  
 
-#### Create
+## Create
 `mkdir FOLDER` - Create a folder.   
 `touch FILE` - Create a file.
 
-#### Copy/Paste
+## Copy/Paste
 `cp PATH/FILE PATH/FILE` - Create a copy.  
 `mv PATH/FILE PATH/FILE` - Rename or Cut & Paste a file.
 
-#### Delete
+## Delete
 `rm FOLDER/FILE` - Delete folder or file.  
 `rm -r FOLDER` - Delete a directory and its files.
 
-## Networking
+# Processes
+`ps -ef` - List all running processes.  
+`ps -ef | grep <criteria>` - Find a specific process.  
+
+`kill -9 <pid>` - Kill a process by id.  
+
+# Networking
 **Gateway** is the router address we are talking to in order to connect to the rest of the network/internet.  
 
 `127.0.0.1` - Your computer.  
@@ -60,16 +70,16 @@
 
 `/etc/hosts` is used to simulate a domain for an IP address. Add `127.0.0.1 domain.com` to avoid typing the IP address.  
 
-## Notes
+# Notes
 `dpkg` is a backend for `apt-get` which is a backend for `aptitude` (GUI).
 
-## Password Generator
+# Password Generator
 
 Generate a random 14 character password by using the linux `/dev/urandom` file, a stream of mashed system data.  
 
 `cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 14`
 
-## Ubuntu on Windows
+# Ubuntu on Windows
 
 `C:\Users\User\AppData\Local\lxss\home\user` - Filesystem location.  
 
