@@ -228,6 +228,26 @@ http {
 }
 ```
 
+#### Important
+It is crucial to note the usage of the **trailing slash**. This is called a **proxy path**. Unless we specify one, nginx assumes the original request path i.e. location. It is **recommended** to **use** the proxy path / trailing slash.  
+
+**With** trailing slash, the server receives `/` or `root` i.e. no request is passed to the server.  
+```nginx
+location /app {
+    proxy_pass 'http://localhost:3000/'; # Has slash (proxy path)
+}
+# For curl http://localhost:8000, the result (path) is /
+# curl http://localhost:8000/app/foo/bar results in //foo/bar
+```
+**Without** trailing slash, the server receives `/app` i.e. the location is passed to the server.  
+```nginx
+location /app {
+    proxy_pass 'http://localhost:3000'; # No slash
+}
+# For curl http://localhost:8000, the result (path) is /app
+```
+If the backend/api route is `/api/something`, the the nginx location should be `/api`, and proxy_pass should be without a trailing slash. The request would be made like so: `http://localhost:8000/api/something`.  
+
 # Caching
 
 Reusing page renders after they have been loaded once. Instead of everyone making a request, running a script, fetching data from the database, rendering a page and sending a response, only the first one does the work, the results is cached in a database (for a certain amount of time), and everyone that wants the same is simply given the results from the database. **Useful for static content, not so much for dynamic i.e. web apps.**  
