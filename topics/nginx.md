@@ -231,25 +231,36 @@ http {
 #### Important
 It is crucial to note the usage of the **trailing slash**. This is called a **proxy path**. Unless we specify one, nginx assumes the original request path i.e. location. It is **recommended** to **use** the proxy path / trailing slash.  
 
-**With** trailing slash, the server receives `/` or `root` i.e. no request is passed to the server.  
+[Stack Overflow explanation.](https://stackoverflow.com/questions/32542282/how-do-i-rewrite-urls-in-a-proxy-response-in-nginx)  
+
 ```nginx
-location /app {
-    proxy_pass 'http://localhost:3000/'; # Has slash (proxy path)
+location /foo/ {
+    proxy_pass http://localhost:3000/;
 }
-# For curl http://localhost:8000, the result (path) is /
-# curl http://localhost:8000/app/foo/bar results in //foo/bar
 ```
-**Without** trailing slash, the server receives `/app` i.e. the location is passed to the server.  
+**With** trailing slash, the request for `http://localhost:3000/foo/bar/baz` will be proxied to  `http://localhost:3000/bar/baz`. Basically, `/foo/` gets replaced by `/` to change the request path from `/foo/bar/baz` to `/bar/baz`.
+
+
 ```nginx
-location /app {
-    proxy_pass 'http://localhost:3000'; # No slash
+location /foo/ {
+    proxy_pass http://localhost:3000;
 }
-# For curl http://localhost:8000, the result (path) is /app
 ```
-If the backend/api route is `/api/something`, the the nginx location should be `/api`, and proxy_pass should be without a trailing slash. The request would be made like so: `http://localhost:8000/api/something`.  
+**Without** trailing slash, the same request will be proxied to `http://localhost:3000/foo/bar/baz`. Basically, the full original request path gets passed on without changes.  
+
+For example, a request to `http://localhost:8000/app/users` (with the config below) would return all users because the request made to the server is actually `http://localhost:3000/api/users`.  
+
+```nginx
+server {
+    listen 8000;
+
+    location /app/ {
+        proxy_pass 'http://localhost:3000/api/users';
+    }
+}
+```
 
 # Caching
-
 Reusing page renders after they have been loaded once. Instead of everyone making a request, running a script, fetching data from the database, rendering a page and sending a response, only the first one does the work, the results is cached in a database (for a certain amount of time), and everyone that wants the same is simply given the results from the database. **Useful for static content, not so much for dynamic i.e. web apps.**  
 
 Caching is also possible on the client side, by specifying certain HTTP headers (ETags, Last-Modified).  
