@@ -13,6 +13,8 @@ The root account is disabled by default in Ubuntu, so there is no root password,
 
 `chown USER:GROUP FILENAME` - Change file owner.  
 
+`sudo usermod -a -G <group> <user>` - Add user to a group. Needs a logout.  
+
 `chmod` - Change file mode i.e. `rwx` permissions.  
 
 `r` - Read.  
