@@ -63,15 +63,46 @@ http {
     include mime.types;              # Recognize filetypes.
     server {
         listen 80;
-        server_name: 127.0.0.1;      # Should be domain name.
-        root: /sites/template;       # Match URIs to files here.
+        server_name 127.0.0.1;      # Should be domain name.
+        root /sites/template;       # Match URIs to files here.
     }
 }
 ```
 After that, reload with `systemctl reload nginx`.  
 
-#### Start with custom configuration
-`nginx -c <RELATIVE .CONF PATH>` - Start with a .conf file.
+## Static server with custom configuration
+**nginx.conf**
+```nginx
+events {}
+
+http {
+    include /etc/nginx/mime.types; # Path needs to be absolute.
+    server {
+        listen 8080;
+        root /home/user/app/public; # index.html is inside public.
+    }
+}
+```
+**Useful commands**
+```bash
+# Check if nginx is running.
+systemctl status nginx
+
+# Start nginx if not.
+systemctl start nginx
+
+# Start a server with this custom configuration.  
+sudo nginx -c /home/user/elm-seed/nginx.conf
+
+# Reload custom configuration after changes.
+sudo nginx -s reload
+
+# Show nginx processes.
+ps -ef | grep nginx
+
+# Kill a server with a PID 2847.
+kill -9 2847
+```
 
 ## Location Blocks
 The most used context block in any nginx configuration, which defines the behavior of specific URIs or requests. Think of them as intercepting a request based on its value and doing something else than serving to a client.  
@@ -83,8 +114,8 @@ http {
     include mime.types;
     server {
         listen 80;
-        server_name: 127.0.0.1;
-        root: /sites/template;
+        server_name 127.0.0.1;
+        root /sites/template;
 
         location /example {
             return 200 "Hello from location block!";
@@ -117,8 +148,8 @@ http {
     include mime.types;
     server {
         listen 80;
-        server_name: 127.0.0.1;
-        root: /sites/template;
+        server_name 127.0.0.1;
+        root /sites/template;
 
         location /downloads {
             root /sites;
