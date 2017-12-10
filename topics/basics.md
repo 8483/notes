@@ -4,8 +4,12 @@
 `^` - Control key.  
 `M` - Alt key.  
 
-`CTRL + a` - Go to beginning of line.  
-`CTRL + e` - Go to end of line.  
+`CTRL` + `a` - Go to beginning of line.  
+`CTRL` + `e` - Go to end of line.  
+
+`ALT` + `Backspace` - Delete last word.  
+`ALT` + `Left` / `Right` - Go to previous / next word.  
+`CTRL` + `u` - Delete whole line.  
 
 # Help
 `man COMMAND` - Command help.
@@ -28,6 +32,9 @@
 `sudo dpkg –i FILE_NAME` - Install downloaded file.  
 
 # Find
+`find /` - List root directory's content.  
+`find / | grep FILE` - Search the output.  
+
 `sudo find / -iname FOLDER/FILE.ext` - Find case insensitive.  
 `which PROGRAM` - Find path to program.
 
@@ -55,6 +62,25 @@
 `ps -ef | grep <criteria>` - Find a specific process.  
 
 `kill -9 <pid>` - Kill a process by id.  
+
+# Add environment PATH variable
+PATH is an enviroment variable. It  tells your machine where to search for programs, so when you run your **picc** program you can just do `picc` instead of `/usr/hitech/picc/9.82/bin/picc`.
+
+`env` - List all variables.  
+`echo "$HOME"` - Specific variable, in this case **$PATH**.  
+
+Paths are delimited with `:`.
+
+```bash
+# Method 1
+vim ~/.profile # Edit this file.
+PATH="$HOME/bin:$PATH" # Find this line.
+PATH="$HOME/bin:$PATH:/usr/hitech/picc/9.82/bin" # Change it into this.
+# It appends the new path to the existing system ones, just for this user.
+
+# Method 2 - Shorthand to avoid editing manually.
+export PATH="$PATH:/usr/hitech/picc/9.82/bin" # export <VARIABLE>="<VALUE>"
+```
 
 # Networking
 **Gateway** is the router address we are talking to in order to connect to the rest of the network/internet.  

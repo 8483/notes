@@ -1,13 +1,66 @@
 # Elm
 
-## Install  
-`sudo npm install -g elm` - Install Elm.  
+Elm code can be tested in the [sandbox app](http://elm-lang.org/examples/hello-html) without installation.   
+
+# Install  
+```bash
+sudo npm install -g elm # Normal install
+sudo npm install --unsafe-perm -g elm # If npm gives you permission errors.
+```
+
 `elm-package install elm-lang/PACKAGE_NAME` - Install dependencies.  
 
-## Build/Compile
+#### Alternative
+Install yarn
+```bash
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+```
+
+Install Elm
+```bash
+export PATH="$PATH:`yarn global bin`" # Add in order to use Elm commands.
+yarn global add elm
+```
+# Elm "Hello World!"
+Create the `Main.elm` file. This, along with all the dependecies will transpile into Javascript in step 3.
+
+```elm
+import Html exposing (text)
+
+main =
+  text "Hello, World!"
+```
+Create the `index.html` file, which will load the javascript file created in step 3.
+
+```html
+<html>
+    <head></head>
+    <body>
+        <div id="app"></div>
+        <script src="main.js"></script>
+        <script>
+            var app = Elm.Main.embed(document.getElementById("app"));
+        </script>
+    </body>
+</html>
+```
+
+Compile/transpile the elm code into javascript.
+```bash
+elm-make Main.elm --output=main.js # Locations are relative.
+```
+
+The result from this is the creation of:
+- `elm-stuff` - Holds the dependecies, like `node_modules`.  
+- `elm-package.json` - Lists the dependecies, like `package.json`.  
+- `main.js` - The transpiled elm code, to be used in `index.html`.
+
+# Build/Compile
 `elm-make Main.elm --output=../public/main.js` - Build
 
-## App Build Order  
+# App Build Order  
 
 1. Connect modules / Navigation
 2. Login
@@ -22,7 +75,7 @@
 
 There are 3 main wiring parts between modules. They happen in the `Model`, `Update` and `View`.
 
-## ChildModule.elm
+# ChildModule.elm
 
 ```elm
 module ChildModule exposing(..)
@@ -37,9 +90,9 @@ module ChildModule exposing(..)
     ]
 ```
 
-## Main.elm
+# Main.elm
 
-### 1. Model
+## 1. Model
 
 The `Main` module doesn't need to know the details of `ChildModule`'s model. It just needs to know that the `ChildModule` has a model, which is exposed and can be referenced by using `ChildModule.Model`. The initial value can be referenced as well with `ChildModule.initModel`.
 
@@ -60,7 +113,7 @@ initModel =
     }
 ```
 
-### 2. Update  
+## 2. Update  
 
 When the message is of type `ChildModuleMsg` i.e. originating from an outside module, we pull out the included message and put it into the identifier `cmMsg`.  
 
@@ -82,7 +135,7 @@ update msg model =
         ChildModuleMsg cmMsg ->
             { model | childModule = ChildModule.update cmMsg model.childModule }
 ```
-### 3. View  
+## 3. View  
 
 This is a **GOTCHA** part due to the different `Html Msg` types. We need to transform the html capable of generating `ChildModule` messages into `Html` capable of generating `Main` messages by using `map`.  
 
