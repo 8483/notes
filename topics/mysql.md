@@ -59,7 +59,7 @@ Log into mysql and use:
 
 `CREATE TABLE <table> (column1 DATATYPE, column2 DATATYPE)` - Create a table.  
 ```sql
-CREATE TABLE Users (
+CREATE TABLE user (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Important
     name VARCHAR(255),
     pass VARCHAR(255)
@@ -69,7 +69,7 @@ CREATE TABLE Users (
 `ALTER TABLE <table> ADD <column> DATATYPE;` - Add a column at end.  
 `ALTER TABLE <table> ADD <column> DATATYPE AFTER <column>;` - Add a column at certain location.  
 `ALTER TABLE <table> DROP <column>;` - Delete a column.  
-`ALTER TABLE tableName CHANGE 'oldcolname' 'newcolname' datatype(length)`; - Change a column name. Switch quotes with backticks.
+`ALTER TABLE tableName CHANGE 'oldcolname' 'newcolname' datatype(length);` - Change a column name. Switch quotes with backticks.
 
 `DROP TABLE <table>` - Delete a table.  
 
@@ -108,13 +108,13 @@ WHERE
 
 `INSERT INTO <table> (column1, column2) VALUES (value1, value2);` - Insert a record.  
 ```sql
-INSERT INTO Users ('id', 'name', 'pass')
+INSERT INTO user ('id', 'name', 'pass')
 VALUES (NULL, 'john', 'abc123');
 ```
 
 `UPDATE <table> SET <column> = <value> WHERE <criteria>` - Update a record.  
 ```sql
-UPDATE Users SET name = 'Mike' WHERE id = `1`; -- John's id.
+UPDATE user SET name = 'Mike' WHERE id = `1`; -- John's id.
 ```
 `DELETE FROM <table> WHERE <column> = <value>;` - Delete a record.  
 

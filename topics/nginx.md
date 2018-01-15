@@ -24,7 +24,7 @@ If we want to add modules, we need to compile nginx from source and add them dur
 
 `/etc/nginx/nginx.conf` is the main server configuration file. For each site we run, a separate file is needed, unless we want to run just one site.
 
-Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. These override any `nginx.conf` settings. These are loaded by the `include /etc/nginx/conf.d/*.conf;` line.  
+Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. These override any `nginx.conf` settings. These are loaded by the default `include /etc/nginx/conf.d/*.conf;` line in the main .conf file.  
 
 `http {}` block - For all incoming http requests, use these settings.
 

@@ -82,6 +82,12 @@ PATH="$HOME/bin:$PATH:/usr/hitech/picc/9.82/bin" # Change it into this.
 export PATH="$PATH:/usr/hitech/picc/9.82/bin" # export <VARIABLE>="<VALUE>"
 ```
 
+# Static server
+This will start a static web server on port `8000`. The command has to be run in the directory with the `index.html` file.  
+```bash
+python -m SimpleHTTPServer 8080
+```
+
 # Networking
 **Gateway** is the router address we are talking to in order to connect to the rest of the network/internet.  
 

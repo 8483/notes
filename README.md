@@ -1,13 +1,20 @@
 # Programming
 
+### Javascript
+- [DOM](./topics/dom.md)
+- [ES6](./topics/es6.md)
+- [AJAX](./topics/ajax.md)
+
 #### Frontend
-- [Elm](./topics/elm.md)
+- [CSS](./topics/css.md)
 - Bootstrap
+- Materialize
+- [Elm](./topics/elm.md)
+- [Electron](./topics/electron.md)
 
 #### Backend
-- [Javascript](./topics/javascript.md)
-    - Node
-        - Express
+- Node
+    - Express
 - [MySQL](./topics/mysql.md)
 
 #### Concepts
