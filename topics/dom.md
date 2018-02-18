@@ -92,7 +92,7 @@ element.style.borderBottom = "solid 1px red";
 `document.links` - Array of all links.  
 `document.images` - Array of all images.  
 
-# Create
+# Create / Remove
 ```javascript
 // Element
 var element = document.createElement("div");
@@ -111,6 +111,9 @@ var text = document.createTextNode("Hello World!");
 
 // Add text to div
 element.appendChild(text);
+
+// Remove the child element
+element.removeChild(text);
 ```
 
 # Events

@@ -260,6 +260,9 @@ http {
 ```
 
 #### Important
+
+**Any changes made to** `nginx.conf` **need to be reloaded with** `sudo nginx -s reload` **for them to work!!!**  
+
 It is crucial to note the usage of the **trailing slash**. This is called a **proxy path**. Unless we specify one, nginx assumes the original request path i.e. location. It is **recommended** to **use** the proxy path / trailing slash.  
 
 [Stack Overflow explanation.](https://stackoverflow.com/questions/32542282/how-do-i-rewrite-urls-in-a-proxy-response-in-nginx)  

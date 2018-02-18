@@ -169,7 +169,7 @@ function Person(){
 # Promises
 The promise object is used for deferred and asynchronous computations and it represents and operation that hasn't completed yet, but is expected in the future.  
 
-Promises are obatined with `.then()`.
+Promises are obtained with `.then()`.
 
 ```javascript
 // Immediately resolved.
@@ -266,6 +266,35 @@ console.log(gen.next().value); // Done...
 for(let g of gen){
     console.log(g); // Hello, Yield 1 ran, World, Yield 2 ran. Ignores last.
 }
+```
+
+# Destructuring
+```javascript
+// array
+var foo = ['one', 'two', 'three', 'four'];
+
+var [one, two, three] = foo;
+console.log(one); // "one"
+console.log(two); // "two"
+console.log(three); // "three"
+
+// object
+var o = {p: 42, q: true};
+var {p, q} = o;
+
+console.log(p); // 42
+console.log(q); // true
+```
+Electron example
+```javascript
+// Old
+const electron = require("electron");
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+
+// New
+const electron = require("electron");
+const {app, BrowserWindow} = electron;
 ```
 
 
