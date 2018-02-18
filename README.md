@@ -7,8 +7,6 @@
 
 #### Frontend
 - [CSS](./topics/css.md)
-- Bootstrap
-- Materialize
 - [React](./topics/react.md)
 - [Elm](./topics/elm.md)
 - [Electron](./topics/electron.md)
