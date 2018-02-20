@@ -15,8 +15,8 @@
 # Update
 sudo apt update;
 
-# vim and curl
-sudo apt install vim curl;
+# curl, vim, tmux.
+sudo apt install curl vim tmux;
 
 # Node
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt install nodejs -y;
