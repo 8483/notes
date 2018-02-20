@@ -239,20 +239,16 @@ It's always better to use nginx as a proxy for a node.js server; nginx can proxy
 Additionally, you shouldn't be using node.js for serving "static" files such as images, js/css files, etc. Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
 
 ## Node Reverse Proxy
-The api would be available via `localhost:8000/app`, which forwards the request to the actual api on `3000`.  
+Any request made to the server on the `80` port is forwarded to `http://localhost:3000`, as if it was made directly there.  
 
 ```nginx
 events {}
 
 http {
     server {
-        listen 8000;
+        listen 80;
 
         location / {
-            return 200 "Nginx is working!";
-        }
-
-        location /app {
             proxy_pass 'http://localhost:3000/';
         }
     }
