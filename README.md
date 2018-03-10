@@ -17,6 +17,7 @@
 - [MySQL](./topics/mysql.md)
 
 #### Concepts
+- [Security](./topics/security.md)
 - File Organization
 - REST
 - Authentication

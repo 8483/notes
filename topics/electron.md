@@ -18,7 +18,7 @@ When running `npm install electron`, some users occasionally encounter installat
 In almost all cases, these errors are the result of network problems and not actual issues with the electron npm package. Errors like `ELIFECYCLE`, `EAI_AGAIN`, `ECONNRESET`, and `ETIMEDOUT` are all indications of such network problems. The best resolution is to try switching networks, or just wait a bit and try installing again.
 
 # Run
-Before anything, make sure that `package.json` is updated with the relevant entry file. Default is `index.js`.  
+**Before anything, make sure that `package.json` is updated with the relevant entry file. Default is `index.js`.**  
 ```json
 "main": "main.js"
 ```
@@ -38,37 +38,17 @@ electron . # Same as above. Looks for main.js inside current directory.
 npm start # We use the above command inside package.json.
 ```
 
-
-# Electron Reload
-An npm library used for tracking changes in `.html` and `.js` rederer files, to avoid closing/starting electron to refresh.
-```bash
-npm install electron-reload --save-dev
-```
-```javascript
-// main.js
-require("electron-reload")(__dirname);
-```
-
-# Main vs Renderer Process
-Electron operates in two runtime contexts i.e. processes.
-- **Main** (one) / Node.js / Server / main.js
-- **Renderer** (many) / Chromium browser / Client side
-
-The main process can create many renderer processes (browser windows), but there is only one main process handling this.  
-
 # Simple app
 **main.js**
 ```javascript
 const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const {app, BrowserWindow} = electron;
 
 let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({width: 800, height: 600})
     mainWindow.loadURL(`file://${__dirname}/index.html`)
-    mainWindow.webContents.openDevTools();
     mainWindow.on("closed", function() {
         mainWindow = null;
     })
@@ -93,23 +73,228 @@ app.on("ready", createWindow);
 </html>
 ```
 
-# IPC
+# Main vs Renderer Process
+Electron operates in two runtime contexts i.e. processes.
+- **Main** (one) / Node.js / Server / main.js
+- **Renderer** (many) / Chromium browser / Client side
+
+The main process can create many renderer processes (browser windows), but there is only one main process handling this.  
+
+# IPC (Inter Process Communication)
+It allows us to send messages (with a payload) between the Main and Renderer processes. To use this, we need the `ipcMain` module in the `Main` process, and the `ipcRenderer` module in the `Renderer` processes.
+
+By default, these modules send messages asynchronously, which is recommended.
+
+## ipcMain & ipcRenderer
+`ipcMain` can only listen for `Renderer` messages and reply to them. It's possible to send a message to a `Renderer` process by using `webContents.send()`.
+
+`ipcRenderer` can send messages to the `Main` and `Renderer` processes **and** listen for messages from them.
+
+```javascript
+// Main
+win = new BrowserWindow();
+
+ipcMain.on('asynchronous-message', (e, args) => {
+    console.log(arg);  // prints "ping"
+    event.sender.send('asynchronous-reply', 'pong');
+})
+
+win.webContents.send('channel', 'foo!');
+```
+```javascript
+// Renderer
+ipcRenderer.send('asynchronous-message', 'ping');
+
+ipcRenderer.on('asynchronous-reply', (e, args) => {
+    console.log(arg); // prints "pong"
+})
+
+ipcRenderer.on('channel', (e, args) => {
+    console.log(args);  // Prints 'foo!'
+})
+```
 
 ## Remote
+Basically the `remote` module makes it easy to do stuff normally restricted to the main process in a render process without lots of manual ipc messages back and forth.
 
+In Electron, GUI-related modules (such as dialog, menu etc.) are only available in the main process, not in the renderer process. In order to use them from the renderer process, the ipc module is necessary to send inter-process messages to the main process. **With the remote module, you can invoke methods of the main process object without explicitly sending inter-process messages**, similar to Java's RMI. An example of creating a browser window from a renderer process:
 
+```javascript
+const remote = require('electron').remote;
+const BrowserWindow = remote.BrowserWindow;
+
+var win = new BrowserWindow();
+win.loadURL('https://github.com');
+```
+
+# General
+
+## Developer Tools
+```javascript
+// Add this line in the createWindow main process.
+mainWindow.webContents.openDevTools();
+```
+
+## Menu
+If there's no custm menu specified, Electron shows a default one. Using a custom one overrides it.
+
+```javascript
+const electron = require("electron");
+// We need to pull menu.
+const {app, BrowserWindow, Menu} = electron;
+
+let mainWindow;
+
+function createWindow() {
+    mainWindow = new BrowserWindow({width: 800, height: 600})
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
+
+    // Build menu
+    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+    // Set Menu
+    Menu.setApplicationMenu(mainMenu);
+}
+
+app.on("ready", createWindow);
+
+// Array of menu objects
+const mainMenuTemplate = [
+    {
+        label: "Menu item",
+        submenu: [
+            { label: "Submenu item 1" },
+            { label: "Submenu item 2" }
+        ]
+    }
+];
+```
+
+## New Window
+```javascript
+const electron = require("electron");
+// We need to pull menu.
+const {app, BrowserWindow, Menu} = electron;
+
+let mainWindow;
+
+// Main window.
+function createWindow() {
+    mainWindow = new BrowserWindow({width: 800, height: 600})
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
+
+    // Build menu
+    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+    // Set Menu
+    Menu.setApplicationMenu(mainMenu);
+}
+
+// Create new window.
+function createNewWindow(){
+    newWindow = new BrowserWindow({
+        width: 600,
+        height: 400,
+        title: "New Window"
+    });
+    newWindow.loadURL(`file://${__dirname}/newWindow.html`)
+}
+
+app.on("ready", createWindow);
+
+// Array of menu objects
+const mainMenuTemplate = [
+    {
+        label: "New window",
+        click(){ // Make the menu item clickable.
+            createNewWindow(); // Call this in the main process.
+        }
+    }
+];
+```
+
+## Shortcuts (Accelerators)
+
+# Electron Reload
+An npm library used for tracking changes in `.html` and `.js` rederer files, to avoid closing/starting electron to refresh.
+```bash
+npm install electron-reload --save-dev
+```
+```javascript
+// main.js
+require("electron-reload")(__dirname);
+```
 
 # Packaging
 
+The app's general information is contained in `package.json`. We should always package the app from a copy, instead of the working file.  
 
-
+The dev-dependencies should also be removed before packaging, along with the code requiring them.  
 
 ## Electron Packager
+```bash
+sudo npm install -g electron-packager
+```
+There are two ways of packaging the app.  
+```bash
+# Electron as a dev-dependency, to avoid packaging the module as well.
+electron-packager .
 
+# Electron version as a flag. The version will be downloaded.
+electron-packager . --electron-version="1.8.2"
+```
 
+### Platform
+If we don't specify a platform, the app will be packaged in the host OS.
+
+```bash
+# Linux
+electron-packager . --platform=linux --arch=x64
+
+# Windows
+electron-packager . --platform=win32 --arch=ia32
+```
+
+### asar
+
+We can see the source files via `Contents/Resources/app`. We can hide these by packaging them in an `.asar` archive. This is similar to a `.tar` file, but without compression. This archive can be easily unpacked, but it does provide an extra layer of security.  
+
+```bash
+# Use asar to hide the source code.
+electron-packager . --asar=true
+```
+The source code would now be in `Contents/Resources/app.asar`.
+
+### icon
+The icon should be a square picture in several formats. `.png` for Linux, `.ico` for Windows, and `.icns` for Mac. A simple tool for these conversions is http://iconverticons.com. The icons need to be located in the source folder.
+
+```bash
+electron-packager . --icon=icon
+```
+
+### Flags
+```bash
+# Overwrites the previous packaging with the new one.
+--overwrite
+```
+
+### Full commands
+[Source](https://www.christianengvall.se/electron-packager-tutorial)
+
+```bash
+# Linux
+electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds
+
+# Windows
+electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName="Electron Tutorial App"
+```
 
 ## Electron Builder
+Compared to electron-packager, this has many more features and allows us to package, sign and release the app as a part of a highly configurable workflow. The main use is the ability to publish versions automatically.
 
+```bash
+sudo npm install -g electron-builder
+```
+
+In order to use this module for efficiently, we can add it as a dev-dependency and run the commands as npm scripts in package.json.
 
 
 # Native Node Modules
