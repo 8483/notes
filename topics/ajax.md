@@ -186,9 +186,7 @@ function postData(){
             "Accept": "application/json",
             "Content-type": "application/json"
         },
-        body: {
-            JSON.stringify({title:title, body:body}); // Payload
-        }
+        body: JSON.stringify({title:title, body:body}) // Payload
     }) // Return response promise.
     .then((res) => res.json()) // Return data.
     .then((data) => data) // Do something with data.

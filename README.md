@@ -1,6 +1,7 @@
 # Programming
 
 ### Javascript
+- [OOP](./topics/oop.md)
 - [DOM](./topics/dom.md)
 - [ES6](./topics/es6.md)
 - [AJAX](./topics/ajax.md)
@@ -21,7 +22,6 @@
 - File Organization
 - REST
 - Authentication
-- OOP
 - Use Cases
 - Unit Testing
 

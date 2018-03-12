@@ -9,7 +9,7 @@ document.getElementById('id');
 document.getElementsByClassName('class-name'); // Returns an array
 
 // By tag
-document.getElementsByClassName('li'); // Returns an array
+document.getElementsByTagName('li'); // Returns an array
 ```
 
 ### Query Selector
@@ -152,6 +152,26 @@ function buttonClick(e){
 
     console.log(e.ctrlkey); // Is control pressed boolean. altkey, shiftkey...
 }
+```
+
+### Bulk Event Listeners
+```javascript
+document.querySelectorAll('#myTable td')
+.forEach(e => e.addEventListener("click", function() {
+    // Here, `this` refers to the element the event was hooked on
+    console.log("clicked")
+}));
+```
+Thit creates a separate function for each cell; **instead, you could share one function without losing any functionality.**
+
+```javascript
+function clickHandler() {
+    // Here, `this` refers to the element the event was hooked on
+    console.log("clicked")
+}
+
+document.querySelectorAll('#myTable td')
+.forEach(e => e.addEventListener("click", clickHandler));
 ```
 
 ### Mouse
