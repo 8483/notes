@@ -23,7 +23,7 @@ In almost all cases, these errors are the result of network problems and not act
 "main": "main.js"
 ```
 
-The electron library is not used in the final app build.  
+**The electron library is not used in the final app build.**  
 
 If electron was installed locally in `node_modules`.  
 ```bash

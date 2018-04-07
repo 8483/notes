@@ -2,6 +2,7 @@
 
 ### Javascript
 - [OOP](./topics/oop.md)
+- [FP](./topics/fp.md)
 - [DOM](./topics/dom.md)
 - [ES6](./topics/es6.md)
 - [AJAX](./topics/ajax.md)

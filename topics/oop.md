@@ -137,7 +137,13 @@ var obj = new function(){
 }
 ```
 
-
+# Looping
+```javascript
+Object.keys(myObj).forEach(key => {
+    console.log(key);          // the name of the current key.
+    console.log(myObj[key]);   // the value of the current key.
+});
+```
 
 
 

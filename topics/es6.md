@@ -39,13 +39,16 @@ console.log(i); // undefined
 ```
 
 ### const
-
+It is not completely immutable. It only prevents the reassignment of a value to a constant, but it doesn't care about modifying the object.
 ```javascript
-const a = 1;
-console.log(a); // 1
+const pi = 3.14;
+pi = 42; // TypeError: Assignment to constant variable.
 
-a = 2;
-console.log(a); // Error: Assignment to constant variable.
+const person = {
+  name: "John"
+}
+person.name = "Mike";
+console.log(person.name) // Mike. Doesn't prevent mutation.
 ```
 
 # Classes
@@ -128,17 +131,34 @@ Number.isInteger(1); // true
 ```
 
 # Set
-This is a collection of unique values. If we pass in an array with duplicates, we will get a collection with unique values back. A `weakSet` is a collection of **unique objects** only.
+This is a collection of unique values. If we pass in an array with duplicates, we will get a collection (**object**) with unique values back. A `weakSet` is a collection of **unique objects** only.
 ```javascript
 var array = [1, 2, 3, 3];
 
-var set = new Set(array); // Will have [1, 2, 3]
-set.size; // 3
-set.add("cat"); // [1, 2, 3, "cat"]
-set.delete(2); // [1, 3, "cat"]
+var set = new Set(array);      // {1, 2, 3}
+
+// Set methods
+set.size;         // 3
+set.add("cat");   // [1, 2, 3, "cat"]
+set.delete(2);    // [1, 3, "cat"]
+
+// Convert to array
+var array = Array.from(set);   // [1, 2, 3]
+var array2 = [...set];         // [1, 2, 3]
 ```
 
 # Arrow Functions
+```javascript
+function hello(name){
+    return "Hello" + name;
+}
+console.log(hello("Jack")); // Hello Jack
+
+// As long as no curly braces are used after the fat arrow, the return is implicit.
+var hello = (name) => "Hello " + name;
+console.log(hello("Jack")); // Hello Jack
+```
+
 It provides a shorter syntax, and more importantly, it binds `this` lexically, avoiding the usage of `that` or `self`.  
 
 Until arrow functions, every new function defined its own `this` value. An arrow function **does not** have its own `this`; the `this` value of the enclosing execution context is used.
@@ -284,6 +304,13 @@ var {p, q} = o;
 
 console.log(p); // 42
 console.log(q); // true
+
+// Default values. They work only if a property is undefined. null, false and 0 are all still values!
+var obj = {a: 1}
+
+var {a, b = "something"} = obj
+console.log(a) // 1
+console.log(b) // something
 ```
 Electron example
 ```javascript
@@ -297,8 +324,63 @@ const electron = require("electron");
 const {app, BrowserWindow} = electron;
 ```
 
+# Spread
+Used for copying or deleting properties from one object to another.
 
+### Copy
+```javascript
+// Without spread
+const meal = {
+    id: 1,
+    description: "Breakfast",
+}
 
+const updatedMeal = {
+    id: meal.id,
+    description: meal.description,
+    calories: 600,
+}
+
+// With spread
+const meal = {
+    id: 1,
+    description: "Breakfast",
+}
+
+const updatedMeal = {
+    ...meal, // Injects the id and description properties from meal.
+    description: "Brunch", // This has precedence over the spread operator.
+    calories: 600,
+}
+```
+
+### Delete
+```javascript
+const meal = {
+    id: 1,
+    description: "Breakfast",
+    calories: 600
+}
+
+const = { id, ...mealWithoutId} = meal; // Destructuring.
+console.log(mealWithoutId); // Object without the id property.
+```
+
+### Array
+```javascript
+const meals = [
+    { id: 1, description: "Breakfast", calories: 420 },
+    { id: 2, description: "Lunch", calories: 520 }
+]
+
+const meal = {
+    id: 3,
+    description: "Snack",
+    calories: 180
+}
+
+const updatedMeals = [...meals, meal]; // Returns a new array with the addition.
+```
 
 
 
