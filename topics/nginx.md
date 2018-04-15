@@ -124,6 +124,25 @@ http {
 }
 ```
 
+## Serving Files
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        listen 80;
+        # The files are available at domain.com/files/file.ext
+        # The location is appended to the specified root path for the full location.
+        location /files/ {
+            # The files need to be inside /home/username/files/
+            root /home/username;
+            try_files $uri $uri/ =404;
+        }
+    }
+}
+```
+
 #### Matching URIs to Location Blocks
 In order of importance. Matching occurs for everything past the value. `location /greet` will match `/greetings/something`
 

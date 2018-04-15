@@ -39,6 +39,9 @@ rsync -av -e 'ssh' ./folder1 user@255.255.255.255:~/
 
 # Transfer everything from folder1 to remote folder2 in remote home directory.
 rsync -av -e 'ssh' ./folder1/ user@255.255.255.255:~/folder2/
+
+# Transfer multiple files and folders.
+rsync -av -e 'ssh' ./file1 ./file2 ./folder1/ user@255.255.255.255:~/folder2/
 ```
 
 ### To Virtual Machine

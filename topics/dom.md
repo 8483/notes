@@ -38,7 +38,7 @@ document.querySelector("header h1");
 // Show the class.
 element.className;
 
-// Return an array of classes.
+// Return an array of classes. The array can be modified with .add or .remove
 element.classList;
 ```
 
@@ -99,6 +99,10 @@ var element = document.createElement("div");
 
 // Class
 element.className = "class-name";
+
+// classList
+element.classList.add("class-name");
+element.classList.remove("class-name");
 
 // ID
 element.id = "id";
@@ -172,6 +176,25 @@ function clickHandler() {
 
 document.querySelectorAll('#myTable td')
 .forEach(e => e.addEventListener("click", clickHandler));
+```
+
+**Example**
+```javascript
+var hover = document.querySelectorAll('.hover');
+
+// The functions are cointained inside another one to prevent execution on load.
+hover.forEach(e => e.addEventListener("mouseover", () => mouseOver(e)));
+hover.forEach(e => e.addEventListener("mouseout", () => mouseOut(e)));
+
+function mouseOver(e) {
+    e.classList.remove("w3-black");
+    e.classList.add("w3-teal");
+}
+
+function mouseOut(e) {
+    e.classList.remove("w3-teal");
+    e.classList.add("w3-black");
+}
 ```
 
 ### Mouse

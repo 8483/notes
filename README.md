@@ -12,6 +12,10 @@
 - [React](./topics/react.md)
 - [Elm](./topics/elm.md)
 - [Electron](./topics/electron.md)
+- Webpack
+- Babel
+- Virtual DOM
+- Jest/Mocha
 
 #### Backend
 - [Node](./topics/node.md)
