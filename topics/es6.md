@@ -159,9 +159,24 @@ var hello = (name) => "Hello " + name;
 console.log(hello("Jack")); // Hello Jack
 ```
 
-It provides a shorter syntax, and more importantly, it binds `this` lexically, avoiding the usage of `that` or `self`.  
+It provides a shorter syntax, and more importantly, it binds `this` lexically, avoiding the usage of `that` or `self`. `Arguments` and `this` inside arrow functions reference their outer function.  
 
-Until arrow functions, every new function defined its own `this` value. An arrow function **does not** have its own `this`; the `this` value of the enclosing execution context is used.
+Until arrow functions, every new function defined its own `this` value. An arrow function **does not** have its own `this`; the `this` value of the enclosing execution context is used.  
+
+```javascript
+const obj = {
+  data: "John",
+  getData() {
+      console.log(this.data);
+  },
+  getData2: () => {
+    console.log(this.data);
+  }
+};
+
+obj.getData();  // John
+obj.getData2();   // undefined
+```
 
 By not having a `this`, they are best suited for non-method functions. Using they as methods results in `undefined`.
 

@@ -34,10 +34,10 @@ Only trasnfer the files that have changes or are missing. Much faster and secure
 # Transfer everything from the current directory to a new folder in the remote home directory.
 rsync -av -e 'ssh' . user@255.255.255.255:~/folder/
 
-# Transfer folder1 to remote home directory
+# Transfer folder1 and its content to remote home directory
 rsync -av -e 'ssh' ./folder1 user@255.255.255.255:~/
 
-# Transfer everything from folder1 to remote folder2 in remote home directory.
+# Transfer everything from folder1 without the folder itself to remote folder2 in remote home directory.
 rsync -av -e 'ssh' ./folder1/ user@255.255.255.255:~/folder2/
 
 # Transfer multiple files and folders.

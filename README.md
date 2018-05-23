@@ -6,6 +6,7 @@
 - [DOM](./topics/dom.md)
 - [ES6](./topics/es6.md)
 - [AJAX](./topics/ajax.md)
+- [Async](./topics/async.md)
 
 #### Frontend
 - [CSS](./topics/css.md)

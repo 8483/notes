@@ -1,3 +1,42 @@
+# this
+
+The `object` that is executing the current function.
+
+If a function is a `method`, i.e. belonging to an `object`, `this` references the `object`.
+
+If a function is a regular one i.e. outside of an `object`, it references the `window`(browsers) or `global` (node) `object`.
+
+99% of the problems occur with callbacks, because they are executed as regular functions i.e. not as methods, meaning `this` is not what it seems as the functions are executed by the window/global object.
+
+```javascript
+const video = {
+    title: "Title",
+    tags: ["a", "b", "c"],
+    showTags: function(){
+        this.tags.forEach(function(tag){ // Callback
+            console.log(this.title + " " + tag); // This refers to the window object, not the video
+        })
+    }
+}
+
+video.showTags() // undefined a, undefined b, undefined c
+```
+We need to bind the anonymous callback to the corresponding object.
+
+```javascript
+const video = {
+    title: "Title",
+    tags: ["a", "b", "c"],
+    showTags: function(){
+        this.tags.forEach(function(tag){
+            console.log(this.title + " " + tag);
+        }.bind(this)) // The binding is done here
+    }
+}
+
+video.showTags() // Title a, Title b, Title c
+```
+
 # Hoisting
 Both variable and function declarations are hoisted to the top on code execution, meaning that their order is irrelevant i.e functions can be called before they are declared.
 
@@ -56,30 +95,58 @@ var foo = new Function();
 - Use function expression generators `var foo = function* [name](){}` when you want to exit and then re-enter a nested function.
 - Use immediately-invoked function expressions `var foo = (function(){return function(){}})()` when you want to use the module pattern.
 
+### Function parameters vs arguments
+An argument is the value supplied to the parameter.
+```javascript
+function foo(bar){     // bar is a parameter
+    console.log(bar);
+}
+
+foo("baz");            // baz is an argument.
+```
+
 # Objects
 
 - All functions are objects, and they have properties and methods.  
 - A function designed to create new objects, is called an object constructor.
 - A function defined as the property of an object, is called a method to the object.  
 
-```javascript
-console.log(obj.a);   // a
-obj.say();            // something
-```
-
 **Literal**
 ```javascript
+// Old way
 var obj = {
     a: "a",
     say: function(){
         console.log("something");
     }
 }
+
+// New way
+var obj = {
+    a, // If the value key pair has the same name
+    say(){
+        console.log("something");
+    }
+}
+```
+
+**Factory**
+```javascript
+function createFoo(){ // camelCase
+    return {
+        a: "a",
+        say(){
+            console.log("something");
+        }
+    }
+}
+
+var obj = createFoo();
 ```
 
 **Function declaration as a constructor**
 ```javascript
-function Foo(){
+function Foo(){ // PascalCase
     this.a = "a";
     this.say = function(){
         console.log("something");
@@ -137,18 +204,13 @@ var obj = new function(){
 }
 ```
 
-# Looping
+# Looping over properties
 ```javascript
 Object.keys(myObj).forEach(key => {
     console.log(key);          // the name of the current key.
     console.log(myObj[key]);   // the value of the current key.
 });
 ```
-
-
-
-
-
 
 
 

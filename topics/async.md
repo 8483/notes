@@ -1,3 +1,43 @@
+# Callback
+
+A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
+
+In JavaScript, functions are objects. Because of this, functions can take functions as arguments, and can be returned by other functions. Functions that do this are called **higher-order functions**. Any function that is passed as an argument is called a **callback function**.
+
+```javascript
+function foo(input, callback){
+    console.log(input)
+    callback()
+}
+
+// Anonymous callback. Logs Foo Bar.
+foo("Foo", function(){
+    console.log("Bar")
+})
+
+// Named callback. Logs Foo Baz.
+foo("Foo", function(){
+    baz("Baz")
+})
+
+function baz(input){
+    console.log(input)
+}
+
+// Logs Baz Foo and "TypeError: callback is not a function
+// This executes the baz function immediately.
+foo("Foo", baz("Baz"))
+
+// Works fine because it doesn't execute immediately.
+// Must have no arguments. Logs Foo Qux.
+foo("Foo", logQux)
+
+function logQux(){
+    console.log("Qux")
+}
+
+```
+
 # Promises
 The promise object is used for deferred and asynchronous computations and it represents and operation that hasn't completed yet, but is expected in the future.  
 
@@ -62,3 +102,5 @@ getData("GET", "http://jsonplaceholder.typicode.com/todos")
         console.log(err);
     })
 ```
+
+# Async/Await
