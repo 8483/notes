@@ -188,8 +188,8 @@ function postData(){
         },
         body: JSON.stringify({title:title, body:body}) // Payload
     }) // Return response promise.
-    .then((res) => res.json()) // Return data.
-    .then((data) => data) // Do something with data.
-    .catch((err) => err); // Catch error.
+    .then(res => res.json()) // Return data.
+    .then(data => data) // Do something with data.
+    .catch(err => err); // Catch error.
 }
 ```

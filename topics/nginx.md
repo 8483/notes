@@ -32,8 +32,11 @@ Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. 
 
 The default location nginx looks in for the configuration file is `/etc/nginx/nginx.conf`, but you can pass in an arbitrary path with the `-c` flag. Ex. `nginx -c /usr/local/nginx/conf`.  
 
-`nginx -s <signal>` - Stop or reload.  
-`nginx -c <path>` - Start with a custom configuration.  
+```Bash
+nginx -c <path> -t   # Test configuration at absolute path
+nginx -c <path>      # Start with a custom configuration.  
+nginx -s <signal>    # Stop or reload.  
+```
 
 ## Terminology
 `Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)  

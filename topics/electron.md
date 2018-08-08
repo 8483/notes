@@ -13,9 +13,13 @@ npm install electron --save-dev
 ```
 **All tools should be installed as dev dependencies.**
 
+### Errors
+
 When running `npm install electron`, some users occasionally encounter installation errors.
 
-In almost all cases, these errors are the result of network problems and not actual issues with the electron npm package. Errors like `ELIFECYCLE`, `EAI_AGAIN`, `ECONNRESET`, and `ETIMEDOUT` are all indications of such network problems. The best resolution is to try switching networks, or just wait a bit and try installing again.
+In almost all cases, these errors are the result of network problems and not actual issues with the electron npm package. Errors like `ELIFECYCLE`, `EAI_AGAIN`, `ECONNRESET`, and `ETIMEDOUT` are all indications of such network problems.  
+
+**The best resolution is to try reconnecting, switching networks, or just waiting for a bit before trying to install again.**
 
 # Run
 **Before anything, make sure that `package.json` is updated with the relevant entry file. Default is `index.js`.**  
@@ -74,21 +78,31 @@ app.on("ready", createWindow);
 ```
 
 # Main vs Renderer Process
-Electron operates in two runtime contexts i.e. processes.
-- **Main** (one) / Node.js / Server / main.js
-- **Renderer** (many) / Chromium browser / Client side
+
+Electron operates in two runtime contexts i.e. processes.  
+
+- **Main** (one) / Node.js / Server / main.js  
+    - File system access.
+    - Compiled module support.
+    - CommonJS modules.  
+
+
+- **Renderer** (many) / Chromium browser / Client side  
+    - HTML and CSS renderer.
+    - DOM access.
+    - Web API.
 
 The main process can create many renderer processes (browser windows), but there is only one main process handling this.  
 
 # IPC (Inter Process Communication)
-It allows us to send messages (with a payload) between the Main and Renderer processes. To use this, we need the `ipcMain` module in the `Main` process, and the `ipcRenderer` module in the `Renderer` processes.
+It allows us to send messages (with a payload) between the Main and Renderer processes. To use this, we need:
+- The `ipcMain` module in the `Main` process.
+- The `ipcRenderer` module in the `Renderer` processes.
 
 By default, these modules send messages asynchronously, which is recommended.
 
-## ipcMain & ipcRenderer
+## ipcMain
 `ipcMain` can only listen for `Renderer` messages and reply to them. It's possible to send a message to a `Renderer` process by using `webContents.send()`.
-
-`ipcRenderer` can send messages to the `Main` and `Renderer` processes **and** listen for messages from them.
 
 ```javascript
 // Main
@@ -101,6 +115,11 @@ ipcMain.on('asynchronous-message', (e, args) => {
 
 win.webContents.send('channel', 'foo!');
 ```
+
+## ipcRenderer
+
+`ipcRenderer` can send messages to the `Main` and `Renderer` processes **and** listen for messages from them.
+
 ```javascript
 // Renderer
 ipcRenderer.send('asynchronous-message', 'ping');
@@ -127,7 +146,7 @@ var win = new BrowserWindow();
 win.loadURL('https://github.com');
 ```
 
-# General
+# Examples
 
 ## Developer Tools
 ```javascript
@@ -295,6 +314,20 @@ sudo npm install -g electron-builder
 ```
 
 In order to use this module for efficiently, we can add it as a dev-dependency and run the commands as npm scripts in package.json.
+
+# Updating
+
+## Electron Updater
+Use `autoUpdater` from `electron-updater` instead of electon. It allows to listen for various update events after checking a URL.
+
+```bash
+npm install electron-updater
+```
+```javascript
+import { autoUpdater } from "electron-updater"
+
+autoUpdater.on('update-available', () => { });
+```
 
 
 # Native Node Modules
