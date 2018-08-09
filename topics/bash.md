@@ -72,15 +72,26 @@ ls -1 | sed -e 's/\..*$//' > ../pics.txt
 ```
 
 # Image manipulation
+Requires the `imagemagick` package
+```bash
+sudo apt-get install imagemagick
+```
+
 ```bash
 # Resize image to specific dimensions, while trying to keep aspect ratio.
-convert 178088.jpg -resize 492x492! 178088.jpg
+convert image.jpg -resize 492x492! resized_image.jpg
 
-# Bulk resizing of images in a folder and conversion statuses.
-for file in *.jpg; do convert $file -resize 492x492! $file && echo $file converted; done
+# Bulk resizing of images in a folder with conversion statuses, saved in a specified folder.
+for file in *.jpg; do convert $file -resize 492x492! ../resampled/$file && echo $file converted; done
+
+# Reduce the image quality. Adjust the quality parameter 1-100.
+convert image.jpg -sampling-factor 4:2:0 -strip -quality 1 -interlace JPEG -colorspace RGB resampled_image.jpg
+
+# Bulk resampling of images in a folder with conversion statuses, saved in a specified folder.
+for file in *.jpg; do convert $file -sampling-factor 4:2:0 -strip -quality 1 -interlace JPEG -colorspace RGB ../resampled/$file && echo $file resampled; done
 
 # Watermarking
-composite -dissolve 30% -gravity center watermark2.jpg 001440.jpg 001440-w.jpg
+composite -dissolve 30% -gravity center watermark2.jpg image.jpg watermarked_image.jpg
 
 # Bulk Watermarking (Save in a specific folder)
 for file in *.jpg; do composite -dissolve 30% -gravity center ../watermark.jpg $file ./watered/$file && echo $file watermarked; done
