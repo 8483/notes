@@ -3,8 +3,7 @@
 ## Javascript
 - [OOP](./topics/oop.md)
 - [DOM](./topics/dom.md)
-- [AJAX](./topics/ajax.md)
-    - [Async](./topics/async.md)
+- [Async](./topics/async.md)
 - [ES6](./topics/es6.md)
 - [FP](./topics/fp.md)
 

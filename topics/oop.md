@@ -18,7 +18,7 @@ There are several ways to declare a function.
 The difference is how the function interacts with the external components (the outer scope, the enclosing context, object that owns the method, etc) and the invocation type (regular function invocation, method invocation, constructor call, etc).
 
 ## Function declaration
-Available immediately after parsing, before any code is executed.  
+**Hoisted**. Available immediately after parsing, before any code is executed.  
 
 The function declaration creates a variable in the current scope with the identifier equal to function name. This variable holds the function object.
 
@@ -28,10 +28,18 @@ foo();
 ```
 Use them when a function expression is not appropriate or when it is important that that a function is hoisted.
 
-## Anonymous function expression
-Available only after the variable assignment is executed.
+## Function expression
+**Not hoisted.** Available only after the variable assignment is executed.
+```javascript
+// Named
+let bar = function foo(){};
+bar();
+foo(); // undefined
+```
+Use them when you are doing recursion or want to see the function name in the debugger.
 
 ```javascript
+// Anonymous
 let foo = function(){};
 foo();
 
@@ -39,15 +47,6 @@ let bar = foo();
 bar(); // Error: not a function.
 ```
 Use them when you want to pass a function as an argument to another function or you want to form a closure.
-
-## Named function expression
-
-```javascript
-let bar = function foo(){};
-bar();
-foo(); // undefined
-```
-Use them when you are doing recursion or want to see the function name in the debugger.
 
 ##  IIFE - immediately Invoked Function Expression
 ```javascript
@@ -84,7 +83,7 @@ foo("baz");            // baz is an argument.
 
 # Objects
 
-- Every object has a constructor property, which reference the function used to create it.
+- **Every object has a constructor property, which reference the function used to create it.**
 - All functions are objects, and they have properties and methods.  
 - A function defined as the property of an object, is called a method to the object.  
 
@@ -145,20 +144,6 @@ let Foo = function(param){
 let obj = new Foo("bar");
 ```
 
-## Class
-```javascript
-class Foo {
-    constructor(param){
-        this.foo = param;
-    }
-    baz(){
-        console.log("baz");
-    }
-}
-
-let obj = new Foo("bar");
-```
-
 ## Prototype
 ```javascript
 function Foo(){};
@@ -169,6 +154,22 @@ Foo.prototype.baz = function(){
 }
 
 let obj = new Foo();
+```
+
+## Class
+**Not hoisted.** Syntactic sugar over prototypical inheritance.
+```javascript
+class Foo {
+    constructor(param){
+        this.foo = param;
+        this.bar = function(){}; // Constructor (instance) method.
+    }
+    baz(){
+        console.log("baz"); // Prototype method.
+    }
+}
+
+let obj = new Foo("qux");
 ```
 
 ## Singleton
@@ -249,7 +250,7 @@ The `object` that is executing the current function.
 
 If a function is a `method`, i.e. belonging to an `object`, `this` references the `object`.
 
-If a function is a regular one i.e. outside of an `object`, it references the `window`(browsers) or `global` (node) `object`.
+If a function is a regular one i.e. outside of an `object`, it references the `window` (browser) or `global` (node) `object`.
 
 99% of the problems occur with callbacks, because they are executed as regular functions i.e. not as methods, meaning `this` is not what it seems as the functions are executed by the window/global object.
 
@@ -334,43 +335,44 @@ const obj = new Foo("a");
 ```
 
 ## Private properties and methods
-Use `this` only for things you want to make public.
+Use `this` only for things you want to make public. The convention of naming private properties and methods is to prefix them with `_` i.e. `_foo`.
 
 ```javascript
 function Foo(param){
-    this.a = param;
-    let b = "b"; // Converted to private. No longer part of object.
-    let c = "c"; // Already private.
+    this.a = param;   // public
+    let _b = "b";     // Converted to private. No longer part of object.
+    let _c = "c";     // Already private.
 
-    let bar = function(){ // Converted to private.  No longer part of object.
-        // ...
+    let _bar = function(){ // Converted to private.  No longer part of object.
+        console.log("private method");
     }
 
     this.baz = function(){
         let d = "d";
-        bar(); // No longer needs this.
+        _bar(); // No longer needs this.
     }
 }
 
 const obj = new Foo("a");
+obj.baz(); // private method
 ```
 
 ## Getters / Setters
 ```javascript
 function Foo(){
-    let privateVar1 = "bar"
-    let privateVar2 = "baz";
+    let _privateVar1 = "bar"
+    let _privateVar2 = "baz";
 
     this.getPrivateVar1 = function(){ // Don't use this.
-        return privateVar1;
+        return _privateVar1;
     }
 
     Object.defineProperty(this, "privateVar2", {
         get: function(){
-            return privateVar2;
+            return _privateVar2;
         },
         set: function(value){
-            privateVar2 = value;
+            _privateVar2 = value;
         }
     })
 }
@@ -581,13 +583,199 @@ Circle.prototype.duplicate = function(){
 const s = new Shape();
 const c = new Circle();
 
-s.duplicate();
-c.duplicate();
+s.duplicate(); // duplicate
+c.duplicate(); // duplicate circle
 ```
 
+# Class
+ES6 introduces it as syntactic sugar over prototypical inheritance. They are not hoisted i.e. can't be used before declaring them.  
 
+The body of a class is executed in `strict mode` by default, which makes the javascript engine more sensitive and do more error checking, and make silent failure into exceptions, while preventing global `this` bindings.
 
+## Static methods
+Available on the class itself, not the object instance. Used to create utility functions not specific to a specific object. Ex. `Math.random()`
+```javascript
+class Circle {
+    constructor(radius){
+        this.radius = radius;
+    }
 
+    // Instance method
+    draw(){
+        console.log("circle");
+    }
 
+    // Static method
+    static parse(str){
+        const radius = JSON.parse(str).radius;
+        return new Circle(radius);
+    }
+}
 
+const circle = new Circle(1);
+const circle2 = Circle.parse('{ "radius": 1 }');
+```
 
+## Private properties
+
+### Symbol
+This is a primitive type in ES6 used for creating unique identifiers. Everytime `Symbol()` is called, we get a new unique identifier. **It is not a constructor function.**
+
+Symbols can be used to create semi-private properties and methods. Why semi? Because they are not impossible to access, just cumbersome via symbols.
+```javascript
+const _radius = Symbol();
+
+class Circle {
+    constructor(radius){
+        this[_radius] = radius;
+    }
+}
+```
+
+### WeakMap
+This is essentially a dictionary, where keys are objects and values can be anything. The keys are weak, meaning if there are no references to them, they are garbage collected.
+```javascript
+const _radius = new WeakMap();
+const _move = new WeakMap();
+
+class Circle {
+    constructor(radius){
+        _radius.set(this, radius);
+        _move.set(this, () => {
+            console.log("move"); // Need to use .bind(this) without arrow function.
+        });
+    }
+
+    draw(){
+        console.log(_radius.get(this));
+        _move.get(this)(); // Need to execute it after fetching.
+    }
+}
+
+const c = new Circle(1);
+c.draw(); // 1
+```
+### Getters / Setters with WeakMap
+```javascript
+const _radius = new WeakMap();
+
+class Circle {
+    constructor(radius){
+        _radius.set(this, radius);
+    }
+
+    get radius(){
+        return _radius.get(this);
+    }
+
+    set radius(value){
+        if (value <= 0) throw new Error("Invalid radius.");
+        _radius.set(this, value);
+    }
+}
+
+const c = new Circle(1);
+c.draw(); // 1
+```
+
+### Example
+
+```javascript
+const _stack = new WeakMap(); // private property.
+
+class Stack {
+    constructor(){
+        _stack.set(this, []); // set private property to empty array.
+    }
+
+    // avoid duplicate _stack.get(this) with a getter.
+    get stack(){
+        return _stack.get(this); 
+    }
+
+    // this.stack === _stack.get(this) thanks to getter.
+    get count(){  
+        return this.stack.length;
+    }
+
+    push(item){
+        return this.stack.push(item);
+    }
+
+    pop(){
+        let items = this.stack;
+        if(items.length === 0) 
+            throw new Error("Stack is empty.");
+        items.pop();
+    }
+
+    peek(){
+        let items = this.stack;
+        if(items.length === 0)
+            throw new Error("Stack is empty.");
+        return items[items.length - 1];
+    }
+}
+
+const s = new Stack();
+console.log(s.stack);   // []
+s.push("a");
+s.push("b");
+s.push("c");
+console.log(s.stack);   // ["a", "b", "c"]
+s.pop();
+console.log(s.stack);   // ["a", "b"]
+console.log(s.peek());  // "b"
+console.log(s.count)    // 2
+```
+
+## Inheritance
+With the new ES6 Class, we inherit by using `extends`, which resets the constructor for us behind the scenes.
+
+If the `Parent` class has a constructor, and the `Child` also needs one, then the `Parent` constructor must be called inside the `Child` constructor, in order to initialize the inherited properties.
+
+This is done with the `super` keyword, which references the `Parent` object, so we then call its constructor with `super()` as a function.
+```javascript
+class Shape {
+    constructor(color){
+        this.color = color;
+    }
+
+    move() {
+        console.log("move");
+    }
+}
+
+class Circle extends Shape {
+    constructor(color, radius){
+        super(color);
+        this.radius = radius;
+    }
+
+    draw(){
+        console.log("draw");
+    }
+}
+
+const c = new Circle("red", 1);
+```
+
+## Method overriding (Polymorphism)
+We simply change the method implementation in the `Child`. We can still access the `Parent` method by using `super`.
+```javascript
+class Shape {
+    move() {
+        console.log("move");
+    }
+}
+
+class Circle extends Shape {
+    move(){ // Overriden method.
+        super.move(); // parent method.
+        console.log("circle move");
+    }
+}
+
+const c = new Circle("red", 1);
+c.move(); // move // circle move
+```
