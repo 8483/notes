@@ -294,7 +294,7 @@ location /foo/ {
 
 
 ```nginx
-location /foo/ {
+location /foo {
     proxy_pass http://localhost:3000;
 }
 ```

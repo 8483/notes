@@ -1,14 +1,14 @@
 # Programming
 
-### Javascript
+## Javascript
 - [OOP](./topics/oop.md)
-- [FP](./topics/fp.md)
 - [DOM](./topics/dom.md)
-- [ES6](./topics/es6.md)
 - [AJAX](./topics/ajax.md)
-- [Async](./topics/async.md)
+    - [Async](./topics/async.md)
+- [ES6](./topics/es6.md)
+- [FP](./topics/fp.md)
 
-#### Frontend
+## Frontend
 - [CSS](./topics/css.md)
 - [React](./topics/react.md)
 - [Elm](./topics/elm.md)
@@ -18,12 +18,12 @@
 - Virtual DOM
 - Jest/Mocha
 
-#### Backend
+## Backend
 - [Node](./topics/node.md)
     - [Express](./topics/express.md)
 - [MySQL](./topics/mysql.md)
 
-#### Concepts
+## Concepts
 - [Security](./topics/security.md)
 - File Organization
 - REST
@@ -31,9 +31,13 @@
 - Use Cases
 - Unit Testing
 
+## Useful
+- [Algorithms](./topics/algos.md)
+- [Excel](./topics/excel.md)
+
 # DevOps
 
-#### Linux
+## Linux
 - [basics](./topics/basics.md)
 - [filesystem](./topics/filesystem.md)
 - [bash](./topics/bash.md)
@@ -46,15 +50,15 @@
 - [systemd](./topics/systemd.md)
 - [compression](./topics/compression.md)
 
-#### Version Control
+## Version Control
 - [Git](./topics/git.md)
 
-#### Virtualization
+## Virtualization
 - [VM](./topics/vm.md)
 - [Vagrant](./topics/vagrant.md)
 
-#### Containerization
+## Containerization
 - [Docker](./topics/docker.md)
 
-#### Configuration Management
+## Configuration Management
 - [Ansible](./topics/ansible.md)

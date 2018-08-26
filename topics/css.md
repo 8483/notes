@@ -68,3 +68,26 @@ This CSS would result in:
     /* Change all uls and lis belonging to the menuItem class. */
 }
 ```
+### Fixed table header
+```html
+<div id="table">
+    <table>
+        <thead>
+            <td>Header 1</td>
+            <td>Header 2</td>
+        </thead>
+        <tbody>
+            <tr><td> Data 1</td></tr>
+            <tr><td> Data 2</td></tr>
+            <tr><td> Data 3</td></tr>
+        </tbody>
+    </table>
+</div>
+```
+
+```javascript
+document.getElementById("table").addEventListener("scroll", function(){
+    var translate = "translate(0," + this.scrollTop + "px)";
+    this.querySelector("thead").style.transform = translate;
+}, false);
+```

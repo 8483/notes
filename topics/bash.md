@@ -76,24 +76,29 @@ Requires the `imagemagick` package
 ```bash
 sudo apt-get install imagemagick
 ```
-
+### Resizing
 ```bash
 # Resize image to specific dimensions, while trying to keep aspect ratio.
 convert image.jpg -resize 492x492! resized_image.jpg
 
 # Bulk resizing of images in a folder with conversion statuses, saved in a specified folder.
 for file in *.jpg; do convert $file -resize 492x492! ../resampled/$file && echo $file converted; done
+```
 
+### Resampling
+```bash
 # Reduce the image quality. Adjust the quality parameter 1-100.
 convert image.jpg -sampling-factor 4:2:0 -strip -quality 1 -interlace JPEG -colorspace RGB resampled_image.jpg
 
 # Bulk resampling of images in a folder with conversion statuses, saved in a specified folder.
 for file in *.jpg; do convert $file -sampling-factor 4:2:0 -strip -quality 1 -interlace JPEG -colorspace RGB ../resampled/$file && echo $file resampled; done
+```
 
+### Watermarking
+```bash
 # Watermarking
 composite -dissolve 30% -gravity center watermark2.jpg image.jpg watermarked_image.jpg
 
 # Bulk Watermarking (Save in a specific folder)
 for file in *.jpg; do composite -dissolve 30% -gravity center ../watermark.jpg $file ./watered/$file && echo $file watermarked; done
 ```
-
