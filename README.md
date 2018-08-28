@@ -1,63 +1,70 @@
 # Programming
 
-## Javascript
+### Javascript
 - [OOP](./topics/oop.md)
 - [DOM](./topics/dom.md)
 - [Async](./topics/async.md)
 - [ES6](./topics/es6.md)
 - [FP](./topics/fp.md)
 
-## Frontend
+### Frontend
 - [CSS](./topics/css.md)
 - [React](./topics/react.md)
-- [Elm](./topics/elm.md)
 - [Electron](./topics/electron.md)
-- Webpack
-- Babel
 - Virtual DOM
-- Jest/Mocha
+- [Elm](./topics/elm.md)
 
-## Backend
+### Backend
 - [Node](./topics/node.md)
     - [Express](./topics/express.md)
 - [MySQL](./topics/mysql.md)
 
-## Concepts
+### Tooling
+- [Babel](./topics/babel.md)
+- [Webpack](./topics/webpack.md)
+- Typescript
+
+### Concepts
 - [Security](./topics/security.md)
 - File Organization
 - REST
 - Authentication
 - Use Cases
-- Unit Testing
+- Testing
+    - Jest/Mocha
 
-## Useful
+### Useful
 - [Algorithms](./topics/algos.md)
 - [Excel](./topics/excel.md)
 
-# DevOps
 
-## Linux
+# Linux
+### Administration
 - [basics](./topics/basics.md)
 - [filesystem](./topics/filesystem.md)
+- [users](./topics/users.md)
+- [config](./topics/config.md)
+- [systemd](./topics/systemd.md)
+
+### Tools
 - [bash](./topics/bash.md)
 - [tmux](./topics/tmux.md)
 - [vim](./topics/vim.md)
 - [ssh](./topics/ssh.md)
-- [users](./topics/users.md)
-- [config](./topics/config.md)
 - [nginx](./topics/nginx.md)
-- [systemd](./topics/systemd.md)
 - [compression](./topics/compression.md)
 
-## Version Control
+# DevOps
+
+### Version Control
 - [Git](./topics/git.md)
 
-## Virtualization
+### Virtualization
 - [VM](./topics/vm.md)
 - [Vagrant](./topics/vagrant.md)
 
-## Containerization
+### Containerization
 - [Docker](./topics/docker.md)
 
-## Configuration Management
+### Configuration Management
 - [Ansible](./topics/ansible.md)
