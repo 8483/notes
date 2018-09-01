@@ -18,6 +18,7 @@
 - [Node](./topics/node.md)
     - [Express](./topics/express.md)
 - [MySQL](./topics/mysql.md)
+- [nginx](./topics/nginx.md)
 
 ### Tooling
 - [Babel](./topics/babel.md)
@@ -37,8 +38,8 @@
 - [Algorithms](./topics/algos.md)
 - [Excel](./topics/excel.md)
 
-
 # Linux
+
 ### Administration
 - [basics](./topics/basics.md)
 - [filesystem](./topics/filesystem.md)
@@ -51,7 +52,6 @@
 - [tmux](./topics/tmux.md)
 - [vim](./topics/vim.md)
 - [ssh](./topics/ssh.md)
-- [nginx](./topics/nginx.md)
 - [compression](./topics/compression.md)
 
 # DevOps

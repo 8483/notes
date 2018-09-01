@@ -1,15 +1,33 @@
-# MySQL
+# Best practices
 
-## Install MySQL
+### Naming Convention
 
-1. `sudo apt-get install mysql-server`.
-2. `sudo mysql_secure_installation`
-    - Change root password to more secure.
-    - Remove anonymous users.
-    - Disable remote root login. Root should only connect via `localhost`.
-    - Remove test database and access to it.
-    - Reload privilege tables.
-3. `systemctl restart mysql` or `sudo service mysql start`  
+- **Singular form**. Both tables and columns.
+- Always lowercase.
+- Use underscores for spaces.
+- No CamelCase, abreviations or prefixes.
+
+### Performance
+
+- Try to stick to `where` clauses on indexed columns.
+- Don’t go crazy with `joins`.
+
+# Install MySQL
+
+```bash
+sudo apt-get install mysql-server
+
+sudo mysql_secure_installation
+# Change root password to more secure.
+# Remove anonymous users.
+# Disable remote root login. Root should only connect via `localhost`.
+# Remove test database and access to it.
+# Reload privilege tables.
+
+systemctl restart mysql
+# sudo service mysql start  
+```
+
 
 # Command line
 
@@ -20,60 +38,106 @@ Commands are **not** case sensitive, but table names are. **All commands must en
 `;` - Execute/End current command.  
 `ENTER` - Starts a new line. `;` is expected.  
 
-## Users
-`CREATE USER '<user>'@'localhost' IDENTIFIED BY '<password>';` - Create user.  
-`GRANT ALL PRIVILEGES ON * . * TO '<user>'@'localhost';` - Give access to certain areas. In this case, it's for everything as `*.*` stands for `<database>.<table>` i.e. all of them.  
-`FLUSH PRIVILEGES;` - Reload the privileges.  
+# Users
+```bash
+# Log in as new user. 
+mysql -u user -p 
+```
 
-` DROP USER '<user>'@'localhost';`
+```sql
+-- Create user
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';  
 
-`SELECT USER();` - List all users.  
-`SELECT CURRENT_USER();` - Show current user.  
+-- Give access to certain areas. In this case, it's for everything as *.* stands for db_name.table_name i.e. all of them.
+GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 
-`mysql -u <user> -p` - Log in as new user.  
+-- Reload the privileges.
+FLUSH PRIVILEGES; 
 
-#### Specific permissions
+-- List all users.
+SELECT USER();
 
-`GRANT <permission> ON <database>.<table> TO '<user>'@'localhost';` - Give a specific permission, for a specific table.  
-`REVOKE <permission> ON <database>.<table> FROM '<user>'@'localhost';` - Remove a permission.  
+-- Show current user.  
+SELECT CURRENT_USER();
 
-**Permissions:** ALL PRIVILEGES, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE, GRANT OPTION (Can give permissions).   
+-- Delete user.
+DROP USER 'user'@'localhost';
+```
 
-#### Change password
-Log into mysql and use:  
-`ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass'; FLUSH PRIVILEGES;`
+## Permissions
 
-## Database
-`SHOW DATABASES;` - List databases.  
-`SELECT database();` - Show current database.  
-`USE <database>;` - Select a database.  
+**Options:** ALL PRIVILEGES, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE, GRANT OPTION (User can give permissions). 
 
-`CREATE DATABASE <database>;` - Create a database.  
-`DROP DATABASE <database>;` - Delete a database.  
+```sql
+-- Give a specific permission, for a specific table. 
+GRANT permission ON db_name.table_name TO '<user>'@'localhost';
+
+-- Remove a permission.   
+REVOKE permission ON db_name.table_name FROM '<user>'@'localhost';
+```
+
+## Change password
+```sql 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+FLUSH PRIVILEGES;
+```
+
+# Database
+```sql
+SHOW DATABASES;              -- List databases.  
+SELECT database();           -- Show current database.  
+USE db_name;                 -- Select a database.  
+
+CREATE DATABASE db_name;     -- Create a database.  
+DROP DATABASE db_name;       -- Delete a database. 
+```
+
+ 
 
 ## Tables
-`SHOW TABLES;` - List all tables.  
-`DESCRIBE <table>;` - Display columns and types.  
 
-`SHOW CREATE TABLE <table>` - Shows the query that creates the table.  
-
-`CREATE TABLE <table> (column1 DATATYPE, column2 DATATYPE)` - Create a table.  
+### Create
 ```sql
+SHOW TABLES;                 -- List all tables.  
+DESCRIBE table_name;         -- Display columns and types.  
+
+-- Shows the query that creates the table.  
+SHOW CREATE TABLE table_name; 
+
+-- Create a table.  
+CREATE TABLE table_name (column1 DATATYPE, column2 DATATYPE);
+
+-- Example
 CREATE TABLE user (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Important
     name VARCHAR(255),
     pass VARCHAR(255)
 );
 ```  
+### Modify
 
-`ALTER TABLE <table> ADD <column> DATATYPE;` - Add a column at end.  
-`ALTER TABLE <table> ADD <column> DATATYPE AFTER <column>;` - Add a column at certain location.  
-`ALTER TABLE <table> DROP <column>;` - Delete a column.  
-`ALTER TABLE tableName CHANGE 'oldcolname' 'newcolname' datatype(length);` - Change a column name. Switch quotes with backticks.
+```sql
+-- Add a column at end.  
+ALTER TABLE table_name ADD column_name DATATYPE; 
 
-`DROP TABLE <table>` - Delete a table.  
+-- Add a column at certain location.
+ALTER TABLE table_name ADD column_name DATATYPE AFTER column_name;
 
-`ALTER TABLE table AUTO_INCREMENT = 1` - Reset AUTO_INCREMENT id. For this to work, the table must be empty.
+-- Delete a column.
+ALTER TABLE table_name DROP column_name;
+
+-- Change a column name. Has to be backticks.
+ALTER TABLE table_name CHANGE `oldcolname` `newcolname` datatype(length);
+
+-- Reset AUTO_INCREMENT id. For this to work, the table must be empty.
+ALTER TABLE table AUTO_INCREMENT = 1;
+```
+### Delete
+Be **VERY** careful with this one. **ALWAYS** select first, delete second.
+
+```sql  
+DROP TABLE table_name;
+```
 
 ## Foreign Keys
 
@@ -81,16 +145,20 @@ They are used for **data integrity** i.e. they prevent entering values that don'
 
 A FOREIGN KEY is a field in one table that refers to the PRIMARY KEY in another table.  
 
-The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table.  
-
-`ALTER TABLE <table1> ADD FOREIGN KEY (<id_column>) REFERENCES <table2>(<id_column>);` - Adds a foreign key.  
-
-`ALTER TABLE <table> DROP FOREIGN KEY FK_<column>;` - Removes a foreign key.  
-
-`SHOW CREATE TABLE <table>` - Includes the foreign key creation.  
+The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table. 
 
 ```sql
-SELECT -- List foreign keys
+-- Add foreign key. 
+ALTER TABLE table1 ADD FOREIGN KEY (id_column) REFERENCES table2(id_column); 
+
+-- Remove foreign key.  
+ALTER TABLE table_name DROP FOREIGN KEY FK_column_name;
+
+-- Foreign key definition during table creation.
+SHOW CREATE TABLE table_name; 
+
+-- List foreign keys.
+SELECT
     TABLE_NAME,
     COLUMN_NAME,
     CONSTRAINT_NAME,
@@ -98,58 +166,78 @@ SELECT -- List foreign keys
     REFERENCED_COLUMN_NAME
 FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
 WHERE
-    REFERENCED_TABLE_NAME = 'My_Table';
+    REFERENCED_TABLE_NAME = 'my_table';
+
+-- One-liner.  
+SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'my_table';
 ```
 
-`SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'Categories';` - The same in one line.  
 
 ## Records
-`SELECT * FROM <table>` - Retrieve data.  
-
-`INSERT INTO <table> (column1, column2) VALUES (value1, value2);` - Insert a record.  
 ```sql
+-- Get records. 
+SELECT * FROM table_name; 
+
+-- Add record. 
+INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+
+-- Example
 INSERT INTO user ('id', 'name', 'pass')
 VALUES (NULL, 'john', 'abc123');
-```
 
-`UPDATE <table> SET <column> = <value> WHERE <criteria>` - Update a record.  
-```sql
-UPDATE user SET name = 'Mike' WHERE id = `1`; -- John's id.
+-- Modify record.  
+UPDATE table_name SET column_name = 'value' WHERE criteria;
+
+-- Example
+UPDATE user SET name = 'Mike' WHERE id = 1;
+
+-- Delete record.
+DELETE FROM table_name WHERE column_name = <value>;
 ```
-`DELETE FROM <table> WHERE <column> = <value>;` - Delete a record.  
 
 # Backup
 To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re -create the database. Use `--databases` in order to have `CREATE TABLE IF NOT EXIST` included in the dump.  
 
-`mysqldump --add-drop-table --databases [database] > backup.sql`
+```bash
+mysqldump --add-drop-table --databases db_name > backup.sql
 
-`mysqldump --databases [database] > backup.sql` - Simplest command.  
-`mysqldump --databases [database1] [database2] > backup.sql` - Multiple databases.  
-`mysqldump --all-databases > backup.sql` - Everything.  
+# Simplest command.
+mysqldump --databases db_name > backup.sql
 
-`mysqldump -p --databases [database] > backup.sql` - Prompt for password.  
+# Multiple databases.
+mysqldump --databases db1 db2 > backup.sql
 
-**options:**
-- `--add-drop-table` - add a DROP TABLE statement before each CREATE TABLE.  
-- `--no-data` - Only database structure, without contents.   
+# Everything.
+mysqldump --all-databases > backup.sql 
+
+# Prompt for password.
+mysqldump -p --databases db_name > backup.sql 
+
+# Options
+
+# add a DROP TABLE statement before each CREATE TABLE.  
+--add-drop-table
+
+# Only database structure, without contents. 
+--no-data  
+```
 
 ## Restore
-If the dump was created without using `--databases`, then the database must be manually created before restoring. Also, the database must be specified with `mysql [database] < backup.sql`. Otherwise, just use:  
+If the dump was created without using `--databases`, then the database must be manually created before restoring. Also, the database must be specified with `mysql db_name < backup.sql`. Otherwise, just use:  
 
-`mysql < backup.sql` - Restore a database.  
-`mysql -p < backup.sql` - Prompt for password.  
+```bash
+# Restore a database.
+mysql < backup.sql
 
-`gzip -d < backup.sql.gz | mysql` - From a compressed file.    
+# Prompt for password. 
+mysql -p < backup.sql 
 
-If the database already exists and we want to restore it, we can use:  
-`mysql [database] < backup.sql`
+# From a compressed file.
+gzip -d < backup.sql.gz | mysql    
 
-# Naming Convention
-
-- **Singular form**. Both tables and columns.
-- Always lowercase.
-- Use underscores for spaces.
-- No CamelCase, abreviations or prefixes.
+# If the database already exists and we want to restore it.  
+mysql db_name < backup.sql
+```
 
 # MySQL Workbench
 
@@ -178,7 +266,9 @@ To overwrite them, the tables need to be dropped first, which is an option durin
 
 # Tuning
 
-`sudo apt-get install mysqltuner`  
+```bash 
+sudo apt-get install mysqltuner
+```  
 
 It's a utility used to find out what could be done in order to optimize MySQL for the hardware and workload.  
 
