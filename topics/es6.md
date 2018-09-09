@@ -173,6 +173,8 @@ var hello = name => "Hello " + name;
 console.log(hello("Jack")); // Hello Jack
 ```
 
+**They don't rebind this, they inherit it.**
+
 It provides a shorter syntax, and more importantly, it binds `this` lexically, avoiding the usage of `that` or `self`. `Arguments` and `this` inside arrow functions reference their outer function.
 
 Until arrow functions, every new function defined its own `this` value. An arrow function **does not** have its own `this`; the `this` value of the enclosing execution context is used.
