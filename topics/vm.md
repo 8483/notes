@@ -11,6 +11,7 @@
 # Packages
 
 ### Update
+
 ```bash
 # Update
 sudo apt update;
@@ -19,11 +20,8 @@ sudo apt update;
 sudo apt install curl vim tmux;
 
 # Node
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt install nodejs -y;
+sudo apt install nodejs git -y;
 
 # MySQL
 sudo apt install mysql-server -y && mysql_secure_installation;
-
-# Atom
-sudo add-apt-repository ppa:webupd8team/atom && sudo apt update && sudo apt install atom -y;
 ```
