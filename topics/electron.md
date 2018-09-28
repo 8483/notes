@@ -6,7 +6,7 @@ The HTML, CSS and Javascript can compile to executables for Windows, Mac or Linu
 
 Some notable apps that are built with it are Atom, VS Code and Slack.
 
-**Try and keep in mind that Electron is simply a "manager" for a browser instance.**
+**Try and keep in mind that Electron is simply a "manager" for a browser instance. It's the glue between the OS and the BrowserWindow.**
 
 **As soon as you're working in a renderer process, you're writing standard javascript and Electron really doesn't matter any longer.**
 
@@ -132,7 +132,7 @@ By default, these modules send messages asynchronously, which is recommended.
 
 ## ipcMain
 
-`ipcMain` can only listen for `Renderer` messages and reply to them. It's possible to send a message to a `Renderer` process by using `webContents.send()`.
+`ipcMain` can only listen for `Renderer` messages and reply to them by using `webContents.send()`.
 
 ```javascript
 // Main
@@ -150,7 +150,9 @@ win.webContents.send("channel", "foo!");
 
 ## ipcRenderer
 
-`ipcRenderer` can send messages to the `Main` and `Renderer` processes **and** listen for messages from them.
+`ipcRenderer` can send messages to the `Main` process. It also listens to messages sent from it.
+
+You can have 2 windows communicate via the HTML5 messaging API. Again, **when ipc is not required for sending something to The main process which is OS related, there's no need.**
 
 ```javascript
 // Renderer
@@ -171,7 +173,9 @@ ipcRenderer.on("channel", (e, args) => {
 
 Basically the `remote` module makes it easy to do stuff normally restricted to the main process in a render process without lots of manual ipc messages back and forth.
 
-In Electron, GUI-related modules (such as dialog, menu etc.) are only available in the main process, not in the renderer process. In order to use them from the renderer process, the ipc module is necessary to send inter-process messages to the main process. **With the remote module, you can invoke methods of the main process object without explicitly sending inter-process messages**, similar to Java's RMI. An example of creating a browser window from a renderer process:
+In Electron, GUI-related modules (such as dialog, menu etc.) are only available in the main process, not in the renderer process. In order to use them from the renderer process, the ipc module is necessary to send inter-process messages to the main process.
+
+**With the remote module, you can invoke methods of the main process object without explicitly sending inter-process messages**, similar to Java's RMI. An example of creating a browser window from a renderer process:
 
 ```javascript
 const remote = require("electron").remote;
