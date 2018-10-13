@@ -15,6 +15,18 @@ console.log(global.message); // undefined
 
 ## ES6 Modules
 
+A proper format, unlike the CommonJS convention.
+
+```javascript
+// add.js
+export function add(a, b) {
+    return a + b;
+}
+
+// index.js
+import { add } from "./add";
+```
+
 Modules are exported with `export` and imported with `import`. We can export one or more objects from a module.
 
 There are `default` and `named` exports. We use a default export if there is a single object we want to export.
@@ -95,7 +107,7 @@ We need to add the module type in order to avoid the `Uncaught SyntaxError: Unex
 
 Conventions/syntax for defining modules. ES6 natively supports them.
 
--   **CommonJS**
+-   **CommonJS** - Loads files synchronously.
 
 Since ES5 doesn't support modules, developers came up with different syntaxes to define them. These are only used in legacy applications.
 
@@ -103,6 +115,23 @@ Since ES5 doesn't support modules, developers came up with different syntaxes to
 -   **UMD** (Browser / Node)- Universal Module Definition.
 
 ### CommonJS (Node)
+
+Two problems:
+
+1. Browsers cannot load files synchronously. This is solved via bundling a huge file including everything, even unused things.
+2. JS engine cannot tell what a module exports until it runs it.
+
+```javascript
+// add.js
+function add(a, b) {
+    return a + b;
+}
+module.exports = add;
+
+// index.js
+const add = require("./add"); // Loads synchronously
+add(2, 3); // 5
+```
 
 CommonJS defines the:
 

@@ -360,3 +360,18 @@ What the timeline (master) looks like. \* = commit.
 |/
 *    - Last commit before branch
 ```
+
+# Useful
+
+While we all used git (and Github) in college to collaborate and save code, we mainly stuck to the the basic "add, commit, push" flow and didn't really go outside of that much, mainly because we didn't know it all that well at the time. But looking back after 2+ years of using [git] in a professional environment, here was out shortlist of things we wish we knew git could do (in order of importance)
+
+1. **git reset HEAD**  
+   If you could learn one thing about git besides how to commit and push, this would be it. When you commit to git, those commits generate a log that is identified by a commit hash. By using the command `git reset HEAD <commit-hash>` (there are other variants, this is the most straightforward), you can essentially go back in time in your code. What this is great for is if you are in a point in your project where you are pretty certain _you're going to fuck something up_, committing is like doing a quick save in a video game right before a boss fight. Something goes wrong, reset to the last commit.
+
+2. **Branching and Pull Request Workflow**  
+   In college we all worked off a single branch pushing our code up to save it. While this worked, the occasional push by a teammate who didn't properly test their code caused our project to crash and one of us having to fix it (this usually happened <12 hours before deadlines). Branching and pull requests would have eliminated that. Not only are they working on a different branch so pushing up won't mess with the original copy. When they want to merge their code, going through a PR (pull request) process will involve the code getting reviewed by another person to make sure it all works.
+
+3. **git init**  
+   When I first started with git I always thought that you had to have a remote somewhere to use it (ie on github or gitlab). As I have learned that is not the case, you can initialize a git repository in any directory and commit any files, you are only restricted from pushing until you add a remote (duh). This is great to pair with the 1st tip, even if you are working by yourself. Having the ability to go back if you mess something up is essential.
+
+TBH that's really it. Git is a _very_ complex application that even I haven't fully learned yet. However, it has a fairly easy learning curve letting you take advantages of the most important bits quickly. If you have any questions feel free to post below and I'll be happy to answer best I can.

@@ -152,6 +152,14 @@ sudo vim /etc/resolv.conf
 # Add nameserver 8.8.8.8
 ```
 
+### HTTP vs TCP
+
+HTTP is needed so that communicating systems can understand each other. TCP just provides "envelopes" that can transfer bytes around the network.
+
+An application protocol assigns structure and meaning to the contents of the envelopes.
+
+**If you speak English and I send you a letter written in French, you'll still get the letter, but you won't understand it.**
+
 # Password Generator
 
 Generate a random 14 character password by using the linux `/dev/urandom` file, a stream of mashed system data.

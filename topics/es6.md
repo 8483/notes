@@ -237,6 +237,23 @@ for (let item of items) {
 These are functions that can be paused and resumed. It can return i.e. yield values on each pause.
 
 ```javascript
+function* generateThreeNumbers() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+var numberIterator = generateThreeNumbers();
+
+numberIterator.next(); // { value: 1, done: false }
+numberIterator.next(); // { value: 2, done: false }
+numberIterator.next(); // { value: 3, done: false }
+numberIterator.next(); // { value: undefined, done: true }
+```
+
+another example...
+
+```javascript
 function* generator() {
     console.log("Hello");
     yield "Yield 1 ran...";

@@ -57,7 +57,7 @@
 
 ### Administration
 
--   [basics](./topics/basics.md)
+-   [basics](./topics/linux.md)
 -   [filesystem](./topics/filesystem.md)
 -   [users](./topics/users.md)
 -   [config](./topics/config.md)
@@ -89,3 +89,7 @@
 ### Configuration Management
 
 -   [Ansible](./topics/ansible.md)
+
+# Electronics
+
+-   [General](./topics/electronics.md)
