@@ -1,27 +1,10 @@
-# Git
+# Overview
 
--   [Tips](#tips)
--   [Git Ignore](#git-ignore)
--   [Workflow](#workflow)
--   [Example Project](#example-project)
--   [Help](#help)
--   [Basics](#basics)
--   [Staging](#staging)
--   [Commiting](#commiting)
--   [Tagging](#tagging)
--   [See Changes](#see-changes)
-    -   [Tree](#tree)
--   [Undo](#undo)
--   [Remote](#remote)
--   [Push](#push)
--   [Pull](#pull)
-    -   [Pull Requests](#pull-requests)
--   [Clone](#clone)
--   [Branch](#branch)
--   [Merge](#merge)
--   [Example Workflows](#example-workflows)
+A commit in a git repository records a snapshot of all the files in your directory. It's like a giant copy and paste, but even better!
 
-## Quick Edit
+Git wants to keep commits as lightweight as possible though, so it doesn't just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a "delta", from one version of the repository to the next.
+
+# Quick Edit
 
 Download from repository and set user.
 
@@ -46,15 +29,24 @@ A previously cloned repo on a server can now pull just the changes (clone is use
 
 Github repo > Clone to local > Push to Github > Pull changes to server
 
-## Tips
+# Tips
 
 Master branch = Timeline
 
-HEAD = Last commit on current branch.
+`HEAD` = Last commit on current branch.
+
+HEAD is the symbolic name for the currently checked out commit -- it's essentially what commit you're working on top of.
 
 Commit messages should be in the present tense instead of past. They should tell what a commit does instead of what happened. Ex. Add new module vs Added new module.
 
 Git uses vi as the default editor.
+
+# Setup
+
+```bash
+# Initialize an empty repo inside a .git hidden directory.
+git init
+```
 
 ## Git Ignore
 
@@ -68,7 +60,7 @@ Also, pattern matching can be used to ignore specific files in specific places. 
 
 Finally, use `#` to comment.
 
-## Workflow
+# Workflow
 
 it's generally considered good practice to avoid merges where possible.
 
@@ -78,7 +70,7 @@ Additonal brances such as `release` and `hotfix` can be introduced between the `
 
 If a branch is not shown, it's due to fast-forwarding i.e. no changes were made in the branch being merged into, hence the simpler merge log.
 
-## Example Project
+# Example Project
 
 ```
 *   e67ccc4 (HEAD -> master) Merge branch 'header'
@@ -100,151 +92,174 @@ If a branch is not shown, it's due to fast-forwarding i.e. no changes were made 
 * 9524ae9 Create index.html
 ```
 
-## Help
+# Help
 
-List all the commands.  
-`git help`
+```bash
+# List all the commands.
+git help
 
-Explain a specific command.  
-`git help COMMAND`
+# Explain a specific command.
+git help COMMAND
+```
 
-## Basics
+# Configuration
 
-Setting up owner of changes for all repos. Github contributions count only with the github email.  
-`git config --global user.name "NAME"`  
-`git config --global user.email "EMAIL"`
+```bash
+# Setting up owner of changes for all repos. Github contributions count only with the github email.
+git config --global user.name "NAME"
+git config --global user.email "EMAIL"
+```
 
-Initialize an empty repo inside a .git hidden directory.  
-`git init`
+# Staging
 
-What changed since last commit?  
-`git status`
+```bash
+# What changed since last commit?
+git status
 
-## Staging
+# Stage an untracked file for committing.
+git add FILENAME
 
-Stage an untracked file for committing.  
-`git add FILENAME`
+# Multiple files.
+git add FILENAME FILENAME
 
-Multiple files.  
-`git add FILENAME FILENAME`
+# A folder.
+git add FOLDER/
 
-A folder.  
-`git add FOLDER/`
+# All specific file types.
+git add *.js
 
-All specific file types.  
-`git add *.js`
+# ... in a folder.
+git add FOLDER/*.js
 
-... in a folder.  
-`git add FOLDER/*.js`
+# ... in whole project.
+git add "*.js"
 
-... in whole project.  
-`git add "*.js"`
+# Track everything.
+git add .
 
-Track everything.  
-`git add --all` or `git add .`
+# Unstage files.
+git reset HEAD FILENAME
+```
 
-Unstage files.  
-`git reset HEAD FILENAME`
-
-## Committing
+# Committing
 
 Each commit moves the HEAD further up the timeline.
 
-Commit changes.  
-`git commit -m "MESSAGE"`
+```bash
+# Commit changes with inline message.
+git commit -m "MESSAGE"
+```
 
-## Tagging
+If the `-m` is ommited, the screen will move to the `vi` text editor, which can be exited with `:q`.
+
+# Tagging
 
 A reference to a specific commit, used mostly for release versioning.
 
-Create tag.  
-`git tag -a v0.0.1 -m "Version 0.0.1"`
+```bash
+# Create tag.
+git tag -a v0.0.1 -m "Version 0.0.1"
 
-List tags.  
-`git tag`
+# List tags.
+git tag
 
-Open a specific version.  
-`git checkout v0.0.1`
+# Open a specific version.
+git checkout v0.0.1
 
-Push tags to remote repo.  
-`git push --tags`
+# Push tags to remote repo.
+git push --tags
+```
 
-## See Changes / Diff
+# See Changes / Diff
 
-Commit history.  
-`git log`
+```bash
+# Commit history.
+git log
 
-Show unstaged differences since last commit.  
-`git diff`
+# Show unstaged differences since last commit.
+git diff
 
-Show differences after staging.  
-`git diff --staged`
+# Show differences after staging.
+git diff --staged
 
-Show differences between current and specific commit.  
-`git diff hash`
+# Show differences between current and specific commit.
+git diff HASH
+```
 
-### Tree
+## Tree
 
-A visual tree with branch names included.  
-`git log --oneline --decorate --all --graph`
+```bash
+# A visual tree with branch names included.
+git log --oneline --decorate --all --graph
 
-Add the `tree` alias as a shortcut.  
-`git config --global alias.tree "log --oneline --decorate --all --graph"`
+# Add the "tree" alias as a shortcut.
+git config --global alias.tree "log --oneline --decorate --all --graph"
+```
 
-## Undo
+# Undo
 
 DON'T DO THESE AFTER PUSHING!
 
-Revert a file to the last commit version.  
-`git checkout -- FILENAME`
+```bash
+# Revert a file to the last commit version.
+git checkout -- FILENAME
 
-UNDO commit and move everything back to staging. The carrot on the HEAD means move to the previous commit.  
-`git reset --soft HEAD^`
+# UNDO commit and move everything back to staging. The carrot on the HEAD means move to the previous commit.
+git reset --soft HEAD^
 
-DELETE the last 2 commits.  
-`git reset --HARD HEAD^^`
+# DELETE the last 2 commits.
+git reset --HARD HEAD^^
 
-DELETE everything after the specified commit.  
-`git reset --HARD hash`
+# DELETE everything after the specified commit.
+git reset --HARD HASH
 
-Change last commit with overriding message.  
-`git commit --amend -m "MESSAGE"`
+# Change last commit with overriding message.
+git commit --amend -m "MESSAGE"
 
-Force change on GitHub. Git interprets the `^` after the hash as the parent of this very commmit, and the `+` as a force push.  
-`git push origin +hash^:master`
+# Force change on GitHub. Git interprets the "^" after the hash as the parent of this very commmit, and the "+" as a force push.
+git push origin +hash^:master
+```
 
-## Remote
+# Remote
 
 A project can have multiple remotes ex. origin, test, production...
 
-Add a remote i.e. bookmark a repo i.e. This NAME = this URL. The name is usually "origin", but it can be anything.  
-`git remote add NAME URL`
+```bash
+# Add a remote i.e. bookmark a repo i.e. This NAME = this URL. The name is usually "origin", but it can be anything.
+git remote add NAME URL
 
-List all remotes.  
-`git remote -v`
+# List all remotes.
+git remote -v
 
-Check a remote.  
-`git remote show origin`
+# Check a remote.
+git remote show origin
 
-Remove a remote.  
-`git remote rm NAME`
+# Remove a remote.
+git remote rm NAME
+```
 
-## Push
+# Push
 
 Define which local branch (usually master) to push to which repository (usually origin). It asks for user and pass.
 
-`git push -u REPO_NAME BRANCH_NAME` i.e. `git push -u origin master`
+```bash
+# git push -u REPO_NAME BRANCH_NAME
+git push -u origin master
+```
 
 `-u` remember the repo and the branch, so that only `git push` can be used.
 
-## Pull
+# Pull
 
-Used to update the local repo with the latest changes. Should be done often.  
-`git pull`
+Used to update the local repo with the latest changes. Should be done often.
+
+```bash
+git pull
+```
 
 Behind the scenes, this creates an origin/master branch which is automatically merged into the master one, unless there is a merge conflict.
 
-### Pull Requests
+## Pull Requests
 
 Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master.
 
@@ -256,13 +271,15 @@ For example, if a developer needs help with a particular feature, all they have 
 
 Once a pull request is accepted, the actual act of publishing a feature is much the same as in the Centralized Workflow. First, you need to make sure your local master is synchronized with the upstream master. Then, you merge the feature branch into master and push the updated master back to the central repository.
 
-## Clone
+# Clone
 
-Create a local repository from a remote one.  
-`git clone URL`
+```bash
+# Create a local repository from a remote one.
+git clone URL
 
-... with a different name.  
-`git clone URL NEW_NAME`
+# ... with a different name.
+git clone URL NEW_NAME
+```
 
 Cloning does:
 
@@ -270,39 +287,90 @@ Cloning does:
 -   Add "origin" remote, pointing to the clone URL.
 -   Check out initial branch. (Set head to master)
 
-## Branch
+# Branch
+
+Branches in Git are incredibly lightweight as well. They are simply pointers to a specific commit -- nothing more. This is why many Git enthusiasts chant the mantra: **branch early, and branch often**.
+
+Because there is no storage / memory overhead with making many branches, it's easier to logically divide up your work than have big beefy branches.
+
+A branch essentially says "I want to include the work of this commit and all parent commits."
 
 Switching branches will only show the files in that branch.
 
-Create new branch. HEAD still on master (Use checkout to switch).  
-`git branch NAME`
+```bash
+# Create new branch. HEAD still on master (Use checkout to switch).
+git branch NAME
 
-Check which branch we are on.  
-`git branch`
+# Check which branch we are on.
+git branch
 
-Check remote branches.  
-`git branch -r`
+# Check remote branches.
+git branch -r
 
-Move to a specific branch (Set HEAD from master to BRANCH_NAME). This is like switching timelines.  
-`git checkout BRANCH_NAME`
+# Move to a specific branch (Set HEAD from master to BRANCH_NAME). This is like switching timelines.
+git checkout BRANCH_NAME
 
-Create AND move to a branch.  
-`git checkout -b BRANCH_NAME`
+# Create AND move to a branch.
+git checkout -b BRANCH_NAME
 
-Create a remote branch. Usually origin.  
-`git push REPO_NAME BRANCH_NAME`
+# Create a remote branch. Usually origin.
+git push REPO_NAME BRANCH_NAME
 
-Delete a branch.  
-`git branch -d BRANCH_NAME`
+# Delete a branch.
+git branch -d BRANCH_NAME
+```
 
-## Merge
+# Merge
 
-Move (checkout) to the branch (master) you want to merge into, and use:  
-`git merge BRANCH_NAME`
+**The merging is done from the perspective of where we merge `INTO`.**
+
+Merging in Git creates a special commit that has two unique parents. A commit with two parents essentially means "I want to include all the work from this parent over here and this one over here, and the set of all their parents."
+
+Move (checkout) to the branch (master) you want to merge into, and use:
+
+```bash
+git merge BRANCH_NAME
+```
+
+`master` now points to a commit that has two parents. If you follow the arrows up the commit tree from master, you will hit every commit along the way to the root. This means that master contains all the work in the repository now.
 
 Merging is very easy if the master branch is not modified. This is fast-forwarding.
 
 If both branches were modified, a commit is created to do the merge. (Vi editor opens for the message)
+
+```
+0
+|\
+2 1  - 2 master, 1 branch
+|/
+3    - master assimilates branch
+```
+
+# Rebase
+
+**The "merging" is done from the perspective of where we merge `FROM`.**
+
+The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
+
+While this sounds confusing, the advantage of rebasing is that it can be used to make a nice linear sequence of commits. The commit log / history of the repository will be a lot cleaner if only rebasing is allowed.
+
+Move (checkout) to the branch (BRANCH_NAME) you want to merge from, and use:
+
+```bash
+git rebase master
+```
+
+**This makes it look like two features were developed sequentially, when in reality they were developed in parallel.**
+
+```
+0
+|\
+1 1  - 1 branch
+|
+2    - 2 master
+|
+3    - branch (1) was added to the original timeline.
+```
 
 # Example Workflows
 

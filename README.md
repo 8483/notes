@@ -91,5 +91,13 @@
 
 # Electronics
 
+### Gadgets
+
+-   [Raspberry Pi](./topics/raspberrypi.md)
+-   [Arduino](./topics/arduino.md)
+-   [NodeMCU](./topics/nodemcu.md)
+
+### Theory
+
 -   [Electronics](./topics/electronics.md)
--   [Electricity](./topics/electronics.md)
+-   [Electricity](./topics/electricity.md)
