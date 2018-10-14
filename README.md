@@ -37,8 +37,7 @@
 -   REST
 -   Authentication
 -   Use Cases
--   Testing
-    -   Jest/Mocha
+-   [Testing](./topics/testing.md)
 
 ### Useful
 
@@ -92,4 +91,5 @@
 
 # Electronics
 
--   [General](./topics/electronics.md)
+-   [Electronics](./topics/electronics.md)
+-   [Electricity](./topics/electronics.md)
