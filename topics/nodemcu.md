@@ -1,6 +1,12 @@
-# ESP28266 / NodeMCU
+# NodeMCU/ ESP28266
 
-The esp8266 is a chip, it usually sits on a board.
+NodeMCU is a firmware that allows you to program the ESP8266 chip with a LUA script, or C/C++ via the Arduino IDE.
+
+The NodeMCU programming model is similar to that of Node.js, only in Lua. It is asynchronous and event-driven. Many functions, therefore, have parameters for callback functions.
+
+While the ESP8266 is often used as a ‘dumb’ Serial-to-WiFi bridge, it’s a very powerful microcontroller on its own, as it's basically an Arduino.
+
+# Power
 
 The chip itself uses 3.3v, but if the board has a usb port, then it knows that usb comes with a 5v supply, so it probably has a regulator built-in to convert the 5v to the 3.3v the chip needs.
 
@@ -8,9 +14,7 @@ A phone charger or power bank should work just fine.
 
 https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html
 
-While the ESP8266 is often used as a ‘dumb’ Serial-to-WiFi bridge, it’s a very powerful microcontroller on its own.
-
-## Setup
+# Setup
 
 1. Start Arduino IDE and open Preferences window.
 
@@ -18,7 +22,7 @@ While the ESP8266 is often used as a ‘dumb’ Serial-to-WiFi bridge, it’s a 
 
 3. Open Boards Manager from Tools > Board menu and install esp8266 platform (and don't forget to select your ESP8266 board from Tools > Board menu after installation).
 
-## LED example
+# LED example
 
 ```c
 int LED = D7;
@@ -35,7 +39,7 @@ void loop() {
 }
 ```
 
-## Remote LED light
+# Remote LED light
 
 Upload the code into NodeMCU, and go to the local address specified in the serial monitor in order to toggle the LED light, connected in a classic GPIO way.
 

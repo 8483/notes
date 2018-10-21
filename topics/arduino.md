@@ -4,13 +4,13 @@ It's a micro-controller.
 
 Diagrams can be made with the tool **Fritzing**.
 
-## Setup
+# Setup
 
 We can select the type of board we are working with at tools > board, or add ones with the boards manager.
 
 We define the way we are connecting to the board via a port at tools > port. It changes each time the board is disconnected.
 
-## Programming
+# Programming
 
 The programming language is C/C++.
 
@@ -24,17 +24,23 @@ void loop() {
 }
 ```
 
-## Upload
+# Upload
 
 The code is compiled and uploaded into the chip via the USB cable. The built-in small LED light will blink in the frequency of the loop to indicate that it's working.
 
-## Serial Monitor
+# Serial Monitor
 
 We can see what Arduino outputs via tools > serial monitor. If we are getting weird characters, we need to set the **baud** value to the correct one.
 
-**baud** - Data rate in bits per second for serial data transmission.
+# Pull-up resistor
 
-## digitalWrite vs analogWrite
+Instead of adding resistors manually, we can use the built-in functionality.
+
+```c
+pinMode(button, INPUT_PULLUP)
+```
+
+# digitalWrite vs analogWrite
 
 `digitalWrite` will set the specified pin to one of two states - HIGH/LOW, which equate to 5v (3.3v on some boards) and ground respectively.
 
@@ -42,7 +48,7 @@ We can see what Arduino outputs via tools > serial monitor. If we are getting we
 
 pinMode(buzzerPin, OUTPUT);
 
-## Simple blinking LED example
+# Simple blinking LED example
 
 ```c
 int LED = 12;
@@ -61,7 +67,7 @@ void loop() {
 
 ![TEA](../pics/arduino_led.jpg)
 
-## Cop Car
+# Cop Car
 
 ```c
 int LED_RED = 12;

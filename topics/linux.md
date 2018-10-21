@@ -2,6 +2,9 @@
 
 # Basics
 
+`/` - Root directory  
+`~` - Home directory
+
 `^` - Control key.  
 `M` - Alt key.
 
@@ -65,27 +68,47 @@ sudo find / -iname FOLDER/FILE.ext    # Find case insensitive.
 which PROGRAM                         # Find path to program.
 ```
 
-# Folders & Files
+# Utility
 
 ```bash
+# Navigation
+cd FOLDER   # Change directory
+cd ..       # Go back one up
+cd -        # Go back to last working directory
+pwd         # Current path
+
 # List
-ls -a       # List all files, including hidden.
-cat FILE    # Show the file content in terminal.
-less FILE   # View file content in the less program.
-head FILE   # Show first 10 lines.
-tail FILE   # Show last 10 lines.
+ls -a       # List all files, including hidden
+ls -l       # List in a list format
+ll          # Shorthand for ls -l
+
+# Read
+cat FILE       # Show the file content in terminal
+less FILE      # View file content in the less program
+head FILE      # Show first 10 lines
+tail FILE      # Show last 10 lines
+tail -f FILE   # Log in real time
 
 # Create
-mkdir FOLDER   # Create a folder.
-touch FILE     # Create a file.
+mkdir FOLDER   # Create a folder
+touch FILE     # Create a file
 
 # Copy/Paste
-cp PATH/FILE PATH/FILE   # Create a copy.
-mv PATH/FILE PATH/FILE   # Rename or Cut & Paste a file.
+cp PATH/FILE PATH/FILE   # Create a copy
+mv PATH/FILE PATH/FILE   # Rename or Cut & Paste a file
 
 # Delete
-rm FOLDER/FILE   # Delete folder or file.
-rm -r FOLDER     # Delete a directory and its files.
+rm FOLDER/FILE   # Delete folder or file
+rm -r FOLDER     # Delete a directory and its files
+
+# Printing
+echo TEXT      # print text
+printf TEXT    # print formatted text
+```
+
+```bash
+\n   # new line
+\r   # carriage return, i.e. bring carret (cursor) to start of line
 ```
 
 # Processes
@@ -121,44 +144,6 @@ PATH="$HOME/bin:$PATH:/usr/hitech/picc/9.82/bin" # Change it into this.
 # Method 2 - Shorthand to avoid editing manually.
 export PATH="$PATH:/usr/hitech/picc/9.82/bin" # export <VARIABLE>="<VALUE>"
 ```
-
-# Static server
-
-This will start a static web server on port `8000`. The command has to be run in the directory with the `index.html` file.
-
-```bash
-python -m SimpleHTTPServer 8080
-```
-
-# Networking
-
-**Gateway** is the router address we are talking to in order to connect to the rest of the network/internet.
-
-`127.0.0.1` - Your computer.  
-`192.168.x.x` - Local address created by a router.
-
-`ifconfig` - Check IP address.  
-`ping 8.8.8.8` - Ping IP address.  
-`netstat -tupln` - Check open ports.
-
-`cat etc/network/interfaces` - Shows the interfaces brought up after booting.
-
-`/etc/hosts` is used to simulate a domain for an IP address. Add `127.0.0.1 domain.com` to avoid typing the IP address.
-
-### ping: unknown host
-
-```bash
-sudo vim /etc/resolv.conf
-# Add nameserver 8.8.8.8
-```
-
-### HTTP vs TCP
-
-HTTP is needed so that communicating systems can understand each other. TCP just provides "envelopes" that can transfer bytes around the network.
-
-An application protocol assigns structure and meaning to the contents of the envelopes.
-
-**If you speak English and I send you a letter written in French, you'll still get the letter, but you won't understand it.**
 
 # Password Generator
 
