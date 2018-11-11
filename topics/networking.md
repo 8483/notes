@@ -56,6 +56,18 @@ The port range that a normal (non-root) user can listen on is `1024` through `65
 
 If the other side doesn't pick up, an RST (Reset packet) error message is sent back.
 
+# DNS
+
+It's basically a phonebook for IP addresses.
+
+An `A Record` is matched with an IP address, so when someone looks for `www.google.com`, the A record is referenced and the IP address is sent back to the user.
+
+The DNS resolver i.e. client code is built into the OS.
+
+**CNAME** - Canonical Name i.e. alias for a domain.  
+**AAAA** - IPv6 equivalent to an A record.  
+**NS** - DNS Name server. The NS record for a particular domain specifies which DNS has the records.
+
 # Tools
 
 ## ping
@@ -64,6 +76,9 @@ It sends individual packets to test if traffic can get from one address to anoth
 
 ```bash
 ping 8.8.8.8
+
+# send 5 packets
+ping -c 5 google.com
 ```
 
 #### unknown host
@@ -116,6 +131,26 @@ echo 'message' | netcat server 80
 printf 'HEAD / HTTP/1.1\r\nHost: google.com\r\n\r\n' | nc google.com 80
 
 printf 'GET /posts/1 HTTP/1.1\r\nHost:jsonplaceholder.typicode.com\r\n\r\n' | nc jsonplaceholder.typicode.com 80
+```
+
+## host
+
+Used for looking up records in the DNS.
+
+```bash
+# Returns all the records
+host google.com
+
+# Returns just the A record
+host -t a google.com
+```
+
+## dig
+
+Similar to `host` in showing DNS records, but in a way more readable for scripts and closer to the way they are stored in the DNS configuration files.
+
+```bash
+dig google.com
 ```
 
 # Static server

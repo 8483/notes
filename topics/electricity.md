@@ -4,7 +4,9 @@ http://amasci.com/ele-edu.html
 http://amasci.com/elect/vwatt1.html  
 http://amasci.com/miscon/elect.html
 
-**Voltage “pushes” charges through an object which has electrical resistance, and this heats up the resistive object. The flow of the charges is measured in amperes, the flow of electrical energy and heat output is measured in watts, and the resistance is measured in ohms. Electric current isn't a stuff, electric current is the flow of a stuff. What is the name of the stuff? Charge.**
+**Voltage “pushes” charges through an object which has electrical resistance, and this heats up the resistive object. The flow of the charges is measured in amperes, the flow of electrical energy and heat output is measured in watts, and the resistance is measured in ohms.**
+
+**Electric current isn't stuff, electric current is the flow of stuff. What is the name of the stuff? Charge.**
 
 Electronics devices all use DC, while AC is used to bring power to them, which is then rectified into DC via power supply units.
 
@@ -18,7 +20,7 @@ What flows in wires?
 
 A quantity of charge is measured in units called COULOMBS, and the word "ampere" means the same thing as "coulomb of charge flowing per second." Why do I think amperes are confusing? Well, suppose you had no name for water, yet your teachers wanted you to learn about "fluid flow". Suppose you had to learn about "gallons-per-second," but without knowing anything about water, or about gallons. If you'd never learned the word "gallon", and if you had no idea that water even existed, how could you understand "fluid flow?" That's the problem with electricity and amperes.
 
-You can only understand the flow (the amperes) if you first understand the stuff that flows in wires: the charge, the coulombs.
+**You can only understand the flow (the amperes) if you first understand the stuff that flows in wires: the charge, the coulombs.**
 
 # Charge
 
@@ -114,14 +116,14 @@ So, the watts of energy flow will go up by four if you double the current. But i
 
 # Summary
 
-Volts = Difference in electric potential i.e. desire to go back to equilibrium charge. “Pressure (Water pump)”
-Ohms = Resistance (Pipe narrowing) No resistance = Short Circuit.
-Coulombs = Charge (Positive Protons, Negative Electrons) a bag of electrons.
-Amperes = Current (Rate of charge (matter) flow) Number of charges flowing per second.
-Joules = Energy
-Watts = Power (Rate of energy flow)
+**Volts** - Difference in electric potential i.e. desire to go back to equilibrium charge. “Pressure (Water pump)”  
+**Ohms** - Resistance (Pipe narrowing) No resistance = Short Circuit.  
+**Coulombs** - Charge (Positive Protons, Negative Electrons) a bag of electrons.  
+**Amperes** - Current (Rate of charge (matter) flow) Number of charges flowing per second.  
+**Joules** - Energy  
+**Watts** - Power (Rate of energy flow)
 
-Separated charge = Static
+Separated charge = Static  
 Combined charge = Matter
 
 Analogy:
@@ -328,15 +330,15 @@ It's impossible to grasp because early textbooks wrongly mix the concept "quanti
 
 A battery is not a supplier of "current electricity," it instead supplies voltage, and various currents are drawn by placing various resistances between the battery leads.
 
-power is NOT a substance-like entity which can flow. Power is actually a flow of a substance. "Power" means energy-current. Energy can flow, and its rate of flow is called power.
+Power is NOT a substance-like entity which can flow. Power is actually a flow of a substance. "Power" means energy-current. Energy can flow, and its rate of flow is called power.
 
-electric energy is NOT made of small particles called electrons. Actually, the fundamental unit of electrical energy is the photon, not the electron, since electrical energy is electromagnetic field/wave energy.
+Electric energy is NOT made of small particles called electrons. Actually, the fundamental unit of electrical energy is the photon, not the electron, since electrical energy is electromagnetic field/wave energy.
 
 Energy DOES NOT flow up one wire, through the appliance, then back down the other wire. Energy actually flows up both wires, dives into the appliance, and is converted to other types of energy (heat, motion, etc.)
 
-electric companies DON’T sell electrons. They actually sell 60Hz "radio waves", and only use the columns of electrons in the wires to transmit the waves to the end users.
+Electric companies DON’T sell electrons. They actually sell 60Hz "radio waves", and only use the columns of electrons in the wires to transmit the waves to the end users.
 
-energy DOESN’T flows inside of wires. Electrical energy is actually electromagnetic fields. It exists as the voltage field and magnetic field which surround the wires. Electrical energy flows as a "tube" which encloses a pair of wires and exists only outside the metal.
+Energy DOESN’T flows inside of wires. Electrical energy is actually electromagnetic fields. It exists as the voltage field and magnetic field which surround the wires. Electrical energy flows as a "tube" which encloses a pair of wires and exists only outside the metal.
 
 individual electrons in wires DON’T carry energy along with them as they flow. The situation is really like that with sound: the energy moves as waves through a population of particles.
 

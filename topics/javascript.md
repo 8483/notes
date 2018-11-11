@@ -55,6 +55,20 @@ Browsers feature a Browser Object Model (BOM) that allows access and manipulatio
 
 Because no standards exist for the BOM, each browser has its own implementation.
 
+# Event Loop
+
+![TEA](../pics/js_event_loop.png)
+
+Based on [Philip Roberts' talk](https://www.youtube.com/watch?v=8aGhZQkoFbQ).
+
+The Javascript runtime only knows of the `heap` and `call stack`.
+
+The rest of the functionality, like async stuff, is provided in the form of `WebAPIs` by the browser/Node.
+
+For async operations, the `callback` is offloaded into a separate `queue`, which is emptied by the `event loop` one by one as soon as the `stack` becomes empty.
+
+Without the `event loop` the stack would be blocked during the whole duration of the async operaiton, basically freezing the app.
+
 # Hoisting
 
 Both variable and function declarations are hoisted to the top on code execution, meaning that their order is irrelevant i.e functions can be called before they are declared.

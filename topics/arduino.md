@@ -1,28 +1,36 @@
 # Arduino
 
-It's a micro-controller.
+**Arduino** is a development board utilizing an **AVR ATMEGA328** MCU (microcontroller). An MCU can't do much unless it's in a circuit.
 
-Diagrams can be made with the tool **Fritzing**.
+The more professional option is to use a separate development board/launchpad for the MCUs. The idea is to plug in the MCU into it, program it, and take it out to be soldered in a circuit, rather than use the whole board like the Arduino.
+
+Other popular microcontrollers: 8051, PIC, AVR, ARM, MSP
+
+# Programming
+
+Unlike most previous programmable circuit boards, the Arduino does not need a separate piece of hardware (called a programmer) in order to load new code onto the board – you can simply use a USB cable.
+
+The Arduino IDE uses a simplified version of C++.
+
+Arduino basically works by setting something upfront once and then by trapping execution in an infinite loop.
+
+The code **will not** compile without `setup()` and `loop()`.
+
+```c
+void setup() {
+  // Setup code, run once
+}
+
+void loop() {
+  // Main code, run repeatedly
+}
+```
 
 # Setup
 
 We can select the type of board we are working with at tools > board, or add ones with the boards manager.
 
 We define the way we are connecting to the board via a port at tools > port. It changes each time the board is disconnected.
-
-# Programming
-
-The programming language is C/C++.
-
-```c
-void setup() {
-  // put your setup code here, to run once:
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-```
 
 # Upload
 
@@ -44,7 +52,7 @@ pinMode(button, INPUT_PULLUP)
 
 `digitalWrite` will set the specified pin to one of two states - HIGH/LOW, which equate to 5v (3.3v on some boards) and ground respectively.
 
-`analogWrite` can vary by the type of output used. It will set the pin to a periodic high/low signal, where the percentage of the signal spent high is proportional to the value written. Ex. `analogWrite(PIN,255)`.
+`analogWrite` can vary by the type of output used. It will set the pin to a periodic high/low signal, where the percentage of the signal spent high is proportional to the value written. Ex. `analogWrite(PIN, 255)`.
 
 pinMode(buzzerPin, OUTPUT);
 
