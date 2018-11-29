@@ -18,7 +18,7 @@ Resource | POST | GET | PUT | DELETE
 ### Example
 
 Method | Resource | Result
---- | --- | --- | --- | ---
+--- | --- | --- 
 GET | /tickets | Retrieves a list of tickets
 GET | /tickets/12 | Retrieves a specific ticket
 POST | /tickets | Creates a new ticket
@@ -29,7 +29,7 @@ DELETE | /tickets/12 | Deletes ticket #12
 ### Nested resources
 
 Method | Resource | Result
---- | --- | --- | --- | ---
+--- | --- | --- 
 GET | /tickets/12/messages | Retrieves list of messages for ticket #12
 GET | /tickets/12/messages/5 | Retrieves message #5 for ticket #12
 POST | /tickets/12/messages | Creates a new message in ticket #12
