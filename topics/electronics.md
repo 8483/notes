@@ -148,3 +148,13 @@ Green - Tie-points (Do not cross the trench)
 Trench - Middle
 
 ![TEA](../pics/breadboard.png)
+
+# Components
+
+#### Resistor
+
+#### Capacitor
+
+#### Diode
+
+#### Transistor

@@ -6,6 +6,10 @@ The more professional option is to use a separate development board/launchpad fo
 
 Other popular microcontrollers: 8051, PIC, AVR, ARM, MSP
 
+Microcontrollers have application specific small processing power while microprocessors have general purpose large processing power.
+
+Microcontrollers have built in RAM, ROM and other peripherals in a single chip. Microprocessors have only the CPU, and other peripherals, RAM, ROM should be connected externally.
+
 # Programming
 
 Unlike most previous programmable circuit boards, the Arduino does not need a separate piece of hardware (called a programmer) in order to load new code onto the board – you can simply use a USB cable.
@@ -73,7 +77,7 @@ void loop() {
 }
 ```
 
-![TEA](../pics/arduino_led.jpg)
+![Arduino LED](../pics/arduino_led.jpg)
 
 # Cop Car
 

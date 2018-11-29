@@ -1,3 +1,39 @@
+# Khan Academy
+
+## Current
+
+![](../pics/electronics/khan_current.jpg)
+
+Opposite charges attract. Electrons are negatively (-) charged, while protons are positively (+).
+
+Copper has a single electron in the outer layer, which is easily transferable, which makes it a good conductor.
+
+When a battery is introduced to a copper wire, the negatively charged (-) copper electrons start moving towards the positively charged (+) battery node. The negative (-) battery node supplies new electrons, and so they flow i.e. make a current.
+
+The amount of electrons flowing in a given part per second is the current.
+
+In reality, current flows from negative (-) towards positive (+). The convention is to denote it the opposite way i.e. positive charges flow from positive (+) to negative (-). This convention was falsely established by Benjamin Franklin in 1747 due to not knowing electrons exist, and it's too much of a hassle to fix.
+
+```
+Electrons are repelled by the negative terminal of the battery, and are attracted to the positive terminal.
+
+Inside the positive terminal of the battery there is a chemical reaction taking place that "consumes" electrons. The reaction creates an electric force that tugs on the electrons in the attached wire, pulling them into the battery.
+
+Over at the negative terminal of the battery there is a different chemical reaction that sets electrons free. Those electrons don't pile up in the battery, they flow out into the wire. That's how there is a current flowing everywhere in the circuit.
+```
+
+## Voltage
+
+![](../pics/electronics/khan_voltage.jpg)
+
+If a rock is put on top of a mountain, it has a potential energy, which is converted into kinetic energy as soon as it starts falling. The rock does work each time it hits an object like trees.
+
+The same with electrons. The battery supplies negatively charged electrons which move towards the positive battery node. The electrons do work each time they hit a component like resistors.
+
+Higher mountain = Higher votage
+
+# Amasci
+
 http://amasci.com/elect/vwatt1_short.html  
 http://amasci.com/elect/elefaq.html  
 http://amasci.com/ele-edu.html  

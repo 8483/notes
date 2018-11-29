@@ -35,7 +35,7 @@
 -   [Base](./topics/base.md)
 -   [Security](./topics/security.md)
 -   File Organization
--   REST
+-   [RESTful](./topics/restful.md)
 -   Authentication
 -   Use Cases
 -   [Testing](./topics/testing.md)
