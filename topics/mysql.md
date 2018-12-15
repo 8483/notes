@@ -200,6 +200,53 @@ UPDATE user SET name = 'Mike' WHERE id = 1;
 DELETE FROM table_name WHERE column_name = <value>;
 ```
 
+### INSERT ON DUPLICATE KEY UPDATE
+
+Insert if `id` doesn't exit. Else, update the data at said `id`.
+
+```sql
++----+--------------+
+| id | column_name  |
++----+--------------+
+|  1 | foo          |
+|  2 | bar          |
+|  3 | baz          |
++----+--------------+
+
+INSERT INTO table (id, column_name) 
+VALUES 
+    (1, 'qux'),
+    (null, 'hex')
+ON DUPLICATE KEY UPDATE 
+    column_name = values(column_name);
+
++----+--------------+
+| id | column_name  |
++----+--------------+
+|  1 | qux          | -- Value updated
+|  2 | bar          |
+|  3 | baz          |
+|  4 | hex          | -- Inserted row
++----+--------------+
+```
+
+# Size
+
+```sql
+-- Check the size of all the databases
+SELECT table_schema AS "Database", 
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
+FROM information_schema.TABLES 
+GROUP BY table_schema;
+
+-- Check the size of all the tables in a database
+SELECT table_name AS "Table",
+ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
+FROM information_schema.TABLES
+WHERE table_schema = "database_name" -- Change this one
+ORDER BY (data_length + index_length) DESC;
+```
+
 # Backup
 
 To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re -create the database. Use `--databases` in order to have `CREATE TABLE IF NOT EXIST` included in the dump.

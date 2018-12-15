@@ -30,15 +30,18 @@
 -   [Webpack](./topics/webpack.md)
 -   Typescript
 
+### Architecture
+-   [Architecture](./topics/architecture.md)
+-   Use Cases
+-   [RESTful](./topics/restful.md)
+
 ### Concepts
 
--   [Base](./topics/base.md)
--   [Security](./topics/security.md)
 -   File Organization
--   [RESTful](./topics/restful.md)
 -   Authentication
--   Use Cases
+-   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
+-   [Binary base](./topics/base.md)
 
 ### Useful
 
