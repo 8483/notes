@@ -28,7 +28,7 @@ The following is needed to test code.
 3. **Headless browser** - E2E testing  
    Simulate browser interactions, with `Puppeteer`.
 
--   `Jest` is both a test runner and an assetion library.
+-   `Jest` is both a test runner and an assertion library.
 
 # Jest
 

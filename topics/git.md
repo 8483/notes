@@ -289,6 +289,10 @@ Cloning does:
 
 # Branch
 
+**Do not mess with the master**. The master branch is deployable production code, meant to be stable. Instead, work on new features in separate branches, which would then be `merged` or `rebased` into master. 
+
+**Branches are local**, meaning they cannot be worked on at the same time.
+
 Branches in Git are incredibly lightweight as well. They are simply pointers to a specific commit -- nothing more. This is why many Git enthusiasts chant the mantra: **branch early, and branch often**.
 
 Because there is no storage / memory overhead with making many branches, it's easier to logically divide up your work than have big beefy branches.
@@ -297,30 +301,43 @@ A branch essentially says "I want to include the work of this commit and all par
 
 Switching branches will only show the files in that branch.
 
+#### Create
+
 ```bash
 # Create new branch. HEAD still on master (Use checkout to switch).
-git branch NAME
+git branch <name>
 
+# Create AND move to a branch.
+git checkout -b <branch_name>
+
+# Create a remote branch. Usually origin.
+git push <repo_name> <branch_name>
+```
+
+#### Navigate
+
+```bash
 # Check which branch we are on.
 git branch
 
 # Check remote branches.
 git branch -r
 
-# Move to a specific branch (Set HEAD from master to BRANCH_NAME). This is like switching timelines.
-git checkout BRANCH_NAME
-
-# Create AND move to a branch.
-git checkout -b BRANCH_NAME
-
-# Create a remote branch. Usually origin.
-git push REPO_NAME BRANCH_NAME
-
-# Delete a branch.
-git branch -d BRANCH_NAME
+# Move to a specific branch (Set HEAD from master to <branch_name>). This is like switching timelines.
+git checkout <branch_name>
 ```
 
-# Merge
+#### Delete
+
+```bash
+# Delete a branch.
+git branch -d <branch_name>
+
+# Delete a remote branch
+git push <repo_name> --delete <branch_name>
+```
+
+## Merge
 
 **The merging is done from the perspective of where we merge `INTO`.**
 
@@ -346,11 +363,11 @@ If both branches were modified, a commit is created to do the merge. (Vi editor 
 3    - master assimilates branch
 ```
 
-# Rebase
+## Rebase
 
 **The "merging" is done from the perspective of where we merge `FROM`.**
 
-The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
+The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else i.e. it serializes the history if you do not want a lot of branches in the final history.
 
 While this sounds confusing, the advantage of rebasing is that it can be used to make a nice linear sequence of commits. The commit log / history of the repository will be a lot cleaner if only rebasing is allowed.
 

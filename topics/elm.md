@@ -71,9 +71,11 @@ The result from this is the creation of:
 
 # The Elm Architecture  
 
-![TEA](../pics/TEA.png)
+![TEA](../pics/elm/TEA.png)
 
 There are 3 main wiring parts between modules. They happen in the `Model`, `Update` and `View`.
+
+![TEA](../pics/elm/elm_arch.png)
 
 # ChildModule.elm
 

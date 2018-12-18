@@ -24,6 +24,10 @@
 -   [MySQL](./topics/mysql.md)
 -   [nginx](./topics/nginx.md)
 
+### Version Control
+
+-   [Git](./topics/git.md)
+
 ### Tooling
 
 -   [Babel](./topics/babel.md)
@@ -75,10 +79,6 @@
 -   [compression](./topics/compression.md)
 
 # DevOps
-
-### Version Control
-
--   [Git](./topics/git.md)
 
 ### Virtualization
 

@@ -14,7 +14,7 @@ A set of programs and routines that are built into the device running them. They
 
 #### Serial
 
-data sent over time, most often one single bit after another. All the protocols are serial protocols.
+Data sent over time, most often one single bit after another. All the protocols are serial protocols.
 
 #### Bus
 

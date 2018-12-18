@@ -3,9 +3,8 @@
 ### Naming Convention
 
 -   **Singular form**. Both tables and columns.
--   Always lowercase.
--   Use underscores for spaces.
--   No CamelCase, abreviations or prefixes.
+-   Be consistent! Doesn't matter if you use camelCase or snake_case. Use whatever the front-end uses.
+-   Avoid abbreviations or prefixes.
 
 ### Performance
 
@@ -49,7 +48,7 @@ mysql -u user -p
 -- Create user
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 
--- Give access to certain areas. In this case, it's for everything as *.* stands for db_name.table_name i.e. all of them.
+-- Give access to certain areas. In this case, it's for everything as *.* stands for dbName.tableName i.e. all of them.
 GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 
 -- Reload the privileges.
@@ -71,10 +70,10 @@ DROP USER 'user'@'localhost';
 
 ```sql
 -- Give a specific permission, for a specific table.
-GRANT permission ON db_name.table_name TO '<user>'@'localhost';
+GRANT permission ON dbName.tableName TO '<user>'@'localhost';
 
 -- Remove a permission.
-REVOKE permission ON db_name.table_name FROM '<user>'@'localhost';
+REVOKE permission ON dbName.tableName FROM '<user>'@'localhost';
 ```
 
 ## Change password
@@ -89,10 +88,10 @@ FLUSH PRIVILEGES;
 ```sql
 SHOW DATABASES;              -- List databases.
 SELECT database();           -- Show current database.
-USE db_name;                 -- Select a database.
+USE dbName;                 -- Select a database.
 
-CREATE DATABASE db_name;     -- Create a database.
-DROP DATABASE db_name;       -- Delete a database.
+CREATE DATABASE dbName;     -- Create a database.
+DROP DATABASE dbName;       -- Delete a database.
 ```
 
 ## Tables
@@ -101,13 +100,13 @@ DROP DATABASE db_name;       -- Delete a database.
 
 ```sql
 SHOW TABLES;                 -- List all tables.
-DESCRIBE table_name;         -- Display columns and types.
+DESCRIBE tableName;         -- Display columns and types.
 
 -- Shows the query that creates the table.
-SHOW CREATE TABLE table_name;
+SHOW CREATE TABLE tableName;
 
 -- Create a table.
-CREATE TABLE table_name (column1 DATATYPE, column2 DATATYPE);
+CREATE TABLE tableName (column1 DATATYPE, column2 DATATYPE);
 
 -- Example
 CREATE TABLE user (
@@ -120,17 +119,20 @@ CREATE TABLE user (
 ### Modify
 
 ```sql
+-- Rename a table.
+RENAME TABLE tableName1 TO tableName2;
+
 -- Add a column at end.
-ALTER TABLE table_name ADD column_name DATATYPE;
+ALTER TABLE tableName ADD columnName DATATYPE;
 
 -- Add a column at certain location.
-ALTER TABLE table_name ADD column_name DATATYPE AFTER column_name;
+ALTER TABLE tableName ADD columnName DATATYPE AFTER columnName;
 
 -- Delete a column.
-ALTER TABLE table_name DROP column_name;
+ALTER TABLE tableName DROP columnName;
 
 -- Change a column name. Has to be backticks.
-ALTER TABLE table_name CHANGE `oldcolname` `newcolname` datatype(length);
+ALTER TABLE tableName CHANGE `oldcolname` `newcolname` datatype(length);
 
 -- Reset AUTO_INCREMENT id. For this to work, the table must be empty.
 ALTER TABLE table AUTO_INCREMENT = 1;
@@ -141,7 +143,7 @@ ALTER TABLE table AUTO_INCREMENT = 1;
 Be **VERY** careful with this one. **ALWAYS** select first, delete second.
 
 ```sql
-DROP TABLE table_name;
+DROP TABLE tableName;
 ```
 
 ## Foreign Keys
@@ -154,50 +156,50 @@ The table containing the foreign key is called the child table, and the table co
 
 ```sql
 -- Add foreign key.
-ALTER TABLE table1 ADD FOREIGN KEY (id_column) REFERENCES table2(id_column);
+ALTER TABLE table1 ADD FOREIGN KEY (idColumn) REFERENCES table2(idColumn);
 
 -- Remove foreign key.
-ALTER TABLE table_name DROP FOREIGN KEY FK_column_name;
+ALTER TABLE tableName DROP FOREIGN KEY FK_columnName;
 
 -- Foreign key definition during table creation.
-SHOW CREATE TABLE table_name;
+SHOW CREATE TABLE tableName;
 
 -- List foreign keys.
 SELECT
-    TABLE_NAME,
-    COLUMN_NAME,
+    tableName,
+    COLUMNNAME,
     CONSTRAINT_NAME,
-    REFERENCED_TABLE_NAME,
-    REFERENCED_COLUMN_NAME
+    REFERENCED_tableName,
+    REFERENCED_COLUMNNAME
 FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
 WHERE
-    REFERENCED_TABLE_NAME = 'my_table';
+    REFERENCED_tableName = 'my_table';
 
 -- One-liner.
-SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'my_table';
+SELECT tableName, COLUMNNAME, CONSTRAINT_NAME, REFERENCED_tableName, REFERENCED_COLUMNNAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_tableName = 'my_table';
 ```
 
 ## Records
 
 ```sql
 -- Get records.
-SELECT * FROM table_name;
+SELECT * FROM tableName;
 
 -- Add record.
-INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+INSERT INTO tableName (column1, column2) VALUES (value1, value2);
 
 -- Example
 INSERT INTO user ('id', 'name', 'pass')
 VALUES (NULL, 'john', 'abc123');
 
 -- Modify record.
-UPDATE table_name SET column_name = 'value' WHERE criteria;
+UPDATE tableName SET columnName = 'value' WHERE criteria;
 
 -- Example
 UPDATE user SET name = 'Mike' WHERE id = 1;
 
 -- Delete record.
-DELETE FROM table_name WHERE column_name = <value>;
+DELETE FROM tableName WHERE columnName = <value>;
 ```
 
 ### INSERT ON DUPLICATE KEY UPDATE
@@ -206,22 +208,22 @@ Insert if `id` doesn't exit. Else, update the data at said `id`.
 
 ```sql
 +----+--------------+
-| id | column_name  |
+| id | columnName  |
 +----+--------------+
 |  1 | foo          |
 |  2 | bar          |
 |  3 | baz          |
 +----+--------------+
 
-INSERT INTO table (id, column_name) 
+INSERT INTO table (id, columnName) 
 VALUES 
     (1, 'qux'),
     (null, 'hex')
 ON DUPLICATE KEY UPDATE 
-    column_name = values(column_name);
+    columnName = values(columnName);
 
 +----+--------------+
-| id | column_name  |
+| id | columnName  |
 +----+--------------+
 |  1 | qux          | -- Value updated
 |  2 | bar          |
@@ -240,7 +242,7 @@ FROM information_schema.TABLES
 GROUP BY table_schema;
 
 -- Check the size of all the tables in a database
-SELECT table_name AS "Table",
+SELECT tableName AS "Table",
 ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
 FROM information_schema.TABLES
 WHERE table_schema = "database_name" -- Change this one
@@ -252,10 +254,10 @@ ORDER BY (data_length + index_length) DESC;
 To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re -create the database. Use `--databases` in order to have `CREATE TABLE IF NOT EXIST` included in the dump.
 
 ```bash
-mysqldump --add-drop-table --databases db_name > backup.sql
+mysqldump --add-drop-table --databases dbName > backup.sql
 
 # Simplest command.
-mysqldump --databases db_name > backup.sql
+mysqldump --databases dbName > backup.sql
 
 # Multiple databases.
 mysqldump --databases db1 db2 > backup.sql
@@ -264,7 +266,7 @@ mysqldump --databases db1 db2 > backup.sql
 mysqldump --all-databases > backup.sql
 
 # Prompt for password.
-mysqldump -p --databases db_name > backup.sql
+mysqldump -p --databases dbName > backup.sql
 
 # Options
 
@@ -277,7 +279,7 @@ mysqldump -p --databases db_name > backup.sql
 
 ## Restore
 
-If the dump was created without using `--databases`, then the database must be manually created before restoring. Also, the database must be specified with `mysql db_name < backup.sql`. Otherwise, just use:
+If the dump was created without using `--databases`, then the database must be manually created before restoring. Also, the database must be specified with `mysql dbName < backup.sql`. Otherwise, just use:
 
 ```bash
 # Restore a database.
@@ -290,7 +292,7 @@ mysql -p < backup.sql
 gzip -d < backup.sql.gz | mysql
 
 # If the database already exists and we want to restore it.
-mysql db_name < backup.sql
+mysql dbName < backup.sql
 ```
 
 # MySQL Workbench

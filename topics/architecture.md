@@ -1,3 +1,5 @@
+"Software Architecture" is just a fancy way of saying "how code is organised" and/or how "data flows" through a system. Whenever you see the word "pattern" it just means "a bunch of experienced people have concluded that this works well, so as beginners, we don't have to think too hard (up-front)."
+
 # C4 Model
 
 [Source](https://www.youtube.com/watch?v=1zYK615kepE)
