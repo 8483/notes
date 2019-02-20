@@ -75,7 +75,7 @@ Favor uni-directional lines showing the most important dependencies or data flow
 
 Instead of:  
 
-[Software System] Trade Data System ---> trade data ---> [Software System] Financial Risk System
+[Software System] Trade Data System ---> trade data ---> [Software System] Financial Risk System  
 [Software System] Trade Data System ---> **sends** trade data **to** ---> [Software System] Financial Risk System
  
 ### Legend

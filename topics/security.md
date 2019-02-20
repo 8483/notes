@@ -1,16 +1,20 @@
 # Attacks
 
-### XSS
+### XSS - Cross Site Scripting
 Javascript injection.
 
-### SQL Injection
-SQL injection.
-
-### CSRF / XSRF
+### CSRF / XSRF - Cross Site Request Forgery
 Executing requests on one website for another one while authenticated.
+
+#### Same-origin policy
+
+Prevents scripts from one origin to access private data on another origin.
 
 ### MITM
 Packet snooping.
+
+### SQL Injection
+SQL injection.
 
 # Good Practices
 
