@@ -34,6 +34,7 @@
 -   [Babel](./topics/babel.md)
 -   [Webpack](./topics/webpack.md)
 -   Typescript
+-   [Caching](./topics/caching.md)
 
 ### Architecture
 -   [Architecture](./topics/architecture.md)

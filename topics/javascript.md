@@ -184,6 +184,12 @@ console.log(true && "foo" && 1); // 1
 # Debugging
 
 ```javascript
+// Write to console
+console.log();
+
+// Show DOM element
+console.dir();
+
 // Display the call stack of a function
 console.trace();
 

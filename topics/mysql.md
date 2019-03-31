@@ -33,15 +33,15 @@ systemctl restart mysql
 [Digital Ocean tutorial](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)  
 Commands are **not** case sensitive, but table names are. **All commands must end with** `;`.
 
-`mysql -u root -p` - Log into MySQL as root.  
+`sudo mysql -u root -p` - Log into MySQL as root, with password.  
 `;` - Execute/End current command.  
 `ENTER` - Starts a new line. `;` is expected.
 
 # Users
 
 ```bash
-# Log in as new user.
-mysql -u user -p
+# Log in as new user, with password.
+sudo mysql -u user -p
 ```
 
 ```sql

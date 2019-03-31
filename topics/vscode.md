@@ -3,7 +3,13 @@
 `CTRL` + `p` - Search files.  
 `CTRL` + `Shift` + `p` - Commands.
 
-`ALT` + `SHIFT` + `Down` - Duplicate line.
+`CTRL` + `d` - Select duplicate values.  
+
+`ALT` + `Up` or `Down` - Move line up or down.  
+
+`ALT` + `SHIFT` + `Down` - Duplicate line.  
+`ALT` + `SHIFT` + `Right` - Select everything between brackets.
+
 
 # Zen Coding
 
