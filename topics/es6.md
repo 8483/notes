@@ -368,7 +368,7 @@ console.log(mealWithoutId); // Object without the id property.
 
 ```javascript
 const first = [1, 2, 3];
-const first = [4, 5, 6];
+const second = [4, 5, 6];
 
 // old
 const combined = first.concat(second);
