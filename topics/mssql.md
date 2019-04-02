@@ -58,7 +58,7 @@ SELECT
     lastSale.invoiceDate, 
     lastSale.revenue
 FROM (
-	SELECT 
+    SELECT 
         ROW_NUMBER() OVER (PARTITION BY clientID ORDER BY invoiceDate DESC) rowNumber,
         clientID,
         invoiceDate,
@@ -107,20 +107,6 @@ GROUP BY
 ### Approach 1 (FROM)
 
 ![TEA](../pics/sql/pivot_unpivot.png)
-
-```sql
-WITH PivotData AS
-(
-    SELECT <grouping column>
-        , <spreading column>
-        , <aggregation column>
-    FROM <source table>
-)
-SELECT <grouping column>, <distinct spreading values>
-FROM PivotData
-    PIVOT (<aggregation function>(<aggregation column>)
-        FOR <spreading column> IN <distinct spreading values>));
-```
 
 ```sql
 SELECT 
