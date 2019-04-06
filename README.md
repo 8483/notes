@@ -111,4 +111,5 @@
 ### Theory
 
 -   [Electronics](./topics/electronics.md)
+-   [RFID](./topics/rfid.md)
 -   [Electricity](./topics/electricity.md)

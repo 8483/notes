@@ -4,6 +4,29 @@ Instead of writing all the code in one giant file, we can split the code into mu
 
 This increases maintainability, code reuse and abstraction (blackbox).
 
+**CommonJS** (old) - Synchronous
+```javascript
+// foo.js module
+function foo() {
+  return 'bar';
+}
+module.exports.foo = foo;
+
+// index.js use 
+const { foo } = require('foo');
+```
+
+**ES6** - Must use Babel, can be asynchronous
+```javascript
+// foo.js module
+export function foo() {
+  return 'bar';
+}
+
+// index.js use
+import { foo } from 'foo';
+```
+
 Every file in Node is considered a module. Everything declared inside is scoped to the file i.e. they are private.
 
 Node does not give access to the global scope. In order to use the content of a module, we need to export it i.e. make it public.
