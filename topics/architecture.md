@@ -4,7 +4,7 @@
 
 [Source](https://www.youtube.com/watch?v=1zYK615kepE)
 
-The model prevents unstandardized drawings of architectures due to the lack of common vocabulary. A common set of abstractions is more important than a common notation i.e. **"Abstraciton first, notation second"**.
+The model prevents unstandardized drawings of architectures due to the lack of common vocabulary. A common set of abstractions is more important than a common notation i.e. **"Abstraction first, notation second"**.
 
 Very often the code does not match the architecture diagrams. The diagrams are maps that help developers navigate a large and complex codebase.
 
