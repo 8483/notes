@@ -50,9 +50,9 @@ Ports let servers distinguish one service from another on the same host and wait
 
 Normally a server has well known ports for it's applications. ex. HTTP uses `port 80` and SSH uses `port 22`. The client initiates a connection, and it's associated with an arbitrary port on its end.
 
-Only one program can listen to a port in a given moment. Once started, the program can start child processe to listen for multiple connections on the same port i.e. a web server.
+Only one program can listen to a port in a given moment. Once started, the program can start child processes to listen for multiple connections on the same port i.e. a web server.
 
-The port range that a normal (non-root) user can listen on is `1024` through `65535`. Root access (including sudo)can listen on ports down to 1.
+The port range that a normal (non-root) user can listen on is `1024` through `65535`. Root access (including sudo) can listen on ports down to 1.
 
 If the other side doesn't pick up, an RST (Reset packet) error message is sent back.
 
@@ -99,7 +99,7 @@ lsof -i
 
 ## nc / netcat
 
-`netcat` is a tool for manually talking to servers, by connecting to a port and sending a string over it. It's a thing wrapper over TCP.
+`netcat` is a tool for manually talking to servers, by connecting to a port and sending a string over it. It's a thin wrapper over TCP.
 
 ```bash
 nc en.wikipedia.org 80
