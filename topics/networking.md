@@ -165,8 +165,8 @@ python -m SimpleHTTPServer 8080
 
 **Gateway** is the router address we are talking to in order to connect to the rest of the network/internet.
 
-`127.0.0.1` - Your computer.  
-`192.168.x.x` - Local address created by a router.
+`127.x.x.x` - Your computer.  
+`192.168.0.x` - Local address created by a router.
 
 `ifconfig` - Check IP address.  
 `ping 8.8.8.8` - Ping IP address.  
