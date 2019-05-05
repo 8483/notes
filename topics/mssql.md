@@ -151,7 +151,7 @@ WITH PivotData AS (
         yearSold,
         product
 ) 
-SELECT [group], [2019], [2018]
+SELECT product, [2019], [2018]
 FROM PivotData
     PIVOT ( SUM(revenue) FOR [year] IN ([2019], [2018]) ) piv
 ```

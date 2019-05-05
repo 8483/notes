@@ -81,6 +81,7 @@ pwd         # Current path
 ls -a       # List all files, including hidden
 ls -l       # List in a list format
 ll          # Shorthand for ls -l
+ls -lh      # Show file size
 
 # Read
 cat FILE       # Show the file content in terminal

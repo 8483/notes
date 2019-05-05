@@ -20,7 +20,7 @@
 ### Backend
 
 -   [Node](./topics/node.md)
-    -   [Express](./topics/express.md)
+-   [Express](./topics/express.md)
 -   [MySQL](./topics/mysql.md)
 -   [SQL Server](./topics/mssql.md)
 -   [nginx](./topics/nginx.md)
@@ -102,14 +102,20 @@
 
 # Electronics
 
+### General
+
+-   [Electronics](./topics/electronics.md)
+- Terminology
+- Communication Protocols
+- Components
+-   [RFID](./topics/rfid.md)
+
 ### Gadgets
 
 -   [Raspberry Pi](./topics/raspberrypi.md)
 -   [Arduino](./topics/arduino.md)
 -   [NodeMCU](./topics/nodemcu.md)
 
-### Theory
+### Electricity
 
--   [Electronics](./topics/electronics.md)
--   [RFID](./topics/rfid.md)
 -   [Electricity](./topics/electricity.md)
