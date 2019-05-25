@@ -3,25 +3,30 @@ Webpack is a bundler, which combines many javascript files into a single bundle 
 It also uglifies (shortens identifier names) and minifies (gets rid of whitespace) the code.
 
 ```bash
-sudo npm install webpack --save-dev
+sudo npm install webpack webpack-cli --save-dev
 ```
 
-## Simple Example
+## Simple Default Example
 
-We need to add a webpack scripts in `package.json` with an entry and exit point. Webpack will start from `app.js`, get all the dependencies from it, and bundle all the code into one `bundle.js` file.
+**Webpack needs an `src` directory with the entry `index.js` file.**  
 
-Appending `-p` at the end of the script will use the production mode, which minifies the bundle.
+Without this, we get `ERROR in Entry module not found: Error: Can’t resolve ‘./src’ in 'folder'`. The entry point can be changed in a `webpack.config.js` file.
+
+We need to add a webpack scripts in `package.json`, which gets all the dependencies from `./src/index.js`, and bundles all the code into a `./dist/main.js` file.
 
 ```json
 {
     "scripts": {
-        "build": "webpack src/js/app.js dist/bundle.js",
-        "build:prod": "webpack src/js/app.js dist/bundle.js -p",
+        "build": "webpack"
     },
     "devDependencies": {
         "webpack": "4.x.x"
     }
 }
+```
+We then simply run
+```bash
+npm run build
 ```
 
 ## Configuration
