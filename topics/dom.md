@@ -246,3 +246,24 @@ function runEvent(e){
 `keydown` - Any keyboard button press and release.  
 `keyup` - Button release.  
 `keypress` - Button press.  
+
+### Custom Events
+
+```javascript
+function send(channel, payload){
+  let event = new CustomEvent(channel, {
+    detail: payload
+  })
+  dispatchEvent(event);
+}
+
+function on(channel){
+  addEventListener(channel, (e) => {
+    console.log(e.detail)
+  }, false); // bubbles
+}
+
+on("foo"); // Register listener
+
+send("foo", "bar"); // Catch event and print "bar"
+```

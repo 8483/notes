@@ -61,8 +61,9 @@ sudo apt-get install -f
 # Find
 
 ```bash
-find /                                # List root directory's content.
-find / | grep FILE                    # Search the output.
+find /                                    # List root directory's content.
+find / | grep FILE                        # Search the output.
+find ./folder -name '*.js' | xargs wc -l  # Lines of code per file
 
 sudo find / -iname FOLDER/FILE.ext    # Find case insensitive.
 which PROGRAM                         # Find path to program.

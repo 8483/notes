@@ -323,6 +323,20 @@ const { app, BrowserWindow } = electron;
 
 Used for copying or deleting properties from one object to another.
 
+### Update Object Property
+```javascript
+let obj = {
+    foo: "foo",
+    bar: "bar",
+    baz: "baz"
+};
+
+let newObj = {...obj, baz: "NEW VALUE"};
+
+console.log(obj)      // { foo: "foo", bar: "bar", baz: "baz" }
+console.log(newObj)   // { foo: "foo", bar: "bar", baz: "NEW VALUE" }
+```
+
 ### Copy
 
 ```javascript

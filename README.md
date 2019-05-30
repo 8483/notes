@@ -13,6 +13,7 @@
 
 -   [CSS](./topics/css.md)
 -   [React](./topics/react.md)
+-   [Vue](./topics/vue.md)
 -   [Electron](./topics/electron.md)
 -   Virtual DOM
 -   [Elm](./topics/elm.md)

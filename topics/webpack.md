@@ -29,6 +29,14 @@ We then simply run
 npm run build
 ```
 
+These can also be used in `package.json`, where production minifies, and development doesn't.
+```json
+"scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+}
+```
+
 ## Configuration
 
 Instead of a `package.json` script, we can use a detailed `webpack.config.js` configuration file, which can be generated with the command below and by answering questions.  
