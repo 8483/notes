@@ -16,11 +16,14 @@
 # Update
 sudo apt update;
 
-# curl, vim, tmux.
-sudo apt install curl vim tmux;
+# curl, vim, tmux, git
+sudo apt install curl vim tmux git -y;
 
 # Node
-sudo apt install nodejs git -y;
+sudo apt install nodejs npm;
+
+# NPM global
+sudo npm i -g nodemon;
 
 # MySQL
 sudo apt install mysql-server -y && mysql_secure_installation;

@@ -459,16 +459,31 @@ futureNumber.then(n => console.log(n)); //2
 
 # Async/Await
 
-This is basically promises mixed in with generators.
+Async/Await enables us to write asynchronous code in a synchronous fashion. Under the hood, it’s just syntactic sugar using generators and yield statements to “pause” execution. 
+
+In other words, async functions can “pull out” the value of a Promise even though it’s nested inside a callback function, giving us the ability to assign it to a variable.
 
 ```javascript
-const getUsers = async () => {
-    const user1 = await ajax("http://api.com/users/1");
-    const user2 = await ajax("http://api.com/users/2");
-    console.log(user1, user2);
+async function foo() {
+    try{
+        let res = await fetch("https://jsonplaceholder.typicode.com/todos");
+        let data = await res.json()
+        console.log(data);
+    } catch (err){
+        console.log(err)
+    }
 };
 
-getUsers();
+foo();
+
+// Fetch API comparison
+
+function foo() {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+}
 ```
 
 Under the hood it looks like...
@@ -479,11 +494,55 @@ const request = url => {
 };
 
 function* main() {
-    const user1 = yield ajax("http://api.com/users/1");
-    const user2 = yield ajax("http://api.com/users/2");
-    console.log(user1, user2);
+    const result = yield fetch("http://api.com/users/1");
+    const data = yield result.json();
+    console.log(data);
 }
 
 const it = main();
 it.next();
+```
+
+### Combination Example
+```javascript
+async function getDataOne() {
+    let res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    let data = await res.json()
+    return data;
+}
+
+async function getDataTwo() {
+    let res = await fetch("https://jsonplaceholder.typicode.com/todos/2");
+    let data = await res.json()
+    return data;
+}
+
+async function getBoth() {
+    var resultOne = await getDataOne();
+    var resultTwo = await getDataTwo();
+    console.log(resultOne, resultTwo)
+}
+
+getBoth();
+
+// Compared to this
+function foo() {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then(res => res.json())
+    .then(resultOne => {
+
+        fetch("https://jsonplaceholder.typicode.com/todos/2")
+        .then(res => res.json())
+        .then(resultTwo => {
+
+            console.log(resultOne, resultTwo)
+            
+        })
+        .catch(err => console.log(err));
+
+    })
+    .catch(err => console.log(err));
+}
+
+foo()
 ```
