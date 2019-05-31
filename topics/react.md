@@ -2,7 +2,7 @@ React is a library that only takes care of rendering the view while making sure 
 
 # React Create App
 
-Zero-configuration setup.
+Zero-configuration setup, creates all the boilerplate for you.
 
 ```bash
 sudo npm i -g create-react-app
@@ -17,6 +17,14 @@ It will install:
 
 It also enables hot module reloading, which means we don't have to re-build and refresh after each change.
 
+**Available commands:**
+```bash
+npm start        # Starts the development server.
+npm run build    # Bundles the app into static files for production.
+npm test         # Starts the test runner.
+npm run eject    # Removes all the configuration abstractions.
+```
+
 ### Errors
 
 You appear to be offline. Falling back to the local Yarn cache.
@@ -29,7 +37,7 @@ npm config set registry "https://registry.npmjs.org"
 
 ### Eject
 
-This will permanently add all the abstracted dependencies in `package.json` and the config files will appear. This allows detailed configurations.
+This will permanently remove this tool and add all the abstracted dependencies in `package.json` and the config files will appear. This allows detailed configurations.
 
 ```bash
 npm run eject
@@ -114,11 +122,21 @@ ReactDOM.render(<Counter />, document.getElementById("root"));
 
 # State
 
+**The component owning the state should be the one modifying it.**
+
+**The state should reside in the parent component, to be passed to the child.** 
+
+**If two components need to share the same state, then the state needs to be lifted one level up to their parent component.**
+
 `setState` is used for updating the state AND re-rendering the view i.e. syncing the DOM with the virtual DOM.
 
 The method takes an object, and merges or overwrites the state object with it.
 
 If we update the state directly, React is unaware of the change, and nothing is rendered.
+
+### Props vs State
+
+`Props` includes data that we give to a component. `State` is data that is local/private to a component.
 
 # Events
 
