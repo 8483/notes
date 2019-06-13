@@ -87,6 +87,8 @@ for file in *.jpg; do convert $file -resize 492x492! ../resampled/$file && echo 
 
 ### Resampling
 ```bash
+sudo apt install imagemagick
+
 # Reduce the image quality. Adjust the quality parameter 1-100.
 convert image.jpg -sampling-factor 4:2:0 -strip -quality 1 -interlace JPEG -colorspace RGB resampled_image.jpg
 

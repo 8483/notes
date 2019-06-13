@@ -17,7 +17,10 @@ It will install:
 
 It also enables hot module reloading, which means we don't have to re-build and refresh after each change.
 
+`react-scripts` in `package.json` is the magic behind `create-react-app` because it's the thing that abstracts all the `webpack` and `babel` configuration.
+
 **Available commands:**
+
 ```bash
 npm start        # Starts the development server.
 npm run build    # Bundles the app into static files for production.
@@ -60,13 +63,29 @@ ReactDOM.render(element, document.getElementById("app"));
 It's syntactic sugar for creating HTML elements with javascript, instead of using templating engines. It's not a string, but an expression.
 
 ```jsx
-const element = <h1>Hello World</h1>;
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <h1>Hello World!</h1>
+            </div>
+        );
+    }
+}
 ```
 
-Babel transpiles it into...
+Without JSX...
 
 ```javascript
-var element = React.createElement("h1", null, "Hello World");
+class App extends Component {
+    render() {
+        return React.createElement(
+            "div",
+            { className: "App" },
+            React.createElement("h1", null, "Hello World!")
+        );
+    }
+}
 ```
 
 Since the compiled JSX makes a call to `React.createElement`, we need to import `React`, even if we don't use the object directly.
@@ -74,6 +93,16 @@ Since the compiled JSX makes a call to `React.createElement`, we need to import 
 This returns an `Object`, a React element, which is part of the virtual-DOM.
 
 The call to the function is the reason why we need one parent element, as Babel gets confused with multiple.
+
+### Fragments
+
+If we don't want to return a reduntant `div` element, we can use a `fragment` i.e. a "ghost" element.
+
+```jsx
+<React.fragment>
+    <h1>Hello World</h1>
+</React.fragment>
+```
 
 # Virtual-DOM
 
@@ -120,11 +149,56 @@ import Counter from "./components/counter";
 ReactDOM.render(<Counter />, document.getElementById("root"));
 ```
 
+### Functional Components
+
+They are **stateless** components i.e. they don't need to be a `class`. Use them when there is no state i.e. when there are props passed in.
+
+**Class component**
+
+```javascript
+import React, { Component } from "react";
+
+class UserItem extends Component {
+    render() {
+        const { userName, userImg } = this.props.user;
+
+        return (
+            <div>
+                <h1>{userName}</h1>
+            </div>
+        );
+    }
+}
+
+export default Counter;
+```
+
+**Functional component**
+
+`render()` and `this` are no longer needed.
+
+```javascript
+import React from "react";
+
+// function UserItem(props) {...
+const UserItem = props => {
+    const { userName, userImg } = props.user;
+
+    return (
+        <div>
+            <h1>{userName}</h1>
+        </div>
+    );
+};
+
+export default Counter;
+```
+
 # State
 
 **The component owning the state should be the one modifying it.**
 
-**The state should reside in the parent component, to be passed to the child.** 
+**The state should reside in the parent component, to be passed to the child.**
 
 **If two components need to share the same state, then the state needs to be lifted one level up to their parent component.**
 
@@ -246,3 +320,15 @@ class Foo extends Component {
     }
 }
 ```
+
+# Hooks
+
+Used to simplify code.
+
+`useState` hook allows state in functional components.  
+`useEffect` hook mimics lifecycle methods like `componentDidMount()`, which is available only in class components.
+`useReducer` ?
+
+# Context API
+
+Used for state management, similar to `Redux`.

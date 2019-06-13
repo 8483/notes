@@ -76,6 +76,55 @@ We only get the first row for each client i.e. the last sale (sorted by descendi
 116  | 2018-02-16 | 1848.00
 1211 | 2018-03-28 | 8844.64
 
+# CTE - Common Table Expression
+
+It defines a temporary result set which can be used in a SELECT statement. 
+
+```sql
+-- CTE
+WITH Employee_CTE (EmployeeNumber, Title) AS (
+    SELECT 
+        NationalIDNumber,
+        JobTitle
+    FROM HumanResources.Employee
+)
+-- Query using CTE
+SELECT EmployeeNumber,
+       Title
+FROM Employee_CTE
+```
+
+# Rollup (Total Row)
+
+`ROLLUP` is a subclause of the `GROUP BY` clause which provides a shorthand for defining multiple grouping sets. Unlike the `CUBE` subclause, `ROLLUP` does not create all possible grouping sets based on the dimension columns; the `CUBE` makes a subset of those.
+
+When generating the grouping sets, `ROLLUP` assumes a hierarchy among the dimension columns and only generates grouping sets based on this hierarchy.
+
+The `ROLLUP` is often used to generate subtotals and totals for reporting purposes.
+
+```sql
+SELECT
+    brand,
+    category,
+    SUM(sales) sales
+FROM
+    sales.sales_summary
+GROUP BY
+    ROLLUP(brand, category)
+```
+
+This will result in
+
+|brand | category | sales| |
+|---|---|---| --- |
+Honda | cars | 100 | 
+Honda  | bikes | 200 |
+Honda | NULL | 300 | Subtotal
+BMW | cars | 400 |
+BMW  | bikes | 500 |
+BMW | NULL | 900 | Subtotal
+NULL | NULL | 1200 | Grand Total
+
 # Pivot
 
 In order for the pivoting to work, we must **only use the columns needed**, instead of all of them. This results in repeating rows.
@@ -104,7 +153,7 @@ GROUP BY
     product
 ```
 
-### Approach 1 (FROM)
+### Approach 1 - FROM
 
 ![TEA](../pics/sql/pivot_unpivot.png)
 
@@ -138,7 +187,7 @@ shoes | 694 | 3392
 shirts | 807 | 3436
 hats | 578 | 2511
 
-### Approach 2 (WITH)
+### Approach 2 - WITH (CTE)
 
 ```sql
 WITH PivotData AS (
