@@ -26,6 +26,9 @@
 -   [SQL Server](./topics/mssql.md)
 -   [nginx](./topics/nginx.md)
 -   [C#](./topics/csharp.md)
+-   [Puppeteer](./topics/puppeteer.md)
+-   [Caching](./topics/caching.md)
+-   [Logging](./topics/logging.md)
 
 ### Version Control
 
@@ -36,7 +39,6 @@
 -   [Babel](./topics/babel.md)
 -   [Webpack](./topics/webpack.md)
 -   Typescript
--   [Caching](./topics/caching.md)
 
 ### Architecture
 -   [Architecture](./topics/architecture.md)

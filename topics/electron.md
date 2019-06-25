@@ -321,6 +321,10 @@ electron-packager . --platform=win32 --arch=ia32
 
 ### asar
 
+The `.asar` file, or archive rather, is a simple tar-like format that concatenates files into a single file that allows Electron to read arbitrary files from it without unpacking the whole file.
+
+It’s really just a read-only map of what files are within the Electron build, allowing Electron itself to know what’s inside. You can pass the `–unpack` option and some files will not be packed. Doing so will create two files: app.asar and app.asar.unpacked.
+
 We can see the source files via `Contents/Resources/app`. We can hide these by packaging them in an `.asar` archive. This is similar to a `.tar` file, but without compression. This archive can be easily unpacked, but it does provide an extra layer of security.
 
 ```bash

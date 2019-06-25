@@ -1,3 +1,30 @@
+# UPDATE from SELECT
+
+```sql
+UPDATE product
+SET price = t2.newPrice
+FROM (
+    SELECT sku, newPrice
+    FROM pricelist
+) t2
+WHERE
+    product.sku = t2.sku
+```
+
+# INSERT from SELECT
+```sql
+-- Whole table
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition;
+
+-- Specific columns
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+```
+
 # Partition By
 
 We use this to make a "sub-query" i.e. select n-th item from a table for further use.
