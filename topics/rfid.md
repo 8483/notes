@@ -14,6 +14,12 @@ All cards contain a chip and an antenna. They are passive i.e. get the energy fr
 
 This is a transmission protocol which connects the RFID reader with a controller.
 
+The Wiegand interface has two data lines, DATA0 and DATA1.  These lines are normall held high at 5V.
+- When a 0 is sent, DATA0 drops to 0V for a few µs.  
+- When a 1 is sent, DATA1 drops to 0V for a few µs. 
+
+There are a few ms between the pulses.
+
 It transmits the UID in 2 formats:  
 
 - W26 - Transports only first 3 bytes of the UID.

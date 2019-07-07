@@ -231,3 +231,130 @@ SELECT product, [2019], [2018]
 FROM PivotData
     PIVOT ( SUM(revenue) FOR [year] IN ([2019], [2018]) ) piv
 ```
+
+# Dynamic Pivot
+
+```sql
+DECLARE @sql AS varchar(max)
+DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
+DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
+
+SELECT @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_CODE + ']'
+        , @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_CODE + '], 0) AS [' + PIVOT_CODE + ']'
+FROM (
+    SELECT
+		distinct SS.acName2 as PIVOT_CODE
+	FROM tHE_Move M
+		JOIN tHE_SetSubj SS
+			ON M.acIssuer = SS.acSubject
+	WHERE m.acDocType in (
+		'3210',
+		'3220',
+		'3230',
+        '3240',
+        '3450',
+        '3250',
+        '3260',
+        '3270',
+        '3540',
+        '3460',
+        '3280',
+        '3290',
+        '3310',
+        '3320',
+        '3440',
+        '3330',
+        '3340',
+        '3350',
+        '3360',
+        '3370',
+        '3380',
+        '3390',
+        '3410',
+        '3470',
+        '3420',
+        '3430',
+        '3480',
+        '3490',
+        '3520',
+        '3530',
+        '3560',
+        '3610',
+        '2540',
+        '2740',
+        '2730' 
+	)
+) AS PIVOT_CODES
+
+SET @sql = '
+;WITH PivotData AS (
+    select
+		ym,
+		shop AS PIVOT_CODE,
+		sum(revenueNoVAT) revenueNoVAT
+	from (
+		SELECT
+			SS.acName2 shop,
+			SI.acName product,
+			m.addate,
+			concat(year(m.addate), ' + '''-''' + ', RIGHT(' + '''00''' + ' + CONVERT(varchar(2), DATEPART(MONTH, m.addate)), 2)) ym,
+			MI.anPVForPay revenueVAT,
+			MI.anPVVATBase revenueNoVAT,
+			MI.anQTY * MI.anStockPrice totalCost,
+			MI.anPVVATBase - MI.anQTY * MI.anStockPrice AS totalProfit
+		FROM tHE_MoveItem MI
+			JOIN tHE_Move M
+				ON MI.acKey = M.acKey
+			JOIN tHE_SetItem SI
+				ON MI.acIdent = SI.acIdent
+			JOIN tHE_SetSubj SS
+				ON M.acIssuer = SS.acSubject
+		WHERE m.acDocType in (
+			' + '''3210''' + ',
+			' + '''3220''' + ',
+			' + '''3230''' + ',
+			' + '''3240''' + ',
+			' + '''3450''' + ',
+			' + '''3250''' + ',
+			' + '''3260''' + ',
+			' + '''3270''' + ',
+			' + '''3540''' + ',
+			' + '''3460''' + ',			
+            ' + '''3280''' + ',
+			' + '''3290''' + ',
+			' + '''3310''' + ',
+			' + '''3320''' + ',
+			' + '''3440''' + ',
+			' + '''3330''' + ',
+			' + '''3340''' + ',
+			' + '''3350''' + ',
+			' + '''3360''' + ',
+			' + '''3370''' + ',
+			' + '''3380''' + ',
+			' + '''3390''' + ',
+			' + '''3410''' + ',
+			' + '''3470''' + ',
+			' + '''3420''' + ',			
+            ' + '''3430''' + ',
+			' + '''3480''' + ',
+			' + '''3490''' + ',
+			' + '''3520''' + ',
+			' + '''3530''' + ',
+			' + '''3560''' + ',
+			' + '''3610''' + ',
+			' + '''2540''' + ',
+			' + '''2740''' + ',
+			' + '''2730''' + ' 
+		)
+	) t1
+	group by ym, shop
+) 
+SELECT ym, ' + @select_list + '
+FROM PivotData
+    PIVOT ( sum(revenueNoVAT) FOR PIVOT_CODE IN (' + @pivot_list + ')) piv
+order by ym desc
+'
+-- select @sql
+
+EXEC (@sql)
+```

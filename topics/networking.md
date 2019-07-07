@@ -9,6 +9,12 @@ sudo apt-get install netcat-openbsd tcpdump traceroute mtr
 
 # Theory
 
+Create a basic program that sends a string to the specified ip/port.
+
+Create a second program that listens on that ip/port and prints out any received strings.
+
+Congratulations you now know how every network works. The rest is security, data verification/validation, optimization.
+
 ## HTTP / TCP Model
 
 Each of these depends on the one below. Some of these don't belong on a specific layer.

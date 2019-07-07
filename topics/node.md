@@ -1,3 +1,13 @@
+# Install
+
+```bash
+sudo apt install nodejs -y
+
+# Check install
+node -v
+npm -v
+```
+
 # Modules
 
 Instead of writing all the code in one giant file, we can split the code into multiple files called `modules`. Only things that are highly related should go in a module.

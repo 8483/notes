@@ -158,3 +158,29 @@ Generate a random 14 character password by using the linux `/dev/urandom` file, 
 `C:\Users\User\AppData\Local\lxss\home\user` - Filesystem location.
 
 `cd /mnt/` - Navigate to My Computer (C:, D:).
+
+# How to Compile and Run a C Program
+
+```bash
+# Create file
+touch hello.c
+
+# Edit file
+vim hello.c
+```
+Paste this C code in the file.
+```c
+#include <stdio.h>
+
+main() {
+    printf("Hello World\n");
+}
+```
+
+``` bash
+# Compile the code into hello program
+gcc -o hello hello.c
+
+# Run the program
+./hello
+```

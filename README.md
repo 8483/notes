@@ -51,12 +51,14 @@
 -   Authentication
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
+-   [Bitwise](./topics/bitwise.md)
 -   [Binary base](./topics/base.md)
 
 ### Useful
 
 -   [Algorithms](./topics/algos.md)
 -   [Excel](./topics/excel.md)
+-   [Google API](./topics/googleapi.md)
 
 ### Mobile
 
@@ -122,3 +124,12 @@
 ### Electricity
 
 -   [Electricity](./topics/electricity.md)
+
+# Googling
+
+```
+"exact query"
+website.com: query
+query 2017..2018
+filetype:pdf query
+```

@@ -4,7 +4,7 @@ If a file is read-only and can't be changed, use `sudo vim file` to open it as r
 
 ## Modes
 
-`ESC` - Command (Default)  
+`ESC` or `CTRL` + `[` - Command (Default)  
 `i` - Insert (Editing)  
 `v` - Visual (Like Command, but with selection)
 
@@ -110,6 +110,25 @@ Adding a number before a command, will repeat it n times. Ex. `3h` will go up 3 
 
 Ex. `5ifoo` + `ESC` will result in `foofoofoofoofoo`.
 
-### Editor
+# vimrc - Customization
 
-`:set number` - Show line numbers.
+The global `.vimrc` file is located in `/etc/vim/vimrc` or `etc/vimrc`.
+
+Create a `.vimrc` file in the `home` directory for customizations.
+
+When vim is opened, it will automatically check the current user’s home directory for a .vimrc file. All settings specified in this file will override the global settings.  
+
+Configurations can be made inside `vim` by using `:set number`.
+
+```bash
+set nocompatible    # Set compatibility to Vim only.
+set number          # Show line numbers.
+set visualbell	    # Use visual bell (no beeping)
+set wrap            # Word wrap.
+
+set autoindent	    # Auto-indent new lines
+set shiftwidth=4    # Number of auto-indent spaces
+set smartindent	    # Enable smart-indent
+set smarttab	    # Enable smart-tabs
+set softtabstop=4   # TAB is 4 spaces.
+```
