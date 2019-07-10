@@ -17,6 +17,7 @@
 -   [Electron](./topics/electron.md)
 -   Virtual DOM
 -   [Elm](./topics/elm.md)
+-   [Tabulator](./topics/tabulator.md)
 
 ### Backend
 
@@ -29,6 +30,7 @@
 -   [Puppeteer](./topics/puppeteer.md)
 -   [Caching](./topics/caching.md)
 -   [Logging](./topics/logging.md)
+-   [SSL](./topics/ssl.md)
 
 ### Version Control
 
@@ -85,6 +87,7 @@
 -   [vim](./topics/vim.md)
 -   [ssh](./topics/ssh.md)
 -   [compression](./topics/compression.md)
+-   [cron](./topics/cron.md)
 
 # DevOps
 

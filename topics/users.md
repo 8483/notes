@@ -18,7 +18,7 @@ su - <USERNAME>
 sudo -i
 
 # Logout
-CTRL + d
+CTRL + d # or exit
 ```
 
 The root account is disabled by default in Ubuntu, so there is no root password, that's why `su` fails with an authentication error.
