@@ -324,6 +324,7 @@ const { app, BrowserWindow } = electron;
 Used for copying or deleting properties from one object to another.
 
 ### Update Object Property
+
 ```javascript
 let obj = {
     foo: "foo",
@@ -335,6 +336,25 @@ let newObj = {...obj, baz: "NEW VALUE"};
 
 console.log(obj)      // { foo: "foo", bar: "bar", baz: "baz" }
 console.log(newObj)   // { foo: "foo", bar: "bar", baz: "NEW VALUE" }
+```
+The properties are added in order, so if you want to override existing properties, you need to put them at the end instead of at the beginning.
+
+```javascript
+let obj1 = {
+    foo: "foo",
+    bar: "bar",
+    baz: "baz"
+};
+
+let obj2 = {
+    bar: "bar2",
+    baz: "baz2",
+    new: "new"
+};
+
+let newObj = {...obj1, ...obj2};
+
+console.log(newObj)   // { foo: "foo", bar: "bar2", baz: "baz2", new: "new" }
 ```
 
 ### Copy
