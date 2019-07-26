@@ -1,3 +1,9 @@
+# Declare Variables
+
+```sql
+DECLARE @date DATETIME = '07.01.2019'
+```
+
 # UPDATE from SELECT
 
 ```sql

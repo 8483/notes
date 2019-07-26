@@ -50,26 +50,41 @@ To transfer a public key, use this from `~`:
 rsync -av -e 'ssh -p 3022' ./.ssh/id_rsa.pub user@127.0.0.1:~/.ssh/
 ```
 
-# Transfer files over SSH with rsync
+# rsync - Transfer files over SSH 
 
-Only trasnfer the files that have changes or are missing. Much faster and secure than FTP.
+Only transfer the files that have changes or are missing. Much faster and secure than FTP.
 
-`-a` - Recursion and preserve everything.  
-`-v` - Transfer log.  
-`-e` - Specify remote shell.
+```bash
+-a   # Recursion and preserve everything.  
+-v   # Transfer log.  
+-h   # Display the output numbers in a human-readable format.
+-e   # Specify remote shell.
+-W   # Copy whole file, without checking for changes.
+
+--progress   # Show the sync progress during transfer
+```
 
 ```bash
 # Transfer everything from the current directory to a new folder in the remote home directory.
-rsync -av -e 'ssh' . user@255.255.255.255:~/folder/
+rsync -av . user@123.456.789.255:folder/
 
 # Transfer folder1 and its content to remote home directory
-rsync -av -e 'ssh' ./folder1 user@255.255.255.255:~/
+rsync -av ./folder1 user@123.456.789.255:
 
 # Transfer everything from folder1 without the folder itself to remote folder2 in remote home directory.
-rsync -av -e 'ssh' ./folder1/ user@255.255.255.255:~/folder2/
+rsync -av ./folder1/ user@123.456.789.255:folder2/
 
 # Transfer multiple files and folders.
-rsync -av -e 'ssh' ./file1 ./file2 ./folder1 user@255.255.255.255:~/folder2/
+rsync -av ./file1 ./file2 ./folder1 user@123.456.789.255:folder2/
+
+# Another way
+rsync -av -e 'ssh' ./folder1/ user@123.456.789.255:~/folder1/
+```
+
+When the terminal freezes, fix it with this in a new terminal **(doesn't work with --progress)**:
+
+```bash
+while killall -CHLD ssh; do sleep 0.1; done;
 ```
 
 ### To Virtual Machine

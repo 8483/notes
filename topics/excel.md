@@ -1,4 +1,14 @@
-# Insert pictures
+# Insert pictures from URL
+
+This code gets images from a URLs and inserts them in the column to the right of the URL.
+
+1. Have a column with the image URLs, usually in range `A:A`. Leave an empty column on the right i.e. `B:B`.
+2. Open the Developer/Visual Basic tab.
+3. Paste the below code in a new module. (Insert/Module)
+4. Edit the `Rng` value in the code i.e. the range with image URLs ex. `A1:A100`.
+5. Click run and wait for the images to be populated in the adjacent column i.e. column `B:B`.
+
+It takes around 2 seconds per image.
 
 ```vbnet 
 Sub URLPictureInsert()
@@ -7,7 +17,7 @@ Sub URLPictureInsert()
     Dim w As Integer
     Dim h As Integer
     On Error Resume Next
-    Set Rng = ActiveSheet.Range("b1:b2")
+    Set Rng = ActiveSheet.Range("A1:A100")
     w = 100
     h = 100
     For Each cell In Rng
