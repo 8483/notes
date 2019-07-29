@@ -94,3 +94,13 @@ rsync -av -e "ssh -p PORT_NUMBER" <SOURCE> <DESTINATION>:<PATH>
 
 rsync -av -e 'ssh -p 3022' . user@127.0.0.1:~/make-this_folder
 ```
+
+### Backup
+
+To copy multiple files, the command must be a string. This will copy the content from the locations to the single location the command is called from.
+
+```bash
+rsync -av -e 'ssh' 'root@123.456.789.255:/etc/nginx/nginx.conf /etc/letsencrypt/keys' .
+```
+
+This command will copy the `nginx.conf` file and the letsencrypt folder with the keys. The command must run as root for the keys.

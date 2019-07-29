@@ -22,6 +22,19 @@ https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html
 
 3. Open Boards Manager from Tools > Board menu and install esp8266 platform (and don't forget to select your ESP8266 board from Tools > Board menu after installation).
 
+# GPIO
+
+NodeMCU Development kit provides access to the GPIOs of ESP8266. **The NodeMCU Dev kit pins are numbered differently than internal GPIO notations of ESP8266**. For example, the D0 pin on the NodeMCU Dev kit is mapped to the internal GPIO pin 16 of ESP8266.
+
+```c
+// Pins can be assigned like this
+int PIN_A = D7 // GPIO13
+int PIN_A = 13 // D7
+
+// This can also be used. Takes less RAM.
+#define PIN_A 13
+```
+
 # LED example
 
 ```c

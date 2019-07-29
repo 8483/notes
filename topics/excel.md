@@ -1,6 +1,6 @@
 # Insert pictures from URL
 
-This code gets images from a URLs and inserts them in the column to the right of the URL.
+This code gets images from URLs and inserts them in the column to the right of the URL.
 
 1. Have a column with the image URLs, usually in range `A:A`. Leave an empty column on the right i.e. `B:B`.
 2. Open the Developer/Visual Basic tab.

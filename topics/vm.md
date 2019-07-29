@@ -8,23 +8,51 @@
 6. `sudo adduser username vboxsf` to access shared folder.
 7. **Reboot.**
 
-# Packages
+# Environment
 
-### Update
+User
+```bash
+# Add user
+adduser <username>
+
+# Add sudo access
+usermod -aG sudo <username>
+
+# Switch to user
+su - <username>
+```
+
+Basic
 
 ```bash
 # Update
-sudo apt update;
+sudo apt update && sudo apt upgrade;
 
-# curl, vim, tmux, git
+# curl, vim, tmux, git (Usually installed already)
 sudo apt install curl vim tmux git -y;
 
 # Node
 sudo apt install nodejs npm;
 
-# NPM global
+# Global nodemon
 sudo npm i -g nodemon;
 
 # MySQL
 sudo apt install mysql-server -y && mysql_secure_installation;
 ```
+
+Web Server
+
+```bash
+# nginx (web server)
+sudo apt install nginx -y;
+
+# Global forever
+sudo npm i -g forever;
+```
+
+# Digital Ocean Update
+
+To update Ubuntu, the droplet needs to be destroyed i.e. rebuilt with the new Linux distro.
+
+After this, an email will be sent with the login credentials.

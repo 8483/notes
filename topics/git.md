@@ -4,6 +4,18 @@ A commit in a git repository records a snapshot of all the files in your directo
 
 Git wants to keep commits as lightweight as possible though, so it doesn't just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a "delta", from one version of the repository to the next.
 
+# Rules
+
+1. Create a Git repository for every new project.
+2. Create a new branch for every new feature.
+3. Use Pull Requests to merge code to Master.
+
+![Git Workflow](../pics/git/git_workflow.jpg)
+
+[Source 1](https://www.freecodecamp.org/news/follow-these-simple-rules-and-youll-become-a-git-and-github-master-e1045057468f/)
+[Source 2](https://www.freecodecamp.org/news/how-to-use-git-efficiently-54320a236369/)
+[Source 3](https://pathof.dev/blog/making-sense-of-git-and-github)
+
 # Quick Edit
 
 Download from repository and set user.
@@ -260,6 +272,8 @@ git pull
 Behind the scenes, this creates an origin/master branch which is automatically merged into the master one, unless there is a merge conflict.
 
 ## Pull Requests
+
+**This is a GitHub feature which is a request to merge two related code bases together.** This uses the Git merge functionality under the hood to ensure that code bases we merge code bases without conflicts.
 
 Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master.
 

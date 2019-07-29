@@ -4,6 +4,9 @@
 # Guided user creation
 adduser <USERNAME>
 
+# Add sudo access
+usermod -aG sudo <USERNAME>
+
 # Scripted user creation
 useradd --uid <UID> --gid <GID> -m -s /usr/bin/zsh -d /var/www/<USERNAME> --password <PASSWORD> <USERNAME>
 ```
