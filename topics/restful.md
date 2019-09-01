@@ -45,6 +45,84 @@ Treat it like a sub-resource with RESTful principles. For example, GitHub's API 
 
 Sometimes you really have no way to map the action to a sensible RESTful structure. For example, a multi-resource search doesn't really make sense to be applied to a specific resource's endpoint. In this case, /search would make the most sense even though it isn't a resource. This is OK - just do what's right from the perspective of the API consumer and make sure it's documented clearly to avoid confusion.
 
+# Naming Convention
+
+Use consistent resource naming conventions and URI formatting for minimum ambiguily and maximum readability and maintainability. You may implement below design hints to achieve consistency:
+
+### **Use forward slash (/) to indicate a hierarchical relationships**
+
+The forward slash (/) character is used in the path portion of the URI to indicate a hierarchical relationship between resources. e.g.
+
+```
+http://api.example.com/device-management
+http://api.example.com/device-management/managed-devices
+http://api.example.com/device-management/managed-devices/{id}
+http://api.example.com/device-management/managed-devices/{id}/scripts
+http://api.example.com/device-management/managed-devices/{id}/scripts/{id}
+```
+
+### **Do not use trailing forward slash (/) in URIs**
+
+As the last character within a URI’s path, a forward slash (/) adds no semantic value and may cause confusion. It’s better to drop them completely.
+
+```
+http://api.example.com/device-management/managed-devices/
+http://api.example.com/device-management/managed-devices 	/*This is much better version*/
+```
+### **Use hyphens (-) to improve the readability of URIs**
+
+To make your URIs easy for people to scan and interpret, use the hyphen (-) character to improve the readability of names in long path segments.
+
+```
+http://api.example.com/inventory-management/managed-entities/{id}/install-script-location  //More readable
+http://api.example.com/inventory-management/managedEntities/{id}/installScriptLocation  //Less readable
+```
+
+### **Do not use underscores ( _ )**
+
+It’s possible to use an underscore in place of a hyphen to be used as separator – But depending on the application’s font, it’s possible that the underscore (_) character can either get partially obscured or completely hidden in some browsers or screens.
+
+To avoid this confusion, use hyphens (-) instead of underscores ( _ ).
+
+```
+http://api.example.com/inventory-management/managed-entities/{id}/install-script-location  //More readable
+http://api.example.com/inventory_management/managed_entities/{id}/install_script_location  //More error prone
+```
+
+### **Use lowercase letters in URIs**
+
+When convenient, lowercase letters should be consistently preferred in URI paths.
+
+RFC 3986 defines URIs as case-sensitive except for the scheme and host components. e.g.
+```
+http://api.example.org/my-folder/my-doc  //1
+HTTP://API.EXAMPLE.ORG/my-folder/my-doc  //2
+http://api.example.org/My-Folder/my-doc  //3
+```
+In above examples, 1 and 2 are same but 3 is not as it uses My-Folder in capital letters.
+
+### **Never use CRUD function names in URIs**
+
+URIs should not be used to indicate that a CRUD function is performed. URIs should be used to uniquely identify resources and not any action upon them. HTTP request methods should be used to indicate which CRUD function is performed.
+```
+HTTP GET http://api.example.com/device-management/managed-devices  //Get all devices
+HTTP POST http://api.example.com/device-management/managed-devices  //Create new Device
+
+HTTP GET http://api.example.com/device-management/managed-devices/{id}  //Get device for given Id
+HTTP PUT http://api.example.com/device-management/managed-devices/{id}  //Update device for given Id
+HTTP DELETE http://api.example.com/device-management/managed-devices/{id}  //Delete device for given Id
+```
+
+### **Use query component to filter URI collection**
+
+Many times, you will come across requirements where you will need a collection of resources sorted, filtered or limited based on some certain resource attribute. For this, do not create new APIs – rather enable sorting, filtering and pagination capabilities in resource collection API and pass the input parameters as **query parameters**. e.g.
+
+```http://api.example.com/device-management/managed-devices
+http://api.example.com/device-management/managed-devices?region=USA
+http://api.example.com/device-management/managed-devices?region=USA&brand=XYZ
+http://api.example.com/device-management/managed-devices?region=USA&brand=XYZ&sort=installation-date
+```
+
 # SSL everywhere - all the time
 
 Always use SSL. No exceptions. Today, your web APIs can get accessed from anywhere there is internet (like libraries, coffee shops, airports among others). Not all of these are secure. Many don't encrypt communications at all, allowing for easy eavesdropping or impersonation if authentication credentials are hijacked.  

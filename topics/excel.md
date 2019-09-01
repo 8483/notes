@@ -29,3 +29,29 @@ Sub URLPictureInsert()
         Next
 End Sub
 ```
+
+# Google Sheets Cell Update Timestamp
+
+1. Modify code with corresponding sheet, cells and update cells.
+2. Go to Tools/Script Editor.
+3. Paste the code and click save. 
+
+```javascript
+function onEdit(e) {
+  var sh = e.source.getActiveSheet();
+  var sheets = ['Sheet1']; // Which sheets to run the code.
+
+  // Columns with the data to be tracked. 1 = A, 2 = B...
+  var ind = [1, 2, 3].indexOf(e.range.columnStart); 
+
+  // Which columns to have the timestamp, related to the data cells.
+  // Data in 1 (A) will have the timestamp in 4 (D)
+  var stampCols = [4, 5, 6]
+  
+  if(sheets.indexOf(sh.getName()) == -1 || ind == -1) return;
+
+  // Insert/Update the timestamp.
+  var timestampCell = sh.getRange(e.range.rowStart, stampCols[ind]);
+  timestampCell.setValue(typeof e.value == 'object' ? null : new Date());
+}
+```

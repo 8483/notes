@@ -28,21 +28,32 @@ systemctl restart mysql
 # sudo service mysql start
 ```
 
+# Status
+
+```bash
+sudo systemctl status mysql
+sudo systemctl start mysql
+
+sudo /etc/init.d/mysql status
+sudo /etc/init.d/mysql start
+```
+
+# Login
+```bash
+# Log into MySQL as root, with password. 
+sudo mysql -u root -p
+```
+
 # Command line
 
 [Digital Ocean tutorial](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)  
-Commands are **not** case sensitive, but table names are. **All commands must end with** `;`.
 
-`sudo mysql -u root -p` - Log into MySQL as root, with password.  
+Commands are **not** case sensitive, but table names are. **All commands must end with** `;`.
+ 
 `;` - Execute/End current command.  
 `ENTER` - Starts a new line. `;` is expected.
 
 # Users
-
-```bash
-# Log in as new user, with password.
-sudo mysql -u user -p
-```
 
 ```sql
 -- Create user
