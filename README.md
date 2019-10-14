@@ -22,15 +22,18 @@
 ### Backend
 
 -   [Node](./topics/node.md)
--   [Express](./topics/express.md)
--   [MySQL](./topics/mysql.md)
--   [SQL Server](./topics/mssql.md)
 -   [nginx](./topics/nginx.md)
--   [C#](./topics/csharp.md)
--   [Puppeteer](./topics/puppeteer.md)
+-   [Express](./topics/express.md)
+-   [GraphQL](./topics/graphql.md)
 -   [Caching](./topics/caching.md)
 -   [Logging](./topics/logging.md)
 -   [SSL](./topics/ssl.md)
+-   [Puppeteer](./topics/puppeteer.md)
+-   [C#](./topics/csharp.md)
+
+### Database
+-   [MySQL](./topics/mysql.md)
+-   [SQL Server](./topics/mssql.md)
 
 ### Version Control
 

@@ -32,12 +32,12 @@ sudo apt update && sudo apt upgrade;
 sudo apt install curl vim tmux git -y;
 
 # Node
-sudo apt install nodejs npm;
+sudo apt install nodejs npm -y;
 
 # Global nodemon
 sudo npm i -g nodemon;
 
-# MySQL
+# MySQL (sudo mysql -u root)
 sudo apt install mysql-server -y && mysql_secure_installation;
 ```
 

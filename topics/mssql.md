@@ -4,17 +4,24 @@
 DECLARE @date DATETIME = '07.01.2019'
 ```
 
-# UPDATE from SELECT
+# UPDATE from SELECT / TABLE
 
 ```sql
+-- select
 UPDATE product
-SET price = t2.newPrice
+SET product.price = t2.newPrice
 FROM (
     SELECT sku, newPrice
     FROM pricelist
 ) t2
 WHERE
     product.sku = t2.sku
+
+-- table
+UPDATE product
+SET product.price = t2.newPrice
+FROM t2
+WHERE product.sku = t2.sku
 ```
 
 # INSERT from SELECT

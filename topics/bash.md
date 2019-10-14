@@ -79,10 +79,10 @@ sudo apt-get install imagemagick
 ### Resizing
 ```bash
 # Resize image to specific dimensions, while trying to keep aspect ratio.
-convert image.jpg -resize 492x492! resized_image.jpg
+convert image.jpg -resize 492x492 resized_image.jpg
 
 # Bulk resizing of images in a folder with conversion statuses, saved in a specified folder.
-for file in *.jpg; do convert $file -resize 492x492! ../resampled/$file && echo $file converted; done
+for file in *.jpg; do convert $file -resize 492x492 ../resized/$file && echo $file converted; done
 ```
 
 ### Resampling

@@ -5,9 +5,13 @@
 -   **Singular form**. Both tables and columns.
 -   Be consistent! Doesn't matter if you use camelCase or snake_case. Use whatever the front-end uses.
 -   Avoid abbreviations or prefixes.
+- Use unique names that cannot collude with SQL/RDBMS reserved words (avoid name, order, percent...) **or** use a trailing underscore.
+- Do not use the table name followd by “id” (e.g. client_id) as your PK. id is more than enough and everyone will understand.
+- Never use capital letters in your table or field names. Ever.
 
 ### Performance
 
+-   Always foreign key to IDs, rather than column values.
 -   Try to stick to `where` clauses on indexed columns, instead of `like`.
 -   Don't go crazy with `joins`.
 -   Don't use varchar(255). Try to use the lowest number possible.
@@ -15,7 +19,7 @@
 # Install MySQL
 
 ```bash
-sudo apt-get install mysql-server
+sudo apt install mysql-server
 
 sudo mysql_secure_installation
 # Change root password to more secure.
@@ -24,8 +28,19 @@ sudo mysql_secure_installation
 # Remove test database and access to it.
 # Reload privilege tables.
 
-systemctl restart mysql
+sudo /etc/init.d/mysql start
 # sudo service mysql start
+# systemctl restart mysql
+```
+
+### Remove MySQL
+
+```bash
+sudo apt remove --purge mysql*
+sudo apt purge mysql*
+sudo apt autoremove
+sudo apt autoclean
+sudo apt remove dbconfig-mysql
 ```
 
 # Status
@@ -42,6 +57,18 @@ sudo /etc/init.d/mysql start
 ```bash
 # Log into MySQL as root, with password. 
 sudo mysql -u root -p
+```
+
+# Run script
+```bash
+# Run global script
+mysql -u user -p < db.sql
+
+# Run database specific script
+mysql -u user -p db_name < db.sql
+
+# Output results
+mysql -u user -p db_name < db.sql > /tmp/output.txt
 ```
 
 # Command line
@@ -166,15 +193,23 @@ A FOREIGN KEY is a field in one table that refers to the PRIMARY KEY in another 
 The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table.
 
 ```sql
+-- Foreign key definition during table creation.
+CREATE TABLE user (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    pass VARCHAR(255),
+    phoneId INT,
+    FOREIGN KEY (phoneId) REFERENCES phone(id)
+);
+
 -- Add foreign key.
 ALTER TABLE table1 ADD FOREIGN KEY (idColumn) REFERENCES table2(idColumn);
 
 -- Remove foreign key.
 ALTER TABLE tableName DROP FOREIGN KEY FK_columnName;
+```
 
--- Foreign key definition during table creation.
-SHOW CREATE TABLE tableName;
-
+```sql
 -- List foreign keys.
 SELECT
     tableName,
@@ -200,7 +235,7 @@ SELECT * FROM tableName;
 INSERT INTO tableName (column1, column2) VALUES (value1, value2);
 
 -- Example
-INSERT INTO user ('id', 'name', 'pass')
+INSERT INTO user (id, name, pass)
 VALUES (NULL, 'john', 'abc123');
 
 -- Modify record.
@@ -219,7 +254,7 @@ Insert if `id` doesn't exit. Else, update the data at said `id`.
 
 ```sql
 +----+--------------+
-| id | columnName  |
+| id | columnName   |
 +----+--------------+
 |  1 | foo          |
 |  2 | bar          |
@@ -234,7 +269,7 @@ ON DUPLICATE KEY UPDATE
     columnName = values(columnName);
 
 +----+--------------+
-| id | columnName  |
+| id | columnName   |
 +----+--------------+
 |  1 | qux          | -- Value updated
 |  2 | bar          |
@@ -334,7 +369,7 @@ To overwrite them, the tables need to be dropped first, which is an option durin
 # Tuning
 
 ```bash
-sudo apt-get install mysqltuner
+sudo apt install mysqltuner
 ```
 
 It's a utility used to find out what could be done in order to optimize MySQL for the hardware and workload.

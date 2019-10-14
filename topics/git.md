@@ -122,6 +122,29 @@ git config --global user.name "NAME"
 git config --global user.email "EMAIL"
 ```
 
+# Diff (See Changes)
+
+```bash
+# Commit history.
+git log
+
+# Show unstaged differences since last commit.
+git diff
+
+# Show differences after staging.
+git diff --staged
+
+# Show differences between current and specific commit.
+git diff HASH
+
+# A visual tree with branch names included.
+git log --oneline --decorate --all --graph
+
+# Add the "tree" alias as a shortcut.
+git config --global alias.tree "log --oneline --decorate --all --graph"
+```
+
+
 # Staging
 
 ```bash
@@ -164,7 +187,7 @@ git commit -m "MESSAGE"
 
 If the `-m` is ommited, the screen will move to the `vi` text editor, which can be exited with `:q`.
 
-# Tagging
+### Tagging (Versioning)
 
 A reference to a specific commit, used mostly for release versioning.
 
@@ -180,32 +203,6 @@ git checkout v0.0.1
 
 # Push tags to remote repo.
 git push --tags
-```
-
-# See Changes / Diff
-
-```bash
-# Commit history.
-git log
-
-# Show unstaged differences since last commit.
-git diff
-
-# Show differences after staging.
-git diff --staged
-
-# Show differences between current and specific commit.
-git diff HASH
-```
-
-## Tree
-
-```bash
-# A visual tree with branch names included.
-git log --oneline --decorate --all --graph
-
-# Add the "tree" alias as a shortcut.
-git config --global alias.tree "log --oneline --decorate --all --graph"
 ```
 
 # Undo
@@ -261,6 +258,16 @@ git push -u origin master
 
 `-u` remember the repo and the branch, so that only `git push` can be used.
 
+# Clone
+
+```bash
+# Create a local repository from a remote one.
+git clone URL
+
+# ... with a different name.
+git clone URL NEW_NAME
+```
+
 # Pull
 
 Used to update the local repo with the latest changes. Should be done often.
@@ -285,15 +292,6 @@ For example, if a developer needs help with a particular feature, all they have 
 
 Once a pull request is accepted, the actual act of publishing a feature is much the same as in the Centralized Workflow. First, you need to make sure your local master is synchronized with the upstream master. Then, you merge the feature branch into master and push the updated master back to the central repository.
 
-# Clone
-
-```bash
-# Create a local repository from a remote one.
-git clone URL
-
-# ... with a different name.
-git clone URL NEW_NAME
-```
 
 Cloning does:
 
