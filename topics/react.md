@@ -120,6 +120,8 @@ The DOM updating is done by the `render()` method in the `react-dom` module. It 
 
 A piece of UI. A javascript class that has some state to be displayed and a render method.
 
+![Components](../pics/react/react_components.jpg)
+
 **counter.jsx**
 
 ```javascript
@@ -177,6 +179,8 @@ export default Counter;
 
 `render()` and `this` are no longer needed.
 
+They can have state, only via `React Hooks`.
+
 ```javascript
 import React from "react";
 
@@ -196,30 +200,66 @@ export default Counter;
 
 # State
 
-**The component owning the state should be the one modifying it.**
+`State` is data that is local/private to a component.
 
-**The state should reside in the parent component, to be passed to the child.**
+**It's a good idea to have as many presentational components as possible, and manage state in a select few ones.**
 
-**If two components need to share the same state, then the state needs to be lifted one level up to their parent component.**
+Components can have a state, which is an object that determines how that components renders and behaves. Also, we can have "Application level" state (shared between components
+) with **Redux** or the built-in **Context-API**.
+
+1. **The component owning the state should be the one modifying it.**
+
+2. **Both the state and mutating methods should reside in the parent component, to be passed to the child.**
+
+3. **If two components need to share the same state, then the state needs to be lifted one level up to their parent component.**
 
 `setState` is used for updating the state AND re-rendering the view i.e. syncing the DOM with the virtual DOM.
 
 The method takes an object, and merges or overwrites the state object with it.
 
-If we update the state directly, React is unaware of the change, and nothing is rendered.
+**If we update the state directly, React is unaware of the change, and nothing is rendered.**
 
-### Props vs State
+# Props
 
-`Props` includes data that we give to a component. `State` is data that is local/private to a component.
+`Props` includes data and methods that we give to a component.
+
+## Drilling
+
+Props, with state and methods, are repeatedly passed from parent component to child, with them always being located at the top most component.
+
+In order to pass values from the bottom up i.e. from child to parent components, we need to `.bind(this)`.
+
+```javascript
+render() {
+    const { id } = this.props.todo;
+    return (
+          <button onClick={this.props.delTodo.bind(this, id)}>x</button>
+    )
+}
+```
+
+## Destructuring
+
+In order to avoid boilerplate like `this.props.todo.title`, we can destructure them at the child component using them like this.
+
+```javascript
+render(){
+    const { id, title} = this.props.todo;
+    return (
+        <div>{ title }</div> // rather than this.props.todo.title
+    )
+}
+```
 
 # Events
 
-The event naming convention is to prefix the function with `handle`.
+Events are used to make the components do something. The naming convention is to prefix the function with `handle`.
 
 ```javascript
 class Foo extends Component {
     handleSomething() {
-        console.log("Something handled");
+        console.log("Something handled"); // Something handled
+        console.log(this.props); // TypeError: Can't read props of undefined
     }
 
     render() {
@@ -228,7 +268,9 @@ class Foo extends Component {
 }
 ```
 
-## Binding this
+When we click the button, the function will be called, but the props will not work. while `this` can be used inside the lifecycle methods due to it refering to the component.
+
+The `this` inside the `handleSomething` function refers to the function itself. To make it work, we need to bind `this`, either with `.bind(this)` or with an **arrow function**.
 
 `onClick={this.handleSomething}` results in `undefined`, because `this` references the global object and React runs in `strict mode`.
 
@@ -300,19 +342,6 @@ class Foo extends Component {
 
 ```javascript
 class Foo extends Component {
-    styles = {
-        fontSize: 10,
-        fontWeight: "bold"
-    };
-
-    render() {
-        return <div style={this.style}>Some text</div>;
-    }
-}
-```
-
-```javascript
-class Foo extends Component {
     render() {
         return (
             <div style={{ fontSize: 30, fontWeight: "bold" }}>Some text</div>
@@ -321,13 +350,537 @@ class Foo extends Component {
 }
 ```
 
+```javascript
+class Foo extends Component {
+    styles = {
+        fontSize: 10,
+        fontWeight: "bold"
+    };
+
+    render() {
+        return <div style={this.styles}>Some text</div>;
+    }
+}
+```
+
+# Todo App
+
+**App.js**
+```javascript
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './components/layout/Header';
+import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
+import About from './components/pages/About';
+import uuid from 'uuid';
+import axios from 'axios';
+
+import './App.css';
+
+class App extends Component {
+	state = {
+		todos: []
+	};
+
+	componentDidMount() {
+		axios
+			.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+			.then((res) => this.setState({ todos: res.data }));
+	}
+
+	// Toggle Complete
+	markComplete = (id) => {
+		this.setState({
+			todos: this.state.todos.map((todo) => {
+				if (todo.id === id) {
+					todo.completed = !todo.completed;
+				}
+				return todo;
+			})
+		});
+	};
+
+	// Delete Todo
+	delTodo = (id) => {
+		axios
+			.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+			.then((res) =>
+				this.setState({
+					todos: [...this.state.todos.filter((todo) => todo.id !== id)]
+				})
+			);
+	};
+
+	// Add Todo
+	addTodo = (title) => {
+		axios
+			.post('https://jsonplaceholder.typicode.com/todos', {
+				title,
+				completed: false
+			})
+			.then((res) => {
+				res.data.id = uuid.v4();
+				this.setState({ todos: [...this.state.todos, res.data] });
+			});
+	};
+
+	render() {
+		return (
+			<Router>
+				<div className='App'>
+					<div className='container'>
+						<Header />
+						<Route
+							exact path='/'
+							render={(props) => (
+								<React.Fragment>
+									<AddTodo addTodo={this.addTodo} />
+									<Todos
+										todos={this.state.todos}
+										markComplete={this.markComplete}
+										delTodo={this.delTodo}
+									/>
+								</React.Fragment>
+							)}
+						/>
+						<Route path='/about' component={About} />
+					</div>
+				</div>
+			</Router>
+		);
+	}
+}
+
+export default App;
+```
+
+**Todos.js**
+
+```javascript
+import React, { Component } from 'react';
+import TodoItem from './TodoItem';
+
+class Todos extends Component {
+  render() {
+    return this.props.todos.map((todo) => (
+      <TodoItem 
+        key={todo.id} 
+        todo={todo} 
+        markComplete={this.props.markComplete} 
+        delTodo={this.props.delTodo} />
+    ));
+  }
+}
+
+export default Todos;
+```
+
+**TodoItem.js**
+
+```javascript
+import React, { Component } from 'react';
+
+export class TodoItem extends Component {
+
+  render() {
+    const { id, title } = this.props.todo;
+    return (
+      <div>
+        <p>
+          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
+          { title }
+          <button onClick={this.props.delTodo.bind(this, id)}>x</button>
+        </p>
+      </div>
+    )
+  }
+}
+
+export default TodoItem
+```
+
+**AddTodo.js**
+
+```javascript
+import React, { Component } from 'react';
+
+export class AddTodo extends Component {
+  state = {
+    title: ''
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodo(this.state.title);
+    this.setState({ title: '' });
+  }
+
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+  render() {
+    return (
+      <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
+        <input 
+          type="text" 
+          name="title" 
+          placeholder="Add Todo ..." 
+          value={this.state.title}
+          onChange={this.onChange}
+        />
+        <input 
+          type="submit" 
+          value="Submit" 
+          className="btn"
+          style={{flex: '1'}}
+        />
+      </form>
+    )
+  }
+}
+
+export default AddTodo
+```
+
 # Hooks
 
-Used to simplify code.
+Used to simplify code by allowing to use state without writing a class i.e. functional components.
 
-`useState` hook allows state in functional components.  
-`useEffect` hook mimics lifecycle methods like `componentDidMount()`, which is available only in class components.
-`useReducer` ?
+**Sharing (stateful) logic between components becomes easier.**
+
+Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don’t work inside classes — they let you use React without classes.
+
+Classes, in addition to making code reuse and code organization more difficult,  can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to `bind` the event handlers.
+
+- Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
+- Only call Hooks **from React function components**. Don’t call Hooks from regular JavaScript functions. 
+
+## State Hook
+
+`useState` is a built-in **Hook** used to add state to function component. `useState()` **ALWAYS** returns an array with exactly two elements, which we can rename with array destructuring.
+
+- The first variable is the value. Similar to `this.state`.
+- The second variable is a function to update that value. Similar to `this.setState`.
+
+The final part to useState is the argument that we pass to it. **The `useState` argument is the initial state value**. In the case of our counter, we started at 0.
+
+**IMPORTANT:** The update function overwrites the whole state, rather than merge it with the old one as in `class` components with `this.setState()`. In order to avoid using `spread` operators, we can simply define multiple `useState` hooks.
+
+```javascript
+import React, { useState } from 'react';
+
+function JustAnotherCounter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Count Up To The Moon</button>
+    </div>
+  );
+}
+```
+vs
+```javascript
+import React, { Component } from 'react';
+
+class JustAnotherCounter extends Component {
+  state = {
+    count: 0
+  };
+
+  setCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+
+        <button onClick={this.setCount}>Count Up To The Moon</button>
+      </div>
+    );
+  }
+}
+```
+
+`useState` returns a pair: the **current state** value and a **function** that lets you update it. You can call this function from an event handler or somewhere else. React will preserve this state between re-renders. 
+
+It’s similar to `this.setState` in a class, except it doesn’t merge the old and new state together.
+
+The only argument to `useState` is the initial state, only used during the first render. In the example, it is 0 because our counter starts from zero. Unlike `this.state`, the state here doesn’t have to be an object — although it can be if you want.
+
+You may be unfamiliar with the line with the `useState() `syntax. **This uses destructuring assignment for arrays**. This is similar to how we would pull props out an object with object destructuring.
+
+We can declare multiple hooks in the same component.
+```javascript
+function ExampleWithManyStates() {
+    const [age, setAge] = useState(42);
+    const [fruit, setFruit] = useState('banana');
+    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+}
+```
+
+## Effect Hook
+
+`useEffect` hook mimics lifecycle methods like `componentDidMount()`, which is available only in class components.  
+
+**It takes a function as an argument, which is executed EACH TIME AFTER the DOM has been rendered.**
+
+**It also takes a second argument, an array of dependencies i.e. variables which decide if the effect runs on their update.** 
+
+You’ve likely performed data fetching, subscriptions, or manually changing the DOM from React components before. We call these operations **“side effects”** because they can affect other components and can’t be done during rendering.
+
+The **Effect Hook**, `useEffect`, adds the ability to perform side effects from a function component. It serves the same purpose as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` in React classes, but **unified into a single API**.
+
+When you call `useEffect`, you’re telling React to run your “effect” function after flushing changes to the DOM. Effects are declared inside the component so they have access to its props and state. By default, React runs the effects after every render — including the first render. 
+
+Ex. this component sets the document title after React updates the DOM:
+
+```javascript
+function DoSomethingCrazy() {
+  useEffect(() => {
+    console.log('i have arrived at the party!');
+    document.title = 'preesent';
+  });
+
+  return <div>stuff goes here</div>;
+}
+```
+vs
+```javascript
+import React, { Component } from 'react';
+
+class DoSomethingCrazy extends Component {
+  componentDidMount() {
+    console.log('i have arrived at the party!');
+    document.title = 'present';
+  }
+
+  render() {
+    return <div>stuff goes here</div>;
+  }
+}
+```
+
+**Since `useEffect()` runs every time a component renders, how do we get it to only run once, on mount? The Effect Hook can take a second argument, an array. It will look through the array and only run the effect if one of those values has changed.**
+
+```javascript
+// INFINITE LOOP
+useEffect(() => {
+    fetchData(); // only endlessly
+}); // <--- because we didn't specify when to run
+
+// componentDidMount: Runs once, pass an empty array.
+useEffect(() => {
+    fetchData(); // only runs once
+}, []);
+
+// componentDidUpdate: Runs on changes.
+useEffect(() => {
+    fetchData(); // run if count changes
+}, [count]);
+
+// componentWillUnmount(). To run something before a component unmounts, we just have to return a function from useEffect()
+useEffect(() => {
+    fetchData();
+
+    // clean up, runs just before re-rendering.
+    return () => {
+       console.log("Cleaning up...")
+     };
+}, , [count]);
+
+// shouldComponentUpdate
+export default React.memo(Component);
+```
+
+
+## Context Hook
+
+`useContext` lets you subscribe to React context without introducing nesting.
+
+```javascript
+function Example() {
+    const locale = useContext(LocaleContext);
+    const theme = useContext(ThemeContext);
+}
+```
+
+## Reducer Hook
+
+`useReducer` lets you manage local state of complex components with a reducer.
+
+```javascript
+function Todos() {
+    const [todos, dispatch] = useReducer(todosReducer);
+    // ...
+```
+
+## Custom Hooks
+Example for a `useHttp` hook.
+```javascript
+import { useState, useEffect } from 'react';
+
+export const useHttp = (url, dependencies) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchedData, setFetchedData] = useState(null);
+
+  //   fetch('https://swapi.co/api/people')
+  useEffect(() => {
+    setIsLoading(true);
+    console.log('Sending Http request to URL: ' + url);
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setIsLoading(false);
+        setFetchedData(data);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  }, dependencies);
+
+  return [isLoading, fetchedData];
+};
+```
+
+# Todo App with Hooks
+
+```javascript
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+
+function GitHubUsers() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users")
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data); // set users in state
+      });
+  }, []); // empty array because we only run once
+
+  return (
+    <div className="section">
+      {users.map(user => (
+        <div key={user.id} className="card">
+          <h5>{user.login}</h5>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<GitHubUsers />, rootElement);
+```
+
+# Todo App with Hooks 2
+
+```javascript
+import React, { useState } from "react";
+import "./App.css";
+
+function Todo({ todo, index, completeTodo, removeTodo }) {
+  return (
+    <div
+      className="todo"
+      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+    >
+      {todo.text}
+
+      <div>
+        <button onClick={() => completeTodo(index)}>Complete</button>
+        <button onClick={() => removeTodo(index)}>x</button>
+      </div>
+    </div>
+  );
+}
+
+function TodoForm({ addTodo }) {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!value) return;
+    addTodo(value);
+    setValue("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        className="input"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </form>
+  );
+}
+
+function App() {
+  const [todos, setTodos] = useState([
+    {
+      text: "Learn about React",
+      isCompleted: false
+    },
+    {
+      text: "Meet friend for lunch",
+      isCompleted: false
+    },
+    {
+      text: "Build really cool todo app",
+      isCompleted: false
+    }
+  ]);
+
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
+
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
+  return (
+    <div className="app">
+      <div className="todo-list">
+        {todos.map((todo, index) => (
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+          />
+        ))}
+        <TodoForm addTodo={addTodo} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
 
 # Context API
 

@@ -319,6 +319,29 @@ const electron = require("electron");
 const { app, BrowserWindow } = electron;
 ```
 
+## Object vs Array Destructuring
+
+Object destructuring requires more writing to grab a variable and rename it.
+
+```javascript
+// object destructuring. lots of writing!
+const users = { admin: 'chris', user: 'nick' };
+
+// grab the admin and user but rename them to SuperAdmin and SuperUser
+const { admin: SuperAdmin, user: SuperUser } = users;
+```
+The bottom line can be a bit difficult to read. With array destructuring we just name variables as we get them out of the array. **First variable is the first item in the array**.
+
+```javascript
+// array destructuring
+const users = ['chris', 'nick'];
+
+// grab in order and rename at the same time
+const [SuperAdmin, SuperUser] = users;
+```
+
+
+
 # Spread
 
 Used for copying or deleting properties from one object to another.
