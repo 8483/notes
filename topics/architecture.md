@@ -1,5 +1,11 @@
 "Software Architecture" is just a fancy way of saying "how code is organised" and/or how "data flows" through a system. Whenever you see the word "pattern" it just means "a bunch of experienced people have concluded that this works well, so as beginners, we don't have to think too hard (up-front)."
 
+# Web App Example
+
+![Web 101](../pics/architecture/architecture_web_101.png)
+
+[Source](https://engineering.videoblocks.com/web-architecture-101-a3224e126947)
+
 # C4 Model
 
 [Source](https://www.youtube.com/watch?v=1zYK615kepE)
@@ -8,11 +14,11 @@ The model prevents unstandardized drawings of architectures due to the lack of c
 
 Very often the code does not match the architecture diagrams. The diagrams are maps that help developers navigate a large and complex codebase.
 
-![TEA](../pics/architecture/architecture_c4model_maps.jpg)
+![C4](../pics/architecture/architecture_c4model_maps.jpg)
 
 ## Abstraction
 
-![TEA](../pics/architecture/architecture_c4model_scope.jpg)
+![Abstraction](../pics/architecture/architecture_c4model_scope.jpg)
 
 A **software system** is made up of one or more **containers**, each of which contains one or more **components**, which in turn are implemented by one or more **code elements**. It's basically zooming in or out.
 

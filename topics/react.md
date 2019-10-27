@@ -710,11 +710,13 @@ function Example() {
 
 ## Reducer Hook
 
-`useReducer` lets you manage local state of complex components with a reducer.
+`useReducer` lets you manage local state of complex components with a reducer i.e. offload the mutating functions outside of a component.
+
+This is the same as Redux (Elm) with dispatching an action and a payload.
 
 ```javascript
 function Todos() {
-    const [todos, dispatch] = useReducer(todosReducer);
+    const [todos, dispatch] = useReducer(todosReducer, defaultValue);
     // ...
 ```
 
@@ -884,4 +886,318 @@ export default App;
 
 # Context API
 
-Used for state management, similar to `Redux`.
+Used to avoid prop drilling i.e. passing state beyond 2-3 levels.
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language.
+
+**Context is primarily used when some data needs to be accessible by many components at different nesting levels. Apply it sparingly because it makes component reuse more difficult.**
+
+Used for state management, similar to `Redux`, but not the same, as it's inteded for low frequency updates i.e. state changes that don't occur multiple times per second.
+
+**Reducer** is the function executed when an **action** is dispatched.
+
+Context is just a javascript object, which can be given to any component and its children. There can be more than one. 
+
+We create context with this function.
+
+```javascript
+React.createContext({}); // takes a default value as the first argument.
+```
+
+Adding context to a class based component will only work in the render function and will not be available in the lifecycle functions. Use functional components instead.
+
+## Simple Example
+
+```javascript
+import React, { Component } from 'react';
+
+// first we will make a new context
+const MyContext = React.createContext();
+
+// Then create a provider Component
+class MyProvider extends Component {
+  state = {
+    name: 'Wes',
+    age: 100,
+    cool: true
+  }
+  render() {
+    return (
+      <MyContext.Provider value={{
+        state: this.state,
+        growAYearOlder: () => this.setState({
+          age: this.state.age + 1
+        })
+      }}>
+        {this.props.children}
+      </MyContext.Provider>
+    )
+  }
+}
+
+const Family = (props) => (
+  <div className="family">
+    <Person />
+  </div>
+)
+
+class Person extends Component {
+  render() {
+    return (
+      <div className="person">
+        <MyContext.Consumer>
+          {(context) => (
+            <React.Fragment>
+              <p>Age: {context.state.age}</p>
+              <p>Name: {context.state.name}</p>
+              <button onClick={context.growAYearOlder}>🍰🍥🎂</button>
+            </React.Fragment>
+          )}
+        </MyContext.Consumer>
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <MyProvider>
+        <div>
+          <p>I am the app</p>
+          <Family />
+        </div>
+      </MyProvider>
+    );
+  }
+}
+
+export default App;
+```
+
+## Class Based Example
+
+**context/shop-context.js**
+```javascript
+import React from 'react';
+
+export default React.createContext({
+  products: [
+    { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
+    { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
+    { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
+    { id: 'p4', title: 'Half-dried plant', price: 2.99 }
+  ],
+  cart: []
+});
+```
+
+**context/GlobalState.js**
+```javascript
+import React, { Component } from 'react';
+
+import ShopContext from './shop-context';
+
+class GlobalState extends Component {
+  state = {
+    products: [
+      { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
+      { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
+      { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
+      { id: 'p4', title: 'Half-dried plant', price: 2.99 }
+    ],
+    cart: []
+  };
+
+  addProductToCart = product => {
+    console.log('Adding product', product);
+    const updatedCart = [...this.state.cart];
+    const updatedItemIndex = updatedCart.findIndex(
+      item => item.id === product.id
+    );
+
+    if (updatedItemIndex < 0) {
+      updatedCart.push({ ...product, quantity: 1 });
+    } else {
+      const updatedItem = {
+        ...updatedCart[updatedItemIndex]
+      };
+      updatedItem.quantity++;
+      updatedCart[updatedItemIndex] = updatedItem;
+    }
+    setTimeout(() => {
+      this.setState({ cart: updatedCart });
+    }, 700);
+  };
+
+  removeProductFromCart = productId => {
+    console.log('Removing product with id: ' + productId);
+    const updatedCart = [...this.state.cart];
+    const updatedItemIndex = updatedCart.findIndex(
+      item => item.id === productId
+    );
+
+    const updatedItem = {
+      ...updatedCart[updatedItemIndex]
+    };
+    updatedItem.quantity--;
+    if (updatedItem.quantity <= 0) {
+      updatedCart.splice(updatedItemIndex, 1);
+    } else {
+      updatedCart[updatedItemIndex] = updatedItem;
+    }
+    setTimeout(() => {
+      this.setState({ cart: updatedCart });
+    }, 700);
+  };
+
+  render() {
+    return (
+      <ShopContext.Provider
+        value={{
+          products: this.state.products,
+          cart: this.state.cart,
+          addProductToCart: this.addProductToCart,
+          removeProductFromCart: this.removeProductFromCart
+        }}
+      >
+        {this.props.children}
+      </ShopContext.Provider>
+    );
+  }
+}
+
+export default GlobalState;
+```
+
+**App.js**
+```javascript
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import GlobalState from './context/GlobalState';
+import ProductsPage from './pages/Products';
+import CartPage from './pages/Cart';
+import './App.css';
+
+class App extends Component {
+  render() {
+    return (
+      <GlobalState>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" component={ProductsPage} exact />
+            <Route path="/cart" component={CartPage} exact />
+          </Switch>
+        </BrowserRouter>
+      </GlobalState>
+    );
+  }
+}
+
+export default App;
+```
+
+
+**Cart.js**
+```javascript
+import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+
+import ShopContext from '../context/shop-context';
+import MainNavigation from '../components/MainNavigation';
+// import { removeProductFromCart } from '../store/actions';
+import './Cart.css';
+
+class CartPage extends Component {
+  static contextType = ShopContext;
+
+  componentDidMount() {
+    console.log(this.context);
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <MainNavigation
+          cartItemNumber={this.context.cart.reduce((count, curItem) => {
+            return count + curItem.quantity;
+          }, 0)}
+        />
+        <main className="cart">
+          {this.context.cart.length <= 0 && <p>No Item in the Cart!</p>}
+          <ul>
+            {this.context.cart.map(cartItem => (
+              <li key={cartItem.id}>
+                <div>
+                  <strong>{cartItem.title}</strong> - ${cartItem.price} (
+                  {cartItem.quantity})
+                </div>
+                <div>
+                  <button
+                    onClick={this.context.removeProductFromCart.bind(
+                      this,
+                      cartItem.id
+                    )}
+                  >
+                    Remove from Cart
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </main>
+      </React.Fragment>
+    );
+  }
+}
+
+export default CartPage;
+```
+
+**Products.js**
+```javascript
+import React, { Component } from 'react';
+
+import ShopContext from '../context/shop-context';
+import MainNavigation from '../components/MainNavigation';
+import './Products.css';
+
+class ProductsPage extends Component {
+  render() {
+    return (
+      <ShopContext.Consumer>
+        {context => (
+          <React.Fragment>
+            <MainNavigation
+              cartItemNumber={context.cart.reduce((count, curItem) => {
+                return count + curItem.quantity;
+              }, 0)}
+            />
+            <main className="products">
+              <ul>
+                {context.products.map(product => (
+                  <li key={product.id}>
+                    <div>
+                      <strong>{product.title}</strong> - ${product.price}
+                    </div>
+                    <div>
+                      <button
+                        onClick={context.addProductToCart.bind(this, product)}
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </main>
+          </React.Fragment>
+        )}
+      </ShopContext.Consumer>
+    );
+  }
+}
+
+export default ProductsPage;
+```
