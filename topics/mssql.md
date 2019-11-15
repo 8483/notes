@@ -38,6 +38,17 @@ FROM table1
 WHERE condition;
 ```
 
+# DELETE from LEFT JOIN
+```sql
+DELETE t1 -- Just from table1. DELETE t1, t2 for both tables
+FROM table1 t1
+	LEFT JOIN table2 t2
+		ON t1.id = t2.id
+WHERE 
+	t1.criteria = 'foo'
+	AND t2.criteria = 'bar'
+```
+
 # Partition By
 
 We use this to make a "sub-query" i.e. select n-th item from a table for further use.

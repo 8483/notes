@@ -77,6 +77,7 @@
 ### Low Level
 
 -   [Assembly](./topics/assembly.md)
+-   [WebAssembly](./topics/wasm.md)
 
 # Linux
 

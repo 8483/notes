@@ -58,5 +58,5 @@ systemctl start nginx
 crontab -e
 
 # At 02:00 auto-renew SSL certificate if required
-0 2 * * * sudo /usr/sbin/certbot-auto -q renew
+0 2 * * * sudo /usr/sbin/certbot-auto -q renew --nginx
 ```

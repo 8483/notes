@@ -1,4 +1,4 @@
-# Useful ALgorithmS
+# Useful Algorithms
 
 ```javascript
 let data = [ 

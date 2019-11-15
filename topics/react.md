@@ -318,6 +318,8 @@ class Foo extends Component {
 
 ## Event arguments
 
+### Class Component
+
 ```javascript
 class Foo extends Component {
     state = {
@@ -337,6 +339,67 @@ class Foo extends Component {
     }
 }
 ```
+
+### Functional Component
+
+```javascript
+import React from 'react';
+
+const ExampleComponent = () => {
+
+  function sayHello(name) {
+    alert(`hello, ${name}`);
+  }
+
+  return (
+    <button onClick={() => sayHello('James')}>Greet</button>
+  );
+}
+
+export default ExampleComponent;
+```
+
+Pass the event
+
+```javascript
+return (
+    <button value="blue" onClick={e => changeColor(e.target.value)}>
+      Color Change
+    </button>
+  );
+```
+
+# Refs
+
+Refs provide a way to access DOM nodes or React elements created in the render method.
+
+When a ref is passed to an element in render, a reference to the node becomes accessible at the current attribute of the ref.
+
+```javascript
+function CustomTextInput(props) {
+  // textInput must be declared here so the ref can refer to it
+  let textInput = React.createRef();
+
+  function handleClick() {
+    textInput.current.focus();
+  }
+
+  return (
+    <div>
+      <input
+        type="text"
+        ref={textInput} />
+
+      <input
+        type="button"
+        value="Focus the text input"
+        onClick={handleClick}
+      />
+    </div>
+  );
+}
+```
+
 
 # CSS
 
@@ -669,17 +732,17 @@ class DoSomethingCrazy extends Component {
 ```javascript
 // INFINITE LOOP
 useEffect(() => {
-    fetchData(); // only endlessly
+    fetchData(); // runs endlessly
 }); // <--- because we didn't specify when to run
 
-// componentDidMount: Runs once, pass an empty array.
+// componentDidMount: runs once, pass an empty array.
 useEffect(() => {
-    fetchData(); // only runs once
+    fetchData(); // runs only once
 }, []);
 
-// componentDidUpdate: Runs on changes.
+// componentDidUpdate: runs on changes.
 useEffect(() => {
-    fetchData(); // run if count changes
+    fetchData(); // runs if count changes
 }, [count]);
 
 // componentWillUnmount(). To run something before a component unmounts, we just have to return a function from useEffect()
@@ -699,13 +762,60 @@ export default React.memo(Component);
 
 ## Context Hook
 
-`useContext` lets you subscribe to React context without introducing nesting.
+`useContext` just uses the Context object -- which you have created before -- to retrieve the most recent value from it. Using the React Hooks instead of Context API's Consumer component, makes the code more readable, less verbose, and doesn't introduce a kinda artificial component -- the Consumer component -- in between.
 
+**src/ThemeContext.js**
 ```javascript
-function Example() {
-    const locale = useContext(LocaleContext);
-    const theme = useContext(ThemeContext);
-}
+import React from 'react';
+
+const ThemeContext = React.createContext(null);
+
+export default ThemeContext;
+```
+
+**src/ComponentA.js**
+```javascript
+import React from 'react';
+import ThemeContext from './ThemeContext';
+
+const A = () => (
+  <ThemeContext.Provider value="green">
+    <D />
+  </ThemeContext.Provider>
+);
+```
+
+**src/ComponentC.js** - child of Component D
+```javascript
+import React from 'react';
+import ThemeContext from './ThemeContext';
+
+const C = () => {
+  const color = React.useContext(ThemeContext);
+  return (
+    <p style={{ color }}>
+      Hello World
+    </p>
+  );
+};
+```
+
+...instead of using **Consumer** with **Context API**
+
+**src/ComponentC.js** - child of Component D
+```javascript
+import React from 'react';
+import ThemeContext from './ThemeContext';
+
+const C = () => (
+  <ThemeContext.Consumer>
+    {color => (
+      <p style={{ color }}>
+        Hello World
+      </p>
+    )}
+  </ThemeContext.Consumer>
+);
 ```
 
 ## Reducer Hook

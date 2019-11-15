@@ -4,8 +4,8 @@ Each user has his own crontab i.e. cron table i.e table of scheduled processes.
 # List of tasks
 crontab -l
 
-# Add a cron job that runs as root. Opens editor.
-sudo crontab -e.
+# Edit crontabs i.e Add a cron job that runs as root. Opens editor.
+sudo crontab -e
 
 # List of crontabs
 sudo less /var/spool/cron/crontabs

@@ -158,6 +158,57 @@ for (let key in myObj){ //
 myObj.hasOwnProperty("foo"); // true
 ```
 
+## Comparing Objects / Properties
+
+```javascript
+// Returns an array of object key-value pairs that are different
+function diffObject(oldObj, newObj) {
+  let diffs = [];
+  
+  for (var key in oldObj) {
+    if (oldObj[key] != newObj[key]) {
+      diffs.push({
+        id: newObj.id, 
+        [key]: newObj[key]
+      })
+    }
+  }
+    
+  return diffs;
+}
+
+// Returns an array of objects { id, property, value } that are different
+function diffObject2(oldObj, newObj) {
+  let foo = [];
+  
+  for (var key in oldObj) {
+    if (oldObj[key] != newObj[key]) {
+      foo.push({
+        id: newObj.id, 
+        property: key,
+        value: newObj[key]
+      })
+    }
+  }
+    
+  return foo;
+}
+
+// Returns a boolean, FALSE if they are different
+function isSameObject(obj1, obj2) {
+  let isSame = true;
+  
+  for (var key in obj1) {
+    if (obj1[key] != obj2[key]) {
+      isSame = false;
+      break;
+    }
+  }
+    
+  return isSame;
+}
+```
+
 # new
 
 When we use the `new` operator to call a function, this happens:
