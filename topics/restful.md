@@ -161,6 +161,26 @@ Combining these together, we can build queries like:
 
 It's time to leave XML behind in APIs. It's verbose, it's hard to parse, it's hard to read, its data model isn't compatible with how most programming languages model data and its extendibility advantages are irrelevant when your output representation's primary needs are serialization from an internal representation.
 
+# Envelope Responses
+
+```javascript
+// DO: enveloped
+{
+  data: [
+    { ... },
+    { ... },
+    // ...
+  ]
+}
+​
+// DON'T non-enveloped
+[
+  { ... },
+  { ... },
+  // ...
+]
+```
+
 # snake_case vs camelCase for field names
 
 If you're using JSON (JavaScript Object Notation) as your primary representation format, the "right" thing to do is to follow JavaScript naming conventions - and that means camelCase for field names!  

@@ -120,6 +120,14 @@ element.appendChild(text);
 element.removeChild(text);
 ```
 
+### Bulk
+```javascript
+let elements = document.querySelectorAll('.class el')
+elements.forEach(el => {
+    el.className = ""
+});
+```
+
 # Events
 
 ### Old way
@@ -161,21 +169,21 @@ function buttonClick(e){
 ### Bulk Event Listeners
 ```javascript
 document.querySelectorAll('#myTable td')
-.forEach(e => e.addEventListener("click", function() {
+.forEach(el => el.addEventListener("click", (e) => {
     // Here, `this` refers to the element the event was hooked on
-    console.log("clicked")
+    console.log("clicked", e.target.value)
 }));
 ```
 Thit creates a separate function for each cell; **instead, you could share one function without losing any functionality.**
 
 ```javascript
-function clickHandler() {
+function clickHandler(e) {
     // Here, `this` refers to the element the event was hooked on
-    console.log("clicked")
+    console.log("clicked", e.target.value)
 }
 
 document.querySelectorAll('#myTable td')
-.forEach(e => e.addEventListener("click", clickHandler));
+.forEach(el => el.addEventListener("click", clickHandler));
 ```
 
 **Example**

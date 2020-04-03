@@ -214,44 +214,49 @@ Fetch also takes a second parameter, which is a configuration object.
 ## GET
 
 ```javascript
-// ES5
-function getData() {
-    fetch("http://www.api.com/data") // Return response promise.
-        .then(function(res) {
-            return res.json(); // Return data.
-        })
-        .then(function(data) {
-            return data; // Do something with data.
-        })
-        .catch(function(err) {
-            return err; // Catch error.
-        });
-}
-
 // ES6
-function getText() {
-    fetch("http://www.api.com/data") // Return response promise.
-        .then(res => res.json()) // Return data.
-        .then(data => data) // Do something with data.
-        .catch(err => err); // Catch error.
-}
+fetch("http://www.api.com/data")
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => err);
 ```
 
 ## POST
 
 ```javascript
-function postData() {
-    fetch("http://www.api.com/data", {
+// ES6
+fetch("http://www.api.com/data", {
+    method: "POST",
+    headers: {
+        Accept: "application/json",
+        "Content-type": "application/json"
+    },
+    body: JSON.stringify({ title: title, body: body })
+}) 
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })
+    .catch(err => err);
+
+// Async Await
+async function postData(){
+    let response = fetch("http://www.api.com/data", {
         method: "POST",
         headers: {
             Accept: "application/json",
             "Content-type": "application/json"
         },
-        body: JSON.stringify({ title: title, body: body }) // Payload
-    }) // Return response promise.
-        .then(res => res.json()) // Return data.
-        .then(data => data) // Do something with data.
-        .catch(err => err); // Catch error.
+        body: JSON.stringify({ title: title, body: body })
+    }) 
+
+    let data = await response.json()
+
+    if (response.status !== 2000){
+        throw Error(data.message)
+    }
+    
+    console.log(data)
 }
 ```
 

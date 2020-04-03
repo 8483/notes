@@ -70,8 +70,12 @@ which PROGRAM                         # Find path to program.
 
 # Count
 ```bash
-ls | wc -l                                # Number of files
-find ./folder -name '*.js' | xargs wc -l  # Lines of code per file type
+# Number of files
+ls | wc -l                                
+
+# Find all files with the given extensions
+# in the specified folders, and count the number of lines.
+find folder1 folder2 -name '*.js' -o -name '*.sql' | xargs wc -l
 ```
 
 

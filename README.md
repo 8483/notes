@@ -15,7 +15,6 @@
 -   [React](./topics/react.md)
 -   [Vue](./topics/vue.md)
 -   [Electron](./topics/electron.md)
--   Virtual DOM
 -   [Elm](./topics/elm.md)
 -   [Tabulator](./topics/tabulator.md)
 
@@ -29,21 +28,18 @@
 -   [Logging](./topics/logging.md)
 -   [SSL](./topics/ssl.md)
 -   [Puppeteer](./topics/puppeteer.md)
--   [C#](./topics/csharp.md)
 
 ### Database
 -   [MySQL](./topics/mysql.md)
 -   [SQL Server](./topics/mssql.md)
 
-### Version Control
-
--   [Git](./topics/git.md)
-
 ### Tooling
 
+-   [Git](./topics/git.md)
 -   [Babel](./topics/babel.md)
 -   [Webpack](./topics/webpack.md)
 -   Typescript
+-   [VS Code](./topics/vscode.md)
 
 ### Architecture
 -   [MVC](./topics/mvc.md)
@@ -63,21 +59,16 @@
 ### Useful
 
 -   [Algorithms](./topics/algos.md)
--   [Excel](./topics/excel.md)
 -   [Google API](./topics/googleapi.md)
+-   [Assembly](./topics/assembly.md)
+-   [WebAssembly](./topics/wasm.md)
+-   [.NET](./topics/dotnet.md)
+-   [Excel](./topics/excel.md)
+-   [Statistics](./topics/stats.md)
 
 ### Mobile
 
 -   [Overview](./topics/mobile.md)
-
-### IDE
-
--   [VS Code](./topics/vscode.md)
-
-### Low Level
-
--   [Assembly](./topics/assembly.md)
--   [WebAssembly](./topics/wasm.md)
 
 # Linux
 
@@ -137,11 +128,15 @@
 
 -   [Electricity](./topics/electricity.md)
 
+# Machine Learning
+
+- [Brain.js](./topics/brainjs.md)
+
 # Googling
 
 ```
-"exact query"
-website.com: query
-query 2017..2018
-filetype:pdf query
+"exact query"            - Search for the exact phrase
+website.com: query       - Search only in the website
+query 2017..2018         - Seach in the date range
+filetype:pdf query       - Search just for file type
 ```

@@ -1,7 +1,13 @@
 # Declare Variables
 
 ```sql
+-- regular
 DECLARE @date DATETIME = '07.01.2019'
+
+-- from select
+DECLARE @count INT;
+SET @count = (SELECT COUNT(sku) FROM product)
+SELECT @count;
 ```
 
 # UPDATE from SELECT / TABLE

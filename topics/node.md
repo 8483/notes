@@ -8,6 +8,55 @@ node -v
 npm -v
 ```
 
+# Import / Export
+
+- **CommonJS (CJS) format**. Used in Node.js and uses `require` and `module.exports` to define dependencies and modules. *The npm ecosystem is built upon this format*. `exports = module.exports`
+
+```javascript
+// lib.js
+
+// Export the function
+function sayHello(){  
+  console.log('Hello');
+}
+
+// Do not export the function
+function somePrivateFunction(){  
+  // ...
+}
+
+module.exports.sayHello = sayHello;
+```
+```javascript
+let sayHello = require('./lib').sayHello;
+
+sayHello();  
+// => Hello
+```
+
+- **ES Module (ESM) format**. As of ES6 (ES2015), JavaScript supports a native module format. It uses an `export` keyword to export a module’s public API and an `import` keyword to import it.
+
+```javascript
+// lib.js
+
+// Export the function
+export function sayHello(){  
+  console.log('Hello');
+}
+
+// Do not export the function
+function somePrivateFunction(){  
+  // ...
+}
+```
+```javascript
+import { sayHello } from './lib';
+// import * as lib from './lib';
+
+sayHello();  
+// => Hello
+```
+
 # Modules
 
 Instead of writing all the code in one giant file, we can split the code into multiple files called `modules`. Only things that are highly related should go in a module.

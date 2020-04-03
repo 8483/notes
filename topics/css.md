@@ -83,7 +83,31 @@ It's not a choice of either flex or grid, but rather about combining them. Ex. A
 }
 ```
 
-### Fixed table header
+# Animation
+
+The animations work by flowing from a set of CSS rules, to the ones from the animation.
+
+```css
+.fadeInOut {
+    opacity: 0;
+    /* Use the effect, and last for 2 sec. The effect name can be anything*/
+    animation: fadeInOut 2s linear forwards;
+    -webkit-animation: fadeInOut linear forwards; 
+}
+
+/* Fast fade in, long display, fast fade out */
+@keyframes fadeInOut {
+    20% { opacity: 1 } /* @ 20% of 2 sec be fully visible */
+    80% { opacity: 1 } /* @ After 80% of 2 sec start fading */
+}
+
+@-webkit-keyframes fadeInOut {
+    20% { opacity: 1 }
+    80% { opacity: 1 }
+}
+```
+
+# Fixed table header
 
 ```html
 <div id="table">
