@@ -1,6 +1,4 @@
-# Linux
-
-# Basics
+# Terminal
 
 `/` - Root directory  
 `~` - Home directory
@@ -24,6 +22,13 @@
 `man COMMAND` - Command help.  
 `history` - Lists all the commands used.  
 `CTRL` + `R` - Search command history. Hit again for previous command.
+
+# Information
+
+```bash
+cat /etc/os-release     # Linux version
+df -h                   # Show disk space in readable format
+```
 
 # Install
 

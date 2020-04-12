@@ -81,10 +81,10 @@ rsync -av ./file1 ./file2 ./folder1 user@123.456.789.255:folder2/
 rsync -av -e 'ssh' ./folder1/ user@123.456.789.255:~/folder1/
 ```
 
-When the terminal freezes, fix it with this in a new terminal **(doesn't work with --progress)**:
+When the terminal freezes, fix it with this in a **new** terminal...
 
 ```bash
-while killall -CHLD ssh; do sleep 0.1; done;
+while sudo killall -CHLD ssh; do sleep 0.1; done;
 ```
 
 ### To Virtual Machine

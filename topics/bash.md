@@ -1,3 +1,10 @@
+# Variables
+
+Setting a command's output into a variable.
+```bash
+all="$(ls ./all | wc -l)" && echo "all: ${all}" && resampled="$(ls ./resampled | wc -l)" && echo "resampled: ${resampled}"
+```
+
 # Logical
 `&&` - AND
 `||` - OR
