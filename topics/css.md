@@ -52,7 +52,7 @@ The positions are the lines at which the elements start or end. A grid with 5 co
 ```
 
 This CSS would result in:  
-![TEA](../pics/grid.jpg)
+![CSS Grid](../pics/grid.jpg)
 
 # Flexbox
 

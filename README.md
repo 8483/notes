@@ -30,6 +30,8 @@
 -   [Puppeteer](./topics/puppeteer.md)
 
 ### Database
+
+-   [Design](./topics/dbdesign.md)
 -   [MySQL](./topics/mysql.md)
 -   [SQL Server](./topics/mssql.md)
 
