@@ -55,6 +55,25 @@ WHERE
 	AND t2.criteria = 'bar'
 ```
 
+# Row Number
+
+```sql
+SELECT
+    ROW_NUMBER() OVER (ORDER BY profit DESC) rowNumber
+FROM sales
+```
+
+# Running Total
+
+```sql
+SELECT
+    isnull(profit, 0) profit,
+    SUM(profit) OVER(ORDER BY profit desc ROWS UNBOUNDED PRECEDING) AS profitRunning, -- cummulative sum of profit
+    SUM(profit) OVER () AS profitTotal, -- sum of profit column
+    SUM(profit) OVER(ORDER BY profit desc ROWS UNBOUNDED PRECEDING) / SUM(profit) OVER () profitShare
+FROM sales
+```
+
 # Partition By
 
 We use this to make a "sub-query" i.e. select n-th item from a table for further use.
@@ -132,6 +151,23 @@ We only get the first row for each client i.e. the last sale (sorted by descendi
 1017 | 2019-02-14 | 1386.00
 116  | 2018-02-16 | 1848.00
 1211 | 2018-03-28 | 8844.64
+
+# MAX, AVERAGE, SUM... Across columns
+
+```sql
+select 
+    *,
+    (
+        select max(v)
+        from (
+            values 
+                (sales2017), 
+                (sales2018), 
+                (sales2019)
+        ) as value(v)
+    ) as maxSales
+from sales
+```
 
 # CTE - Common Table Expression
 

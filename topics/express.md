@@ -1,3 +1,54 @@
+# Middleware
+
+*A stack of functions, executed before the final request handler is made.*
+
+**Middleware functions** are functions with access to the `req` and `res` objects. They can... 
+- Execute any code.
+- Make changes to the `req` and `res` objects.
+- End the response cycle.
+- Call the next middleware in the stack, by using `next()`.
+
+The functions do something, then pass the results to the next middleware in the chain.
+
+Express has built-in ones, but we can also make custom ones.
+
+```js
+// Logggin middleware
+function log(req, res, next){
+    console.log(new Date(), req.method, req.url);
+    next() // MUST USE THIS
+}
+```
+
+```js
+// This will make a log before EACH request in the app.
+app.use(log); 
+
+app.get("/", (req, res) => {
+    res.write("Hello World!");
+    res.end;
+})
+```
+
+```js
+// This will make a log before THIS request ONLY.
+app.get("/", log, (req, res) => {
+    res.write("Hello World!");
+    res.end;
+})
+```
+
+### Authentication example
+
+```js
+app.post("/upload", auth.isAuthenticated(), controller.upload);
+```
+
+!["Middleware"](../pics/express/express_middleware.jpg)
+
+
+
+
 # JSON
 
 JSON is used to transfer data via a string.  
