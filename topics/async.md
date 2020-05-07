@@ -1,3 +1,10 @@
+- [Basics](#basics)
+- [Async/Await](#Async/Await)
+- [Fetch API](#fetch-api)
+- [Promises](#promises)
+- [Callbacks](#callbacks)
+- [AJAX](#ajax)
+
 # Basics
 
 Asynchronous Javascript is based on events. Every promise and observable library is based on them.
@@ -31,6 +38,354 @@ window
     -   Object
     -   Array
     -   Function
+
+# Async/Await
+
+Async/Await enables us to write asynchronous code in a synchronous fashion. Under the hood, it’s just syntactic sugar using generators and yield statements to “pause” execution. 
+
+In other words, async functions can “pull out” the value of a Promise even though it’s nested inside a callback function, giving us the ability to assign it to a variable.
+
+```javascript
+async function foo() {
+    try{
+        let res = await fetch("https://jsonplaceholder.typicode.com/todos");
+        let data = await res.json()
+        console.log(data);
+    } catch (err){
+        console.log(err)
+    }
+};
+
+foo();
+
+// Fetch API comparison
+function foo() {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+}
+```
+
+Under the hood it looks like...
+
+```javascript
+const request = url => {
+    ajax("GET", url).then(response => it.next(JSON.parse(response)));
+};
+
+function* main() {
+    const result = yield fetch("http://api.com/users/1");
+    const data = yield result.json();
+    console.log(data);
+}
+
+const it = main();
+it.next();
+```
+
+### Combination Example
+```javascript
+async function getDataOne() {
+    let res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    let data = await res.json()
+    return data;
+}
+
+async function getDataTwo() {
+    let res = await fetch("https://jsonplaceholder.typicode.com/todos/2");
+    let data = await res.json()
+    return data;
+}
+
+async function getBoth() {
+    var resultOne = await getDataOne();
+    var resultTwo = await getDataTwo();
+    console.log(resultOne, resultTwo)
+}
+
+getBoth();
+
+// Compared to this
+function foo() {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then(res => res.json())
+    .then(resultOne => {
+
+        fetch("https://jsonplaceholder.typicode.com/todos/2")
+        .then(res => res.json())
+        .then(resultTwo => {
+
+            console.log(resultOne, resultTwo)
+            
+        })
+        .catch(err => console.log(err));
+
+    })
+    .catch(err => console.log(err));
+}
+
+foo()
+```
+
+# Fetch API
+
+An AJAX library using promises, available by default in all modern browsers. A promise is like a placeholder for a response we are going to get in the future.
+
+Fetch always returns a promise. Promise resolves to the response object. This response object has different helper methods like response.json(), response.text(), response.blob() etc.
+
+Fetch also takes a second parameter, which is a configuration object.
+
+## GET
+
+```javascript
+// ES6
+fetch("http://www.api.com/data")
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => err);
+```
+
+## POST
+
+```javascript
+// ES6
+fetch("http://www.api.com/data", {
+    method: "POST",
+    headers: {
+        Accept: "application/json",
+        "Content-type": "application/json"
+    },
+    body: JSON.stringify({ title: title, body: body })
+}) 
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })
+    .catch(err => err);
+
+// Async Await
+async function postData(){
+    let response = await fetch("http://www.api.com/data", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({ title: title, body: body })
+    }) 
+
+    let data = await response.json()
+
+    if (response.status !== 2000){
+        throw Error(data.message)
+    }
+    
+    console.log(data)
+}
+```
+
+# Promises
+
+The `Promise()` constructor takes a function, which takes the `resolve` and `reject` functions.
+
+```javascript
+new Promise((resolve, reject) => {
+    if (goodThingsHappen) {
+        resolve(goodThings); // passed to .then()
+    } else {
+        reject(reasonsForFailing);
+    }
+});
+```
+
+The promise object is used for deferred and asynchronous computations and it represents and operation that hasn't completed yet, but is expected in the future.
+
+Promises are obtained with `.then()`.
+
+```javascript
+// Immediately resolved.
+let myPromise = Promise.resolve("Foo");
+myPromise.then((res) => console.log(res);) // Foo
+
+// Delayed
+var myPromise = new Promise(function(resolve, reject){
+    setTimeout(() => resolve(4), 2000); // Return 4 after 2 seconds.
+});
+
+myPromise.then((res) => {
+    res += 3; // Wait for the 4 and add 3 to it.
+    console.log(res); // 7 after 2 seconds.
+});
+```
+
+## Fetch under the hood with Promises
+
+```javascript
+function fetch(method, url) {
+    return new Promise(function(resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onload = function() {
+            if (this.status >= 200 && this.staus <= 300) {
+                resolve(xhr.response);
+            } else {
+                reject({
+                    status: this.status,
+                    statusText: xhr.statusText
+                });
+            }
+        };
+        xhr.onerror = function() {
+            reject({
+                status: this.status,
+                statusText: xhr.statusText
+            });
+        };
+        xhr.send();
+    });
+}
+
+fetch("GET", "http://jsonplaceholder.typicode.com/todos")
+    .then(function(data) {
+        let todos = JSON.parse(data);
+        let output = "";
+        for (let todo of todos) {
+            output += `
+                <li>
+                    <h3>${todo.title}</h3>
+                    <p>${todo.item}</p>
+                `;
+        }
+        document.getElementById("list").innerHTML = output;
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+```
+
+## Promise All
+
+Takes an array of promises and executes if they are all successful.
+
+```javascript
+Promise.all([
+    fetch("/api/endpoint"),
+    fetch("/api/another-endpoint"),
+    fetch("/api/yet-another-endpoint")
+])
+    .then(responses => {
+        // array of responses
+        console.log(responses[0]); // users
+        console.log(responses[1]); // products
+        console.log(responses[2]); // clients
+    })
+    .catch(err => {
+        console.log(err);
+    });
+```
+
+## Chaining
+
+```javascript
+let futureNumber = Promise.resolve(2); // 2
+
+futureNumber
+    .then(n => n + 1) // 3
+    .then(n => n * 2) // 6
+    .then(n => Math.pow(n, 2)) // 36
+    .then(n => console.log(n)); // 36
+
+futureNumber.then(n => console.log(n)); //2
+```
+
+# Callbacks
+
+A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
+
+In JavaScript, functions are objects. Because of this, functions can take functions as arguments, and can be returned by other functions. Functions that do this are called **higher-order functions**. Any function that is passed as an argument is called a **callback function**.
+
+```javascript
+function foo(input, callback) {
+    console.log(input);
+    callback();
+}
+
+// Anonymous callback. Logs Foo Bar.
+foo("Foo", function() {
+    console.log("Bar");
+});
+```
+
+Passing named functions.
+
+```javascript
+function baz(input) {
+    console.log(input);
+}
+
+// This executes the baz function immediately.
+// Logs Baz Foo and "TypeError: callback is not a function
+foo("Foo", baz("Baz"));
+
+// Named callback. Logs Foo Baz.
+foo("Foo", function() {
+    baz("Baz");
+});
+
+// Works fine because it doesn't execute immediately.
+// Must have no arguments. Logs Foo Qux.
+foo("Foo", logQux);
+
+function logQux() {
+    console.log("Qux");
+}
+```
+
+Another example...
+
+```javascript
+function callbackSandwich(callbackFunction) {
+    console.log("Top piece of bread.");
+    callbackFunction();
+    console.log("Bottom piece of bread.");
+}
+
+// We pass in an anonymous function, to be called inside.
+callbackSandwich(function() {
+    console.log("Slice of cheese.");
+});
+```
+
+## AJAX with callback
+
+```javascript
+var request = new XMLHttpRequest();
+
+request.addEventListener("load", event => {
+    console.log(event.target.responseText);
+});
+
+request.open("GET", "http://www.api.com/data");
+request.send();
+```
+
+Can be refactored into...
+
+```javascript
+function ajax(method, url, callback) {
+    var request = new XMLHttpRequest();
+    request.addEventListener("load", callback);
+    request.open(method, url);
+    request.send();
+}
+
+ajax("GET", "http://www.api.com/data", event => {
+    console.log("SUCCESS", event.target.responseText);
+});
+```
+
+Which is pretty much what the ajax libraries do.
 
 # AJAX
 
@@ -201,353 +556,4 @@ function submitForm(e) {
 
     xhr.send(params);
 }
-```
-
-# Fetch API
-
-An AJAX library using promises, available by default in all modern browsers. A promise is like a placeholder for a response we are going to get in the future.
-
-Fetch always returns a promise. Promise resolves to the response object. This response object has different helper methods like response.json(), response.text(), response.blob() etc.
-
-Fetch also takes a second parameter, which is a configuration object.
-
-## GET
-
-```javascript
-// ES6
-fetch("http://www.api.com/data")
-    .then(res => res.json())
-    .then(data => data)
-    .catch(err => err);
-```
-
-## POST
-
-```javascript
-// ES6
-fetch("http://www.api.com/data", {
-    method: "POST",
-    headers: {
-        Accept: "application/json",
-        "Content-type": "application/json"
-    },
-    body: JSON.stringify({ title: title, body: body })
-}) 
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-    })
-    .catch(err => err);
-
-// Async Await
-async function postData(){
-    let response = fetch("http://www.api.com/data", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({ title: title, body: body })
-    }) 
-
-    let data = await response.json()
-
-    if (response.status !== 2000){
-        throw Error(data.message)
-    }
-    
-    console.log(data)
-}
-```
-
-# Callbacks
-
-A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
-
-In JavaScript, functions are objects. Because of this, functions can take functions as arguments, and can be returned by other functions. Functions that do this are called **higher-order functions**. Any function that is passed as an argument is called a **callback function**.
-
-```javascript
-function foo(input, callback) {
-    console.log(input);
-    callback();
-}
-
-// Anonymous callback. Logs Foo Bar.
-foo("Foo", function() {
-    console.log("Bar");
-});
-```
-
-Passing named functions.
-
-```javascript
-function baz(input) {
-    console.log(input);
-}
-
-// This executes the baz function immediately.
-// Logs Baz Foo and "TypeError: callback is not a function
-foo("Foo", baz("Baz"));
-
-// Named callback. Logs Foo Baz.
-foo("Foo", function() {
-    baz("Baz");
-});
-
-// Works fine because it doesn't execute immediately.
-// Must have no arguments. Logs Foo Qux.
-foo("Foo", logQux);
-
-function logQux() {
-    console.log("Qux");
-}
-```
-
-Another example...
-
-```javascript
-function callbackSandwich(callbackFunction) {
-    console.log("Top piece of bread.");
-    callbackFunction();
-    console.log("Bottom piece of bread.");
-}
-
-// We pass in an anonymous function, to be called inside.
-callbackSandwich(function() {
-    console.log("Slice of cheese.");
-});
-```
-
-## AJAX with callback
-
-```javascript
-var request = new XMLHttpRequest();
-
-request.addEventListener("load", event => {
-    console.log(event.target.responseText);
-});
-
-request.open("GET", "http://www.api.com/data");
-request.send();
-```
-
-Can be refactored into...
-
-```javascript
-function ajax(method, url, callback) {
-    var request = new XMLHttpRequest();
-    request.addEventListener("load", callback);
-    request.open(method, url);
-    request.send();
-}
-
-ajax("GET", "http://www.api.com/data", event => {
-    console.log("SUCCESS", event.target.responseText);
-});
-```
-
-Which is pretty much what the ajax libraries do.
-
-# Promises
-
-The `Promise()` constructor takes a function, which takes the `resolve` and `reject` functions.
-
-```javascript
-new Promise((resolve, reject) => {
-    if (goodThingsHappen) {
-        resolve(goodThings); // passed to .then()
-    } else {
-        reject(reasonsForFailing);
-    }
-});
-```
-
-The promise object is used for deferred and asynchronous computations and it represents and operation that hasn't completed yet, but is expected in the future.
-
-Promises are obtained with `.then()`.
-
-```javascript
-// Immediately resolved.
-let myPromise = Promise.resolve("Foo");
-myPromise.then((res) => console.log(res);) // Foo
-
-// Delayed
-var myPromise = new Promise(function(resolve, reject){
-    setTimeout(() => resolve(4), 2000); // Return 4 after 2 seconds.
-});
-
-myPromise.then((res) => {
-    res += 3; // Wait for the 4 and add 3 to it.
-    console.log(res); // 7 after 2 seconds.
-});
-```
-
-## Fetch under the hood with Promises
-
-```javascript
-function fetch(method, url) {
-    return new Promise(function(resolve, reject) {
-        let xhr = new XMLHttpRequest();
-        xhr.open(method, url);
-        xhr.onload = function() {
-            if (this.status >= 200 && this.staus <= 300) {
-                resolve(xhr.response);
-            } else {
-                reject({
-                    status: this.status,
-                    statusText: xhr.statusText
-                });
-            }
-        };
-        xhr.onerror = function() {
-            reject({
-                status: this.status,
-                statusText: xhr.statusText
-            });
-        };
-        xhr.send();
-    });
-}
-
-fetch("GET", "http://jsonplaceholder.typicode.com/todos")
-    .then(function(data) {
-        let todos = JSON.parse(data);
-        let output = "";
-        for (let todo of todos) {
-            output += `
-                <li>
-                    <h3>${todo.title}</h3>
-                    <p>${todo.item}</p>
-                `;
-        }
-        document.getElementById("list").innerHTML = output;
-    })
-    .catch(function(err) {
-        console.log(err);
-    });
-```
-
-## Promise All
-
-Takes an array of promises and executes if they are all successful.
-
-```javascript
-Promise.all([
-    fetch("/api/endpoint"),
-    fetch("/api/another-endpoint"),
-    fetch("/api/yet-another-endpoint")
-])
-    .then(responses => {
-        // array of responses
-        console.log(responses[0]); // users
-        console.log(responses[1]); // products
-        console.log(responses[2]); // clients
-    })
-    .catch(err => {
-        console.log(err);
-    });
-```
-
-## Chaining
-
-```javascript
-let futureNumber = Promise.resolve(2); // 2
-
-futureNumber
-    .then(n => n + 1) // 3
-    .then(n => n * 2) // 6
-    .then(n => Math.pow(n, 2)) // 36
-    .then(n => console.log(n)); // 36
-
-futureNumber.then(n => console.log(n)); //2
-```
-
-# Async/Await
-
-Async/Await enables us to write asynchronous code in a synchronous fashion. Under the hood, it’s just syntactic sugar using generators and yield statements to “pause” execution. 
-
-In other words, async functions can “pull out” the value of a Promise even though it’s nested inside a callback function, giving us the ability to assign it to a variable.
-
-```javascript
-async function foo() {
-    try{
-        let res = await fetch("https://jsonplaceholder.typicode.com/todos");
-        let data = await res.json()
-        console.log(data);
-    } catch (err){
-        console.log(err)
-    }
-};
-
-foo();
-
-// Fetch API comparison
-
-function foo() {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-}
-```
-
-Under the hood it looks like...
-
-```javascript
-const request = url => {
-    ajax("GET", url).then(response => it.next(JSON.parse(response)));
-};
-
-function* main() {
-    const result = yield fetch("http://api.com/users/1");
-    const data = yield result.json();
-    console.log(data);
-}
-
-const it = main();
-it.next();
-```
-
-### Combination Example
-```javascript
-async function getDataOne() {
-    let res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-    let data = await res.json()
-    return data;
-}
-
-async function getDataTwo() {
-    let res = await fetch("https://jsonplaceholder.typicode.com/todos/2");
-    let data = await res.json()
-    return data;
-}
-
-async function getBoth() {
-    var resultOne = await getDataOne();
-    var resultTwo = await getDataTwo();
-    console.log(resultOne, resultTwo)
-}
-
-getBoth();
-
-// Compared to this
-function foo() {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then(res => res.json())
-    .then(resultOne => {
-
-        fetch("https://jsonplaceholder.typicode.com/todos/2")
-        .then(res => res.json())
-        .then(resultTwo => {
-
-            console.log(resultOne, resultTwo)
-            
-        })
-        .catch(err => console.log(err));
-
-    })
-    .catch(err => console.log(err));
-}
-
-foo()
 ```

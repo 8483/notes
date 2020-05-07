@@ -34,9 +34,18 @@ Red = Lost opportunities (Happens at discount/tiered pricing)
 
 ![Pricing](../pics/product/pricing/pricing_billion_formula.jpg)
 
-What would the business look like if you're a billion dollar company i.e. $100M in sales annually.
+What would the business look like if you're a billion dollar company i.e. $100M in sales **annually**, or $8M **monthly**.
 
 SMB = The *danger zone*, where a lot of companies are in and they struggle, where the customer treats their money like consumers but they kinda look like an enterprise.
+
+| Annual | Monthly |
+|---|---|
+| $100 | $8 |
+| $1K | $83 |
+| $10K | $833 |
+| $100K | $8,333 |
+
+
 
 ![Pricing](../pics/product/pricing/pricing_quadrants.jpg)
 

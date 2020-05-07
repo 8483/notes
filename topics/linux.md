@@ -66,6 +66,7 @@ sudo apt-get install -f
 # Find
 
 ```bash
+grep -r 'string' directory_to_search      # List occurences of string in all files.
 find /                                    # List root directory's content.
 find / | grep FILE                        # Search the output.
 
