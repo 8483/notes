@@ -6,7 +6,7 @@
 
 ![Sales](../pics/product/sales/sales_reality.jpg)
 
-*You should be spending every moment, of every day, doing one of two things... Bulding product or talking to users* - Paul Graham
+_You should be spending every moment, of every day, doing one of two things... Bulding product or talking to users_ - Paul Graham
 
 You have 2 HUGE advantages: passion + deep expertize
 
@@ -23,44 +23,48 @@ Ideally, there should be a sales dedicated co-founder, doing it full-time.
 
 Figure out who will even take your call.
 
-- Find the innovators (2.5%)
-- It's a numbers game! You have to find the innovators.
-- Reach out to > 100 companies.
-- Top 3 methods:
-    - Your network
-    - Conferences
-    - Cold emails
+-   Find the innovators (2.5%)
+-   It's a numbers game! You have to find the innovators.
+-   Reach out to > 100 companies.
+-   Top 3 methods:
+    -   Your network
+    -   Conferences
+    -   Cold emails
 
 **You're gonna hear a lot of NO!**
 
 ### Conferences
 
-- Figure out what's out there.
-- Go to a few.
-- Get the list! 
-    - Find out who's going to be there in advance. 
-    - Do it with as many as possible.
-    - Email people in advance to setup a pitch.
-    - Schedule entire days in 30 min increments.
+-   Figure out what's out there.
+-   Go to a few.
+-   Get the list!
+    -   Find out who's going to be there in advance.
+    -   Do it with as many as possible.
+    -   Email people in advance to setup a pitch.
+    -   Schedule entire days in 30 min increments.
 
 ### Cold Emails
 
 All you're trying to do is get a call or meet them i.e. move out of prospecting and start a converstaion
 
-- Short
-- To the point
-- Personalized
-- Actionable
-- Don't be to salesy.
+-   Short
+-   To the point
+-   Personalized
+-   Actionable
+-   Don't be to salesy.
 
 ```
 John,
 
-My name is Tyler and I'm the CEO of Clever. My company has developed new technology that reduces the time spent doing SIS integrations by 80%.
+My name is Tyler and I'm the CEO of Clever.
+
+My company has developed new technology that reduces the time spent doing SIS integrations by 80%.
 
 I figured this might be of interest to you given the new middle school reading software Scholastic just released.
 
-I'd love to get your feedback even if you're not in the market for this right now. Do you have 20 minutes this week? I'm open Tuesday at 1 or 2pm ET if either may work.
+I'd love to get your feedback even if you're not in the market for this right now.
+
+Do you have 20 minutes this week? I'm open Tuesday at 1 or 2pm ET if either may work.
 
 Tyler
 ```
@@ -84,7 +88,7 @@ Ask questions:
 ### Religious Follow Up
 
 ![Converstaions](../pics/product/sales/sales_follow_up.jpg)
-*This is 2 months of work for closing a $100,000/year customer*
+_This is 2 months of work for closing a \$100,000/year customer_
 
 ...And this is for someone that wants to buy the product! It's not over till they say no.
 
@@ -102,9 +106,9 @@ Until you hear a no, you can follow up within reason. 8 unanswered emails... tak
 
 ### Redlines
 
-- Final step is to send them an agreement. **HAVE IT READY!**
-- Use the open source YC contract template.
-- Don't waste time on minor legal points.
+-   Final step is to send them an agreement. **HAVE IT READY!**
+-   Use the open source YC contract template.
+-   Don't waste time on minor legal points.
 
 Redlining = Changes to an agreement
 
@@ -116,8 +120,8 @@ Early customers are like mana from heaven, do not lose them by draggin on the pr
 
 "I want to buy, but only if you had this feature..."
 
-- Usually a polite pass.
-- Building it will not get you the sale!
+-   Usually a polite pass.
+-   Building it will not get you the sale!
 
 Either sign a conditional agreement, or wait to hear demand from more customers.
 
@@ -125,8 +129,8 @@ Either sign a conditional agreement, or wait to hear demand from more customers.
 
 "We want to try it for a month before buying"
 
-- Early on you need **commitment**, **validation** and **revenue**.
-- Free trial gets you **none** of these.
+-   Early on you need **commitment**, **validation** and **revenue**.
+-   Free trial gets you **none** of these.
 
 Instead, offer a first 30 days cancellation period on an annual contract.
 
@@ -144,7 +148,7 @@ How much you're able to charge determines your approach on sales.
 
 Prioritize the easiest sells i.e the most in need. Don't look for references, but rather for product validation.
 
-Low pricing ex. $50/month: Demand generation, Email campaigns, self-service sign-up flows, referral codes...
+Low pricing ex. \$50/month: Demand generation, Email campaigns, self-service sign-up flows, referral codes...
 
 ## Pricing
 
@@ -167,46 +171,3 @@ Be bold and confident about the price, but iterate in private.
 Some people think that if you build a product, and you put it out on the market, people will come and start using it. Not really.
 
 **Don't have a growth team if you don't have product market fit** - It's super dangerous as it will kill the business.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

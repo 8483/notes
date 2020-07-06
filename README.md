@@ -21,8 +21,9 @@
 ### Backend
 
 -   [Node](./topics/node.md)
--   [nginx](./topics/nginx.md)
 -   [Express](./topics/express.md)
+-   [Middleware](./topics/middleware.md)
+-   [nginx](./topics/nginx.md)
 -   [GraphQL](./topics/graphql.md)
 -   [Caching](./topics/caching.md)
 -   [Logging](./topics/logging.md)
@@ -44,6 +45,7 @@
 -   [VS Code](./topics/vscode.md)
 
 ### Architecture
+
 -   [MVC](./topics/mvc.md)
 -   [Architecture](./topics/architecture.md)
 -   Use Cases
@@ -115,9 +117,9 @@
 ### General
 
 -   [Electronics](./topics/electronics.md)
-- Terminology
-- Communication Protocols
-- Components
+-   Terminology
+-   Communication Protocols
+-   Components
 -   [RFID](./topics/rfid.md)
 
 ### Gadgets
@@ -132,14 +134,14 @@
 
 # Machine Learning
 
-- [Brain.js](./topics/brainjs.md)
+-   [Brain.js](./topics/brainjs.md)
 
 # Product
 
-- [MVP](./topics/productMVP.md)
-- [Pricing](./topics/productPricing.md)
-- [Sales](./topics/productSales.md)
-- [Product Market Fit](./topics/productMarketFit.md)
+-   [MVP](./topics/productMVP.md)
+-   [Pricing](./topics/productPricing.md)
+-   [Sales](./topics/productSales.md)
+-   [Product Market Fit](./topics/productMarketFit.md)
 
 # Googling
 
