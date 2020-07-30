@@ -108,6 +108,33 @@ module.exports = { errorHandler };
 app.use(middleware.errorHandler);
 ```
 
+**api.js**
+
+**IT'S CRUCIAL TO INCLUDE THE `next` KEYWORD!** This passes data down the chain.
+
+```js
+const express = require("express");
+const router = express.Router();
+const pool = require("../pool.js");
+
+// note the async keyword
+// note the next keyword
+router.get("/api/endpoint", async function (req, res, next) {
+    try {
+        let query = `
+            select * from product
+        `;
+
+        var rows = await pool.query(query);
+        res.status(200).send(rows);
+    } catch (err) {
+        next(err); // note the next usage
+    }
+});
+
+module.exports = router;
+```
+
 # 404
 
 **middleware.js**
@@ -188,4 +215,6 @@ router.get("/api/endpoint", async function (req, res) {
         throw new Error(err);
     }
 });
+
+module.exports = router;
 ```

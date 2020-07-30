@@ -5,9 +5,9 @@
 -   **Singular form**. Both tables and columns.
 -   Be consistent! Doesn't matter if you use camelCase or snake_case. Use whatever the front-end uses.
 -   Avoid abbreviations or prefixes.
-- Use unique names that cannot collude with SQL/RDBMS reserved words (avoid name, order, percent...) **or** use a trailing underscore.
-- Do not use the table name followd by “id” (e.g. client_id) as your PK. id is more than enough and everyone will understand.
-- Never use capital letters in your table or field names. Ever.
+-   Use unique names that cannot collude with SQL/RDBMS reserved words (avoid name, order, percent...) **or** use a trailing underscore.
+-   Do not use the table name followd by “id” (e.g. client_id) as your PK. id is more than enough and everyone will understand.
+-   Never use capital letters in your table or field names. Ever.
 
 ### Performance
 
@@ -54,12 +54,14 @@ sudo /etc/init.d/mysql start
 ```
 
 # Login
+
 ```bash
-# Log into MySQL as root, with password. 
+# Log into MySQL as root, with password.
 sudo mysql -u root -p
 ```
 
 # Run script
+
 ```bash
 # Run global script
 mysql -u user -p < db.sql
@@ -73,10 +75,10 @@ mysql -u user -p db_name < db.sql > /tmp/output.txt
 
 # Command line
 
-[Digital Ocean tutorial](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)  
+[Digital Ocean tutorial](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)
 
 Commands are **not** case sensitive, but table names are. **All commands must end with** `;`.
- 
+
 `;` - Execute/End current command.  
 `ENTER` - Starts a new line. `;` is expected.
 
@@ -118,6 +120,9 @@ REVOKE permission ON dbName.tableName FROM '<user>'@'localhost';
 
 ```sql
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+FLUSH PRIVILEGES;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'MyNewPass';
 FLUSH PRIVILEGES;
 ```
 
@@ -261,11 +266,11 @@ Insert if `id` doesn't exit. Else, update the data at said `id`.
 |  3 | baz          |
 +----+--------------+
 
-INSERT INTO table (id, columnName) 
-VALUES 
+INSERT INTO table (id, columnName)
+VALUES
     (1, 'qux'),
     (null, 'hex')
-ON DUPLICATE KEY UPDATE 
+ON DUPLICATE KEY UPDATE
     columnName = values(columnName);
 
 +----+--------------+
@@ -282,9 +287,9 @@ ON DUPLICATE KEY UPDATE
 
 ```sql
 -- Check the size of all the databases
-SELECT table_schema AS "Database", 
-ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
-FROM information_schema.TABLES 
+SELECT table_schema AS "Database",
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
+FROM information_schema.TABLES
 GROUP BY table_schema;
 
 -- Check the size of all the tables in a database
