@@ -30,6 +30,7 @@
 -   [Logging](./topics/logging.md)
 -   [SSL](./topics/ssl.md)
 -   [Puppeteer](./topics/puppeteer.md)
+-   [Nodemailer](./topics/nodemailer.md)
 
 ### Database
 
