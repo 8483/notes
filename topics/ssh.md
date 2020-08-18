@@ -20,6 +20,13 @@ SSH in Virtual Machine needs a port forwarding rule in network settings for the 
 ssh -p 3022 user@127.0.0.1
 ```
 
+# sudo command
+
+```bash
+# It will ask for the root password in the remote machine
+ssh -t user@255.255.255.255 "sudo command"
+```
+
 # Alias
 
 ```bash
@@ -44,19 +51,21 @@ This works by using a private `id_rsa` and public `id_rsa.pub` key pair. These k
 
 The `id_rsa` private key stays in the host machine in `~/.ssh`. The `id_rsa.pub` public key goes on the server in a `~/.ssh/authorized_keys` file. Simple as that, the next ssh is password-less.
 
-To transfer a public key, use this from `~`:
+To transfer a public key, use this:
 
 ```bash
-rsync -av -e 'ssh -p 3022' ./.ssh/id_rsa.pub user@127.0.0.1:~/.ssh/
+ssh-copy-id user@255.255.255.255
 ```
 
-# rsync - Transfer files over SSH 
+This automates the manual creation of an `~/.ssh/authorized_keys` file and putting the `id_rsa.pub` key in.
+
+# rsync - Transfer files over SSH
 
 Only transfer the files that have changes or are missing. Much faster and secure than FTP.
 
 ```bash
--a   # Recursion and preserve everything.  
--v   # Transfer log.  
+-a   # Recursion and preserve everything.
+-v   # Transfer log.
 -h   # Display the output numbers in a human-readable format.
 -e   # Specify remote shell.
 -W   # Copy whole file, without checking for changes.

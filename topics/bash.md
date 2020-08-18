@@ -1,27 +1,53 @@
+# Line breaks
+
+If the statement is correct without continuation, you need to use `\`. Therefore, the following works without a backslash, as you can't end a command with a `&&`.
+
+```bash
+# Doesn't need line break
+echo 1 &&
+echo 2
+
+# Needs line break
+echo 1 \
+&& echo 2
+
+echo 1 2 3 \
+4
+```
+
 # Variables
 
 Setting a command's output into a variable.
+
 ```bash
-all="$(ls ./all | wc -l)" && echo "all: ${all}" && resampled="$(ls ./resampled | wc -l)" && echo "resampled: ${resampled}"
+all="$(ls ./all | wc -l)" &&
+echo "all: ${all}" &&
+resampled="$(ls ./resampled | wc -l)" &&
+echo "resampled: ${resampled}"
 ```
 
 # Logical
+
 `&&` - AND
 `||` - OR
 
 # Redirection
+
 `>` - Redirect standard output and **overwrite**.  
 `>>` - Redirect standard output and **append**.  
 `<` - Redirect input to another command. Ex. `mail mike@somewhere.org < to_do.txt`
 
 # Piping
+
 `|` - Uses the **output** of one command as the **input** of another.
 
 # Command Substitution
+
 `$(PROGRAM_PATH)` - Use program output as variable. Ex. `echo "$(/bin/date) - Hi" >> logfile.log`
 
 # grep
-Only works for searching files or standard outputs.  
+
+Only works for searching files or standard outputs.
 
 `grep <CRITERIA> <PATH>` - Returns all the lines containing the search criteria.
 
@@ -79,11 +105,15 @@ ls -1 | sed -e 's/\..*$//' > ../pics.txt
 ```
 
 # Image manipulation
+
 Requires the `imagemagick` package
+
 ```bash
 sudo apt-get install imagemagick
 ```
+
 ### Resizing
+
 ```bash
 # Resize image to specific dimensions, while trying to keep aspect ratio.
 convert image.jpg -resize 492x492 resized_image.jpg
@@ -93,6 +123,7 @@ for file in *.jpg; do convert $file -resize 492x492 ../resized/$file && echo $fi
 ```
 
 ### Resampling
+
 ```bash
 sudo apt install imagemagick
 
@@ -104,6 +135,7 @@ for file in *.jpg; do convert $file -sampling-factor 4:2:0 -strip -quality 1 -in
 ```
 
 ### Watermarking
+
 ```bash
 # Watermarking
 composite -dissolve 30% -gravity center watermark2.jpg image.jpg watermarked_image.jpg

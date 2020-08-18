@@ -20,7 +20,9 @@ Which we can read with the `dotenv` package like so.
 
 ```js
 // config.js
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config({
+    path: `${__dirname}/.env`,
+});
 
 const database = process.env.DBNAME;
 const user = process.env.DBUSER;
@@ -35,6 +37,8 @@ module.exports = {
     },
 };
 ```
+
+**NOTE:** `__dirname` is required because the variables are `undefined` when accessing the `.env` file outside the root folder.
 
 We can then have one `.env` file for development in the local machine, and one for production on the live server. This way we can just set the variables and not touch the code.
 
