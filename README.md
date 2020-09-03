@@ -92,6 +92,7 @@
 -   [tmux](./topics/tmux.md)
 -   [vim](./topics/vim.md)
 -   [ssh](./topics/ssh.md)
+-   [rsync](./topics/rsync.md)
 -   [compression](./topics/compression.md)
 -   [cron](./topics/cron.md)
 

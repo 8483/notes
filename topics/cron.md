@@ -1,38 +1,67 @@
 Each user has his own crontab i.e. cron table i.e table of scheduled processes.
 
+List
+
 ```bash
-# List of tasks
+# list of tasks for current user
 crontab -l
 
-# Edit crontabs i.e Add a cron job that runs as root. Opens editor.
-sudo crontab -e
+# list of tasks for specific user
+crontab –u username –l
+```
 
-# List of crontabs
+Edit
+
+```bash
+# edit crontabs for current user
+crontab -e
+
+# edit tasks for specific user
+crontab –u username –e
+```
+
+Jobs
+
+```bash
+# list of crontabs
 sudo less /var/spool/cron/crontabs
 
-# Systemwide crontab
+# root systemwide crontab
 sudo less /etc/crontab
 ```
 
 # Format
 
+```
+.---------------- minute (0 - 59)
+|  .------------- hour (0 - 23)
+|  |  .---------- day of month (1 - 31)
+|  |  |  .------- month (1 - 12) OR jan, feb, mar, apr...
+|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun, mon, tue, wed, thu, fri, sat
+|  |  |  |  |
+*  *  *  *  * command to be executed
+
+*     all
+,     list of values
+x-y   range of values
+/x    recurring i.e. every x times
+```
+
 ```bash
-# minute, hour, day-of-month, month-of-year, day-of-week, command
-# *   = Every
-# ,   = List of values
-# x-y = Range of values
-# /x  = Recurring i.e. every x times
-
 # Append hello every minute.
-* * * * * echo "hello" >> home/user/log.txt
+* * * * * echo "hello" >> /home/user/log.txt
 
-# At 03:00 on Sunday.
-0 3 * * 0 echo "hello" >> home/user/log.txt
+# At 23:59 every day.
+59 23 * * * echo "hello" >> /home/user/log.txt
+
+# At 23:59 on Sunday.
+59 23 * * 0 echo "hello" >> /home/user/log.txt
 
 # At every 20th minute past hour 22 on day-of-month 1 and 15.
-*/20 22 1,15 * * echo "hello" >> home/user/log.txt
+*/20 22 1,15 * * echo "hello" >> /home/user/log.txt
 
 # At 10:15 on every 2nd day-of-month from 1 through 10 and on Friday.
-15 10 1-10/2 * 5 echo "hello" >> home/user/log.txt
+15 10 1-10/2 * 5 echo "hello" >> /home/user/log.txt
 ```
+
 The timing doesn't overlap meaning it happens in both cases, not a combination of the two.

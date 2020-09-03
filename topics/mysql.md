@@ -302,7 +302,9 @@ ORDER BY (data_length + index_length) DESC;
 
 # Backup
 
-To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re -create the database. Use `--databases` in order to have `CREATE TABLE IF NOT EXIST` included in the dump.
+To do this, we use the `mysqldump` command which creates a file with the SQL statements necessary to re-create the database.
+
+With `--all-databases` or `--databases`, mysqldump writes `CREATE DATABASE` and `USE` statements prior to the dump output for each database, in order to insure the data goes to the right database.
 
 ```bash
 mysqldump --add-drop-table --databases dbName > backup.sql
@@ -318,19 +320,44 @@ mysqldump --all-databases > backup.sql
 
 # Prompt for password.
 mysqldump -p --databases dbName > backup.sql
+```
 
-# Options
+Options
 
-# add a DROP TABLE statement before each CREATE TABLE.
+```bash
+# Add DROP DATABASE statement before each CREATE DATABASE statement
+--add-drop-database
+
+# Add DROP TABLE statement before each CREATE TABLE statement
 --add-drop-table
 
 # Only database structure, without contents.
 --no-data
 ```
 
-## Restore
+## Automated
 
-If the dump was created without using `--databases`, then the database must be manually created before restoring. Also, the database must be specified with `mysql dbName < backup.sql`. Otherwise, just use:
+```bash
+# backup database - backup_db_name_20200903-032043.sql
+mysqldump -u root --password="db_pass" --databases db_name > /home/user/backups/"backup_db_name_$(date +%Y%m%d-%H%M%S).sql"
+
+# Edit crontabs i.e Add a cron job that runs as root. Opens editor.
+sudo crontab -e
+
+# backup database every day at 23:59
+59 23 * * * mysqldump -u root --password="db_pass" --databases db_name > /home/user/backups/"backup_db_name_$(date +%Y%m%d-%H%M%S).sql"
+
+# backup ALL databases every day at 23:59
+59 23 * * * mysqldump -u root --password="db_pass" --all-databases > /home/user/backups/"backup_all_$(date +%Y%m%d-%H%M%S).sql"
+```
+
+# Restore
+
+If the dump was created without using `--databases`, then the database must be manually created before restoring.
+
+Also, the database must be specified with `mysql dbName < backup.sql`.
+
+Otherwise, just use:
 
 ```bash
 # Restore a database.

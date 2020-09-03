@@ -7,30 +7,31 @@ MVP = You've made something bad, the most desperate want.
 Justin.tv later Twitch
 
 Things that allowed us to survive (All were essential):
-- Founding team was extremely technical. This allowed them to break a lot of rules.
-- Didn't spend a lot of money.
-- Ego was highly tied to the startup. Failing = Fail in life.
+
+-   Founding team was extremely technical. This allowed them to break a lot of rules.
+-   Didn't spend a lot of money.
+-   Ego was highly tied to the startup. Failing = Fail in life.
 
 ## What problem are you solving?
 
-- Can you state the problem clearly in 1 sentence?
-- Have you experienced the problem yourself?
-- Can you describe the problem narrowly?
-- Is the problem solvable? Ex. Uber for babysitting. Very hard to solve.
+-   Can you state the problem clearly in 1 sentence?
+-   Have you experienced the problem yourself?
+-   Can you describe the problem narrowly?
+-   Is the problem solvable? Ex. Uber for babysitting. Very hard to solve.
 
 ## Who is your customer?
 
-- Everyone? **NO!**
-- How often do you have the problem? 
+-   Everyone? **NO!**
+-   How often do you have the problem?
 
-    - Ex. Car selling app. The customer is not the buyer, but the seller! The buyer comes back after 7 years, the seller has the problem everyday.
+    -   Ex. Car selling app. The customer is not the buyer, but the seller! The buyer comes back after 7 years, the seller has the problem everyday.
 
-- How intense is the problem?
-- Are they willing to pay? 
-    
-    - *I need to give it away for free, it's the only way I'll get users*. **WRONG!** If you want to know if you have a good product it's a lot easier to make it harded for the user to use it, and see if they use it anyway. If they have an extremely intense problem, and you ask for $100, they'll see a deal. If you charge $0, you'll get people trying something out, without a real problem. **Starting with a price is always better than free**.
+-   How intense is the problem?
+-   Are they willing to pay?
 
-- How easy are they to find? 
+    -   _I need to give it away for free, it's the only way I'll get users_. **WRONG!** If you want to know if you have a good product it's a lot easier to make it harded for the user to use it, and see if they use it anyway. If they have an extremely intense problem, and you ask for $100, they'll see a deal. If you charge $0, you'll get people trying something out, without a real problem. **Starting with a price is always better than free**.
+
+-   How easy are they to find?
 
 ## Does your MVP solve the problem?
 
@@ -44,9 +45,9 @@ The answer to this question hurts.
 
 Go after the easiest first! The instinct is to go after the hardest first, almost as a proof.
 
-If you're trying to sell a simple $1,000 / month software, and you're engaged in a 6 month conversation with them, that's not a desperate company, MOVE ON!
+If you're trying to sell a simple \$1,000 / month software, and you're engaged in a 6 month conversation with them, that's not a desperate company, MOVE ON!
 
-*Whose business is gonna go out of business without using you?*
+_Whose business is gonna go out of business without using you?_
 
 Find the people screaming for the product!
 
@@ -62,7 +63,7 @@ You can FIRE a customer.
 
 ## Should you discount or start with a super low price?
 
-**NO!** 
+**NO!**
 
 You can structure discounts and incentives into your sales pitch, if you understand what value you're getting back.
 
@@ -76,16 +77,16 @@ This is the way to do it, not by giving it for free because no one will use it.
 
 Google Analytics is bad for this.
 
-- How many people visited the website.
-- How many pages they viewed.
-- Where they came from.
+-   How many people visited the website.
+-   How many pages they viewed.
+-   Where they came from.
 
 You need an events based metrics product i.e. what their actions were.
 
-- Did they click this button?
-- Did they see this screen?
-- How long were they on a page before doing something else?
-- Did they leave something in their cart?
+-   Did they click this button?
+-   Did they see this screen?
+-   How long were they on a page before doing something else?
+-   Did they leave something in their cart?
 
 Ex. Mixpanel, Amplitude, Heap...
 
@@ -93,11 +94,11 @@ Pick 5-10 important stats.
 
 Ex. Instagram:
 
-- Open the app
-- Create an account
-- Took a photo
-- Applied effects
-- Shared he photo
+-   Open the app
+-   Create an account
+-   Took a photo
+-   Applied effects
+-   Shared he photo
 
 Make measurements a part of the product spec i.e. strart tracking with the release.
 
@@ -126,7 +127,7 @@ Have **ONE** brainstorming meeting every week. In order to prevent hating it, ma
 
 4. Decide
 
-    Decide which features would impact the KPI the most. Hard first, medium second, easy last. 
+    Decide which features would impact the KPI the most. Hard first, medium second, easy last.
 
 5. Writte spec. Everyone fuck up here, and no one likes this step.
 
@@ -137,7 +138,7 @@ Have **ONE** brainstorming meeting every week. In order to prevent hating it, ma
 If you are expecting to build something significant under two years, you are doing it wrong.
 
 Pivot = Changing the customer and/or the problem (rare) Means start a new company.  
-Iterate = Changing the solution (common)  
+Iterate = Changing the solution (common)
 
 Many make the mistake by thinkin the solution is the genius part, and they look for different customers for their solution. Actually, identifying the problem that other's haven't figured out how to solve is the genius part. Facebook and Google weren't first.
 
@@ -155,16 +156,16 @@ When you think about MVP, you should think about something ridiculously simple. 
 
 **THE THING THAT GETS PEOPLE REALLY SCREWED UP WITH THEIR MVP, IS THAT THEY HAVE A VISION THAT'S BIG, AND ARE NOT WILLING TO HAVE A SMALL MVP**
 
-Talk yo your users before writing code, to understand the problem!
+Talk to your users before writing code, to understand the problem!
 
 You can be your own first user.
 
 ## Goal of a pre-launch startup
 
-- Launch something bad quickly!
-- Get initial customers, anyone.
-- Talk to customers and get feedback.
-- Iterate i.e. continue improving the solution.
+-   Launch something bad quickly!
+-   Get initial customers, anyone.
+-   Talk to customers and get feedback.
+-   Iterate i.e. continue improving the solution.
 
 Most founders have an idea what to build, so they think that having not built the full thing, it's not worth getting feddback on the shitty initial thing. This is a mistake, because the final product might not be what your customers want at all.
 
@@ -174,23 +175,23 @@ On iteration, it's like your making a screwdriver, and the mechanic tells you it
 
 ## Lean MVP (most cases)
 
-- Very fast to build (weeks, not months)
-- **Extremely** limited functionality.
-- Appeal to a small set of users. Have a vision of everyone, make an MVP for a few.
-- Base to iterate from. Your MVP is not special.
+-   Very fast to build (weeks, not months)
+-   **Extremely** limited functionality.
+-   Appeal to a small set of users. Have a vision of everyone, make an MVP for a few.
+-   Base to iterate from. Your MVP is not special.
 
 ![MVP](../pics/product/mvp/mvp_airbnb.jpg)
 
 ![MVP](../pics/product/mvp/mvp_twitch.jpg)
 
-![MVP](../pics/product/mvp/MVP_stripe.jpg)
+![MVP](../pics/product/mvp/mvp_stripe.jpg)
 
 ## Heavy MPV (very few cases)
 
-- Significant regulation (banking, insurance)
-- Hardtech (rockets)
-- Biotech
-- Moonshot (bore tunnels under cities)
+-   Significant regulation (banking, insurance)
+-   Hardtech (rockets)
+-   Biotech
+-   Moonshot (bore tunnels under cities)
 
 ## Launching
 
@@ -202,10 +203,10 @@ Learning from customers is easier with an MVP, than without.
 
 ## Hacks for building an MVP quickly
 
-- Time box your spec (list of stuff to build)
-- Write your spec (Most fuck it up)
-- Cut your spec (unimportant stuff)
-- Don't fall in love with your MVP
+-   Time box your spec (list of stuff to build)
+-   Write your spec (Most fuck it up)
+-   Cut your spec (unimportant stuff)
+-   Don't fall in love with your MVP
 
 The goal is to get ANYTHING in front of a customer.
 
@@ -219,47 +220,13 @@ If you are looking for a shirt to paint with and destroy, you woudln't spend tim
 
 It's no their job to come up with features. Their job is to come up with problems.
 
-- How often do they have it?
-- How intense is it?
-- Are they willing to pay for it?
-- Do they know others that have it?
+-   How often do they have it?
+-   How intense is it?
+-   Are they willing to pay for it?
+-   Do they know others that have it?
 
 Any feature request should be converted into problem dissection.
 
 Do I have product market fit? If you have to ask, you don't. You know you have it if you start spending the whole time just keeping servers alive to meet demand, rather than making new features. "We're gonna die because we have too many users!"
 
 Almost no one achieves product market fit. You may have some users, but that's not product market fit.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
