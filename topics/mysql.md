@@ -338,17 +338,17 @@ Options
 ## Automated
 
 ```bash
-# backup database - backup_db_name_20200903-032043.sql
-mysqldump -u root --password="db_pass" --databases db_name > /home/user/backups/"backup_db_name_$(date +%Y%m%d-%H%M%S).sql"
+# backup database - backup-db-name-20200903-032043.sql
+mysqldump -u root --password="db-pass" --databases db-name > /home/user/backups/"backup-db-name-$(date +%Y%m%d-%H%M%S).sql"
 
 # Edit crontabs i.e Add a cron job that runs as root. Opens editor.
 sudo crontab -e
 
 # backup database every day at 23:59
-59 23 * * * mysqldump -u root --password="db_pass" --databases db_name > /home/user/backups/"backup_db_name_$(date +%Y%m%d-%H%M%S).sql"
+59 23 * * * mysqldump -u root --password="db-pass" --databases db-name > /home/user/backups/"backup-db-name-$(date +%Y%m%d-%H%M%S).sql"
 
 # backup ALL databases every day at 23:59
-59 23 * * * mysqldump -u root --password="db_pass" --all-databases > /home/user/backups/"backup_all_$(date +%Y%m%d-%H%M%S).sql"
+59 23 * * * mysqldump -u root --password="db-pass" --all-databases > /home/user/backups/"backup-all-$(date +%Y%m%d-%H%M%S).sql"
 ```
 
 # Restore

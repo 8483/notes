@@ -14,6 +14,7 @@
 -   [CSS](./topics/css.md)
 -   [React](./topics/react.md)
 -   [Vue](./topics/vue.md)
+-   [Svelte](./topics/svelte.md)
 -   [Electron](./topics/electron.md)
 -   [Elm](./topics/elm.md)
 -   [Tabulator](./topics/tabulator.md)
@@ -21,9 +22,10 @@
 ### Backend
 
 -   [Node](./topics/node.md)
--   [.env](./topics/dotenv.md)
+-   [npm/npx](./topics/npm.md)
 -   [Express](./topics/express.md)
 -   [Middleware](./topics/middleware.md)
+-   [.env](./topics/dotenv.md)
 -   [nginx](./topics/nginx.md)
 -   [GraphQL](./topics/graphql.md)
 -   [Caching](./topics/caching.md)
