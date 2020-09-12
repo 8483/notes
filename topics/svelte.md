@@ -2,7 +2,7 @@ Svelte converts your app into ideal JavaScript at build time, rather than interp
 
 You can build your entire app with Svelte, or you can add it incrementally to an existing codebase. You can also ship components as standalone packages that work anywhere, without the overhead of a dependency on a conventional framework.
 
-The compiler turns each component into a regular JavaScript class — just import it and instantiate with `new`.
+The compiler turns each component into a regular JavaScript class, located by default in `public/build/bundle.js` as defined in `rollup.config.js`.
 
 ```js
 import App from "./App.svelte";
@@ -13,6 +13,36 @@ const app = new App({
         answer: 42,
     },
 });
+
+export default app;
+```
+
+# Injected components
+
+Or, we can then import the component and instantiate with `new`.
+
+```js
+import App from "./App.svelte";
+
+export default App;
+```
+
+```js
+const bundle = require(`./bundle.js`);
+
+let app = new bundle({
+    target: document.getElementById("app"),
+});
+```
+
+In order for this to work in `node` and be further bundled in an existing non-svelte app, we need this setting in `rollup.config.js`.
+
+```js
+output: {
+    sourcemap: true,
+    format: "cjs",
+    file: "public/build/bundle-module.js",
+},
 ```
 
 # Install
@@ -23,14 +53,19 @@ Creates a new project in the my-svelte-project directory, install its dependenci
 # create a new project in the my-svelte-project directory
 npx degit sveltejs/template my-svelte-project
 
+# npx degit sveltejs/template . # in the current folder
+
 # navigate to folder
 cd my-svelte-project
 
 # install dependencies
 npm install
 
-# starts a server on http://localhost:5000
+# starts a default server http://localhost:5000
 npm run dev
+
+# starts a custom server http://localhost:5000
+HOST=127.0.0.1 PORT=4444 npm run dev
 
 # create a production-ready version of your app in /public/bundle.js.
 npm run build

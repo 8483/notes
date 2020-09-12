@@ -351,6 +351,31 @@ sudo crontab -e
 59 23 * * * mysqldump -u root --password="db-pass" --all-databases > /home/user/backups/"backup-all-$(date +%Y%m%d-%H%M%S).sql"
 ```
 
+```bash
+# Command is used: ./sync.sh database-name
+
+# database name is passed from outside as first variable
+# filename is set ex. database-20200903-235516
+# remote and local paths defined
+# remote: backup from selected database
+# remote>local: retrieve the backup
+# local: import the database in mysql
+
+database=$1
+
+filename="$database-$(date +%Y%m%d-%H%M%S)"
+
+remotepath="/home/user/databases/backups/"
+localpath="/mnt/c/user/dev/lab/traker-databases/"
+
+echo "backing up remotepath: database $filename"
+ssh user@123.456.789.255 "mysqldump -u root --password="pass" --databases $database > $remotepath$filename"\
+&& echo "fetching from remotepath to local: database $filename" \
+&& rsync -av user@123.456.789.255:$remotepath$filename $localpath \
+&& echo "importing into msql: database $filename" \
+&& mysql -u root --password="pass" < $filename
+```
+
 # Restore
 
 If the dump was created without using `--databases`, then the database must be manually created before restoring.
