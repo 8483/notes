@@ -1,3 +1,36 @@
+# BEM
+
+_"There are only two hard problems in Computer Science: cache invalidation and naming things"_ — Phil Karlton
+
+**BEM** is a CSS naming convention and it stands for Block, Element and Modifier.
+
+```
+.block__element--modifier
+```
+
+-   **Block** - Standalone entity that is meaningful on its own.
+    -   header, container, menu, checkbox, input
+-   **Element** - A part of a block that has no standalone meaning and is semantically tied to its block.
+    -   menu item, list item, checkbox caption, header title
+-   **Modifier** - A flag on a block or element. Use them to change appearance or behavior.
+    -   disabled, highlighted, checked, fixed, size big, color yellow
+
+```html
+<div class="menu">
+    <a class="menu__item menu__item--active" href="/foo">foo</a>
+    <a class="menu__item" href="/bar">foo</a>
+    <a class="menu__item" href="/baz">foo</a>
+</div>
+```
+
+```html
+<div class="form">
+    <input class="form__input" href="/foo" />
+    <button class="form__button form__button--save">Submit</button>
+    <button class="from__button form__button--delete">Cancel</button>
+</div>
+```
+
 # Grid
 
 Grid works pretty much like a table i.e. you define a grid with columns and rows, and then assign each child element a position in the grid.
@@ -6,16 +39,17 @@ The positions are the lines at which the elements start or end. A grid with 5 co
 
 ```html
 <div id="container">
-  <div id="box1">Lorem ipsum dolor sit amet</div>
-  <div id="box2">
-    <div class ="box">Lorem</div>
-    <div class ="box">Lorem</div>
-    <div class ="box">Lorem</div>
-    <div class ="box">Lorem</div>
-    <div class ="box">Lorem</div>
-    <div class ="box">Lorem</div>
-    <div class ="box">Lorem</div></div>
-  <div id="box3">Lorem ipsum dolor sit amet</div>
+    <div id="box1">Lorem ipsum dolor sit amet</div>
+    <div id="box2">
+        <div class="box">Lorem</div>
+        <div class="box">Lorem</div>
+        <div class="box">Lorem</div>
+        <div class="box">Lorem</div>
+        <div class="box">Lorem</div>
+        <div class="box">Lorem</div>
+        <div class="box">Lorem</div>
+    </div>
+    <div id="box3">Lorem ipsum dolor sit amet</div>
 </div>
 ```
 
@@ -92,18 +126,26 @@ The animations work by flowing from a set of CSS rules, to the ones from the ani
     opacity: 0;
     /* Use the effect, and last for 2 sec. The effect name can be anything*/
     animation: fadeInOut 2s linear forwards;
-    -webkit-animation: fadeInOut linear forwards; 
+    -webkit-animation: fadeInOut linear forwards;
 }
 
 /* Fast fade in, long display, fast fade out */
 @keyframes fadeInOut {
-    20% { opacity: 1 } /* @ 20% of 2 sec be fully visible */
-    80% { opacity: 1 } /* @ After 80% of 2 sec start fading */
+    20% {
+        opacity: 1;
+    } /* @ 20% of 2 sec be fully visible */
+    80% {
+        opacity: 1;
+    } /* @ After 80% of 2 sec start fading */
 }
 
 @-webkit-keyframes fadeInOut {
-    20% { opacity: 1 }
-    80% { opacity: 1 }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
 }
 ```
 
@@ -117,9 +159,15 @@ The animations work by flowing from a set of CSS rules, to the ones from the ani
             <th>Header 2</th>
         </thead>
         <tbody>
-            <tr><td> Data 1</td></tr>
-            <tr><td> Data 2</td></tr>
-            <tr><td> Data 3</td></tr>
+            <tr>
+                <td>Data 1</td>
+            </tr>
+            <tr>
+                <td>Data 2</td>
+            </tr>
+            <tr>
+                <td>Data 3</td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -139,7 +187,7 @@ th {
 ```javascript
 document.getElementById("table").addEventListener(
     "scroll",
-    function() {
+    function () {
         var translate = "translate(0," + this.scrollTop + "px)";
         this.querySelector("thead").style.transform = translate;
     },
