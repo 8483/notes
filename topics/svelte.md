@@ -1,3 +1,21 @@
+# UI / component libraries
+
+https://svelte-mui.ibbf.ru/textfield
+
+https://illright.github.io/attractions/
+
+https://ibm.github.io/carbon-components-svelte/?path=/story/button--default
+
+https://smeltejs.com/components/date-pickers
+
+https://docs.svelteit.dev/
+
+https://illright.github.io/attractions/
+
+https://madewithsvelte.com/
+
+# About
+
 Svelte converts your app into ideal JavaScript at build time, rather than interpreting your application code at run time. This means you don't pay the performance cost of the framework's abstractions, and you don't incur a penalty when your app first loads.
 
 You can build your entire app with Svelte, or you can add it incrementally to an existing codebase. You can also ship components as standalone packages that work anywhere, without the overhead of a dependency on a conventional framework.

@@ -1,5 +1,7 @@
 # BEM
 
+http://getbem.com/introduction/
+
 _"There are only two hard problems in Computer Science: cache invalidation and naming things"_ — Phil Karlton
 
 **BEM** is a CSS naming convention and it stands for Block, Element and Modifier.
@@ -30,6 +32,8 @@ _"There are only two hard problems in Computer Science: cache invalidation and n
     <button class="from__button form__button--delete">Cancel</button>
 </div>
 ```
+
+BEM CSS unambiguously defines which CSS belongs to a piece of interface and so using it gives answers to questions "Can I remove this piece of code?" and "What happens and which interface parts will be affected if I change this piece of code?".
 
 # Grid
 
