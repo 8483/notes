@@ -165,6 +165,9 @@ CREATE TABLE user (
 -- Rename a table.
 RENAME TABLE tableName1 TO tableName2;
 
+-- Change a column's datatype.
+ALTER TABLE tablename MODIFY columnname DATATYPE;
+
 -- Add a column at end.
 ALTER TABLE tableName ADD columnName DATATYPE;
 
