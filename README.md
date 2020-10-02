@@ -9,7 +9,7 @@
 -   [Async](./topics/async.md)
 -   [FP](./topics/fp.md)
 
-### Frontend
+### Frontend Languages
 
 -   [CSS](./topics/css.md)
 -   [React](./topics/react.md)
@@ -19,7 +19,7 @@
 -   [Elm](./topics/elm.md)
 -   [Tabulator](./topics/tabulator.md)
 
-### Backend
+### Backend Languages
 
 -   [Node](./topics/node.md)
 -   [npm/npx](./topics/npm.md)
