@@ -60,3 +60,8 @@ Best days are: Tuesday, Wednesday, Thursday
 ![Sales](../pics/startup/sales/email_open_hour.jpg)
 
 ![Sales](../pics/startup/sales/email_response_hour.jpg)
+
+https://sopro.io/best-time-to-send-prospecting-emails  
+https://sopro.io/six-simple-steps-to-prospecting-success  
+https://sopro.io/whats-sopro-email  
+https://sopro.io/the-golden-rules-of-email-prospecting

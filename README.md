@@ -150,6 +150,7 @@
 -   [MVP](./topics/startupMVP.md)
 -   [Pricing](./topics/startupPricing.md)
 -   [Sales](./topics/startupSales.md)
+    -   [Email](./topics/startupSalesEmail.md)
 -   [Product Market Fit](./topics/startupMarketFit.md)
 
 # Googling
