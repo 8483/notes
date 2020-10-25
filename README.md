@@ -73,10 +73,12 @@
 -   [.NET](./topics/dotnet.md)
 -   [Excel](./topics/excel.md)
 -   [Statistics](./topics/stats.md)
+-   [Notifications](./topics/notifications.md)
 
 ### Mobile
 
 -   [Overview](./topics/mobile.md)
+-   [PWA](./topics/pwa.md)
 
 # Linux
 
@@ -141,12 +143,14 @@
 
 -   [Brain.js](./topics/brainjs.md)
 
-# Product
+# Startup
 
--   [MVP](./topics/productMVP.md)
--   [Pricing](./topics/productPricing.md)
--   [Sales](./topics/productSales.md)
--   [Product Market Fit](./topics/productMarketFit.md)
+-   [Ideas](./topics/startupIdeas.md)
+-   [Equity](./topics/startupEquity.md)
+-   [MVP](./topics/startupMVP.md)
+-   [Pricing](./topics/startupPricing.md)
+-   [Sales](./topics/startupSales.md)
+-   [Product Market Fit](./topics/startupMarketFit.md)
 
 # Googling
 

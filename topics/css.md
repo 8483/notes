@@ -1,3 +1,11 @@
+```bash
+# vendor prefixes
+webkit   - Safari
+moz      - Firefox
+o        - Opera
+ms       - Internet Explorer
+```
+
 # BEM
 
 http://getbem.com/introduction/

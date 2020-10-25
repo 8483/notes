@@ -6,16 +6,16 @@ Product Market Fit = Make something **a lot** of people want.
 
 Startup Stages
 
-![Startup Stages](../pics/product/market_fit/market_fit_startup_stages.jpg)
+![Startup Stages](../pics/startup/market_fit/market_fit_startup_stages.jpg)
 
 Top early challenges at a startup:
 
-- Finding product market fit.
-- Hiring and building a world-class team.
-- Making money (distant 3rd)
-- Build an organization that scalably and repeatedly launches great products.
+-   Finding product market fit.
+-   Hiring and building a world-class team.
+-   Making money (distant 3rd)
+-   Build an organization that scalably and repeatedly launches great products.
 
-*It's a lot harder yo build a product a lot of people really really want, that it is to figure out how to make money from that product.*
+_It's a lot harder yo build a product a lot of people really really want, that it is to figure out how to make money from that product._
 
 **The best companies create a market**
 
@@ -51,7 +51,7 @@ When you find people hacking your product to do something it wasn't meant to, pa
     - Building a fully functional product is the most expensive possible way to test your hypothesis.
     - Focus on getting toa functional prototype as quickly as possible that you ca get in front of users.
     - Don't worry about scaling, monetizing... It comes later.
-    - Expect it will that 10x the number of iterations: 
+    - Expect it will that 10x the number of iterations:
         - Keep your burn low.
         - Build a team that can do this quickly. (Outsourcing is difficult in the early days)
 
@@ -61,6 +61,7 @@ When you find people hacking your product to do something it wasn't meant to, pa
     - Make sure you're talking to your target customer. (Be open to change who they are)
     - Don't overthink it. Anecdotal is ok.
     - Most helpful tools:
+
         - Customer interviews (5-10)
         - UX testing sessions (3-5) **MOST IMPORTANT**
 
@@ -79,17 +80,17 @@ When you find people hacking your product to do something it wasn't meant to, pa
 
 Minimum ~~Viable~~ Remarkable Product
 
-*Launch when your product is better than what's out there* - Paul Buchheit
+_Launch when your product is better than what's out there_ - Paul Buchheit
 
 ## Prioritization
 
-1. Only one thing matters. 
+1. Only one thing matters.
 
     - Focus only on the things that get you to your next stage. Don't go to conferences, don't write blog posts, don't read the news...
 
 2. Optimize for learning.
 
-    -  Most people prioritize by creating a list sorted by cost x benefit. Instead, ask yourself *"What is our biggest unknown that would rewrite our priority list?"* 
+    - Most people prioritize by creating a list sorted by cost x benefit. Instead, ask yourself _"What is our biggest unknown that would rewrite our priority list?"_
 
 ## When is product market fit achieved
 
@@ -98,7 +99,7 @@ By tracking 3 metrics
 1. Returning usage. How many people go back on day 1, 3, 7, 30?
 2. Track NPS (Would you recommend our product? 1 - 10). Should be > 50.
     - 9, 10 is plus. ex. 88%
-    - 7, 8 is discarded. ex. 8% 
+    - 7, 8 is discarded. ex. 8%
     - 0 - 6 is minus. ex. 12%
     - Total NPS is 80.
 3. Paying customer renewal rates.
@@ -114,17 +115,17 @@ You'll know when you've achieved it when customers start beating a path to your 
 
 **Don't scale the team past ~20 before product market fit.** Everything breaks at 23-25 people.
 
-- A moderate amount of micromanagement is healthy at this stage. You should be involved in everything important and know all there is to know about your customers, product, market, channels...
-- This helps make fast and quality decisions which is a huge advantage over larger orgs where this is distributed across many roles.
-- Don't delegate anything important - yet!
+-   A moderate amount of micromanagement is healthy at this stage. You should be involved in everything important and know all there is to know about your customers, product, market, channels...
+-   This helps make fast and quality decisions which is a huge advantage over larger orgs where this is distributed across many roles.
+-   Don't delegate anything important - yet!
 
 **Once you've achieved it, scale aggressively**
 
-- You've found/created a new market, but you're likely not the only one.
-- You're in a race to capture this new market. Advantages accrue to #1 - be that company.
-- Build the team aggressively, but thoughtfully.
-- You'll need to completely change the way you operate including doing a lot more delegating.
-- No more micromanagement!
+-   You've found/created a new market, but you're likely not the only one.
+-   You're in a race to capture this new market. Advantages accrue to #1 - be that company.
+-   Build the team aggressively, but thoughtfully.
+-   You'll need to completely change the way you operate including doing a lot more delegating.
+-   No more micromanagement!
 
 **Never more than double the size of the company in any year**
 
@@ -136,10 +137,8 @@ Product Market Fit - Finding out what needs to be built
 
 You've achieved it when customers are buying as fast as you can provide. Money is piling up, you're hiring like crazy...
 
-
 Company building starts AFTER you've figured out how to solve a problem.
 
 The only way you know you've made something customers want, is because they are using it in an explosive and destructive way.
 
 Once you find product market fit, it's your company to fuck up.
-

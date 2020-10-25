@@ -290,13 +290,13 @@ ON DUPLICATE KEY UPDATE
 
 ```sql
 -- Check the size of all the databases
-SELECT table_schema AS "Database",
+SELECT table_schema AS "database",
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
 FROM information_schema.TABLES
 GROUP BY table_schema;
 
 -- Check the size of all the tables in a database
-SELECT tableName AS "Table",
+SELECT tableName AS "table",
 ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
 FROM information_schema.TABLES
 WHERE table_schema = "database_name" -- Change this one

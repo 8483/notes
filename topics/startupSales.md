@@ -2,9 +2,9 @@
 
 [How to Sell - Tyler Bosemy](https://www.youtube.com/watch?v=xZi4kTJG-LE)
 
-![Sales](../pics/product/sales/sales_expectations.jpg)
+![Sales](../pics/startup/sales/sales_expectations.jpg)
 
-![Sales](../pics/product/sales/sales_reality.jpg)
+![Sales](../pics/startup/sales/sales_reality.jpg)
 
 _You should be spending every moment, of every day, doing one of two things... Bulding product or talking to users_ - Paul Graham
 
@@ -71,7 +71,7 @@ Tyler
 
 ## Conversations
 
-![Converstaions](../pics/product/sales/sales_conversations_phone.jpg)
+![Converstaions](../pics/startup/sales/sales_conversations_phone.jpg)
 
 When you get them on the phone, remember to **SHUT UP AND LISTEN!**.
 
@@ -87,7 +87,7 @@ Ask questions:
 
 ### Religious Follow Up
 
-![Converstaions](../pics/product/sales/sales_follow_up.jpg)
+![Converstaions](../pics/startup/sales/sales_follow_up.jpg)
 _This is 2 months of work for closing a \$100,000/year customer_
 
 ...And this is for someone that wants to buy the product! It's not over till they say no.
@@ -136,7 +136,7 @@ Instead, offer a first 30 days cancellation period on an annual contract.
 
 ## Looking forward
 
-![Cycle](../pics/product/sales/sales_cycle.jpg)
+![Cycle](../pics/startup/sales/sales_cycle.jpg)
 
 5 ways to build a big business:
 

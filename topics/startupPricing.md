@@ -1,6 +1,6 @@
 [Kevin Hale - Startup Pricing 101](https://www.youtube.com/watch?v=jwXlo9gy_k4)
 
-![Pricing](../pics/product/pricing/pricing_thermometer.jpg)
+![Pricing](../pics/startup/pricing/pricing_thermometer.jpg)
 
 There are two ways to get to the price:
 
@@ -22,7 +22,7 @@ There are two ways to get to the price:
 
 # Product lifecycle
 
-![Pricing](../pics/product/pricing/pricing_sales_stages.jpg)
+![Pricing](../pics/startup/pricing/pricing_sales_stages.jpg)
 
 Startups live in the 1st and 2nd stage, and the customers there are not mainstream, they're early adopters.
 
@@ -30,11 +30,11 @@ _"Studies indicated that demand does not begin to accelerate untils the first 2%
 
 # Price optimization
 
-![Pricing](../pics/product/pricing/pricing_optimization.jpg)
+![Pricing](../pics/startup/pricing/pricing_optimization.jpg)
 
 Red = Lost opportunities (Happens at discount/tiered pricing)
 
-![Pricing](../pics/product/pricing/pricing_billion_formula.jpg)
+![Pricing](../pics/startup/pricing/pricing_billion_formula.jpg)
 
 What would the business look like if you're a billion dollar company i.e. $100M in sales **annually**, or $8M **monthly**.
 
@@ -47,7 +47,7 @@ SMB = **The `danger zone`, where a lot of companies are in and they struggle. Th
 | **SMB**    | \$10K  | \$833   |
 | Enterprise | \$100K | \$8,333 |
 
-![Pricing](../pics/product/pricing/pricing_quadrants.jpg)
+![Pricing](../pics/startup/pricing/pricing_quadrants.jpg)
 
 | Type          | Annual             | Monthly       |
 | ------------- | ------------------ | ------------- |
@@ -76,7 +76,7 @@ The price determines the acquisition strategy.
     -   Phone support, customer support.
     -   Sales managers, territories.
 
-![Pricing](../pics/product/pricing/pricing_rule.jpg)
+![Pricing](../pics/startup/pricing/pricing_rule.jpg)
 
 Charge $100 for customer's percieved value of $1,000. Raise prices by 5% until you start losing 20% of customers.
 
