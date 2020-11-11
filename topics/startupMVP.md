@@ -1,5 +1,12 @@
 # Building Product
 
+An app needs to be:
+
+-   Easy to use.
+-   Visually intuitive.
+-   Easy to learn.
+-   Help users accomplish something valuable.
+
 MVP = You've made something bad, the most desperate want.
 
 [Building Product - Michael Seibel](https://youtu.be/C27RVio2rOs)

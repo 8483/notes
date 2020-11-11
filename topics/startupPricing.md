@@ -127,3 +127,41 @@ These “decoy” packages make other—often more expensive—ones look good by
 Similarly, a company may use a decoy to make an expensive product look affordable. A common tactic is enterprise software that costs, say, $500 a month for up to 10 users, $1,000 a month for up to 25 users but just \$1,200 for unlimited users.
 
 **Tip:** People tend to overvalue things they already have, a pattern known as the endowment effect. This is something that enterprise companies should be particularly aware of. It’s going to take an extra effort to get a customer to rip out something they already have even if what you’re selling is demonstrably better. That’s one reason why it’s easier to sell to a greenfield customer than to win one away from a competitor.
+
+# Never Compete on Price
+
+[source](https://old.reddit.com/r/Entrepreneur/comments/jepg60/never_compete_on_price_why_clients_pay_us_7500mo/)
+
+In a way, you’re not just setting a price tag for what you built. You’re putting a price on yourself. _"What if no one else thinks I’m worth this much?"_, _"What if they laugh at me?"_... It’s these moments where the imposter syndrome, self-doubt, and fear start to take hold.
+
+And because of that, our natural inclination is to dial back our pricing. Lower the bar — lower the risk. Undercut your competitors and avoid having a difficult conversation about why you’re worth more than someone else.
+
+**Competing on price is a losing strategy.**
+
+If you’re worried about the price you’re charging, it likely means:
+
+-   You’re selling something of little value (commodity)
+-   You haven’t defined the true value of what you sell
+-   You haven’t communicated that value to your customers
+
+Each of these problems leads to the same outcome — a race to the bottom.
+
+**The value of the product is not measured by the time spent on making it. It’s not even measured by the deliverables it produces.**
+
+**The value is measured by the outcome that it generates. The customer is not buying the product. It buys the outcome.**
+
+Pricing is relative. Unless you’re selling a commodity, there is no fixed price for the work that you do. It’s worth what people are willing to pay, thus pricing is only limited by your ability to define your own value.
+
+**You’re not selling an app. You’re selling growth.**
+
+No one buys SaaS software because they get “1 login and 1 password”. They buy SaaS software because it saves them 10 hours/week of manual accounting work.
+
+Anytime you’re presenting pricing to a potential customer, you should make sure that you are framing it with the value of your work and not the basics of the deliverable.
+
+**Sell the benefits — not the features.**
+
+You need to extract the value and turn it into a specific, desirable result that you can communicate to potential customers.
+
+"Freelance coding" is a commodity. "Coding that Drives Business Growth" is a benefit.
+
+**Your differentiator is not your price. It’s your ability to deliver the results.**

@@ -10,50 +10,61 @@ npm -v
 
 # Import / Export
 
-- **CommonJS (CJS) format**. Used in Node.js and uses `require` and `module.exports` to define dependencies and modules. *The npm ecosystem is built upon this format*. `exports = module.exports`
+| CommonJS        | ES6    |
+| --------------- | ------ |
+| require         | import |
+| modules.exports | export |
+
+You can't selectively load only the pieces you need with require but with imports, you can selectively load only the pieces you need. That can save memory.
+
+Loading is synchronous (step by step) for require on the other hand import can be asynchronous(without waiting for previous import) so it can perform a little better than require.
+
+-   **CommonJS (CJS) format**. Used in Node.js and uses `require` and `module.exports` to define dependencies and modules. _The npm ecosystem is built upon this format_. `exports = module.exports`
 
 ```javascript
 // lib.js
 
 // Export the function
-function sayHello(){  
-  console.log('Hello');
+function sayHello() {
+    console.log("Hello");
 }
 
 // Do not export the function
-function somePrivateFunction(){  
-  // ...
+function somePrivateFunction() {
+    // ...
 }
 
 module.exports.sayHello = sayHello;
 ```
-```javascript
-let sayHello = require('./lib').sayHello;
 
-sayHello();  
+```javascript
+let sayHello = require("./lib").sayHello;
+
+sayHello();
 // => Hello
 ```
 
-- **ES Module (ESM) format**. As of ES6 (ES2015), JavaScript supports a native module format. It uses an `export` keyword to export a module’s public API and an `import` keyword to import it.
+-   **ES Module (ESM) format**. As of ES6 (ES2015), JavaScript supports a native module format. It uses an `export` keyword to export a module’s public API and an `import` keyword to import it.
 
 ```javascript
 // lib.js
 
 // Export the function
-export function sayHello(){  
-  console.log('Hello');
+export function sayHello() {
+    console.log("Hello");
 }
 
 // Do not export the function
-function somePrivateFunction(){  
-  // ...
+function somePrivateFunction() {
+    // ...
 }
 ```
+
 ```javascript
-import { sayHello } from './lib';
+import { sayHello } from "./lib";
 // import * as lib from './lib';
 
-sayHello();  
+sayHello();
 // => Hello
 ```
 
@@ -64,26 +75,28 @@ Instead of writing all the code in one giant file, we can split the code into mu
 This increases maintainability, code reuse and abstraction (blackbox).
 
 **CommonJS** (old) - Synchronous
+
 ```javascript
 // foo.js module
 function foo() {
-  return 'bar';
+    return "bar";
 }
 module.exports.foo = foo;
 
-// index.js use 
-const { foo } = require('foo');
+// index.js use
+const { foo } = require("foo");
 ```
 
 **ES6** - Must use Babel, can be asynchronous
+
 ```javascript
 // foo.js module
 export function foo() {
-  return 'bar';
+    return "bar";
 }
 
 // index.js use
-import { foo } from 'foo';
+import { foo } from "foo";
 ```
 
 Every file in Node is considered a module. Everything declared inside is scoped to the file i.e. they are private.

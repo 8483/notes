@@ -65,7 +65,7 @@ output: {
 
 # Install
 
-Creates a new project in the my-svelte-project directory, install its dependencies, and start a server on .
+Create a new project in the my-svelte-project directory, install its dependencies, and start a server.
 
 ```bash
 # create a new project in the my-svelte-project directory
@@ -99,7 +99,7 @@ This is much quicker than using `git clone`, because you're not downloading the 
 
 ### **npx**
 
-`npx` is a package runner (part of `npm`), that runs the degit, without having it as a dependency.
+`npx` is a package runner (part of `npm`), that runs a package (degit), without having it as a dependency.
 
 ### **rollup**
 
@@ -1604,4 +1604,88 @@ One approach is to use `console.log(...)` inside your markup. If you want to pau
 {@debug user}
 
 <h1>Hello {user.firstname}!</h1>
+```
+
+# Routing
+
+```
+npm install page
+```
+
+Put this in `package.json`
+
+```
+"start": "sirv public --single"
+```
+
+`sirv` is an optimized and lightweight middleware for serving requests to static assets.
+
+`--single` treats the directory as a single-page application. When true, the directory's index page (default index.html) will be sent if the request asset does not exist.
+
+**If you change this while the app is running, you need to restart it (`npm run dev`) for the change to occur.**
+
+App.js
+
+```html
+<script>
+    import router from "page";
+    import Home from "./Home.svelte";
+    import About from "./About.svelte";
+
+    let page;
+
+    router("/", () => (page = Home));
+    router("/about", () => (page = About));
+
+    router();
+</script>
+
+<style></style>
+
+<svelte:component this="{page}" />
+```
+
+Link.svelte
+
+```html
+<script>
+    import router from "page";
+
+    export let label;
+    export let page;
+
+    function navigate() {
+        router(`/${page}`);
+    }
+</script>
+
+<style></style>
+
+<a on:click="{navigate}">{label}</a>
+```
+
+Home.svelte
+
+```html
+<script>
+    import Link from "./Link.svelte";
+</script>
+
+<style></style>
+
+<Link label={'About'} page={'about'} />
+<div class="container">HOME</div>
+```
+
+About.svelte
+
+```html
+<script>
+    import Link from "./Link.svelte";
+</script>
+
+<style></style>
+
+<Link label={'Home'} page={''} />
+<div class="container">ABOUT</div>
 ```
