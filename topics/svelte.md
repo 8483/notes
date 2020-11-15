@@ -14,6 +14,8 @@ https://illright.github.io/attractions/
 
 https://madewithsvelte.com/
 
+https://svelte-community.netlify.app/code/
+
 # About
 
 Svelte converts your app into ideal JavaScript at build time, rather than interpreting your application code at run time. This means you don't pay the performance cost of the framework's abstractions, and you don't incur a penalty when your app first loads.

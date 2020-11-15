@@ -2,8 +2,9 @@
 
 Connections are expensive. Use them for one time open/close operations. Otherwise, use a pool when executing a series of queries.
 
+**Async/Await**
+
 ```Javascript
-// Async/Await
 router.get("/api", function (req, res) {
 
     (async function () {
@@ -33,26 +34,36 @@ router.get("/api", function (req, res) {
         };
     })()
 })
+```
 
-// Promise
-new sql.ConnectionPool(db).connect().then(pool => {
-    return pool.request().query("SELECT * FROM product")
-}).then(result => {
-    let rows = result.recordset
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.status(200).json(rows);
-    sql.close();
-}).catch(err => {
-    res.status(500).send({ message: "${err}"})
-    sql.close();
-});
+**Promise**
 
-// Callback
+```js
+new sql.ConnectionPool(db)
+    .connect()
+    .then((pool) => {
+        return pool.request().query("SELECT * FROM product");
+    })
+    .then((result) => {
+        let rows = result.recordset;
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.status(200).json(rows);
+        sql.close();
+    })
+    .catch((err) => {
+        res.status(500).send({ message: "${err}" });
+        sql.close();
+    });
+```
+
+**Callback**
+
+```js
 sql.connect(db, function (err) {
     if (err) console.log(err);
     var request = new sql.Request();
     request.query("SELECT * FROM product", function (err, recordset) {
-        if (err) console.log(err)
+        if (err) console.log(err);
 
         let rows = recordset.recordsets[0];
         res.send(rows);

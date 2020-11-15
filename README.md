@@ -17,7 +17,6 @@
 -   [Svelte](./topics/svelte.md)
 -   [Electron](./topics/electron.md)
 -   [Elm](./topics/elm.md)
--   [Tabulator](./topics/tabulator.md)
 
 ### Backend
 
@@ -31,8 +30,6 @@
 -   [Caching](./topics/caching.md)
 -   [Logging](./topics/logging.md)
 -   [SSL](./topics/ssl.md)
--   [Puppeteer](./topics/puppeteer.md)
--   [Nodemailer](./topics/nodemailer.md)
 
 ### Database
 
@@ -47,6 +44,24 @@
 -   [Webpack](./topics/webpack.md)
 -   Typescript
 -   [VS Code](./topics/vscode.md)
+
+### Libraries
+
+-   [Various](./topics/libraries.md)
+
+-   Frontend
+
+    -   [tabulator](./topics/tabulator.md)
+    -   [tagify](./topics/tagify.md)
+    -   [pdfmake](./topics/pdfmake.md)
+    -   [sheetjs](./topics/sheetjs.md)
+
+-   Backend
+    -   [mysql](./topics/node-mysql.md)
+    -   [mssql](./topics/node-mssql.md)
+    -   [cryptojs](./topics/cryptojs.md)
+    -   [nodemailer](./topics/nodemailer.md)
+    -   [puppeteer](./topics/puppeteer.md)
 
 ### Architecture
 
