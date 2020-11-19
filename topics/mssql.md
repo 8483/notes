@@ -237,7 +237,7 @@ This will result in
 
 In order for the pivoting to work, we must **only use the columns needed**, instead of all of them. This results in repeating rows.
 
-### Data
+### **Data**
 
 Here is some example data, obtained by the given query.
 
@@ -261,9 +261,17 @@ GROUP BY
     product
 ```
 
-### Approach 1 - FROM
+### **Result**
 
 ![TEA](../pics/sql/pivot_unpivot.png)
+
+| product | 2019 | 2018 |
+| ------- | ---- | ---- |
+| shoes   | 694  | 3392 |
+| shirts  | 807  | 3436 |
+| hats    | 578  | 2511 |
+
+### **Approach 1 - FROM**
 
 ```sql
 SELECT
@@ -289,13 +297,7 @@ FROM (
         ) piv
 ```
 
-| product | 2019 | 2018 |
-| ------- | ---- | ---- |
-| shoes   | 694  | 3392 |
-| shirts  | 807  | 3436 |
-| hats    | 578  | 2511 |
-
-### Approach 2 - WITH (CTE)
+### **Approach 2 - WITH (CTE)**
 
 ```sql
 WITH PivotData AS (
@@ -308,9 +310,19 @@ WITH PivotData AS (
         yearSold,
         product
 )
-SELECT product, [2019], [2018]
+
+SELECT
+    product,
+    [2019],
+    [2018]
 FROM PivotData
-    PIVOT ( SUM(revenue) FOR [year] IN ([2019], [2018]) ) piv
+    PIVOT (
+        SUM(revenue)
+        FOR [year]
+        IN (
+            [2019],
+            [2018])
+        ) piv
 ```
 
 # Dynamic Pivot
