@@ -327,127 +327,152 @@ FROM PivotData
 
 # Dynamic Pivot
 
+The SQL Server `COALESCE` function handles `NULL` values.
+
+The expression accepts a number of arguments, evaluates them in sequence, and returns the first non-null argument.
+
 ```sql
+SELECT COALESCE (NULL,'A','B')                     -- A
+SELECT COALESCE (NULL,100,20,30,40)                -- 100
+SELECT COALESCE (NULL,NULL,20,NULL,NULL)           -- 20
+SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo')   -- foo
+SELECT COALESCE (NULL,NULL,NULL,NULL,1,'foo')      -- 1
+SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo',1) -- coversion failed when converting the varchar value 'foo' to data type int
+```
+
+-   Define variables
+-   Define columns (**must be strings**)
+-   Define SQL query
+-   Execute the query
+
+## **Shop rows, year columns**
+
+```sql
+-- variables
 DECLARE @sql AS varchar(max)
 DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
 DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
 
-SELECT @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_CODE + ']'
-        , @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_CODE + '], 0) AS [' + PIVOT_CODE + ']'
+-- columns
+SELECT
+	-- [2017], [2018], [2019], [2020]
+    @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_COLUMN + ']',
+	--ISNULL([2017], 0) as [2017], ISNULL([2018], 0) as [2018], ISNULL([2019], 0) as [2019], ISNULL([2020], 0) as [2020]
+    @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_COLUMN + '], 0) as [' + PIVOT_COLUMN + ']'
 FROM (
-    SELECT
-		distinct SS.acName2 as PIVOT_CODE
+	SELECT
+		cast(year(addate) as nvarchar(4)) as PIVOT_COLUMN
 	FROM tHE_Move M
-		JOIN tHE_SetSubj SS
-			ON M.acIssuer = SS.acSubject
-	WHERE m.acDocType in (
-		'3210',
-		'3220',
-		'3230',
-        '3240',
-        '3450',
-        '3250',
-        '3260',
-        '3270',
-        '3540',
-        '3460',
-        '3280',
-        '3290',
-        '3310',
-        '3320',
-        '3440',
-        '3330',
-        '3340',
-        '3350',
-        '3360',
-        '3370',
-        '3380',
-        '3390',
-        '3410',
-        '3470',
-        '3420',
-        '3430',
-        '3480',
-        '3490',
-        '3520',
-        '3530',
-        '3560',
-        '3610',
-        '2540',
-        '2740',
-        '2730'
-	)
-) AS PIVOT_CODES
+	where addate >= '01.01.2017'
+	group by year(addate)
+--	order by year(addate) asc -- doesn't work
+) as PIVOT_COLUMNS
 
+-- query
 SET @sql = '
-;WITH PivotData AS (
+; WITH PivotData AS (
     select
-		ym,
-		shop AS PIVOT_CODE,
+		shop,
+		y AS PIVOT_COLUMN,
 		sum(revenueNoVAT) revenueNoVAT
 	from (
 		SELECT
 			SS.acName2 shop,
-			SI.acName product,
-			m.addate,
-			concat(year(m.addate), ' + '''-''' + ', RIGHT(' + '''00''' + ' + CONVERT(varchar(2), DATEPART(MONTH, m.addate)), 2)) ym,
-			MI.anPVForPay revenueVAT,
-			MI.anPVVATBase revenueNoVAT,
-			MI.anQTY * MI.anStockPrice totalCost,
-			MI.anPVVATBase - MI.anQTY * MI.anStockPrice AS totalProfit
+			year(m.addate) y,
+			MI.anPVVATBase revenueNoVAT
 		FROM tHE_MoveItem MI
-			JOIN tHE_Move M
-				ON MI.acKey = M.acKey
-			JOIN tHE_SetItem SI
-				ON MI.acIdent = SI.acIdent
-			JOIN tHE_SetSubj SS
-				ON M.acIssuer = SS.acSubject
+			JOIN tHE_Move M ON MI.acKey = M.acKey
+			JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
 		WHERE m.acDocType in (
 			' + '''3210''' + ',
 			' + '''3220''' + ',
 			' + '''3230''' + ',
-			' + '''3240''' + ',
-			' + '''3450''' + ',
-			' + '''3250''' + ',
-			' + '''3260''' + ',
-			' + '''3270''' + ',
-			' + '''3540''' + ',
-			' + '''3460''' + ',
-            ' + '''3280''' + ',
-			' + '''3290''' + ',
-			' + '''3310''' + ',
-			' + '''3320''' + ',
-			' + '''3440''' + ',
-			' + '''3330''' + ',
-			' + '''3340''' + ',
-			' + '''3350''' + ',
-			' + '''3360''' + ',
-			' + '''3370''' + ',
-			' + '''3380''' + ',
-			' + '''3390''' + ',
-			' + '''3410''' + ',
-			' + '''3470''' + ',
-			' + '''3420''' + ',
-            ' + '''3430''' + ',
-			' + '''3480''' + ',
-			' + '''3490''' + ',
-			' + '''3520''' + ',
-			' + '''3530''' + ',
-			' + '''3560''' + ',
-			' + '''3610''' + ',
-			' + '''2540''' + ',
-			' + '''2740''' + ',
-			' + '''2730''' + '
+			' + '''3240''' + '
+		)
+	) t1
+	group by
+		shop,
+		y
+)
+SELECT shop, ' + @select_list + '
+FROM PivotData
+    PIVOT (
+		sum(revenueNoVAT)
+		FOR PIVOT_COLUMN
+		IN (' + @pivot_list + ')
+    ) piv
+order by shop desc
+'
+
+-- @pivot_list
+-- [2017], [2018], [2019], [2020]
+-- @select_list
+--ISNULL([2017], 0) as [2017], ISNULL([2018], 0) as [2018], ISNULL([2019], 0) as [2019], ISNULL([2020], 0) as [2020]
+
+-- execution
+EXEC (@sql)
+```
+
+## **Year rows, shop columns**
+
+```sql
+-- variables
+DECLARE @sql AS varchar(max)
+DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
+DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
+
+-- columns
+SELECT
+    @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_COLUMN + ']',
+    @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_COLUMN + '], 0) AS [' + PIVOT_COLUMN + ']'
+FROM (
+    SELECT
+		distinct SS.acName2 as PIVOT_COLUMN
+	FROM tHE_Move M
+		JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
+	WHERE m.acDocType in (
+		'3210',
+		'3220',
+		'3230',
+        '3240'
+	)
+) AS PIVOT_COLUMNS
+
+-- query
+SET @sql = '
+; WITH PivotData AS (
+    select
+		ym,
+		shop AS PIVOT_COLUMN,
+		sum(revenueNoVAT) revenueNoVAT
+	from (
+		SELECT
+			SS.acName2 shop,
+			concat(year(m.addate), ' + '''-''' + ', RIGHT(' + '''00''' + ' + CONVERT(varchar(2), DATEPART(MONTH, m.addate)), 2)) ym,
+			MI.anPVVATBase revenueNoVAT
+		FROM tHE_MoveItem MI
+			JOIN tHE_Move M ON MI.acKey = M.acKey
+            JOIN tHE_SetItem SI ON MI.acIdent = SI.acIdent
+			JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
+		WHERE m.acDocType in (
+			' + '''3210''' + ',
+			' + '''3220''' + ',
+			' + '''3230''' + ',
+			' + '''3240''' + '
 		)
 	) t1
 	group by ym, shop
 )
 SELECT ym, ' + @select_list + '
 FROM PivotData
-    PIVOT ( sum(revenueNoVAT) FOR PIVOT_CODE IN (' + @pivot_list + ')) piv
+    PIVOT (
+        sum(revenueNoVAT)
+        FOR PIVOT_COLUMN
+        IN (' + @pivot_list + ')
+    ) piv
 order by ym desc
 '
--- select @sql
 
+-- execution
 EXEC (@sql)
 ```
