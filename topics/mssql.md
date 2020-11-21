@@ -345,6 +345,12 @@ SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo',1) -- coversion failed when conv
 -   Define SQL query
 -   Execute the query
 
+The column definition can also be done with this:
+
+```sql
+SELECT STRING_AGG(PIVOT_COLUMN, ',')
+```
+
 ## **Shop rows, year columns**
 
 ```sql
@@ -365,7 +371,7 @@ FROM (
 	FROM tHE_Move M
 	where addate >= '01.01.2017'
 	group by year(addate)
---	order by year(addate) asc -- doesn't work
+--	order by year(addate) asc -- doesn't work -- It works if SELECT TOP 100 or something
 ) as PIVOT_COLUMNS
 
 -- query

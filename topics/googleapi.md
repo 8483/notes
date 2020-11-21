@@ -7,20 +7,21 @@
 
 The sheet can be public i.e. `Anyone who has the link can view`, and be only editable privately. This avoids the OAuth part.
 
-
 ```javascript
-let sheet = "c750833d5021f60a1b8ff8bf0a21bb9dc74cff12"
-let range = "Sheet1"
-let apiKey = "6e0ece719a48d5334369bd881b4324aa957e4407"
+let sheet = "c750833d5021f60a1b8ff8bf0a21bb9dc74cff12";
+let range = "Sheet 1!A:B";
+let apiKey = "6e0ece719a48d5334369bd881b4324aa957e4407";
 
-let url = `https://sheets.googleapis.com/v4/spreadsheets/${sheet}/values/${range}?key=${apiKey}`
+let url = `https://sheets.googleapis.com/v4/spreadsheets/${sheet}/values/${range}?key=${apiKey}`;
+
+// https://sheets.googleapis.com/v4/spreadsheets/c750833d5021f60a1b8ff8bf0a21bb9dc74cff12/values/Sheet 1!A:B?key=6e0ece719a48d5334369bd881b4324aa957e4407
 
 fetch(url)
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
     })
-    .catch(err => err);
+    .catch((err) => err);
 ```
 
 ### Private sheet
@@ -29,4 +30,3 @@ With private user data you would need to use OAuth.
 
 1. Go to console.developers.google.com/apis/library and pick Sheets.
 2. Configure OAuth.
-

@@ -1,5 +1,7 @@
 # Building Product
 
+![MVP](../pics/startup/mvp/mvp.jpg)
+
 An app needs to be:
 
 -   Easy to use.
