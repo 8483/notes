@@ -9,7 +9,7 @@ An app needs to be:
 -   Easy to learn.
 -   Help users accomplish something valuable.
 
-MVP = You've made something bad, the most desperate want.
+MVP = You've built something bad, for the most desperate want.
 
 [Building Product - Michael Seibel](https://youtu.be/C27RVio2rOs)
 
@@ -26,7 +26,7 @@ Things that allowed us to survive (All were essential):
 -   Can you state the problem clearly in 1 sentence?
 -   Have you experienced the problem yourself?
 -   Can you describe the problem narrowly?
--   Is the problem solvable? Ex. Uber for babysitting. Very hard to solve.
+-   Is the problem solvable? Ex. "Uber for babysitting" is very hard to solve.
 
 ## Who is your customer?
 
@@ -225,7 +225,7 @@ You must assume it **HAS TO BE SHITTY**.
 
 If you are looking for a shirt to paint with and destroy, you woudln't spend time tailoring it.
 
-**NEVER ASK USERS FOR FEATURES**
+## NEVER ASK USERS FOR FEATURES
 
 It's no their job to come up with features. Their job is to come up with problems.
 
@@ -235,6 +235,8 @@ It's no their job to come up with features. Their job is to come up with problem
 -   Do they know others that have it?
 
 Any feature request should be converted into problem dissection.
+
+## Product market fit
 
 Do I have product market fit? If you have to ask, you don't. You know you have it if you start spending the whole time just keeping servers alive to meet demand, rather than making new features. "We're gonna die because we have too many users!"
 
