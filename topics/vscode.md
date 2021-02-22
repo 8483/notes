@@ -3,18 +3,19 @@
 `CTRL` + `p` - Search files.  
 `CTRL` + `Shift` + `p` - Commands.
 
-`CTRL` + `d` - Select duplicate values.  
+`CTRL` + `d` - Select duplicate values.
 
-`ALT` + `Up` or `Down` - Move line up or down.  
+`ALT` + `Up` or `Down` - Move line up or down.
 
 `ALT` + `SHIFT` + `Down` - Duplicate line.  
 `ALT` + `SHIFT` + `Right` - Select everything between brackets.
 
 # Indentation
+
 Go to settings `CTRL` + `,` and set:
 
-- Workbench > Tree: indent = 25
-- Workbench > Tree: Render Indent Guides = always
+-   Workbench > Tree: indent = 25
+-   Workbench > Tree: Render Indent Guides = always
 
 # Zen Coding
 

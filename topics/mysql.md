@@ -310,6 +310,9 @@ To do this, we use the `mysqldump` command which creates a file with the SQL sta
 With `--all-databases` or `--databases`, mysqldump writes `CREATE DATABASE` and `USE` statements prior to the dump output for each database, in order to insure the data goes to the right database.
 
 ```bash
+# Dump just the data, without creating the database
+mysqldump dbName > backup.sql
+
 mysqldump --add-drop-table --databases dbName > backup.sql
 
 # Simplest command.
@@ -369,7 +372,7 @@ database=$1
 filename="$database-$(date +%Y%m%d-%H%M%S)"
 
 remotepath="/home/user/databases/backups/"
-localpath="/mnt/c/user/dev/lab/traker-databases/"
+localpath="/mnt/c/user/dev/lab/databases/"
 
 echo "backing up remotepath: database $filename"
 ssh user@123.456.789.255 "mysqldump -u root --password="pass" --databases $database > $remotepath$filename"\
@@ -399,6 +402,24 @@ gzip -d < backup.sql.gz | mysql
 
 # If the database already exists and we want to restore it.
 mysql dbName < backup.sql
+```
+
+## Automated
+
+```bash
+# Command is used: ./transfer.sh database-name
+
+database=$1
+
+filename="$database-transfer-$(date +%Y%m%d-%H%M%S)"
+
+localpath="/mnt/c/user/dev/lab/databases/"
+remotepath="/home/user/databases/imports/"
+
+echo "exporting from msql: database $database" \
+&& mysqldump -u root --password="pass" $database > $filename.sql \
+&& echo "transfering to remotepath: file $filename" \
+&& rsync -av -e 'ssh' $localpath$filename.sql user@123.456.789.255:$remotepath \
 ```
 
 # MySQL Workbench

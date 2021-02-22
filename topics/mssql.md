@@ -1,3 +1,25 @@
+# Order a sub-query
+
+Using `top 99.9999 percent` is a hack to achieve the ordering.
+
+Note that `top 100 percent` won't work.
+
+```sql
+select
+    sku,
+    STRING_AGG(attribute, ', ') attributes
+from (
+    select top 99.9999999999999 percent
+        sku,
+        attribute
+    from attributes
+    order by
+        sku asc,
+        attribute asc
+) t1
+group by sku
+```
+
 # Declare Variables
 
 ```sql
@@ -481,4 +503,15 @@ order by ym desc
 
 -- execution
 EXEC (@sql)
+```
+
+# STRING_AGG / mysql group_concat
+
+```sql
+select
+	sku,
+	STRING_AGG(category, ', ')
+from categories
+group by
+    sku
 ```

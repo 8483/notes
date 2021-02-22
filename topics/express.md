@@ -5,9 +5,7 @@ Connections are expensive. Use them for one time open/close operations. Otherwis
 **Async/Await**
 
 ```Javascript
-router.get("/api", function (req, res) {
-
-    (async function () {
+router.get("/api", async (req, res) => {
 
         let id = req.query.id;
 
@@ -32,7 +30,6 @@ router.get("/api", function (req, res) {
         } finally {
             sql.close();
         };
-    })()
 })
 ```
 

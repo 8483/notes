@@ -1,20 +1,14 @@
 # UI / component libraries
 
-https://svelte-mui.ibbf.ru/textfield
-
-https://illright.github.io/attractions/
-
-https://ibm.github.io/carbon-components-svelte/?path=/story/button--default
-
-https://smeltejs.com/components/date-pickers
-
-https://docs.svelteit.dev/
-
-https://illright.github.io/attractions/
-
-https://madewithsvelte.com/
-
-https://svelte-community.netlify.app/code/
+-   https://svelte-mui.ibbf.ru/textfield
+-   https://illright.github.io/attractions/
+-   https://ibm.github.io/carbon-components-svelte/?path=/story/button--default
+-   https://smeltejs.com/components/date-pickers
+-   https://docs.svelteit.dev/
+-   https://illright.github.io/attractions/
+-   https://madewithsvelte.com/
+-   https://svelte-community.netlify.app/code/
+-   https://framework7.io/
 
 # About
 
@@ -115,6 +109,32 @@ VS code extensions:
 
 -   Svelte for VS Code
 -   Svelte Intellisense
+
+# VS Code Prettier formatter
+
+1. Install the `prettier` extension.
+2. install the `svelte.svelte-vscode` extension.
+3. `CTRL + SHIFT + P` command `settings.json` open settings
+4. Add this line.
+
+    ```
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    ```
+
+5. Create a local `.prettierrc` file in the project.
+6. Add this in the file.
+
+    ```
+    {
+    "trailingComma": "es5",
+    "svelteSortOrder": "scripts-markup-styles",
+    "tabWidth": 4
+    }
+    ```
+
+7. **Explicitly restart the language server** with this command `Svelte: Restart Language Server`. **IT WILL NOT WORK WITHOUT THIS**. This needs to be done after each change to the settings.
 
 # Basics
 
@@ -327,6 +347,18 @@ Example
 <!-- // 1 + 2 + 3 + 4 + 5 + 6 = 21 -->
 
 <button on:click="{addNumber}">Add a number</button>
+```
+
+## Reactive async
+
+Updates the products when the company changes.
+
+```js
+async function fetchProducts(id) {
+    $products = await utils.fetchGet(`/api/companies/${$companyId}/products`);
+}
+
+$: fetchProducts($dashboardId);
 ```
 
 # Props
@@ -643,6 +675,18 @@ Note that interacting with these `<input>` elements will mutate the array. If yo
 <input type="checkbox" bind:checked="{todo.done}" />
 
 <input placeholder="What needs to be done?" bind:value="{todo.text}" />
+```
+
+## Element / Node
+
+We can reference any html element like this.
+
+```html
+<script>
+    let element = null;
+</script>
+
+<div bind:this="{element}" />
 ```
 
 ## Number

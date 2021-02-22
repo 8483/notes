@@ -11,25 +11,39 @@
 
 ### Frontend
 
--   [CSS](./topics/css.md)
--   [React](./topics/react.md)
--   [Vue](./topics/vue.md)
--   [Svelte](./topics/svelte.md)
--   [Electron](./topics/electron.md)
--   [Elm](./topics/elm.md)
+-   Technologies
+    -   [CSS](./topics/css.md)
+    -   [React](./topics/react.md)
+    -   [Vue](./topics/vue.md)
+    -   [Svelte](./topics/svelte.md)
+    -   [Electron](./topics/electron.md)
+    -   [Elm](./topics/elm.md)
+-   Libraries
+    -   [tabulator](./topics/tabulator.md)
+    -   [tagify](./topics/tagify.md)
+    -   [pdfmake](./topics/pdfmake.md)
+    -   [sheetjs](./topics/sheetjs.md)
+    -   [Various](./topics/libraries-frontend.md)
 
 ### Backend
 
--   [Node](./topics/node.md)
--   [npm/npx](./topics/npm.md)
--   [Express](./topics/express.md)
--   [Middleware](./topics/middleware.md)
--   [.env](./topics/dotenv.md)
--   [nginx](./topics/nginx.md)
--   [GraphQL](./topics/graphql.md)
--   [Caching](./topics/caching.md)
--   [Logging](./topics/logging.md)
--   [SSL](./topics/ssl.md)
+-   Technologies
+    -   [Node](./topics/node.md)
+    -   [npm/npx](./topics/npm.md)
+    -   [Express](./topics/express.md)
+    -   [Middleware](./topics/middleware.md)
+    -   [.env](./topics/dotenv.md)
+    -   [nginx](./topics/nginx.md)
+    -   [GraphQL](./topics/graphql.md)
+    -   [Caching](./topics/caching.md)
+    -   [Logging](./topics/logging.md)
+    -   [SSL](./topics/ssl.md)
+-   Libraries
+    -   [mysql](./topics/node-mysql.md)
+    -   [mssql](./topics/node-mssql.md)
+    -   [cryptojs](./topics/cryptojs.md)
+    -   [nodemailer](./topics/nodemailer.md)
+    -   [puppeteer](./topics/puppeteer.md)
 
 ### Database
 
@@ -44,24 +58,6 @@
 -   [Webpack](./topics/webpack.md)
 -   Typescript
 -   [VS Code](./topics/vscode.md)
-
-### Libraries
-
--   [Various](./topics/libraries.md)
-
--   Frontend
-
-    -   [tabulator](./topics/tabulator.md)
-    -   [tagify](./topics/tagify.md)
-    -   [pdfmake](./topics/pdfmake.md)
-    -   [sheetjs](./topics/sheetjs.md)
-
--   Backend
-    -   [mysql](./topics/node-mysql.md)
-    -   [mssql](./topics/node-mssql.md)
-    -   [cryptojs](./topics/cryptojs.md)
-    -   [nodemailer](./topics/nodemailer.md)
-    -   [puppeteer](./topics/puppeteer.md)
 
 ### Architecture
 
