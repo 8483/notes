@@ -25,10 +25,12 @@ router.get("/api/companies/:companyId", async (req, res) => {
         const request = await pool.request();
 
         let query = `
-                select * 
-                from company c
-                where c.id = @companyId
-            `;
+            select * 
+            from company c
+            where c.id = @companyId
+        `;
+
+        request.input("companyId", sql.Int, companyId);
 
         let result = await request.query(query);
 

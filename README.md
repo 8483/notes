@@ -159,6 +159,7 @@
 -   [Ideas](./topics/startupIdeas.md)
 -   [Equity](./topics/startupEquity.md)
 -   [MVP](./topics/startupMVP.md)
+-   [Product Desgin](./topics/startupProductDesign.md)
 -   [Pricing](./topics/startupPricing.md)
 -   [Sales](./topics/startupSales.md)
     -   [Email](./topics/startupSalesEmail.md)
