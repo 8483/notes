@@ -11,12 +11,10 @@
 # Environment
 
 User
+
 ```bash
 # Add user
 adduser <username>
-
-# Add sudo access
-usermod -aG sudo <username>
 
 # Switch to user
 su - <username>

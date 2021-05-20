@@ -51,6 +51,14 @@ Do you have a few minutes on Thurs?
 Cheers
 ```
 
+February 2010. Jason Cohen had an idea for a new WordPress hosting service. He logged onto Linkedin, searched for Wordpress consultants and sent forty of them the following email:
+
+> 100% agreed to talk to me on the phone. Not one asked for any money. Thirty agreed to pay $50 / mo. Before I had a company name, before I had a powerpoint, before I had a server, I already had 30 customers willing to pay. — Jason
+
+Today, WP Engine, makes $100M / year.
+
+![Email](../pics/startup/sales/email_example.jpg)
+
 # Timing
 
 **Send emails on Tuesday, Wednesday, Thursday between 09:00 and 11:00**

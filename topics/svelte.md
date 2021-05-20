@@ -689,6 +689,36 @@ We can reference any html element like this.
 <div bind:this="{element}" />
 ```
 
+## Component
+
+Whole componets can be bound for easier calling.
+
+**parent - App.svelte**
+
+```html
+<script>
+    import Component from "./Component.svelte";
+    let component;
+    let test;
+</script>
+
+<Component bind:this="{component}" bind:test />
+
+<button on:click="{component.test}">component</button>
+
+<button on:click="{test}">function</button>
+```
+
+**child - Component.svelte**
+
+```html
+<script>
+    export function test() {
+        console.log("test");
+    }
+</script>
+```
+
 ## Number
 
 The binding also takes care of type casting i.e. it converts the input value to a number.
@@ -1734,4 +1764,27 @@ About.svelte
 
 <Link label={'Home'} page={''} />
 <div class="container">ABOUT</div>
+```
+
+# Rollup
+
+Remove `console.log` and `comments` in production.
+
+```js
+// rollup.config.js
+
+import { terser } from "rollup-plugin-terser";
+
+export default {
+    input: "src/main.js",
+    output: {
+        //
+    },
+    plugins: [
+        terser({
+            compress: { drop_console: true },
+            output: { comments: false },
+        }),
+    ],
+};
 ```

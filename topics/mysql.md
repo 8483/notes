@@ -95,7 +95,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 
 -- List all users.
-SELECT USER();
+SELECT user FROM mysql.user;
 
 -- Show current user.
 SELECT CURRENT_USER();
@@ -301,6 +301,21 @@ ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
 FROM information_schema.TABLES
 WHERE table_schema = "database_name" -- Change this one
 ORDER BY (data_length + index_length) DESC;
+```
+
+# Timezone
+
+1. Add this line in `/etc/mysql/my.cnf`
+
+```bash
+[mysqld]
+default-time-zone = "+01:00"
+```
+
+2. Restart the server
+
+```
+sudo service mysql restart
 ```
 
 # Backup

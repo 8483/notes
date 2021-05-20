@@ -104,7 +104,7 @@ _This is 2 months of work for closing a \$100,000/year customer_
 
 The potential client has a lot on their mind that's not you. Being persistent is not rude if done the right way.
 
-**In order to not be push, follow up a little under a week (5-6 days)**... As long as it's thoughful and personalized.
+**In order to not be pushy, follow up a little under a week (5-6 days)**... As long as it's thoughful and personalized.
 
 It's a lot of work to do sales well and it takes a lot of follow up. You have to have an inhumane willingness to just keep going.
 
@@ -143,6 +143,8 @@ Either sign a conditional agreement, or wait to hear demand from more customers.
 -   Free trial gets you **none** of these.
 
 Instead, offer a first 30 days cancellation period on an annual contract.
+
+If you're ever going to **not** charge someone, put together an invoice anyway, with a 100% one-time discount, so that there's a record of the "value" of the job.
 
 ## Looking forward
 

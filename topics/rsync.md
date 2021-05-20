@@ -14,6 +14,12 @@ Only transfer the files that have changes or are missing. Much faster and secure
 --progress   # Show the sync progress during transfer
 ```
 
+# Exclude files/folders
+
+```
+rsync -av ./file1 ./folder1 --exclude 'folder1/node_modules/*' user@123.456.789.255:folder/
+```
+
 # Local > Remote
 
 ```bash
