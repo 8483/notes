@@ -9,7 +9,7 @@
 -   [Async](./topics/async.md)
 -   [FP](./topics/fp.md)
 
-### Frontend
+### Frontend Languages
 
 -   Technologies
     -   [CSS](./topics/css.md)
@@ -25,7 +25,7 @@
     -   [sheetjs](./topics/sheetjs.md)
     -   [Various](./topics/libraries-frontend.md)
 
-### Backend
+### Backend Languages
 
 -   Technologies
     -   [Node](./topics/node.md)
