@@ -45,3 +45,38 @@ A good trick for bypassing the schlep and to some extent the unsexy filter is to
 Focus on users, not competitors. The most important information about competitors is what you learn via users anyway.
 
 The best technique I've found for dealing with companies that have bad ideas is to tell them to go sell the product ASAP (before wasting time building it). Not only do they learn that nobody wants what they are building, they very often come back with a real idea that they discovered in the process of trying to sell the bad idea.
+
+# Reddit
+
+[Source](https://old.reddit.com/r/Entrepreneur/comments/p0d1q9/there_are_only_4_fundamental_ways_to_make_money/h868ba8/)
+
+> Don't sell what you can make, make what you can sell.
+
+```bash
+channel/distribution > problem > solution > business
+
+# instead of...
+# idea > product > search for market/problem > solution > find ways to reach them (channels/distribution)
+```
+
+Filter check list:
+
+-   Is there a problem
+
+-   Is the problem painful enough ($$?, urgent, important)
+
+-   Is the problem frequent enough (weekly vs once 8 years?)
+
+-   Are there enough people with the same problem (500 ppl vs 20M)
+
+-   How hard is it to reach to people with problem (channels)
+
+-   Is market saturated by big brands (i.e. spring water)
+
+-   Is solution at least 3x better than current substitute for any segment of market?
+-
+-   Does the solution-business model work (subscription, cross-sell, upsell, partnerships, sponsorships, grants, etc)
+
+-   Is there a segment that can be the early adopters?
+
+-   Is there a road to other bigger segments?

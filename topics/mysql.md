@@ -473,3 +473,62 @@ It's a utility used to find out what could be done in order to optimize MySQL fo
 It needs a bit of data to work properly, so a period should pass before running it, as it looks for usage patterns.
 
 To run it, just use `mysqltuner`.
+
+# Dynamic Columns / Pivot
+
+```sql
+SET @sql = NULL;
+SET @textColumns = NULL;
+SET @numberColumns = NULL;
+SET @dateColumns = NULL;
+
+SELECT
+  GROUP_CONCAT(
+	DISTINCT CONCAT('max(IF(f.uid = ''', f.uid, ''', dt.value, NULL))', f.uid)
+  ) INTO @textColumns
+FROM dataText dt
+	left join field f on f.id = dt.fieldId
+    left join entity e on e.id = f.entityId
+where e.uid = 'XirQSpRrPP';
+
+SELECT
+  GROUP_CONCAT(
+	DISTINCT CONCAT('max(IF(f.uid = ''', f.uid, ''', dn.value, NULL))', f.uid)
+  ) INTO @numberColumns
+FROM dataNumber dn
+	left join field f on f.id = dn.fieldId
+    left join entity e on e.id = f.entityId
+where e.uid = 'XirQSpRrPP';
+
+SELECT
+  GROUP_CONCAT(
+	DISTINCT CONCAT('max(IF(f.uid = ''', f.uid, ''', dd.value, NULL))', f.uid)
+  ) INTO @dateColumns
+FROM dataDate dd
+	left join field f on f.id = dd.fieldId
+    left join entity e on e.id = f.entityId
+where e.uid = 'XirQSpRrPP';
+
+SET @sql = CONCAT('
+	select
+		r.id,
+		r.uid,
+		', @textColumns, ',
+		', @numberColumns, ',
+        ', @dateColumns, '
+   from record r
+		left join entity e on e.id = r.entityId
+		left join field f on f.entityId = e.id
+		left join dataText dt on dt.recordId = r.id
+		left join dataNumber dn on dn.recordId = r.id
+        left join dataDate dd on dd.recordId = r.id
+	where e.uid = ''XirQSpRrPP''
+	group by
+		r.id,
+		r.uid
+');
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+```

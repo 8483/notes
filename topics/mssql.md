@@ -1,3 +1,28 @@
+# STRING_AGG / mysql group_concat
+
+```sql
+select
+	sku,
+	STRING_AGG(category, ', ')
+from categories
+group by
+    sku
+```
+
+# Only numbers
+
+```sql
+select barcode
+from barcodes
+where barcode not like '%[^0-9]%'
+```
+
+# Remove trailing zeros
+
+```sql
+select cast(barcode as int)
+```
+
 # Order a sub-query
 
 Using `top 99.9999 percent` is a hack to achieve the ordering.
@@ -67,16 +92,25 @@ FROM table1
 WHERE condition;
 ```
 
+# DELETE from SELECT
+
+```sql
+delete from product
+where id in (
+    select id
+    from t2
+    where condition = 'foo'
+)
+```
+
 # DELETE from LEFT JOIN
 
 ```sql
 DELETE t1 -- Just from table1. DELETE t1, t2 for both tables
 FROM table1 t1
-	LEFT JOIN table2 t2
-		ON t1.id = t2.id
+	LEFT JOIN table2 t2 ON t1.id = t2.id
 WHERE
-	t1.criteria = 'foo'
-	AND t2.criteria = 'bar'
+	t1.criteria = 'foo' AND t2.criteria = 'bar'
 ```
 
 # Row Number
@@ -503,15 +537,4 @@ order by ym desc
 
 -- execution
 EXEC (@sql)
-```
-
-# STRING_AGG / mysql group_concat
-
-```sql
-select
-	sku,
-	STRING_AGG(category, ', ')
-from categories
-group by
-    sku
 ```

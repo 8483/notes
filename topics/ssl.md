@@ -1,17 +1,21 @@
-It's a web server configuration. Nothing changes in the app code.
-
-# Install
+# Install Certbot
 
 Guide for `nginx` on `ubuntu`. The certificates are issued instantly, no waiting.
 
-``` bash
+```bash
 # Install certbot
 sudo wget https://dl.eff.org/certbot-auto -O /usr/sbin/certbot-auto
 sudo chmod a+x /usr/sbin/certbot-auto
 
 # nginx plugin
 sudo apt install python-certbot-nginx
+```
 
+# Issue SSL
+
+**Must disable nginx**
+
+```bash
 # Stop listening to port 80
 systemctl stop nginx
 
@@ -25,7 +29,7 @@ ls /etc/letsencrypt/live/example.com
 systemctl start nginx
 ```
 
-# Renew
+# Renew SSL
 
 ```bash
 # test
@@ -36,6 +40,7 @@ sudo certbot renew --cert-name example.com
 ```
 
 # Nginx configuration
+
 ```nginx
 events {}
 
@@ -60,6 +65,9 @@ http {
     }
 }
 ```
+
+# Automate Renewal
+
 ```bash
 # Check nginx configuration
 sudo nginx -t
@@ -76,7 +84,8 @@ crontab -e
 
 # Guide
 
-The domain already needs to be specified in the nginx conf file.The certbot takes the domain from file only no need to specify the domain. Follow the steps below: 
+The domain already needs to be specified in the nginx conf file.The certbot takes the domain from file only, no need to specify the domain.
+
 1. First install Cetbot with
 
 ```
@@ -85,24 +94,33 @@ $ sudo add-apt-repository ppa:certbot/certbot
 $ sudo apt-get update
 $ sudo apt-get install certbot
 ```
+
 2. Install nginx plugin after installing certbot.
+
 ```
 sudo apt install python-certbot-nginx
-``` 
+```
+
 3. Now navigate to the nginx config file with
+
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
+
 4. here go to the included files for sites enabled in http scope exp-
+
 ```
 /etc/nginx/sites-enabled/
 ```
-5. open default with 
+
+5. open default with
+
 ```
 sudo vi default
 ```
+
 6. Here change "server_name" to your domain name for 443 port. These are
-individual server blocks
+   individual server blocks
 7. If you need to add something on other port then it can be done in this file.
 8. And now save the file
 9. start the bash as admin with "sudo bash"

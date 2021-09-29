@@ -128,6 +128,9 @@ git config --global user.email "EMAIL"
 # Commit history.
 git log
 
+# files in a commit
+git show --name-only <commit_hash>
+
 # Show unstaged differences since last commit.
 git diff
 
@@ -143,7 +146,6 @@ git log --oneline --decorate --all --graph
 # Add the "tree" alias as a shortcut.
 git config --global alias.tree "log --oneline --decorate --all --graph"
 ```
-
 
 # Staging
 
@@ -292,7 +294,6 @@ For example, if a developer needs help with a particular feature, all they have 
 
 Once a pull request is accepted, the actual act of publishing a feature is much the same as in the Centralized Workflow. First, you need to make sure your local master is synchronized with the upstream master. Then, you merge the feature branch into master and push the updated master back to the central repository.
 
-
 Cloning does:
 
 -   Download entire repo into a new local one.
@@ -301,7 +302,7 @@ Cloning does:
 
 # Branch
 
-**Do not mess with the master**. The master branch is deployable production code, meant to be stable. Instead, work on new features in separate branches, which would then be `merged` or `rebased` into master. 
+**Do not mess with the master**. The master branch is deployable production code, meant to be stable. Instead, work on new features in separate branches, which would then be `merged` or `rebased` into master.
 
 **Branches are local**, meaning they cannot be worked on at the same time.
 

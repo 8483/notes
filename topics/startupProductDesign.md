@@ -1,5 +1,7 @@
 > _Build software, make mistakes. Don’t focus on learning at the expense of practice. The more you learn the more you realize there is to learn. You’ll never feel fully prepared for a project._
 
+# Agile
+
 # Requirements
 
 This should be used in every case, regardless of it being for a client or self.

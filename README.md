@@ -13,9 +13,9 @@
 
 -   Technologies
     -   [CSS](./topics/css.md)
+    -   [Svelte](./topics/svelte.md)
     -   [React](./topics/react.md)
     -   [Vue](./topics/vue.md)
-    -   [Svelte](./topics/svelte.md)
     -   [Electron](./topics/electron.md)
     -   [Elm](./topics/elm.md)
 -   Libraries
@@ -63,21 +63,21 @@
 
 -   [MVC](./topics/mvc.md)
 -   [Architecture](./topics/architecture.md)
--   Use Cases
 -   [RESTful](./topics/restful.md)
 
 ### Concepts
 
--   File Organization
--   Authentication
+-   [Methodologies](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
--   [Bitwise](./topics/bitwise.md)
--   [Binary base](./topics/base.md)
+-   File Organization
+-   Authentication
 
 ### Useful
 
 -   [Algorithms](./topics/algos.md)
+-   [Binary base](./topics/base.md)
+-   [Bitwise](./topics/bitwise.md)
 -   [Google API](./topics/googleapi.md)
 -   [Assembly](./topics/assembly.md)
 -   [WebAssembly](./topics/wasm.md)
