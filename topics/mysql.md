@@ -372,31 +372,6 @@ sudo crontab -e
 59 23 * * * mysqldump -u root --password="db-pass" --all-databases > /home/user/backups/"backup-all-$(date +%Y%m%d-%H%M%S).sql"
 ```
 
-```bash
-# Command is used: ./sync.sh database-name
-
-# database name is passed from outside as first variable
-# filename is set ex. database-20200903-235516
-# remote and local paths defined
-# remote: backup from selected database
-# remote>local: retrieve the backup
-# local: import the database in mysql
-
-database=$1
-
-filename="$database-$(date +%Y%m%d-%H%M%S)"
-
-remotepath="/home/user/databases/backups/"
-localpath="/mnt/c/user/dev/lab/databases/"
-
-echo "backing up remotepath: database $filename"
-ssh user@123.456.789.255 "mysqldump -u root --password="pass" --databases $database > $remotepath$filename"\
-&& echo "fetching from remotepath to local: database $filename" \
-&& rsync -av user@123.456.789.255:$remotepath$filename $localpath \
-&& echo "importing into msql: database $filename" \
-&& mysql -u root --password="pass" < $filename
-```
-
 # Restore
 
 If the dump was created without using `--databases`, then the database must be manually created before restoring.
@@ -419,22 +394,46 @@ gzip -d < backup.sql.gz | mysql
 mysql dbName < backup.sql
 ```
 
-## Automated
+# Import/Export
+
+**Import from remote to local**
 
 ```bash
-# Command is used: ./transfer.sh database-name
+remotepath="/remote/path/backups/"
+localpath="/local/path/backups/"
 
-database=$1
+filename="dbname-$(date +%Y%m%d-%H%M%S)-import"
 
-filename="$database-transfer-$(date +%Y%m%d-%H%M%S)"
+echo "backup: $filename"
 
-localpath="/mnt/c/user/dev/lab/databases/"
-remotepath="/home/user/databases/imports/"
+echo "creating backup at remote server..."
+ssh user@123.456.789.255 "mysqldump -u root --password="pass" --databases dbname > $remotepath$filename"\
+\
+&& echo "downloading backup from remotepath to local..." \
+&& rsync -av user@123.456.789.255:$remotepath$filename $localpath \
+\
+&& echo "importing backup into local mysql..." \
+&& mysql -u root --password="pass" < $localpath$filename
+```
 
-echo "exporting from msql: database $database" \
-&& mysqldump -u root --password="pass" $database > $filename.sql \
-&& echo "transfering to remotepath: file $filename" \
-&& rsync -av -e 'ssh' $localpath$filename.sql user@123.456.789.255:$remotepath \
+**Export from local to remote**
+
+```bash
+remotepath="/remote/path/backups/"
+localpath="/local/path/backups/"
+
+filename="dbname-$(date +%Y%m%d-%H%M%S)-export"
+
+echo "backup: $filename"
+
+echo "creating local backup..."
+mysqldump -u root --password="" dbname > $localpath$filename \
+\
+&& echo "transfering backup from local to remotepath..." \
+&& rsync -av -e 'ssh' $localpath$filename user@123.456.789.255:$remotepath \
+\
+&& echo "importing transfered backup into remote mysql..." \
+&& ssh user@123.456.789.255 "mysql -u root --password="pass" dbname < $remotepath$filename" \
 ```
 
 # MySQL Workbench
