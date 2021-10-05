@@ -4,15 +4,14 @@
 
 -   [Javascript](./topics/javascript.md)
 -   [ES6](./topics/es6.md)
--   [OOP](./topics/oop.md)
--   [DOM](./topics/dom.md)
+-   [Object Oriented Programming (OOP)](./topics/oop.md)
+-   [Document Object Model (DOM)](./topics/dom.md)
 -   [Async](./topics/async.md)
--   [FP](./topics/fp.md)
+-   [Functional Programming](./topics/fp.md)
 
 ### Frontend
 
--   Technologies
-    -   [CSS](./topics/css.md)
+-   Frameworks
     -   [Svelte](./topics/svelte.md)
     -   [React](./topics/react.md)
     -   [Vue](./topics/vue.md)
@@ -24,32 +23,35 @@
     -   [pdfmake](./topics/pdfmake.md)
     -   [sheetjs](./topics/sheetjs.md)
     -   [Various](./topics/libraries-frontend.md)
+-   Other
+    -   [CSS](./topics/css.md)
 
 ### Backend
 
 -   Technologies
     -   [Node](./topics/node.md)
-    -   [npm/npx](./topics/npm.md)
-    -   [Express](./topics/express.md)
-    -   [Middleware](./topics/middleware.md)
-    -   [.env](./topics/dotenv.md)
+        -   [npm/npx](./topics/npm.md)
+        -   [Express](./topics/express.md)
+        -   [Middleware](./topics/middleware.md)
+        -   [.env](./topics/dotenv.md)
     -   [nginx](./topics/nginx.md)
+        -   [SSL](./topics/ssl.md)
     -   [GraphQL](./topics/graphql.md)
-    -   [Caching](./topics/caching.md)
-    -   [Logging](./topics/logging.md)
-    -   [SSL](./topics/ssl.md)
 -   Libraries
-    -   [mysql](./topics/node-mysql.md)
-    -   [mssql](./topics/node-mssql.md)
     -   [cryptojs](./topics/cryptojs.md)
     -   [nodemailer](./topics/nodemailer.md)
     -   [puppeteer](./topics/puppeteer.md)
+-   Other
+    -   [Caching](./topics/caching.md)
+    -   [Logging](./topics/logging.md)
 
 ### Database
 
 -   [Design](./topics/dbdesign.md)
 -   [MySQL](./topics/mysql.md)
+    -   [node mysql](./topics/node-mysql.md)
 -   [SQL Server](./topics/mssql.md)
+    -   [node mssql](./topics/node-mssql.md)
 
 ### Tooling
 
@@ -67,26 +69,22 @@
 
 ### Concepts
 
--   [Methodologies](./topics/methodologies.md)
+-   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
--   File Organization
--   Authentication
 
 ### Useful
 
 -   [Algorithms](./topics/algos.md)
 -   [Binary base](./topics/base.md)
--   [Bitwise](./topics/bitwise.md)
+    -   [Bitwise](./topics/bitwise.md)
 -   [Google API](./topics/googleapi.md)
 -   [Assembly](./topics/assembly.md)
--   [WebAssembly](./topics/wasm.md)
+    -   [WebAssembly](./topics/wasm.md)
 -   [.NET](./topics/dotnet.md)
--   [Excel](./topics/excel.md)
--   [Statistics](./topics/stats.md)
 -   [Notifications](./topics/notifications.md)
 
-### Mobile
+# Mobile
 
 -   [Overview](./topics/mobile.md)
 -   [PWA](./topics/pwa.md)
@@ -164,6 +162,11 @@
 -   [Sales](./topics/startupSales.md)
     -   [Email](./topics/startupSalesEmail.md)
 -   [Product Market Fit](./topics/startupMarketFit.md)
+
+# Random
+
+-   [Excel](./topics/excel.md)
+-   [Statistics](./topics/stats.md)
 
 # Googling
 
