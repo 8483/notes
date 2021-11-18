@@ -282,13 +282,15 @@ Behind the scenes, this creates an origin/master branch which is automatically m
 
 ## Pull Requests
 
-**This is a GitHub feature which is a request to merge two related code bases together.** This uses the Git merge functionality under the hood to ensure that code bases we merge code bases without conflicts.
+**A pull request is a thing that GitHub, or Bitbucket, or some other web hosting service, provides. It is not part of Git itself.**
+
+**You can think of a pull requests as a discussion dedicated to a particular branch, about whether it should be merged with master.**
+
+This uses the Git merge functionality under the hood to ensure that code bases we merge code bases without conflicts.
 
 Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master.
 
 This gives other developers an opportunity to review the changes before they become a part of the main codebase.
-
-You can think of pull requests as a discussion dedicated to a particular branch.
 
 For example, if a developer needs help with a particular feature, all they have to do is file a pull request. Interested parties will be notified automatically, and they’ll be able to see the question right next to the relevant commits.
 

@@ -66,6 +66,7 @@
 -   [MVC](./topics/mvc.md)
 -   [Architecture](./topics/architecture.md)
 -   [RESTful](./topics/restful.md)
+-   [Microservices](./topics/microservices.md)
 
 ### Concepts
 
@@ -161,6 +162,7 @@
 -   [Pricing](./topics/startupPricing.md)
 -   [Sales](./topics/startupSales.md)
     -   [Email](./topics/startupSalesEmail.md)
+    -   [SEO](./topics/seo.md)
 -   [Product Market Fit](./topics/startupMarketFit.md)
 
 # Random
@@ -171,7 +173,8 @@
 # Googling
 
 ```
-"exact query"            - Search for the exact phrase
+"keyword"                - Search must include keyword
+-keyword                 - Search must exclude keyword
 website.com: query       - Search only in the website
 query 2017..2018         - Seach in the date range
 filetype:pdf query       - Search just for file type

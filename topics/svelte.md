@@ -1175,6 +1175,39 @@ App.svelte
 
 The `$name += '!'` assignment is equivalent to `name.set($name + '!')`.
 
+## Update store outside component
+
+**stores.js**
+
+```js
+import { writable } from "svelte/store";
+
+export const cart = writable([]);
+export const messageObject = writable({});
+```
+
+**utils.js**
+
+```js
+import { messageObject, cart } from "../stores.js";
+
+export async function addToCart(sku, quantity) {
+    await fetchPost("/api/cart", { sku, quantity });
+
+    let cartData = await getCart();
+
+    cart.update(() => cartData);
+
+    messageObject.update(() => ({
+        showMessage: true,
+        type: "success",
+        message: "Product added successfully.",
+    }));
+}
+```
+
+I want to update the messageObject inside the addToCart.
+
 # Motions
 
 Tweening = inbeTweening i.e adding an effect between a start and end state ex. progress bar.
@@ -1694,7 +1727,7 @@ Put this in `package.json`
 "start": "sirv public --single"
 ```
 
-`sirv` is an optimized and lightweight middleware for serving requests to static assets.
+`sirv` is iddleware for serving the public folder i.e. the production app.
 
 `--single` treats the directory as a single-page application. When true, the directory's index page (default index.html) will be sent if the request asset does not exist.
 

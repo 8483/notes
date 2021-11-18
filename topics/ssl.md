@@ -31,15 +31,25 @@ systemctl start nginx
 
 # Renew SSL
 
+**Must disable nginx**
+
 ```bash
+# Stop listening to port 80
+systemctl stop nginx
+
 # test
 sudo certbot renew --cert-name example.com --dry-run
 
 #renew
 sudo certbot renew --cert-name example.com
+
+# Start listening to port 80
+systemctl start nginx
 ```
 
 # Nginx configuration
+
+**IMPORTANT!** Other sites without SSL will broken i.e. they will resolve to the SSL one due to the redirect rule. Browsers force SSL so the only solution is to add it to everything.
 
 ```nginx
 events {}
@@ -48,13 +58,13 @@ http {
     include mime.types;
 
     server {
-        listen 80 default_server;
+        listen 80;
         server_name example.com;
         return 301 https://example.com$request_uri; # redirect to 443 SSL
     }
 
     server {
-        listen 443 ssl default_server;
+        listen 443 ssl;
         server_name example.com;
         ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
@@ -128,3 +138,12 @@ sudo vi default
 11. select the appropriate options and domain which will be listed automatically.
 
 This works in Ubuntu 16.04 so I guess it would work on most other as well.
+
+# Windows IIS
+
+Windows ACME Simple (WACS)
+
+https://github.com/win-acme/win-acme
+
+-   Run `wacs.exe` as administrator
+-   Follow guide

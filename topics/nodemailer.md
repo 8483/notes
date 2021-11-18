@@ -1,29 +1,31 @@
 ```js
 const nodemailer = require("nodemailer");
 
-(async function () {
+async function sendMail() {
     try {
         let mailOptions = {
             from: '"Vendor Name" <info@vendor.com>',
-            to: ["info@clientone.com", "contact@clienttwo.com"],
+            to: ["info@clientOne.com", "contact@clientTwo.com"],
             subject: `Message from vendor`,
             // text: // plain text body
             html: `
                     <h1>Some Title</h1>
                     <br><br>
-                    <span>Some text</span>
+                    <p>
+                        Some text
+                    </p>
                 `,
         };
 
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             name: "subdomain.vendor.com", // needed to send to gmail, yahoo
-            host: "mail.vendor.com",
+            host: "mail.vendor.com", // email provider SMTP server
             port: 465,
             secure: true, // true for 465, false for other ports
             auth: {
-                user: "info@vendor.com", // generated ethereal user
-                pass: "emailPassword", // generated ethereal password
+                user: "info@vendor.com", // has to be the same as mailOptions.from
+                pass: "emailPassword",
             },
         });
 
@@ -43,5 +45,5 @@ const nodemailer = require("nodemailer");
     } catch (err) {
         console.log("Error: " + err);
     }
-})();
+}
 ```

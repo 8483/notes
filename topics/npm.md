@@ -39,7 +39,7 @@ Then run the script using [`npm run-script`][3] (or `npm run`):
 
 # NPX - Package runner
 
-Executes `node` packages. Comes bundled with `npm`.
+Run`node` packages without installing them. Comes bundled with `npm`.
 
 Calling npx `command` when `command` isn’t already in your `$PATH` will automatically install a package with that name from the npm registry for you, and invoke it. When it’s done, the installed package won’t be anywhere in your globals, so you won’t have to worry about pollution in the long-term.
 
