@@ -27,7 +27,8 @@
 
 ```bash
 cat /etc/os-release     # Linux version
-df -h                   # Show disk space in readable format
+df -h --total           # Show disk space in readable format
+htop                    # CPU and RAM usage
 ```
 
 # Install
@@ -75,15 +76,15 @@ which PROGRAM                         # Find path to program.
 ```
 
 # Count
+
 ```bash
 # Number of files
-ls | wc -l                                
+ls | wc -l
 
 # Find all files with the given extensions
 # in the specified folders, and count the number of lines.
 find folder1 folder2 -name '*.js' -o -name '*.sql' | xargs wc -l
 ```
-
 
 # Utility
 
@@ -184,7 +185,9 @@ touch hello.c
 # Edit file
 vim hello.c
 ```
+
 Paste this C code in the file.
+
 ```c
 #include <stdio.h>
 
@@ -193,7 +196,7 @@ main() {
 }
 ```
 
-``` bash
+```bash
 # Compile the code into hello program
 gcc -o hello hello.c
 

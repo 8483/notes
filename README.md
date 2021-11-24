@@ -48,6 +48,7 @@
 ### Database
 
 -   [Design](./topics/dbdesign.md)
+-   [Indexing](./topics/indexing.md)
 -   [MySQL](./topics/mysql.md)
     -   [node mysql](./topics/node-mysql.md)
 -   [SQL Server](./topics/mssql.md)

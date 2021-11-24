@@ -16,6 +16,12 @@
 -   Don't go crazy with `joins`.
 -   Don't use varchar(255). Try to use the lowest number possible.
 
+# RAM usage
+
+SQL engines will consume as much memory as you will allow.
+
+The reason for this is that the engine caches the data in RAM, so that it can access if faster than it could if it needed to read the data from the disk every time a user needed it.
+
 # Install MySQL
 
 ```bash
@@ -137,7 +143,7 @@ CREATE DATABASE dbName;     -- Create a database.
 DROP DATABASE dbName;       -- Delete a database.
 ```
 
-## Tables
+# Tables
 
 ### Create
 
@@ -233,7 +239,7 @@ WHERE
 SELECT tableName, COLUMNNAME, CONSTRAINT_NAME, REFERENCED_tableName, REFERENCED_COLUMNNAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_tableName = 'my_table';
 ```
 
-## Records
+# Records
 
 ```sql
 -- Get records.
