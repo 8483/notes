@@ -1821,3 +1821,7 @@ export default {
     ],
 };
 ```
+
+# SvelteKit
+
+SvelteKit is to Svelte, what Next.js is to React.

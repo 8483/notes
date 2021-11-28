@@ -74,6 +74,8 @@
 -   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
+    -   [Jest](./topics/testingJest.md)
+    -   [Mocha](./topics/testingMocha.md)
 
 ### Useful
 
