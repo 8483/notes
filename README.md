@@ -68,6 +68,7 @@
 -   [Architecture](./topics/architecture.md)
 -   [RESTful](./topics/restful.md)
 -   [Microservices](./topics/microservices.md)
+-   [Message Brokers](./topics/messageBrokers.md)
 
 ### Concepts
 
@@ -82,11 +83,15 @@
 -   [Algorithms](./topics/algos.md)
 -   [Binary base](./topics/base.md)
     -   [Bitwise](./topics/bitwise.md)
--   [Google API](./topics/googleapi.md)
 -   [Assembly](./topics/assembly.md)
     -   [WebAssembly](./topics/wasm.md)
 -   [.NET](./topics/dotnet.md)
 -   [Notifications](./topics/notifications.md)
+
+### APIs
+
+-   [Google API](./topics/googleapi.md)
+-   [Reddit API](./topics/reddit.md)
 
 # Mobile
 
