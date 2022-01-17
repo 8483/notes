@@ -1,3 +1,5 @@
+Message brokers are also called queues, busses.
+
 Kafka, RabbitMQ, MQtt
 
 https://www.youtube.com/watch?v=aj9CDZm0Glc&ab_channel=IBMTechnology

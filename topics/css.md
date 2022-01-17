@@ -6,6 +6,41 @@ o        - Opera
 ms       - Internet Explorer
 ```
 
+# Position: Relative vs Absolute
+
+`position: relative` places an element relative to its current position without changing the layout around it.
+
+`position: absolute` places an element relative to its parent'’'s position and changing the layout around it.
+
+### Position absolute but relative to parent
+
+Why is `#parent { position: relative; }` required?
+
+Because the spec says **absolutely** positioned elements are positioned **relative** to the **first positioned** parent, which means any parent that doesn't have a position value of static.
+
+```html
+<div id="parent">
+    <div id="child1"></div>
+    <div id="child2"></div>
+</div>
+```
+
+```css
+#parent {
+    position: relative;
+}
+
+#child1 {
+    position: absolute;
+    top: 0;
+}
+
+#child2 {
+    position: absolute;
+    bottom: 0;
+}
+```
+
 # BEM
 
 http://getbem.com/introduction/

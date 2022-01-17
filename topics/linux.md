@@ -142,16 +142,16 @@ kill -9 <pid>              # Kill a process by id.
 
 PATH is an enviroment variable. It tells your machine where to search for program executables, so when you run your **picc** program you can just do `picc` instead of `/usr/hitech/picc/9.82/bin/picc`.
 
-Add them to `~/.profile` to make them permanent. Paths require the `bin`, while variables don't.
-
-The variable is not in the environment until you export it. Otherwise it's just a shell variable.
-
 ```bash
 env            # List all variables.
 echo "$HOME"   # Specific variable, in this case **$PATH**.
 ```
 
-Paths are delimited with `:`.
+Add paths to `~/.profile` to make them permanent. Paths require the `bin`, while variables don't.
+
+**The variable is not in the environment until you export it. Otherwise it's just a shell variable.**
+
+Paths are delimited with a colon `:`
 
 ```bash
 # Method 1

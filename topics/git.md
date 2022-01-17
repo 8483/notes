@@ -231,35 +231,6 @@ git commit --amend -m "MESSAGE"
 git push origin +hash^:master
 ```
 
-# Remote
-
-A project can have multiple remotes ex. origin, test, production...
-
-```bash
-# Add a remote i.e. bookmark a repo i.e. This NAME = this URL. The name is usually "origin", but it can be anything.
-git remote add NAME URL
-
-# List all remotes.
-git remote -v
-
-# Check a remote.
-git remote show origin
-
-# Remove a remote.
-git remote rm NAME
-```
-
-# Push
-
-Define which local branch (usually master) to push to which repository (usually origin). It asks for user and pass.
-
-```bash
-# git push -u REPO_NAME BRANCH_NAME
-git push -u origin master
-```
-
-`-u` remember the repo and the branch, so that only `git push` can be used.
-
 # Clone
 
 ```bash
@@ -279,28 +250,6 @@ git pull
 ```
 
 Behind the scenes, this creates an origin/master branch which is automatically merged into the master one, unless there is a merge conflict.
-
-## Pull Requests
-
-**A pull request is a thing that GitHub, or Bitbucket, or some other web hosting service, provides. It is not part of Git itself.**
-
-**You can think of a pull requests as a discussion dedicated to a particular branch, about whether it should be merged with master.**
-
-This uses the Git merge functionality under the hood to ensure that code bases we merge code bases without conflicts.
-
-Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master.
-
-This gives other developers an opportunity to review the changes before they become a part of the main codebase.
-
-For example, if a developer needs help with a particular feature, all they have to do is file a pull request. Interested parties will be notified automatically, and they’ll be able to see the question right next to the relevant commits.
-
-Once a pull request is accepted, the actual act of publishing a feature is much the same as in the Centralized Workflow. First, you need to make sure your local master is synchronized with the upstream master. Then, you merge the feature branch into master and push the updated master back to the central repository.
-
-Cloning does:
-
--   Download entire repo into a new local one.
--   Add "origin" remote, pointing to the clone URL.
--   Check out initial branch. (Set head to master)
 
 # Branch
 
@@ -403,6 +352,76 @@ git rebase master
 |
 3    - branch (1) was added to the original timeline.
 ```
+
+# Remote
+
+A project can have multiple remotes ex. origin, test, production...
+
+```bash
+# Add a remote i.e. bookmark a repo i.e. This NAME = this URL. The name is usually "origin", but it can be anything.
+git remote add NAME URL
+
+# List all remotes.
+git remote -v
+
+# Check a remote.
+git remote show origin
+
+# Remove a remote.
+git remote rm NAME
+```
+
+# Push
+
+Define which local branch (usually master) to push to which repository (usually origin). It asks for user and pass.
+
+```bash
+# git push -u REPO_NAME BRANCH_NAME
+git push -u origin master
+```
+
+`-u` remember the repo and the branch, so that only `git push` can be used.
+
+# Pull Requests
+
+**A pull request is functionality that GitHub provides. It is not part of Git itself. You can think of a pull requests as a discussion dedicated to a particular branch, about whether it should be merged with master.**
+
+Workflow:
+
+1. Fork the repo you want to contribute to.
+2. Clone the repo to your local machine.
+3. Create a branch and start making changes.
+
+```
+git checkout -b new-freature
+```
+
+4. Push the changes.
+
+```
+git push origin new-freature
+```
+
+5. On Github, click on the `Compare & pull request` button.
+6. Add a description and click on `Create pull request`.
+7. The owner of the original repo then decides if the changes should be merged.
+8. For future changes after the code changes, you pull the update repo.
+
+This uses the Git merge functionality under the hood to ensure that code bases we merge code bases without conflicts.
+
+Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master.
+
+This gives other developers an opportunity to review the changes before they become a part of the main codebase.
+
+For example, if a developer needs help with a particular feature, all they have to do is file a pull request. Interested parties will be notified automatically, and they’ll be able to see the question right next to the relevant commits.
+
+Once a pull request is accepted, the actual act of publishing a feature is much the same as in the Centralized Workflow. First, you need to make sure your local master is synchronized with the upstream master. Then, you merge the feature branch into master and push the updated master back to the central repository.
+
+Cloning does:
+
+-   Download entire repo into a new local one.
+-   Add "origin" remote, pointing to the clone URL.
+-   Check out initial branch. (Set head to master)
 
 # Example Workflows
 

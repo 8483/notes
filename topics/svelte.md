@@ -64,21 +64,16 @@ output: {
 Create a new project in the my-svelte-project directory, install its dependencies, and start a server.
 
 ```bash
-# create a new project in the my-svelte-project directory
-npx degit sveltejs/template my-svelte-project
-
-# npx degit sveltejs/template . # in the current folder
-
-# navigate to folder
-cd my-svelte-project
+# download svelte files in the current folder
+npx degit sveltejs/template .
 
 # install dependencies
-npm install
+npm install # if ENOENT npm cache verify; npm update;
 
 # starts a default server http://localhost:5000
 npm run dev
 
-# starts a custom server http://localhost:5000
+# starts a custom server http://localhost:4444
 HOST=127.0.0.1 PORT=4444 npm run dev
 
 # create a production-ready version of your app in /public/bundle.js.
@@ -956,6 +951,12 @@ When you update component state in Svelte, it doesn't update the DOM immediately
 
 Not all application state belongs inside your application's component hierarchy. Sometimes, you'll have values that need to be accessed by multiple unrelated components, or by a regular JavaScript module.
 
+There are 3 types of stores:
+
+-   **Readable:** These store values are read-only and are used when none of your components should be able to edit the value.
+-   **Writable:** These store values can be updated by any of your components.
+-   **Derived:** These store values are considered “reactive” values - they are derived from other store values and computed or mapped into a new value. They will automatically update when the value they are derived from changes.
+
 ## Writeable
 
 In Svelte, we do this with stores. A store is simply an object with a `subscribe` method that allows interested parties to be notified whenever the store value changes.
@@ -1175,7 +1176,24 @@ App.svelte
 
 The `$name += '!'` assignment is equivalent to `name.set($name + '!')`.
 
+## Update vs set
+
+`update()` is a built-in method on Svelte stores that you can use to update the value of a given writable store. update() takes one argument: a callback function. This callback function receives the current value of the store as its argument, and then returns an updated value that overrides the current value. This method is particularly **useful when you want the new value to be some value relative to the current value**, for example, incremented by 1.
+
+Alternatively, you can use the `set()` method to update a writable store. set() takes one argument, which is the new value. **Svelte will override the store's current value with this new value**.
+
 ## Update store outside component
+
+```js
+// adds 1 to the current value
+counter.update((c) => c + 1);
+counter.update((c) => {
+    return c + 1;
+});
+
+// sets it to five, regardless of the current value
+counter.set(5);
+```
 
 **stores.js**
 
@@ -1186,7 +1204,7 @@ export const cart = writable([]);
 export const messageObject = writable({});
 ```
 
-**utils.js**
+**utils.js** (Non svelte file)
 
 ```js
 import { messageObject, cart } from "../stores.js";
@@ -1205,8 +1223,6 @@ export async function addToCart(sku, quantity) {
     }));
 }
 ```
-
-I want to update the messageObject inside the addToCart.
 
 # Motions
 
