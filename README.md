@@ -83,6 +83,7 @@
 ### Useful
 
 -   [Algorithms](./topics/algos.md)
+    -   [Graph Theory](./topics/graphTheory.md)
 -   [Binary base](./topics/base.md)
     -   [Bitwise](./topics/bitwise.md)
 -   [Assembly](./topics/assembly.md)
