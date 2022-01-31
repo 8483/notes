@@ -1182,8 +1182,6 @@ The `$name += '!'` assignment is equivalent to `name.set($name + '!')`.
 
 Alternatively, you can use the `set()` method to update a writable store. set() takes one argument, which is the new value. **Svelte will override the store's current value with this new value**.
 
-## Update store outside component
-
 ```js
 // adds 1 to the current value
 counter.update((c) => c + 1);
@@ -1194,6 +1192,8 @@ counter.update((c) => {
 // sets it to five, regardless of the current value
 counter.set(5);
 ```
+
+## Update store outside component
 
 **stores.js**
 

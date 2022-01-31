@@ -9,12 +9,10 @@ async function sendMail() {
             subject: `Message from vendor`,
             // text: // plain text body
             html: `
-                    <h1>Some Title</h1>
-                    <br><br>
-                    <p>
-                        Some text
-                    </p>
-                `,
+                <h1>Some Title</h1>
+                <br><br>
+                <p>Some text</p>
+            `,
         };
 
         // create reusable transporter object using the default SMTP transport
@@ -30,20 +28,44 @@ async function sendMail() {
         });
 
         // send mail with defined transport object
-        transporter.sendMail(mailOptions, (error, info) => {
+        // transporter.sendMail does not return a promise, it uses a callback function.
+        transporter.sendMail(mailOptions, async (error, info) => {
             if (error) {
-                console.log(error);
-                return;
+                res.send({
+                    success: false,
+                    message: "Sending failed.",
+                });
+            } else {
+                res.send({
+                    success: true,
+                    message: "Sent mail.",
+                });
             }
-
-            // If sent
-            console.log(info);
-
-            // Preview only available when sending through an Ethereal account
-            // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         });
     } catch (err) {
         console.log("Error: " + err);
     }
 }
+```
+
+# Promise response
+
+```js
+return new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            reject({
+                success: false,
+                type: "error",
+                message: "Sending failed.",
+            });
+        } else {
+            resolve({
+                success: true,
+                type: "success",
+                message: "Sent mail.",
+            });
+        }
+    });
+});
 ```

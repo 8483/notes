@@ -245,17 +245,29 @@ from sales
 It defines a temporary result set which can be used in a SELECT statement.
 
 ```sql
--- CTE
-WITH Employee_CTE (EmployeeNumber, Title) AS (
-    SELECT
-        NationalIDNumber,
-        JobTitle
-    FROM HumanResources.Employee
-)
--- Query using CTE
-SELECT EmployeeNumber,
-       Title
-FROM Employee_CTE
+WITH
+    salesrep AS (
+        SELECT
+            employeeNumber,
+            CONCAT(firstName, ' ', lastName) AS salesrepName
+        FROM
+            employees
+        WHERE
+            jobTitle = 'Sales Rep'
+    ),
+    customer_salesrep AS (
+        SELECT
+            customerName, salesrepName
+        FROM
+            customers
+                INNER JOIN
+            salesrep ON employeeNumber = salesrepEmployeeNumber
+    )
+SELECT
+    *
+FROM
+    customer_salesrep
+ORDER BY customerName;
 ```
 
 # Rollup (Total Row)
