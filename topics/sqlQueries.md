@@ -59,6 +59,8 @@ SELECT @count;
 
 # UPDATE from SELECT / TABLE
 
+SQL server
+
 ```sql
 -- select
 UPDATE product
@@ -67,14 +69,26 @@ FROM (
     SELECT sku, newPrice
     FROM pricelist
 ) t2
-WHERE
-    product.sku = t2.sku
+WHERE product.sku = t2.sku
 
 -- table
 UPDATE product
 SET product.price = t2.newPrice
 FROM t2
 WHERE product.sku = t2.sku
+```
+
+MySQL
+
+```sql
+update
+	product p,
+	(
+		select sku, newPrice
+        from pricelist
+	) t2
+set product.price = t2.newPrice
+where product.sku = t2.sku
 ```
 
 # INSERT from SELECT

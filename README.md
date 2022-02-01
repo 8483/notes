@@ -50,9 +50,10 @@
 
 -   [Design](./topics/dbdesign.md)
 -   [Indexing](./topics/indexing.md)
+-   [SQL Queries](./topics/sqlQueries.md)
 -   [MySQL](./topics/mysql.md)
     -   [node mysql](./topics/node-mysql.md)
--   [SQL Server](./topics/mssql.md)
+-   SQL Server
     -   [node mssql](./topics/node-mssql.md)
 
 ### Tooling

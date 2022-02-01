@@ -296,16 +296,18 @@ ON DUPLICATE KEY UPDATE
 
 ```sql
 -- Check the size of all the databases
-SELECT table_schema AS "database",
-ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
+SELECT
+	table_schema,
+	ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) "Size (MB)"
 FROM information_schema.TABLES
 GROUP BY table_schema;
 
 -- Check the size of all the tables in a database
-SELECT tableName AS "table",
-ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
+SELECT
+	  table_name,
+    ROUND(((data_length + index_length) / 1024 / 1024), 2) "Size (MB)"
 FROM information_schema.TABLES
-WHERE table_schema = "database_name" -- Change this one
+WHERE table_schema = "DATABASE_NAME" -- DATABASE_NAME
 ORDER BY (data_length + index_length) DESC;
 ```
 
