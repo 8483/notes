@@ -82,11 +82,11 @@ MySQL
 
 ```sql
 update
-	product p,
-	(
-		select sku, newPrice
+    product p,
+    (
+        select sku, newPrice
         from pricelist
-	) t2
+    ) t2
 set product.price = t2.newPrice
 where product.sku = t2.sku
 ```

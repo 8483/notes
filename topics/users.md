@@ -1,4 +1,17 @@
-# Create
+# Login
+
+```bash
+# Login as user
+su - <USERNAME>
+
+# Login as root
+sudo -i
+
+# Logout
+CTRL + d # or exit
+```
+
+# Add
 
 ```bash
 # Guided user creation
@@ -14,17 +27,17 @@ sudo deluser <USERNAME> sudo
 useradd --uid <UID> --gid <GID> -m -s /usr/bin/zsh -d /var/www/<USERNAME> --password <PASSWORD> <USERNAME>
 ```
 
-# Login
+# Remove
 
 ```bash
-# Login as user
-su - <USERNAME>
+# Remove user
+sudo deluser --remove-home <USERNAME>
 
-# Login as root
-sudo -i
+# Check if user exists
+id <USERNAME>
 
-# Logout
-CTRL + d # or exit
+# Kill all processes by user
+pkill -u <USERNAME>
 ```
 
 The root account is disabled by default in Ubuntu, so there is no root password, that's why `su` fails with an authentication error.

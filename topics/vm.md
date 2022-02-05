@@ -29,8 +29,11 @@ sudo apt update && sudo apt upgrade;
 # curl, vim, tmux, git (Usually installed already)
 sudo apt install curl vim tmux git -y;
 
-# Node
-sudo apt install nodejs npm -y;
+# Download and install nvm
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
+
+# Install latest nodejs
+nvm install node
 
 # Global nodemon
 sudo npm i -g nodemon;
@@ -45,8 +48,8 @@ Web Server
 # nginx (web server)
 sudo apt install nginx -y;
 
-# Global forever
-sudo npm i -g forever;
+# Global process manager
+sudo npm i -g pm2;
 ```
 
 # Digital Ocean Update
