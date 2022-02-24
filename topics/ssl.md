@@ -1,44 +1,80 @@
+# Notes
+
+Subdomains require separate certificates.
+
+```
+example.com
+app.example.com
+admin.example.com
+```
+
+All three require different certificates.
+
+You need to issue and renew the individually.
+
 # Install Certbot
 
-Guide for `nginx` on `ubuntu`. The certificates are issued instantly, no waiting.
+Guide for `nginx` on `ubuntu`.
 
 ```bash
 # Install certbot
-sudo wget https://dl.eff.org/certbot-auto -O /usr/sbin/certbot-auto
-sudo chmod a+x /usr/sbin/certbot-auto
+sudo snap install --classic certbot
 
-# nginx plugin
-sudo apt install python-certbot-nginx
+# Link global command to installed one
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+
+# Check certificates
+
+```bash
+sudo certbot certificates
 ```
 
 # Issue SSL
 
-**Must disable nginx**
+The certificates are issued instantly, no waiting.
+
+**IMPORTANT: Must disable nginx!**
 
 ```bash
 # Stop listening to port 80
-systemctl stop nginx
+sudo systemctl stop nginx
 
 # Get SSL certificate
-sudo certbot-auto certonly --standalone -d example.com
+sudo certbot certonly --nginx -d subdomain.domain.com
 
 # Check certificate - Might require sudo -i
-ls /etc/letsencrypt/live/example.com
+sudo ls /etc/letsencrypt/live/example.com
 
 # Start listening to port 80
-systemctl start nginx
+sudo systemctl start nginx
+```
+
+The Certbot packages on your system come with a cron job or systemd timer that will renew your certificates automatically before they expire. You will not need to run Certbot again, unless you change your configuration.
+
+**Errors**
+
+```
+sudo systemctl stop nginx
+sudo killall -9 nginx
+sudo systemctl start nginx
 ```
 
 # Renew SSL
 
-**Must disable nginx**
+**IMPORTANT: Must disable nginx**
+
+**Bulk**
+
+```bash
+sudo certbot renew
+```
+
+**Individual**
 
 ```bash
 # Stop listening to port 80
 systemctl stop nginx
-
-# test
-sudo certbot renew --cert-name example.com --dry-run
 
 #renew
 sudo certbot renew --cert-name example.com
@@ -49,7 +85,13 @@ systemctl start nginx
 
 # Nginx configuration
 
-**IMPORTANT!** Other sites without SSL will broken i.e. they will resolve to the SSL one due to the redirect rule. Browsers force SSL so the only solution is to add it to everything.
+**IMPORTANT!**
+
+Other sites without SSL will broken i.e. they will resolve to the SSL one due to the redirect rule. Browsers force SSL so the only solution is to add it to everything.
+
+**A permanent redirect (code 301) gets cached by the browser.** If you had a 301 redirect for `app.example.com` to `example.com` in the past then **the browser will not check again** but use the already cached redirect and visit the target directly.
+
+Check with an incognito window to make sure that existing caches will not be used. **Clear browser cache** to fix this.
 
 ```nginx
 events {}
@@ -60,12 +102,13 @@ http {
     server {
         listen 80;
         server_name example.com;
-        return 301 https://example.com$request_uri; # redirect to 443 SSL
+        return 301 https://example.com$request_uri;
     }
 
     server {
         listen 443 ssl;
         server_name example.com;
+
         ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
 

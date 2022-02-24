@@ -265,19 +265,6 @@ A branch essentially says "I want to include the work of this commit and all par
 
 Switching branches will only show the files in that branch.
 
-#### Create
-
-```bash
-# Create new branch. HEAD still on master (Use checkout to switch).
-git branch <name>
-
-# Create AND move to a branch.
-git checkout -b <branch_name>
-
-# Create a remote branch. Usually origin.
-git push <repo_name> <branch_name>
-```
-
 #### Navigate
 
 ```bash
@@ -289,6 +276,19 @@ git branch -r
 
 # Move to a specific branch (Set HEAD from master to <branch_name>). This is like switching timelines.
 git checkout <branch_name>
+```
+
+#### Create
+
+```bash
+# Create new branch. HEAD still on master (Use checkout to switch).
+git branch <name>
+
+# Create AND move to a branch.
+git checkout -b <branch_name>
+
+# Create a remote branch. Usually origin.
+git push <repo_name> <branch_name>
 ```
 
 #### Delete

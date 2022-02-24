@@ -10,7 +10,17 @@
 
 # Environment
 
-User
+**Sytem**
+
+```bash
+# Check timezone
+timedatectl
+
+# Change timezone
+sudo timedatectl set-timezone EST # UTC, CET
+```
+
+**User**
 
 ```bash
 # Add user
@@ -20,7 +30,7 @@ adduser <username>
 su - <username>
 ```
 
-Basic
+**Basic**
 
 ```bash
 # Update
@@ -42,7 +52,16 @@ sudo npm i -g nodemon;
 sudo apt install mysql-server -y && mysql_secure_installation;
 ```
 
-Web Server
+**Database**
+
+```bash
+# Change timezone
+sudo vim /etc/mysql/my.cnf
+
+# Change default-time-zone = "+01:00" to desired
+```
+
+**Web Server**
 
 ```bash
 # nginx (web server)

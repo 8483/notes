@@ -9,6 +9,9 @@ sudo -i
 
 # Logout
 CTRL + d # or exit
+
+# Change password
+sudo passwd <USERNAME>
 ```
 
 # Add

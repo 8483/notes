@@ -1,3 +1,9 @@
+# Build time estimation
+
+Rule #1 of estimating when your product is done:
+
+Take the worst estimate and multiply it with 3.
+
 # Building Product
 
 ![MVP](../pics/startup/mvp/mvp.jpg)
