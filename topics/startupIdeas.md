@@ -52,31 +52,30 @@ The best technique I've found for dealing with companies that have bad ideas is 
 
 > Don't sell what you can make, make what you can sell.
 
-```bash
-channel/distribution > problem > solution > business
+## Do this...
 
-# instead of...
-# idea > product > search for market/problem > solution > find ways to reach them (channels/distribution)
-```
+1.  Channel/distribution
+2.  Problem
+3.  Solution
+4.  Business
 
-Filter check list:
+## Instead of...
 
--   Is there a problem
+1. Idea
+2. Product
+3. Search for market/problem
+4. Solution
+5. Find ways to reach them (channels/distribution)
 
--   Is the problem painful enough ($$?, urgent, important)
+## Filter check list:
 
--   Is the problem frequent enough (weekly vs once 8 years?)
-
--   Are there enough people with the same problem (500 ppl vs 20M)
-
--   How hard is it to reach to people with problem (channels)
-
--   Is market saturated by big brands (i.e. spring water)
-
+-   Is there a problem?
+-   Is the problem painful enough? ($$?, urgent, important)
+-   Is the problem frequent enough? (weekly vs once 8 years?)
+-   Are there enough people with the same problem? (500 ppl vs 20M)
+-   How hard is it to reach to people with problem? (channels)
+-   Is market saturated by big brands? (i.e. spring water)
 -   Is solution at least 3x better than current substitute for any segment of market?
--
--   Does the solution-business model work (subscription, cross-sell, upsell, partnerships, sponsorships, grants, etc)
-
+-   Does the solution-business model work? (subscription, cross-sell, upsell, partnerships, sponsorships, grants, etc)
 -   Is there a segment that can be the early adopters?
-
 -   Is there a road to other bigger segments?

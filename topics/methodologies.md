@@ -4,6 +4,27 @@ Agile is methodology, with a set of values and principles, which the Waterfall m
 
 Scrum and Kanban are Agile frameworks.
 
+# Summary
+
+The core principles of agile really boil down to:
+
+-   Talk to each other.
+-   Talk to you customers.
+-   Aim for high quality code.
+-   Deploy frequently.
+
+In the real world almost no one follows any of these methodologies exactly. In practice, it looks like this:
+
+-   **Sprints**: Work is broken up into 2-week blocks, in which people commit to what will be accomplished and work to get those tasks done by the end of the sprint.
+
+-   **Standup meetings**: Daily meetings where the participants of a sprint discuss their status updates, blockers, progress, etc. The goal being to get a good summary of what everyone else is working on.
+
+-   **Sprint planning**: time when work is pulled in for the next sprint and estimated.
+
+-   **Retrospectives**: meeting to review the successes and areas for improvement from the previous sprint.
+
+The general philosophy is that by working in short sprints with regular collaboration and communication, more can be accomplished and the team can respond to changing requirements and unexpected events more easily.
+
 # Agile Manifesto
 
 **Individuals and interactions** over processes and tools.  

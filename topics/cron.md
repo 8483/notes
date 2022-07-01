@@ -1,3 +1,33 @@
+# Troubleshooting
+
+NOTE: `echo` won't work because `cron` runs in its own shell.
+
+Possible problems:
+
+1. Not using absolute paths
+
+```bash
+* * * * * /bin/echo "cron works" >> /tmp/file
+```
+
+2. Not using a PATH variable
+
+```bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+* * * * * echo "cron works" >> /tmp/file
+```
+
+3. Not escaping characters
+
+```bash
+# mysqldump --databases db > /home/user/backup-$(date +%Y%m%d-%H%M%S)
+mysqldump --databases db > /home/user/backup-$(date +\%Y\%m\%d-\%H\%M\%S)
+```
+
+4. Not leaving an empty new line in the end
+
+# Cron
+
 Each user has his own crontab i.e. cron table i.e table of scheduled processes.
 
 List
@@ -18,6 +48,9 @@ crontab -e
 
 # edit tasks for specific user
 crontab –u username –e
+
+# edit tasks for root user
+sudo crontab -e
 ```
 
 Jobs

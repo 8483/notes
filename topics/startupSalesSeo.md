@@ -1,5 +1,12 @@
 [Source](https://youtu.be/-B58GgsehKQ)
 
+Useful links:
+
+-   https://old.reddit.com/r/seogrowth/comments/qwsdin/seo_is_easy_the_exact_process_we_use_to_scale_our/
+-   https://old.reddit.com/r/Entrepreneur/comments/sesdxr/recently_hit_6600000_monthly_organic_traffic_for/
+-   https://old.reddit.com/r/Entrepreneur/comments/syt6r2/10_step_local_seo_checklist_i_use_to_rank_local/
+-   https://old.reddit.com/r/smallbusiness/comments/sryd1p/seo_consultant_charging_family_business_300month/
+
 # Rules
 
 Rule #1: Create really good content.  
@@ -26,6 +33,28 @@ Simply put, a user should stay on the website. The main factors are:
 -   **Dwell time** - Long long the user stays before bouncing. Longer is better, and the best result is the user never leaving.
     -   **Session duration** - Metric for dwell time.
     -   **Pages per session**- Metric for dwell time.
+
+# Keyword research
+
+There are a ton of expensive tools, but you can do this for free.
+
+Let's say you want to sell beard trimmers. If you try to rank for "best beard trimmer", you will fail. Instead, you want to target niche searches.
+
+You can find these by going to Google search and typing "beard trimmer" + a `letter`, and look at the suggestions. Ex:
+
+-   "beard trimmer a" suggests "beard trimmer apron"
+-   "beard trimmer b" suggests "beard trimmer bib"
+-   "beard trimmer c" suggests "beard trimmer charger"
+-   "beard trimmer d" suggests "beard trimmer detailer"
+
+Keywords belong in these 4 groups.
+
+| Funnel    | Group       | Intent                            | Example          |
+| --------- | ----------- | --------------------------------- | ---------------- |
+| Attention | Information | Gain general knowledge on a topic | what is DDR4 ram |
+| Interest  | Navigation  | Has end destionation in mind      | newegg DDR4 ram  |
+| Desire    | Comparison  | Information on future purchase    | best DDR4 ram    |
+| Action    | Transaction | Intent to buy                     | DR4 ram price    |
 
 # Body - semantic HTML
 

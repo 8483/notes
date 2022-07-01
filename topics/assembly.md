@@ -1,3 +1,5 @@
+Assembly language is still taught for specific platforms like ARM and x86/64. You can do a lot of interesting close-to-hardware operations with assembly for embedded code, but most high level code bases like business logic code don't really use it directly. An assembler is generally always involved for higher level coding languages that compile down to machine code (e.g. C++/C, Go), because a compiler generally converts high level code to machine specific assembly before an assembler converts it to the final machine code. Something that says "ADD(Register_6, Register_13)" is much better to a human than say some fictitious machine code binary of "011010010111011101100000011000001101".
+
 C is pretty much a macro language for assembly.
 
 Assembly languages are low-level programming languages where you are giving instructiins like
@@ -5,7 +7,6 @@ Assembly languages are low-level programming languages where you are giving inst
 "load from memory location 123" "load from memory location 124" "add those together" "store the result at memory location 124" "compare to memory 77" "if that location equals 4, jump to instruction 60"
 
 Different processors have different assembly languages, so you can't run the same assembly programs on, say, x86 and ARM machines.
-
 
 But which assembly to choose?
 

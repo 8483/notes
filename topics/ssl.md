@@ -1,5 +1,7 @@
 # Notes
 
+The certificates are issued instantly, no waiting.
+
 Subdomains require separate certificates.
 
 ```
@@ -14,6 +16,8 @@ You need to issue and renew the individually.
 
 # Install Certbot
 
+**The Certbot packages on your system come with a cron job or systemd timer that will renew your certificates automatically before they expire.** You will not need to run Certbot again, unless you change your configuration.
+
 Guide for `nginx` on `ubuntu`.
 
 ```bash
@@ -27,12 +31,14 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 # Check certificates
 
 ```bash
+# Check all
 sudo certbot certificates
+
+# Location of certificate - Might require sudo -i
+sudo ls /etc/letsencrypt/live/example.com
 ```
 
 # Issue SSL
-
-The certificates are issued instantly, no waiting.
 
 **IMPORTANT: Must disable nginx!**
 
@@ -43,20 +49,7 @@ sudo systemctl stop nginx
 # Get SSL certificate
 sudo certbot certonly --nginx -d subdomain.domain.com
 
-# Check certificate - Might require sudo -i
-sudo ls /etc/letsencrypt/live/example.com
-
 # Start listening to port 80
-sudo systemctl start nginx
-```
-
-The Certbot packages on your system come with a cron job or systemd timer that will renew your certificates automatically before they expire. You will not need to run Certbot again, unless you change your configuration.
-
-**Errors**
-
-```
-sudo systemctl stop nginx
-sudo killall -9 nginx
 sudo systemctl start nginx
 ```
 
@@ -64,23 +57,26 @@ sudo systemctl start nginx
 
 **IMPORTANT: Must disable nginx**
 
-**Bulk**
-
-```bash
-sudo certbot renew
-```
-
-**Individual**
-
 ```bash
 # Stop listening to port 80
 systemctl stop nginx
 
-#renew
+# Renew bulk
+sudo certbot renew
+
+# Renew individual
 sudo certbot renew --cert-name example.com
 
 # Start listening to port 80
 systemctl start nginx
+```
+
+# Errors
+
+```
+sudo systemctl stop nginx
+sudo killall -9 nginx
+sudo systemctl start nginx
 ```
 
 # Nginx configuration

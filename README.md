@@ -167,15 +167,26 @@
 
 # Startup
 
+### Business
+
+-   [Focus](./topics/startupFocus.md)
 -   [Ideas](./topics/startupIdeas.md)
 -   [Equity](./topics/startupEquity.md)
+-   [Product Market Fit](./topics/startupMarketFit.md)
+
+### Product
+
 -   [MVP](./topics/startupMVP.md)
 -   [Product Desgin](./topics/startupProductDesign.md)
+
+### Sales
+
 -   [Pricing](./topics/startupPricing.md)
 -   [Sales](./topics/startupSales.md)
+    -   [Copywriting](./topics/startupSalesCopywriting.md)
     -   [Email](./topics/startupSalesEmail.md)
-    -   [SEO](./topics/seo.md)
--   [Product Market Fit](./topics/startupMarketFit.md)
+    -   [SEO](./topics/startupSalesSeo.md)
+    -   [Marketing](./topics/startupSalesMarketing.md)
 
 # Random
 

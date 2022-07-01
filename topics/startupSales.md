@@ -1,12 +1,20 @@
+# Call to action (CTA)
+
+Always end with a **call to action** (CTA). Never let the prospect dictate the next step. Never let it end with you waiting on them to act when they want.
+
+# Important
+
 Are you targeting executives? Directors? Managers? Lower level staff?
 
 How your product works with each of those levels will be different because the expectations and needs of customers at these levels are all different.
 
 **Remember, you’re not selling into a company, you’re selling into a role at the company.**
 
-**People don’t buy products, they buy experiences involving products from people like them or people they aspire to be.**
+**People don’t buy products, they buy experiences involving products from people like them or people they aspire to be. People buy end results.**
 
-People don’t like sales people but love implementation people. Your website should be doing all of the heavy lifting and you should be implementing really intelligent ways to collect data about interested parties so that you can customize your follow up with them. It’s never about getting them on the phone to talk about their business, it’s always about what you can already know about their business and showing that you can provide value towards improving it.
+People don’t like sales people but love implementation people. Your website should be doing all of the heavy lifting and you should be implementing really intelligent ways to collect data about interested parties so that you can customize your follow up with them.
+
+It’s never about getting them on the phone to talk about their business, it’s always about what you can already know about their business and showing that you can provide value towards improving it.
 
 # How to Sell - Tyler Bosemy
 

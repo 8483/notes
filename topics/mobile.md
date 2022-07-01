@@ -9,15 +9,16 @@ No compilation needed, as the app is written in the native language.
 
 ## Hybrid
 
-Like Electron, but for mobile devices.
+Like Electron, but for mobile devices. UI is built with HTML/CSS.
 
 -   PhoneGap - Same as Cordova, vanilla JS, paid version.
 -   Cordova - Same as PhoneGap, vanilla JS, open source.
 -   Ionic - Angular UI library on top of Cordova that gives a native look.
+-   Capacitor - Cordova's successor. A webView runtime (browser) that unlocks the full native functionality of each platform via cross-platform APIs.
 
 ## Compiled
 
-**Only** the UI components are compiled to their native equivalents. The rest runs in the language runtime.
+**Only** the UI components are compiled to their native equivalents. The rest runs in the language runtime. No access to HTML/CSS.
 
 -   React Native (Javascript) Have to build your own components.
 -   Native Script (Javascript) Less popular

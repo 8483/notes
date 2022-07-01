@@ -402,6 +402,14 @@ gzip -d < backup.sql.gz | mysql
 mysql dbName < backup.sql
 ```
 
+# Transfer
+
+Copy data from one database into another.
+
+```
+mysqldump -u root -p'password' source_db | mysql -u root -p'password' target_db
+```
+
 # Import/Export
 
 **Import from remote to local**
