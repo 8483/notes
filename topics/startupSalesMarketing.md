@@ -65,8 +65,8 @@ Consideration
 - 1 CAMPAIGN PER PRODUCT/OFFER
 - 3-5 AD SETS PER CAMPAIGN
 - 1-2 INTEREST PER AD SET
-- 3-4 ADS PER AD SET, DUPLICATE ACROSS AD SETSS
-- REMARKETING INSIDE AD SET, NOT SEPARATE CAMPAING
+- 3-4 ADS PER AD SET, DUPLICATE ACROSS AD SETS
+- REMARKETING INSIDE AD SET, NOT SEPARATE CAMPAIGN
 ```
 
 **Test the ads and pick the best performer. Add new ads to test against the best performer. Repeat while iterating over different creatives, headlines and copy until you find the perfect ad.**

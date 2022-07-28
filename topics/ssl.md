@@ -46,6 +46,9 @@ sudo ls /etc/letsencrypt/live/example.com
 # Stop listening to port 80
 sudo systemctl stop nginx
 
+# Stop all processes
+sudo killall nginx
+
 # Get SSL certificate
 sudo certbot certonly --nginx -d subdomain.domain.com
 
@@ -60,6 +63,9 @@ sudo systemctl start nginx
 ```bash
 # Stop listening to port 80
 systemctl stop nginx
+
+# Stop all processes
+sudo killall nginx
 
 # Renew bulk
 sudo certbot renew

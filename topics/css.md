@@ -10,7 +10,7 @@ ms       - Internet Explorer
 
 `position: relative` places an element relative to its current position without changing the layout around it.
 
-`position: absolute` places an element relative to its parent'’'s position and changing the layout around it.
+`position: absolute` places an element relative to its parent's position and changing the layout around it.
 
 ### Position absolute but relative to parent
 
