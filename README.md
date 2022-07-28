@@ -38,7 +38,7 @@
     -   [nginx](./topics/nginx.md)
         -   [SSL](./topics/ssl.md)
     -   [GraphQL](./topics/graphql.md)
-    -   [Web Sockets](./topics/websocket.md)
+    -   [Web Sockets](./topics/websockets.md)
 -   Libraries
     -   [cryptojs](./topics/cryptojs.md)
     -   [nodemailer](./topics/nodemailer.md)
