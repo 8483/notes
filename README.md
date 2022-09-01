@@ -9,7 +9,7 @@
 -   [Async](./topics/async.md)
 -   [Functional Programming](./topics/fp.md)
 
-### Frontend
+### Frontend Languages
 
 -   Frameworks
     -   [Svelte](./topics/svelte.md)
@@ -26,7 +26,7 @@
 -   Other
     -   [CSS](./topics/css.md)
 
-### Backend
+### Backend Languages
 
 -   Technologies
     -   [Node](./topics/node.md)
