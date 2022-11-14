@@ -1,0 +1,13 @@
+-   Buy server.
+-   Find out IP address and host nameservers.
+-   Deploy app code.
+-   Setup nginx configuration with IP address.
+-   Start server script/daemon.
+-   Test if it works with IP address.
+-   Buy domain.
+-   Set domain to use the nameservers.
+-   On your server, add the domain.
+-   Create A record for the domain/subdomain.
+-   Update nginx configuration to now use the domain.
+-   Add letencrypt SSL certificate with certbot.
+-   Update nginx to use the SSL certificate.

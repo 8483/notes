@@ -1,5 +1,13 @@
 # Caveat
 
+> **One should not start building new application as microservices!**
+
+Focus on building a modular, decoupled, easy to change application first.
+
+When we have semi-stable decoupled modules - and there is a real business need - only then we should think about breaking it into microservices.
+
+The process of breaking down the application into microservices is really nuanced, and to do it right requires a lot of knowledge and experience in managing software architecture.
+
 > This is what happens when you read all those Kubernetes / orchestration / microservices / highscalability blog posts starting about 3 years ago, and come to the realization that you don't have Google-scale problems...
 
 Microservices is more of an organizational structure than a software architecture. Basically you more or less HAVE to do Domain Driven Design to separate 'pieces' of the business between many teams.

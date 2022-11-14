@@ -50,7 +50,7 @@ const pi = 3.14;
 pi = 42; // TypeError: Assignment to constant variable.
 
 const person = {
-    name: "John"
+    name: "John",
 };
 person.name = "Mike";
 console.log(person.name); // Mike. Doesn't prevent mutation.
@@ -62,9 +62,7 @@ console.log(person.name); // Mike. Doesn't prevent mutation.
 class User {
     // Called during instantiation.
     constructor(username, email, password) {
-        (this.username = username),
-            (this.email = email),
-            (this.password = passwrod);
+        (this.username = username), (this.email = email), (this.password = passwrod);
     }
 
     // Callable without instantiation.
@@ -112,8 +110,7 @@ Backticks allow multiline strings. Also, we can inject variables and functions w
 
 ```javascript
 var name = "John";
-var template =
-    "<h1>Hello, " + name + "</h1>" + "<p>This is a simple template.</p>";
+var template = "<h1>Hello, " + name + "</h1>" + "<p>This is a simple template.</p>";
 ```
 
 ### After
@@ -169,7 +166,7 @@ function hello(name) {
 console.log(hello("Jack")); // Hello Jack
 
 // As long as no curly braces are used after the fat arrow, the return is implicit.
-var hello = name => "Hello " + name;
+var hello = (name) => "Hello " + name;
 console.log(hello("Jack")); // Hello Jack
 ```
 
@@ -187,7 +184,7 @@ const obj = {
     },
     getData2: () => {
         console.log(this.data);
-    }
+    },
 };
 
 obj.getData(); // John
@@ -279,7 +276,7 @@ for (let g of gen) {
 const address = {
     street: "",
     city: "",
-    country: ""
+    country: "",
 };
 
 // old
@@ -325,22 +322,21 @@ Object destructuring requires more writing to grab a variable and rename it.
 
 ```javascript
 // object destructuring. lots of writing!
-const users = { admin: 'chris', user: 'nick' };
+const users = { admin: "chris", user: "nick" };
 
 // grab the admin and user but rename them to SuperAdmin and SuperUser
 const { admin: SuperAdmin, user: SuperUser } = users;
 ```
+
 The bottom line can be a bit difficult to read. With array destructuring we just name variables as we get them out of the array. **First variable is the first item in the array**.
 
 ```javascript
 // array destructuring
-const users = ['chris', 'nick'];
+const users = ["chris", "nick"];
 
 // grab in order and rename at the same time
 const [SuperAdmin, SuperUser] = users;
 ```
-
-
 
 # Spread
 
@@ -352,32 +348,33 @@ Used for copying or deleting properties from one object to another.
 let obj = {
     foo: "foo",
     bar: "bar",
-    baz: "baz"
+    baz: "baz",
 };
 
-let newObj = {...obj, baz: "NEW VALUE"};
+let newObj = { ...obj, baz: "NEW VALUE" };
 
-console.log(obj)      // { foo: "foo", bar: "bar", baz: "baz" }
-console.log(newObj)   // { foo: "foo", bar: "bar", baz: "NEW VALUE" }
+console.log(obj); // { foo: "foo", bar: "bar", baz: "baz" }
+console.log(newObj); // { foo: "foo", bar: "bar", baz: "NEW VALUE" }
 ```
+
 The properties are added in order, so if you want to override existing properties, you need to put them at the end instead of at the beginning.
 
 ```javascript
 let obj1 = {
     foo: "foo",
     bar: "bar",
-    baz: "baz"
+    baz: "baz",
 };
 
 let obj2 = {
     bar: "bar2",
     baz: "baz2",
-    new: "new"
+    new: "new",
 };
 
-let newObj = {...obj1, ...obj2};
+let newObj = { ...obj1, ...obj2 };
 
-console.log(newObj)   // { foo: "foo", bar: "bar2", baz: "baz2", new: "new" }
+console.log(newObj); // { foo: "foo", bar: "bar2", baz: "baz2", new: "new" }
 ```
 
 ### Copy
@@ -386,25 +383,25 @@ console.log(newObj)   // { foo: "foo", bar: "bar2", baz: "baz2", new: "new" }
 // Without spread
 const meal = {
     id: 1,
-    description: "Breakfast"
+    description: "Breakfast",
 };
 
 const updatedMeal = {
     id: meal.id,
     description: meal.description,
-    calories: 600
+    calories: 600,
 };
 
 // With spread
 const meal = {
     id: 1,
-    description: "Breakfast"
+    description: "Breakfast",
 };
 
 const updatedMeal = {
     ...meal, // Injects the id and description properties from meal.
     description: "Brunch", // This has precedence over the spread operator.
-    calories: 600
+    calories: 600,
 };
 ```
 
@@ -436,14 +433,63 @@ const combined = [...first, "a", ...second, "b"]; // Easy to add other items.
 // Another example
 const meals = [
     { id: 1, description: "Breakfast", calories: 420 },
-    { id: 2, description: "Lunch", calories: 520 }
+    { id: 2, description: "Lunch", calories: 520 },
 ];
 
 const meal = {
     id: 3,
     description: "Snack",
-    calories: 180
+    calories: 180,
 };
 
 const updatedMeals = [...meals, meal]; // Returns a new array with the addition.
+```
+
+# Nullish coalescing `??`
+
+The nullish coalescing operator `??` is a fallback for `falsy` values, **BUT ONLY** for `null` and `undefined`...
+
+```js
+undefined ?? "not found"; // not found
+null ?? "not found"; // not found
+
+NaN ?? "not found"; // NaN
+0 ?? "not found"; // 0
+false ?? "not found"; // false
+"" ?? "not found"; // ""
+```
+
+...compared to `OR` which handles all of them.
+
+```js
+undefined || "not found"; // not found
+null || "not found"; // not found
+NaN || "not found"; // not found
+0 || "not found"; // not found
+false || "not found"; // not found
+"" || "not found"; // not found
+```
+
+Has the fifth-lowest operator precedence:
+
+-   `||` - OR
+-   `??` - nullish coalescing
+-   `?` - ternary operator
+
+# Optional chaining `?.`
+
+Access a nested property without having explicit checks for each object in the chain of whether the object exists or not.
+
+```js
+const country = {
+    obj: {
+        name: null,
+    },
+};
+
+// OLD
+const region = (country.obj && country.obj.name) || "France";
+
+// NEW
+const region = country?.obj?.name || "France";
 ```

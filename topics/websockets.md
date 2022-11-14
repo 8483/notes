@@ -55,11 +55,11 @@ server.on("connection", (socket) => {
 
 It's both a client and a server library.
 
-```
-npm install socket.io
-```
-
 **client**
+
+```
+npm install socket.io-client
+```
 
 ```js
 const socket = io("ws://localhost:8080");
@@ -77,6 +77,10 @@ document.querySelector("button").onclick = () => {
 ```
 
 **server**
+
+```
+npm install socket.io
+```
 
 ```js
 const http = require("http").createServer();
@@ -188,8 +192,7 @@ io.on("connection", (socket) => {
 **client**
 
 ```js
-// Connect to the server it's
-// (Here you want to change the port if you changed it in the server)
+// Connect to the serve (Here you want to change the port if you changed it in the server)
 const socket = io("localhost:80");
 
 // On new vote update the chart

@@ -89,35 +89,38 @@ If this file is not included in the `http` block, all the different files will b
 # Simplest server
 
 ```nginx
-events {}                            # Needed to be a valid conf file.
+events {}                                 # Needed to be a valid conf file.
 
 http {
-    include mime.types;              # Recognize filetypes.
+    include mime.types;                   # Recognize filetypes.
     server {
         listen 80;
-        server_name 127.0.0.1;      # Should be domain name.
-        root /sites/template;       # Match URIs to files here.
+        server_name 123.456.789.255;      # Should be domain name.
+
+        root /home/folder;                # Match URIs to files here.
+        index index.html;                 # index is inside folder
     }
 }
 ```
 
 After that, reload with `systemctl reload nginx`.
 
-# Static server with custom configuration
-
-**nginx.conf**
-
 ```nginx
-events {}
+events {}                                         # Needed to be a valid conf file.
 
 http {
-    include /etc/nginx/mime.types; # Path needs to be absolute.
+    include mime.types;                           # Recognize filetypes.
     server {
-        listen 8080;
-        root /home/user/app/public; # index.html is inside public.
-    }
+        listen 80;
+        server_name 123.456.789.255;              # Should be domain name.
+
+        location /route {
+            proxy_pass 'http://127.0.0.1:8080';   # http://123.456.789.255:8080
+        }
 }
 ```
+
+App is available at `http://123.456.789.255:8080`.
 
 # Location Blocks
 
@@ -281,7 +284,9 @@ It's always better to use nginx as a proxy for a node.js server; nginx can proxy
 
 Additionally, you shouldn't be using node.js for serving "static" files such as images, js/css files, etc. Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
 
-## Node Reverse Proxy
+# Reverse Proxy
+
+**IMPORTANT:** **Any changes made to** `nginx.conf` **need to be reloaded with** `sudo nginx -s reload` **for them to work!!!**
 
 Any request made to the server on the `80` port is forwarded to `http://localhost:3000`, as if it was made directly there.
 
@@ -299,33 +304,32 @@ http {
 }
 ```
 
-#### Important
-
-**Any changes made to** `nginx.conf` **need to be reloaded with** `sudo nginx -s reload` **for them to work!!!**
-
-It is crucial to note the usage of the **trailing slash**. This is called a **proxy path**. Unless we specify one, nginx assumes the original request path i.e. location. It is **recommended** to **use** the proxy path / trailing slash.
+## **Trailing slash /**
 
 [Stack Overflow explanation.](https://stackoverflow.com/questions/32542282/how-do-i-rewrite-urls-in-a-proxy-response-in-nginx)
 
-```nginx
-location /foo/ {
-    proxy_pass http://localhost:3000/;
-}
-```
+It is crucial to note the usage of the **trailing slash**. This is called a **proxy path**. Unless we specify one, nginx assumes the original request path i.e. location.
+
+**It is recommended to use the proxy path `/` trailing slash.**
+
+### **WITH slash**
 
 **With** trailing slash, the request for `http://localhost:3000/foo/bar/baz` will be proxied to `http://localhost:3000/bar/baz`. Basically, `/foo/` gets replaced by `/` to change the request path from `/foo/bar/baz` to `/bar/baz`.
 
 ```nginx
-location /foo {
-    proxy_pass http://localhost:3000;
-}
-```
+# http://localhost:3000/foo/bar/baz
 
-**Without** trailing slash, the same request will be proxied to `http://localhost:3000/foo/bar/baz`. Basically, the full original request path gets passed on without changes.
+location /foo/ {
+    proxy_pass http://localhost:3000/;
+}
+
+# http://localhost:3000/bar/baz
+```
 
 For example, a request to `http://localhost:8000/app/users` (with the config below) would return all users because the request made to the server is actually `http://localhost:3000/api/users`.
 
 ```nginx
+# http://localhost:8000/app/users
 server {
     listen 8000;
 
@@ -333,6 +337,22 @@ server {
         proxy_pass 'http://localhost:3000/api/users';
     }
 }
+
+# http://localhost:3000/api/users
+```
+
+### **WITHOUT slash**
+
+**Without** trailing slash, the same request will be proxied to `http://localhost:3000/foo/bar/baz`. Basically, the full original request path gets passed on without changes.
+
+```nginx
+# http://localhost:3000/foo/bar/baz
+
+location /foo {
+    proxy_pass http://localhost:3000;
+}
+
+# http://localhost:3000/foo/bar/baz
 ```
 
 # Caching

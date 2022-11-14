@@ -1,6 +1,6 @@
 # Programming
 
-### Javascript
+### **Javascript**
 
 -   [Javascript](./topics/javascript.md)
 -   [ES6](./topics/es6.md)
@@ -9,7 +9,7 @@
 -   [Async](./topics/async.md)
 -   [Functional Programming](./topics/fp.md)
 
-### Frontend
+### **Frontend**
 
 -   Frameworks
     -   [Svelte](./topics/svelte.md)
@@ -26,7 +26,7 @@
 -   Other
     -   [CSS](./topics/css.md)
 
-### Backend
+### **Backend**
 
 -   Technologies
     -   [Node](./topics/node.md)
@@ -47,17 +47,18 @@
     -   [Caching](./topics/caching.md)
     -   [Logging](./topics/logging.md)
 
-### Database
+### **Database**
 
 -   [Design](./topics/dbdesign.md)
 -   [Indexing](./topics/indexing.md)
 -   [SQL Queries](./topics/sqlQueries.md)
 -   [MySQL](./topics/mysql.md)
     -   [node mysql](./topics/node-mysql.md)
--   SQL Server
+-   [SQL Server](./topics/sqlserver.md)
     -   [node mssql](./topics/node-mssql.md)
+-   [Best practices](<(./topics/sqlBestPractices.md)>)
 
-### Tooling
+### **Tooling**
 
 -   [Git](./topics/git.md)
 -   [Babel](./topics/babel.md)
@@ -65,7 +66,7 @@
 -   Typescript
 -   [VS Code](./topics/vscode.md)
 
-### Architecture
+### **Architecture**
 
 -   [MVC](./topics/mvc.md)
 -   [Architecture](./topics/architecture.md)
@@ -74,15 +75,16 @@
 -   [Serverless](./topics/serverless.md)
 -   [Message Brokers](./topics/messageBrokers.md)
 
-### Concepts
+### **Concepts**
 
 -   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
     -   [Jest](./topics/testingJest.md)
     -   [Mocha](./topics/testingMocha.md)
+-   [Naming variables](./topics/namingVariables.md)
 
-### Useful
+### **Useful**
 
 -   [Algorithms](./topics/algos.md)
     -   [Graph Theory](./topics/graphTheory.md)
@@ -93,7 +95,7 @@
 -   [.NET](./topics/dotnet.md)
 -   [Notifications](./topics/notifications.md)
 
-### APIs
+### **APIs**
 
 -   [Google API](./topics/googleapi.md)
 -   [Reddit API](./topics/reddit.md)
@@ -103,9 +105,28 @@
 -   [Overview](./topics/mobile.md)
 -   [PWA](./topics/pwa.md)
 
+# DevOps
+
+### **General**
+
+-   [Deployment](./topics/deployment.md)
+
+### **Virtualization**
+
+-   [VM](./topics/vm.md)
+-   [Vagrant](./topics/vagrant.md)
+
+### **Containerization**
+
+-   [Docker](./topics/docker.md)
+
+### **Configuration Management**
+
+-   [Ansible](./topics/ansible.md)
+
 # Linux
 
-### Administration
+### **Administration**
 
 -   [basics](./topics/linux.md)
 -   [filesystem](./topics/filesystem.md)
@@ -113,7 +134,7 @@
 -   [config](./topics/config.md)
 -   [systemd](./topics/systemd.md)
 
-### Tools
+### **Tools**
 
 -   [bash](./topics/bash.md)
 -   [tmux](./topics/tmux.md)
@@ -123,28 +144,13 @@
 -   [compression](./topics/compression.md)
 -   [cron](./topics/cron.md)
 
-# DevOps
-
-### Virtualization
-
--   [VM](./topics/vm.md)
--   [Vagrant](./topics/vagrant.md)
-
-### Containerization
-
--   [Docker](./topics/docker.md)
-
-### Configuration Management
-
--   [Ansible](./topics/ansible.md)
-
 # Networking
 
 -   [Networking](./topics/networking.md)
 
 # Electronics
 
-### General
+### **General**
 
 -   [Electronics](./topics/electronics.md)
 -   Terminology
@@ -152,7 +158,7 @@
 -   Components
 -   [RFID](./topics/rfid.md)
 
-### Gadgets
+### **Gadgets**
 
 -   [Raspberry Pi](./topics/raspberrypi.md)
 -   [Arduino](./topics/arduino.md)
@@ -168,19 +174,19 @@
 
 # Startup
 
-### Business
+### **Business**
 
 -   [Focus](./topics/startupFocus.md)
 -   [Ideas](./topics/startupIdeas.md)
 -   [Equity](./topics/startupEquity.md)
 -   [Product Market Fit](./topics/startupMarketFit.md)
 
-### Product
+### **Product**
 
 -   [MVP](./topics/startupMVP.md)
 -   [Product Desgin](./topics/startupProductDesign.md)
 
-### Sales
+### **Sales**
 
 -   [Pricing](./topics/startupPricing.md)
 -   [Sales](./topics/startupSales.md)

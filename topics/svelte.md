@@ -31,44 +31,14 @@ const app = new App({
 export default app;
 ```
 
-# Injected components
-
-Or, we can then import the component and instantiate with `new`.
-
-```js
-import App from "./App.svelte";
-
-export default App;
-```
-
-```js
-const bundle = require(`./bundle.js`);
-
-let app = new bundle({
-    target: document.getElementById("app"),
-});
-```
-
-In order for this to work in `node` and be further bundled in an existing non-svelte app, we need this setting in `rollup.config.js`.
-
-```js
-output: {
-    sourcemap: true,
-    format: "cjs",
-    file: "public/build/bundle-module.js",
-},
-```
-
 # Install
-
-Create a new project in the my-svelte-project directory, install its dependencies, and start a server.
 
 ```bash
 # download svelte files in the current folder
 npx degit sveltejs/template .
 
 # install dependencies
-npm install # if ENOENT npm cache verify; npm update;
+npm install # if ENOENT: npm cache verify; npm update;
 
 # starts a default server http://localhost:5000
 npm run dev
@@ -104,6 +74,80 @@ VS code extensions:
 
 -   Svelte for VS Code
 -   Svelte Intellisense
+
+# Injected components
+
+## **Node.js**
+
+Or, we can then import the component and instantiate with `new`.
+
+**Svelte main.js**
+
+```js
+import App from "./App.svelte";
+
+export default App;
+```
+
+**Nodejs module app.js**
+
+```js
+const bundle = require(`../svelte/public/build//bundle.js`);
+
+module.exports = async (ctx) => {
+    let html = `
+        <div id="app" class="content-table"></div>
+    `;
+
+    content.innerHTML = html;
+
+    new bundle({
+        target: document.getElementById("app"),
+        props: {
+            foo: "bar",
+        },
+    });
+};
+```
+
+**nodejs index.js**
+
+```js
+page("/app", app);
+```
+
+In order for this to work in `node` and be further bundled in an existing non-svelte app, we need this setting in `rollup.config.js`.
+
+```js
+export default {
+    input: "src/main.js",
+    output: {
+        sourcemap: true,
+        format: "cjs",
+        name: "app",
+        file: "public/build/bundle.js",
+    },
+};
+```
+
+## **Browser**
+
+**main.js**
+
+Just reference the DOM element in the bundle.
+
+```js
+import App from "./App.svelte";
+
+const app = new App({
+    target: document.getElementById("app"),
+    props: {
+        name: "world",
+    },
+});
+
+export default app;
+```
 
 # VS Code Prettier formatter
 
@@ -470,7 +514,7 @@ Nested.svelte
 ## Loop
 
 ```html
-{#each items as item (item.id), i}
+{#each items as item, i (item.id}
 <p>{item.value}</p>
 {/each}
 ```
