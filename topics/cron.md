@@ -80,21 +80,27 @@ x-y   range of values
 /x    recurring i.e. every x times
 ```
 
+**NOTE: The timing doesn't overlap, meaning it happens in both cases, not a combination of the two.**
+
 ```bash
-# Append hello every minute.
-* * * * * echo "hello" >> /home/user/log.txt
+# Every minute
+* * * * *
 
-# At 23:59 every day.
-59 23 * * * echo "hello" >> /home/user/log.txt
+# Every hour
+0 * * * *
 
-# At 23:59 on Sunday.
-59 23 * * 0 echo "hello" >> /home/user/log.txt
+# Every 2 hours
+0 */2 * * *
 
-# At every 20th minute past hour 22 on day-of-month 1 and 15.
-*/20 22 1,15 * * echo "hello" >> /home/user/log.txt
+# Every day @ 23:59
+59 23 * * *
 
-# At 10:15 on every 2nd day-of-month from 1 through 10 and on Friday.
-15 10 1-10/2 * 5 echo "hello" >> /home/user/log.txt
+# Sunday @ 23:59
+59 23 * * 0
+
+# At every 20th minute past hour 22 on day-of-month 1 and 15
+*/20 22 1,15 * *
+
+# At 10:15 on every 2nd day-of-month from 1 through 10 and on Friday
+15 10 1-10/2 * 5
 ```
-
-The timing doesn't overlap meaning it happens in both cases, not a combination of the two.

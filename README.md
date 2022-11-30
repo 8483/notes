@@ -51,12 +51,12 @@
 
 -   [Design](./topics/dbdesign.md)
 -   [Indexing](./topics/indexing.md)
--   [SQL Queries](./topics/sqlQueries.md)
 -   [MySQL](./topics/mysql.md)
     -   [node mysql](./topics/node-mysql.md)
 -   [SQL Server](./topics/sqlserver.md)
     -   [node mssql](./topics/node-mssql.md)
 -   [Best practices](<(./topics/sqlBestPractices.md)>)
+-   [Useful queries](./topics/sqlQueries.md)
 
 ### **Tooling**
 
