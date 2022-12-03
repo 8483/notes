@@ -132,21 +132,29 @@
 -   [filesystem](./topics/filesystem.md)
 -   [users](./topics/users.md)
 -   [config](./topics/config.md)
--   [systemd](./topics/systemd.md)
 
 ### **Tools**
 
--   [bash](./topics/bash.md)
--   [tmux](./topics/tmux.md)
--   [vim](./topics/vim.md)
--   [ssh](./topics/ssh.md)
--   [rsync](./topics/rsync.md)
--   [compression](./topics/compression.md)
--   [cron](./topics/cron.md)
+-   [bash - scripting](./topics/bash.md)
+-   [tmux - teminal windows](./topics/tmux.md)
+-   [vim - editor](./topics/vim.md)
+-   [ssh - remote access](./topics/ssh.md)
+-   [rsync - file transfer](./topics/rsync.md)
+-   [gzip - compression](./topics/gzip.md)
+-   [cron - scheduling](./topics/cron.md)
+-   [systemd - daemons](./topics/systemd.md)
 
 # Networking
 
--   [Networking](./topics/networking.md)
+-   [Overview](./topics/networkingOverview.md)
+    -   [OSI Model](./topics/networkingOSI.md)
+    -   [TCP/IP Model](./topics/networkingTCPIP.md)
+        -   [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
+        -   [3. Network - IP, Subnet, Gateway](./topics/networkingLayer3NetworkIP.md)
+        -   [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
+        -   [5. Application - HTTP, DNS](./topics/networkingLayer5ApplicationHTTP.md)
+-   [Tools](./topics/networkingTools.md)
+-   [Roles](./topics/networkingRoles.md)
 
 # Electronics
 
@@ -158,19 +166,15 @@
 -   Components
 -   [RFID](./topics/rfid.md)
 
-### **Gadgets**
+### **Embedded**
 
 -   [Raspberry Pi](./topics/raspberrypi.md)
 -   [Arduino](./topics/arduino.md)
 -   [NodeMCU](./topics/nodemcu.md)
 
-### Electricity
+### **Electricity**
 
 -   [Electricity](./topics/electricity.md)
-
-# Machine Learning
-
--   [Brain.js](./topics/brainjs.md)
 
 # Startup
 
@@ -199,6 +203,10 @@
 
 -   [Excel](./topics/excel.md)
 -   [Statistics](./topics/stats.md)
+
+# Machine Learning
+
+-   [Brain.js](./topics/brainjs.md)
 
 # Googling
 
