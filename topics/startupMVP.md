@@ -247,3 +247,75 @@ Any feature request should be converted into problem dissection.
 Do I have product market fit? If you have to ask, you don't. You know you have it if you start spending the whole time just keeping servers alive to meet demand, rather than making new features. "We're gonna die because we have too many users!"
 
 Almost no one achieves product market fit. You may have some users, but that's not product market fit.
+
+# How To Talk To Users
+
+[Source](https://youtu.be/z1iF1c8w5Lg)
+
+Talk to customers. They will keep you honest about the product, because they are the only ones that care.
+
+Do not use no-reply emails.
+
+### Interview
+
+-   Do you care about X?
+-   Why or why not?
+-   Who in your company is relevant for X?
+
+-   Video, phone or in-person.
+-   Build rapport.
+-   Don't introduce your product or solution.
+-   Listen, don't talk.
+-   Ask open ended questions.
+-   Take notes.
+
+Questions
+
+-   Tell me how you do X today?
+-   What is the hardest thing about doing X?
+-   Why is it hard?
+-   How often do you have to do X?
+-   Why is it important for your company to do X?
+-   What do you do to solve this problem for yourself?
+
+Follow up
+
+-   What do you mean by that?
+-   Can you tell me more about that?
+-   Why is that important to you?
+
+Don't ask
+
+-   Will you use our product?
+-   Which features would make our product better?
+-   Yes/No questions.
+-   How woulad a better product look like to you?
+-   Two questions at the same time.
+
+It's even better to watch them how they solve their problem now.
+
+Understand their behavior, not what they are saying.
+
+Focus on problems, not features
+
+Users have good problems, but bad solutions.
+
+Look for the underlying reason of their solution, i.e. what the problem is.
+
+Users have no incentive to say no to features.
+
+### Idea
+
+Is solving this problem valuable?
+
+-   Are people paying money for solutions in this space today?
+-   Have they tried to solve this problem on their own i.e. do they have Excels that solves it decently? To move someone from using Excel, your solution must be dramatically better.
+-   Some customers will always be easier than others to do research on.
+
+Prototype
+
+Show your product and DO NOT TELL THE USER WHAT TO DO, GIVE THEM A GOAL instead.
+
+Tell them to speak their mind while they are using it, and take notes.
+
+Make them feel special, like they are a part of a special club.

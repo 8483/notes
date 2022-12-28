@@ -80,8 +80,10 @@ echo 'message' | netcat server 80
 `netcat` doesn't know anything about forming HTTP request, but in combination with `printf` and `piping`, it can be done.
 
 ```bash
+# Google
 printf 'HEAD / HTTP/1.1\r\nHost: google.com\r\n\r\n' | nc google.com 80
 
+# JSON
 printf 'GET /posts/1 HTTP/1.1\r\nHost:jsonplaceholder.typicode.com\r\n\r\n' | nc jsonplaceholder.typicode.com 80
 ```
 
@@ -120,3 +122,11 @@ python -m SimpleHTTPServer 8080
 `cat etc/network/interfaces` - Shows the interfaces brought up after booting.
 
 `/etc/hosts` is used to simulate a domain for an IP address. Add `127.0.0.1 domain.com` to avoid typing the IP address.
+
+# tshark
+
+The terminal version of Wireshark, used for packet sniffing.
+
+# traceroute
+
+The asterisks you're seeing are servers that your packets are being routed through whom are timing out (5.0+ seconds) and so traceroute defaults to printing the \*.

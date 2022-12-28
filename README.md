@@ -51,12 +51,12 @@
 
 -   [Design](./topics/dbdesign.md)
 -   [Indexing](./topics/indexing.md)
+-   [SQL queries](./topics/sqlQueries.md)
+-   [Best practices](./topics/sqlBestPractices.md)
 -   [MySQL](./topics/mysql.md)
     -   [node mysql](./topics/node-mysql.md)
 -   [SQL Server](./topics/sqlserver.md)
     -   [node mssql](./topics/node-mssql.md)
--   [Best practices](./topics/sqlBestPractices.md)
--   [Useful queries](./topics/sqlQueries.md)
 
 ### **Tooling**
 
@@ -82,7 +82,7 @@
 -   [Testing](./topics/testing.md)
     -   [Jest](./topics/testingJest.md)
     -   [Mocha](./topics/testingMocha.md)
--   [Naming variables](./topics/namingVariables.md)
+-   [Code quality](./topics/codeQuality.md)
 
 ### **Useful**
 
@@ -136,7 +136,7 @@
 ### **Tools**
 
 -   [bash - scripting](./topics/bash.md)
--   [tmux - teminal windows](./topics/tmux.md)
+-   [tmux - terminal windows multiplexer](./topics/tmux.md)
 -   [vim - editor](./topics/vim.md)
 -   [ssh - remote access](./topics/ssh.md)
 -   [rsync - file transfer](./topics/rsync.md)
@@ -147,13 +147,14 @@
 # Networking
 
 -   [Overview](./topics/networkingOverview.md)
-    -   [OSI Model](./topics/networkingOSI.md)
-    -   [TCP/IP Model](./topics/networkingTCPIP.md)
+    -   [OSI Model](./topics/networkingModelOSI.md)
+    -   [TCP/IP Model](./topics/networkingModelTCPIP.md)
         -   [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
-        -   [3. Network - IP, Subnet, Gateway](./topics/networkingLayer3NetworkIP.md)
+        -   [3. Network - IP, Subnet, Gateway, DHCP](./topics/networkingLayer3NetworkIP.md)
         -   [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
         -   [5. Application - HTTP, DNS](./topics/networkingLayer5ApplicationHTTP.md)
 -   [Tools](./topics/networkingTools.md)
+-   [Devices](./topics/networkingDevices.md)
 -   [Roles](./topics/networkingRoles.md)
 
 # Electronics
@@ -178,12 +179,17 @@
 
 # Startup
 
-### **Business**
+### **Overview**
 
 -   [Focus](./topics/startupFocus.md)
 -   [Ideas](./topics/startupIdeas.md)
 -   [Equity](./topics/startupEquity.md)
+
+### **Business**
+
 -   [Product Market Fit](./topics/startupMarketFit.md)
+-   [Business Model](./topics/startupBusinessModel.md)
+-   [Pricing](./topics/startupPricing.md)
 
 ### **Product**
 
@@ -192,7 +198,6 @@
 
 ### **Sales**
 
--   [Pricing](./topics/startupPricing.md)
 -   [Sales](./topics/startupSales.md)
     -   [Copywriting](./topics/startupSalesCopywriting.md)
     -   [Email](./topics/startupSalesEmail.md)
