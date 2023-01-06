@@ -16,6 +16,49 @@ sudo apt-get install netcat-openbsd tcpdump traceroute mtr
 | traceroute       | tracert  | Show the route the traffic takes                            |
 | host             | nslookup | Explore the Domain Name System (DNS)                        |
 
+# Workflow
+
+PC's don't have IP addresses. Network interfaces have them, meaning one PC will have multiple IP addresses.
+
+1. Find IP address of PC.
+
+```bash
+ip addr
+ip -c addr
+ip -o -c addr
+
+# IP address: 192.168.100.16/24
+# /24 = 255.255.255.0 subnet mask
+```
+
+2. Scan subnet for other devices (IP addresses).
+
+```bash
+nmap -sn 192.168.100.0/24
+```
+
+3. Ping other device.
+
+```bash
+ping 192.168.100.10
+```
+
+4.  Default gateway (router)
+
+```
+ip route show
+route -n
+netstat -rn
+```
+
+# Interfaces
+
+```
+ls /sys/class/net/
+netstat -i
+ip link show
+```
+
 # ping
 
 It sends individual packets to test if traffic can get from one address to another, and back.

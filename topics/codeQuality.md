@@ -57,7 +57,7 @@ function calculate(bottom, top) {
 
 # Naming variables
 
-### Don't use single letters
+### 1. Don't use single letters
 
 ```js
 let x = 1;
@@ -65,7 +65,7 @@ let x = 1;
 let someValue = 1;
 ```
 
-### Don't abbreviate names
+### 2. Don't abbreviate names
 
 ```js
 function relScore(m1, m2) {}
@@ -73,7 +73,7 @@ function relScore(m1, m2) {}
 function movieRelationScore(movie1, movie2) {}
 ```
 
-### Don't put types in the name (Hungarian notation)
+### 3. Don't put types in the name (Hungarian notation)
 
 ```c
 bool bIsValid;
@@ -82,7 +82,7 @@ uint32_t uNumUsers;
 char szUserName;
 ```
 
-### Add units to variables.
+### 4. Add units to variables.
 
 ```js
 function execute(delay) {}
@@ -90,7 +90,7 @@ function execute(delay) {}
 function execute(delaySeconds) {}
 ```
 
-### Refactor if you find yourself using `utils`.
+### 5. Refactor if you find yourself using `utils`.
 
 ```js
 // utils.js
