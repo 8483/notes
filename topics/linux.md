@@ -144,7 +144,7 @@ PATH is an enviroment variable. It tells your machine where to search for progra
 
 ```bash
 env            # List all variables.
-echo "$HOME"   # Specific variable, in this case **$PATH**.
+echo "$HOME"   # Specific variable, in this case **$HOME**.
 ```
 
 Add paths to `~/.profile` to make them permanent. Paths require the `bin`, while variables don't.
