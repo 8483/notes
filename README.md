@@ -2,12 +2,14 @@
 
 ### **Javascript**
 
--   [Javascript](./topics/javascript.md)
--   [ES6](./topics/es6.md)
+-   [Language](./topics/javascriptLanguage.md)
+-   [Basics](./topics/javascriptBasics.md)
+-   [ES6](./topics/javascriptEs6.md)
+-   [Document Object Model (DOM)](./topics/javascriptDom.md)
+-   [Async](./topics/javascriptAsync.md)
 -   [Object Oriented Programming (OOP)](./topics/oop.md)
--   [Document Object Model (DOM)](./topics/dom.md)
--   [Async](./topics/async.md)
 -   [Functional Programming](./topics/fp.md)
+-   [Debugging](./topics/javascriptDebugging.md)
 
 ### **Frontend**
 
@@ -53,7 +55,6 @@
 -   [Design](./topics/dbdesign.md)
 -   [Indexing](./topics/indexing.md)
 -   [SQL queries](./topics/sqlQueries.md)
--   [Best practices](./topics/sqlBestPractices.md)
 -   [MySQL](./topics/mysql.md)
     -   [node mysql](./topics/node-mysql.md)
 -   [SQL Server](./topics/sqlserver.md)
@@ -64,7 +65,6 @@
 -   [Git](./topics/git.md)
 -   [Babel](./topics/babel.md)
 -   [Webpack](./topics/webpack.md)
--   Typescript
 -   [VS Code](./topics/vscode.md)
 
 ### **Architecture**
@@ -78,12 +78,12 @@
 
 ### **Concepts**
 
+-   [Code quality](./topics/codeQuality.md)
 -   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
     -   [Jest](./topics/testingJest.md)
     -   [Mocha](./topics/testingMocha.md)
--   [Code quality](./topics/codeQuality.md)
 
 ### **Useful**
 
