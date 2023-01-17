@@ -35,10 +35,11 @@
             -   [Code Structure](./topics/express-structure.md)
         -   [Middleware](./topics/middleware.md)
         -   [.env](./topics/dotenv.md)
-    -   [nginx](./topics/nginx.md)
-        -   [SSL](./topics/ssl.md)
     -   [GraphQL](./topics/graphql.md)
     -   [Web Sockets](./topics/websockets.md)
+-   Web server
+    -   [nginx](./topics/nginx.md)
+        -   [SSL](./topics/ssl.md)
 -   Libraries
     -   [cryptojs](./topics/cryptojs.md)
     -   [nodemailer](./topics/nodemailer.md)

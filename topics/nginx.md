@@ -19,34 +19,27 @@ If we want to add modules, we need to compile nginx from source and add them dur
 
 `/usr/share/nginx/html/` has the default `index.html` file.
 
-`nginx -t` - After changes, check the syntax and run a test to make sure the web-server will work.
+`/etc/nginx/nginx.conf` is the main server configuration file. You can configure many sites in this file
 
-`systemctl reload nginx` - Load the changes because the server is running with the old config file. Otherwise use `service nginx reload`.
+You can also create a separate configuration for each, which should be placed in the `/etc/nginx/conf.d/` folder. These override any `nginx.conf` settings. These are loaded by the default `include /etc/nginx/conf.d/*.conf;` line in the main .conf file.
 
-`/etc/nginx/nginx.conf` is the main server configuration file. For each site we run, a separate file is needed, unless we want to run just one site.
-
-Specific site configurations must be placed in the `/etc/nginx/conf.d/` folder. These override any `nginx.conf` settings. These are loaded by the default `include /etc/nginx/conf.d/*.conf;` line in the main .conf file.
-
-`http {}` block - For all incoming http requests, use these settings.
-
-# Command Line
-
-The default location nginx looks in for the configuration file is `/etc/nginx/nginx.conf`, but you can pass in an arbitrary path with the `-c` flag. Ex. `nginx -c /usr/local/nginx/conf`.
-
-```Bash
-nginx -c <path> -t   # Test configuration at absolute path
-nginx -c <path>      # Start with a custom configuration.
-nginx -s <signal>    # Stop or reload.
-```
-
-**Useful commands**
+# Commands
 
 ```bash
+# Check if the configuration works
+nginx -t
+
+# Reload changes made to nginx.conf
+systemctl reload nginx
+
 # Check if nginx is running.
 systemctl status nginx
 
-# Start nginx if not.
+# Start nginx.
 systemctl start nginx
+
+# Stop nginx.
+systemctl stop nginx
 
 # Reload nginx.
 systemctl restart nginx
@@ -64,9 +57,18 @@ ps -ef | grep nginx
 kill -9 2847
 ```
 
+The default location nginx looks in for the configuration file is `/etc/nginx/nginx.conf`, but you can pass in an arbitrary path with the `-c` flag. Ex. `nginx -c /usr/local/nginx/conf`.
+
+```Bash
+nginx -c <path> -t   # Test configuration at absolute path
+nginx -c <path>      # Start with a custom configuration.
+nginx -s <signal>    # Stop or reload.
+```
+
 # Terminology
 
-`Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)  
+`Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)
+
 `Vhost` - Virtual host. Defined in the `http` block.
 
 `Directives` - Specific configuration options composed of an option name and option value. Ex. `Listen 80`. There are 4 types:
@@ -93,6 +95,7 @@ events {}                                 # Needed to be a valid conf file.
 
 http {
     include mime.types;                   # Recognize filetypes.
+
     server {
         listen 80;
         server_name 123.456.789.255;      # Should be domain name.
@@ -110,6 +113,7 @@ events {}                                         # Needed to be a valid conf fi
 
 http {
     include mime.types;                           # Recognize filetypes.
+
     server {
         listen 80;
         server_name 123.456.789.255;              # Should be domain name.
@@ -143,7 +147,7 @@ http {
 }
 ```
 
-## Serving Files
+### Serving Files
 
 ```nginx
 events {}
@@ -163,7 +167,7 @@ http {
 }
 ```
 
-#### Matching URIs to Location Blocks
+### Matching URIs to Location Blocks
 
 In order of importance. Matching occurs for everything past the value. `location /greet` will match `/greetings/something`
 
@@ -179,7 +183,7 @@ Example for `/greet`:
 3. `~* /greet[0-9]` - Match /greet123, /greet456 etc.
 4. `no modifier` - Match /greet, /greeting etc.
 
-#### try_files
+### try_files
 
 The example below sets up a location outside of the regular server root. When someone visits `domain/downloads/file` they would get the wanted file.
 
@@ -200,48 +204,6 @@ http {
     }
 }
 ```
-
-# Logging
-
-There are two types of logs by default, located in `/var/log/nginx`.
-
-1. **Error** logs for anything that went wrong.
-2. **Access** logs for all requests made.
-
-If we want specific logs for specific context, we can do that by using `error_log /var/log/nginx/log_name.log debug;`.
-
-Also, we can disable logs for certain locations by using `access_log off` or `error_log off`. This is useful for saving resources, ex. for all .css requests.
-
-## Inheritance
-
-Http > Server > Location
-
-It only works for standard and array directives. It doesn't work for action and try_files directives as the stop the flow and are immediately executed.
-
-## Testing
-
-`curl -I http://127.0.0.1/css/bootstrap.css` - Request the response headers of a resource.
-
-# Optimization
-
-Further reading on these topics:
-
--   Expires headers. Client side caching.
--   Gzip. Compression.
--   FastCGI cache. Cache backend responses.
--   Limiting. Prevent DDoS.
--   GeoIP. Location of requests and limits.
--   HTTP2. One client-server connection vs 10+ individual requests.
-
-# Security
-
-Here are some of the steps for hardening an nginx server:
-
--   Remove unused modules. Can only be done while compiling from source.
--   Turn off server tokens with `server_tokens off;`. This hides the nginx version.
--   Set buffer sizes to prevent buffer overflow attacks.
--   Block user agents. Prevents indexing and scraping.
--   Configure X-frame-options. Tells when it's ok to server to an iframe.
 
 # SSL/HTTPS
 
@@ -354,6 +316,48 @@ location /foo {
 
 # http://localhost:3000/foo/bar/baz
 ```
+
+# Logging
+
+There are two types of logs by default, located in `/var/log/nginx`.
+
+1. **Error** logs for anything that went wrong.
+2. **Access** logs for all requests made.
+
+If we want specific logs for specific context, we can do that by using `error_log /var/log/nginx/log_name.log debug;`.
+
+Also, we can disable logs for certain locations by using `access_log off` or `error_log off`. This is useful for saving resources, ex. for all .css requests.
+
+## Inheritance
+
+Http > Server > Location
+
+It only works for standard and array directives. It doesn't work for action and try_files directives as the stop the flow and are immediately executed.
+
+## Testing
+
+`curl -I http://127.0.0.1/css/bootstrap.css` - Request the response headers of a resource.
+
+# Optimization
+
+Further reading on these topics:
+
+-   Expires headers. Client side caching.
+-   Gzip. Compression.
+-   FastCGI cache. Cache backend responses.
+-   Limiting. Prevent DDoS.
+-   GeoIP. Location of requests and limits.
+-   HTTP2. One client-server connection vs 10+ individual requests.
+
+# Security
+
+Here are some of the steps for hardening an nginx server:
+
+-   Remove unused modules. Can only be done while compiling from source.
+-   Turn off server tokens with `server_tokens off;`. This hides the nginx version.
+-   Set buffer sizes to prevent buffer overflow attacks.
+-   Block user agents. Prevents indexing and scraping.
+-   Configure X-frame-options. Tells when it's ok to server to an iframe.
 
 # Caching
 
