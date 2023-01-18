@@ -46,28 +46,68 @@ Steps
 
 # DDNS - Dynamic Domain Name System
 
-It allows access to any device in your local network, even if the IP address changes.
+Makes local devices accessible over the internet.
 
-Makes dynamic (local) IP addresses act as static ones i.e. accessible from outside.
+It's a service that maps your router's dynamic IP addresses to a host ex. `myhomepc.ddns.org`. Whenever the router's address changes, the service is notified and the address is updated. The host acts as a static IP address.
 
-It's a service that maps local IP addresses to name like `myhomepc.ddns.org`. Whenever the address changes, the service is notified.
+The IP updating can be done in 3 ways:
 
-In reality, you don't need a DDNS service to connect to a local device. You need the service only because the router's IP address changes. If you had a static IP address, you don't need DDNS.
+-   Router's built-in functionality (best)
+-   App running on device, provided by DDNS service
+-   Crontab
+
+**NOTE:** In reality, you don't need a DDNS service to connect to a local device. You need the service only because the router's IP address changes. If you had a static IP address, you wouldn't need a DDNS.
 
 ### Setup
 
 1. Choose DDNS service
 2. Open account
 3. Choose domain/host
-4. Send the router's IP address periodically to DDNS service via:
-    - Router's built-in functionality
-    - App running on device, provided by DDNS service
-    - crontab
+4. Configure DDNS in the router to periodically update the DDNS service.
 5. Configure port forwarding in the router to direct all internet connections to local device (home server). Ex: `myhomepc.ddns.org:8123` > `192.168.100.55:8123`
 
 ![TEA](../pics/networking/ddns.jpg)
 
-### Example
+### Example - Cameras
+
+#### 1. Connect all devices
+
+Connect everything via Ethernet (LAN)
+
+1. Connect POE switch to router.
+2. Connect all cameras to switch.
+3. Connect DVR to switch.
+
+#### 2. Setup camera IP addresses
+
+All devices have a default IP address. Ex. Dahua's cameras have `192.168.1.108`.
+
+To change the address to ex. `192.168.100.15`, you need to:
+
+1. Temporarily change the PC's dynamic IP address to a static one on the same subnet as the camera ex. `192.168.1.2`.
+2. Access the camera via its IP address `192.168.100.15`, log into it, and change it directly. Alternatively, you can use Dahua's `configtool`.
+3. Change the PC's static IP address back to a dynamic one.
+
+#### 3. Add the cameras in the DVR
+
+Access the DVR via its IP address and add the cameras with their new static IP addresses.
+
+#### 4. Setup DDNS
+
+1. Choose DDNS service
+2. Open account
+3. Add host, ex. `cameras.ddns.org`.
+
+#### 5. Setup router
+
+1. Configure DDNS rule to map the router's dynamic IP address to the DDNS's host `cameras.ddns.org`.
+2. Configure port forwarding in the router to direct all internet connections to the DVR. Ex: `cameras.ddns.org:80` > `192.168.100.55:8000`
+
+#### 6. Setup DVR manager
+
+1. Add the DDNS `cameras.ddns.org` host in the DVR manager to gain access to all the cameras.
+
+### Example - SQL Server
 
 Your SQL Server will have to be visible to the server from which you host your website.
 
