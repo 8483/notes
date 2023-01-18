@@ -6,6 +6,18 @@
 4. Routers pass on the data until the matching subnet is reached.
 5. Data enters that network and goes to the desired IP address in that local network.
 
+# Public (WAN) vs Private (LAN)
+
+You can't access the internet with a private (local) IP address.
+
+The conversion from private (local) to public IP is done by NAT (Network Address Translation)
+
+|  Public (WAN)   |                Private/Local (LAN)                |
+| :-------------: | :-----------------------------------------------: |
+|     Unique      | Not unique, can be used on other private networks |
+| Used externally |                  Used internally                  |
+| Assigned by ISP |       Assigned by the router's DHCP service       |
+
 # IP Address
 
 A numeric identifier for a computer or device on a network.
@@ -85,18 +97,6 @@ Classes
 |            ISP            |   A   |       1 - 126       |      255.0.0.0      | 16 M  |
 |    Large organization     |   A   |      128 - 191      |     255.255.0.0     | 65 K  |
 | Small organization / home |   A   |      192 - 223      |    255.255.255.0    |  254  |
-
-# Public vs Private
-
-You can't access the internet with a private IP address.
-
-The conversion from private to public IP is done by NAT (Network Address Translation)
-
-|     Private     |                      Public                       |
-| :-------------: | :-----------------------------------------------: |
-|     Unique      | Not unique. Can be used on other private networks |
-| Used externally |                  Used internally                  |
-| Assigned by ISP |       Assigned by the router's DHCP service       |
 
 # DHCP - Dynamic Host Configuration Protocol
 

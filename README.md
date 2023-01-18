@@ -153,7 +153,7 @@
         -   [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
         -   [3. Network - IP, Subnet, Gateway, DHCP](./topics/networkingLayer3NetworkIP.md)
         -   [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
-        -   [5. Application - HTTP, DNS](./topics/networkingLayer5ApplicationHTTP.md)
+        -   [5. Application - HTTP, DNS, DDNS](./topics/networkingLayer5ApplicationHTTP.md)
 -   [Tools](./topics/networkingTools.md)
 -   [Devices](./topics/networkingDevices.md)
 -   [Roles](./topics/networkingRoles.md)

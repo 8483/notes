@@ -16,7 +16,16 @@ sudo apt-get install netcat-openbsd tcpdump traceroute mtr
 | traceroute       | tracert  | Show the route the traffic takes                            |
 | host             | nslookup | Explore the Domain Name System (DNS)                        |
 
-# Workflow
+# Public (WAN) IP address
+
+```
+curl ipinfo.io/ip
+curl ipecho.net/plain
+curl ifconfig.me
+curl icanhazip.com
+```
+
+# Private/Local (LAN) IP address
 
 PC's don't have IP addresses. Network interfaces have them, meaning one PC will have multiple IP addresses.
 
