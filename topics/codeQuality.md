@@ -1,3 +1,17 @@
+# Optimization
+
+> _"Premature optimization is the root of all evil"_ - Donald Knuth
+
+You're writing code to solve a real world problem. Getting to a solution faster is more important than a fast solution.
+
+-   Macro performance (Design level) - system wide decisions ex. sql vs nosql
+-   Micro performance (Fine tuning) - modules, functions...
+
+1. Have a **real** performance problem.
+2. Make 80% moves (what change leads to an 80% reduction? usually data structures).
+3. Use a profiler to fix hot spots.
+4. Get under the hood (meomry).
+
 # Never nest beyond 3 levels
 
 ```js

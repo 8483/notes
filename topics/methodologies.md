@@ -1,5 +1,9 @@
 # General
 
+```
+Being "agile" is about building things in small chunks, learning, and then iterating.
+```
+
 Agile is methodology, with a set of values and principles, which the Waterfall methodology does not conform to.
 
 Scrum and Kanban are Agile frameworks.

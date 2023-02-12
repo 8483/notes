@@ -1,3 +1,10 @@
+# Most important
+
+-   Launch in 3 months MVP.
+-   Ship early, ship often. Build new every 2 weeks.
+-   Dogfood your product
+-   Build your team. Hire slow. Fire Fast.
+
 # Build time estimation
 
 Rule #1 of estimating when your product is done:

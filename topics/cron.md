@@ -65,6 +65,8 @@ sudo less /etc/crontab
 
 # Format
 
+**NOTE: Cron doesn't do seconds. Minimum is every minute.**
+
 ```
 .---------------- minute (0 - 59)
 |  .------------- hour (0 - 23)
@@ -97,6 +99,9 @@ x-y   range of values
 
 # Sunday @ 23:59
 59 23 * * 0
+
+# At every minute past every hour from 7 through 18 on every day-of-week from Monday through Friday
+* 7-18 * * 1-5
 
 # At every 20th minute past hour 22 on day-of-month 1 and 15
 */20 22 1,15 * *

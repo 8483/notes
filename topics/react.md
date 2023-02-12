@@ -79,11 +79,7 @@ Without JSX...
 ```javascript
 class App extends Component {
     render() {
-        return React.createElement(
-            "div",
-            { className: "App" },
-            React.createElement("h1", null, "Hello World!")
-        );
+        return React.createElement("div", { className: "App" }, React.createElement("h1", null, "Hello World!"));
     }
 }
 ```
@@ -185,7 +181,7 @@ They can have state, only via `React Hooks`.
 import React from "react";
 
 // function UserItem(props) {...
-const UserItem = props => {
+const UserItem = (props) => {
     const { userName, userImg } = props.user;
 
     return (
@@ -279,7 +275,7 @@ The `this` inside the `handleSomething` function refers to the function itself. 
 ```javascript
 class Foo extends Component {
     state = {
-        bar: "bar"
+        bar: "bar",
     };
 
     handleSomething = () => {
@@ -299,7 +295,7 @@ Since we cannot use `onClick={this.handleSomething("value")}`, we need to use an
 ```javascript
 class Foo extends Component {
     state = {
-        bar: "bar"
+        bar: "bar",
     };
 
     handleSomething() {
@@ -307,11 +303,7 @@ class Foo extends Component {
     }
 
     render() {
-        return (
-            <button onClick={this.handleSomething.bind(this)}>
-                Do something
-            </button>
-        );
+        return <button onClick={this.handleSomething.bind(this)}>Do something</button>;
     }
 }
 ```
@@ -323,19 +315,15 @@ class Foo extends Component {
 ```javascript
 class Foo extends Component {
     state = {
-        bar: "bar"
+        bar: "bar",
     };
 
-    handleSomething = argument => {
+    handleSomething = (argument) => {
         console.log(argument);
     };
 
     render() {
-        return (
-            <button onClick={() => this.handleSomething("baz")}>
-                Do something
-            </button>
-        );
+        return <button onClick={() => this.handleSomething("baz")}>Do something</button>;
     }
 }
 ```
@@ -343,18 +331,15 @@ class Foo extends Component {
 ### Functional Component
 
 ```javascript
-import React from 'react';
+import React from "react";
 
 const ExampleComponent = () => {
+    function sayHello(name) {
+        alert(`hello, ${name}`);
+    }
 
-  function sayHello(name) {
-    alert(`hello, ${name}`);
-  }
-
-  return (
-    <button onClick={() => sayHello('James')}>Greet</button>
-  );
-}
+    return <button onClick={() => sayHello("James")}>Greet</button>;
+};
 
 export default ExampleComponent;
 ```
@@ -363,10 +348,10 @@ Pass the event
 
 ```javascript
 return (
-    <button value="blue" onClick={e => changeColor(e.target.value)}>
-      Color Change
+    <button value="blue" onClick={(e) => changeColor(e.target.value)}>
+        Color Change
     </button>
-  );
+);
 ```
 
 # Refs
@@ -377,38 +362,29 @@ When a ref is passed to an element in render, a reference to the node becomes ac
 
 ```javascript
 function CustomTextInput(props) {
-  // textInput must be declared here so the ref can refer to it
-  let textInput = React.createRef();
+    // textInput must be declared here so the ref can refer to it
+    let textInput = React.createRef();
 
-  function handleClick() {
-    textInput.current.focus();
-  }
+    function handleClick() {
+        textInput.current.focus();
+    }
 
-  return (
-    <div>
-      <input
-        type="text"
-        ref={textInput} />
+    return (
+        <div>
+            <input type="text" ref={textInput} />
 
-      <input
-        type="button"
-        value="Focus the text input"
-        onClick={handleClick}
-      />
-    </div>
-  );
+            <input type="button" value="Focus the text input" onClick={handleClick} />
+        </div>
+    );
 }
 ```
-
 
 # CSS
 
 ```javascript
 class Foo extends Component {
     render() {
-        return (
-            <div style={{ fontSize: 30, fontWeight: "bold" }}>Some text</div>
-        );
+        return <div style={{ fontSize: 30, fontWeight: "bold" }}>Some text</div>;
     }
 }
 ```
@@ -417,7 +393,7 @@ class Foo extends Component {
 class Foo extends Component {
     styles = {
         fontSize: 10,
-        fontWeight: "bold"
+        fontWeight: "bold",
     };
 
     render() {
@@ -429,90 +405,84 @@ class Foo extends Component {
 # Todo App
 
 **App.js**
-```javascript
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from './components/layout/Header';
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
-import About from './components/pages/About';
-import uuid from 'uuid';
-import axios from 'axios';
 
-import './App.css';
+```javascript
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from "./components/layout/Header";
+import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
+import About from "./components/pages/About";
+import uuid from "uuid";
+import axios from "axios";
+
+import "./App.css";
 
 class App extends Component {
-	state = {
-		todos: []
-	};
+    state = {
+        todos: [],
+    };
 
-	componentDidMount() {
-		axios
-			.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-			.then((res) => this.setState({ todos: res.data }));
-	}
+    componentDidMount() {
+        axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10").then((res) => this.setState({ todos: res.data }));
+    }
 
-	// Toggle Complete
-	markComplete = (id) => {
-		this.setState({
-			todos: this.state.todos.map((todo) => {
-				if (todo.id === id) {
-					todo.completed = !todo.completed;
-				}
-				return todo;
-			})
-		});
-	};
+    // Toggle Complete
+    markComplete = (id) => {
+        this.setState({
+            todos: this.state.todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.completed = !todo.completed;
+                }
+                return todo;
+            }),
+        });
+    };
 
-	// Delete Todo
-	delTodo = (id) => {
-		axios
-			.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-			.then((res) =>
-				this.setState({
-					todos: [...this.state.todos.filter((todo) => todo.id !== id)]
-				})
-			);
-	};
+    // Delete Todo
+    delTodo = (id) => {
+        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then((res) =>
+            this.setState({
+                todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+            })
+        );
+    };
 
-	// Add Todo
-	addTodo = (title) => {
-		axios
-			.post('https://jsonplaceholder.typicode.com/todos', {
-				title,
-				completed: false
-			})
-			.then((res) => {
-				res.data.id = uuid.v4();
-				this.setState({ todos: [...this.state.todos, res.data] });
-			});
-	};
+    // Add Todo
+    addTodo = (title) => {
+        axios
+            .post("https://jsonplaceholder.typicode.com/todos", {
+                title,
+                completed: false,
+            })
+            .then((res) => {
+                res.data.id = uuid.v4();
+                this.setState({ todos: [...this.state.todos, res.data] });
+            });
+    };
 
-	render() {
-		return (
-			<Router>
-				<div className='App'>
-					<div className='container'>
-						<Header />
-						<Route
-							exact path='/'
-							render={(props) => (
-								<React.Fragment>
-									<AddTodo addTodo={this.addTodo} />
-									<Todos
-										todos={this.state.todos}
-										markComplete={this.markComplete}
-										delTodo={this.delTodo}
-									/>
-								</React.Fragment>
-							)}
-						/>
-						<Route path='/about' component={About} />
-					</div>
-				</div>
-			</Router>
-		);
-	}
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <div className="container">
+                        <Header />
+                        <Route
+                            exact
+                            path="/"
+                            render={(props) => (
+                                <React.Fragment>
+                                    <AddTodo addTodo={this.addTodo} />
+                                    <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
+                                </React.Fragment>
+                            )}
+                        />
+                        <Route path="/about" component={About} />
+                    </div>
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;
@@ -521,19 +491,13 @@ export default App;
 **Todos.js**
 
 ```javascript
-import React, { Component } from 'react';
-import TodoItem from './TodoItem';
+import React, { Component } from "react";
+import TodoItem from "./TodoItem";
 
 class Todos extends Component {
-  render() {
-    return this.props.todos.map((todo) => (
-      <TodoItem 
-        key={todo.id} 
-        todo={todo} 
-        markComplete={this.props.markComplete} 
-        delTodo={this.props.delTodo} />
-    ));
-  }
+    render() {
+        return this.props.todos.map((todo) => <TodoItem key={todo.id} todo={todo} markComplete={this.props.markComplete} delTodo={this.props.delTodo} />);
+    }
 }
 
 export default Todos;
@@ -542,67 +506,54 @@ export default Todos;
 **TodoItem.js**
 
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export class TodoItem extends Component {
-
-  render() {
-    const { id, title } = this.props.todo;
-    return (
-      <div>
-        <p>
-          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
-          { title }
-          <button onClick={this.props.delTodo.bind(this, id)}>x</button>
-        </p>
-      </div>
-    )
-  }
+    render() {
+        const { id, title } = this.props.todo;
+        return (
+            <div>
+                <p>
+                    <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {title}
+                    <button onClick={this.props.delTodo.bind(this, id)}>x</button>
+                </p>
+            </div>
+        );
+    }
 }
 
-export default TodoItem
+export default TodoItem;
 ```
 
 **AddTodo.js**
 
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export class AddTodo extends Component {
-  state = {
-    title: ''
-  }
+    state = {
+        title: "",
+    };
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.props.addTodo(this.state.title);
-    this.setState({ title: '' });
-  }
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.addTodo(this.state.title);
+        this.setState({ title: "" });
+    };
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  render() {
-    return (
-      <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
-        <input 
-          type="text" 
-          name="title" 
-          placeholder="Add Todo ..." 
-          value={this.state.title}
-          onChange={this.onChange}
-        />
-        <input 
-          type="submit" 
-          value="Submit" 
-          className="btn"
-          style={{flex: '1'}}
-        />
-      </form>
-    )
-  }
+    render() {
+        return (
+            <form onSubmit={this.onSubmit} style={{ display: "flex" }}>
+                <input type="text" name="title" placeholder="Add Todo ..." value={this.state.title} onChange={this.onChange} />
+                <input type="submit" value="Submit" className="btn" style={{ flex: "1" }} />
+            </form>
+        );
+    }
 }
 
-export default AddTodo
+export default AddTodo;
 ```
 
 # Hooks
@@ -613,62 +564,64 @@ Used to simplify code by allowing to use state without writing a class i.e. func
 
 Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don’t work inside classes — they let you use React without classes.
 
-Classes, in addition to making code reuse and code organization more difficult,  can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to `bind` the event handlers.
+Classes, in addition to making code reuse and code organization more difficult, can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to `bind` the event handlers.
 
-- Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
-- Only call Hooks **from React function components**. Don’t call Hooks from regular JavaScript functions. 
+-   Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
+-   Only call Hooks **from React function components**. Don’t call Hooks from regular JavaScript functions.
 
 ## State Hook
 
 `useState` is a built-in **Hook** used to add state to function component. `useState()` **ALWAYS** returns an array with exactly two elements, which we can rename with array destructuring.
 
-- The first variable is the value. Similar to `this.state`.
-- The second variable is a function to update that value. Similar to `this.setState`.
+-   The first variable is the value. Similar to `this.state`.
+-   The second variable is a function to update that value. Similar to `this.setState`.
 
 The final part to useState is the argument that we pass to it. **The `useState` argument is the initial state value**. In the case of our counter, we started at 0.
 
 **IMPORTANT:** The update function overwrites the whole state, rather than merge it with the old one as in `class` components with `this.setState()`. In order to avoid using `spread` operators, we can simply define multiple `useState` hooks.
 
 ```javascript
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function JustAnotherCounter() {
-  const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Count Up To The Moon</button>
-    </div>
-  );
+    return (
+        <div>
+            <h1>{count}</h1>
+            <button onClick={() => setCount(count + 1)}>Count Up To The Moon</button>
+        </div>
+    );
 }
 ```
+
 vs
+
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class JustAnotherCounter extends Component {
-  state = {
-    count: 0
-  };
+    state = {
+        count: 0,
+    };
 
-  setCount = () => {
-    this.setState({ count: this.state.count + 1 });
-  };
+    setCount = () => {
+        this.setState({ count: this.state.count + 1 });
+    };
 
-  render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
+    render() {
+        return (
+            <div>
+                <h1>{this.state.count}</h1>
 
-        <button onClick={this.setCount}>Count Up To The Moon</button>
-      </div>
-    );
-  }
+                <button onClick={this.setCount}>Count Up To The Moon</button>
+            </div>
+        );
+    }
 }
 ```
 
-`useState` returns a pair: the **current state** value and a **function** that lets you update it. You can call this function from an event handler or somewhere else. React will preserve this state between re-renders. 
+`useState` returns a pair: the **current state** value and a **function** that lets you update it. You can call this function from an event handler or somewhere else. React will preserve this state between re-renders.
 
 It’s similar to `this.setState` in a class, except it doesn’t merge the old and new state together.
 
@@ -677,53 +630,56 @@ The only argument to `useState` is the initial state, only used during the first
 You may be unfamiliar with the line with the `useState() `syntax. **This uses destructuring assignment for arrays**. This is similar to how we would pull props out an object with object destructuring.
 
 We can declare multiple hooks in the same component.
+
 ```javascript
 function ExampleWithManyStates() {
     const [age, setAge] = useState(42);
-    const [fruit, setFruit] = useState('banana');
-    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+    const [fruit, setFruit] = useState("banana");
+    const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
 }
 ```
 
 ## Effect Hook
 
-`useEffect` hook mimics lifecycle methods like `componentDidMount()`, which is available only in class components.  
+`useEffect` hook mimics lifecycle methods like `componentDidMount()`, which is available only in class components.
 
 **It takes a function as an argument, which is executed EACH TIME AFTER the DOM has been rendered.**
 
-**It also takes a second argument, an array of dependencies i.e. variables which decide if the effect runs on their update.** 
+**It also takes a second argument, an array of dependencies i.e. variables which decide if the effect runs on their update.**
 
 You’ve likely performed data fetching, subscriptions, or manually changing the DOM from React components before. We call these operations **“side effects”** because they can affect other components and can’t be done during rendering.
 
 The **Effect Hook**, `useEffect`, adds the ability to perform side effects from a function component. It serves the same purpose as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` in React classes, but **unified into a single API**.
 
-When you call `useEffect`, you’re telling React to run your “effect” function after flushing changes to the DOM. Effects are declared inside the component so they have access to its props and state. By default, React runs the effects after every render — including the first render. 
+When you call `useEffect`, you’re telling React to run your “effect” function after flushing changes to the DOM. Effects are declared inside the component so they have access to its props and state. By default, React runs the effects after every render — including the first render.
 
 Ex. this component sets the document title after React updates the DOM:
 
 ```javascript
 function DoSomethingCrazy() {
-  useEffect(() => {
-    console.log('i have arrived at the party!');
-    document.title = 'preesent';
-  });
+    useEffect(() => {
+        console.log("i have arrived at the party!");
+        document.title = "preesent";
+    });
 
-  return <div>stuff goes here</div>;
+    return <div>stuff goes here</div>;
 }
 ```
+
 vs
+
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class DoSomethingCrazy extends Component {
-  componentDidMount() {
-    console.log('i have arrived at the party!');
-    document.title = 'present';
-  }
+    componentDidMount() {
+        console.log("i have arrived at the party!");
+        document.title = "present";
+    }
 
-  render() {
-    return <div>stuff goes here</div>;
-  }
+    render() {
+        return <div>stuff goes here</div>;
+    }
 }
 ```
 
@@ -759,14 +715,14 @@ useEffect(() => {
 export default React.memo(Component);
 ```
 
-
 ## Context Hook
 
 `useContext` just uses the Context object -- which you have created before -- to retrieve the most recent value from it. Using the React Hooks instead of Context API's Consumer component, makes the code more readable, less verbose, and doesn't introduce a kinda artificial component -- the Consumer component -- in between.
 
 **src/ThemeContext.js**
+
 ```javascript
-import React from 'react';
+import React from "react";
 
 const ThemeContext = React.createContext(null);
 
@@ -774,48 +730,55 @@ export default ThemeContext;
 ```
 
 **src/ComponentA.js**
+
 ```javascript
-import React from 'react';
-import ThemeContext from './ThemeContext';
+import React from "react";
+import ThemeContext from "./ThemeContext";
 
 const A = () => (
-  <ThemeContext.Provider value="green">
-    <D />
-  </ThemeContext.Provider>
+    <ThemeContext.Provider value="green">
+        <D />
+    </ThemeContext.Provider>
 );
 ```
 
 **src/ComponentC.js** - child of Component D
+
 ```javascript
-import React from 'react';
-import ThemeContext from './ThemeContext';
+import React from "react";
+import ThemeContext from "./ThemeContext";
 
 const C = () => {
-  const color = React.useContext(ThemeContext);
-  return (
-    <p style={{ color }}>
-      Hello World
-    </p>
-  );
+    const color = React.useContext(ThemeContext);
+    return <p style={{ color }}>Hello World</p>;
 };
 ```
 
 ...instead of using **Consumer** with **Context API**
 
 **src/ComponentC.js** - child of Component D
-```javascript
-import React from 'react';
-import ThemeContext from './ThemeContext';
 
-const C = () => (
-  <ThemeContext.Consumer>
-    {color => (
-      <p style={{ color }}>
-        Hello World
-      </p>
-    )}
-  </ThemeContext.Consumer>
-);
+```javascript
+import React from "react";
+import ThemeContext from "./ThemeContext";
+
+const C = () => <ThemeContext.Consumer>{(color) => <p style={{ color }}>Hello World</p>}</ThemeContext.Consumer>;
+```
+
+`useContext` lets you reference and destructure contexts in a really elegant way. Say you want to show a user's name if they're logged in, with the render prop approach it's something like:
+
+```js
+<AuthContext.Consumer> {({ isLoggedIn } => { return (<div> {isLoggedIn && <span>i'm logged in</span>} </div>) })}
+</AuthContext.Consumer>
+```
+
+...with `useContext`, you can do...
+
+```js
+const { isLoggedIn } = useContext(AuthContext);
+
+// Condtionally render anywhere in the body of your component without all the Context.Consumer business.
+{isLoggedIn && ...}
 ```
 
 ## Reducer Hook
@@ -831,36 +794,38 @@ function Todos() {
 ```
 
 ## Custom Hooks
+
 Example for a `useHttp` hook.
+
 ```javascript
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export const useHttp = (url, dependencies) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [fetchedData, setFetchedData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [fetchedData, setFetchedData] = useState(null);
 
-  //   fetch('https://swapi.co/api/people')
-  useEffect(() => {
-    setIsLoading(true);
-    console.log('Sending Http request to URL: ' + url);
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch.');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setIsLoading(false);
-        setFetchedData(data);
-      })
-      .catch(err => {
-        console.log(err);
-        setIsLoading(false);
-      });
-  }, dependencies);
+    //   fetch('https://swapi.co/api/people')
+    useEffect(() => {
+        setIsLoading(true);
+        console.log("Sending Http request to URL: " + url);
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch.");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setIsLoading(false);
+                setFetchedData(data);
+            })
+            .catch((err) => {
+                console.log(err);
+                setIsLoading(false);
+            });
+    }, dependencies);
 
-  return [isLoading, fetchedData];
+    return [isLoading, fetchedData];
 };
 ```
 
@@ -871,25 +836,25 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 function GitHubUsers() {
-  const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    fetch("https://api.github.com/users")
-      .then(response => response.json())
-      .then(data => {
-        setUsers(data); // set users in state
-      });
-  }, []); // empty array because we only run once
+    useEffect(() => {
+        fetch("https://api.github.com/users")
+            .then((response) => response.json())
+            .then((data) => {
+                setUsers(data); // set users in state
+            });
+    }, []); // empty array because we only run once
 
-  return (
-    <div className="section">
-      {users.map(user => (
-        <div key={user.id} className="card">
-          <h5>{user.login}</h5>
+    return (
+        <div className="section">
+            {users.map((user) => (
+                <div key={user.id} className="card">
+                    <h5>{user.login}</h5>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 }
 
 const rootElement = document.getElementById("root");
@@ -903,92 +868,78 @@ import React, { useState } from "react";
 import "./App.css";
 
 function Todo({ todo, index, completeTodo, removeTodo }) {
-  return (
-    <div
-      className="todo"
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
-    >
-      {todo.text}
+    return (
+        <div className="todo" style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}>
+            {todo.text}
 
-      <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
-        <button onClick={() => removeTodo(index)}>x</button>
-      </div>
-    </div>
-  );
+            <div>
+                <button onClick={() => completeTodo(index)}>Complete</button>
+                <button onClick={() => removeTodo(index)}>x</button>
+            </div>
+        </div>
+    );
 }
 
 function TodoForm({ addTodo }) {
-  const [value, setValue] = useState("");
+    const [value, setValue] = useState("");
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!value) return;
-    addTodo(value);
-    setValue("");
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!value) return;
+        addTodo(value);
+        setValue("");
+    };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-      />
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" className="input" value={value} onChange={(e) => setValue(e.target.value)} />
+        </form>
+    );
 }
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      text: "Learn about React",
-      isCompleted: false
-    },
-    {
-      text: "Meet friend for lunch",
-      isCompleted: false
-    },
-    {
-      text: "Build really cool todo app",
-      isCompleted: false
-    }
-  ]);
+    const [todos, setTodos] = useState([
+        {
+            text: "Learn about React",
+            isCompleted: false,
+        },
+        {
+            text: "Meet friend for lunch",
+            isCompleted: false,
+        },
+        {
+            text: "Build really cool todo app",
+            isCompleted: false,
+        },
+    ]);
 
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
+    const addTodo = (text) => {
+        const newTodos = [...todos, { text }];
+        setTodos(newTodos);
+    };
 
-  const completeTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
-  };
+    const completeTodo = (index) => {
+        const newTodos = [...todos];
+        newTodos[index].isCompleted = true;
+        setTodos(newTodos);
+    };
 
-  const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
+    const removeTodo = (index) => {
+        const newTodos = [...todos];
+        newTodos.splice(index, 1);
+        setTodos(newTodos);
+    };
 
-  return (
-    <div className="app">
-      <div className="todo-list">
-        {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
-          />
-        ))}
-        <TodoForm addTodo={addTodo} />
-      </div>
-    </div>
-  );
+    return (
+        <div className="app">
+            <div className="todo-list">
+                {todos.map((todo, index) => (
+                    <Todo key={index} index={index} todo={todo} completeTodo={completeTodo} removeTodo={removeTodo} />
+                ))}
+                <TodoForm addTodo={addTodo} />
+            </div>
+        </div>
+    );
 }
 
 export default App;
@@ -1006,7 +957,7 @@ Used for state management, similar to `Redux`, but not the same, as it's inteded
 
 **Reducer** is the function executed when an **action** is dispatched.
 
-Context is just a javascript object, which can be given to any component and its children. There can be more than one. 
+Context is just a javascript object, which can be given to any component and its children. There can be more than one.
 
 We create context with this function.
 
@@ -1019,67 +970,70 @@ Adding context to a class based component will only work in the render function 
 ## Simple Example
 
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // first we will make a new context
 const MyContext = React.createContext();
 
 // Then create a provider Component
 class MyProvider extends Component {
-  state = {
-    name: 'Wes',
-    age: 100,
-    cool: true
-  }
-  render() {
-    return (
-      <MyContext.Provider value={{
-        state: this.state,
-        growAYearOlder: () => this.setState({
-          age: this.state.age + 1
-        })
-      }}>
-        {this.props.children}
-      </MyContext.Provider>
-    )
-  }
+    state = {
+        name: "Wes",
+        age: 100,
+        cool: true,
+    };
+    render() {
+        return (
+            <MyContext.Provider
+                value={{
+                    state: this.state,
+                    growAYearOlder: () =>
+                        this.setState({
+                            age: this.state.age + 1,
+                        }),
+                }}
+            >
+                {this.props.children}
+            </MyContext.Provider>
+        );
+    }
 }
 
 const Family = (props) => (
-  <div className="family">
-    <Person />
-  </div>
-)
+    <div className="family">
+        <Person />
+    </div>
+);
 
 class Person extends Component {
-  render() {
-    return (
-      <div className="person">
-        <MyContext.Consumer>
-          {(context) => (
-            <React.Fragment>
-              <p>Age: {context.state.age}</p>
-              <p>Name: {context.state.name}</p>
-              <button onClick={context.growAYearOlder}>🍰🍥🎂</button>
-            </React.Fragment>
-          )}
-        </MyContext.Consumer>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div className="person">
+                <MyContext.Consumer>
+                    {(context) => (
+                        <React.Fragment>
+                            <p>Age: {context.state.age}</p>
+                            <p>Name: {context.state.name}</p>
+                            <button onClick={context.growAYearOlder}>🍰🍥🎂</button>
+                        </React.Fragment>
+                    )}
+                </MyContext.Consumer>
+            </div>
+        );
+    }
 }
 
 class App extends Component {
-  render() {
-    return (
-      <MyProvider>
-        <div>
-          <p>I am the app</p>
-          <Family />
-        </div>
-      </MyProvider>
-    );
-  }
+    render() {
+        return (
+            <MyProvider>
+                <div>
+                    <p>I am the app</p>
+                    <Family />
+                </div>
+            </MyProvider>
+        );
+    }
 }
 
 export default App;
@@ -1088,225 +1042,213 @@ export default App;
 ## Class Based Example
 
 **context/shop-context.js**
+
 ```javascript
-import React from 'react';
+import React from "react";
 
 export default React.createContext({
-  products: [
-    { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
-    { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
-    { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
-    { id: 'p4', title: 'Half-dried plant', price: 2.99 }
-  ],
-  cart: []
+    products: [
+        { id: "p1", title: "Gaming Mouse", price: 29.99 },
+        { id: "p2", title: "Harry Potter 3", price: 9.99 },
+        { id: "p3", title: "Used plastic bottle", price: 0.99 },
+        { id: "p4", title: "Half-dried plant", price: 2.99 },
+    ],
+    cart: [],
 });
 ```
 
 **context/GlobalState.js**
-```javascript
-import React, { Component } from 'react';
 
-import ShopContext from './shop-context';
+```javascript
+import React, { Component } from "react";
+
+import ShopContext from "./shop-context";
 
 class GlobalState extends Component {
-  state = {
-    products: [
-      { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
-      { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
-      { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
-      { id: 'p4', title: 'Half-dried plant', price: 2.99 }
-    ],
-    cart: []
-  };
-
-  addProductToCart = product => {
-    console.log('Adding product', product);
-    const updatedCart = [...this.state.cart];
-    const updatedItemIndex = updatedCart.findIndex(
-      item => item.id === product.id
-    );
-
-    if (updatedItemIndex < 0) {
-      updatedCart.push({ ...product, quantity: 1 });
-    } else {
-      const updatedItem = {
-        ...updatedCart[updatedItemIndex]
-      };
-      updatedItem.quantity++;
-      updatedCart[updatedItemIndex] = updatedItem;
-    }
-    setTimeout(() => {
-      this.setState({ cart: updatedCart });
-    }, 700);
-  };
-
-  removeProductFromCart = productId => {
-    console.log('Removing product with id: ' + productId);
-    const updatedCart = [...this.state.cart];
-    const updatedItemIndex = updatedCart.findIndex(
-      item => item.id === productId
-    );
-
-    const updatedItem = {
-      ...updatedCart[updatedItemIndex]
+    state = {
+        products: [
+            { id: "p1", title: "Gaming Mouse", price: 29.99 },
+            { id: "p2", title: "Harry Potter 3", price: 9.99 },
+            { id: "p3", title: "Used plastic bottle", price: 0.99 },
+            { id: "p4", title: "Half-dried plant", price: 2.99 },
+        ],
+        cart: [],
     };
-    updatedItem.quantity--;
-    if (updatedItem.quantity <= 0) {
-      updatedCart.splice(updatedItemIndex, 1);
-    } else {
-      updatedCart[updatedItemIndex] = updatedItem;
-    }
-    setTimeout(() => {
-      this.setState({ cart: updatedCart });
-    }, 700);
-  };
 
-  render() {
-    return (
-      <ShopContext.Provider
-        value={{
-          products: this.state.products,
-          cart: this.state.cart,
-          addProductToCart: this.addProductToCart,
-          removeProductFromCart: this.removeProductFromCart
-        }}
-      >
-        {this.props.children}
-      </ShopContext.Provider>
-    );
-  }
+    addProductToCart = (product) => {
+        console.log("Adding product", product);
+        const updatedCart = [...this.state.cart];
+        const updatedItemIndex = updatedCart.findIndex((item) => item.id === product.id);
+
+        if (updatedItemIndex < 0) {
+            updatedCart.push({ ...product, quantity: 1 });
+        } else {
+            const updatedItem = {
+                ...updatedCart[updatedItemIndex],
+            };
+            updatedItem.quantity++;
+            updatedCart[updatedItemIndex] = updatedItem;
+        }
+        setTimeout(() => {
+            this.setState({ cart: updatedCart });
+        }, 700);
+    };
+
+    removeProductFromCart = (productId) => {
+        console.log("Removing product with id: " + productId);
+        const updatedCart = [...this.state.cart];
+        const updatedItemIndex = updatedCart.findIndex((item) => item.id === productId);
+
+        const updatedItem = {
+            ...updatedCart[updatedItemIndex],
+        };
+        updatedItem.quantity--;
+        if (updatedItem.quantity <= 0) {
+            updatedCart.splice(updatedItemIndex, 1);
+        } else {
+            updatedCart[updatedItemIndex] = updatedItem;
+        }
+        setTimeout(() => {
+            this.setState({ cart: updatedCart });
+        }, 700);
+    };
+
+    render() {
+        return (
+            <ShopContext.Provider
+                value={{
+                    products: this.state.products,
+                    cart: this.state.cart,
+                    addProductToCart: this.addProductToCart,
+                    removeProductFromCart: this.removeProductFromCart,
+                }}
+            >
+                {this.props.children}
+            </ShopContext.Provider>
+        );
+    }
 }
 
 export default GlobalState;
 ```
 
 **App.js**
-```javascript
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import GlobalState from './context/GlobalState';
-import ProductsPage from './pages/Products';
-import CartPage from './pages/Cart';
-import './App.css';
+```javascript
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import GlobalState from "./context/GlobalState";
+import ProductsPage from "./pages/Products";
+import CartPage from "./pages/Cart";
+import "./App.css";
 
 class App extends Component {
-  render() {
-    return (
-      <GlobalState>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" component={ProductsPage} exact />
-            <Route path="/cart" component={CartPage} exact />
-          </Switch>
-        </BrowserRouter>
-      </GlobalState>
-    );
-  }
+    render() {
+        return (
+            <GlobalState>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/" component={ProductsPage} exact />
+                        <Route path="/cart" component={CartPage} exact />
+                    </Switch>
+                </BrowserRouter>
+            </GlobalState>
+        );
+    }
 }
 
 export default App;
 ```
 
-
 **Cart.js**
+
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { connect } from 'react-redux';
 
-import ShopContext from '../context/shop-context';
-import MainNavigation from '../components/MainNavigation';
+import ShopContext from "../context/shop-context";
+import MainNavigation from "../components/MainNavigation";
 // import { removeProductFromCart } from '../store/actions';
-import './Cart.css';
+import "./Cart.css";
 
 class CartPage extends Component {
-  static contextType = ShopContext;
+    static contextType = ShopContext;
 
-  componentDidMount() {
-    console.log(this.context);
-  }
+    componentDidMount() {
+        console.log(this.context);
+    }
 
-  render() {
-    return (
-      <React.Fragment>
-        <MainNavigation
-          cartItemNumber={this.context.cart.reduce((count, curItem) => {
-            return count + curItem.quantity;
-          }, 0)}
-        />
-        <main className="cart">
-          {this.context.cart.length <= 0 && <p>No Item in the Cart!</p>}
-          <ul>
-            {this.context.cart.map(cartItem => (
-              <li key={cartItem.id}>
-                <div>
-                  <strong>{cartItem.title}</strong> - ${cartItem.price} (
-                  {cartItem.quantity})
-                </div>
-                <div>
-                  <button
-                    onClick={this.context.removeProductFromCart.bind(
-                      this,
-                      cartItem.id
-                    )}
-                  >
-                    Remove from Cart
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </main>
-      </React.Fragment>
-    );
-  }
+    render() {
+        return (
+            <React.Fragment>
+                <MainNavigation
+                    cartItemNumber={this.context.cart.reduce((count, curItem) => {
+                        return count + curItem.quantity;
+                    }, 0)}
+                />
+                <main className="cart">
+                    {this.context.cart.length <= 0 && <p>No Item in the Cart!</p>}
+                    <ul>
+                        {this.context.cart.map((cartItem) => (
+                            <li key={cartItem.id}>
+                                <div>
+                                    <strong>{cartItem.title}</strong> - ${cartItem.price} ({cartItem.quantity})
+                                </div>
+                                <div>
+                                    <button onClick={this.context.removeProductFromCart.bind(this, cartItem.id)}>Remove from Cart</button>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </main>
+            </React.Fragment>
+        );
+    }
 }
 
 export default CartPage;
 ```
 
 **Products.js**
-```javascript
-import React, { Component } from 'react';
 
-import ShopContext from '../context/shop-context';
-import MainNavigation from '../components/MainNavigation';
-import './Products.css';
+```javascript
+import React, { Component } from "react";
+
+import ShopContext from "../context/shop-context";
+import MainNavigation from "../components/MainNavigation";
+import "./Products.css";
 
 class ProductsPage extends Component {
-  render() {
-    return (
-      <ShopContext.Consumer>
-        {context => (
-          <React.Fragment>
-            <MainNavigation
-              cartItemNumber={context.cart.reduce((count, curItem) => {
-                return count + curItem.quantity;
-              }, 0)}
-            />
-            <main className="products">
-              <ul>
-                {context.products.map(product => (
-                  <li key={product.id}>
-                    <div>
-                      <strong>{product.title}</strong> - ${product.price}
-                    </div>
-                    <div>
-                      <button
-                        onClick={context.addProductToCart.bind(this, product)}
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </main>
-          </React.Fragment>
-        )}
-      </ShopContext.Consumer>
-    );
-  }
+    render() {
+        return (
+            <ShopContext.Consumer>
+                {(context) => (
+                    <React.Fragment>
+                        <MainNavigation
+                            cartItemNumber={context.cart.reduce((count, curItem) => {
+                                return count + curItem.quantity;
+                            }, 0)}
+                        />
+                        <main className="products">
+                            <ul>
+                                {context.products.map((product) => (
+                                    <li key={product.id}>
+                                        <div>
+                                            <strong>{product.title}</strong> - ${product.price}
+                                        </div>
+                                        <div>
+                                            <button onClick={context.addProductToCart.bind(this, product)}>Add to Cart</button>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </main>
+                    </React.Fragment>
+                )}
+            </ShopContext.Consumer>
+        );
+    }
 }
 
 export default ProductsPage;

@@ -78,7 +78,8 @@
 
 ### **Concepts**
 
--   [Code quality](./topics/codeQuality.md)
+-   [Code quality and performance](./topics/codeQuality.md)
+-   [UI/UX](./topics/uiux.md)
 -   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
@@ -103,8 +104,25 @@
 
 # Mobile
 
+### **Operating Systems**
+
+-   [Android](./topics/mobileAndroid.md)
+-   [iOS](./topics/mobileiOS.md)
+
+### **App types**
+
 -   [Overview](./topics/mobile.md)
--   [PWA](./topics/pwa.md)
+    -   Native
+        -   Android (Kotlin, Java)
+        -   iOS (Swift, Objective-C)
+    -   Compiled
+        -   React Native (React, Javascript)
+        -   Native Script (XML, Javascript)
+        -   Flutter (Dart)
+    -   Hybrid
+        -   [Cordova (HTML, CSS, Javascript)](./topics/mobileCordova.md)
+        -   [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
+    -   [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
 
 # DevOps
 
