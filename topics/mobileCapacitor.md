@@ -61,3 +61,9 @@ You can customize what folder is copied over by modifying the `webDir` variable 
 ```
 npx cap sync
 ```
+
+# Compiling
+
+> Capacitor does not have a build or compile command, nor will there ever be one. After sync, you are encouraged to open your target platform's IDE: Xcode for iOS or Android Studio for Android, for compiling your native app.
+
+> Capacitor does not offer a way to build native apps on the command line. Platform-specific tooling (or in the IDE) should be used instead, which provides a faster, more typical experience that follows the standards of app development for that platform.

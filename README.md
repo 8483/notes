@@ -104,25 +104,24 @@
 
 # Mobile
 
-### **Operating Systems**
-
--   [Android](./topics/mobileAndroid.md)
--   [iOS](./topics/mobileiOS.md)
-
-### **App types**
-
 -   [Overview](./topics/mobile.md)
-    -   Native
-        -   Android (Kotlin, Java)
-        -   iOS (Swift, Objective-C)
-    -   Compiled
-        -   React Native (React, Javascript)
-        -   Native Script (XML, Javascript)
-        -   Flutter (Dart)
-    -   Hybrid
-        -   [Cordova (HTML, CSS, Javascript)](./topics/mobileCordova.md)
-        -   [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
-    -   [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
+
+**Native**
+
+-   [Android (Kotlin, Java) - Android Studio / Google](./topics/mobileAndroid.md)
+-   [iOS (Swift, Objective-C) - XCode / Apple](./topics/mobileiOS.md)
+
+**Compiled**
+
+-   React Native (React, Javascript)
+-   Native Script (XML, Javascript)
+-   Flutter (Dart)
+
+**Hybrid**
+
+-   [Cordova (HTML, CSS, Javascript)](./topics/mobileCordova.md)
+-   [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
+-   [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
 
 # DevOps
 

@@ -1,3 +1,12 @@
+# Summary
+
+1. Hybrid - Same codebase for web app and mobile app. Good for device functionalities and app stores.
+2. PWA - Same codebase for web app and mobile app. Good for B2B apps, that don't live in app stores.
+3. Compiled - XML, different codebase from web app. Native feel.
+4. Native - Use when performance is imperative ex. video games
+
+# Overview
+
 [Source](https://youtu.be/vl12yhSh_Pg)
 
 ![App Types](../pics/mobile/mobile_appTypes.jpg)
@@ -21,7 +30,17 @@ No compilation needed, as the app is written in the native language.
 -   Native Script - Javascript
 -   Flutter (Google) - Dart
 
-# Hybrid / WebView
+## Nativescript
+
+**NativeScript has access to 100% of the platform APIs.**
+
+Nativescript (similar to React-Native) allows you to develop a mobile application in Javascript and XML (or JSX). These frameworks allow you to generate a native mobile application.
+
+The UI uses native components from the platform to create a performant slick interface. The Javascript logic code runs inside a JS engine (V8 for Android) bundled with the application.
+
+This has the downside of making the app pretty large but you can make cross platform, highly performant mobile apps. The JS code can also access phone functionality through bridging code in the framework.
+
+# Hybrid / WebView / Web Native
 
 A web app ran natively via a WebView (stripped down native browser), allowing access to hardware functionalities. Like Electron, but for mobile devices.
 
@@ -30,7 +49,7 @@ A web app ran natively via a WebView (stripped down native browser), allowing ac
 ## Native Bridge / Hybrid app runtime
 
 -   Cordova (Apache)- PhoneGap successor (open source)
-    -   PhoneGap (Apache) - Cordova predecessor (paid)
+    -   PhoneGap (Adobe) - Cordova predecessor (paid)
 -   Capacitor (Ionic) - Cordova alternative
 
 Cordova is the older version of Capacitor and it's predecessor.
@@ -38,6 +57,8 @@ Cordova is the older version of Capacitor and it's predecessor.
 Capacitor is what takes that JavaScript and makes it into an app. Capacitor is what creates the bridge between the web and native functionality. It also provides the tooling to build the native apps.
 
 Capacitor is required to create/package and run your web (Ionic app) as a native Android/iOS app. Without Capacitor, you can only run the Ionic app in a web browser. Correct, Capacitor is required to use native functionality in your Ionic app like the camera, push notifications, native storage, etc...
+
+> You can do your view code using Capacitor, and call out to NativeScript when you need to do any native API access that Capacitor plugins might be missing.
 
 ## Component library / UI framework
 
