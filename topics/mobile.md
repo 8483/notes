@@ -1,5 +1,7 @@
 # Summary
 
+> **Developers want mobile websites. Consumers want apps.**
+
 1. Hybrid - Same codebase for web app and mobile app. Good for device functionalities and app stores.
 2. PWA - Same codebase for web app and mobile app. Good for B2B apps, that don't live in app stores.
 3. Compiled - XML, different codebase from web app. Native feel.

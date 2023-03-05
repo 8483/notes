@@ -197,6 +197,14 @@
 
 # Startup
 
+If you can build a product that is so good, people spontaneosly tell their friends about it, you've done 80% of the work you need to be a really successful startup.
+
+The most successful companies you know, you've probably found out about them because a friend of your's said "You have to try this, it's great!".
+
+One important indicator for a product like that is a product that's simple to explain and easy to understand.
+
+If you can't explain in a few words what you do, and some people say "Oh, that's pretty interesting...", it's a mistake, and usually a sign of unclear thinking, or a need that is not big enough.
+
 ### **Overview**
 
 -   [Focus](./topics/startupFocus.md)

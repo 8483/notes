@@ -2,7 +2,35 @@
 
 Installs `node` packages.
 
-`NPM` by itself does not simply run any package. it doesn't run any package in a matter of fact. If you want to run a package using NPM, you must specify that package in your `package.json` file.
+`NPM` by itself does not simply run any package. It doesn't run any package in a matter of fact. If you want to run a package using NPM, you must specify that package in your `package.json` file.
+
+# Init
+
+The `npm init` command is used to create a new Node.js project i.e. a convenient way of scaffolding a `package.json`;
+
+```
+npm init = npm create
+```
+
+Also, you can use `npm init <configurator>` to use a perconfigured `package.json`.
+
+```
+> npm init vite@latest
+Project name: … vite-project
+Select a framework: › - Use arrow-keys. Return to submit.
+    vanilla
+    vue
+    react
+    preact
+    lit
+  ❯ svelte
+```
+
+```
+npm create svelte@latest myapp
+```
+
+# Install
 
 When executables are installed via NPM packages, NPM links to them:
 
@@ -39,7 +67,7 @@ Then run the script using [`npm run-script`][3] (or `npm run`):
 
 # NPX - Package runner
 
-Run`node` packages without installing them. Comes bundled with `npm`.
+Run `node` packages without installing them. Comes bundled with `npm`.
 
 Calling npx `command` when `command` isn’t already in your `$PATH` will automatically install a package with that name from the npm registry for you, and invoke it. When it’s done, the installed package won’t be anywhere in your globals, so you won’t have to worry about pollution in the long-term.
 

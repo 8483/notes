@@ -626,3 +626,24 @@ await request.query(`
         ('foo', 'bar', 'baz');
 `);
 ```
+
+# Multiple sums
+
+```sql
+select
+    mi.acIdent,
+    m.acissuer,
+    datediff(day, max(m.adDate), getdate()) lastSaleDays,
+    sum(CASE WHEN m.adDate >= getdate() - 30 THEN mi.anQty ELSE 0 END) soldPastDaysQty,
+    sum(CASE WHEN m.adDate between getdate() - (365 * 1) and getdate() - (365 * 1 - 30) THEN mi.anQty ELSE 0 END) soldNextDaysOneYearAgoQty,
+    sum(CASE WHEN m.adDate between getdate() - (365 * 2) and getdate() - (365 * 2 - 30) THEN mi.anQty ELSE 0 END) soldNextDaysTwoYearsAgoQty,
+    sum(CASE WHEN m.adDate between getdate() - (365 * 3) and getdate() - (365 * 3 - 30) THEN mi.anQty ELSE 0 END) soldNextDaysThreeYearsAgoQty,
+    sum(CASE WHEN m.adDate between getdate() - (365 * 4) and getdate() - (365 * 4 - 30) THEN mi.anQty ELSE 0 END) soldNextDaysFourYearsAgoQty
+from the_moveitem mi
+    left join the_move m on mi.acKey = m.acKey
+where
+    m.adDate > getdate() - 365 * 4
+group by
+    mi.acident,
+    m.acIssuer
+```
