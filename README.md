@@ -102,6 +102,12 @@
 -   [Google API](./topics/googleapi.md)
 -   [Reddit API](./topics/reddit.md)
 
+# Workflow
+
+-   [Environment](./topics/workflowEnvironment.md)
+-   [Development](./topics/workflowDevelopment.md)
+-   [Deployment](./topics/workflowDeployment.md)
+
 # Mobile
 
 -   [Overview](./topics/mobile.md)
@@ -123,33 +129,16 @@
 -   [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
 -   [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
 
-# DevOps
-
-### **General**
-
--   [Deployment](./topics/deployment.md)
-
-### **Virtualization**
-
--   [VM](./topics/vm.md)
--   [Vagrant](./topics/vagrant.md)
-
-### **Containerization**
-
--   [Docker](./topics/docker.md)
-
-### **Configuration Management**
-
--   [Ansible](./topics/ansible.md)
-
 # Linux
+
+-   [Operating System](./topics/linux.md)
 
 ### **Administration**
 
--   [basics](./topics/linux.md)
--   [filesystem](./topics/filesystem.md)
--   [users](./topics/users.md)
--   [config](./topics/config.md)
+-   [Basic Commands](./topics/linuxBasicCommands.md)
+-   [Filesystem](./topics/linuxFilesystem.md)
+-   [Users](./topics/linuxUsers.md)
+-   [Config](./topics/linuxConfig.md)
 
 ### **Tools**
 
@@ -174,6 +163,21 @@
 -   [Tools](./topics/networkingTools.md)
 -   [Devices](./topics/networkingDevices.md)
 -   [Roles](./topics/networkingRoles.md)
+
+# DevOps
+
+### **Virtualization**
+
+-   [VM](./topics/vm.md)
+-   [Vagrant](./topics/vagrant.md)
+
+### **Containerization**
+
+-   [Docker](./topics/docker.md)
+
+### **Configuration Management**
+
+-   [Ansible](./topics/ansible.md)
 
 # Electronics
 

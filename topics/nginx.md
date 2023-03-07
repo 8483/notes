@@ -126,6 +126,45 @@ http {
 
 App is available at `http://123.456.789.255:8080`.
 
+# Real life server
+
+```nginx
+
+events {}
+
+http {
+    include mime.types;
+
+    server {
+        listen 80;
+        server_name subdomain.domain.com;
+        return 301 https://subdomain.domain.com$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name subdomain.domain.com;
+        ssl_certificate /etc/letsencrypt/live/subdomain.domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.com/privkey.pem;
+
+        root /home/user/app/public;
+        index index.html;
+
+        location /auth {
+            proxy_pass 'http://127.0.0.1:3000';
+        }
+
+        location /api {
+            proxy_pass 'http://127.0.0.1:3000';
+        }
+
+        location /socket.io/ {
+            proxy_pass 'http://127.0.0.1:3000';
+        }
+    }
+}
+```
+
 # Location Blocks
 
 The most used context block in any nginx configuration, which defines the behavior of specific URIs or requests. Think of them as intercepting a request based on its value and doing something else than serving to a client.
@@ -228,23 +267,29 @@ Certbot is used for generating **Let's Encrypt** certificates and automating the
 
 # Proxy vs Reverse Proxy
 
-**Normal:** Client > Server  
-**Proxy:** Client > Proxy > Server
+**Proxy: Hide the origin of the request, by inserting servers in-between.**
 
-Used to hide the origin of the request.
+```
+Normal:   Client -----------------------> Server
+Proxy:    Client ---> Server (proxy) ---> Server
+```
 
-**Normal:** Client > App  
-**Reverse Proxy:** Client > Server > App
+**Reverse proxy: Prevent direct access to app i.e. exploit bad code.**
 
-Used to prevent direct access to app i.e. exploit bad code.
+```
+Normal:          Client -----------------------> App
+Reverse Proxy:   Client ---> Server (proxy) ---> App
+```
 
 To run any Linux server on port 80, you need to be running as root. If you want to run node directly on port 80, that means you have to run node as root. If your application has any security flaws, it will become significantly compounded by the fact that it has access to do _anything it wants_. For example, if you write something that accidentally allows the user to read arbitrary files, now they can read files from other server user's accounts.
 
-If you use nginx in front of node, you can run your node as a limited user on port 3000 (or whatever) and then have nginx run as root on port 80, forwarding requests to port 3000. Now the node application is limited to the user permissions you give it.
+If you use nginx in front of node, you can run your node as a limited user on port `3000` (or whatever) and then have nginx run as root on port `80`, forwarding requests to port `3000`. Now the node application is limited to the user permissions you give it.
 
 It's always better to use nginx as a proxy for a node.js server; nginx can proxy to a number of node backends and should any of them die can fail-over automatically with the benefit that, if there is an issue with the node interpreter (for instance while upgrading) and it stops responding, it can serve a fall-back HTML page.
 
-Additionally, you shouldn't be using node.js for serving "static" files such as images, js/css files, etc. Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
+> **You shouldn't be using node.js for serving "static" files such as images, js/css files, etc.**
+
+Use node.js for the complex stuff and let nginx take care of the things it's good at - serving files from the disk or from a cache.
 
 # Reverse Proxy
 

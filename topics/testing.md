@@ -26,6 +26,6 @@ The following is needed to test code.
    Define testing logic and conditions. Ex. `Jest`, `Chai`.
 
 3. **Headless browser** - E2E testing  
-   Simulate browser interactions. Ex. `Puppeteer`.
+   Simulate browser interactions. Ex. `Puppeteer`, `Cypress`.
 
 `Jest` is both a test runner and an assertion library.
