@@ -52,7 +52,6 @@ ns3.host.com
 -   Add the new configuration, which has SSL and a reverse proxy.
 
 ```nginx
-
 events {}
 
 http {
@@ -60,29 +59,33 @@ http {
 
     server {
         listen 80;
-        server_name subdomain.domain.com;
-        return 301 https://subdomain.domain.com$request_uri;
+        server_name wms.officeplus.mk;
+        return 301 https://wms.officeplus.mk$request_uri;
     }
 
     server {
         listen 443 ssl;
-        server_name subdomain.domain.com;
-        ssl_certificate /etc/letsencrypt/live/subdomain.domain.com/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.com/privkey.pem;
+        server_name wms.officeplus.mk;
+        ssl_certificate /etc/letsencrypt/live/wms.officeplus.mk/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/wms.officeplus.mk/privkey.pem;
 
-        root /home/user/app/public;
+        root /home/ivan/wms/dist;
         index index.html;
 
+        location / {
+            try_files $uri /index.html; # Fixes refreshing resulting in 404 error for single page apps
+        }
+
         location /auth {
-            proxy_pass 'http://127.0.0.1:3000';
+            proxy_pass 'http://127.0.0.1:9999';
         }
 
         location /api {
-            proxy_pass 'http://127.0.0.1:3000';
+            proxy_pass 'http://127.0.0.1:9999';
         }
 
         location /socket.io/ {
-            proxy_pass 'http://127.0.0.1:3000';
+            proxy_pass 'http://127.0.0.1:9999';
         }
     }
 }

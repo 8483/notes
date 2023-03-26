@@ -1,6 +1,6 @@
 # Caveat
 
-> **One should not start building new application as microservices!**
+> **DO NOT start building new application as microservices!**
 
 Focus on building a modular, decoupled, easy to change application first.
 
@@ -27,30 +27,22 @@ Developing a single application as a suite of small services, each running its o
 
 Think of it like an organs system, where each organ has a purpose, the organs form a system, which form an organism.
 
+```
+Microservice > Container > Virtual Machine > Hypervisor > Server > Rack > Datacenter > Cloud
+```
+
+The other thing that I'd like to point out is that a microservices architecture is only great when the application becomes too large and complex. A microservices architecture requires more resources as it has some additional overhead. Start with a monolithic first.
+
+A microservice can be a complete application including its own UI, business logic and data. **Usually it's just backend and data.**
+
+Each microservice is a team.
+
 # Misconceptions
 
-Misconception 1
+-   _Micro services enable our teams to choose the best programming languages and frameworks for their tasks_. - Reality: It's super expensive to do this. Team size and investment are critical inputs.
 
-Micro services enable our teams to choose the best programming languages and frameworks for their tasks
+-   _Code generation is evil_ - What's important is creating a defined schema that is 100% trusted.
 
-Reality
+-   _The event log must be the source of truth_. - Events are critical parts of an interface. But it's okay for services to be the system of record for their resources.
 
-It's super expensive to do this. Team size and investment are critical inputs.
-
-Misconception 2
-
-Code generation is evil
-
-What's important is creating a defined schema that is 100% trusted.
-
-Misconception 3
-
-The event log must be the source of truth
-
-Events are critical parts of an interface. But it's okay for services to be the system of record for their resources.
-
-Misconception 4
-
-Developers can maintain no more than 3 services each.
-
-Wrong metric.
+-   _Developers can maintain no more than 3 services each._ Wrong metric.

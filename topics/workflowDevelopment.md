@@ -28,6 +28,9 @@ server: {
             ws: true,
         },
     },
+    esbuild: {
+        drop: ["console", "debugger"],
+    },
 }
 ```
 

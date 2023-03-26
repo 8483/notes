@@ -1,4 +1,16 @@
-# Terminal
+# Terminal vs shell
+
+A shell is a user interface for access to an operating system's services. Most often the user interacts with the shell using a command-line interface (CLI). The terminal is a program that opens a graphical window and lets you interact with the shell.
+
+```
+Terminal --> shell --> kernel --> hardware
+```
+
+Terminal - It is not a shell, but rather a window serving a shell. (xterm, konsole)
+
+Shell - The actual CLI that executes commands. (bash, zsh)
+
+# Basics
 
 `/` - Root directory  
 `~` - Home directory
@@ -31,7 +43,7 @@ df -h --total           # Show disk space in readable format
 htop                    # CPU and RAM usage
 ```
 
-# Install
+# Install packages
 
 `dpkg` is a backend for `apt-get`, which is a backend for `aptitude` (GUI).
 

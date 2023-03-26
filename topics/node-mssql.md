@@ -1,46 +1,89 @@
+**server.js**
+
 ```js
+const express = require("express");
+const http = require("http");
 const sql = require("mssql");
-const db = require("./db.js");
 
-const poolPromise = new sql.ConnectionPool(db)
-    .connect()
-    .then((pool) => {
-        // console.log("Connected to MSSQL");
-        return pool;
-    })
-    .catch((err) => console.log("Database Connection Failed! Bad Config: ", err));
+const config = require("./config.js");
+const middleware = require("./middleware.js");
 
-module.exports = {
-    sql,
-    poolPromise,
-};
+let login = require("./api/auth/login");
+let users = require("./api/auth/users");
+
+let catalogue = require("./api/endpoints/catalogue");
+let categories = require("./api/endpoints/categories");
+let groups = require("./api/endpoints/groups");
+let suppliers = require("./api/endpoints/suppliers");
+
+const app = express();
+
+app.use(express.json()); // Needed for POST and PATCH requests
+
+app.all("/api/*", middleware.authenticationMiddleware);
+
+// .use(middleware.requestsMiddleware)
+
+app.use(login)
+    .use(users)
+
+    .use(catalogue)
+    .use(categories)
+    .use(groups)
+    .use(suppliers)
+
+    .use(middleware.errorMiddleware);
+
+async function start() {
+    // Initialize pool only once
+    const connection = new sql.ConnectionPool(config.db);
+    const pool = await connection.connect();
+
+    // pool available in routes via let request = req.app.locals.pool.request();
+    app.locals.pool = pool;
+    app.locals.sql = sql;
+
+    const server = http.createServer(app);
+
+    server.listen(config.port, () => {
+        console.log(`listening on port: ${config.port}`);
+    });
+}
+
+start();
 ```
 
-```js
-const { sql, poolPromise } = require("../../pool");
+**users.js**
 
-router.get("/api/companies/:companyId", async (req, res) => {
+```js
+const express = require("express");
+const router = express.Router();
+
+router.get("/api/users/:userId", async (req, res, next) => {
     try {
-        const pool = await poolPromise;
-        const request = await pool.request();
+        let userId = req.params.userId;
+
+        let request = req.app.locals.pool.request();
+        let sql = req.app.locals.sql;
+
+        request.input("userId", sql.Int, userId);
 
         let query = `
-            select * 
-            from company c
-            where c.id = @companyId
+            select *
+            from user u
+            where u.id = @userId    
+            ;
         `;
-
-        request.input("companyId", sql.Int, companyId);
 
         let result = await request.query(query);
 
-        let final = result.recordset;
+        let final = result.recordset[0];
 
         res.send(final);
     } catch (err) {
-        console.log("Error: " + err);
-    } finally {
-        sql.close();
+        next(err);
     }
 });
+
+module.exports = router;
 ```

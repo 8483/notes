@@ -1,3 +1,5 @@
+Where microservices break up monolithic apps... Serveless breaks up microservices into independent functions.
+
 # AWS Lambda/Serverless
 
 ```bash

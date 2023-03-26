@@ -135,7 +135,7 @@
 
 ### **Administration**
 
--   [Basic Commands](./topics/linuxBasicCommands.md)
+-   [Terminal](./topics/linuxTerminal.md)
 -   [Filesystem](./topics/linuxFilesystem.md)
 -   [Users](./topics/linuxUsers.md)
 -   [Config](./topics/linuxConfig.md)

@@ -1,8 +1,6 @@
-# Install
+# nvm
 
-### nvm
-
-It allows using different node versions for different projects.
+It allows switching node versions easily.
 
 ```bash
 # Download and install
@@ -13,36 +11,45 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
 ```bash
 # Check if installed
-nvm --version
+nvm -v
+
+# List versions
+nvm ls
 
 # Install latest nodejs
 nvm install node
 
-# List versions
-nvm ls
+# Install specific version
+nvm install 17.9.1
 
 # Use latest version
 nvm use node
 
 # Use specific version
-nvm use 10.16.3
+nvm use 17.9.1
+
+# Set default for reboots
+nvm alias default 17.9.1
 ```
 
-```bash
-# Install specific version
-nvm install 8.16.2
+**NOTE:** If you get this error...
+
+```
+/usr/bin/env: 'node': No such file or directory
 ```
 
-**NOTE:** If you get this error: `/usr/bin/env: 'node': No such file or directory`
+Fix it with...
 
 ```bash
-# /home/user/.nvm/versions/node/v17.2.0/bin/node
 sudo ln -s "$(which node)" /usr/local/bin/node
+
+# manual location
+sudo ln -s /home/user/.nvm/versions/node/v17.9.1/bin/node /usr/bin/node
 ```
 
 ### apt-get
 
-**If you node with apt-get, you'll end up with v10.19.0, which is the latest version in the ubuntu app store, but it's not the latest released version of NodeJS.**
+**WARNING: If you install node with apt-get, you'll end up with v10.19.0, which is the latest version in the ubuntu app store, but it's not the latest released version of NodeJS.**
 
 ```bash
 # remove old version

@@ -1,27 +1,12 @@
-- [Basics](#basics)
-- [Async/Await](#Async/Await)
-- [Fetch API](#fetch-api)
-- [Promises](#promises)
-- [Callbacks](#callbacks)
-- [AJAX](#ajax)
+-   [Disclaimer](#disclaimer)
+-   [Event Loop](#event-loop)
+-   [Async/Await](#Async/Await)
+-   [Fetch API](#fetch-api)
+-   [Promises](#promises)
+-   [Callbacks](#callbacks)
+-   [AJAX](#ajax)
 
-# Basics
-
-Asynchronous Javascript is based on events. Every promise and observable library is based on them.
-
-Synchronous code uses a `call stack`, a data structure keeping track of the program execution.
-
-Asynchronous code uses an `event queue`, a list of functions handled in a FIFO manner, which is checked repeatedly by the `event loop`.
-
-The event loop is a programming construct that waits for and dispatches functions in the `event queue` to the `call stack`.
-
-```javascript
-setTimeout(() => {
-    console.log("I will happen later...");
-}, 5000);
-```
-
-This doesn't execute after 5 seconds... It gets added to the `event queue` after 5 seconds.
+# Disclaimer
 
 In reality, **Javascript is not asynchronous at all**. It comes from the environment i.e. browsers and nodejs, specifically the Behavior Object Model (BOM).
 
@@ -39,39 +24,62 @@ window
     -   Array
     -   Function
 
+# Event Loop
+
+Asynchronous Javascript is based on events. Every promise and observable library is based on them.
+
+Synchronous code uses a `call stack`, a data structure keeping track of the program execution.
+
+Asynchronous code uses an `event queue`, a list of functions handled in a FIFO manner, which is checked repeatedly by the `event loop`.
+
+The `event loop` is a programming construct that waits for and dispatches functions from the `event queue` to the `call stack`.
+
+```javascript
+setTimeout(() => {
+    console.log("I will happen later...");
+}, 5000);
+```
+
+This doesn't execute immediately after 5 seconds... It gets added to the `event queue` after 5 seconds. The `event loop` continuously checks the `event queue` for any pending tasks and moves them to the `call stack` for execution when the `call stack` is empty.
+
 # Async/Await
 
-Async/Await enables us to write asynchronous code in a synchronous fashion. Under the hood, it’s just syntactic sugar using generators and yield statements to “pause” execution. 
+Async/Await enables us to write asynchronous code in a synchronous fashion. Under the hood, it’s just syntactic sugar using generators and yield statements to “pause” execution.
 
 In other words, async functions can “pull out” the value of a Promise even though it’s nested inside a callback function, giving us the ability to assign it to a variable.
 
 ```javascript
 async function foo() {
-    try{
+    try {
         let res = await fetch("https://jsonplaceholder.typicode.com/todos");
-        let data = await res.json()
+        let data = await res.json();
         console.log(data);
-    } catch (err){
-        console.log(err)
+    } catch (err) {
+        console.log(err);
     }
-};
+}
 
 foo();
-
-// Fetch API comparison
-function foo() {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-}
 ```
 
-Under the hood it looks like...
+Comapred to Fetch API...
+
+```js
+function foo() {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+}
+
+foo();
+```
+
+`Async/Await looks like this under the hood (uses generators)...
 
 ```javascript
-const request = url => {
-    ajax("GET", url).then(response => it.next(JSON.parse(response)));
+const request = (url) => {
+    ajax("GET", url).then((response) => it.next(JSON.parse(response)));
 };
 
 function* main() {
@@ -84,48 +92,48 @@ const it = main();
 it.next();
 ```
 
-### Combination Example
-```javascript
+### Another Example
+
+```js
 async function getDataOne() {
     let res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-    let data = await res.json()
+    let data = await res.json();
     return data;
 }
 
 async function getDataTwo() {
     let res = await fetch("https://jsonplaceholder.typicode.com/todos/2");
-    let data = await res.json()
+    let data = await res.json();
     return data;
 }
 
 async function getBoth() {
     var resultOne = await getDataOne();
     var resultTwo = await getDataTwo();
-    console.log(resultOne, resultTwo)
+    console.log(resultOne, resultTwo);
 }
 
 getBoth();
+```
 
-// Compared to this
+Comapred to Fetch API
+
+```js
 function foo() {
     fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then(res => res.json())
-    .then(resultOne => {
-
-        fetch("https://jsonplaceholder.typicode.com/todos/2")
-        .then(res => res.json())
-        .then(resultTwo => {
-
-            console.log(resultOne, resultTwo)
-            
+        .then((res) => res.json())
+        .then((resultOne) => {
+            fetch("https://jsonplaceholder.typicode.com/todos/2")
+                .then((res) => res.json())
+                .then((resultTwo) => {
+                    console.log(resultOne, resultTwo);
+                })
+                .catch((err) => console.log(err));
         })
-        .catch(err => console.log(err));
-
-    })
-    .catch(err => console.log(err));
+        .catch((err) => console.log(err));
 }
 
-foo()
+foo();
 ```
 
 # Fetch API
@@ -139,49 +147,50 @@ Fetch also takes a second parameter, which is a configuration object.
 ## GET
 
 ```javascript
-// ES6
 fetch("http://www.api.com/data")
-    .then(res => res.json())
-    .then(data => data)
-    .catch(err => err);
+    .then((res) => res.json())
+    .then((data) => data)
+    .catch((err) => err);
 ```
 
 ## POST
 
 ```javascript
-// ES6
 fetch("http://www.api.com/data", {
     method: "POST",
     headers: {
         Accept: "application/json",
-        "Content-type": "application/json"
+        "Content-type": "application/json",
     },
-    body: JSON.stringify({ title: title, body: body })
-}) 
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
+    body: JSON.stringify({ title: title, body: body }),
+})
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
     })
-    .catch(err => err);
+    .catch((err) => err);
+```
 
-// Async Await
-async function postData(){
+Async/Await
+
+```js
+async function postData() {
     let response = await fetch("http://www.api.com/data", {
         method: "POST",
         headers: {
             Accept: "application/json",
-            "Content-type": "application/json"
+            "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, body: body })
-    }) 
+        body: JSON.stringify({ title: title, body: body }),
+    });
 
-    let data = await response.json()
+    let data = await response.json();
 
-    if (response.status !== 2000){
-        throw Error(data.message)
+    if (response.status !== 2000) {
+        throw Error(data.message);
     }
-    
-    console.log(data)
+
+    console.log(data);
 }
 ```
 
@@ -223,23 +232,23 @@ myPromise.then((res) => {
 
 ```javascript
 function fetch(method, url) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         let xhr = new XMLHttpRequest();
         xhr.open(method, url);
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (this.status >= 200 && this.staus <= 300) {
                 resolve(xhr.response);
             } else {
                 reject({
                     status: this.status,
-                    statusText: xhr.statusText
+                    statusText: xhr.statusText,
                 });
             }
         };
-        xhr.onerror = function() {
+        xhr.onerror = function () {
             reject({
                 status: this.status,
-                statusText: xhr.statusText
+                statusText: xhr.statusText,
             });
         };
         xhr.send();
@@ -247,7 +256,7 @@ function fetch(method, url) {
 }
 
 fetch("GET", "http://jsonplaceholder.typicode.com/todos")
-    .then(function(data) {
+    .then(function (data) {
         let todos = JSON.parse(data);
         let output = "";
         for (let todo of todos) {
@@ -259,7 +268,7 @@ fetch("GET", "http://jsonplaceholder.typicode.com/todos")
         }
         document.getElementById("list").innerHTML = output;
     })
-    .catch(function(err) {
+    .catch(function (err) {
         console.log(err);
     });
 ```
@@ -269,18 +278,14 @@ fetch("GET", "http://jsonplaceholder.typicode.com/todos")
 Takes an array of promises and executes if they are all successful.
 
 ```javascript
-Promise.all([
-    fetch("/api/endpoint"),
-    fetch("/api/another-endpoint"),
-    fetch("/api/yet-another-endpoint")
-])
-    .then(responses => {
+Promise.all([fetch("/api/endpoint"), fetch("/api/another-endpoint"), fetch("/api/yet-another-endpoint")])
+    .then((responses) => {
         // array of responses
         console.log(responses[0]); // users
         console.log(responses[1]); // products
         console.log(responses[2]); // clients
     })
-    .catch(err => {
+    .catch((err) => {
         console.log(err);
     });
 ```
@@ -291,12 +296,12 @@ Promise.all([
 let futureNumber = Promise.resolve(2); // 2
 
 futureNumber
-    .then(n => n + 1) // 3
-    .then(n => n * 2) // 6
-    .then(n => Math.pow(n, 2)) // 36
-    .then(n => console.log(n)); // 36
+    .then((n) => n + 1) // 3
+    .then((n) => n * 2) // 6
+    .then((n) => Math.pow(n, 2)) // 36
+    .then((n) => console.log(n)); // 36
 
-futureNumber.then(n => console.log(n)); //2
+futureNumber.then((n) => console.log(n)); //2
 ```
 
 # Callbacks
@@ -312,7 +317,7 @@ function foo(input, callback) {
 }
 
 // Anonymous callback. Logs Foo Bar.
-foo("Foo", function() {
+foo("Foo", function () {
     console.log("Bar");
 });
 ```
@@ -329,7 +334,7 @@ function baz(input) {
 foo("Foo", baz("Baz"));
 
 // Named callback. Logs Foo Baz.
-foo("Foo", function() {
+foo("Foo", function () {
     baz("Baz");
 });
 
@@ -352,7 +357,7 @@ function callbackSandwich(callbackFunction) {
 }
 
 // We pass in an anonymous function, to be called inside.
-callbackSandwich(function() {
+callbackSandwich(function () {
     console.log("Slice of cheese.");
 });
 ```
@@ -362,7 +367,7 @@ callbackSandwich(function() {
 ```javascript
 var request = new XMLHttpRequest();
 
-request.addEventListener("load", event => {
+request.addEventListener("load", (event) => {
     console.log(event.target.responseText);
 });
 
@@ -380,7 +385,7 @@ function ajax(method, url, callback) {
     request.send();
 }
 
-ajax("GET", "http://www.api.com/data", event => {
+ajax("GET", "http://www.api.com/data", (event) => {
     console.log("SUCCESS", event.target.responseText);
 });
 ```
@@ -396,13 +401,13 @@ var xhr = new XMLHttpRequest();
 
 xhr.open("GET", "http://www.api.com/data", true);
 
-xhr.onload = function() {
+xhr.onload = function () {
     if (this.status == 200) {
         return JSON.parse(this.responseText);
     }
 };
 
-xhr.onerror = function() {
+xhr.onerror = function () {
     console.log("error");
 };
 
@@ -414,11 +419,11 @@ Can also be done like this.
 ```javascript
 var request = new XMLHttpRequest();
 
-request.addEventListener("load", event => {
+request.addEventListener("load", (event) => {
     console.log(event.target.responseText);
 });
 
-request.addEventListener("error", event => {
+request.addEventListener("error", (event) => {
     console.error(event.target.responseText);
 });
 
@@ -457,7 +462,7 @@ var xhr = new XMLHttpRequest(); // Can be named req
 // Establish server connection - type, url/file, async
 xhr.open("GET", "http://www.api.com/data", true); // readyState 1
 
-xhr.onreadystatechange = function() {
+xhr.onreadystatechange = function () {
     // readyState 1, 2, 3, 4
     if (this.readyState == 4 && this.status == 200) {
         return JSON.parse(this.responseText);
@@ -465,7 +470,7 @@ xhr.onreadystatechange = function() {
 };
 
 // If it fails
-xhr.onerror = function() {
+xhr.onerror = function () {
     console.log("error");
 };
 
@@ -494,7 +499,7 @@ var xhr = new XMLHttpRequest(); // Can be named req
 // Establish server connection - type, url/file, async
 xhr.open("GET", "http://www.api.com/data", true); // readyState 1
 
-xhr.onload = function() {
+xhr.onload = function () {
     // readyState 1, 4
     if (this.status == 200) {
         return JSON.parse(this.responseText);
@@ -502,7 +507,7 @@ xhr.onload = function() {
 };
 
 // If it fails
-xhr.onerror = function() {
+xhr.onerror = function () {
     console.log("error");
 };
 
@@ -513,7 +518,7 @@ xhr.send();
 ### Loading
 
 ```javascript
-xhr.onprogress = function() {
+xhr.onprogress = function () {
     // readyState 3
     // Show loading...
 };
@@ -523,8 +528,8 @@ xhr.onprogress = function() {
 
 ```html
 <form method="POST" id="form">
-    <input type="text" id="input">
-    <input type="submit" value="submit">
+    <input type="text" id="input" />
+    <input type="submit" value="submit" />
 </form>
 ```
 
@@ -543,14 +548,14 @@ function submitForm(e) {
 
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhr.onload = function() {
+    xhr.onload = function () {
         // readyState 1, 4
         if (this.status == 200) {
             return JSON.parse(this.responseText);
         }
     };
 
-    xhr.onerror = function() {
+    xhr.onerror = function () {
         console.log("error");
     };
 

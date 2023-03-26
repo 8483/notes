@@ -112,6 +112,8 @@ npm run build
 
 **IMPORTANT:** Setup Vite to work with server API on different port.
 
+Also, don't show `console.log` in production.
+
 ```js
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
@@ -128,6 +130,9 @@ export default defineConfig({
                 ws: true,
             },
         },
+    },
+    esbuild: {
+        drop: ["console", "debugger"],
     },
 });
 ```
