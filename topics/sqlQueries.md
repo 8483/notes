@@ -76,6 +76,15 @@ UPDATE product
 SET product.price = t2.newPrice
 FROM t2
 WHERE product.sku = t2.sku
+
+-- where
+update product set isActive = 0
+where sku in (
+		select sku
+		from stock
+		group by sku
+		having sum(quantity) = 0
+	)
 ```
 
 MySQL
@@ -137,6 +146,17 @@ FROM sales
 
 # Running Total
 
+This one is better because it can be based on all data...
+
+```sql
+-- the `order` by turns this into a running sum.
+select
+    sum(value) over (partition by client order by date desc) runningTotal
+from sales;
+```
+
+...instead of just filtered.
+
 ```sql
 SELECT
     isnull(profit, 0) profit,
@@ -144,6 +164,14 @@ SELECT
     SUM(profit) OVER () AS profitTotal, -- sum of profit column
     SUM(profit) OVER(ORDER BY profit desc ROWS UNBOUNDED PRECEDING) / SUM(profit) OVER () profitShare
 FROM sales
+```
+
+# Previous value
+
+```sql
+select
+    lag(value) over (order by created) -- returns the previous row's value
+from sales
 ```
 
 # Partition By

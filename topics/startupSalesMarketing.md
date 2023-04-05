@@ -39,7 +39,7 @@
 2. Custom audience from pixel
 3. Lookalike audience from pixel
 4. Custom audience from customer list (emails)
-5. Lookalike audeince from customer list
+5. Lookalike audience from customer list
 
 # Objectives
 

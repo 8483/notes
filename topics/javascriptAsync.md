@@ -10,19 +10,20 @@
 
 In reality, **Javascript is not asynchronous at all**. It comes from the environment i.e. browsers and nodejs, specifically the Behavior Object Model (BOM).
 
-window
-
--   Document Object Model (DOM)
-    -   getElementById
--   Behavior Object Model (BOM)
-    -   setTimeout
-    -   XMLHttpRequest
-    -   fetch
-    -   history
--   ECMAScript
-    -   Object
-    -   Array
-    -   Function
+-   Window
+    -   Document
+        -   Document Object Model (DOM)
+            -   getElementById
+            -   querySelector
+        -   Behavior Object Model (BOM)
+            -   setTimeout
+            -   XMLHttpRequest
+            -   fetch
+            -   history
+        -   ECMAScript
+            -   Object
+            -   Array
+            -   Function
 
 # Event Loop
 
@@ -36,7 +37,7 @@ The `event loop` is a programming construct that waits for and dispatches functi
 
 ```javascript
 setTimeout(() => {
-    console.log("I will happen later...");
+    console.log("5 seconds passed...");
 }, 5000);
 ```
 
