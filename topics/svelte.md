@@ -19,7 +19,7 @@
 -   [Motions](#motions)
 -   [Transitions](#transitions)
 -   [CSS](#css)
--   [Composition](#composition)
+-   [Slots](#slots)
 -   [Context API](#context-api)
 -   [Special elements](#special-elements)
 -   [Debugging](#debugging)
@@ -1541,13 +1541,11 @@ If the class has the same name as the value...
 <div class:big></div>
 ```
 
-# Composition
-
-## Slots
+# Slots
 
 Components can have child components. Before a component can accept children, though, it needs to know where to put them. We do this with the `<slot>` element.
 
-App.svelte
+**App.svelte** (parent)
 
 ```html
 <script>
@@ -1556,14 +1554,15 @@ App.svelte
 
 <Box>
     <h2>Hello!</h2>
-    <p>This is a box. It can contain anything.</p>
+    <p class="foo">This is a box. It can contain anything.</p>
+    <div>Just a div...</div>
 </Box>
 
 <Box />
 <!-- Default content if left empty -->
 ```
 
-Box.svelte
+**Box.svelte** (child)
 
 ```html
 <div class="box">
@@ -1571,6 +1570,24 @@ Box.svelte
         <span>Default content if left empty</span>
     </slot>
 </div>
+```
+
+## Slot CSS
+
+```css
+/* This CSS is for the example above. */
+
+.box :global(> h2) {
+    font-weight: bold;
+}
+
+.box :global(> .foo) {
+    color: red;
+}
+
+.box :global(> div) {
+    background: red;
+}
 ```
 
 ## Named slots
