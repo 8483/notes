@@ -1,14 +1,19 @@
 # Shortcuts
 
-`CTRL` + `p` - Search files.  
-`CTRL` + `Shift` + `p` - Commands.
+```bash
+ctrl + p                    # Search files.
+ctrl + shift + p            # Commands.
 
-`CTRL` + `d` - Select duplicate values.
+alt + shift + select        # Multiple cursors
 
-`ALT` + `Up` or `Down` - Move line up or down.
+ctrl + d                    # Select duplicate values.
+ctrl + u                    # Unselect duplicate values.
 
-`ALT` + `SHIFT` + `Down` - Duplicate line.  
-`ALT` + `SHIFT` + `Right` - Select everything between brackets.
+ctrl + up/down              # Move line up or down.
+
+alt + shift + up/down       # Duplicate line.
+alt + shift + left/right    # Select everything between brackets.
+```
 
 # Indentation
 

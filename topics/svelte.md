@@ -765,6 +765,8 @@ The `(item.id)` tells Svelte how to figure out what changed i.e. prevent's updat
 
 # Events
 
+> `on:` is just syntactic sugar for `addEventListener`.
+
 You can listen to any event on an element with the on: directive:
 
 ```html
