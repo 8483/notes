@@ -45,23 +45,24 @@ ssh server_name
 
 # SSH with RSA key
 
-This is used to log in without writing the password each time. Also, it is much more secure.
+Access servers with a **public/private** key instead of a password. This is a **much** more secure method.
 
-Generate private/public keys in `/home/user/.ssh`
-
-```
-ssh-keygen
-```
-
--   Private key `id_rsa` stays in the host machine in `~/.ssh`.
--   Public key `id_rsa.pub` goes on the server in a `~/.ssh/authorized_keys` file.
-
-Simple as that, the next ssh is password-less.
-
-To transfer a public key, use this:
+1. Check if they keys already exist. If they do, jump to step 3.
 
 ```bash
-ssh-copy-id user@255.255.255.255
+ls .ssh
 ```
 
-This automates the manual creation of an `~/.ssh/authorized_keys` file and putting the `id_rsa.pub` key in.
+2. Generate private/public keys on local machine
+
+```bash
+ssh-keygen # keys are stored in /home/user/.ssh
+```
+
+3. Transfer the **public** key `id_rsa.pub` to the remote server, in the `~/.ssh/authorized_keys` file, with this command:
+
+```bash
+ssh-copy-id -i user@123.456.789.255
+```
+
+4. The **private** key `id_rsa` stays in the local machine.
