@@ -1,3 +1,32 @@
+# User
+
+```bash
+# Login as root with password
+ssh root@123.456.789.255
+
+# Add user
+adduser <user>
+
+# Add sudo access
+usermod -aG sudo <user>
+
+# Switch to user
+su - <user>
+```
+
+# SSH
+
+```bash
+# Transfer the public key id_rsa.pub to the remote server
+ssh-copy-id -i user@123.456.789.255
+
+# If they private/public keys don't exist
+ssh-keygen
+
+# Connect to server
+ssh user@123.456.789.255
+```
+
 # System
 
 ```bash
@@ -12,16 +41,6 @@ timedatectl
 
 # Change timezone
 sudo timedatectl set-timezone EST # UTC, CET
-```
-
-# User
-
-```bash
-# Add user
-adduser <username>
-
-# Switch to user
-su - <username>
 ```
 
 # Tools
@@ -43,10 +62,10 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
 nvm install node
 
 # Global nodemon
-sudo npm i -g nodemon;
+npm i -g nodemon;
 
 # Global process manager
-sudo npm i -g pm2;
+npm i -g pm2;
 ```
 
 # Web Server - nginx

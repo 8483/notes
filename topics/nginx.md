@@ -65,6 +65,20 @@ nginx -c <path>      # Start with a custom configuration.
 nginx -s <signal>    # Stop or reload.
 ```
 
+# Errors
+
+> **500 internal server error nginx (13: Permission denied)**
+
+Nginx need to have +x access on all directories leading to the site's root directory.
+
+Ensure you have +x on all of the directories in the path leading to the site's root. For example, if the site root is /home/username/siteroot:
+
+```
+chmod +x /home/
+chmod +x /home/username
+chmod +x /home/username/siteroot
+```
+
 # Terminology
 
 `Blocks` - Sections to which directives are applied. Also called context or scope. They can be nested. The most important ones are `main`, `http`, `server` and `location` (for matching URI locations on incoming requests to parent server context)
@@ -136,15 +150,15 @@ http {
 
     server {
         listen 80;
-        server_name wms.officeplus.mk;
-        return 301 https://wms.officeplus.mk$request_uri;
+        server_name subdomain.domain.com;
+        return 301 https://subdomain.domain.com$request_uri;
     }
 
     server {
         listen 443 ssl;
-        server_name wms.officeplus.mk;
-        ssl_certificate /etc/letsencrypt/live/wms.officeplus.mk/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/wms.officeplus.mk/privkey.pem;
+        server_name subdomain.domain.com;
+        ssl_certificate /etc/letsencrypt/live/subdomain.domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.com/privkey.pem;
 
         root /home/ivan/wms/dist;
         index index.html;

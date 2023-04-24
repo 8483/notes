@@ -47,22 +47,19 @@ ssh server_name
 
 Access servers with a **public/private** key instead of a password. This is a **much** more secure method.
 
-1. Check if they keys already exist. If they do, jump to step 3.
-
-```bash
-ls .ssh
-```
-
-2. Generate private/public keys on local machine
-
-```bash
-ssh-keygen # keys are stored in /home/user/.ssh
-```
-
-3. Transfer the **public** key `id_rsa.pub` to the remote server, in the `~/.ssh/authorized_keys` file, with this command:
+Transfer the **public** key `id_rsa.pub` to the remote server, in the `~/.ssh/authorized_keys` file, with this command:
 
 ```bash
 ssh-copy-id -i user@123.456.789.255
 ```
 
-4. The **private** key `id_rsa` stays in the local machine.
+If the keys don't exist on local machine, generate them:
+
+```bash
+ssh-keygen
+
+# keys are stored in /home/user/.ssh
+ls ~/.ssh
+```
+
+The **private** key `id_rsa` stays in the local machine.

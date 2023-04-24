@@ -82,7 +82,6 @@ systemctl start nginx
 # Errors
 
 ```
-sudo systemctl stop nginx
 sudo killall -9 nginx
 sudo systemctl start nginx
 ```
