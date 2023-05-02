@@ -60,6 +60,7 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
 
 # Install latest nodejs
 nvm install node
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 # Global nodemon
 npm i -g nodemon;
@@ -79,6 +80,11 @@ sudo apt install nginx -y;
 ```bash
 # MySQL (sudo mysql -u root)
 sudo apt install mysql-server -y && mysql_secure_installation;
+
+# Change root password
+sudo mysql
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 
 # Change timezone
 sudo vim /etc/mysql/my.cnf

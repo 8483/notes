@@ -24,11 +24,23 @@ If a file is read-only and can't be changed, use `sudo vim file` to open it as r
 `xi(` - Delete everything inside ().
 `ci{` - Change (Delete and enter insert mode) inside {}.
 
+## Save & Exit
+
+`:w` - Save  
+`:q` - Quit  
+`:wq` - Save & Quit  
+`:q!` - Cancel & Quit
+
 ## Tabs
 
 `:tabe FILEPATH` - Open file in new tab  
 `:tabn` - Next tab  
 `:tabp` - Previous tab
+
+## Selection
+
+`esc` + `v` - visual mode for selection.  
+`ctrl` + `v` - block selection i.e. multi-line column, good for commenting. `shift` + `i` then `text` then `esc` for multi line insertion.
 
 ## Copy & Paste
 
@@ -44,13 +56,6 @@ These can be combined with movements. Ex. `x2e` is delete next 2 words.
 
 `yy` - Copy (yank) line in **normal** mode.  
 `dd` - Cut line in **normal** mode.
-
-## Save & Exit
-
-`:w` - Save  
-`:q` - Quit  
-`:wq` - Save & Quit  
-`:q!` - Cancel & Quit
 
 ## Moving
 
@@ -116,7 +121,7 @@ The global `.vimrc` file is located in `/etc/vim/vimrc` or `etc/vimrc`.
 
 Create a `.vimrc` file in the `home` directory for customizations.
 
-When vim is opened, it will automatically check the current user’s home directory for a .vimrc file. All settings specified in this file will override the global settings.  
+When vim is opened, it will automatically check the current user’s home directory for a .vimrc file. All settings specified in this file will override the global settings.
 
 Configurations can be made inside `vim` by using `:set number`.
 

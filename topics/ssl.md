@@ -40,15 +40,12 @@ sudo ls /etc/letsencrypt/live/example.com
 
 # Issue SSL
 
-**IMPORTANT: Must disable nginx!**
+**IMPORTANT: Must disable nginx! Certbot runs its own instance.**
 
 **Issue certificate, before modifying nginx.conf.**
 
 ```bash
-# Stop listening to port 80
-sudo systemctl stop nginx
-
-# Stop all processes
+# Stop all nginx processes
 sudo killall nginx
 
 # Get SSL certificate
@@ -63,10 +60,7 @@ sudo systemctl start nginx
 **IMPORTANT: Must disable nginx**
 
 ```bash
-# Stop listening to port 80
-systemctl stop nginx
-
-# Stop all processes
+# Stop all nginx processes
 sudo killall nginx
 
 # Renew bulk

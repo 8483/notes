@@ -73,9 +73,11 @@ Nginx need to have +x access on all directories leading to the site's root direc
 
 Ensure you have +x on all of the directories in the path leading to the site's root. For example, if the site root is /home/username/siteroot:
 
-```
+```bash
 chmod +x /home/
 chmod +x /home/username
+
+# not needed
 chmod +x /home/username/siteroot
 ```
 
@@ -101,6 +103,19 @@ server {               # Block start
 ## mime.types
 
 If this file is not included in the `http` block, all the different files will be served as simple text files and thus won't be rendered. Intead of writing all cases like `http { text/html html; text/css css;}` we can simply include a list of them with `http { include mime.types; }`.
+
+# root vs alias
+
+```nginx
+root /home/user/app/dist;
+# /pics/image.jpg -----> /home/user/app/dist/pics/image.jpg
+
+
+location /pics/ {
+    alias /home/user/app/pics/
+}
+# /pics/image.jpg -----> /home/user/app/pics/image.jpg
+```
 
 # Simplest server
 
@@ -160,7 +175,7 @@ http {
         ssl_certificate /etc/letsencrypt/live/subdomain.domain.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.com/privkey.pem;
 
-        root /home/ivan/wms/dist;
+        root /home/user/app/dist;
         index index.html;
 
         location / {
@@ -177,6 +192,11 @@ http {
 
         location /socket.io/ {
             proxy_pass 'http://127.0.0.1:9999';
+        }
+
+        location /pics/ {
+            alias /home/user/app/pics/;
+            try_files $uri $uri/ =404;
         }
     }
 }
