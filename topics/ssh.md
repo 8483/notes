@@ -50,10 +50,10 @@ Access servers with a **public/private** key instead of a password. This is a **
 Transfer the **public** key `id_rsa.pub` to the remote server, in the `~/.ssh/authorized_keys` file, with this command:
 
 ```bash
-ssh-copy-id -i user@123.456.789.255
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@123.456.789.255
 ```
 
-If the keys don't exist on local machine, generate them:
+**If the keys don't exist** on local machine, generate them:
 
 ```bash
 ssh-keygen

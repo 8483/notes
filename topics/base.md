@@ -1,6 +1,12 @@
+# Overview
+
+A way to represent binary data with characters.
+
 base = how bytes are represented
 
 # base-2 - Binary
+
+> 1 0
 
 Most basic representation. 1 byte is 8 binary characters or bits.
 
@@ -23,6 +29,8 @@ Most basic representation. 1 byte is 8 binary characters or bits.
 
 # base-16 - Hexadecimal
 
+> 0123456789ABCDEF
+
 Encodes 1 byte (8 bits) into 2 hex characters.
 
 | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | A   | B   | C   | D   | E   | F   |
@@ -43,6 +51,10 @@ E7 = 1110 0111
 Hexadecimal numbers have either a `0x` prefix or an `h` suffix. So either `0xE7` or `E7h`.
 
 # base-64
+
+> 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/
+
+ex. Encode an image binary as text.
 
 Encodes 3 source bytes (24 bits) into 4 base-64 characters.
 

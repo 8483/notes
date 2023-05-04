@@ -54,14 +54,21 @@ sudo apt install curl vim tmux git -y;
 
 **DO NOT install `nodejs` directly. Use `nvm`!**
 
+> **MUST RESTART TERMINAL AFTER INSTALL FOR `nvm` TO WORK!**
+
 ```bash
 # Download and install nvm
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
+# MUST RESTART TERMINAL AFTER INSTALL FOR nvm TO WORK!!
 
 # Install latest nodejs
-nvm install node
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+nvm install node;
+sudo ln -s /usr/bin/nodejs /usr/bin/node;
+```
 
+# Daemons
+
+```bash
 # Global nodemon
 npm i -g nodemon;
 
@@ -78,13 +85,31 @@ sudo apt install nginx -y;
 # Database - MySQL
 
 ```bash
-# MySQL (sudo mysql -u root)
-sudo apt install mysql-server -y && mysql_secure_installation;
+sudo apt install mysql-server;
+
+sudo /etc/init.d/mysql start;
+# sudo service mysql start
+# systemctl restart mysql
+
+sudo mysql_secure_installation; # Makes mysql more secure
+# Change root password to more secure.
+# Remove anonymous users.
+# Disable remote root login. Root should only connect via `localhost`.
+# Remove test database and access to it.
+# Reload privilege tables.
+```
+
+If needed...
+
+```bash
+# Login
+sudo mysql -u root -p;
 
 # Change root password
-sudo mysql
-
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+# Reload the privileges after password change.
+FLUSH PRIVILEGES;
 
 # Change timezone
 sudo vim /etc/mysql/my.cnf
