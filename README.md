@@ -14,6 +14,7 @@
 -   [Object Oriented Programming (OOP)](./topics/oop.md)
 -   [Functional Programming](./topics/fp.md)
 -   [Debugging](./topics/javascriptDebugging.md)
+-   [Code Golf](./topics/javascriptCodeGolf.md)
 
 ### **Frontend**
 
@@ -147,13 +148,13 @@
 ### **Tools**
 
 -   [bash - scripting](./topics/bash.md)
--   [tmux - terminal windows multiplexer](./topics/tmux.md)
 -   [vim - editor](./topics/vim.md)
 -   [ssh - remote access](./topics/ssh.md)
 -   [rsync - file transfer](./topics/rsync.md)
--   [gzip - compression](./topics/gzip.md)
+-   [tmux - terminal windows multiplexer](./topics/tmux.md)
 -   [cron - scheduling](./topics/cron.md)
 -   [systemd - daemons](./topics/systemd.md)
+-   [gzip - compression](./topics/gzip.md)
 
 # Networking
 

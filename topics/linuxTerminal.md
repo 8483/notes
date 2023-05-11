@@ -10,109 +10,64 @@ Terminal - It is not a shell, but rather a window serving a shell. (xterm, konso
 
 Shell - The actual CLI that executes commands. (bash, zsh)
 
-# Basics
-
-`/` - Root directory  
-`~` - Home directory
-
-`^` - Control key.  
-`M` - Alt key.
-
-`CTRL` + `C` - Stop running command.  
-`CTRL` + `D` - Close current shell session.  
-`CTRL` + `L` - Clear screen. (Scrolls you down in reality)
-
-`CTRL` + `A` - Go to beginning of line.  
-`CTRL` + `E` - Go to end of line.  
-`CTRL` + `F` - Next word.  
-`CTRL` + `B` - Previous word.
-
-`ALT` + `Backspace` - Delete last word.  
-`ALT` + `Left` / `Right` - Go to previous / next word.  
-`CTRL` + `U` - Delete whole line.
-
-`man COMMAND` - Command help.  
-`history` - Lists all the commands used.  
-`CTRL` + `R` - Search command history. Hit again for previous command.
-
-# Information
+# Locations
 
 ```bash
-cat /etc/os-release     # Linux version
-df -h --total           # Show disk space in readable format
-htop                    # CPU and RAM usage
+/     # Root directory
+~     # Home directory
+
+# WSL / Ubuntu subsystem on Windows
+cd /mnt/c     # Navigate to My Computer/C:.
+# C:\Users\User\AppData\Local\lxss (WSL location in windows)
 ```
 
-# Install packages
-
-`dpkg` is a backend for `apt-get`, which is a backend for `aptitude` (GUI).
-
-## Packages
+# Terminal
 
 ```bash
-apt-cache search PACKAGE   # Search packages.
-apt-cache madison PACKAGE  # List versions.
-
-apt-get update             # Update the packages list.
-apt-get install PACKAGE    # Install specified package.
-apt-get upgrade            # Actually update the packages.
-
-apt list --installed       # A list of installed packages.
-
-apt-get remove PACKAGE     # Remove a specified package.
-add-apt-repository REPO    # Add 3rd party repository or PPA (Personal Package Archive).
-
-curl URL                   # Output the URL content.
-wget "URL"                 # Download from URL.
-sudo dpkg –i FILE_NAME     # Install downloaded file.
+ctrl + c              # Stop running command.
+ctrl + d              # Close current shell session i.e. logout.
+ctrl + l              # Clear screen. (Scrolls you down in reality)
 ```
 
-## .deb
-
-Install `.deb` packages from the terminal.
+# Commands
 
 ```bash
-sudo dpkg -i <path/to/deb.deb>
-sudo apt-get install -f
+man COMMAND           # Command help.
+
+ctrl + a              # Go to beginning of line.
+ctrl + e              # Go to end of line.
+ctrl + f              # Next word.
+ctrl + b              # Previous word.
+
+alt + backspace       # Delete last word.
+alt + left / right    # Go to previous / next word.
+ctrl + u              # Delete whole line.
+
+history               # Lists all the commands used.
+ctrl + r              # Command history. Hit again for previous.
+
+echo TEXT             # print text
+printf TEXT           # print formatted text
 ```
 
-# Find
-
-```bash
-grep -r 'string' directory_to_search      # List occurences of string in all files.
-find /                                    # List root directory's content.
-find / | grep FILE                        # Search the output.
-
-sudo find / -iname FOLDER/FILE.ext    # Find case insensitive.
-which PROGRAM                         # Find path to program.
-```
-
-# Count
-
-```bash
-# Number of files
-ls | wc -l
-
-# Find all files with the given extensions
-# in the specified folders, and count the number of lines.
-find folder1 folder2 -name '*.js' -o -name '*.sql' | xargs wc -l
-```
-
-# Utility
-
-```bash
 # Navigation
+
+```bash
 cd FOLDER   # Change directory
 cd ..       # Go back one up
 cd -        # Go back to last working directory
-pwd         # Current path
 
-# List
 ls -a       # List all files, including hidden
 ls -l       # List in a list format
 ll          # Shorthand for ls -l
 ls -lh      # Show file size
 
+pwd         # Current path
+```
+
+# Files
+
+```bash
 # Read
 cat FILE       # Show the file content in terminal
 less FILE      # View file content in the less program
@@ -131,87 +86,67 @@ mv PATH/FILE PATH/FILE   # Rename or Cut & Paste a file
 # Delete
 rm FOLDER/FILE   # Delete folder or file
 rm -r FOLDER     # Delete a directory and its files
-
-# Printing
-echo TEXT      # print text
-printf TEXT    # print formatted text
 ```
+
+# Find
 
 ```bash
-\n   # new line
-\r   # carriage return, i.e. bring carret (cursor) to start of line
+grep -r 'string' directory_to_search      # List occurences of string in all files.
+find /                                    # List root directory's content.
+find / | grep FILE                        # Search the output.
+find / -size +5M -ls                      # Find files above 5mb.
+
+sudo find / -iname FOLDER/FILE.ext        # Find case insensitive.
+which PROGRAM                             # Find path to program.
 ```
 
-# Password Generator
-
-Generate a random 14 character password by using the linux `/dev/urandom` file, a stream of mashed system data.
-
-`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 14`
-
-# Ubuntu on Windows
-
-`C:\Users\User\AppData\Local\lxss\home\user` - Filesystem location.
-
-`cd /mnt/` - Navigate to My Computer (C:, D:).
-
-# How to Compile and Run a C Program
+# System
 
 ```bash
-# Create file
-touch hello.c
-
-# Edit file
-vim hello.c
+lsb_release -a      # Linux version.
+htop                # Runnig processe. CPU and RAM usage.
 ```
 
-Paste this C code in the file.
-
-```c
-#include <stdio.h>
-
-main() {
-    printf("Hello World\n");
-}
-```
+# Disk
 
 ```bash
-# Compile the code into hello program
-gcc -o hello hello.c
-
-# Run the program
-./hello
+df -h --total               # Show disk space in readable format.
+du -hx --max-depth=1 .      # Directory disk space usage
 ```
 
-# Password Generator
-
-Generate a random 14 character password by using the linux `/dev/urandom` file, a stream of mashed system data.
-
-`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 14`
-
-# How to Compile and Run a C Program
+# Install packages
 
 ```bash
-# Create file
-touch hello.c
+# apt <--- apt-get <--- dpkg <--- aptitude
 
-# Edit file
-vim hello.c
+apt search PACKAGE              # Search packages.
+apt madison PACKAGE             # List versions.
+
+apt update                      # Update the packages list.
+apt install PACKAGE             # Install specified package.
+apt upgrade                     # Actually update the packages.
+
+apt list --installed            # A list of installed packages.
+
+apt remove PACKAGE              # Remove a specified package.
+add-apt-repository REPO         # Add 3rd party repository or PPA (Personal Package Archive).
 ```
 
-Paste this C code in the file.
-
-```c
-#include <stdio.h>
-
-main() {
-    printf("Hello World\n");
-}
-```
+# Download
 
 ```bash
-# Compile the code into hello program
-gcc -o hello hello.c
+curl URL                   # Output the URL content.
+wget "URL"                 # Download from URL.
+sudo dpkg –i FILE_NAME     # Install downloaded file.
+```
 
-# Run the program
-./hello
+# Count
+
+```bash
+# Number of files
+ls | wc -l
+
+# Find all files with the given extensions
+# in the specified folders, and count the number of lines.
+find folder1 folder2 -name '*.js' -o -name '*.sql' | xargs wc -l
 ```

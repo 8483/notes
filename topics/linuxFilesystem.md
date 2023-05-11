@@ -12,7 +12,7 @@ Package = Plain text file > Compilation > Binary (.exe)
 
 ## File types
 
-1. **Normal**. Images, text, config...
+1. **File**. Images, text, config...
 2. **Directory**. File pointing to files.
 3. **Link**. Shortcut/Redirect.
 4. **Pipe**. Use a process output as input for another.
@@ -32,42 +32,56 @@ Special files like **sockets** that allow processes to communicate with each oth
 
 ## OS
 
--   **boot** (bootloaders) - Everything the OS needs to boot.
--   **run** (runtime) - Runtime information stored in RAM i.e. not written to disk.
--   **sys** (system) - Interaction with the kernel. Similar to `run`, not written to disk.
--   **proc** (processes) - Pseudo files with information for system processes, created by the kernel. Every process has a directory named by the PID (process ID). Ex. `cat /proc/cpuinfo` gives CPU info.
+```bash
+/boot      # Bootloaders - Everything the OS needs to boot.
+/run       # Runtime - Information stored in RAM i.e. not written to disk.
+/sys       # System - Kernel interaction. Similar to /run.
+/proc      # Processes - Pseudo files with information for system processes, created by the kernel. Every process has a directory named by the PID (process ID). Ex. cat /proc/cpuinfo gives CPU info.
+```
 
 ## Devices
 
--   **dev** (devices) - Keyboard, mouse... - Other applications and drivers use this.
-    -   **sda** - Hard disk (main). `sda1` would be a partition.
--   **media** (Device mounting - Automatic) - External hard drives, USBs.
--   **mnt** (Device mounting - Manual)
--   **cdrom** - Mounting point for CDs.
+```bash
+/dev           # Devices ex. mouse - Other programs and drivers use this.
+    /dev/sda   # Hard disk (main). `sda1` would be a partition.
+/media         # Device mounting (Automatic) - External hard drives, USBs.
+/mnt           # Device mounting (Manual)
+/cdrom         # Mounting point for CDs.
+```
 
-## System programs
+## Programs
 
--   **bin** (binaries) - Programs like `ls`, `cat`, `grep`...
--   **sbin** (system binaries) - Programs only admins use, single user mode.
--   **lib** (libraries) - Used by `bin` and `sbin`.
+```bash
+# System
+
+/bin        # Binaries - Programs like ls, cat, grep...
+/sbin       # System binaries - Admin only programs.
+/lib        # Libraries - Used by bin and sbin.
+
+# User
+
+/usr        # Applications installed and used by the user.
+/opt        # Optional - Manually installed software from other vendors.
+/tmp        # Temp - Temporary files ex. auto-saves.
+```
 
 ## Configuration
 
--   **etc** (etcetera) - System wide cofiguration files.
--   **var** (variable) - Files expected to grow in size, like logs, email databases, printer queues...
-
-## User programs
-
--   **usr** - Applications installed and used by the user.
--   **opt** (optional) - Manually installed software from other vendors.
--   **tmp** (temp) - Temporary files ex. auto-saves.
+```bash
+/etc        # Etcetera - System wide cofiguration files.
+/var        # Variable - Files expected to grow in size ex. logs, databases.
+```
 
 ## Users
 
--   **root** - Home folder for root users.
--   **home**. Home folders for each user, storing personal files.
+```bash
+/root        # - Home folder for root users.
+/home        #. Home folders for each user, storing personal files.
+```
 
 ## Other
 
--   **srv** (service) - Web server files accessible by external users.
--   **snap** - Self-contained Ubuntu apps.
+```bash
+/srv        # Service - Web server files accessible by external users.
+/snap       # Self-contained Ubuntu apps.
+```

@@ -63,6 +63,9 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
 
 # Install latest nodejs
 nvm install node;
+
+# Forward all the commands received as node to nodejs
+ls -l /usr/bin/node
 sudo ln -s /usr/bin/nodejs /usr/bin/node;
 ```
 

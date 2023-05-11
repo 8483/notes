@@ -97,6 +97,9 @@ CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 -- Give access to certain areas. In this case, it's for everything as *.* stands for dbName.tableName i.e. all of them.
 GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 
+-- Fix errors
+ALTER USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+
 -- Reload the privileges.
 FLUSH PRIVILEGES;
 
