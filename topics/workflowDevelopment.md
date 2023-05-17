@@ -38,6 +38,8 @@ server: {
 
 When working with databases that aren't yours, you can connect to them by establishing a VPN connection and using the local IP address of the machine hosting the database, example `192.168.10.4,1434` where `1434` is the port.
 
+You can ping the IP address to see if the connection works.
+
 # Build
 
 The front-end is bundled in static files, meaning they no longer run on a port. This means we can simply upload them to the live server to be used like any regular file.

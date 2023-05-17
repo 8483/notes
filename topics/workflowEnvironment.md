@@ -40,7 +40,7 @@ lsb_release -a
 timedatectl
 
 # Change timezone
-sudo timedatectl set-timezone EST # UTC, CET
+sudo timedatectl set-timezone CET;
 ```
 
 # Tools
@@ -65,8 +65,7 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash;
 nvm install node;
 
 # Forward all the commands received as node to nodejs
-ls -l /usr/bin/node
-sudo ln -s /usr/bin/nodejs /usr/bin/node;
+sudo ln -sf "$(which node)" /usr/bin/node;
 ```
 
 # Daemons
@@ -77,6 +76,9 @@ npm i -g nodemon;
 
 # Global process manager
 npm i -g pm2;
+
+# Forward all the commands received as pm2 to whatever the fuck
+sudo ln -sf "$(which pm2)" /usr/bin/pm2;
 ```
 
 # Web Server - nginx
