@@ -4,7 +4,7 @@ const util = require("util");
 
 let databaseHandler = (pool) => {
     return (req, res, next) => {
-        // let subodmain = req.subdomains[0];
+        // let subdomain = req.subdomains[0];
         // req.subdomains is [] in deployment due to the reverse_proxy
         // req.decoded comes from authenticationHandler
         let database = req.decoded.database;
