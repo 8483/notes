@@ -6,203 +6,247 @@
 
 ### **Javascript**
 
--   [Language](./topics/javascriptLanguage.md)
--   [Basics](./topics/javascriptBasics.md)
--   [ES6](./topics/javascriptEs6.md)
--   [Document Object Model (DOM)](./topics/javascriptDom.md)
--   [Async](./topics/javascriptAsync.md)
--   [Object Oriented Programming (OOP)](./topics/oop.md)
--   [Functional Programming](./topics/fp.md)
--   [Debugging](./topics/javascriptDebugging.md)
--   [Code Golf](./topics/javascriptCodeGolf.md)
+- [Language](./topics/javascriptLanguage.md)
+- [Basics](./topics/javascriptBasics.md)
+- [ES6](./topics/javascriptEs6.md)
+- [Document Object Model (DOM)](./topics/javascriptDom.md)
+- [Async](./topics/javascriptAsync.md)
+- [Object Oriented Programming (OOP)](./topics/oop.md)
+- [Functional Programming](./topics/fp.md)
+- [Debugging](./topics/javascriptDebugging.md)
+- [Code Golf](./topics/javascriptCodeGolf.md)
+
+### Basic Steps for Full Stack Web Developer
+
+1. Learn Basic of:
+   - HTML
+   - CSS
+   - JavaScript
+2. Develop Simple Project using these technologies to understand how does the website actually work.
+3. Choose any 1 Front-End Technology:
+   - React JS
+   - Vue JS
+   - Angular
+4. Along with Front-End we need to study Back-End also:
+   - Java
+   - Python
+   - C#
+   - Ruby
+   - Php
+   - Node JS
+5. We need databases to store the data:
+
+- SQL
+  - MYSQL
+  - SQL Server
+  - Oracle
+  - Postegre SQL
+- NOSQL
+  - MongoDB
+  - Casssandra
+  - CouchDB
+
+6. Then we have different versions of the developed software with some changes, so we use:
+   - Git
+   - GitHub/GitLab/BitBucket
+7. Finally we need one of the Cloud Services to host the website:
+   - Google Cloud Platform
+   - Microsoft Azure
+   - Amazon Web Service
+   - Heroku
+8. Some containers used in Cloud Services:
+   - Docker
+   - Kubernetes
+
+## Once we prepare all these aspect for a particular project we can get a hang of Full Stack Web Development.
 
 ### **Frontend**
 
--   Frameworks
-    -   [Svelte](./topics/svelte.md)
-    -   [React](./topics/react.md)
-    -   [Vue](./topics/vue.md)
-    -   [Electron](./topics/electron.md)
-    -   [Elm](./topics/elm.md)
--   Libraries
-    -   [tabulator](./topics/tabulator.md)
-    -   [tagify](./topics/tagify.md)
-    -   [pdfmake](./topics/pdfmake.md)
-    -   [sheetjs](./topics/sheetjs.md)
-    -   [Various](./topics/libraries-frontend.md)
--   Other
-    -   [CSS](./topics/css.md)
+- Frameworks
+  - [Svelte](./topics/svelte.md)
+  - [React](./topics/react.md)
+  - [Vue](./topics/vue.md)
+  - [Electron](./topics/electron.md)
+  - [Elm](./topics/elm.md)
+- Libraries
+  - [tabulator](./topics/tabulator.md)
+  - [tagify](./topics/tagify.md)
+  - [pdfmake](./topics/pdfmake.md)
+  - [sheetjs](./topics/sheetjs.md)
+  - [Various](./topics/libraries-frontend.md)
+- Other
+  - [CSS](./topics/css.md)
 
 ### **Backend**
 
--   Technologies
-    -   [Node](./topics/node.md)
-        -   [npm/npx](./topics/npm.md)
-        -   [Express](./topics/express.md)
-            -   [Code Structure](./topics/express-structure.md)
-        -   [Middleware](./topics/middleware.md)
-        -   [.env](./topics/dotenv.md)
-    -   [GraphQL](./topics/graphql.md)
-    -   [Web Sockets](./topics/websockets.md)
--   Web server
-    -   [nginx](./topics/nginx.md)
-        -   [SSL](./topics/ssl.md)
--   Libraries
-    -   [cryptojs](./topics/cryptojs.md)
-    -   [nodemailer](./topics/nodemailer.md)
-    -   [puppeteer](./topics/puppeteer.md)
--   Other
-    -   [Caching](./topics/caching.md)
-    -   [Logging](./topics/logging.md)
+- Technologies
+  - [Node](./topics/node.md)
+    - [npm/npx](./topics/npm.md)
+    - [Express](./topics/express.md)
+      - [Code Structure](./topics/express-structure.md)
+    - [Middleware](./topics/middleware.md)
+    - [.env](./topics/dotenv.md)
+  - [GraphQL](./topics/graphql.md)
+  - [Web Sockets](./topics/websockets.md)
+- Web server
+  - [nginx](./topics/nginx.md)
+    - [SSL](./topics/ssl.md)
+- Libraries
+  - [cryptojs](./topics/cryptojs.md)
+  - [nodemailer](./topics/nodemailer.md)
+  - [puppeteer](./topics/puppeteer.md)
+- Other
+  - [Caching](./topics/caching.md)
+  - [Logging](./topics/logging.md)
 
 ### **Database**
 
--   [Design](./topics/dbdesign.md)
--   [Indexing](./topics/indexing.md)
--   [SQL queries](./topics/sqlQueries.md)
--   [MySQL](./topics/mysql.md)
-    -   [node mysql](./topics/node-mysql.md)
--   [SQL Server](./topics/sqlserver.md)
-    -   [node mssql](./topics/node-mssql.md)
+- [Design](./topics/dbdesign.md)
+- [Indexing](./topics/indexing.md)
+- [SQL queries](./topics/sqlQueries.md)
+- [MySQL](./topics/mysql.md)
+  - [node mysql](./topics/node-mysql.md)
+- [SQL Server](./topics/sqlserver.md)
+  - [node mssql](./topics/node-mssql.md)
 
 ### **Tooling**
 
--   [Git](./topics/git.md)
--   [Babel](./topics/babel.md)
--   [Webpack](./topics/webpack.md)
--   [VS Code](./topics/vscode.md)
+- [Git](./topics/git.md)
+- [Babel](./topics/babel.md)
+- [Webpack](./topics/webpack.md)
+- [VS Code](./topics/vscode.md)
 
 ### **Architecture**
 
--   [MVC](./topics/mvc.md)
--   [Architecture](./topics/architecture.md)
--   [RESTful](./topics/restful.md)
--   [Microservices](./topics/microservices.md)
--   [Serverless](./topics/serverless.md)
--   [Message Brokers](./topics/messageBrokers.md)
+- [MVC](./topics/mvc.md)
+- [Architecture](./topics/architecture.md)
+- [RESTful](./topics/restful.md)
+- [Microservices](./topics/microservices.md)
+- [Serverless](./topics/serverless.md)
+- [Message Brokers](./topics/messageBrokers.md)
 
 ### **Concepts**
 
--   [Code quality and performance](./topics/codeQuality.md)
--   [UI/UX](./topics/uiux.md)
--   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
--   [Security](./topics/security.md)
--   [Testing](./topics/testing.md)
-    -   [Jest](./topics/testingJest.md)
-    -   [Mocha](./topics/testingMocha.md)
+- [Code quality and performance](./topics/codeQuality.md)
+- [UI/UX](./topics/uiux.md)
+- [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
+- [Security](./topics/security.md)
+- [Testing](./topics/testing.md)
+  - [Jest](./topics/testingJest.md)
+  - [Mocha](./topics/testingMocha.md)
 
 ### **Useful**
 
--   [Algorithms](./topics/algos.md)
-    -   [Graph Theory](./topics/graphTheory.md)
--   [Binary base](./topics/base.md)
-    -   [Bitwise](./topics/bitwise.md)
--   [Assembly](./topics/assembly.md)
-    -   [WebAssembly](./topics/wasm.md)
--   [.NET](./topics/dotnet.md)
--   [Notifications](./topics/notifications.md)
+- [Algorithms](./topics/algos.md)
+  - [Graph Theory](./topics/graphTheory.md)
+- [Binary base](./topics/base.md)
+  - [Bitwise](./topics/bitwise.md)
+- [Assembly](./topics/assembly.md)
+  - [WebAssembly](./topics/wasm.md)
+- [.NET](./topics/dotnet.md)
+- [Notifications](./topics/notifications.md)
 
 ### **APIs**
 
--   [Google API](./topics/googleapi.md)
--   [Reddit API](./topics/reddit.md)
+- [Google API](./topics/googleapi.md)
+- [Reddit API](./topics/reddit.md)
 
 # Workflow
 
--   [Environment](./topics/workflowEnvironment.md)
--   [Development](./topics/workflowDevelopment.md)
--   [Deployment](./topics/workflowDeployment.md)
+- [Environment](./topics/workflowEnvironment.md)
+- [Development](./topics/workflowDevelopment.md)
+- [Deployment](./topics/workflowDeployment.md)
 
 # Mobile
 
--   [Overview](./topics/mobile.md)
+- [Overview](./topics/mobile.md)
 
 **Native**
 
--   [Android (Kotlin, Java) - Android Studio / Google](./topics/mobileAndroid.md)
--   [iOS (Swift, Objective-C) - XCode / Apple](./topics/mobileiOS.md)
+- [Android (Kotlin, Java) - Android Studio / Google](./topics/mobileAndroid.md)
+- [iOS (Swift, Objective-C) - XCode / Apple](./topics/mobileiOS.md)
 
 **Compiled**
 
--   React Native (React, Javascript)
--   Native Script (XML, Javascript)
--   Flutter (Dart)
+- React Native (React, Javascript)
+- Native Script (XML, Javascript)
+- Flutter (Dart)
 
 **Hybrid**
 
--   [Cordova (HTML, CSS, Javascript)](./topics/mobileCordova.md)
--   [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
--   [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
+- [Cordova (HTML, CSS, Javascript)](./topics/mobileCordova.md)
+- [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
+- [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
 
 # Linux
 
--   [Operating System](./topics/linux.md)
+- [Operating System](./topics/linux.md)
 
 ### **Administration**
 
--   [Terminal](./topics/linuxTerminal.md)
--   [Filesystem](./topics/linuxFilesystem.md)
--   [Users](./topics/linuxUsers.md)
--   [Config](./topics/linuxConfig.md)
+- [Terminal](./topics/linuxTerminal.md)
+- [Filesystem](./topics/linuxFilesystem.md)
+- [Users](./topics/linuxUsers.md)
+- [Config](./topics/linuxConfig.md)
 
 ### **Tools**
 
--   [bash - scripting](./topics/bash.md)
--   [vim - editor](./topics/vim.md)
--   [ssh - remote access](./topics/ssh.md)
--   [rsync - file transfer](./topics/rsync.md)
--   [tmux - terminal windows multiplexer](./topics/tmux.md)
--   [cron - scheduling](./topics/cron.md)
--   [systemd - daemons](./topics/systemd.md)
--   [gzip - compression](./topics/gzip.md)
+- [bash - scripting](./topics/bash.md)
+- [vim - editor](./topics/vim.md)
+- [ssh - remote access](./topics/ssh.md)
+- [rsync - file transfer](./topics/rsync.md)
+- [tmux - terminal windows multiplexer](./topics/tmux.md)
+- [cron - scheduling](./topics/cron.md)
+- [systemd - daemons](./topics/systemd.md)
+- [gzip - compression](./topics/gzip.md)
 
 # Networking
 
--   [Overview](./topics/networkingOverview.md)
-    -   [OSI Model](./topics/networkingModelOSI.md)
-    -   [TCP/IP Model](./topics/networkingModelTCPIP.md)
-        -   [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
-        -   [3. Network - IP, Subnet, Gateway, DHCP](./topics/networkingLayer3NetworkIP.md)
-        -   [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
-        -   [5. Application - HTTP, DNS, DDNS](./topics/networkingLayer5ApplicationHTTP.md)
--   [Tools](./topics/networkingTools.md)
--   [Devices](./topics/networkingDevices.md)
--   [Roles](./topics/networkingRoles.md)
+- [Overview](./topics/networkingOverview.md)
+  - [OSI Model](./topics/networkingModelOSI.md)
+  - [TCP/IP Model](./topics/networkingModelTCPIP.md)
+    - [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
+    - [3. Network - IP, Subnet, Gateway, DHCP](./topics/networkingLayer3NetworkIP.md)
+    - [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
+    - [5. Application - HTTP, DNS, DDNS](./topics/networkingLayer5ApplicationHTTP.md)
+- [Tools](./topics/networkingTools.md)
+- [Devices](./topics/networkingDevices.md)
+- [Roles](./topics/networkingRoles.md)
 
 # DevOps
 
 ### **Virtualization**
 
--   [VM](./topics/vm.md)
--   [Vagrant](./topics/vagrant.md)
+- [VM](./topics/vm.md)
+- [Vagrant](./topics/vagrant.md)
 
 ### **Containerization**
 
--   [Docker](./topics/docker.md)
+- [Docker](./topics/docker.md)
 
 ### **Configuration Management**
 
--   [Ansible](./topics/ansible.md)
+- [Ansible](./topics/ansible.md)
 
 # Electronics
 
 ### **General**
 
--   [Electronics](./topics/electronics.md)
--   Terminology
--   Communication Protocols
--   Components
--   [RFID](./topics/rfid.md)
+- [Electronics](./topics/electronics.md)
+- Terminology
+- Communication Protocols
+- Components
+- [RFID](./topics/rfid.md)
 
 ### **Embedded**
 
--   [Raspberry Pi](./topics/raspberrypi.md)
--   [Arduino](./topics/arduino.md)
--   [NodeMCU](./topics/nodemcu.md)
+- [Raspberry Pi](./topics/raspberrypi.md)
+- [Arduino](./topics/arduino.md)
+- [NodeMCU](./topics/nodemcu.md)
 
 ### **Electricity**
 
--   [Electricity](./topics/electricity.md)
+- [Electricity](./topics/electricity.md)
 
 # Startup
 
@@ -216,37 +260,37 @@ If you can't explain in a few words what you do, and some people say "Oh, that's
 
 ### **Overview**
 
--   [Focus](./topics/startupFocus.md)
--   [Ideas](./topics/startupIdeas.md)
--   [Equity](./topics/startupEquity.md)
+- [Focus](./topics/startupFocus.md)
+- [Ideas](./topics/startupIdeas.md)
+- [Equity](./topics/startupEquity.md)
 
 ### **Business**
 
--   [Product Market Fit](./topics/startupMarketFit.md)
--   [Business Model](./topics/startupBusinessModel.md)
--   [Pricing](./topics/startupPricing.md)
+- [Product Market Fit](./topics/startupMarketFit.md)
+- [Business Model](./topics/startupBusinessModel.md)
+- [Pricing](./topics/startupPricing.md)
 
 ### **Product**
 
--   [MVP](./topics/startupMVP.md)
--   [Product Desgin](./topics/startupProductDesign.md)
+- [MVP](./topics/startupMVP.md)
+- [Product Desgin](./topics/startupProductDesign.md)
 
 ### **Sales**
 
--   [Sales](./topics/startupSales.md)
-    -   [Copywriting](./topics/startupSalesCopywriting.md)
-    -   [Email](./topics/startupSalesEmail.md)
-    -   [SEO](./topics/startupSalesSeo.md)
-    -   [Marketing](./topics/startupSalesMarketing.md)
+- [Sales](./topics/startupSales.md)
+  - [Copywriting](./topics/startupSalesCopywriting.md)
+  - [Email](./topics/startupSalesEmail.md)
+  - [SEO](./topics/startupSalesSeo.md)
+  - [Marketing](./topics/startupSalesMarketing.md)
 
 # Random
 
--   [Excel](./topics/excel.md)
--   [Statistics](./topics/stats.md)
+- [Excel](./topics/excel.md)
+- [Statistics](./topics/stats.md)
 
 # Machine Learning
 
--   [Brain.js](./topics/brainjs.md)
+- [Brain.js](./topics/brainjs.md)
 
 # Googling
 
