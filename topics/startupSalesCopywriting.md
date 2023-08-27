@@ -1,8 +1,42 @@
-2 schools of advertising:
+# Pitch
+
+> Lead with what, not why.
+
+|          |                                                                                                                                  |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Bad**  | Many of my friends are super confused about their stock options, and it pisses me off how stressed they get thinking about them. |
+| **Good** | [PRODUCT NAME] lets companies plan, communicate and benchmark your compensation in real-time (without spreadsheets)              |
+
+Good examples:
+
+-   Airbnb: We built the first marketplace that lets travelers book rooms with locals, instead of hotels
+-   OpenQ: Find ant talk to yourB2B users fast.
+-   Yung: Adaptive, ML-driven mental health for your team. Better: Personalized, digital therapy programs for your team.
+
+TIPS:
+
+-   Avoid meaningless marketing speak and jargon. Be conversational.
+-   Don' ramble.
+-   Avoid X for Y descriptions. Can be used only:
+    -   X should be a household name.
+    -   Does Y want X?
+    -   Y should be a huge market.
+
+# Landing page
+
+Focus on communicating these:
+
+-   What is it?
+-   How it works?
+-   Is it for me? (explain the value, not the benefits ex. increase sales vs have precise reports)
+
+Try to show use cases based on user personas. ex. managers, sales, marketing, accounting...
+
+# 2 schools of advertising
 
 -   Brand awareness (most people think this is marketing) - Billboards, 30 second TV commercials, print ads, witty jingles, cute slogans
 
--   Direct response - Like "infomercials", you must respond directly to the ad to take advantage of what is offered. You call a specific number set up for tracking.
+-   Direct response - Like "infomercials", you must respond directly to the ad to take advantage of what is o`ffered. You call a specific number set up for tracking.
 
 With direct response, you **know** how much the ads are making i.e. which sales tactics work.
 

@@ -16,6 +16,20 @@ People don’t like sales people but love implementation people. Your website sh
 
 It’s never about getting them on the phone to talk about their business, it’s always about what you can already know about their business and showing that you can provide value towards improving it.
 
+# Do things that don't scale
+
+> **MISTAKE:** All you need is a good product, and growth will take care of itself.
+
+Startups don't take off by themselves. Founders make them take off. They have to manually recruit customers in the beginning, it is not enought o push a button on an advertising network. This is uncomfortable, and founders find many ways to avoid this.
+
+Learning the tactics of sales is good. Realizing that it all comes down to you, and not just knowing how to do sales in theory, but actually doing it and wanting to succeed, is of utmost importance.
+
+**Sales conversions**
+
+Outbound sales is ultimately a numbers game. You cannot close 5 customers from 10 leads. You need a ton of data to confirm a product is bad before stopping with sales.
+
+![Sales conversions](../pics/startup/sales/sales_conversions.jpg)
+
 # How to Sell - Tyler Bosemy
 
 [How to Sell - Tyler Bosemy](https://www.youtube.com/watch?v=xZi4kTJG-LE)

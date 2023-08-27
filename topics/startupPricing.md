@@ -1,3 +1,7 @@
+> # Never charge for time. Charge for outcome.
+>
+> # Never charge for benefits. Charge for results.
+
 [Kevin Hale - Startup Pricing 101](https://www.youtube.com/watch?v=jwXlo9gy_k4)
 
 ![Pricing](../pics/startup/pricing/pricing_thermometer.jpg)

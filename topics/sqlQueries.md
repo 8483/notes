@@ -1,3 +1,25 @@
+# YYYY-MM date format
+
+```sql
+-- 2.5 million rows
+
+-- 12 sec
+select date
+from sales
+
+-- 13 sec
+select concat(year(date), '-', RIGHT('00' + CONVERT(varchar(2), DATEPART(MONTH, date)), 2)) ym
+from sales
+
+-- 15 sec
+select CAST(YEAR(date) AS VARCHAR(4)) + '-' + RIGHT('00' + CAST(MONTH(date) AS VARCHAR(2)), 2) as ym
+from sales
+
+-- 29 sec
+select FORMAT(date, 'yyyy-MM') as ym
+from sales
+```
+
 # STRING_AGG / mysql group_concat
 
 ```sql
@@ -80,11 +102,11 @@ WHERE product.sku = t2.sku
 -- where
 update product set isActive = 0
 where sku in (
-		select sku
-		from stock
-		group by sku
-		having sum(quantity) = 0
-	)
+    select sku
+    from stock
+    group by sku
+    having sum(quantity) = 0
+)
 ```
 
 MySQL
@@ -144,14 +166,13 @@ SELECT
 FROM sales
 ```
 
-# Running Total
+# Column sum / Running total
 
 This one is better because it can be based on all data...
 
 ```sql
--- the `order` by turns this into a running sum.
 select
-    sum(value) over (partition by client order by date desc) runningTotal
+    sum(value) over (partition by client order by date desc) runningTotal -- the `order by` turns this into a running sum.
 from sales;
 ```
 
@@ -461,7 +482,35 @@ The column definition can also be done with this:
 SELECT STRING_AGG(PIVOT_COLUMN, ',')
 ```
 
-## **Shop rows, year columns**
+## **Ex. Columns: warehouses, Rows: products**
+
+```sql
+-- Variables
+DECLARE @cols AS NVARCHAR(MAX),
+    @query  AS NVARCHAR(MAX);
+
+-- Get the distinct warehouses and form a comma-separated string.
+SELECT @cols = STRING_AGG(QUOTENAME(warehouse), ',')
+FROM (
+    SELECT DISTINCT warehouse FROM warehouse_stock
+) AS DistinctWarehouses;
+
+SET @query = N'SELECT product, ' + @cols + ' FROM
+            (
+                SELECT product, stock_level, warehouse
+                FROM warehouse_stock
+           ) AS SourceTable
+            PIVOT
+            (
+                SUM(stock_level)
+                FOR warehouse IN (' + @cols + ')
+            ) AS PivotTable';
+
+-- Execute the dynamic SQL
+EXEC sp_executesql @query;
+```
+
+## **Ex. Columns: years, Rows: shops**
 
 ```sql
 -- variables
@@ -529,7 +578,7 @@ order by shop desc
 EXEC (@sql)
 ```
 
-## **Year rows, shop columns**
+## **Ex. Columns: shops, Rows: years**
 
 ```sql
 -- variables

@@ -184,6 +184,15 @@
 
 -   [Ansible](./topics/ansible.md)
 
+# Artificial Intelligence (AI)
+
+-   [AI](./topics/ai.md)
+-   [Models](./topics/aiModels.md)
+-   [Bots](./topics/aiBots.md)
+-   [Tools](./topics/aiTools.md)
+-   [Embeddings & Vector Databases](./topics/aiEmbeddings.md)
+-   [Prompt Engineering](./topics/aiPromptEngineering.md)
+
 # Electronics
 
 ### **General**
@@ -214,6 +223,12 @@ One important indicator for a product like that is a product that's simple to ex
 
 If you can't explain in a few words what you do, and some people say "Oh, that's pretty interesting...", it's a mistake, and usually a sign of unclear thinking, or a need that is not big enough.
 
+# Solopreneur
+
+1. You need to go all-in on either distribution (sales, influencer, content) or product (coding, design). You outsource the other.
+2. You need the expertise in a technical skill, be it copywriting, design, coding, finance...
+3. You need leverage, in the forms of code, media or capital. You can't use labor.
+
 ### **Overview**
 
 -   [Focus](./topics/startupFocus.md)
@@ -243,10 +258,6 @@ If you can't explain in a few words what you do, and some people say "Oh, that's
 
 -   [Excel](./topics/excel.md)
 -   [Statistics](./topics/stats.md)
-
-# Machine Learning
-
--   [Brain.js](./topics/brainjs.md)
 
 # Googling
 

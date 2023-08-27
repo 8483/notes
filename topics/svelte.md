@@ -1414,7 +1414,7 @@ counter.update((c) => {
 counter.set(5);
 ```
 
-## Update store outside component
+## Get/Update store value outside component
 
 **stores.js**
 
@@ -1423,15 +1423,19 @@ import { writable } from "svelte/store";
 
 export const cart = writable([]);
 export const messageObject = writable({});
+export const foo = writable("foo");
 ```
 
 **utils.js** (Non svelte file)
 
 ```js
-import { messageObject, cart } from "../stores.js";
+import { messageObject, cart, foo } from "../stores.js";
+import { get } from "svelte/store";
 
 export async function addToCart(sku, quantity) {
     await fetchPost("/api/cart", { sku, quantity });
+
+    console.log(get(foo)); // foo
 
     let cartData = await getCart();
 

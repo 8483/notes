@@ -1,3 +1,7 @@
+# Startup curve
+
+![Startup curve](../pics/startup/market_fit/market_fit_startup_curve.jpg)
+
 # Product Market Fit - David Rusenko
 
 [David Rusenko - How To Find Product Market Fit](https://www.youtube.com/watch?v=0LNQxT9LvM0)

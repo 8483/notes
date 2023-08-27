@@ -4,6 +4,12 @@
 [a, b] = [b, a];
 ```
 
+# Unique array values
+
+```js
+let unique = [...new Set(array)];
+```
+
 # Sum
 
 ```js

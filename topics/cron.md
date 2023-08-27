@@ -108,4 +108,7 @@ x-y   range of values
 
 # At 10:15 on every 2nd day-of-month from 1 through 10 and on Friday
 15 10 1-10/2 * 5
+
+# Every 2 hours between 06:00 and 18:00, on Monday - Friday.
+0 6-18/2 * * 1-5
 ```
