@@ -1,16 +1,16 @@
 BERT vs GPT?
 
+# Transformer
+
+A transformer is a type of neural network, which have numbers as inputs. Both the input and output words need to be turned into numbers.
+
+There are many ways to do the conversion, with the most common being word embedding.
+
 # LLM
 
 LLMs (Large language models) are text completion engines
 
 Examples: gpt-3.5, gpt-4, hugginface, llama
-
-# autoGPT
-
-It’s a thinking AI basically, Chat GPT is just LLM. A LLM is like a baby without understanding, but using tools like Langchain and Pinecone you can teach the AI task. Auto GPT on has a few task, it’s really like a template to build your own thinking AI.
-
-Research Langchain and Pinecone to get a better understanding of the potential.
 
 # Custom AI
 

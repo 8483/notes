@@ -188,8 +188,9 @@
 
 -   [AI](./topics/ai.md)
 -   [Models](./topics/aiModels.md)
--   [Bots](./topics/aiBots.md)
+-   [Concepts](./topics/aiConcepts.md)
 -   [Tools](./topics/aiTools.md)
+-   [Langchain](./topics/aiLangchain.md)
 -   [Embeddings & Vector Databases](./topics/aiEmbeddings.md)
 -   [Prompt Engineering](./topics/aiPromptEngineering.md)
 
