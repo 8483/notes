@@ -57,19 +57,11 @@ In a CSRF attack, the attacker makes a request to a third party page in the back
 
 # CORS Same-origin policy
 
-**CHROME DOES NOT ALLOW CORS UNDER ANY CIRCUMSTANCES, not even localhost**
+It's a security feature that prevents a malicious site from making unauthorized requests to another site on behalf of a user.
 
-To bypass that, start chrome with `--disable-web-security` by running this command in `cmd`
+It allows servers to specify who (i.e. which origins) can access their resources.
 
-```
-"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=~/chromeTemp
-```
-
-http://50linesofco.de/post/2017-03-06-cors-a-guided-tour
-
-This policy makes sure that a website can't read the response from a request made to another website and is enforced by the browser.
-
-Ex. If you are on `example.org` you would not want that website to make a request to your banking website and fetch your account balance and transactions.
+> CORS allows servers to control which domains can make API calls to them. Without the appropriate CORS headers, browsers will block cross-domain API calls by default.
 
 The "origin" in this case is composed from
 
@@ -77,11 +69,39 @@ The "origin" in this case is composed from
 -   Host (e.g. `example.com`)
 -   Port (e.g. `8000`)
 
-So `http://example.org` and `http://www.example.org` and `https://example.org` are three different origins.
+These are three different origins:
 
-CSRF (Cross Site Request Forgery) is not mitigated by the Same-Origin Policy.
+```
+http://example.org
+http://www.example.org
+https://example.org
+```
 
-Note that despite the Same-Origin Policy being in effect, our example request from thirdparty.com was successfully carried out to good.com - we just could not access the results. **For CSRF we don't need the result**...
+> CORS is not there to protect the server. It is there to protect the client from cookie stealing and other client side attacks.
+
+By default, web browsers prohibit web pages from making AJAX requests to a different domain than the one that served the web page. This is to prevent malicious sites from reading sensitive data from another site. CORS was introduced to relax this strict same-origin policy, not to enforce it.
+
+When an AJAX request is made to a different domain, the browser checks for a CORS header in the response. If the server includes the appropriate CORS headers in its response (like Access-Control-Allow-Origin), then the browser permits the AJAX request, even across domains. If the headers are not present or do not match the requesting site's origin, then the browser blocks the request.
+
+If you use a website and you fill out a form to submit information (your social security number for example) you want to be sure that the information is being sent to the site you think it's being sent to. So browsers were built to say, by default, "Do not send information to a domain other than the domain being visited".
+
+> **CHROME DOES NOT ALLOW CORS UNDER ANY CIRCUMSTANCES, not even localhost**
+
+To bypass that, start chrome with `--disable-web-security` by running this command in `cmd`
+
+```
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=~/chromeTemp
+```
+
+---
+
+Why do direct API requests work in the browser?
+
+When you access an API route directly in the browser, you are typically performing a simple HTTP GET request and viewing the results. In this scenario, the browser's same-origin policy isn't an obstacle because you're not trying to read the response programmatically from a different origin. You're simply navigating to a URL and viewing the content, just like you would when visiting any other website.
+
+However, when you're working with a client-side app (like a JavaScript app running in a browser), things change. If the app tries to make an AJAX (or fetch, or XMLHttpRequest, etc.) request to an API on a different domain (a cross-origin request), the browser enforces the same-origin policy. The policy restricts web pages from making requests to a different domain than the one that served the web page.
+
+To get around this, the server must include the appropriate CORS headers (like Access-Control-Allow-Origin) in its response to indicate that the client-side app from a different origin is allowed to read the response.
 
 ---
 

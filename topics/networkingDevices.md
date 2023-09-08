@@ -59,3 +59,13 @@ It's a smart hub.
 Only detects devices connected to it.
 
 Routes a signal to **all** connected devices via ethernet.
+
+# Drivers
+
+Drivers act like a translator between the device they control, and the other programs in your system.
+
+For instance, lets say you want to print "hello world" on a piece of paper. So you type that in to notepad, and click print.
+Windows passes the printer driver the document and says "Print this."
+The printer driver takes the information it gets, then turns to the printer and says "I want you to print out the following letters 'h' then 'e' then 'l' and so on.
+
+Except it's all a lot more complicated than that because we don't send individual letters to a printer any more, we send a lot more detailed information about where to put ink or toner down, how to mix and layer ink or toner to get finely detailed pictures to come out clearly, and a lot of printers actually are smart enough to do these things on their own under certain conditions (like printing out pictures stored on a USB drive plugged directly to a printer)

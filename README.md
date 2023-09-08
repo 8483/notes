@@ -188,6 +188,7 @@
 
 -   [AI](./topics/ai.md)
 -   [Models](./topics/aiModels.md)
+    -   [OpenAI GPT API](./topics/aiGptApi.md)
 -   [Concepts](./topics/aiConcepts.md)
 -   [Tools](./topics/aiTools.md)
 -   [Langchain](./topics/aiLangchain.md)
