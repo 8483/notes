@@ -42,6 +42,7 @@ ns3.host.com
 
 -   Add the domain.
 -   Create A record for the domain/subdomain, which points to your server.
+-   Create CNAME record for `www > domain.com` to handle `www.domain.com`.
 
 # SSL
 
@@ -59,15 +60,17 @@ http {
 
     server {
         listen 80;
-        server_name wms.officeplus.mk;
-        return 301 https://wms.officeplus.mk$request_uri;
+         # IMPORTANT: Add CNAME record for www > domain.com
+        # www.domain.com won't work without this
+        server_name domain.com www.domain.com;
+        return 301 https://domain.com$request_uri;
     }
 
     server {
         listen 443 ssl;
-        server_name wms.officeplus.mk;
-        ssl_certificate /etc/letsencrypt/live/wms.officeplus.mk/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/wms.officeplus.mk/privkey.pem;
+        server_name domain.com;
+        ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
 
         root /home/ivan/wms/dist;
         index index.html;

@@ -2,6 +2,8 @@ One direction that I find very promising is to use LLMs to generate embeddings a
 
 # Embeddings
 
+Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces of text.
+
 Turn data into a vector with hundreds of dimensions.
 
 Data, like words, converted into an array of numbers, known as a vector, which contains pattern of relationship between the data.

@@ -5,9 +5,9 @@ The certificates are issued instantly, no waiting.
 Subdomains require separate certificates.
 
 ```
-example.com
-app.example.com
-admin.example.com
+domain.com
+app.domain.com
+admin.domain.com
 ```
 
 All three require different certificates.
@@ -35,7 +35,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot certificates
 
 # Location of certificate - Might require sudo -i
-sudo ls /etc/letsencrypt/live/example.com
+sudo ls /etc/letsencrypt/live/domain.com
 ```
 
 # Issue SSL
@@ -67,7 +67,7 @@ sudo killall nginx
 sudo certbot renew
 
 # Renew individual
-sudo certbot renew --cert-name example.com
+sudo certbot renew --cert-name domain.com
 
 # Start listening to port 80
 systemctl start nginx
@@ -86,7 +86,7 @@ sudo systemctl start nginx
 
 Other sites without SSL will be broken i.e. they will resolve to the SSL one due to the redirect rule. Browsers force SSL so the only solution is to add it to everything.
 
-**A permanent redirect (code 301) gets cached by the browser.** If you had a 301 redirect for `app.example.com` to `example.com` in the past then **the browser will not check again** but use the already cached redirect and visit the target directly.
+**A permanent redirect (code 301) gets cached by the browser.** If you had a 301 redirect for `app.domain.com` to `domain.com` in the past then **the browser will not check again** but use the already cached redirect and visit the target directly.
 
 Check with an incognito window to make sure that existing caches will not be used. **Clear browser cache** to fix this.
 
@@ -98,16 +98,18 @@ http {
 
     server {
         listen 80;
-        server_name example.com;
-        return 301 https://example.com$request_uri;
+         # IMPORTANT: Add CNAME record for www > domain.com
+        # www.domain.com won't work without this
+        server_name domain.com www.domain.com;
+        return 301 https://domain.com$request_uri;
     }
 
     server {
         listen 443 ssl;
-        server_name example.com;
+        server_name domain.com;
 
-        ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+        ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
 
         location / {
             proxy_pass 'http://localhost:3000/';

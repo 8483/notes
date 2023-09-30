@@ -291,16 +291,30 @@ After purchasing an SSL certificate, two files are obtained.
 We place these files into `/etc/nginx/ssl/` and use this configuration in the server/domain block.
 
 ```nginx
-server {
-    listen 443 ssl;
-    ssl_certificate /etc/nginx/ssl/nginx.crt;
-    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+http {
+    server {
+        listen 80;
+
+        # IMPORTANT: Add CNAME record for www > domain.com
+        # www.domain.com won't work without this
+        server_name domain.com www.domain.com;
+        return 301 https://domain.com$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name domain.com;
+
+        ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+    }
 }
+
 ```
 
 SSL/HTTPS uses the `443` port vs the standard HTTP `80`.
 
-Certbot is used for generating **Let's Encrypt** certificates and automating their renewal.
+`Certbot` is used for generating **Let's Encrypt** certificates and automating their renewal.
 
 # Proxy vs Reverse Proxy
 

@@ -130,10 +130,40 @@ http://api.example.com/device-management/managed-devices?region=USA&brand=XYZ
 http://api.example.com/device-management/managed-devices?region=USA&brand=XYZ&sort=installation-date
 ```
 
-# URL array
+# URL examples
 
-```
+```bash
+# Array
 https://www.shop.com/en/products/category?filterIDs=37791,37634,37703,37814,37761
+
+# Large querystring
+https://www.airbnb.co.uk/s/New-York--NY--United-States/homes
+?refinement_paths%5%5D=2Fhomes
+&current_tab_id=home_tab
+&selected_tab_id=home_tab
+&search_type=unknown
+&screen_size=large
+&hide_dates_and_guests_filters=false
+&ne_lat=40.7301052795364
+&ne_lng=-73.98558121302692
+&sw_lat=40.71415512454339
+&sw_lng=-74.01026611955665
+&zoom=15
+&search_by_map=true
+&checkin=2020-03-08
+&checkout=2020-03-21
+&adults=2
+&price_max=221
+&room_types%5B%5D=Entire%20home%2Fapt
+&min_beds=2
+&min_bedrooms=2
+&min_bathrooms=1
+&neighborhood_ids%5B%5D=591
+&neighborhood_ids%5B%5D=486
+&neighborhood_ids%5B%5D=464
+&neighborhood_ids%5B%5D=509
+&neighborhood_ids%5B%5D=593
+&neighborhood_ids%5B%5D=602
 ```
 
 # SSL everywhere - all the time
