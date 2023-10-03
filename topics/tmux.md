@@ -1,67 +1,84 @@
-# tmux
+# Basic
 
-## Basic
 ```bash
-tmux       # Start tmux.  
+tmux       # Start tmux.
 CTRL + B   # Command mode.
 ```
 
-## Windows (tabs)
+# Windows (tabs)
+
 ```bash
-c          # New window.  
-numbers    # Change window.  
-,          # Name window.  
-w          # List windows.  
-.          # Move window. Asks for a number.  
+c          # New window.
+numbers    # Change window.
+,          # Name window.
+w          # List windows.
+.          # Move window. Asks for a number.
 &          # Close window.
 CTRL + D   # Close window.
 ```
 
-## Panes (splits)
+# Panes (splits)
+
 ```bash
-%        # Split horizontally (left/right).   
-\"       # Split vertically (top/bottom).  
-arrows   # Change pane. Resize if holding command.  
-x        # Close pane.  
+%        # Split horizontally (left/right).
+\"       # Split vertically (top/bottom).
+arrows   # Change pane. Resize if holding command.
+x        # Close pane.
 q        # Show pane numbers
 space    # Toggle between layouts
 ```
 
-## Misc
+# Scrolling
+
 ```bash
-[          # Scrolling mode with arrows or PageUp/PageDown. 
+[          # Scrolling mode with arrows or PageUp/PageDown.
 CTRL + C   # Exit scrolling mode.
 ```
 
-# Setup
+# Mouse scrolling
 
-Create a `tmux.sh` file to automate the setup.
+In order to configurate tmux, a `.tmux.conf` file is needed, as it doesn't exist. We can create this with `sudo touch /etc/.tmux.conf`, or `sudo touch ~/.tmux.conf` for a user specific one.
 
-```bash
-tmux new-session \; \
-    send-keys 'echo "Pane 1"' C-m \; \
-    send-keys 'cd /mnt/c/<user>/lab/posto/app && npm start' C-m \; \
-    split-window -h -p 75 \; \
-    send-keys 'echo "Pane 2"' C-m \; \
-    send-keys 'cd /mnt/c/<user>/lab/posto/server && nodemon server.js' C-m \; \
-    split-window -h -p 66 \; \
-    send-keys 'echo "Pane 3"' C-m \; \
-    send-keys 'echo <password> | sudo -S service mysql start && sudo mysql -u root -p<password>' C-m \; \
-    split-window -h -p 50 \; \
-    send-keys 'echo "Pane 4"' C-m \; \
-    send-keys 'cd /mnt/c/<user>/lab/posto' C-m \; \
-    # split-window -v \; \
-    # select-pane -t 0 \; \
-```
-
-# Configuration
-In order to configurate tmux, a `tmux.conf` file is needed, as it doesn't exist. We can create this with `sudo touch /etc/tmux.conf`, or `sudo touch ~/.tmux.conf` for a user specific one.  
+`.tmux.conf`
 
 ```bash
-# Reload config file with CTRL + b + r
-bind r source-file /etc/tmux.conf
-
 # Activate mouse (Scrolling, selecting, re-sizing)
 set -g mouse on
 ```
 
+**IMPORTANT:** Reload the configuration.
+
+```bash
+# Inside tmux (CTRL + B + :)
+source-file ~/.tmux.conf
+```
+
+# Setup script
+
+Create a `tmux.sh` file to automate the setup.
+
+```bash
+# Start a new tmux session
+tmux new-session -d  \; \
+
+# Split the window vertically: left and right
+tmux split-window -h  \; \
+
+# Split the right pane vertically: left and right
+tmux split-window -h  \; \
+
+# Adjust the panes to be of equal width
+tmux select-layout even-horizontal
+
+# Run a script in the first pane (left)
+tmux send-keys -t 0 'cd ~/project/app && npm run dev' C-m  \; \
+
+# Run a script in the second pane (middle)
+tmux send-keys -t 1 'cd ~/project/server/nodemon server.js' C-m \; \
+
+# Move focus to the third pane (right)
+tmux select-pane -t 2 \; \
+
+# Attach to the tmux session to see the panes
+tmux attach-session
+```
