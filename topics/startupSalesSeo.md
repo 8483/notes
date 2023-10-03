@@ -1,13 +1,85 @@
-[Source](https://youtu.be/-B58GgsehKQ)
+# Indexing
 
-Useful links:
+1. Check if site is indexed by Google.
 
--   https://old.reddit.com/r/seogrowth/comments/qwsdin/seo_is_easy_the_exact_process_we_use_to_scale_our/
--   https://old.reddit.com/r/Entrepreneur/comments/sesdxr/recently_hit_6600000_monthly_organic_traffic_for/
--   https://old.reddit.com/r/Entrepreneur/comments/syt6r2/10_step_local_seo_checklist_i_use_to_rank_local/
--   https://old.reddit.com/r/smallbusiness/comments/sryd1p/seo_consultant_charging_family_business_300month/
+```
+site:domain.com
+```
 
-# Rules
+2. Register website with Google Search Console
+
+-   Add domain as property to console.
+-   Add DNS TXT record to server: `google-site-verification=JKDfkaFliasyfIR&l4VT&v4nLNCtlxs`
+-   Index/crawl `domain.com` with URL inspection.
+-   Add sitemap.
+
+# Sitemap
+
+Search engines like Google use this file to more intelligently crawl the website. It's a way for webmasters to inform search engines about pages on their sites that are available for crawling.
+
+If you manage a website, it's a good idea to maintain an XML sitemap and submit it to search engines. This can help ensure that they're aware of all the pages on your site, especially if your site is large or has pages that aren't easily discovered by the standard crawling process.
+
+While a sitemap might not be strictly necessary for every website, it's a best practice that can help ensure full indexing and provide additional benefits. It's especially useful for larger, dynamic, or new sites.
+
+-   **XML Sitemaps:** These are primarily intended for search engines. They provide a list of URLs on a site, and can also offer additional metadata about each URL (when it was last updated, how often it usually changes, and how important it is, relative to other URLs in the site). Typically, **it's not common (or recommended) to include anchor links in XML sitemaps**. Search engines are interested in crawling distinct pages, and an anchor link usually just takes you to a different section of an already indexed page. If you list an anchor link as a separate entry in an XML sitemap, it doesn't provide meaningful or additional information to search engines.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>http://www.domain.com/</loc>
+      <lastmod>2022-09-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>http://www.domain.com/about.html</loc>
+      <lastmod>2022-09-10</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <!-- Additional URLs can be added similarly -->
+</urlset>
+```
+
+-   **HTML Sitemaps:** These are intended primarily for human users. They usually list all of the pages on a website in a clear, hierarchical format, and often link to each of those pages. It helps users navigate and find content on the site. Since these are designed primarily for human users, **you can certainly include anchor links if you believe it will aid navigation or clarity for your site visitors**. For instance, if you have a long FAQ page, and you want to provide users with direct links to specific questions, you might list these anchored sections in an HTML sitemap.
+
+**NOTE: These are different from `index.html`. They are just for indexing and are submitted as `sitemap.html`.**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Our Website's Sitemap</title>
+    </head>
+    <body>
+        <h1>Website Sitemap</h1>
+
+        <h2>Home</h2>
+        <ul>
+            <li><a href="/">Homepage</a></li>
+        </ul>
+
+        <h2>About Us</h2>
+        <ul>
+            <li><a href="/about/history/">Our History</a></li>
+            <li><a href="/about/team/">Our Team</a></li>
+            <li><a href="/about/mission/">Our Mission</a></li>
+        </ul>
+
+        <h2>Products</h2>
+        <ul>
+            <li><a href="/products/category1/">Category 1</a></li>
+            <li><a href="/products/category2/">Category 2</a></li>
+            <li><a href="/products/category3/">Category 3</a></li>
+        </ul>
+    </body>
+</html>
+```
+
+# SEO Rules
 
 Rule #1: Create really good content.  
 Rule #2: **Create really good content!**  
@@ -182,3 +254,14 @@ Frameworks like Angular and next.js, where all three apporaches are possible.
 -   Some pages can be static.
 -   Other pages can be rendered server-side.
 -   And the rest can be client-side.
+
+# Links
+
+[Source](https://youtu.be/-B58GgsehKQ)
+
+Useful links:
+
+-   https://old.reddit.com/r/seogrowth/comments/qwsdin/seo_is_easy_the_exact_process_we_use_to_scale_our/
+-   https://old.reddit.com/r/Entrepreneur/comments/sesdxr/recently_hit_6600000_monthly_organic_traffic_for/
+-   https://old.reddit.com/r/Entrepreneur/comments/syt6r2/10_step_local_seo_checklist_i_use_to_rank_local/
+-   https://old.reddit.com/r/smallbusiness/comments/sryd1p/seo_consultant_charging_family_business_300month/
