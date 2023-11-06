@@ -15,6 +15,10 @@ site:domain.com
 
 # Sitemap
 
+> Add a sitemap **even if** you only have one page.
+
+**NOTE:** Place the `sitemap.xml` file in the site's root directory.
+
 Search engines like Google use this file to more intelligently crawl the website. It's a way for webmasters to inform search engines about pages on their sites that are available for crawling.
 
 If you manage a website, it's a good idea to maintain an XML sitemap and submit it to search engines. This can help ensure that they're aware of all the pages on your site, especially if your site is large or has pages that aren't easily discovered by the standard crawling process.
@@ -189,22 +193,34 @@ The most important one is the title.
 
 Vendors like Facebook and Twitter have their own tags, used to format the appearance of the link in the feed.
 
+SERP = search engine results page
+
 ```html
+<!-- In order of importance -->
+
 <head>
-    <title>Page title that shows up in SERP</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- HTML Meta Tags -->
-    <meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
-    <meta name="description" content="Detailed description about the content" />
-    <meta name="robots" content="index, follow" />
+    <title>domain</title>
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="http://domain.com" />
+    <link rel="shortcut icon" href="/domain_favicon.png" type="image/x-icon" />
+    <link rel="icon" href="/domain_favicon.png" type="image/x-icon" />
+
+    <meta name="description" content="Detailed description in 50-150 characters." />
+    <meta name="robots" content="index, follow, notranslate" />
+
+    <meta http-equiv="Content-Type" content="text/html" />
+    <link rel="canonical" href="https://domain.com/" />
+
+    <meta name="keywords" content="some, key, words" />
+
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Page title that shows up in SERP" />
-    <meta property="og:description" content="Detailed description about the content" />
-    <meta property="og:image" content="http://domain.com/pics/img.jpg" />
-    <meta property="og:site_name" content="domain.com" />
+    <meta property="og:url" content="https://domain.com" />
+    <meta property="og:site_name" content="domain" />
+    <meta property="og:title" content="domain" />
+    <meta property="og:description" content="Detailed description in 50-150 characters." />
+    <meta property="og:image" content="https://domain.com/domain_banner.jpg" />
 </head>
 ```
 
@@ -254,6 +270,66 @@ Frameworks like Angular and next.js, where all three apporaches are possible.
 -   Some pages can be static.
 -   Other pages can be rendered server-side.
 -   And the rest can be client-side.
+
+# Google page ranking
+
+-   **Relevance**
+
+    -   Identify pages relevant to the search query.
+
+-   **Content Quality**
+
+    -   **Comprehensiveness**: Comprehensive and complete content.
+    -   **Freshness**: Updated content.
+    -   **Content Structure**: Proper use of headings and readability.
+
+-   **Backlinks**
+
+    -   **Number of Linking Domains**: Unique domains linking to the page.
+    -   **Authority of Linking Domains**: Weight of links from authoritative sites.
+    -   **Anchor Text of Backlinks**: Context from clickable text of a link.
+    -   **Nature of the Links**: Value of editorial vs. non-editorial links.
+
+-   **User Experience**
+
+    -   **Mobile Usability**: User-friendliness on mobile.
+    -   **Page Speed**: Load times.
+    -   **Bounce Rate & Dwell Time**: User interaction metrics.
+
+-   **Technical SEO**
+
+    -   **Secure and Accessible Website**: HTTPS and structured XML sitemap.
+    -   **Page Structure**: Proper use of HTML tags.
+    -   **Internal Linking**: Links between pages on the same domain.
+
+-   **Search Intent**
+
+    -   Matching user's intended purpose behind queries.
+
+-   **User Engagement**
+
+    -   Metrics like click-through rate (CTR).
+
+-   **Domain Factors**
+
+    -   **Domain Age**: Potential advantage of older domains.
+    -   **Domain History**: Trustworthiness based on history.
+    -   **TLD (Top-Level Domain)**: Treatment of specific TLDs.
+
+-   **Localization**
+
+    -   Results relevant to searcher's region.
+
+-   **Personalization**
+
+    -   Based on search history and previous site visits.
+
+-   **Social Signals**
+
+    -   Correlation with content engagement on social media.
+
+-   **Brand Signals**
+    -   Recognition and trustworthiness of brand searches.
 
 # Links
 

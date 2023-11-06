@@ -1,3 +1,28 @@
+# Overview
+
+> OOP is good when you have to keep track the same thing in many forms, like units in an RTS game. OOP is like having modules within the code.
+
+Procedures are about flow, sequences, first second third... OOP is about data (and function /method) groups and organizing and "don't repeat yourself".
+
+Frankly, OOP isn't very useful for short scripts because they have too little data to organize. If you only have one dish and one cup, then building a cupboard to organize them, and creating methods to take them out and put them in, is not very useful.
+
+**Procedural**
+
+```cpp
+void TimerStart();
+void TimerStop();
+double TimerGetElapsedSeconds();
+```
+
+**OOP**
+
+```cpp
+Timer timer;
+timer.Start();
+timer.Stop();
+printf( “Elapsed: %f\n”, timer.GetElapsedSeconds() );
+```
+
 # Objects
 
 -   **Every object has a constructor property, which reference the function used to create it.**
@@ -15,9 +40,9 @@ Should be used only for objects without behaviour.
 ```javascript
 let obj = {
     foo: "bar",
-    baz: function() {
+    baz: function () {
         console.log("baz");
-    }
+    },
 };
 ```
 
@@ -30,9 +55,9 @@ function createFoo(param) {
     // camelCase
     return {
         foo: param,
-        baz: function() {
+        baz: function () {
             console.log("baz");
-        }
+        },
     };
 }
 
@@ -48,7 +73,7 @@ Identical to `factories`. **Every object has a constructor property, which refer
 function Foo(param) {
     // PascalCase
     this.foo = param;
-    this.baz = function() {
+    this.baz = function () {
         console.log("baz");
     };
 }
@@ -58,9 +83,9 @@ let obj = new Foo("bar");
 
 ```javascript
 //Function expression
-let Foo = function(param) {
+let Foo = function (param) {
     this.foo = param;
-    this.baz = function() {
+    this.baz = function () {
         console.log("baz");
     };
 };
@@ -74,7 +99,7 @@ let obj = new Foo("bar");
 function Foo() {}
 
 Foo.prototype.foo = "bar";
-Foo.prototype.baz = function() {
+Foo.prototype.baz = function () {
     console.log("baz");
 };
 
@@ -89,7 +114,7 @@ let obj = new Foo();
 class Foo {
     constructor(param) {
         this.foo = param;
-        this.bar = function() {}; // Constructor (instance) method.
+        this.bar = function () {}; // Constructor (instance) method.
     }
     baz() {
         console.log("baz"); // Prototype method.
@@ -104,12 +129,12 @@ let obj = new Foo("qux");
 A design pattern ensuring that a class has only one instance.
 
 ```javascript
-let obj = new function() {
+let obj = new (function () {
     this.foo = "bar";
-    this.baz = function() {
+    this.baz = function () {
         console.log("baz");
     };
-}();
+})();
 ```
 
 # Properties
@@ -163,49 +188,49 @@ myObj.hasOwnProperty("foo"); // true
 ```javascript
 // Returns an array of object key-value pairs that are different
 function diffObject(oldObj, newObj) {
-  let diffs = [];
-  
-  for (var key in oldObj) {
-    if (oldObj[key] != newObj[key]) {
-      diffs.push({
-        id: newObj.id, 
-        [key]: newObj[key]
-      })
+    let diffs = [];
+
+    for (var key in oldObj) {
+        if (oldObj[key] != newObj[key]) {
+            diffs.push({
+                id: newObj.id,
+                [key]: newObj[key],
+            });
+        }
     }
-  }
-    
-  return diffs;
+
+    return diffs;
 }
 
 // Returns an array of objects { id, property, value } that are different
 function diffObject2(oldObj, newObj) {
-  let foo = [];
-  
-  for (var key in oldObj) {
-    if (oldObj[key] != newObj[key]) {
-      foo.push({
-        id: newObj.id, 
-        property: key,
-        value: newObj[key]
-      })
+    let foo = [];
+
+    for (var key in oldObj) {
+        if (oldObj[key] != newObj[key]) {
+            foo.push({
+                id: newObj.id,
+                property: key,
+                value: newObj[key],
+            });
+        }
     }
-  }
-    
-  return foo;
+
+    return foo;
 }
 
 // Returns a boolean, FALSE if they are different
 function isSameObject(obj1, obj2) {
-  let isSame = true;
-  
-  for (var key in obj1) {
-    if (obj1[key] != obj2[key]) {
-      isSame = false;
-      break;
+    let isSame = true;
+
+    for (var key in obj1) {
+        if (obj1[key] != obj2[key]) {
+            isSame = false;
+            break;
+        }
     }
-  }
-    
-  return isSame;
+
+    return isSame;
 }
 ```
 
@@ -220,7 +245,7 @@ When we use the `new` operator to call a function, this happens:
 ```javascript
 function Foo(param) {
     this.foo = param;
-    this.baz = function() {
+    this.baz = function () {
         console.log("baz");
     };
 }
@@ -245,12 +270,12 @@ If a function is a regular one i.e. outside of an `object`, it returns a referen
 const video = {
     title: "Title",
     tags: ["a", "b", "c"],
-    showTags: function() {
-        this.tags.forEach(function(tag) {
+    showTags: function () {
+        this.tags.forEach(function (tag) {
             // Callback
             console.log(this.title + " " + tag); // This refers to the window object, not the video
         });
-    }
+    },
 };
 
 video.showTags(); // undefined a, undefined b, undefined c
@@ -262,13 +287,13 @@ We need to bind the anonymous callback to the corresponding object.
 const video = {
     title: "Title",
     tags: ["a", "b", "c"],
-    showTags: function() {
+    showTags: function () {
         this.tags.forEach(
-            function(tag) {
+            function (tag) {
                 console.log(this.title + " " + tag);
             }.bind(this)
         ); // The binding is done here
-    }
+    },
 };
 
 video.showTags(); // Title a, Title b, Title c
@@ -315,11 +340,11 @@ function Foo(param) {
     this.b = "b";
     let c = "c"; // Not part of the object; local variable.
 
-    this.bar = function() {
+    this.bar = function () {
         // ...
     };
 
-    this.baz = function() {
+    this.baz = function () {
         let d = "d";
         this.bar();
     };
@@ -338,12 +363,12 @@ function Foo(param) {
     let _b = "b"; // Converted to private. No longer part of object.
     let _c = "c"; // Already private.
 
-    let _bar = function() {
+    let _bar = function () {
         // Converted to private.  No longer part of object.
         console.log("private method");
     };
 
-    this.baz = function() {
+    this.baz = function () {
         let d = "d";
         _bar(); // No longer needs this.
     };
@@ -360,18 +385,18 @@ function Foo() {
     let _privateVar1 = "bar";
     let _privateVar2 = "baz";
 
-    this.getPrivateVar1 = function() {
+    this.getPrivateVar1 = function () {
         // Don't use this.
         return _privateVar1;
     };
 
     Object.defineProperty(this, "privateVar2", {
-        get: function() {
+        get: function () {
             return _privateVar2;
         },
-        set: function(value) {
+        set: function (value) {
             _privateVar2 = value;
-        }
+        },
     });
 }
 
@@ -422,13 +447,13 @@ We can define the method in the `prototype` of the object, so only one definitio
 // Instance members
 function Circle(radius) {
     this.radius = radius;
-    this.draw = function() {
+    this.draw = function () {
         console.log("draw");
     };
 }
 
 // Prototype members. Can be done after instantiation.
-Circle.prototype.move = function() {
+Circle.prototype.move = function () {
     console.log("move");
 };
 
@@ -445,18 +470,18 @@ The child **must** first inherit from the parent, before getting its own prototy
 
 ```javascript
 function Shape() {
-    this.shape = function() {
+    this.shape = function () {
         console.log("shape");
     };
 }
 
-Shape.prototype.duplicate = function() {
+Shape.prototype.duplicate = function () {
     console.log("duplicate");
 };
 
 function Circle(radius) {
     this.radius = radius;
-    this.draw = function() {
+    this.draw = function () {
         console.log("draw");
     };
 }
@@ -467,7 +492,7 @@ function Circle(radius) {
 // Proper inheritance
 Circle.prototype = new Shape(); // c.shape() works.
 
-Circle.prototype.move = function() {
+Circle.prototype.move = function () {
     console.log("move");
 };
 
@@ -526,21 +551,21 @@ Used to assign behaviours to objects, rather than creating inheritance hierarchi
 
 ```javascript
 const canEat = {
-    eat: function() {
+    eat: function () {
         console.log("eating");
-    }
+    },
 };
 
 const canWalk = {
-    walk: function() {
+    walk: function () {
         console.log("walking");
-    }
+    },
 };
 
 const canSwim = {
-    swim: function() {
+    swim: function () {
         console.log("swimming");
-    }
+    },
 };
 
 function Person() {}
@@ -576,7 +601,7 @@ Eliminate ugly if/switch statements by changing the behaviour of the same method
 ```javascript
 function Shape() {}
 
-Shape.prototype.duplicate = function() {
+Shape.prototype.duplicate = function () {
     console.log("duplicate");
 };
 
@@ -586,7 +611,7 @@ function Circle() {}
 Circle.prototype = new Shape(); // To include instance members.
 Circle.prototype.constructor = Circle;
 
-Circle.prototype.duplicate = function() {
+Circle.prototype.duplicate = function () {
     console.log("duplicate circle");
 };
 

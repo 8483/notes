@@ -1,23 +1,26 @@
 # Shortcuts
 
 ```bash
-ctrl + p                    # Search files.
-ctrl + shift + p            # Commands.
+ctrl + ,                    # Settings
+ctrl + shift + p            # Commands palette
+ctrl + p                    # Search files
 
-alt + shift + select        # Multiple cursors
+alt + click                 # Multiple selections
+alt + shift + click         # Multiple selections in range
 
-ctrl + d                    # Select duplicate values.
-ctrl + u                    # Unselect duplicate values.
+ctrl + d                    # Select next duplicate value
+ctrl + u                    # Unselect duplicate value
+ctrl + shift + L            # Select all duplicate values
 
-ctrl + up/down              # Move line up or down.
+alt + up/down               # Move line up or down
 
-alt + shift + up/down       # Duplicate line.
-alt + shift + left/right    # Select everything between brackets.
+alt + shift + up/down       # Duplicate line
+alt + shift + left/right    # Select everything between brackets
 ```
 
 # Indentation
 
-Go to settings `CTRL` + `,` and set:
+Go to settings with: `CTRL` + `,` and set:
 
 -   Workbench > Tree: indent = 25
 -   Workbench > Tree: Render Indent Guides = always

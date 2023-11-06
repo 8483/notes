@@ -112,6 +112,7 @@ htop                # Runnig processe. CPU and RAM usage.
 ```bash
 df -h --total               # Show disk space in readable format.
 du -hx --max-depth=1 .      # Directory disk space usage
+du -ah .                    # Size of all files in location
 ```
 
 # Install packages

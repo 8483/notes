@@ -128,11 +128,11 @@
 -   Native Script (XML, Javascript)
 -   Flutter (Dart)
 
-**Hybrid**
+**Hybrid (HTML, CSS, Javascript)**
 
--   [Cordova (HTML, CSS, Javascript)](./topics/mobileCordova.md)
--   [Capacitor (HTML, CSS, Javascript)](./topics/mobileCapacitor.md)
--   [PWA (HTML, CSS, Javascript)](./topics/mobilePWA.md)
+-   [Cordova](./topics/mobileCordova.md)
+-   [Capacitor](./topics/mobileCapacitor.md)
+-   [PWA](./topics/mobilePWA.md)
 
 # Linux
 
