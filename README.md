@@ -270,3 +270,20 @@ website.com: query       - Search only in the website
 query 2017..2018         - Seach in the date range
 filetype:pdf query       - Search just for file type
 ```
+
+# xkcd
+
+![Automation](./pics/xkcd/automation.png)  
+[Automation](https://xkcd.com/1319/)
+
+![Is It Worth the Time?](./pics/xkcd/is_it_worth_the_time.png)  
+[Is It Worth the Time?](https://xkcd.com/1205/)
+
+![Dependency](./pics/xkcd/dependency.png)  
+[Dependency](https://xkcd.com/2347/)
+
+![Standards](./pics/xkcd/standards.png)  
+[Standards](https://xkcd.com/927/)
+
+![Password Strength](./pics/xkcd/password_strength.png)  
+[Password Strength](https://xkcd.com/936/)
