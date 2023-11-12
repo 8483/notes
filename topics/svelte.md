@@ -689,7 +689,7 @@ Nested.svelte
 ## Loop
 
 ```html
-{#each items as item, i (item.id}
+{#each items as item, i (item.id)}
 <p>{item.value}</p>
 {/each}
 ```

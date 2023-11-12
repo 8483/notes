@@ -6,48 +6,33 @@ A shell is a user interface for access to an operating system's services. Most o
 Terminal --> shell --> kernel --> hardware
 ```
 
-Terminal - It is not a shell, but rather a window serving a shell. (xterm, konsole)
-
-Shell - The actual CLI that executes commands. (bash, zsh)
+Terminal - It is not a shell, but rather a window serving a shell (xterm, konsole).  
+Shell - The actual CLI that executes commands (bash, zsh)
 
 # Locations
 
 ```bash
 /     # Root directory
 ~     # Home directory
+.     # Current directory
+pwd   # Full path to current directory
 
 # WSL / Ubuntu subsystem on Windows
-cd /mnt/c     # Navigate to My Computer/C:.
+cd /mnt/c     # Navigate to My Computer/C:
 # C:\Users\User\AppData\Local\lxss (WSL location in windows)
-```
-
-# Terminal
-
-```bash
-ctrl + c              # Stop running command.
-ctrl + d              # Close current shell session i.e. logout.
-ctrl + l              # Clear screen. (Scrolls you down in reality)
 ```
 
 # Commands
 
 ```bash
-man COMMAND           # Command help.
+man COMMAND_NAME      # Command manual.
 
-ctrl + a              # Go to beginning of line.
-ctrl + e              # Go to end of line.
-ctrl + f              # Next word.
-ctrl + b              # Previous word.
-
-alt + backspace       # Delete last word.
-alt + left / right    # Go to previous / next word.
-ctrl + u              # Delete whole line.
+ctrl + c              # Stop running command.
+ctrl + d              # Close current shell session i.e. logout.
+ctrl + l              # Clear screen. (Scrolls you down in reality)
 
 history               # Lists all the commands used.
-ctrl + r              # Command history. Hit again for previous.
-
-echo TEXT             # print text
-printf TEXT           # print formatted text
+ctrl + r              # Search command history. Hit again for previous.
 ```
 
 # Navigation
@@ -56,18 +41,17 @@ printf TEXT           # print formatted text
 cd FOLDER   # Change directory
 cd ..       # Go back one up
 cd -        # Go back to last working directory
-
-ls -a       # List all files, including hidden
-ls -l       # List in a list format
-ll          # Shorthand for ls -l
-ls -lh      # Show file size
-
-pwd         # Current path
 ```
 
 # Files
 
 ```bash
+# List
+ls -a       # List all files, including hidden
+ls -l       # List in a list format
+ll          # Shorthand for ls -l
+ls -lh      # Show file size
+
 # Read
 cat FILE       # Show the file content in terminal
 less FILE      # View file content in the less program
@@ -80,8 +64,8 @@ mkdir FOLDER   # Create a folder
 touch FILE     # Create a file
 
 # Copy/Paste
-cp PATH/FILE PATH/FILE   # Create a copy
-mv PATH/FILE PATH/FILE   # Rename or Cut & Paste a file
+cp FROM_PATH/FILE TO_PATH/FILE   # Create a copy
+mv FROM_PATH/FILE TO_PATH/FILE   # Rename or Cut & Paste a file
 
 # Delete
 rm FOLDER/FILE   # Delete folder or file
@@ -91,20 +75,24 @@ rm -r FOLDER     # Delete a directory and its files
 # Find
 
 ```bash
-grep -r 'string' directory_to_search      # List occurences of string in all files.
-find /                                    # List root directory's content.
-find / | grep FILE                        # Search the output.
-find / -size +5M -ls                      # Find files above 5mb.
+find .                          # List directory content.
+find . | grep FILE_NAME         # Search directory.
+find . -iname FILE_NAME         # Find case insensitive.
+find . -size +5M -ls            # Find files above 5mb.
 
-sudo find / -iname FOLDER/FILE.ext        # Find case insensitive.
-which PROGRAM                             # Find path to program.
+which PROGRAM                   # Find path to program.
+
+grep -r 'string' .              # List occurences of string in all files.
 ```
 
 # System
 
 ```bash
 lsb_release -a      # Linux version.
-htop                # Runnig processe. CPU and RAM usage.
+htop                # Runnig processes. CPU and RAM usage.
+
+date                # Date and time.
+timedatectl         # Timezone.
 ```
 
 # Disk
@@ -139,6 +127,22 @@ add-apt-repository REPO         # Add 3rd party repository or PPA (Personal Pack
 curl URL                   # Output the URL content.
 wget "URL"                 # Download from URL.
 sudo dpkg –i FILE_NAME     # Install downloaded file.
+```
+
+# Words
+
+```bash
+ctr + ->              # Jump word right.
+ctr + <-              # Jump word left.
+
+ctrl + a              # Go to beginning of line.
+ctrl + e              # Go to end of line.
+
+ctrl + f              # Next word.
+ctrl + b              # Previous word.
+
+alt + backspace       # Delete last word.
+alt + left / right    # Go to previous / next word.
 ```
 
 # Count
