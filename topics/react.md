@@ -99,6 +99,12 @@ If we don't want to return a reduntant `div` element, we can use a `fragment` i.
     <h1>Hello World</h1>
 </React.fragment>
 ```
+The <> </> shorthand syntax, also known as "empty tags", achieves the same result as <React.Fragment> but in a more concise and readable manner.
+```jsx
+<>
+    <h1>Hello World</h1>
+</>
+```
 
 # Virtual-DOM
 
