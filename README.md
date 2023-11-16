@@ -227,9 +227,9 @@ If you can't explain in a few words what you do, and some people say "Oh, that's
 
 # Solopreneur
 
-1. You need to go all-in on either distribution (sales, influencer, content) or product (coding, design). You outsource the other.
-2. You need the expertise in a technical skill, be it copywriting, design, coding, finance...
-3. You need leverage, in the forms of code, media or capital. You can't use labor.
+1. You need to go **all-in** on either **distribution** (sales, influencer, content) or **product** (coding, design). You outsource the rest.
+2. You need the **expertise** in a **technical skill**, be it copywriting, design, coding, finance...
+3. You need **leverage**, in the forms of **code**, **media** or **capital**. You can't use labor.
 
 ### **Overview**
 
@@ -251,10 +251,16 @@ If you can't explain in a few words what you do, and some people say "Oh, that's
 ### **Sales**
 
 -   [Sales](./topics/startupSales.md)
-    -   [Copywriting](./topics/startupSalesCopywriting.md)
-    -   [Email](./topics/startupSalesEmail.md)
-    -   [SEO](./topics/startupSalesSeo.md)
-    -   [Marketing](./topics/startupSalesMarketing.md)
+-   [Cold Calling](./topics/startupSalesColdCalling.md)
+-   [Email](./topics/startupSalesEmail.md)
+-   [Objection Handling](./topics/startupSalesObjectionHandling.md)
+-   [Meetings](./topics/startupSalesMeetings.md)
+
+### Marketing
+
+-   [Copywriting](./topics/startupSalesCopywriting.md)
+-   [SEO](./topics/startupSalesSeo.md)
+-   [Advertising](./topics/startupSalesAdvertising.md)
 
 # Random
 

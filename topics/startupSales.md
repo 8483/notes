@@ -30,7 +30,7 @@ Outbound sales is ultimately a numbers game. You cannot close 5 customers from 1
 
 ![Sales conversions](../pics/startup/sales/sales_conversions.jpg)
 
-# How to Sell - Tyler Bosemy
+# How to Sell - Tyler Bosemy (Y Combinator)
 
 [How to Sell - Tyler Bosemy](https://www.youtube.com/watch?v=xZi4kTJG-LE)
 
@@ -44,7 +44,7 @@ You have 2 HUGE advantages: passion + deep expertize
 
 Ideally, there should be a sales dedicated co-founder, doing it full-time.
 
-## They almighty funnel
+## The almighty funnel
 
 1. Prospecting - Who might be interested?
 2. Conversations - Is this the right product for them?

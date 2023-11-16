@@ -55,7 +55,7 @@ When you find people hacking your product to do something it wasn't meant to, pa
     - Building a fully functional product is the most expensive possible way to test your hypothesis.
     - Focus on getting toa functional prototype as quickly as possible that you ca get in front of users.
     - Don't worry about scaling, monetizing... It comes later.
-    - Expect it will that 10x the number of iterations:
+    - Expect it will take 10x the number of iterations:
         - Keep your burn low.
         - Build a team that can do this quickly. (Outsourcing is difficult in the early days)
 
@@ -72,7 +72,7 @@ When you find people hacking your product to do something it wasn't meant to, pa
             1. Get someone to use your app in front of you.
             2. Encourage them to give honest feedback.
             3. Ask them to perform a task. (You can't touch the phone/keyboard)
-            4. DO NOT SAY OR DO ANYTHING.
+            4. **DO NOT SAY OR DO ANYTHING**.
             5. Watch in extreme agony as they struggle to figure it out.
 
         - Metrics (Beware, never enough data to support behavior)
@@ -101,11 +101,11 @@ _Launch when your product is better than what's out there_ - Paul Buchheit
 By tracking 3 metrics
 
 1. Returning usage. How many people go back on day 1, 3, 7, 30?
-2. Track NPS (Would you recommend our product? 1 - 10). Should be > 50.
-    - 9, 10 is plus. ex. 88%
-    - 7, 8 is discarded. ex. 8%
-    - 0 - 6 is minus. ex. 12%
-    - Total NPS is 80.
+2. Track NPS (Would you recommend our product toa friend? 1 - 10). Good NPS is > 50%.
+    - 9, 10 ratings are a plus (+). ex. 88%
+    - 7, 8 ratings are discarded. ex. 12%
+    - 0-6 ratings are a minus (-). ex. 8%
+    - Total NPS is 80% = 88% - 8%.
 3. Paying customer renewal rates.
 
 Don't pay much attention to:
