@@ -187,3 +187,249 @@ Tom, is this topic relevant for you at the moment?
 
 Best, Christian
 ```
+
+# How To Write A Good Email Sequence
+
+The 5 most common types of emails in an outbound sequence:
+
+-   Painful Problem
+-   Business Impact
+-   Success Story
+-   A/B Option
+-   Friendly Stripline
+
+A good cold email sequence looks like this:
+
+1. Address a painful problem the prospect might face. Ask to validate.
+2. Highlight the business impact to drive urgency around this topic.
+3. Tell a story of how you have helped similar customers.
+4. Give the prospect something of value with an A/B option.
+5. Be friendly and use humor in your breakup email. Never burn bridges.
+
+And if you want a longer sequence, simply repeat steps 2-4 a couple times.
+
+## 1. Painful Problem
+
+I treat my prospects the same way I want to be treated. Which means: I don't spam them.
+
+I also don't send automated Outreach or Salesloft cadences. Every email I write is written manual.
+
+My first email is never about me or my product. It's 100% about the prospect.
+
+For this I use my TPQ framework:
+
+-   T - trigger: a visible signal that the prospect is in active buying mode or facing a business challenge I can help solve
+-   P - problem statement: an assumption about the business challenge related to the trigger
+-   Q - question: ask to validate the assumption, be curious, prompt a response & conversation
+
+```
+Subject: $5M Series A
+
+Hey John,
+
+Last week you raised a $5M series A with Sunrays. Congrats!
+
+What we often see with other SaaS scale ups in Switzerland is that series A funding goes straight into hiring new go to market reps.
+
+The challenge comes with onboarding them and scaling your best practice sales process across through KPI monitoring.
+
+How are you tackling this?
+
+Cheers,
+```
+
+```
+Tempate 1: Painful Problem
+
+Subject: ((account trigger))
+
+Hey ((firstname)),
+
+You recently ((trigger)). ((recognition))
+
+What we often see with ((industry)) is that ((business impact related to trigger))
+
+The challenge ((business challenge & root cause)).
+
+((validating question))
+
+Cheers / Best / Regards,
+```
+
+## 2. Business Impact
+
+80% of pipeline is created after >10 touches. So follow ups are a must.
+
+However, I HATE meaningless email bumps. Never send them.
+
+"Just bumping this up your inbox" or "thoughts?" - you're dead to me.
+
+Try to add value with every follow up. 3 ways to do so:
+
+-   Be more specific with business challenge & impact
+-   Insert a relevant customer success story
+-   Provide a resource that tells more
+
+Use only 1 with each follow up. That's already emails #2 to #4 in your sequence.
+
+```
+John,
+
+If the KPI monitoring piece is missing you won't be able to see how your reps execute the strategy in real time.
+
+As a result you will only learn about success or failure when the monthly pipeline & revenue reports come in.
+
+It's a hit or miss strategy that can cost crucial ARR that is needed for the next funding round.
+
+What are your thoughts?
+```
+
+```
+Tempate 2: Business Impact
+
+Subject: ((trigger))
+
+((firstname)),
+
+If ((your value prop, feature)) is missing then ((technical pain)).
+
+As a result ((qualitative business impact)).
+
+This strategy causes ((quantitative business impact)).
+
+((validating question))
+```
+
+## 3. Success Story
+
+At this point you have highlighted a painful problem your prospect might face.
+
+You also quantified the business impact to drive urgency around this problem.
+
+Email #3 in your sequence should educate the buyer on how you have solved this problem for others.
+
+1. Identify one very relevant customer reference similar to the prospect and
+2. Describe the solution short but concise
+
+```
+Hey John,
+
+With Sunshine Industries we implemented real time sales KPI monitoring within 2 weeks.
+
+After 4 weeks of adoption they saw a 15% increase in forecast accuracy, which enabled the sales leadership team to react more agile to realtime pipeline information. They've grown revenue 50% YoY since last year.
+
+I see similarities to Sunrays. Should we discuss if we can help you, too?
+
+Cheers
+```
+
+```
+Tempate 3: Success Story
+
+Subject: ((trigger))
+
+Hey ((firstname)),
+
+With ((reference customer)) we implemented ((feature, capability)) within ((implementation time)).
+
+After ((adoption time)) they saw ((KPI improvement)), which enabled ((stakeholders)) to ((organisational improvement)). They have ((overall ROI)) since ((total time frame)).
+
+I see similarities to ((account). Should we discuss if we can help you, too?
+
+Cheers/Best,
+```
+
+## 4. A/B Option
+
+Emails #1-#3 in this sequence are very effective.
+
+They demonstrate you have done your research, understand your prospect and know what you're talking about.
+
+Often you still don't get a response from prospects. Not because you're not relevant but because they are busy, distracted, sick etc.
+
+That's why I like to put some interactiveness in email 4.
+
+I give the prospect an A/B option and promise something of value.
+
+The piece of value can be
+
+-   A personalised video message that highlights the business challenge
+-   A resource to a case study or other resource
+-   A personalised report (if applicable)
+-   A personalised product demo
+
+The piece of value should be something of effort on your side.
+
+Therefore only give it to prospects who are at least willing to smash a like button for you.
+
+```
+John,
+
+If you're still with me I have a quick question:
+
+Would you like to receive a personalised demo of what our solution could look like for you?
+
+Simply respond "👍 " for YES
+or "👎" for NO
+
+Cheers
+```
+
+```
+Tempate 4: A/B Option
+
+Subject: ((trigger))
+
+((firstname)),
+
+If you're still with me I have a quick question:
+
+Would you like to receive ((valuable resource)).
+
+Simply respond
+
+"👍 " for YES
+or "👎" for NO
+
+Cheers
+```
+
+## 5. Friendly Stripline
+
+At some point it's time to give prospects an easy way out.
+
+Maybe they're not for you, you're not for them or the timing isn't right.
+
+Give their inbox a break and sequence them again 3 months later.
+
+The 🔑 here is to use a bit of humor and create some positive emotion. Give the prospect a good laugh.
+
+It's important to end the sequence on a positive note. Never burn bridges 🔥
+
+```
+Hey John,
+
+Either real time KPI monitoring is not a priority right now or you hate receiving emails from strangers.
+
+Whichever it is, I'll give your inbox a break for some time.
+
+If you change your mind you know where to find me!
+
+All the best,
+```
+
+```
+Tempate 5: Friendly Stripline
+
+Subject: ((trigger))
+
+Hey ((firstname)),
+
+Either real time KPI monitoring is not a priority right now or you hate receiving emails from strangers.
+
+Whichever it is, I'll give your inbox a break for some time.
+
+If you change your mind you know where to find me!
+
+All the best,
+```

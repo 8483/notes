@@ -205,3 +205,191 @@ Be bold and confident about the price, but iterate in private.
 Some people think that if you build a product, and you put it out on the market, people will come and start using it. Not really.
 
 **Don't have a growth team if you don't have product market fit** - It's super dangerous as it will kill the business.
+
+# Sales Systemization
+
+## 1. You don't have time.
+
+> Implement 80/20 time management.
+
+On average, sales people spend 28% of their time selling. It should be the reverse.
+
+![](../pics/startup/sales/sales_time_spent.jpg)
+
+## 2. Your onboarding is product centric.
+
+> Use prospect centric messaging.
+
+Customers don't care what you do. They care what you can do for them.
+
+Talk about their goals, challenges, pain points. Talk in their language, use their KPIs and understand their business impact.
+
+## 3. You feel disorganised and overwhelmed.
+
+> Follow a process driven sales approach.
+
+**QAP - Quota Attainment Plan**
+
+Break down annual quotas into daily activities for greater accountability. You will realize you are not doing enough.
+
+![](../pics/startup/sales/sales_process.jpg)
+
+## 4. You lack the pipeline to make quota.
+
+> A Strong Prospecting Muscle
+
+Don't focus on a few prospects. Constantly add new ones in the funnel.
+
+Consistency is key, and should be done daily.
+
+## 5. You get no replies or responses.
+
+> Optimise for conversations, not meetings.
+
+Languages is too complex, Emails too long, Bad deliverability due to external links...
+
+Use the trigger, problem statement, validation (TPV) framework
+
+-   **Trigger** - Observation from your research. Why you are reaching out to them, and why now? Attention grabber and instant relevancy.
+-   **Problem statement** - Meat of the messaging. Addresses the business challenge you assume the prospect might have.
+-   **Validation** - Instead of asking for time or pitching, just ask for validation. "Is this relevant at the moment?", "Is this a problem you're facing?"
+
+You're not trying to sell or book a meeting. Your goal is to establish the prospect has a problem that you can solve.
+
+```
+To: ?
+Subject: [Personalized to prospect, internal looking]
+
+-- observed trigger
+Sarah, saw you liked John Smith's linkedin post on how he books 1 meeting/day through outbound.
+
+-- problem statement
+If you could speed up the personalization piece (point 2)...
+
+-- Soft CTA
+...think it could help?
+
+Kind regards
+```
+
+## 6. You are getting hammered with objections.
+
+> Turn objections into discovery
+
+Every single objection is an opportunity for discovery.
+
+Make the propect feel heard.
+
+```
+A: I am not interested.
+B: That is totally fine. Could you please help me understand... Is it that you already have a vendor in place?
+
+A: Yes, we do.
+B: That is awesome! It sounds that you are happy with the vendor. Mind sharing what they do great?
+
+...
+```
+
+At some point, the prospect will reveal a pain point, because you turned the objection into discovery.
+
+## 7. You struggle to create urgency.
+
+> Quantify the GAP (Cost of Inaction)
+
+Happens usually in the discovery stage.
+
+-   No access to decision maker.
+-   Prospect ghosts you.
+-   Dead - no decision.
+-   Long sales cycles.
+-   Other projects.
+
+These tell you the prospect perceives you as "nice to have" instead of a "must have".
+
+Avoid waiting for 6 months to call back.
+
+**GAP framework (cost of inaction)**
+
+The greater the GAP, the more you can sell.
+
+The GAP quantifies the gap between the prospect's present and future state. When done correctly, you can put dollar signs on it, which is basically the cost of inaction i.e. the opportunity cost of no buying the solution.
+
+We need to establish a problem and show how much its costing the prospect every week/month/year for not deciding.
+
+It's the only way to build business cases and get signed off by upper management.
+
+```
+Present state                             Future state
+-------------                             -------------
+Status quo                                Better ways to opeate
+Painful problem                           Solutions to the problem
+Business challenge          GAP           Focus on better business
+-------------         ---$$$$$$$$$--->    -------------
+Technical problems                        Techincal solutions
+Inefficiencies                            Smooth processes
+Manual work                               Automation
+Time loss                                 Productivity
+Bad data                                  Quality
+```
+
+```
+Example: Say I sell sales coaching.
+
+Problem --> not enough pipeline
+Business impact --> 20% behind on growth targets
+Root cause --> low prospecting activity in the sales team
+
+By tackling the root cause with my coaching I can solve the problem and potentially make a 20% impact on the revenue numbers.
+
+What's 20%? If they make $1M ARR a year, that's $200k. My 2-day coaching costs $20K. That's a 10X return! The prospect is listening 👀
+```
+
+Compelling event = a point in time at which your prospect needs a new solution in place, otherwise they will face financial consequences
+
+Ask your prospects: when do they want a new solution in place? And why?
+
+What's important: a painful problem is not always urgent. As a seller you need to create urgency by uncovering a driving force behind the deal.
+
+No compelling event, no sale.
+
+Example: We need the solution by November 1st because that's when the holiday season kicks in and we will lose a lot of sales if we do not have a new online shop system in place. --> Textbook compelling event.
+
+## 8. You have no control of your deals.
+
+> Set up Mutual Action Plans (MAPs)
+
+-   Dead - no decision
+-   Slipped into next quarter
+-   No clear next steps
+-   No access to decision maker
+-   Ghosting
+-   Blocked by legal
+-   CFO on PTO
+
+After establishing the problem and cost of indecision, you need to define the steps that will take them from their current state to the future state.
+
+You reverse engineer from their desired live date to define all the meetings that will happen, their agenda, desired outcome, participants...
+
+This provides an incredible amount of commitment. It is also a great qualification tool as it uncovers a lot of BS (red flags, friction). It will disqualify a lot of deals, which will allow you to focus on the real ones.
+
+![](../pics/startup/sales/sales_map.jpg)
+
+## 9. Prospects don't see the value.
+
+> YOU are the differentiator.
+
+This turns into a race to the bottom, just competing on pricing and being seen as a commodity.
+
+The only solution is value selling i.e. your ability to persuade vs the product features.
+
+You need to:
+
+-   Demonstrate the technical value of the product.
+-   Show the strategic value with a business MAP.
+-   ROI calculation.
+
+## 10. You are tired, overworked and unbalanced.
+
+> Adopt high performance habits.
+
+Healthy sleep, diet, exercise.
