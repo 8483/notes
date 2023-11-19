@@ -75,14 +75,15 @@ rm -r FOLDER     # Delete a directory and its files
 # Find
 
 ```bash
-find .                          # List directory content.
-find . | grep FILE_NAME         # Search directory.
+grep STRING FILE_NAME           # Find string in specific file.
+grep -r STRING .                # Find string in all directory files.
+
+find .                          # Show all files in directory.
+find . | grep "string"          # Find files in directory.
 find . -iname FILE_NAME         # Find case insensitive.
 find . -size +5M -ls            # Find files above 5mb.
 
 which PROGRAM                   # Find path to program.
-
-grep -r 'string' .              # List occurences of string in all files.
 ```
 
 # System
