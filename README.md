@@ -217,6 +217,8 @@
 
 # Startup
 
+**Good product**
+
 If you can build a product that is so good, people spontaneosly tell their friends about it, you've done 80% of the work you need to be a really successful startup.
 
 The most successful companies you know, you've probably found out about them because a friend of your's said "You have to try this, it's great!".
@@ -225,11 +227,15 @@ One important indicator for a product like that is a product that's simple to ex
 
 If you can't explain in a few words what you do, and some people say "Oh, that's pretty interesting...", it's a mistake, and usually a sign of unclear thinking, or a need that is not big enough.
 
-# Solopreneur
+**Solopreneur**
 
-1. You need to go **all-in** on either **distribution** (sales, influencer, content) or **product** (coding, design). You outsource the rest.
-2. You need the **expertise** in a **technical skill**, be it copywriting, design, coding, finance...
-3. You need **leverage**, in the forms of **code**, **media** or **capital**. You can't use labor.
+You need 3 things:
+
+1. Going **all-in** on either (outsource the rest):
+    - **distribution** (sales, influencer, content).
+    - **product** (coding, design).
+2. **Expertise** in a **technical skill**, be it copywriting, design, coding, finance...
+3. **Leverage**, in the forms of **code**, **media** or **capital**. You can't use labor.
 
 ### **Overview**
 
@@ -258,9 +264,11 @@ If you can't explain in a few words what you do, and some people say "Oh, that's
 
 ### Marketing
 
--   [Copywriting](./topics/startupSalesCopywriting.md)
--   [SEO](./topics/startupSalesSeo.md)
--   [Advertising](./topics/startupSalesAdvertising.md)
+-   [Copywriting](./topics/startupMarketingCopywriting.md)
+-   [SEO](./topics/startupMarketingSeo.md)
+-   [Advertising](./topics/startupMarketingAdvertising.md)
+-   [Google Analytics](./topics/startupMarketingGoogleAnalytics.md)
+-   [Google Tag Manager](./topics/startupMarketingGoogleTagManager.md)
 
 # Random
 

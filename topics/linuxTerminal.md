@@ -79,9 +79,12 @@ grep STRING FILE_NAME           # Find string in specific file.
 grep -r STRING .                # Find string in all directory files.
 
 find .                          # Show all files in directory.
-find . | grep "string"          # Find files in directory.
+find . -name "*.txt"            # Find all text files.
+find . -size +5M                # Find files above 5mb.
+find . -mtime +3                # Files older than 3 days.
+
 find . -iname FILE_NAME         # Find case insensitive.
-find . -size +5M -ls            # Find files above 5mb.
+find . | grep "string"          # Find files in directory.
 
 which PROGRAM                   # Find path to program.
 ```
@@ -100,8 +103,17 @@ timedatectl         # Timezone.
 
 ```bash
 df -h --total               # Show disk space in readable format.
-du -hx --max-depth=1 .      # Directory disk space usage
-du -ah .                    # Size of all files in location
+du -hx --max-depth=1 .      # Directory disk space usage.
+du -ah .                    # Size of all files in location.
+```
+
+# Delete
+
+**ALWAYS** select before deleting!!!
+
+```bash
+find . -type f -name '*.txt' -mtime +3     # Files older than 3 days.
+find . -type f -name '*.txt' -mtime +3 -exec rm {} \;       # DELETE
 ```
 
 # Install packages

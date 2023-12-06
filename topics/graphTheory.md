@@ -25,13 +25,26 @@ let graph = {
 };
 ```
 
+**weighted**
+
+```js
+let weightedGraph = {
+    a: { b: 1, c: 2 },
+    b: { d: 3 },
+    c: { e: 4 },
+    d: {},
+    e: { b: 5 },
+    f: { d: 6 },
+};
+```
+
 # Traversal algorithms
 
 They show if we can travel to some node.
 
 ![Traversal](../pics/graphTheory/graphTheory_traversal.jpg)
 
-## Depth first traversal
+## Depth First Search (DFS)
 
 Exploring one direction as far as possible before switching directions.
 
@@ -71,7 +84,7 @@ function depthFirst(graph, source) {
 depthFirst(graph, "a"); // abdfce
 ```
 
-## Breadth first traversal
+## Breadth First Search (BFS)
 
 Explore all directions evenly.
 
@@ -96,6 +109,69 @@ function breadthFirst(graph, source) {
 }
 
 depthFirst(graph, "a"); // abcedf
+```
+
+## Dijkstra (weighted)
+
+Specialized for shortest-path finding in weighted graphs.
+
+```js
+function dijkstra(graph, startNode) {
+    const distances = {};
+    const parents = {};
+    const visited = new Set();
+
+    // Initialize distances and parents
+    for (const node in graph) {
+        distances[node] = Infinity;
+        parents[node] = null;
+    }
+    distances[startNode] = 0;
+
+    let currentNode = startNode;
+
+    while (currentNode) {
+        // Mark the current node as visited
+        visited.add(currentNode);
+
+        // Update distances to each neighbor
+        for (const neighbor in graph[currentNode]) {
+            if (!visited.has(neighbor)) {
+                const newDistance = distances[currentNode] + graph[currentNode][neighbor];
+                if (newDistance < distances[neighbor]) {
+                    distances[neighbor] = newDistance;
+                    parents[neighbor] = currentNode;
+                }
+            }
+        }
+
+        // Find the next node to process
+        currentNode = null;
+        let smallestDistance = Infinity;
+        for (const node in distances) {
+            if (!visited.has(node) && distances[node] < smallestDistance) {
+                smallestDistance = distances[node];
+                currentNode = node;
+            }
+        }
+    }
+
+    return { distances, parents };
+}
+
+// Example usage:
+const graph = {
+    a: { b: 1, c: 4 },
+    b: { a: 1, d: 2, e: 3 },
+    c: { a: 4, e: 1 },
+    d: { b: 2, f: 5 },
+    e: { b: 3, c: 1, f: 1 },
+    f: { d: 5, e: 1 },
+};
+
+const startNode = "a";
+const result = dijkstra(graph, startNode);
+console.log(result);
 ```
 
 # Airports example
