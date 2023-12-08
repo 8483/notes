@@ -1,3 +1,5 @@
+[Source](https://youtu.be/u_ECkoHVlZ8)
+
 # Overview
 
 > If you don't track conversions, you just have a really fancy hit counter.
@@ -13,6 +15,32 @@ Ex. Add items to shopping cart, fill out a lead-gen form, download coupons, find
 | Engagement                       | Bouces, Session duration  |
 | Exploration (data drilling)      | 30 fixed reports          |
 | Conversions (events)             | Goals                     |
+
+# Install
+
+You can insert this code manually in the `<head>`.
+
+```js
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-XXXXXXXXX");
+</script>
+```
+
+Or via Google Tag Manager. In this case, you need to add this code as well, in order to be able to send custom events.
+
+```js
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+</script>
+```
 
 # Account
 
@@ -100,10 +128,10 @@ You can use comparisons to base the whole data on a specific dimension.
 
 # Events
 
-1. Automatically tracked (Default) - Session starts...
+1. Automatically tracked (Default) - `first_session`, `session_start`, `user_engagement`.
 2. Enhanced measurements (Extra automatically tracked events) - Scroll, download... (configured in data stream)
-3. Recommended events - Predefined/standardized like add_to_cart, signup, checkout...
-4. Custom events - Whatever you want.
+3. Recommended events - Predefined/standardized like `add_to_cart`, `signup`, `checkout`...
+4. Custom events - Whatever you want. Check recommended events before creating a custom one.
 
 # Custom events
 
@@ -113,6 +141,19 @@ These require to be linked with custom dimensions.
 admin > property settings > data display > custom definitions
 ```
 
+# Manual event sending
+
+1. Ask developer to push a custom event to the Google Analytics data layer.
+
+```js
+gtag("event", "sign_up");
+```
+
+2. Check if the event is avaliable in the Tag Manager preview.
+3. Create a custom trigger to use the custom event as a triggering condition.
+4. Create a tag to send the event to Google Analytics, link it to the custom trigger.
+5. Verify the event is sent via Google Analytics DebugView
+
 # Admin DebugView
 
 Track events in real time. Use it with Google Tag Manager to verify events are fired. These events take 24-48 hours to show up in reports.
@@ -120,6 +161,36 @@ Track events in real time. Use it with Google Tag Manager to verify events are f
 ```
 admin > property settings > data display > DebugView
 ```
+
+# Flow of data
+
+```
+Event > Data Layer > Tag > Google Analytics > Reports
+```
+
+1. **Event:** This is any user interaction with your website or app, like clicks, form submissions, pageviews, etc.
+
+2. **Data Layer:** The event data is captured and stored here. The data layer is a JavaScript object that holds structured data about the event.
+
+3. **Tag:** Using a tag management system like Google Tag Manager, tags are triggered based on the data in the data layer. These tags are responsible for sending the captured data to Google Analytics.
+
+4. **Google Analytics:** Once the data arrives at Google Analytics, it is processed according to your GA setup and configurations.
+
+5. **Data Stream:** In the context of Google Analytics 4 (GA4), a data stream refers to the flow of data from a specific source (like a website or app) into GA4. This step is more about the initial configuration of where the data is coming from and how it should be handled, rather than a step in the data flow process itself.
+
+6. **Reports:** After processing, the data is available in various reports within Google Analytics, where you can analyze and derive insights.
+
+# Data Layer vs Data Stream
+
+1. **Collection and Structuring of Data in the Data Layer:** When a user interacts with a website (like clicking a button, completing a purchase, or navigating to a page), these interactions can be captured and stored in the data layer. The data layer collects and structures this information, ensuring it's formatted correctly before it's sent to Google Analytics.
+
+2. **Sending Data from the Data Layer to Google Analytics:** The data in the data layer is then pushed to Google Analytics through various tracking codes or tags (like Google Tag Manager). These tags are designed to read the information from the data layer and send it to Google Analytics.
+
+3. **Data Stream in Google Analytics:** Once the data reaches Google Analytics, it is processed according to the configurations set up for the specific data stream. A data stream in Google Analytics 4 (GA4) represents a source of data (like a website or mobile app) and is configured to handle the data it receives.
+
+4. **Analysis and Reporting:** After the data is processed in the data stream, it becomes available in Google Analytics for analysis and reporting. This allows website owners and marketers to gain insights into user behavior, website performance, and other key metrics.
+
+In this workflow, the data layer is critical for collecting and structuring the data on the website, while the data stream is responsible for defining how that data is handled once it reaches Google Analytics. The data layer ensures that the data sent to the data stream is accurate, comprehensive, and formatted correctly for analysis.
 
 # UTM Tags
 
