@@ -266,9 +266,9 @@ You need 3 things:
 
 -   [Copywriting](./topics/startupMarketingCopywriting.md)
 -   [SEO](./topics/startupMarketingSeo.md)
--   [Advertising](./topics/startupMarketingAdvertising.md)
 -   [Google Analytics](./topics/startupMarketingGoogleAnalytics.md)
 -   [Google Tag Manager](./topics/startupMarketingGoogleTagManager.md)
+-   [Advertising](./topics/startupMarketingAdvertising.md)
 
 # Random
 
