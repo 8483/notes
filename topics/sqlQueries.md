@@ -333,6 +333,28 @@ FROM
 ORDER BY customerName;
 ```
 
+# Recursion
+
+Dates generator from date to date (now).
+
+```sql
+with recursive dates as (
+	select '2023-01-01' date -- start date
+	union all
+	select date_add(date, interval 1 day)
+	from dates
+	where date < curdate() -- end date
+)
+select * from dates
+
+/*
+2023-01-01
+2023-01-02
+2023-01-03
+...
+*/
+```
+
 # Rollup (Total Row)
 
 `ROLLUP` is a subclause of the `GROUP BY` clause which provides a shorthand for defining multiple grouping sets. Unlike the `CUBE` subclause, `ROLLUP` does not create all possible grouping sets based on the dimension columns; the `CUBE` makes a subset of those.

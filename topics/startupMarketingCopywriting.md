@@ -34,9 +34,13 @@ Try to show use cases based on user personas. ex. managers, sales, marketing, ac
 
 # 2 schools of advertising
 
--   Brand awareness (most people think this is marketing) - Billboards, 30 second TV commercials, print ads, witty jingles, cute slogans
+**Brand awareness**
 
--   Direct response - Like "infomercials", you must respond directly to the ad to take advantage of what is o`ffered. You call a specific number set up for tracking.
+Мmost people think this is marketing... ex. Billboards, 30 second TV commercials, print ads, witty jingles, cute slogans...
+
+**Direct response**
+
+Like "infomercials", you must respond directly to the ad to take advantage of what is offered. You call a specific number set up for tracking.
 
 With direct response, you **know** how much the ads are making i.e. which sales tactics work.
 
@@ -50,33 +54,34 @@ It started a long time ago with "mail order catalogues". Businesses place ads in
 
 # Split test
 
-"Beat the control"
+**Beat the control!**
 
 Control is the best performing ad, and the goal is to alter the copy until the new ad becomes the control.
 
 # Formula
 
+```
 Emotionally compelling primary promise + delivery mechanism = Intellectually interesting appeal (big idea)
 
-Intellectually interesting appeal (big idea) = How doest the primary promise work with the delivery mechanism
+Intellectually interesting appeal (big idea) = How does the primary promise work with the delivery mechanism
 
-Delivery mechanism = gimmick, hook
-Makes the common seem novel
+Delivery mechanism = gimmick, a hook which makes the common seem novel
+```
 
-| Delivery mechanism                                               | Promise                                                  |
-| ---------------------------------------------------------------- | -------------------------------------------------------- |
-| 4 hour work-week                                                 | Escape 9-5                                               |
-| Muscle confusion                                                 | P90X workout                                             |
-| Astronaut's nutrient                                             | Vitamin D supplement                                     |
-| Secret currency                                                  | Gold investing newsletter                                |
-| Batman gun                                                       | 1,435% gain                                              |
-| Secret "$50 Marijuana stock blueprint…"                          | Turn a single $50 into a massive fortune                 |
-| "Dark trades" the anonymous trades behind every major stock move | Collect $80k in a matter of days                         |
-| "Wiretapping" America's richest investors                        | Turn $2,000 into $10 million                             |
-| Mysterious "Fingerprints of God" confirmed inside human cells    | Prevent diseases like Alzheimer's and diabetes           |
-| Gold skimming                                                    | Get paid for every ounce of gold pulled from the ground  |
-| New "Gene Hacking" technology ends all disease                   | Get in on a ground-breaking IPO investment               |
-| FDA anomaly "God Key"                                            | Get in on a stock that could go to 35,000% by January 12 |
+| Promise                                                  | Delivery mechanism                                               |
+| -------------------------------------------------------- | ---------------------------------------------------------------- |
+| Escape 9-5                                               | 4 hour work-week                                                 |
+| P90X workout                                             | Muscle confusion                                                 |
+| Vitamin D supplement                                     | Astronaut's nutrient                                             |
+| Gold investing newsletter                                | Secret currency                                                  |
+| 1,435% gain                                              | Batman gun                                                       |
+| Turn a single $50 into a massive fortune                 | Secret "$50 Marijuana stock blueprint…"                          |
+| Collect $80k in a matter of days                         | "Dark trades" the anonymous trades behind every major stock move |
+| Turn $2,000 into $10 million                             | "Wiretapping" America's richest investors                        |
+| Prevent diseases like Alzheimer's and diabetes           | Mysterious "Fingerprints of God" confirmed inside human cells    |
+| Get paid for every ounce of gold pulled from the ground  | Gold skimming                                                    |
+| Get in on a ground-breaking IPO investment               | New "Gene Hacking" technology ends all disease                   |
+| Get in on a stock that could go to 35,000% by January 12 | FDA anomaly "God Key"                                            |
 
 Bank 1,435% (or more) on Law Enforcement's new "BATMAN GUN"
 The only truly non-lethal tool for police, military and security forces that's about to put tasers out of business
