@@ -230,5 +230,19 @@ https://www.example.com?utm_source=newsletter&utm_medium=email&utm_campaign=summ
 **4. Complete UTM-Tagged URL**
 
 ```
-https://www.bookstore.com/winter-sale?utm_source=newsletter&utm_medium=email&utm_campaign=winter_book_sale&utm_term=young_adults&utm_content=sci-fi
+https://www.bookstore.com/winter-sale?
+utm_source=newsletter
+&utm_medium=email
+&utm_campaign=winter_book_sale
+&utm_term=young_adults
+&utm_content=sci-fi
+```
+
+**Examples**
+
+```
+https://www.domain.com/influencer?
+utm_source=youtube&
+utm_medium=paid-video&
+utm_campaign=influencer_name
 ```
