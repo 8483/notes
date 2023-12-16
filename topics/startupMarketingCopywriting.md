@@ -1,6 +1,6 @@
 > Marketing has only one goal... To make SALES!
 
-Great resources:
+Great resources for copywriting/ads:
 
 -   [Swiped - Copywriting Examples](https://swiped.co)
 -   [Clickbank - Affiliate Marketplace](https://www.clickbank.com)
@@ -9,13 +9,13 @@ Great resources:
 
 [source](https://www.reddit.com/r/InternetRiches101/comments/gefpnr/i_make_around_300000_a_year_as_a_freelance/)
 
--   **Brand awareness**
+**Brand awareness**
 
 Мost people think this is marketing... ex. Billboards, 30 second TV commercials, print ads, witty jingles, cute slogans...
 
 The viewer may or may not purchase in the future.
 
--   **Direct response**
+**Direct response**
 
 Like "infomercials", you must respond directly to the ad to take advantage of what is offered. You call a specific number set up for tracking.
 
@@ -77,7 +77,7 @@ Try to show use cases based on user personas. ex. managers, sales, marketing, ac
 
 # BIG IDEA Formula
 
-It takes a NORMAL idea (lots of competition, is boring) and turns it into something exciting, different and interesting. It's the "secret ingredient".
+It takes a NORMAL idea (lots of competition, is boring) and turns it into something exciting, different and interesting. It's the "secret ingredient" which makes the common seem novel.
 
 Everything is built around this concept.
 
@@ -88,30 +88,28 @@ Nobody is going to read your promotion unless the headline gets their attention.
 **Formula:**
 
 ```
-Emotionally compelling primary promise + delivery mechanism = Intellectually interesting appeal (big idea)
-
-Intellectually interesting appeal (big idea) = How does the primary promise work with the delivery mechanism
-
-Delivery mechanism = gimmick, a hook which makes the common seem novel
+Intellectually interesting appeal (big idea) = Emotionally compelling primary promise + delivery mechanism
 ```
 
-"What is the unique delivery system upon which the promise will be delivered?"
+How does the primary promise work with the delivery mechanism? What is the unique delivery system upon which the promise will be delivered?
 
-Ex. "How to outsource - Outsourcing business for profit explained" vs "The 4-hour workweek - Escape 9-5. Live anywhere, and join the new rich."
+```
+Common: How to outsource - Outsourcing business for profit explained
+vs
+BIG IDEA: The 4-hour workweek - Escape 9-5. Live anywhere, and join the new rich
+
+Promise: Escape 9-5. Live anywhere, and join the new rich
+Delivery mechanism: The 4-hour workweek
+```
 
 There is no difference between the idea, the methods, and knowledge in these books. The only difference is how the content and idea is presented.
 
-The promise is "Escape 9-5. Live anywhere, and join the new rich.", and you achieve this with "The 4-hour workweek" delivery mechanism.
-
 It sparks interest by asking yourself, what exactly is the 4-hour workweek, and how will it help me escape 9-5.
-
-Ex. Regualar hammer vs "INDESTRUCTIBLE BIG BERTHA"
-
-The promise is hammering a nail, the delivery mechanism is "BIG BERTHA".
 
 | Product         | Promise (Subtitle)                                                   | Delivery mechanism (Title)                                                       |
 | --------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | Book            | Escape 9-5. Live anywhere, and join the new rich                     | 4 hour workweek                                                                  |
+| Tool            | Hammer                                                               | Indestructible Big Bertha                                                        |
 | Workout         | Get shredded with P90X program                                       | Muscle confusion                                                                 |
 | Food            | KFC best tasting chicken                                             | 14 secret herbs and spices                                                       |
 | Supplement      | Vitamin D supplement                                                 | Astronaut's nutrient                                                             |
@@ -134,7 +132,7 @@ The promise is hammering a nail, the delivery mechanism is "BIG BERTHA".
 
 Bank 1,435% (or more) on Law Enforcement's new "BATMAN GUN"... The only truly non-lethal tool for police, military and security forces that's about to put tasers out of business.
 
-This is read as "What is this new Batman Gun law enforcement is using, and how is it going to make me 1,435% gains?"
+This is read as: "What is this new Batman Gun law enforcement is using, and how is it going to make me 1,435% gains?"
 
 Ask yourself 2 questions:
 
