@@ -4,16 +4,19 @@
 
 Buyers go through 80% of the decision making process without ever talking to sales. This is why marketing is so important because the buyer has already made up his mind when sales gets involved.
 
-# Workflow
+# Checklist
 
 **Accounts:**
 
--   Google Tag Manager
--   Google Analytics
--   Facebook fan page
+-   Google
+    -   Tag Manager
+    -   Analytics
+-   Facebook
+    -   Fan page
+    -   Facebook business account
+    -   Facebook ad account
 -   Instagram
--   Facebook business account
--   Facebook ad account
+    -   Profile
 
 **Website:**
 
@@ -21,9 +24,10 @@ Buyers go through 80% of the decision making process without ever talking to sal
 
 **Google Tag Manager:**
 
--   Google Analytics
--   Facebook pixel
--   Facebook custom conversion
+-   Google Analytics (Google tag)
+    -   GA4 custom events
+-   Facebook pixel (Data sources > dataset) (Custom HTML)
+    -   Facebook custom conversions
 
 **Facebook Ads Manager:**
 
@@ -56,9 +60,7 @@ The targeting works as `OR`, meaning it includes everyone that matches some of t
 5. Lookalike audience based customer list custom audience
 
 Custom and lookalike audiences update automatically.  
-Lookalike audiences are COLD audiences.
-
-Warm audience = Website visitors, email lists, page engagers, video viewers...
+Lookalike audiences are COLD audiences. WARM audience = Website visitors, email lists, page engagers, video viewers...
 
 Notes:
 
@@ -66,26 +68,21 @@ Notes:
 -   Exclude pixel audiences so that you ensure you are targeting new people
 -   Try to move away from interest based targeting towards lookalike audiences
 
-**Targeting**
+**Performance**
 
-Best:
-
--   **Lookalike Audience** from existing customers (emails)
-
-Decent:
-
--   Facebook page/business admins (digital activities)
--   People who follow business content i.e. Forbes magazine
--   People who follow competitors
-
-Unreliable:
-
--   Small business owners (digital activities)
--   Job titles ex. CEO, owner, founder...
+1.  Best:
+    -   **Lookalike Audience** from existing customers (emails)
+2.  Decent:
+    -   Facebook page/business admins (digital activities)
+    -   People who follow business content i.e. Forbes magazine
+    -   People who follow competitors
+3.  Unreliable:
+    -   Small business owners (digital activities)
+    -   Job titles ex. CEO, owner, founder...
 
 # Objectives
 
-**Conversions are twice as powerful as traffic. Always use this.**
+> **Conversions are twice as powerful as traffic. Always use this.**
 
 Conversion
 
@@ -115,17 +112,15 @@ Consideration
 
 # Advertising Strategies
 
-### Direct to offer (Sales, Short term)
+### Direct to offer (Sales, Short term) - Different audience, same ads
 
-Used a lot for eCommerce.
+> Showing a specific product or service directly. Used a lot for eCommerce.
 
-Showing a specific product or service directly.
-
-> One campaign per product range
+**Use one campaign per product range**
 
 Ex. Shoes in one campaign, hats in another.
 
--   Turn on "Campaign Budget Optimization" (Advantage Cmpaign Budget) setting. This allocates more money to the better performing ad sets.
+-   Turn on "Campaign Budget Optimization" (Advantage Campaign Budget) setting. This allocates more money to the better performing ad sets.
 -   1 targeting option per **cold** ad set to test which one is the best.
 -   3-4 ads per ad set max.
 
@@ -149,9 +144,9 @@ Why is there a warm audience? Because the right amount of budget will be automat
 
 ---
 
-### Lead Magnet strategy (Sales, Short term)
+### Lead Magnet strategy (Sales, Short term) - Different audience, same ads
 
-Offering something for free in exchange for an email address, i order to retarget them later.
+> Offering something for free in exchange for an email address, in order to retarget them later.
 
 Ex. A free SEO tutorial, and later sell them your services.
 
@@ -191,7 +186,7 @@ Campaign 1: Retargeting Campaign
 
 ---
 
-### Omnipresent content (Brand, Long term)
+### Omnipresent content (Brand, Long term) - Same audience, different ads
 
 > Put **different** ads in front of the **same** people to build **awareness**.
 
@@ -258,7 +253,10 @@ There are 4 different ad categories:
 -   **Testimonial** - Proof that it worked for others.
 -   **CTA** - Take an action ex. Signup, book meeting, purchase... You can have multiple CTAs at once.
 
-Match the size of the ask with the complexity of the offer. Big ask (ex. book meeting, expensive product) = video, impulse purchases = pictures. Always test though.
+Match the size of the ask with the complexity of the offer (Always test though)
+
+-   Big ask (ex. book meeting, expensive product) = video
+-   Impulse purchases = pictures.
 
 Order of ad interaction by audience:
 
@@ -276,7 +274,7 @@ Make a list of reasons why someone might buy your offer.
 
 Headline - clearly explain your offer
 
-Primary text
+**Primary text**
 
 -   Callout method, when targeting is not easy, include the filtering in the description by addressing specific sub-audiences. Ex. Interior decorating vs people that moved recently.
 -   Benefit rich description
@@ -286,6 +284,7 @@ Primary text
 
 ```
 Headline: Mouthwateringly Good, Low-Calorie Cakes
+
 Primary text:
 
 Our signature Rainbow Cake smothered in white chocolate buttercream frosting & topped with fresh fruit... but the best bit?
