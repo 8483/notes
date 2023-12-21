@@ -106,6 +106,7 @@ The positions are the lines at which the elements start or end. A grid with 5 co
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 5 columns, 6 lines */
     grid-template-rows: repeat(5, 1fr); /* shorthand for 5 rows, 6 lines */
 }
+
 #box1 {
     background: red;
     grid-column-start: 1; /* start at column line 1 */
@@ -113,6 +114,7 @@ The positions are the lines at which the elements start or end. A grid with 5 co
     grid-row-start: 1; /* start at row line 1 */
     grid-row-end: 2; /* end at rown line 1 */
 }
+
 #box2 {
     grid-column: 3/-1; /* start at column line 3, end at -1 (last) */
     grid-row: 2/-1; /* start at row line 2, end at -1 (last) */
@@ -122,11 +124,13 @@ The positions are the lines at which the elements start or end. A grid with 5 co
     padding: 10px;
     background: blue;
 }
+
 #box3 {
     background: rgba(0, 255, 0, 0.8);
     grid-column: 2/4; /* start at column line 2, end at 4 */
     grid-row: 3/5; /* start at row line 3, end at 5 */
 }
+
 .box {
     background: yellow;
 }
@@ -134,6 +138,42 @@ The positions are the lines at which the elements start or end. A grid with 5 co
 
 This CSS would result in:  
 ![CSS Grid](../pics/grid.jpg)
+
+# Grid Area
+
+```css
+.container {
+    display: grid;
+
+    grid-template-rows: 25px auto;
+
+    grid-template-areas:
+        "logo search dropdown"
+        "nav nav nav";
+}
+
+.logo {
+    grid-area: logo;
+    width: 140px;
+}
+
+input {
+    grid-area: search;
+    margin-left: 20px;
+    width: 140px;
+}
+
+.dropdown {
+    grid-area: dropdown;
+}
+
+.nav {
+    grid-area: nav;
+    display: flex;
+    margin-left: 20px;
+    gap: 20px;
+}
+```
 
 # Flexbox
 

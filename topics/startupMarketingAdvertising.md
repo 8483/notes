@@ -4,7 +4,7 @@
 
 Buyers go through 80% of the decision making process without ever talking to sales. This is why marketing is so important because the buyer has already made up his mind when sales gets involved.
 
-# Checklist
+# Setup
 
 **Accounts:**
 
@@ -80,7 +80,16 @@ Notes:
     -   Small business owners (digital activities)
     -   Job titles ex. CEO, owner, founder...
 
+# Datasets (Pixels)
+
+1. Create dataset under data sources.
+2. Assign dataset to ad account (assign assets).
+3. Setup Meta Pixel.
+4. Disable ad blocker in target website to send first event.
+
 # Objectives
+
+**Campaging objectives don't really matter**. What they do is d**etermine the conversion options you have in the ad set optimizaion and delivery** section. These are the actual objectives Facebook's algorithms is based on.
 
 > **Conversions are twice as powerful as traffic. Always use this.**
 
@@ -98,17 +107,65 @@ Consideration
 -   Traffic - When we can't track the end result i.e. conversions
 -   Engagement - People likely to like and comment
 
+**Objective names**
+
+| Old             | New                          |
+| --------------- | ---------------------------- |
+| Brand awareness | Awareness                    |
+| Reach           | Awareness                    |
+| Traffic         | Traffic                      |
+| Engagement      | Engagement                   |
+| App installs    | App promotion                |
+| Video views     | Awareness, Engagement        |
+| Lead generation | Leads                        |
+| Messages        | Engagement, Leads            |
+| **Conversions** | **Engagement, Leads, Sales** |
+| Catalog sales   | Sales                        |
+| Store traffic   | Awareness                    |
+
 # Campaign Structure
 
 ```
-- 1 CAMPAIGN PER PRODUCT/OFFER
-- 3-5 AD SETS PER CAMPAIGN
-- 1-2 INTEREST PER AD SET
-- 3-4 ADS PER AD SET, DUPLICATE ACROSS AD SETS
-- REMARKETING INSIDE AD SET, NOT SEPARATE CAMPAIGN
+- 1 Campaign pet product/offer.
+    - 3-5 ad sets per campaign (1-2 interest per ad set).
+        - 3-4 ads per ad set (duplicate across ad sets).
+
+*Remarketing is in the same campaign, not a separate one.
 ```
 
 **Test the ads and pick the best performer. Add new ads to test against the best performer. Repeat while iterating over different creatives, headlines and copy until you find the perfect ad.**
+
+**Example 1**
+
+```
+Website - Conversions - General audience (age 30-60)
+    - Business interests (30-60 - Business, Management, Sales...)
+    - Page admins (30-60 - Facebook/Business Page admins)
+    - Everyone (30-60 - Excluding interests and admins)
+
+Website - Conversions - Website visitors (Pixel)
+    - Website visitors (Remarketing)
+    - Website visitors (Lookalike)
+
+Website - Conversions - Customer list
+    - Customer list
+    - Customer list (Lookalike)
+
+*Each ad set, in each campaign, has the same 4 ads.
+```
+
+**Example 2**
+
+```
+Website - Conversions
+    - General Audience (30-60)
+    - Website visitors pixel (Remarketing)
+    - Website visitors pixel (Lookalike)
+    - Users list
+    - Users list (Lookalike)
+
+*Each ad set, in each campaign, has the same 4 ads.
+```
 
 # Advertising Strategies
 
