@@ -43,10 +43,14 @@ Marketing is so important because the buyer has already made up his mind when sa
 -   Pause underperforming ad sets
 -   Continuously reate new ad sets to test against the best perfomers
 
+**Lookalike:**
+
+-   Create **lookalike** audience from website visitors via pixel (updates automatically)
+-   Create **lookalike** audience from customer list
+
 **Remarketing:**
 
 -   Create **custom** audience from pixel (updates automatically)
--   Create **lookalike** audience from pixel (updates automatically)
 -   Conversions campaign with the best performing ads to custom audiences
 
 # Targeting
@@ -67,7 +71,7 @@ Lookalike audiences are COLD audiences. WARM audience = Website visitors, email 
 Notes:
 
 -   **Always click on suggestions when filtering**
--   Exclude pixel audiences so that you ensure you are targeting new people
+-   **IMPORTANT: Exclude pixel audiences so that you ensure you are targeting new people**
 -   Try to move away from interest based targeting towards lookalike audiences
 
 **Performance**
@@ -132,41 +136,31 @@ Consideration
     - 3-5 ad sets per campaign (1-2 interest per ad set).
         - 3-4 ads per ad set (duplicate across ad sets).
 
-*Remarketing is in the same campaign, not a separate one.
+* Put remarketing in a separate campaign.
 ```
 
 **Test the ads and pick the best performer. Add new ads to test against the best performer. Repeat while iterating over different creatives, headlines and copy until you find the perfect ad.**
 
-**Example 1**
+**Example**
 
 ```
-Website - Conversions - General audience (age 30-60)
-    - Business interests (30-60 - Business, Management, Sales...)
+Website/app - Conversions - COLD (leads, interests, admins, others)
+    - Leads list (Emails)
+    - Leads list (Lookalike)
+    - Business interests (30-60 - Business, Owners, Management...)
     - Page admins (30-60 - Facebook/Business Page admins)
-    - Everyone (30-60 - Excluding interests and admins)
+    - Others (30-60 - Excluding the above)
 
-Website - Conversions - Website visitors (Pixel)
-    - Website visitors (Remarketing)
-    - Website visitors (Lookalike)
-
-Website - Conversions - Customer list
-    - Customer list
-    - Customer list (Lookalike)
-
-*Each ad set, in each campaign, has the same 4 ads.
-```
-
-**Example 2**
-
-```
-Website - Conversions
-    - General Audience (30-60)
-    - Website visitors pixel (Remarketing)
+Website/app - Conversions - COLD - LOOKALIKE (visitors, users)
     - Website visitors pixel (Lookalike)
-    - Users list
     - Users list (Lookalike)
 
-*Each ad set, in each campaign, has the same 4 ads.
+Website/app - Conversions - WARM (Remarketing)
+    - Website visitors pixel (Remarketing)
+
+* Each ad set, in each campaign, has the same 4 ads.
+* Leads are a "customer list" of emails of businesses.
+* Users list is emails from your existing users.
 ```
 
 # Advertising Strategies
@@ -196,7 +190,7 @@ Campaign: Direct to Offer Campaign
     - Cold Audience Ad Set 2 (Interests)
     - Cold Audience Ad Set 3 (Lookalike)
     - Cold Audience Ad Set 4 (Lookalike)
-    - Warm Audience Ad Set (remarketing, more as a reminder)
+    - Warm Audience Ad Set (Remarketing, more as a reminder)
 ```
 
 Why is there a warm audience? Because the right amount of budget will be automatically calculated and assigned. This prevents overspending on a separate dedicated retargeting campaign.
@@ -230,7 +224,7 @@ Campaign 1: Lead Magnet Campaign
     - Cold Audience Ad Set 2 (Interests)
     - Cold Audience Ad Set 3 (Lookalike)
     - Cold Audience Ad Set 4 (Lookalike)
-    - Warm Audience Ad Set (remarketing) - Exclude opted in custom audience
+    - Warm Audience Ad Set (Remarketing) - Exclude opted in custom audience
 
 Objective: Leads
 Campaign 1: Retargeting Campaign
