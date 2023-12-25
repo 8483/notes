@@ -68,6 +68,8 @@ The targeting works as `OR`, meaning it includes everyone that matches some of t
 Custom and lookalike audiences update automatically.  
 Lookalike audiences are COLD audiences. WARM audience = Website visitors, email lists, page engagers, video viewers...
 
+For lookalike audiences, choose 1% when targeting larger countries, and 10% for smaller countries.
+
 Notes:
 
 -   **Always click on suggestions when filtering**
@@ -145,22 +147,32 @@ Consideration
 
 ```
 Website/app - Conversions - COLD (leads, interests, admins, others)
-    - Leads list (Emails)
-    - Leads list (Lookalike)
     - Business interests (30-60 - Business, Owners, Management...)
     - Page admins (30-60 - Facebook/Business Page admins)
-    - Others (30-60 - Excluding the above)
-
-Website/app - Conversions - COLD - LOOKALIKE (visitors, users)
     - Website visitors pixel (Lookalike)
     - Users list (Lookalike)
+    - Leads list (Emails)
+    - Leads list (Lookalike)
+    - Others (30-60)
 
 Website/app - Conversions - WARM (Remarketing)
     - Website visitors pixel (Remarketing)
 
+* In remarketing and lookalike, exclude the Advantage+ option (reach people beyond audience)
 * Each ad set, in each campaign, has the same 4 ads.
+* In each ad set, exclude every other ad set.
 * Leads are a "customer list" of emails of businesses.
 * Users list is emails from your existing users.
+```
+
+**Or simply...**
+
+```
+Website/app - Awareness - COLD
+    - General audience (18-65+) exclude visitors from pixel and users from list
+
+Website/app - Conversions - WARM (Remarketing)
+    - Website visitors pixel (Remarketing)
 ```
 
 # Advertising Strategies
@@ -259,7 +271,7 @@ This has the same audience with different ads vs the different audience same ads
 
 -   **Do not turn on "Campaign Budget Optimization". This is important.**
 -   **Turn off "Advantage Custom Audience".**
--   Works best with a warm audience (previously interacted with you), but can use cold. It's importantn to aim for an audience size of 50-100K.
+-   Works best with a warm audience (previously interacted with you), but can use cold. It's important to aim for an audience size of 50-100K.
 -   Use manual ad placements. Deselect "Audience network", and only use feeds, stories and reels.
 -   Set performance goal to "Maximize reach ads".
 -   Each ad set has the same audience.
