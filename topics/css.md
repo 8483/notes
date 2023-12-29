@@ -137,41 +137,63 @@ The positions are the lines at which the elements start or end. A grid with 5 co
 ```
 
 This CSS would result in:  
-![CSS Grid](../pics/grid.jpg)
+![CSS Grid](../pics/css/css_grid.jpg)
 
 # Grid Area
+
+```html
+<div class="header" style="grid-area: header">Header</div>
+<div class="sidebar" style="grid-area: sidebar">Sidebar</div>
+<div class="main" style="grid-area: main">Main</div>
+
+<div class="section">Section</div>
+<div class="content">Content</div>
+<div class="footer">Footer</div>
+```
+
+```css
+.section {
+    grid-area: "section";
+}
+
+.content {
+    grid-area: "content";
+}
+
+.footer {
+    grid-area: "footer";
+}
+```
+
+![CSS Grid](../pics/css/css_area_desktop.jpg)
 
 ```css
 .container {
     display: grid;
-
-    grid-template-rows: 25px auto;
-
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
     grid-template-areas:
-        "logo search dropdown"
-        "nav nav nav";
+        "header header header"
+        "sidebar main main"
+        "sidebar section content"
+        "footer footer footer";
 }
+```
 
-.logo {
-    grid-area: logo;
-    width: 140px;
-}
+![CSS Grid](../pics/css/css_area_mobile.jpg)
 
-input {
-    grid-area: search;
-    margin-left: 20px;
-    width: 140px;
-}
-
-.dropdown {
-    grid-area: dropdown;
-}
-
-.nav {
-    grid-area: nav;
-    display: flex;
-    margin-left: 20px;
-    gap: 20px;
+```css
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 30% 30% 10%;
+    grid-template-areas:
+        "header"
+        "sidebar"
+        "main"
+        "section"
+        "content"
+        "footer";
 }
 ```
 
