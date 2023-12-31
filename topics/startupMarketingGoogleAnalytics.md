@@ -89,20 +89,6 @@ If you have payment gateways, ignore their referral traffic.
 stream > configure tag settings > list unwanted referral
 ```
 
-# Dimensions
-
-**Source**
-
-Traffic origin ex. search engine (Google), a social media platform (Facebook), or a specific website (nytimes.com).
-
-**Medium**
-
-General source category. If the source is Google, the medium might be `organic` (unpaid search traffic) or `cpc` (paid search traffic). Other common medium types are `email`, `social` and `referral`.
-
-**Campaign**
-
-Traffic from a specific marketing campaign or promotion. Ex. During a holiday sale, tag the URLs in your marketing materials with a campaign name like `holiday_sale_2023`.
-
 # Reports
 
 -   **Acquisition**
@@ -191,6 +177,25 @@ Event > Data Layer > Tag > Google Analytics > Reports
 4. **Analysis and Reporting:** After the data is processed in the data stream, it becomes available in Google Analytics for analysis and reporting. This allows website owners and marketers to gain insights into user behavior, website performance, and other key metrics.
 
 In this workflow, the data layer is critical for collecting and structuring the data on the website, while the data stream is responsible for defining how that data is handled once it reaches Google Analytics. The data layer ensures that the data sent to the data stream is accurate, comprehensive, and formatted correctly for analysis.
+
+# Dimensions (Source/Medium)
+
+Medium = Online, print, radio, in person.
+Channels (Online) = Mobile, social media, website are not.
+
+A medium is a pipe over which the message passes, not the environment in which the audience receives it.
+
+**Source**
+
+Traffic origin ex. search engine (Google), a social media platform (Facebook), or a specific website (nytimes.com).
+
+**Medium**
+
+General source category. If the source is Google, the medium might be `organic` (unpaid search traffic) or `cpc` (paid search traffic). Other common medium types are `email`, `social` and `referral`.
+
+**Campaign**
+
+Traffic from a specific marketing campaign or promotion. Ex. During a holiday sale, tag the URLs in your marketing materials with a campaign name like `holiday_sale_2023`.
 
 # UTM Tags
 

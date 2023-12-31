@@ -145,6 +145,9 @@ Consideration
 
 **Example**
 
+1. Use a less salesy ad to get that cold traffic warmed up to the business.
+2. Retarget with a second ad that sells.
+
 ```
 Website/app - Conversions - COLD (leads, interests, admins, others)
     - Business interests (30-60 - Business, Owners, Management...)
@@ -308,57 +311,3 @@ Campaign: Omnipresent Content Campaign
     - Omnipresent Content Audience - Ad 11
     - Omnipresent Content Audience - Ad 12
 ```
-
-# Ads
-
-There are 4 different ad categories:
-
--   **Value** - Pieces of content useful to your audience. Ex. Do this, don't do that...
--   **Demonstration** - Show how your product works. Understand the process = More likely to buy.
--   **Testimonial** - Proof that it worked for others.
--   **CTA** - Take an action ex. Signup, book meeting, purchase... You can have multiple CTAs at once.
-
-Match the size of the ask with the complexity of the offer (Always test though)
-
--   Big ask (ex. book meeting, expensive product) = video
--   Impulse purchases = pictures.
-
-Order of ad interaction by audience:
-
-1. Ad Creative - Grabs attentions
-2. Headline - Contextualizes ad creative
-3. Primary Text - Provides more info
-
-Order of ad creation:
-
-1. Headline - Describes the offer
-2. Primary Text - Provides more info
-3. Ad Creative - Grabs attentions
-
-Make a list of reasons why someone might buy your offer.
-
-Headline - clearly explain your offer
-
-**Primary text**
-
--   Callout method, when targeting is not easy, include the filtering in the description by addressing specific sub-audiences. Ex. Interior decorating vs people that moved recently.
--   Benefit rich description
--   Tone - Be playful for less "serious" businesses.
--   Call to action
--   Length - The ad copy size should be proportional to the size of the ask. Smaller ask = shorter copy. Shorter is usually better.
-
-```
-Headline: Mouthwateringly Good, Low-Calorie Cakes
-
-Primary text:
-
-Our signature Rainbow Cake smothered in white chocolate buttercream frosting & topped with fresh fruit... but the best bit?
-
-It's only 150 calories per slice AND we're currently offering a 10% discount 🤯😋
-
-Seriously 🤗
-
-Click Shop Now to brighten up your day 🌈
-```
-
-Try to use the appropriate image size depending on the placement (ex. portrait for stories). Otherwise, use a square.

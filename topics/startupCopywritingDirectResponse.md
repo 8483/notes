@@ -5,7 +5,33 @@ Great resources for copywriting/ads:
 -   [Swiped - Copywriting Examples](https://swiped.co)
 -   [Clickbank - Affiliate Marketplace](https://www.clickbank.com)
 
-# 2 schools of advertising
+# Overview
+
+> If there's a CTA, it's direct response. Otherwise it's brand awareness.
+
+One aims to influence your decisions right now, while the other influences your future decisions.
+
+Direct response copywriting is a goal, NOT a technique.
+
+The objective is to persuade people to take tangible actions IMMEDIATELY through tone, language, urgency and a CTA.
+
+Most think this type of copywriting is a style that is salesy and pushy like it is written by a "needy salesperson".
+
+Heck, some believe that it’s a thing of the past.
+
+But this couldn’t be further from the truth.
+
+And these actions can be:
+
+-   Clicking a link
+-   Submitting a form
+-   Giving access to personal information (e.g. name and email address)
+-   Making a purchase
+-   Hence, the call to action (CTA) is the MOST OBVIOUS indicator of a direct response copy.
+
+ALL direct response copywriting pieces should include a CTA somewhere in the copy.
+
+# 2 Schools of Advertising
 
 [source](https://www.reddit.com/r/InternetRiches101/comments/gefpnr/i_make_around_300000_a_year_as_a_freelance/)
 

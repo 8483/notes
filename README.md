@@ -262,13 +262,19 @@ You need 3 things:
 -   [Objection Handling](./topics/startupSalesObjectionHandling.md)
 -   [Meetings](./topics/startupSalesMeetings.md)
 
+### Copywriting
+
+-   [Guide](./topics/startupCopywritingGuide.md)
+-   [Frameworks](./topics/startupCopywritingFrameworks.md)
+-   [Direct Response](./topics/startupCopywritingDirectResponse.md)
+-   [Ad Creatives](./topics/startupCopywritingAdCreatives.md)
+
 ### Marketing
 
--   [Copywriting](./topics/startupMarketingCopywriting.md)
 -   [SEO](./topics/startupMarketingSeo.md)
+-   [Advertising](./topics/startupMarketingAdvertising.md)
 -   [Google Analytics](./topics/startupMarketingGoogleAnalytics.md)
 -   [Google Tag Manager](./topics/startupMarketingGoogleTagManager.md)
--   [Advertising](./topics/startupMarketingAdvertising.md)
 
 # Random
 
