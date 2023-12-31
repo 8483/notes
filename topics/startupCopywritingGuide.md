@@ -21,14 +21,14 @@ There are three ways to classify copy and anything you write will typically fit 
 
 Online, print, radio, in person. Mobile, social media, website are not. These are channels.
 A medium is a pipe over which the message passes, not the environment in which the audience receives it.
-The medium may or may not impact the collateral on style. It usually doesn’t.
+The medium may or may not impact the collateral on style. It usually doesn't.
 
 # Style
 
 -   **Teaching** – Learn first, CTA later. CTA is "Please understand why you need this."
--   **The Straight Shot** – You describe what you have, why it’s the best and then deliver the CTA. The most common style. Use it when the customer is ready to buy and understands why he needs the product. It is often low key, as it points features and leaves the audience to take action.
--   **Laughter** – Use self-deprecating humor, ridicule the customers that don’t buy, a funny version of the scare tactic. Use it when you know the audience, because it can backfire spectacularly.
--   **Scare Tactic** – "Do this or bad stuff will happen". Use it when there’s more at stake than a sale. "Fasten your seat-belt", "Don’t drink and drive"…
+-   **The Straight Shot** – You describe what you have, why it's the best and then deliver the CTA. The most common style. Use it when the customer is ready to buy and understands why he needs the product. It is often low key, as it points features and leaves the audience to take action.
+-   **Laughter** – Use self-deprecating humor, ridicule the customers that don't buy, a funny version of the scare tactic. Use it when you know the audience, because it can backfire spectacularly.
+-   **Scare Tactic** – "Do this or bad stuff will happen". Use it when there's more at stake than a sale. "Fasten your seat-belt", "Don't drink and drive"…
 -   **Hard Sell** – "BUY NOW! LIMITED OFFER" The CTA is usually repeated between the reasons why to buy.
 
 # Evoke emotions
@@ -89,7 +89,7 @@ Use the Endownment effect. Make them feel they're claiming what they already own
 
 Read out loud. If it sounds cringe or weird…
 
-Start over. Because that’s not how you talk.
+Start over. Because that's not how you talk.
 
 (Notice how I've been speaking in the first-person and speaking directly to you this whole time?)
 
@@ -116,7 +116,7 @@ But why?
 
 Because people skim.
 
-They don’t read everything.
+They don't read everything.
 
 And don't lie…
 
@@ -146,7 +146,7 @@ And suck them into focal points using other text formatting options like:
 # Mistakes
 
 -   Lacking Clarity
--   Neglecting the Product’s Unique Selling Point
+-   Neglecting the Product's Unique Selling Point
 -   Overemphasizing Brand Identity
 -   Disregarding Customer Awareness Levels
 -   Providing Insufficient Information
@@ -248,3 +248,87 @@ Now I ___ a ___ You'll Never See Again
 You'll Save ___
 After ___, You'll Never See ___ The Same Way
 ```
+
+# Quotes
+
+"Nobody reads ads. People read what interests them. Sometimes it's an ad." – Howard Gossage
+
+"The consumer isn't a moron; she is your wife." – David Ogilvy
+
+"Don't tell me how good you make it; tell me how good it makes me when I use it." – Leo Burnett
+
+"People spend money when and where they feel good." – Walt Disney
+
+"On the average, five times as many people read the headline as read the body copy. When you have written your headline, you have spent eighty cents out of your dollar." – David Ogilvy
+
+"The more informative your advertising, the more persuasive it will be." – David Ogilvy
+
+"A good advertisement is one which sells the product without drawing attention to itself." – David Ogilvy
+
+"If you want to be interesting, be interested." – David Ogilvy
+
+"What you say in advertising is more important than how you say it." – David Ogilvy
+
+"In the modern world of business, it is useless to be a creative, original thinker unless you can also sell what you create." – David Ogilvy
+
+"The best way to get a good idea is to get a lot of ideas." – Linus Pauling
+
+"The first draft of anything is shit." – Ernest Hemingway
+
+"If you can't explain it to a six year old, you don't understand it yourself." – Albert Einstein
+
+"Easy reading is damn hard writing." – Nathaniel Hawthorne
+
+"The difference between the right word and the almost right word is the difference between lightning and a lightning bug." – Mark Twain
+
+"If it sounds like writing, I rewrite it." – Elmore Leonard
+
+"When I write an advertisement, I don't want you to tell me that you find it ‘creative.' I want you to find it so interesting that you buy the product." – David Ogilvy
+
+"Your job is not to write copy. Your job is to know your visitors, customers and prospects so well, you understand the situation they're in right now, where they'd like to be, and exactly how your solution can and will get them to their ideal self." – Joanna Wiebe
+
+"Metaphors are a great language tool, because they explain the unknown in terms of the known." – Anne Lamott
+
+"A big reason so many businesses compete on price is because they can't prove what value they offer, so they're stuck with the one selling point that's a breeze to communicate: cheapness." – Mish Slade
+
+"People will do anything for those who encourage their dreams, justify their failures, allay their fears, confirm their suspicions, and help them throw rocks at their enemies." – Blair Warren
+
+"Here's the only thing you're selling, no matter what business you're in and what you ship: you're selling your prospects a better version of themselves." – Joanna Wiebe
+
+"I think clarity starts with having (a few questions) really clear in your mind: ‘What is this blog post about and what am I going to teach my readers with it? How will it make them feel once they've learned this?'" – Henneke Duistermaat
+
+"In the editing process, you refine your copy to express what you want to express with the fewest words." – Joseph Sugarman
+
+"Avoid the "hard-to-grasp" headline – the headline that requires thought and is not clear at first glance." – John Caples
+
+"Does your marketing promote the difference between good and bad or better and best?" – Daniel C. Felsted
+
+"If you want something stuck in someone's head, put it in a sequence of three." – Brian Clark
+
+"I understand social proof is one of the most powerful levers to convince somebody to enter your funnel or start talking to you online." – Aaron Orendorff
+
+"There's no such thing as ‘hard sell' and ‘soft sell.' There's only ‘smart sell' and ‘stupid sell.'" – Leo Burnett
+
+"Use pictures only to attract those who may profit you. Use them only when they form a better selling argument than the same amount of space set in type." – Claude Hopkins
+
+"Write your own endorsements and get influential people to agree to put their names on them." – Casey Demchak
+
+"Effective content marketing is about mastering the art of storytelling. Facts tell, but stories sell." – Bryan Eisenberg
+
+"Nobody has a magic lamp which can tell you in advance whether what you say will be effective in persuading an audience." – Maurice Saatchi
+
+"Sometimes the best copy to sell a horse is, "horse for sale"." – Jay Abraham
+
+"We don't want to be something for everybody, we want to be everything for some people." – Carlos Ghosn
+
+"Each problem has hidden in it an opportunity so powerful that it literally dwarfs the problem. The greatest success stories were created by people who recognized a problem & turned it into an opportunity." – Joseph Sugarman
+
+"The ideas presented in your copy should flow in a logical fashion, anticipating your prospect's questions and answering them as if the questions were asked face-to-face." – Joseph Sugarman
+
+"Simplicity is the outcome of technical subtlety. It is the goal, not the starting point." – Maurice Saatchi
+
+"The more your copy sounds like a real conversation, the more engaging it will be." – David Garfinkel
+
+"The most important persuasion tool you have in your entire arsenal is integrity." – Zig Ziglar
+
+"The only real test for authentic marketing is: do you share the dark stuff? People connect with your failure far more than they connect with your successes." – Aaron Orendorff
