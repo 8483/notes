@@ -61,9 +61,9 @@
 -   [Indexing](./topics/indexing.md)
 -   [SQL queries](./topics/sqlQueries.md)
 -   [MySQL](./topics/mysql.md)
-    -   [node mysql](./topics/node-mysql.md)
+-   [node mysql](./topics/node-mysql.md)
 -   [SQL Server](./topics/sqlserver.md)
-    -   [node mssql](./topics/node-mssql.md)
+-   [node mssql](./topics/node-mssql.md)
 
 ### **Tooling**
 
@@ -88,17 +88,17 @@
 -   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
-    -   [Jest](./topics/testingJest.md)
-    -   [Mocha](./topics/testingMocha.md)
+-   [Jest](./topics/testingJest.md)
+-   [Mocha](./topics/testingMocha.md)
 
 ### **Useful**
 
 -   [Algorithms](./topics/algos.md)
-    -   [Graph Theory](./topics/graphTheory.md)
+-   [Graph Theory](./topics/graphTheory.md)
 -   [Binary base](./topics/base.md)
-    -   [Bitwise](./topics/bitwise.md)
+-   [Bitwise](./topics/bitwise.md)
 -   [Assembly](./topics/assembly.md)
-    -   [WebAssembly](./topics/wasm.md)
+-   [WebAssembly](./topics/wasm.md)
 -   [.NET](./topics/dotnet.md)
 -   [Notifications](./topics/notifications.md)
 
