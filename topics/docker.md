@@ -6,11 +6,9 @@ Docker is used to run apps/processes without actually installing them. This is u
 Dockerfile > (build) Image > (run) Container.
 ```
 
-**Image** - A template for an environment, a snapshot of a system at a certain time. It has the OS, software and application code all bundled in one file.
-
-**Container** - A running instance of an image.
-
-**Dockerfile** - List of steps to build an image. Ex. configure the OS, install packages, copy project files into the right places...
+-   **Dockerfile** - List of steps to build an image. Ex. configure the OS, install packages, copy project files into the right places.
+-   **Image** - A template for an environment, a snapshot of a system at a certain time. It has the OS, software and application code all bundled in one file.
+-   **Container** - A running instance of an image.
 
 # Install
 
@@ -40,7 +38,7 @@ sudo apt-get install -y docker-ce
 
 # Commands
 
-There should be **only one** process per container.
+There should be **ONLY ONE** process per container.
 
 Localhost (127.0.0.1) for a container is itself. Containers can access each other by using their names as the domain.
 
@@ -117,7 +115,7 @@ FROM <IMAGE> -
 RUN <COMMAND> -
 
 # Run a command on container **start**.
-CMD ["<COMMAND", "<ARGS>">] -
+CMD ["<COMMAND", "<ARGS>"] -
 
 # Copy from local directory to container directory.
 COPY <SOURCE> <DESTINATION> -
@@ -156,12 +154,16 @@ Build the image.
 sudo docker build -t nginx-static
 ```
 
-Build the container.
+Run the container.
 
 ```bash
 sudo docker run -d -p 8080:80 --name nginx-static nginx-static
+```
 
-# For this to work, a port forwarding rule is needed on the VM with host `3000` and guest `8080`. Container `80` > VM `8080` > Host `3000`.
+For this to work, a port forwarding rule is needed on the VM with host `3000` and guest `8080`.
+
+```
+Container (80) > VM (8080) > Host (3000).
 ```
 
 Visit the website in the host via `127.0.0.1:3000`.

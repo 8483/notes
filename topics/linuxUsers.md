@@ -14,6 +14,13 @@ CTRL + d # or exit
 sudo passwd <USERNAME>
 ```
 
+# List
+
+```bash
+# Show all users
+less /etc/passwd
+```
+
 # Add
 
 ```bash
@@ -28,6 +35,13 @@ sudo deluser <USERNAME> sudo
 
 # Scripted user creation
 useradd --uid <UID> --gid <GID> -m -s /usr/bin/zsh -d /var/www/<USERNAME> --password <PASSWORD> <USERNAME>
+```
+
+# Access
+
+```bash
+# Limit access to specific directory
+sudo usermod -d /home/user/directory <username>
 ```
 
 # Remove

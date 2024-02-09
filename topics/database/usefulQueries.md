@@ -416,7 +416,7 @@ GROUP BY
 
 ### **Result**
 
-![TEA](../pics/sql/pivot_unpivot.png)
+![](../../pics/sql/pivot_unpivot.png)
 
 | product | 2019 | 2018 |
 | ------- | ---- | ---- |
@@ -476,192 +476,6 @@ FROM PivotData
             [2019],
             [2018])
         ) piv
-```
-
-# Dynamic Pivot
-
-The SQL Server `COALESCE` function handles `NULL` values.
-
-The expression accepts a number of arguments, evaluates them in sequence, and returns the first non-null argument.
-
-```sql
-SELECT COALESCE (NULL,'A','B')                     -- A
-SELECT COALESCE (NULL,100,20,30,40)                -- 100
-SELECT COALESCE (NULL,NULL,20,NULL,NULL)           -- 20
-SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo')   -- foo
-SELECT COALESCE (NULL,NULL,NULL,NULL,1,'foo')      -- 1
-SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo',1) -- coversion failed when converting the varchar value 'foo' to data type int
-```
-
--   Define variables
--   Define columns (**must be strings**)
--   Define SQL query
--   Execute the query
-
-The column definition can also be done with this:
-
-```sql
-SELECT STRING_AGG(PIVOT_COLUMN, ',')
-```
-
-## **Ex. Columns: warehouses, Rows: products**
-
-```sql
--- Variables
-DECLARE @cols AS NVARCHAR(MAX),
-    @query  AS NVARCHAR(MAX);
-
--- Get the distinct warehouses and form a comma-separated string.
-SELECT @cols = STRING_AGG(QUOTENAME(warehouse), ',')
-FROM (
-    SELECT DISTINCT warehouse FROM warehouse_stock
-) AS DistinctWarehouses;
-
-SET @query = N'SELECT product, ' + @cols + ' FROM
-            (
-                SELECT product, stock_level, warehouse
-                FROM warehouse_stock
-           ) AS SourceTable
-            PIVOT
-            (
-                SUM(stock_level)
-                FOR warehouse IN (' + @cols + ')
-            ) AS PivotTable';
-
--- Execute the dynamic SQL
-EXEC sp_executesql @query;
-```
-
-## **Ex. Columns: years, Rows: shops**
-
-```sql
--- variables
-DECLARE @sql AS varchar(max)
-DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
-DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
-
--- columns
-SELECT
-	-- [2017], [2018], [2019], [2020]
-    @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_COLUMN + ']',
-	--ISNULL([2017], 0) as [2017], ISNULL([2018], 0) as [2018], ISNULL([2019], 0) as [2019], ISNULL([2020], 0) as [2020]
-    @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_COLUMN + '], 0) as [' + PIVOT_COLUMN + ']'
-FROM (
-	SELECT
-		cast(year(addate) as nvarchar(4)) as PIVOT_COLUMN
-	FROM tHE_Move M
-	where addate >= '01.01.2017'
-	group by year(addate)
---	order by year(addate) asc -- doesn't work -- It works if SELECT TOP 100 or something
-) as PIVOT_COLUMNS
-
--- query
-SET @sql = '
-; WITH PivotData AS (
-    select
-		shop,
-		y AS PIVOT_COLUMN,
-		sum(revenueNoVAT) revenueNoVAT
-	from (
-		SELECT
-			SS.acName2 shop,
-			year(m.addate) y,
-			MI.anPVVATBase revenueNoVAT
-		FROM tHE_MoveItem MI
-			JOIN tHE_Move M ON MI.acKey = M.acKey
-			JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
-		WHERE m.acDocType in (
-			' + '''3210''' + ',
-			' + '''3220''' + ',
-			' + '''3230''' + ',
-			' + '''3240''' + '
-		)
-	) t1
-	group by
-		shop,
-		y
-)
-SELECT shop, ' + @select_list + '
-FROM PivotData
-    PIVOT (
-		sum(revenueNoVAT)
-		FOR PIVOT_COLUMN
-		IN (' + @pivot_list + ')
-    ) piv
-order by shop desc
-'
-
--- @pivot_list
--- [2017], [2018], [2019], [2020]
--- @select_list
---ISNULL([2017], 0) as [2017], ISNULL([2018], 0) as [2018], ISNULL([2019], 0) as [2019], ISNULL([2020], 0) as [2020]
-
--- execution
-EXEC (@sql)
-```
-
-## **Ex. Columns: shops, Rows: years**
-
-```sql
--- variables
-DECLARE @sql AS varchar(max)
-DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
-DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
-
--- columns
-SELECT
-    @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_COLUMN + ']',
-    @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_COLUMN + '], 0) AS [' + PIVOT_COLUMN + ']'
-FROM (
-    SELECT
-		distinct SS.acName2 as PIVOT_COLUMN
-	FROM tHE_Move M
-		JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
-	WHERE m.acDocType in (
-		'3210',
-		'3220',
-		'3230',
-        '3240'
-	)
-) AS PIVOT_COLUMNS
-
--- query
-SET @sql = '
-; WITH PivotData AS (
-    select
-		ym,
-		shop AS PIVOT_COLUMN,
-		sum(revenueNoVAT) revenueNoVAT
-	from (
-		SELECT
-			SS.acName2 shop,
-			concat(year(m.addate), ' + '''-''' + ', RIGHT(' + '''00''' + ' + CONVERT(varchar(2), DATEPART(MONTH, m.addate)), 2)) ym,
-			MI.anPVVATBase revenueNoVAT
-		FROM tHE_MoveItem MI
-			JOIN tHE_Move M ON MI.acKey = M.acKey
-            JOIN tHE_SetItem SI ON MI.acIdent = SI.acIdent
-			JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
-		WHERE m.acDocType in (
-			' + '''3210''' + ',
-			' + '''3220''' + ',
-			' + '''3230''' + ',
-			' + '''3240''' + '
-		)
-	) t1
-	group by ym, shop
-)
-SELECT ym, ' + @select_list + '
-FROM PivotData
-    PIVOT (
-        sum(revenueNoVAT)
-        FOR PIVOT_COLUMN
-        IN (' + @pivot_list + ')
-    ) piv
-order by ym desc
-'
-
--- execution
-EXEC (@sql)
 ```
 
 # Bulk insert
@@ -745,4 +559,287 @@ where
 group by
     mi.acident,
     m.acIssuer
+```
+
+# All tables with row counts
+
+```sql
+-- SQL Server
+
+select *
+from (
+	select
+		s.name schemaName,
+		t.name tableName,
+		sum(p.rows) rowCounts,
+		max(isnull(ref.ReferencingTableCount, 0)) referencingTableCount
+	from sys.tables t
+		inner join sys.schemas s on s.schema_id = t.schema_id
+		inner join sys.indexes i on t.object_id = i.object_id
+		inner join sys.partitions p on i.object_id = p.object_id and i.index_id = p.index_id
+		LEFT JOIN (
+			select
+				referenced_object_id,
+				count(distinct parent_object_id) referencingTableCount
+			 from sys.foreign_key_columns
+			 group by referenced_object_id
+		) ref on t.object_id = ref.referenced_object_id
+	where
+		t.type = 'U' -- User tables
+		and i.index_id < 2 -- Filters out heaps and indexes
+	group by s.name, t.name
+) t1
+-- where rowCounts > 0
+order by
+	case when referencingTableCount > 0 then 1 else 0 end desc,
+    schemaName asc,
+	rowCounts desc,
+	referencingTableCount desc;
+```
+
+# Coalesce
+
+The SQL Server `COALESCE` function handles `NULL` values.
+
+The expression accepts a number of arguments, evaluates them in sequence, and returns the first non-null argument.
+
+```sql
+SELECT COALESCE (NULL,'A','B')                     -- A
+SELECT COALESCE (NULL,100,20,30,40)                -- 100
+SELECT COALESCE (NULL,NULL,20,NULL,NULL)           -- 20
+SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo')   -- foo
+SELECT COALESCE (NULL,NULL,NULL,NULL,1,'foo')      -- 1
+SELECT COALESCE (NULL,NULL,NULL,NULL,NULL,'foo',1) -- coversion failed when converting the varchar value 'foo' to data type int
+```
+
+# Dynamic Pivot
+
+-   Define variables
+-   Define columns (**must be strings**)
+-   Define SQL query
+-   Execute the query
+
+The column definition can also be done with this:
+
+```sql
+SELECT STRING_AGG(PIVOT_COLUMN, ',')
+```
+
+### **Ex. Columns: warehouses, Rows: products**
+
+```sql
+-- Variables
+DECLARE @cols AS NVARCHAR(MAX),
+    @query  AS NVARCHAR(MAX);
+
+-- Get the distinct warehouses and form a comma-separated string.
+SELECT @cols = STRING_AGG(QUOTENAME(warehouse), ',')
+FROM (
+    SELECT DISTINCT warehouse FROM warehouse_stock
+) AS DistinctWarehouses;
+
+SET @query = N'SELECT product, ' + @cols + ' FROM
+            (
+                SELECT product, stock_level, warehouse
+                FROM warehouse_stock
+           ) AS SourceTable
+            PIVOT
+            (
+                SUM(stock_level)
+                FOR warehouse IN (' + @cols + ')
+            ) AS PivotTable';
+
+-- Execute the dynamic SQL
+EXEC sp_executesql @query;
+```
+
+### **Ex. Columns: years, Rows: shops**
+
+```sql
+-- variables
+DECLARE @sql AS varchar(max)
+DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
+DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
+
+-- columns
+SELECT
+	-- [2017], [2018], [2019], [2020]
+    @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_COLUMN + ']',
+	--ISNULL([2017], 0) as [2017], ISNULL([2018], 0) as [2018], ISNULL([2019], 0) as [2019], ISNULL([2020], 0) as [2020]
+    @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_COLUMN + '], 0) as [' + PIVOT_COLUMN + ']'
+FROM (
+	SELECT
+		cast(year(addate) as nvarchar(4)) as PIVOT_COLUMN
+	FROM tHE_Move M
+	where addate >= '01.01.2017'
+	group by year(addate)
+--	order by year(addate) asc -- doesn't work -- It works if SELECT TOP 100 or something
+) as PIVOT_COLUMNS
+
+-- query
+SET @sql = '
+; WITH PivotData AS (
+    select
+		shop,
+		y AS PIVOT_COLUMN,
+		sum(revenueNoVAT) revenueNoVAT
+	from (
+		SELECT
+			SS.acName2 shop,
+			year(m.addate) y,
+			MI.anPVVATBase revenueNoVAT
+		FROM tHE_MoveItem MI
+			JOIN tHE_Move M ON MI.acKey = M.acKey
+			JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
+		WHERE m.acDocType in (
+			' + '''3210''' + ',
+			' + '''3220''' + ',
+			' + '''3230''' + ',
+			' + '''3240''' + '
+		)
+	) t1
+	group by
+		shop,
+		y
+)
+SELECT shop, ' + @select_list + '
+FROM PivotData
+    PIVOT (
+		sum(revenueNoVAT)
+		FOR PIVOT_COLUMN
+		IN (' + @pivot_list + ')
+    ) piv
+order by shop desc
+'
+
+-- @pivot_list
+-- [2017], [2018], [2019], [2020]
+-- @select_list
+--ISNULL([2017], 0) as [2017], ISNULL([2018], 0) as [2018], ISNULL([2019], 0) as [2019], ISNULL([2020], 0) as [2020]
+
+-- execution
+EXEC (@sql)
+```
+
+### **Ex. Columns: shops, Rows: years**
+
+```sql
+-- variables
+DECLARE @sql AS varchar(max)
+DECLARE @pivot_list AS varchar(max) -- Leave NULL for COALESCE technique
+DECLARE @select_list AS varchar(max) -- Leave NULL for COALESCE technique
+
+-- columns
+SELECT
+    @pivot_list = COALESCE(@pivot_list + ', ', '') + '[' + PIVOT_COLUMN + ']',
+    @select_list = COALESCE(@select_list + ', ', '') + 'ISNULL([' + PIVOT_COLUMN + '], 0) AS [' + PIVOT_COLUMN + ']'
+FROM (
+    SELECT
+		distinct SS.acName2 as PIVOT_COLUMN
+	FROM tHE_Move M
+		JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
+	WHERE m.acDocType in (
+		'3210',
+		'3220',
+		'3230',
+        '3240'
+	)
+) AS PIVOT_COLUMNS
+
+-- query
+SET @sql = '
+; WITH PivotData AS (
+    select
+		ym,
+		shop AS PIVOT_COLUMN,
+		sum(revenueNoVAT) revenueNoVAT
+	from (
+		SELECT
+			SS.acName2 shop,
+			concat(year(m.addate), ' + '''-''' + ', RIGHT(' + '''00''' + ' + CONVERT(varchar(2), DATEPART(MONTH, m.addate)), 2)) ym,
+			MI.anPVVATBase revenueNoVAT
+		FROM tHE_MoveItem MI
+			JOIN tHE_Move M ON MI.acKey = M.acKey
+            JOIN tHE_SetItem SI ON MI.acIdent = SI.acIdent
+			JOIN tHE_SetSubj SS ON M.acIssuer = SS.acSubject
+		WHERE m.acDocType in (
+			' + '''3210''' + ',
+			' + '''3220''' + ',
+			' + '''3230''' + ',
+			' + '''3240''' + '
+		)
+	) t1
+	group by ym, shop
+)
+SELECT ym, ' + @select_list + '
+FROM PivotData
+    PIVOT (
+        sum(revenueNoVAT)
+        FOR PIVOT_COLUMN
+        IN (' + @pivot_list + ')
+    ) piv
+order by ym desc
+'
+
+-- execution
+EXEC (@sql)
+```
+
+### Example 4
+
+```sql
+SET @sql = NULL;
+SET @textColumns = NULL;
+SET @numberColumns = NULL;
+SET @dateColumns = NULL;
+
+SELECT
+  GROUP_CONCAT(
+	DISTINCT CONCAT('max(IF(f.uid = ''', f.uid, ''', dt.value, NULL))', f.uid)
+  ) INTO @textColumns
+FROM dataText dt
+	left join field f on f.id = dt.fieldId
+    left join entity e on e.id = f.entityId
+where e.uid = 'XirQSpRrPP';
+
+SELECT
+  GROUP_CONCAT(
+	DISTINCT CONCAT('max(IF(f.uid = ''', f.uid, ''', dn.value, NULL))', f.uid)
+  ) INTO @numberColumns
+FROM dataNumber dn
+	left join field f on f.id = dn.fieldId
+    left join entity e on e.id = f.entityId
+where e.uid = 'XirQSpRrPP';
+
+SELECT
+  GROUP_CONCAT(
+	DISTINCT CONCAT('max(IF(f.uid = ''', f.uid, ''', dd.value, NULL))', f.uid)
+  ) INTO @dateColumns
+FROM dataDate dd
+	left join field f on f.id = dd.fieldId
+    left join entity e on e.id = f.entityId
+where e.uid = 'XirQSpRrPP';
+
+SET @sql = CONCAT('
+	select
+		r.id,
+		r.uid,
+		', @textColumns, ',
+		', @numberColumns, ',
+        ', @dateColumns, '
+   from record r
+		left join entity e on e.id = r.entityId
+		left join field f on f.entityId = e.id
+		left join dataText dt on dt.recordId = r.id
+		left join dataNumber dn on dn.recordId = r.id
+        left join dataDate dd on dd.recordId = r.id
+	where e.uid = ''XirQSpRrPP''
+	group by
+		r.id,
+		r.uid
+');
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 ```

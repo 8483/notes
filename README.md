@@ -57,13 +57,13 @@
 
 ### **Database**
 
--   [Design](./topics/dbdesign.md)
--   [Indexing](./topics/indexing.md)
--   [SQL queries](./topics/sqlQueries.md)
--   [MySQL](./topics/mysql.md)
-    -   [node mysql](./topics/node-mysql.md)
--   [SQL Server](./topics/sqlserver.md)
-    -   [node mssql](./topics/node-mssql.md)
+-   [Design](./topics/database/design.md)
+-   [Indexing](./topics/database/indexing.md)
+-   [Useful queries](./topics/database/usefulQueries.md)
+-   [MySQL](./topics/database/mysql.md)
+    -   [node mysql](./topics/database/node-mysql.md)
+-   [SQL Server](./topics/database/sqlserver.md)
+    -   [node mssql](./topics/database/node-mssql.md)
 
 ### **Tooling**
 
