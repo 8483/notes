@@ -109,9 +109,9 @@
 
 # Workflow
 
--   [Environment](./topics/workflowEnvironment.md)
--   [Development](./topics/workflowDevelopment.md)
--   [Deployment](./topics/workflowDeployment.md)
+-   [Environment](./topics/workflow/environment.md)
+-   [Development](./topics/workflow/development.md)
+-   [Deployment](./topics/workflow/deployment.md)
 
 # Mobile
 

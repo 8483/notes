@@ -2,8 +2,9 @@
 
 -   Buy server.
 -   Find out IP address.
--   Setup SSH public and private key for remote connections.
--   Setup the environment, same as development one.
+-   [Setup SSH public and private key for remote connections.](../ssh.md)
+-   [Create users, same as environment workflow.](./environment.md)
+-   [Setup the environment, same as development workflow.](./development.md)
 
 # Interoperability
 
