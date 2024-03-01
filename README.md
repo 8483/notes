@@ -227,6 +227,8 @@ One important indicator for a product like that is a product that's simple to ex
 
 If you can't explain in a few words what you do, and some people say "Oh, that's pretty interesting...", it's a mistake, and usually a sign of unclear thinking, or a need that is not big enough.
 
+---
+
 **Solopreneur**
 
 You need 3 things:
@@ -236,6 +238,8 @@ You need 3 things:
     - **product** (coding, design).
 2. **Expertise** in a **technical skill**, be it copywriting, design, coding, finance...
 3. **Leverage**, in the forms of **code**, **media** or **capital**. You can't use labor.
+
+---
 
 ### **Overview**
 
@@ -293,17 +297,32 @@ filetype:pdf query       - Search just for file type
 
 # xkcd
 
-![Automation](./pics/xkcd/automation.png)  
 [Automation](https://xkcd.com/1319/)
 
-![Is It Worth the Time?](./pics/xkcd/is_it_worth_the_time.png)  
+![Automation](./pics/xkcd/automation.png)
+
+---
+
 [Is It Worth the Time?](https://xkcd.com/1205/)
 
-![Dependency](./pics/xkcd/dependency.png)  
+![Is It Worth the Time?](./pics/xkcd/is_it_worth_the_time.png)
+
+---
+
 [Dependency](https://xkcd.com/2347/)
 
-![Standards](./pics/xkcd/standards.png)  
+![Dependency](./pics/xkcd/dependency.png)
+
+---
+
 [Standards](https://xkcd.com/927/)
 
-![Password Strength](./pics/xkcd/password_strength.png)  
+![Standards](./pics/xkcd/standards.png)
+
+---
+
 [Password Strength](https://xkcd.com/936/)
+
+![Password Strength](./pics/xkcd/password_strength.png)
+
+---

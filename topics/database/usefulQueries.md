@@ -137,6 +137,41 @@ FROM table1
 WHERE condition;
 ```
 
+# UPSERT / ON DUPLICATE KEY UPDATE
+
+```sql
+-- values
+insert into inventory_stock
+    (
+        tenantId,
+        objectId,
+        itemId,
+        stock
+    )
+values
+    (
+        @tenantId,
+        @objectId,
+        @itemId,
+        @updatedStock
+    ) as stock
+on duplicate key update
+    stock = stock.stock
+
+-- select
+insert into inventory_stock
+    (
+        tenantId,
+        objectId,
+        itemId,
+        stock
+    )
+select *
+from stock
+on duplicate key update
+    stock = stock.stock
+```
+
 # DELETE from SELECT
 
 ```sql
