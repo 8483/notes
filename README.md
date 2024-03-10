@@ -256,7 +256,7 @@ You need 3 things:
 ### **Product**
 
 -   [MVP](./topics/startupMVP.md)
--   [Product Desgin](./topics/startupProductDesign.md)
+-   [Product Design](./topics/startupProductDesign.md)
 
 ### **Sales**
 
