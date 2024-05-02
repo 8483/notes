@@ -1,8 +1,9 @@
 # Basic
 
 ```bash
-tmux       # Start tmux.
-CTRL + B   # Command mode.
+tmux                # Start tmux.
+CTRL + B            # Command mode.
+SHIFT + select      # Select/Paste text.
 ```
 
 # Windows (tabs)

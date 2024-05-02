@@ -1,8 +1,8 @@
-It's a standalone tools, which can work with any Javascript framework.
+It's a standalone tool, which can work with any Javascript framework.
 
 Capacitor is what takes that JavaScript and makes it into an app. Capacitor is what creates the bridge between the web and native functionality. It also provides the tooling to build the native apps.
 
-Capacitor is required to create/package and run your web (Ionic app) as a native Android/iOS app. Without Capacitor, you can only run the Ionic app in a web browser. Correct, Capacitor is required to use native functionality in your Ionic app like the camera, push notifications, native storage, etc…
+Capacitor is required to create/package and run your web (Ionic app) as a native Android/iOS app. Without Capacitor, you can only run the Ionic app in a web browser. Capacitor is required to use native functionality in your Ionic app like the camera, push notifications, native storage, etc…
 
 ![](../pics/mobile/mobile_capacitorVScordova.jpg)
 
@@ -64,6 +64,6 @@ npx cap sync
 
 # Compiling
 
-> Capacitor does not have a build or compile command, nor will there ever be one. After sync, you are encouraged to open your target platform's IDE: Xcode for iOS or Android Studio for Android, for compiling your native app.
+Capacitor does not have a build or compile command, nor will there ever be one. After sync, you are encouraged to open your target platform's IDE: Xcode for iOS or Android Studio for Android, for compiling your native app.
 
-> Capacitor does not offer a way to build native apps on the command line. Platform-specific tooling (or in the IDE) should be used instead, which provides a faster, more typical experience that follows the standards of app development for that platform.
+Capacitor does not offer a way to build native apps on the command line. Platform-specific tooling (or in the IDE) should be used instead, which provides a faster, more typical experience that follows the standards of app development for that platform.

@@ -1,12 +1,19 @@
+GraphQL solves a people problem, not a technical one. If you don't have the problem of too many people working with the same data model, you don't need GraphQL
+
+GraphQL sounds like the ORM of HTTP APIs.
+
+---
+
 GraphQL is an alternative to REST API. It's a typed query language.
 
 It allows flexible querying from the front-end i.e. client.
 
-It solves the problem of needing **just** a piece of data, without getting all the data from an end-point.  
+It solves the problem of needing **just** a piece of data, without getting all the data from an end-point.
 
 REST API would handle this for a `GET /user` request with:
-- `GET /user-slim` - Lots of routes and updating.
-- `GET /user?data=slim` - The API becomes complex
+
+-   `GET /user-slim` - Lots of routes and updating.
+-   `GET /user?data=slim` - The API becomes complex
 
 GraphQL would handle this with `POST /user` by sending this query expression in the body.
 
@@ -23,9 +30,9 @@ GraphQL would handle this with `POST /user` by sending this query expression in 
 
 GraphQL **always** uses `POST` because it sends the query expression.
 
-| REST API | GraphQL |
-| ------------- |-------------|
-| GET | `query` operation type |
+| REST API                 | GraphQL                   |
+| ------------------------ | ------------------------- |
+| GET                      | `query` operation type    |
 | POST, PUT, PATCH, DELETE | `mutation` operation type |
-| Routes | Query definitions |
-| Controllers | Resolvers |
+| Routes                   | Query definitions         |
+| Controllers              | Resolvers                 |

@@ -295,34 +295,44 @@ query 2017..2018         - Seach in the date range
 filetype:pdf query       - Search just for file type
 ```
 
-# xkcd
+# Comics
 
 [Automation](https://xkcd.com/1319/)
 
-![Automation](./pics/xkcd/automation.png)
+![Automation](./pics/comics/automation.png)
 
 ---
 
 [Is It Worth the Time?](https://xkcd.com/1205/)
 
-![Is It Worth the Time?](./pics/xkcd/is_it_worth_the_time.png)
+![Is It Worth the Time?](./pics/comics/is_it_worth_the_time.png)
 
 ---
 
 [Dependency](https://xkcd.com/2347/)
 
-![Dependency](./pics/xkcd/dependency.png)
+![Dependency](./pics/comics/dependency.png)
 
 ---
 
 [Standards](https://xkcd.com/927/)
 
-![Standards](./pics/xkcd/standards.png)
+![Standards](./pics/comics/standards.png)
 
 ---
 
 [Password Strength](https://xkcd.com/936/)
 
-![Password Strength](./pics/xkcd/password_strength.png)
+![Password Strength](./pics/comics/password_strength.png)
 
 ---
+
+Interruption 1
+
+![Interruption 1](./pics/comics/interruption_1.png)
+
+---
+
+Interruption 2
+
+![Interruption 2](./pics/comics/interruption_2.png)
