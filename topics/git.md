@@ -382,6 +382,14 @@ git push -u origin master
 
 `-u` remember the repo and the branch, so that only `git push` can be used.
 
+**Remember login credentials**
+
+This stores the username and password in a `.git-credentials` file in home.
+
+```bash
+git config --global credential.helper store
+```
+
 # Pull Requests
 
 **A pull request is functionality that GitHub provides. It is not part of Git itself. You can think of a pull requests as a discussion dedicated to a particular branch, about whether it should be merged with master.**

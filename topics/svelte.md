@@ -257,20 +257,20 @@ npm run build
 3. `CTRL + SHIFT + P` command `settings.json` open settings
 4. Add this line.
 
-    ```
+    ```json
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
+    }
     ```
 
 5. Create a local `.prettierrc` file in the project.
 6. Add this in the file.
 
-    ```
+    ```json
     {
-    "trailingComma": "es5",
-    "svelteSortOrder": "scripts-markup-styles",
-    "tabWidth": 4
+        "trailingComma": "es5",
+        "svelteSortOrder": "scripts-markup-styles",
+        "tabWidth": 4
     }
     ```
 
@@ -1525,6 +1525,87 @@ Only plays when the immediate parent block is added or removed.
 
 ```html
 <div transition:slide|local>{item}</div>
+```
+
+# Tweening
+
+```html
+<script>
+    import { modules } from "../pages/modules/modules.js";
+
+    import { tweened } from "svelte/motion";
+    import { cubicOut } from "svelte/easing";
+
+    import MenuItem from "./MenuItem.svelte";
+
+    let activeModules = modules.filter((module) => module?.items?.length > 0);
+
+    let isExpanded;
+
+    const menuWidth = tweened(40, {
+        duration: 100,
+        easing: cubicOut,
+    });
+</script>
+
+<div
+    class="container"
+    on:mouseenter={() => {
+        menuWidth.set(165);
+
+        isExpanded = true;
+    }}
+    on:mouseleave={() => {
+        menuWidth.set(40);
+        isExpanded = false;
+    }}
+    on:click={() => {
+        isExpanded = false;
+    }}
+    style="width: {$menuWidth}px"
+>
+    {#each activeModules as module, i}
+        {#if i + 1 == activeModules.length - 1}
+            <hr style="margin-top: auto;" />
+        {/if}
+
+        <MenuItem
+            {module}
+            {isExpanded}
+            activeModulesCount={activeModules.length}
+            index={i}
+        />
+    {/each}
+</div>
+
+<style>
+    .container {
+        position: absolute;
+
+        height: calc(100svh - 50px);
+        width: 40px;
+
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+
+        background: #333;
+        padding-bottom: 10px;
+
+        z-index: 999;
+
+        align-items: flex-start;
+    }
+
+    .expanded {
+        width: 165px;
+    }
+
+    hr {
+        width: 90%;
+        opacity: 0.1;
+    }
+</style>
 ```
 
 # CSS

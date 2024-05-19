@@ -127,7 +127,9 @@ sayHello();
 // => Hello
 ```
 
-# Modules
+# Module Sytems
+
+CommonJS, AMD, UMD, ES Modules.
 
 Instead of writing all the code in one giant file, we can split the code into multiple files called `modules`. Only things that are highly related should go in a module.
 

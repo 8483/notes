@@ -65,6 +65,19 @@ Then run the script using [`npm run-script`][3] (or `npm run`):
 
     npm run some-package
 
+# Global
+
+```bash
+# Installed
+npm list -g --depth=0
+
+# Outdated
+npm outdated -g
+
+# Update
+npm update -g
+```
+
 # NPX - Package runner
 
 Run `node` packages without installing them. Comes bundled with `npm`.

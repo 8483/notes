@@ -25,6 +25,17 @@
 -   Don't go crazy with `joins`.
 -   Don't use varchar(255). Try to use the lowest number possible.
 
+# Design
+
+Relational databases are designed to work with large tables, not with large numbers of tables.  
+https://stackoverflow.com/a/53816164/3878760
+
+With proper table structures and indexing, MySQL will comfortably handle millions of rows in any table. The "Table-per-?" model is never a Good Idea and invariably comes back to haunt you (usually when you need to summarise across all those tables)  
+https://dba.stackexchange.com/a/264965
+
+In general, it is better to store all rows in a single table rather than in multiple tables. To speed queries, you should use facilities such as indexes and partitions. What I would say instead is that storing entities across multiple tables just makes managing the database trickier, so why bother? I would recommend that you store such data in a single table, perhaps partitioned by month.  
+https://stackoverflow.com/a/66614149/3878760
+
 # RAM usage
 
 SQL engines will consume as much memory as you will allow.
