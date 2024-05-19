@@ -1,3 +1,9 @@
+# WSL
+
+If developing with the Windows Subystem for Linux, it's a good idea to connect VS Code to it to **avoid errors** and get more functionalities.
+
+This can be done by opening a directory from a WSL terminal with `code .` or by `CTRL` + `Shift` + `P` and choosing `WSL: Connect to WSL`.
+
 # Shortcuts
 
 ```bash
