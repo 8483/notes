@@ -15,7 +15,7 @@ ctrl + p                    # Search files
 
 # Selection
 
-alt + click                 # Multiple cursors
+alt + click (empty)         # Multiple cursors
 
 ctrl + d                    # Select next duplicate value
 ctrl + u                    # Unselect duplicate value
@@ -27,6 +27,11 @@ alt + shift + click         # Multiple selections in range
 alt + shit + i              # Add cursor to each line in selection
 alt + shift + left/right    # Select everything between brackets
 
+# Jumping
+
+ctl + click (variable)      # Jump to definition
+alt + left/right            # Jumpt to previous/next editing location
+
 # Utility
 
 alt + up/down               # Move line up or down
@@ -35,40 +40,68 @@ alt + shift + up/down       # Duplicate line
 ctrl + i                    # Show code completion suggestions
 ```
 
-# Indentation
+# Settings
 
-Go to settings with: `CTRL` + `,` and set:
+These are located in the `settings.json` file, opened with `CTRL + SHIFT + P + 'settings'`.
 
--   Workbench > Tree: indent = 25
--   Workbench > Tree: Render Indent Guides = always
+```json
+{
+    // "git.enabled": false,
+    // "git.path": null,
+    // "git.autofetch": false,
+    "git.ignoredRepositories": ["/mnt/c/user/dev/sandbox"],
+    "git.ignoreMissingGitWarning": true,
 
-# Prettier
+    "workbench.activityBar.location": "top",
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.startupEditor": "none",
 
-1. Install the `prettier` extension.
-2. install the `svelte.svelte-vscode` extension.
-3. `CTRL + SHIFT + P` command `settings.json` open settings
-4. Add this line.
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.wordWrap": "on",
 
-    ```json
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 300,
+
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
-    }
-    ```
+    },
+    "svelte.enable-ts-plugin": true,
 
-5. Create a local `.prettierrc` file in the project.
-6. Add this in the file.
+    "window.zoomLevel": -1,
 
-    ```json
-    {
-        "trailingComma": "es5",
-        "svelteSortOrder": "scripts-markup-styles",
-        "tabWidth": 4
-    }
-    ```
+    "javascript.updateImportsOnFileMove.enabled": "always",
 
-7. **Explicitly restart the language server** with this command `Svelte: Restart Language Server`. **IT WILL NOT WORK WITHOUT THIS**. This needs to be done after each change to the settings.
+    "extensions.ignoreRecommendations": true
+}
+```
 
-# Zen Coding
+# Workspace
+
+The workspace folder order is controlled by a `.code-workspace` file.
+
+```
+{
+    "folders": [
+        {"path": "folder1"},
+        {"path": "folder2"},
+        {"path": "folder3"},
+    ]
+}
+```
+
+# Zen Coding (emmet)
 
 ```html
 table.table.small>thead>tr>th*4

@@ -168,3 +168,11 @@ ls | wc -l
 # in the specified folders, and count the number of lines.
 find folder1 folder2 -name '*.js' -o -name '*.sql' | xargs wc -l
 ```
+
+# Default terminal location
+
+Add this line to the `~/.bashrc` file.
+
+```bash
+cd /path/to/desired/directory
+```

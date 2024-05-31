@@ -136,25 +136,25 @@
 
 # Linux
 
--   [Operating System](./topics/linux.md)
+-   [Operating System](./topics/linux/linux.md)
 
 ### **Administration**
 
--   [Terminal](./topics/linuxTerminal.md)
--   [Filesystem](./topics/linuxFilesystem.md)
--   [Users](./topics/linuxUsers.md)
--   [Config](./topics/linuxConfig.md)
+-   [Terminal](./topics/linux/terminal.md)
+-   [Filesystem](./topics/linux/filesystem.md)
+-   [Users](./topics/linux/users.md)
+-   [Configuration](./topics/linux/configuration.md)
 
 ### **Tools**
 
--   [bash - scripting](./topics/bash.md)
--   [vim - editor](./topics/vim.md)
--   [ssh - remote access](./topics/ssh.md)
--   [rsync - file transfer](./topics/rsync.md)
--   [tmux - terminal windows multiplexer](./topics/tmux.md)
--   [cron - scheduling](./topics/cron.md)
--   [systemd - daemons](./topics/systemd.md)
--   [gzip - compression](./topics/gzip.md)
+-   [bash - scripting](./topics/linux/bash.md)
+-   [vim - editor](./topics/linux/vim.md)
+-   [ssh - remote access](./topics/linux/ssh.md)
+-   [rsync - file transfer](./topics/linux/rsync.md)
+-   [tmux - terminal windows multiplexer](./topics/linux/tmux.md)
+-   [cron - scheduling](./topics/linux/cron.md)
+-   [systemd - daemons](./topics/linux/systemd.md)
+-   [gzip - compression](./topics/linux/gzip.md)
 
 # Networking
 
