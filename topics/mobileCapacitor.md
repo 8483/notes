@@ -62,7 +62,7 @@ npx cap init
 npm i @capacitor/android @capacitor/ios
 ```
 
-4. Create Android/iOS native projects
+4. Create Android/iOS native projects. Adds an android/ios folder.
 
 ```bash
 npx cap add android
@@ -79,7 +79,7 @@ npx cap add ios
 npm run start
 ```
 
-2. Build the web files.
+2. Build the web files/bundles.
 
 ```bash
 npm run build
@@ -95,6 +95,32 @@ npx cap sync
 
 3. Android studio > run/refresh the app.
 
+# Plugins
+
+They need to be installed before using.
+
+There are official ones...
+
+```
+npm install @capacitor/camera
+npm install @capacitor/haptics
+```
+
+And community ones.
+
+https://github.com/capacitor-community
+
+https://github.com/capawesome-team/capacitor-plugins
+
+Capacitor has support for most Cordova plugins.
+
+https://github.com/danielsogl/awesome-cordova-plugins  
+https://danielsogl.gitbook.io/awesome-cordova-plugins
+
+```
+npm install @awesome-cordova-plugins/core --save
+```
+
 # Testing
 
 You can test the app by:
@@ -103,11 +129,15 @@ You can test the app by:
 -   Connectin via WI-FI.
 -   Emulator.
 
+---
+
 **WI-FI**
 
 Android:
 
 1. Go to pair devices over WI-FI.
+
+2. select the `pair using pairing code` tab.
 
 Phone:
 
@@ -118,9 +148,13 @@ Phone:
 
 2. Developer options will now appear in Settings.
 
-3. Go to `Developer options > Wireless debugging > Pair device with pairing code`.
+3. Go to `Developer options > Wireless debugging`.
 
-4. Android studio > run/refresh the app.
+4. Tap `Pair device with pairing code` and input the code in Android Studio.
+
+5. Android Studio > run the app.
+
+6. It will show up on your device.
 
 # Compiling (.apk)
 
@@ -138,3 +172,15 @@ After syncing, open your target platform's IDE to compile your native app:
 2. Go to `Build > Build App Bundle (s) / APK (s) > Build APK (s)`
 
 3. Locate .apk in `capacitor-project/android/app/build/outputs/apk/debug`
+
+# Permissions
+
+**Android**
+
+```
+./app/android/app/src/main/AndroidManifest.xml
+```
+
+# Tutorial
+
+https://youtu.be/1WNYYippEr0?si=Zwowmubp5lCgPSd7
