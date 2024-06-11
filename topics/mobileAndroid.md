@@ -5,19 +5,6 @@
 -   Latest API
 -   Environment Variables
 
-# API Level distribution
-
-The Android platform provides a framework API that applications can use to interact with the underlying Android system. Updates to the framework API are designed so that the new API remains compatible with earlier versions of the API.
-
-| Version    | Codename         | SDK / API level | Release | Cummulative share |
-| ---------- | ---------------- | --------------- | ------- | ----------------- |
-| Android 14 | Upside Down Cake | 34              | 2023    | 16.3%             |
-| Android 13 | Tiramisu         | 33              | 2022    | 42.5%             |
-| Android 12 | Snow Cone        | 32 / 31         | 2021    | 59.5%             |
-| Android 11 | Red Velver Cake  | 30              | 2020    | 75.7%             |
-| Android 10 | Quince Tart      | 29              | 2019    | 84.5%             |
-| Android 9  | Pie              | 28              | 2018    | 90.2%             |
-
 # Java Development Kit (JDK)
 
 The **Java Development Kit** (JDK) contains the **Java Runtime Environment** (JRE).
@@ -96,7 +83,20 @@ sdkmanager --list
 -   Android SDK build-tools version 19.1.0 or higher
 -   Android Support Repository (found under "Extras")
 
-# Andorind Package APK (.apk)
+**API Level distribution**
+
+The Android platform provides a framework API that applications can use to interact with the underlying Android system. Updates to the framework API are designed so that the new API remains compatible with earlier versions of the API.
+
+| Version    | Codename         | SDK / API level | Release | Cummulative share |
+| ---------- | ---------------- | --------------- | ------- | ----------------- |
+| Android 14 | Upside Down Cake | 34              | 2023    | 16.3%             |
+| Android 13 | Tiramisu         | 33              | 2022    | 42.5%             |
+| Android 12 | Snow Cone        | 32 / 31         | 2021    | 59.5%             |
+| Android 11 | Red Velver Cake  | 30              | 2020    | 75.7%             |
+| Android 10 | Quince Tart      | 29              | 2019    | 84.5%             |
+| Android 9  | Pie              | 28              | 2018    | 90.2%             |
+
+# Android Package APK (.apk)
 
 It contains all your code, along with any data and resource files.
 

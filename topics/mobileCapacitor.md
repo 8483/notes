@@ -1,49 +1,68 @@
-It's a standalone tool, which can work with any Javascript framework.
+Capacitor allows Javascript web apps to act like native Android/iOS apps.
 
-Capacitor is what takes that JavaScript and makes it into an app. Capacitor is what creates the bridge between the web and native functionality. It also provides the tooling to build the native apps.
+It wraps your web code into a native WebView app to "simulate" a mobile app, while offering native phone functionalities like camera and push notifications.
 
-Capacitor is required to create/package and run your web (Ionic app) as a native Android/iOS app. Without Capacitor, you can only run the Ionic app in a web browser. Capacitor is required to use native functionality in your Ionic app like the camera, push notifications, native storage, etc…
+# WSL
 
-![](../pics/mobile/mobile_capacitorVScordova.jpg)
+Capacitor **DOES NOT** support running from a different "computer" from where you have the Android SDK installed.
+
+WSL is like a "linux virtual machine" with limited access to your windows computer, and your project is there, so Capacitor can't run your project on windows as it lives in the "linux VM" (WSL).
+
+There is a third party project that leverages adb to move and launch the app in windows
+https://github.com/leo-petrucci/run-cap-on-android
+
+# Android Studio and SDK
+
+To develop Android applications using Capacitor, you will need:
+
+-   Android Studio.
+-   An Android SDK for the platform version you want to target. (`Android Studio > Settings > Frameworks > Android SDK`)
+
+| Version    | Codename         | SDK / API level | Release | Cummulative share |
+| ---------- | ---------------- | --------------- | ------- | ----------------- |
+| Android 14 | Upside Down Cake | 34              | 2023    | 16.3%             |
+| Android 13 | Tiramisu         | 33              | 2022    | 42.5%             |
+| Android 12 | Snow Cone        | 32 / 31         | 2021    | 59.5%             |
+| Android 11 | Red Velver Cake  | 30              | 2020    | 75.7%             |
+| Android 10 | Quince Tart      | 29              | 2019    | 84.5%             |
+| Android 9  | Pie              | 28              | 2018    | 90.2%             |
+
+You do not need to separately install the Java Development Kit (JDK). Android Studio will automatically install the proper JDK for you.
 
 # Setup
 
-1. Install the Javascript framework of choice.
+1. Install capacitor in the same directory.
 
-2. Install capacitor in the same directory.
-
-As a scaffolding...
+-   As a new project.
 
 ```
 npm init @capacitor/app
 ```
 
-...or in an existing app.
+-   In an existing app. Requirements:
 
-```
+    -   A `package.json` file.
+    -   A separate directory for built web assets such as `dist` or `www`.
+    -   An `index.html` file at the root of your web assets directory.
+
+```bash
 npm i @capacitor/core
 npm i -D @capacitor/cli
 ```
 
-Requirements:
-
--   A `package.json` file.
--   A separate directory for built web assets such as `dist` or `www`.
--   An `index.html` file at the root of your web assets directory.
-
-3. Initialize the app i.e. Capacitorconfigutation
+2. Initialize the app.
 
 ```
 npx cap init
 ```
 
-4. Install platforms i.e. add to `package.json`
+3. Install platforms i.e. added as dependencies to `package.json`.
 
 ```
 npm i @capacitor/android @capacitor/ios
 ```
 
-5. Create Android/iOS native projects
+4. Create Android/iOS native projects
 
 ```bash
 npx cap add android
@@ -52,18 +71,70 @@ npx cap add ios
 # npx cap add electron
 ```
 
-6. Sync web code to native project
+# Development
 
-`npx cap sync` will copy your built web application, by default `www`, to your native project and install the native projects dependencies.
+1. Start local dev server.
 
-You can customize what folder is copied over by modifying the `webDir` variable in your Capacitor Config file that is created during `npx cap init`.
-
+```bash
+npm run start
 ```
+
+2. Build the web files.
+
+```bash
+npm run build
+```
+
+3. Sync web code to native project.
+
+-   Copies over your built web bundle to both your Android and iOS projects as well as update the native dependencies that Capacitor uses.
+
+```bash
 npx cap sync
 ```
 
-# Compiling
+3. Android studio > run/refresh the app.
 
-Capacitor does not have a build or compile command, nor will there ever be one. After sync, you are encouraged to open your target platform's IDE: Xcode for iOS or Android Studio for Android, for compiling your native app.
+# Testing
 
-Capacitor does not offer a way to build native apps on the command line. Platform-specific tooling (or in the IDE) should be used instead, which provides a faster, more typical experience that follows the standards of app development for that platform.
+You can test the app by:
+
+-   Connecting via cable.
+-   Connectin via WI-FI.
+-   Emulator.
+
+**WI-FI**
+
+Android:
+
+1. Go to pair devices over WI-FI.
+
+Phone:
+
+1. Enable Developer options.
+
+    - Go to `About phone > Software information > Build number`.
+    - Tap the Build number field 7 times. You will begin seeing a message as you approach the 7 touches.
+
+2. Developer options will now appear in Settings.
+
+3. Go to `Developer options > Wireless debugging > Pair device with pairing code`.
+
+4. Android studio > run/refresh the app.
+
+# Compiling (.apk)
+
+Capacitor does not offer a way to build native apps on the command line. Platform-specific CLI tools or an IDE should be used instead.
+
+After syncing, open your target platform's IDE to compile your native app:
+
+-   Android Studio for Android.
+-   Xcode for iOS.
+
+**Android**
+
+1. Open `Android Studio`
+
+2. Go to `Build > Build App Bundle (s) / APK (s) > Build APK (s)`
+
+3. Locate .apk in `capacitor-project/android/app/build/outputs/apk/debug`

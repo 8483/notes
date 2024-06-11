@@ -3,8 +3,11 @@
 Allows using Linux directly in Windows, without double booting or virtual machines.
 
 ```bash
-# Filesystem location via Windows
-C:\Users\User\AppData\Local\lxss\home\user
+# Filesystem
+C:\Users\User\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs
+
+# Terminal .exe
+C:\Users\User\AppData\Local\Microsoft\WindowsApps\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc
 
 # My Computer (C:/D:)
 cd /mnt/
