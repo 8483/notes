@@ -65,7 +65,7 @@ Then run the script using [`npm run-script`][3] (or `npm run`):
 
     npm run some-package
 
-# Global
+# Update global
 
 ```bash
 # Installed

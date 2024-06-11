@@ -143,7 +143,6 @@
 -   [Terminal](./topics/linux/terminal.md)
 -   [Filesystem](./topics/linux/filesystem.md)
 -   [Users](./topics/linux/users.md)
--   [Configuration](./topics/linux/configuration.md)
 
 ### **Tools**
 

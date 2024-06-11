@@ -1,5 +1,7 @@
 # systemd
 
+> `systemd` handles initializing everything that needs to launch behind the scenes when starting up Linux.
+
 The original way of starting everything when a linux system boots was to just run each thing, one after another with scripts.
 
 Systemd started as a more intelligent way of doing things, which could handle starting multiple things at the same time and thought about dependencies - you can't start things that need the network until you've started the network devices, for example. It mostly seemed like a good idea.

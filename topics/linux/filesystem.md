@@ -12,15 +12,15 @@ Package = Plain text file > Compilation > Binary (.exe)
 
 ## File types
 
-1. **File**. Images, text, config...
-2. **Directory**. File pointing to files.
-3. **Link**. Shortcut/Redirect.
-4. **Pipe**. Use a process output as input for another.
-5. **Character Device**. Input/Output files Ex. Teminal.
-6. **Block**. Used for block devices. Ex. Hard Disk.
-7. **Socket**. Used for Interprocess Communication.
-    - **Unix Socket**. Local machine only (Superfast). Ex. Nginx communicates with a PHP interpreter.
-    - **TCP Socket**. Exposed to network (Slower). Ex. Nginx communicates with a website visitor.
+-   **File**. Images, text, config...
+-   **Directory**. File pointing to files.
+-   **Link**. Shortcut/Redirect.
+-   **Pipe**. Use a process output as input for another.
+-   **Character Device**. Input/Output files Ex. Teminal.
+-   **Block**. Used for block devices. Ex. Hard Disk.
+-   **Socket**. Used for Interprocess Communication.
+    -   **Unix Socket**. Local machine only (Superfast). Ex. Nginx communicates with a PHP interpreter.
+    -   **TCP Socket**. Exposed to network (Slower). Ex. Nginx communicates with a website visitor.
 
 ## Interprocess Communication (IPC)
 
@@ -30,7 +30,7 @@ Special files like **sockets** that allow processes to communicate with each oth
 
 # Filesystem
 
-## OS
+### OS
 
 ```bash
 /boot      # Bootloaders - Everything the OS needs to boot.
@@ -39,7 +39,7 @@ Special files like **sockets** that allow processes to communicate with each oth
 /proc      # Processes - Pseudo files with information for system processes, created by the kernel. Every process has a directory named by the PID (process ID). Ex. cat /proc/cpuinfo gives CPU info.
 ```
 
-## Devices
+### Devices
 
 ```bash
 /dev           # Devices ex. mouse - Other programs and drivers use this.
@@ -49,7 +49,7 @@ Special files like **sockets** that allow processes to communicate with each oth
 /cdrom         # Mounting point for CDs.
 ```
 
-## Programs
+### Programs
 
 ```bash
 # System
@@ -65,21 +65,21 @@ Special files like **sockets** that allow processes to communicate with each oth
 /tmp        # Temp - Temporary files ex. auto-saves.
 ```
 
-## Configuration
+### Configuration
 
 ```bash
 /etc        # Etcetera - System wide cofiguration files.
 /var        # Variable - Files expected to grow in size ex. logs, databases.
 ```
 
-## Users
+### Users
 
 ```bash
 /root        # - Home folder for root users.
 /home        #. Home folders for each user, storing personal files.
 ```
 
-## Other
+### Other
 
 ```bash
 /srv        # Service - Web server files accessible by external users.

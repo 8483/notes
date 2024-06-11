@@ -1,6 +1,8 @@
 # Troubleshooting
 
-1. **NOT LEAVING AN EMPTY NEW LINE AT THE END OF THE FILE!**
+1. **LEAVE AN EMPTY NEW LINE AT THE END OF THE FILE!**
+
+    - Cron jobs may fail to execute correctly if there's no newline at the end of the crontab file because the cron daemon expects each line to end with a newline character. If the last line does not end with a newline, the cron daemon might not read it properly, which can result in that job not being executed.
 
 2. Not using absolute paths
 

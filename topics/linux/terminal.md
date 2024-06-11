@@ -9,6 +9,18 @@ Terminal --> shell --> kernel --> hardware
 Terminal - It is not a shell, but rather a window serving a shell (xterm, konsole).  
 Shell - The actual CLI that executes commands (bash, zsh)
 
+# Configuration
+
+```bash
+~/.bashrc       # Called every time a terminal is opened.
+~/.profile      # Called when the specific user logs in.
+/etc/profile    # Called when anyone logs into the system.
+```
+
+If your settings are only used in a terminal session then add them to the `~/.bashrc` file as they are only valid during the terminal (bash) session.
+
+But, if you want them to be there with or without a terminal open, add them to the `~/.profile` file. Do not put bash specific commands in the `~/.profile` file.
+
 # Locations
 
 ```bash
@@ -20,6 +32,14 @@ pwd   # Full path to current directory
 # WSL / Ubuntu subsystem on Windows
 cd /mnt/c     # Navigate to My Computer/C:
 # C:\Users\User\AppData\Local\lxss (WSL location in windows)
+```
+
+**Default terminal location**
+
+Add this line to the `~/.bashrc` file.
+
+```bash
+cd /path/to/desired/directory
 ```
 
 # Commands
@@ -54,7 +74,7 @@ ls -lh      # Show file size
 
 # Read
 cat FILE       # Show the file content in terminal
-less FILE      # View file content in the less program
+less FILE      # View file content in the less program. Search with / + "text"
 head FILE      # Show first 10 lines
 tail FILE      # Show last 10 lines
 tail -f FILE   # Log in real time
@@ -142,7 +162,7 @@ wget "URL"                 # Download from URL.
 sudo dpkg –i FILE_NAME     # Install downloaded file.
 ```
 
-# Words
+# Jumping text
 
 ```bash
 ctr + ->              # Jump word right.
@@ -158,6 +178,13 @@ alt + backspace       # Delete last word.
 alt + left / right    # Go to previous / next word.
 ```
 
+# Minimize apps
+
+```bash
+ctrl + z     # Minimizes the currently open app.
+fg           # Opens back the minimized app.
+```
+
 # Count
 
 ```bash
@@ -167,12 +194,4 @@ ls | wc -l
 # Find all files with the given extensions
 # in the specified folders, and count the number of lines.
 find folder1 folder2 -name '*.js' -o -name '*.sql' | xargs wc -l
-```
-
-# Default terminal location
-
-Add this line to the `~/.bashrc` file.
-
-```bash
-cd /path/to/desired/directory
 ```
