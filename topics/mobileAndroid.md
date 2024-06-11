@@ -5,38 +5,30 @@
 -   Latest API
 -   Environment Variables
 
-# API Level
+# API Level distribution
 
 The Android platform provides a framework API that applications can use to interact with the underlying Android system. Updates to the framework API are designed so that the new API remains compatible with earlier versions of the API.
 
-| Platform    | Version | API | Share (2021) |
-| ----------- | ------- | --- | ------------ |
-| Jelly Bean  | 4.1     | 16  | 0.2%         |
-| Jelly Bean  | 4.2     | 17  | 0.3%         |
-| Jelly Bean  | 4.3     | 18  | 0.1%         |
-| KitKat      | 4.4     | 19  | 1.4%         |
-| Lollipop    | 5.0     | 21  | 0.7%         |
-| Lollipop    | 5.1     | 22  | 3.2%         |
-| Marshmallow | 6.0     | 23  | 5.1%         |
-| Nougat      | 7.0     | 24  | 3.4%         |
-| Nougat      | 7.1     | 25  | 2.9%         |
-| Oreo        | 8.0     | 26  | 4.0%         |
-| Oreo        | 8.1     | 27  | 9.7%         |
-| Pie         | 9.0     | 28  | 18.2%        |
-| Q           | 10.0    | 29  | 26.5%        |
-| R           | 11.0    | 30  | 24.3%        |
+| Version    | Codename         | SDK / API level | Release | Cummulative share |
+| ---------- | ---------------- | --------------- | ------- | ----------------- |
+| Android 14 | Upside Down Cake | 34              | 2023    | 16.3%             |
+| Android 13 | Tiramisu         | 33              | 2022    | 42.5%             |
+| Android 12 | Snow Cone        | 32 / 31         | 2021    | 59.5%             |
+| Android 11 | Red Velver Cake  | 30              | 2020    | 75.7%             |
+| Android 10 | Quince Tart      | 29              | 2019    | 84.5%             |
+| Android 9  | Pie              | 28              | 2018    | 90.2%             |
 
 # Java Development Kit (JDK)
 
-The JDK (Java Development Kit) contains the JRE (Java Runtime Environment).
+The **Java Development Kit** (JDK) contains the **Java Runtime Environment** (JRE).
 
-Open JDK = open-source variant of the JRE and JDK.
-
-Java version 1.8.0_5 = JDK 8 update 5
+**Open JDK** is the open-source variant of the **JRE** and **JDK**.
 
 ```bash
 sudo apt update
 sudo apt install openjdk-8-jdk
+
+# Java version 1.8.0_5 = JDK 8 update 5
 
 java -version # java version "1.8.0_181"
 

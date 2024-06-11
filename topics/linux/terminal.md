@@ -95,8 +95,14 @@ rm -r FOLDER     # Delete a directory and its files
 # Find
 
 ```bash
-grep STRING FILE_NAME           # Find string in specific file.
-grep -r STRING .                # Find string in all directory files.
+# Global i.e. start searching from root.
+
+sudo find / -name "filename"          # File
+sudo find / -type d -name "dirname"   # Directory
+
+which PROGRAM                         # Path to program.
+
+# In directory
 
 find .                          # Show all files in directory.
 find . -name "*.txt"            # Find all text files.
@@ -106,7 +112,8 @@ find . -mtime +3                # Files older than 3 days.
 find . -iname FILE_NAME         # Find case insensitive.
 find . | grep "string"          # Find files in directory.
 
-which PROGRAM                   # Find path to program.
+grep STRING FILE_NAME           # Find string in specific file.
+grep -r STRING .                # Find string in all directory files.
 ```
 
 # System

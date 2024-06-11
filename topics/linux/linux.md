@@ -102,12 +102,27 @@ Add paths to `~/.profile` to make them permanent. Paths require the `bin`, while
 **The variable is not in the environment until you export it. Otherwise it's just a shell variable.**
 
 ```bash
-# Method 1
-vim ~/.profile # Edit this file.
-PATH="$HOME/bin:$PATH" # Find this line.
-PATH="$HOME/bin:$PATH:/usr/hitech/picc/9.82/bin" # Change it into this.
+# Method 1 ---------------------
+
+# Edit this file.
+vim ~/.profile
+
+# Find this line.
+PATH=$HOME/bin:$PATH
+
+# Change it into this.
+PATH=$HOME/bin:$PATH:/usr/hitech/picc/9.82/bin
+
 # It appends the new path to the existing system ones, just for this user.
 
-# Method 2 - Shorthand to avoid editing manually.
-export PATH="$PATH:/usr/hitech/picc/9.82/bin" # export <VARIABLE>="<VALUE>"
+# Method 2 ---------------------
+
+# Shorthand to avoid editing manually.
+export PATH=$PATH:/usr/hitech/picc/9.82/bin
+```
+
+Reload with
+
+```bash
+source ~/.profile
 ```
