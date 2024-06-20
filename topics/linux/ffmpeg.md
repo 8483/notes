@@ -111,3 +111,30 @@ Size:          1.9 GB         428 MB
 
 Bit rate:       1,411 kbps    320 kbps
 ```
+
+# Batch script
+
+Process multiple files.
+
+```bash
+#!/bin/bash
+
+# Directory containing the videos
+input_dir="path/to/input_videos"
+output_dir="path/to/output_videos"
+
+# Create the output directory if it doesn't exist
+mkdir -p "$output_dir"
+
+# Loop through all .mp4 files in the input directory
+for input_file in "$input_dir"/*.mp4; do
+  # Get the base name of the file (without path and extension)
+  base_name=$(basename "$input_file" .mp4)
+
+  # Define the output file path
+  output_file="$output_dir/${base_name}_720p.mp4"
+
+  # Run ffmpeg to resize the video to 720p
+  ffmpeg -i "$input_file" -vf "scale=1280:720" -c:a copy "$output_file"
+done
+```
