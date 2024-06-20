@@ -22,14 +22,19 @@ Bitrate (in bits per second) = 4194304000 bits / 7200 seconds
                                     ≈ 583 kbps
 ```
 
-Example:
+Video:
 
--   Video:
-    -   Standard: 2 Mpbs (megabits per second)
-    -   HD: 5-10 Mbps
-    -   4K: 30-60+ Mbps
--   Audio:
-    -   mp3: 320 kbps
+-   4K: 30-60+ Mbps
+-   HD: 5-10 Mbps
+-   1080p: 3,000 kbps
+-   720p: 1,500 kbps (standard)
+-   480p: 1,000 kbps
+-   360p: 600 kbps
+-   240p: 400 kbps
+
+Audio:
+
+-   mp3: 320 kbps
 
 # Video presets
 
