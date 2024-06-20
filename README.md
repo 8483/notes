@@ -154,6 +154,7 @@
 -   [cron - scheduling](./topics/linux/cron.md)
 -   [systemd - daemons](./topics/linux/systemd.md)
 -   [gzip - compression](./topics/linux/gzip.md)
+-   [ffmpeg - video & audio](./topics/linux/ffmpeg.md)
 
 # Networking
 

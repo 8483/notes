@@ -1,3 +1,8 @@
+# Shitting on them
+
+Agile: https://youtu.be/w5Wr3j4h_1I?si=5okWyAcXMrLvQmm9  
+SCRUM: https://youtu.be/Q25lwSfVwF8?si=JY0VJV3K56eBcY5l
+
 # General
 
 ```
