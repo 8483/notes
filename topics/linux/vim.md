@@ -1,76 +1,96 @@
-# Vim
+# Tips
 
-If a file is read-only and can't be changed, use `sudo vim file` to open it as root.
+-   Do not hold down motion keys, it's an anti-pattern.
+-   Multi-cursors are an anti-pattern.
 
-## Modes
+# Terminology
 
-`ESC` or `CTRL` + `[` - Command (Default)  
-`i` - Insert (Editing)  
-`v` - Visual (Like Command, but with selection)
+```bash
+<C-a>     # CTRL + a
+<CR>      # Enter
+<tab>     # Tab
+<esc>     # Escape
+<space>   # Space
+```
 
-## General
+# Modes
 
-`:` - Commands.  
-`.` - Repeat previous command.  
-`u` - UNDO.  
-`CTRL` + `r` - REDO.  
-`c` + `movement` - Change up to movement.
+```bash
+ESC / CTRL + C    # Normal (commands)    █ Thick cursor
+i                 # Insert (editing)     │ Thin cursor
 
-# Inside
+v                 # Visual (selection) (not used often)
+SHIFT + v         # Visual Line (select lines) (not used often)
 
-`command` + `i` + `character` - Do a command inside characters.
+CTRL + w          # Window (window selection)
+CTRL + o          # Close all windows
+```
 
-`vi"` - Select everything inside "".  
-`xi(` - Delete everything inside ().
-`ci{` - Change (Delete and enter insert mode) inside {}.
+# Normal mode
 
-## Save & Exit
+```bash
+:           # Command
+.           # Repeat previous command
+u           # UNDO
+CTRL + r    # REDO
 
-`:w` - Save  
-`:q` - Quit  
-`:wq` - Save & Quit  
-`:q!` - Cancel & Quit
+zz          # Recenter screen (NEVER USE, it interferes with ZZ i.e. saving)
+```
 
-## Tabs
+# Commands
 
-`:tabe FILEPATH` - Open file in new tab  
-`:tabn` - Next tab  
-`:tabp` - Previous tab
+```bash
+:w     # Save
+:q     # Quit
+:wq    # Save & quit
+:q!    # Force quit
 
-## Selection
+:<command> <tab>  # Show available command options (CTRL + d also works)
 
-`esc` + `v` - visual mode for selection.  
-`ctrl` + `v` - block selection i.e. multi-line column, good for commenting. `shift` + `i` then `text` then `esc` for multi line insertion.
+:h <command>      # Manual
+:set <option>     # Set an option
 
-## Copy & Paste
+:tabe FILEPATH    # Open file in new tab
+:tabn             # Next tab
+:tabp             # Previous tab
 
-Enter **visual mode** and select text.
+:colorscheme      # Pick a colorscheme
 
-`y` - Copy (yank) selected.  
-`d` - Cut selected.  
-`p` - Paste after cursor.
+:so               # Source i.e reload file
+```
 
-`x` - Delete selected.
+# File navigation
 
-These can be combined with movements. Ex. `x2e` is delete next 2 words.
+```bash
+vim <path>    # Open directory inside vim and select a file.
+vim <file>    # Open file directly.
 
-`yy` - Copy (yank) line in **normal** mode.  
-`dd` - Cut line in **normal** mode.
+:Ex           # Show current directory
+:Vex          # Show directory in a new window
+:e            # Show files in directory
 
-## Moving
+:jumps              # Show navigation history
+CTRL + o            # Navigate back
+CTRL + i            # Navigate forward
+CTRL + SHIFT + 6    # Switch between current and last opened file.
+```
 
-All of these can be used in **visual** mode for selection.
+# Motions
 
-`j` - Down  
-`k` - Up  
-`h` - Left  
-`l` - Right
+All of these can be used in **visual (selection)** mode too.
 
-`w` - Forward one word.  
-`b` - Back one word.  
-`e` - End of word.
+```bash
+j   # Down
+k   # Up
+h   # Left (not used often)
+l   # Right (not used often)
 
-Adding a number before a command, will repeat it n times. Ex. `3h` will go up 3 lines, `5dd` will detele 5 lines.
+w   # Forward one word.
+b   # Back one word.
+e   # End of word.
+```
+
+Adding a number before a command, will repeat it n times. Ex. `3h` will go up 3 lines, `5dd` will delete 5 lines.
 
 `0` - Beginning of line.  
 `$` - End of line.
@@ -84,22 +104,60 @@ Adding a number before a command, will repeat it n times. Ex. `3h` will go up 3 
 `#` - Previous occurrence of word under cursor.
 
 `gg` - Beginning of file.  
-`G` - End of file.  
+`SHIFT + g` - End of file.  
 `nG` - Jump to line n.
 
-## Search
+# Inside
+
+`command` + `i` + `character` - Do a command inside characters.
+
+`vi"` - Select everything inside "".  
+`xi(` - Delete everything inside ().
+`ci{` - Change (Delete and enter insert mode) inside {}.
+
+# Selection
+
+`esc` + `v` - visual mode for selection.  
+`ctrl` + `v` - block selection i.e. multi-line column, good for commenting.  
+`shift` + `i` then `text` then `esc` for multi line insertion.
+
+# Copy & Paste
+
+Enter **visual mode** and select text.
+
+`y` - Copy (yank) selected.  
+`d` - Cut selected.  
+`p` - Paste after cursor/line.  
+`P` - Paste before cursor/line.
+
+`x` - Delete selected.
+
+These can be combined with movements. Ex. `x2e` is delete next 2 words. `7dd` delete 7 lines.
+
+`yy` - Copy (yank) line in **normal** mode.  
+`dd` - Cut line in **normal** mode. (Shift + d)
+
+:reg - Register i.e. list of yanks and deletions
+
+# Search
 
 `/` + `string` + `Enter` = Search for string **forwards**.  
 `?` + `string` + `Enter` = Search for string **backwards**.  
 `n` - Next occurrence.  
 `N` - Previous occurrence.
 
-## Replace
+# Replace
 
 `:%s/text/replacement/g` - Replace text on every line.  
 `:s/text/replacement/g` - Replace text on current line.
 
-## Insert
+# Insert
+
+`i` - Inserting with cursor on **inside**.  
+`SHIFT + i` - Inserting with cursos at **begining** of line.
+
+`a` - Inserting with cursor on **outside**.  
+`SHIFT + a` - Inserting with cursos at **end** of line.
 
 `o` - Create new line **under** cursor and enter **INS** mode.  
 `O` - Create new line **above** cursor and enter **INS** mode.
@@ -109,31 +167,54 @@ Adding a number before a command, will repeat it n times. Ex. `3h` will go up 3 
 
 `r` + `new character` - Change character under cursor without INS mode.
 
-## Multiple Inserts
+# Multiple Inserts
 
 `n times` + `i` + `string` + `ESC` = Multiple inserts.
 
 Ex. `5ifoo` + `ESC` will result in `foofoofoofoofoo`.
 
+# Remapping
+
+**BE CAREFUL** not to remap important keys.
+
+**Always have a `leader` key** i.e. A small pause that lets you execute a shortcut before the keys do their default behavior.
+
+```bash
+# Setup a show filetree shortcut
+let mapleader = " "            # Sets <space> as a command activator
+nnoremap <leader>tr :Vex<CR>   # Pressing space + tr executes :Vex + Enter (filetree)
+
+n      # Mode where it works (normal mode)
+nore   # No recursive execution i.e. prevent remaps activating other remaps
+map    # Mapping left:right (replace left with right command)
+```
+
 # vimrc - Customization
+
+Settings are not saved in vim. They need to be persisted in a `.vimrc` file.
 
 The global `.vimrc` file is located in `/etc/vim/vimrc` or `etc/vimrc`.
 
-Create a `.vimrc` file in the `home` directory for customizations.
+You should create a local `.vimrc` file in the `home` directory for customizations.
 
-When vim is opened, it will automatically check the current user’s home directory for a .vimrc file. All settings specified in this file will override the global settings.
+When vim is opened, it will automatically check the current user's home directory for a `.vimrc` file. All settings specified in this file will override the global settings.
 
 Configurations can be made inside `vim` by using `:set number`.
 
 ```bash
-set nocompatible    # Set compatibility to Vim only.
-set number          # Show line numbers.
-set visualbell	    # Use visual bell (no beeping)
-set wrap            # Word wrap.
+:set scrolloff=8      # Screen auto-scrolls to follow you, avoid recentering.
+:set number           # Show line numbers.
+:set relativenumber   # Line numbers are relative to the current line.
 
-set autoindent	    # Auto-indent new lines
-set shiftwidth=4    # Number of auto-indent spaces
-set smartindent	    # Enable smart-indent
-set smarttab	    # Enable smart-tabs
-set softtabstop=4   # TAB is 4 spaces.
+:set nocompatible     # Set compatibility to Vim only.
+:set visualbell	      # Use visual bell (no beeping)
+:set wrap             # Word wrap.
+
+:set autoindent	      # Auto-indent new lines
+:set shiftwidth=4     # Number of auto-indent spaces
+:set smartindent	  # Enable smart-indent
+:set smarttab	      # Enable smart-tabs
+:set softtabstop=4    # TAB is 4 spaces.
+:set expandtab        # Converts tabs into spaces.
+:set tabstop=4        # Converts tabs into spaces.
 ```

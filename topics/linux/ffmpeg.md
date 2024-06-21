@@ -1,5 +1,11 @@
 FFmpeg is the leading multimedia (audio, video) framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge.
 
+# Terminology
+
+**Muxer (multiplexer)**
+
+Combines multiple input streams (such as audio, video, subtitles, metadata, etc.) into a single output file or stream. This process is called "multiplexing" or "muxing". The muxer ensures that the different streams are synchronized and properly formatted within the output container format.
+
 # Install
 
 ```

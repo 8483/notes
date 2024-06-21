@@ -1,7 +1,10 @@
 # Shitting on them
 
-Agile: https://youtu.be/w5Wr3j4h_1I?si=5okWyAcXMrLvQmm9  
-SCRUM: https://youtu.be/Q25lwSfVwF8?si=JY0VJV3K56eBcY5l
+-   [268% Higher Failure Rates For Agile
+    ](https://youtu.be/w5Wr3j4h_1I?si=5okWyAcXMrLvQmm9)
+-   [Sprints - The Biggest Mistake Of Software Engineering](https://youtu.be/_p1Q4c3TF3c?si=nfxd-QoJlBkCdzU9)
+-   [Scrum IS AWESOME
+    ](https://youtu.be/Q25lwSfVwF8?si=JY0VJV3K56eBcY5l)
 
 # General
 
