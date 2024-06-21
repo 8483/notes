@@ -7,23 +7,26 @@
 
 ```bash
 <C-a>     # CTRL + a
-<CR>      # Enter
+<CR>      # Enter i.e. carret return
 <tab>     # Tab
 <esc>     # Escape
 <space>   # Space
 ```
 
+**NOTE:** Capital letters = SHIFT + letter
+
 # Modes
 
 ```bash
-ESC / CTRL + C    # Normal (commands)    █ Thick cursor
-i                 # Insert (editing)     │ Thin cursor
+ESC / <C-C>    # Normal (commands)    █ Thick cursor
+i              # Insert (editing)     │ Thin cursor
 
-v                 # Visual (selection) (not used often)
-SHIFT + v         # Visual Line (select lines) (not used often)
+v              # Visual (selection) (not used often)
+V              # Visual Line (select lines) (not used often)
+o              # Switch between start/end of selection to expand.
 
-CTRL + w          # Window (window selection)
-CTRL + o          # Close all windows
+<C-w>          # Window (window selection)
+<C-o>          # Close all windows
 ```
 
 # Normal mode
@@ -32,7 +35,7 @@ CTRL + o          # Close all windows
 :           # Command
 .           # Repeat previous command
 u           # UNDO
-CTRL + r    # REDO
+<C-r>    # REDO
 
 zz          # Recenter screen (NEVER USE, it interferes with ZZ i.e. saving)
 ```
@@ -40,23 +43,28 @@ zz          # Recenter screen (NEVER USE, it interferes with ZZ i.e. saving)
 # Commands
 
 ```bash
+:<command> <tab>  # Show available command options (<C-d> also works)
+
+:h <command>      # Manual
+:set <option>     # Set an option
+:colorscheme      # Pick a colorscheme
+```
+
+# Save + Exit
+
+```bash
 :w     # Save
 :q     # Quit
 :wq    # Save & quit
 :q!    # Force quit
+```
 
-:<command> <tab>  # Show available command options (CTRL + d also works)
+# Tabs
 
-:h <command>      # Manual
-:set <option>     # Set an option
-
+```bash
 :tabe FILEPATH    # Open file in new tab
 :tabn             # Next tab
 :tabp             # Previous tab
-
-:colorscheme      # Pick a colorscheme
-
-:so               # Source i.e reload file
 ```
 
 # File navigation
@@ -69,109 +77,199 @@ vim <file>    # Open file directly.
 :Vex          # Show directory in a new window
 :e            # Show files in directory
 
-:jumps              # Show navigation history
-CTRL + o            # Navigate back
-CTRL + i            # Navigate forward
-CTRL + SHIFT + 6    # Switch between current and last opened file.
+:jumps        # Show navigation history
+<C-o>      # Navigate back
+<C-i>      # Navigate forward
+<C-^>      # Switch between current and last opened file.
 ```
 
 # Motions
 
 All of these can be used in **visual (selection)** mode too.
 
-```bash
-j   # Down
-k   # Up
-h   # Left (not used often)
-l   # Right (not used often)
+Motions are composable i.e. `5dd` and `d4j` will both delete 5 lines.
 
-w   # Forward one word.
-b   # Back one word.
-e   # End of word.
+```bash
+j    # Down
+k    # Up
+h    # Left (not used often)
+l    # Right (not used often)
+
+w    # Forward one word.
+b    # Back one word.
+e    # End of word.
+
+_    # Jump to first non-whitespace character in line
+0    # Beginning of line.
+$    # End of line.
+
+%    # Jump between matching tags i.e. ), }, ].
+
+f + char    # Jump to first character. F is reversed.
+t + char    # Jump to before first character. T is reversed.
+
+;    # Next occurrence of character.
+,    # Previous occurrence of character.
+
+gg   # Beginning of file.
+G    # End of file.
+nG   # Jump to line n.
+
+
+<C-d>   # Jump down by half page
+<C-u>   # Jump up by half page
 ```
 
-Adding a number before a command, will repeat it n times. Ex. `3h` will go up 3 lines, `5dd` will delete 5 lines.
+# Insert
 
-`0` - Beginning of line.  
-`$` - End of line.
+```bash
+i       # Inserting with cursor on inside.
+I       # Inserting with cursos at begining of line.
 
-`%` - Jump to matching tag i.e. `)`, `}`, `]`.
+a       # Inserting with cursor on outside i.e. append.
+A       # Inserting with cursos at end of line.
 
-`f` + `character` - Jump **to** next character.  
-`t` + `character` - Jump **before** next character.
+o       # Create new line under cursor + insert mode.
+O       # Create new line above cursor + insert mode.
 
-`*` - Next occurrence of word under cursor.  
-`#` - Previous occurrence of word under cursor.
+x       # Delete character.
+X       # Backspace.
 
-`gg` - Beginning of file.  
-`SHIFT + g` - End of file.  
-`nG` - Jump to line n.
+r + char   # Change character under cursor without INS mode.
 
-# Inside
-
-`command` + `i` + `character` - Do a command inside characters.
-
-`vi"` - Select everything inside "".  
-`xi(` - Delete everything inside ().
-`ci{` - Change (Delete and enter insert mode) inside {}.
+<C-a>   # Increment number.
+```
 
 # Selection
 
-`esc` + `v` - visual mode for selection.  
-`ctrl` + `v` - block selection i.e. multi-line column, good for commenting.  
-`shift` + `i` then `text` then `esc` for multi line insertion.
+```bash
+o       # Switch between start/end of selection.
+
+viw     # Select whole word.
+viW     # Select every character between whitespaces.
+
+vi`     # Select everything inside ``.
+xi(     # Delete everything inside ().
+di[     # Cut everything inside [].
+ci{     # Delete + insert mode inside {}.
+
+va{     # Select outside {}.
+
+ESC v   # visual mode for selection.
+<C-v>   # block selection i.e. multi-line column, good for commenting.
+
+I + text + esc # Multi line insertion.
+
+'<      # Text representation for start of selection.
+'>      # Text representation for end of selection.
+```
 
 # Copy & Paste
 
 Enter **visual mode** and select text.
 
-`y` - Copy (yank) selected.  
-`d` - Cut selected.  
-`p` - Paste after cursor/line.  
-`P` - Paste before cursor/line.
+```bash
+CTRL + SHIFT + p    # Paste from outside
 
-`x` - Delete selected.
+y            # Copy (yank) selected.
 
-These can be combined with movements. Ex. `x2e` is delete next 2 words. `7dd` delete 7 lines.
+d            # Cut selected.
+D            # Cut to the right of cursor, same as d$
 
-`yy` - Copy (yank) line in **normal** mode.  
-`dd` - Cut line in **normal** mode. (Shift + d)
+p            # Paste after cursor/line.
+P            # Paste before cursor/line.
 
-:reg - Register i.e. list of yanks and deletions
+x            # Delete selecttion/charcater.
+
+yy           # Copy (yank) line in normal mode.
+dd           # Cut line in normal mode. (Shift + d)
+
+cc           # Delete line + insert mode
+C            # Delete after cursor + insert mode
+
+s            # Delete single character + insert mode
+S            # Delete whole line from indent + insert mode
+
+dg           # Delete to end of file.
+
+:reg         # Register i.e. list of yanks and deletions
+```
 
 # Search
 
-`/` + `string` + `Enter` = Search for string **forwards**.  
-`?` + `string` + `Enter` = Search for string **backwards**.  
-`n` - Next occurrence.  
-`N` - Previous occurrence.
+Works with regex.
+
+```bash
+/ + string + Enter  # Search for string forwards.
+? + string + Enter  # Search for string backwards.
+
+n                   # Next occurrence.
+N                   # Previous occurrence.
+
+grep foo \**/*js    # Every single files that ends with `.js`
+```
 
 # Replace
 
-`:%s/text/replacement/g` - Replace text on every line.  
-`:s/text/replacement/g` - Replace text on current line.
+```bash
+:s/text/replacement        # Only first occurence.
+:s/text/replacement/g      # Only on current line.
+:%s/text/replacement/g     # Every line in file.
 
-# Insert
+v + select + : + s/text    # Only in selected range.
+```
 
-`i` - Inserting with cursor on **inside**.  
-`SHIFT + i` - Inserting with cursos at **begining** of line.
+# Quickfixlist
 
-`a` - Inserting with cursor on **outside**.  
-`SHIFT + a` - Inserting with cursos at **end** of line.
+This is a list with your `grep` search results.
 
-`o` - Create new line **under** cursor and enter **INS** mode.  
-`O` - Create new line **above** cursor and enter **INS** mode.
+```bash
+:copen   # Show current (first) result
+:cnext   # Show next result. Remap to <C-j>.
+:cprev   # Show previous result. Remap to <C-k>.
+```
 
-`x` - Delete character.  
-`X` - Backspace.
+Perform an action/macro on all results.
 
-`r` + `new character` - Change character under cursor without INS mode.
+```bash
+:cdo    # Run
+:wa     # Save changes
+```
 
-# Multiple Inserts
+# Macro
 
-`n times` + `i` + `string` + `ESC` = Multiple inserts.
+Replay keystrokes.
 
-Ex. `5ifoo` + `ESC` will result in `foofoofoofoofoo`.
+```bash
+q + char    # Start recording, ex. q + a
+q           # Stop recording
+@char       # Execute macro, ex. @a
+
+:reg        # List of macros.
+```
+
+# Register
+
+A key value store. Macros are stored here, can be edited.
+
+```bash
+# \ is for escaping.
+
+\" + char          # Access register at char, ex. "b
+\" + char + y      # Copy into register
+\" + char + p      # Paste from register
+
+\"_                # Void register i.e. dev/null
+\"+                # System clipboard
+```
+
+# Source/Reload configuration
+
+```bash
+:so
+```
+
+There are also special directories that auto-source.
 
 # Remapping
 
@@ -218,3 +316,56 @@ Configurations can be made inside `vim` by using `:set number`.
 :set expandtab        # Converts tabs into spaces.
 :set tabstop=4        # Converts tabs into spaces.
 ```
+
+# Plugins
+
+> You can write your own plugins with Lua or VimL.
+
+### 1. Install `vim-plug` plugin manager
+
+A community made [plugin manager](https://github.com/junegunn/vim-plug) that uses only github repos specifically made to work with vim.
+
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Needs a vim reload.
+
+### 2. Add plugins
+
+Example for [fzf - fuzzy finder](https://github.com/junegunn/fzf.vim) plugin.
+
+Add to `~/.vimrc` file.
+
+```bash
+call plug#begin()
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+```
+
+### 3. Source/reload `vimrc`
+
+```
+:so
+```
+
+### 4. Install the plugins
+
+```bash
+:PlugInstall
+```
+
+### 5. Add shortcuts i.e. remaps
+
+```bash
+nnoremap <C-p> :GFiles<CR>        # <C-p> to start fuzzy finder
+nnoremap <leader>pf :Files<CR>    # SPACE + pf for another way
+```
+
+# Themes
+
+ayu, gruvbox, monokai, dracula...
