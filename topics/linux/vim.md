@@ -23,6 +23,7 @@ i              # Insert (editing)     │ Thin cursor
 
 v              # Visual (selection) (not used often)
 V              # Visual Line (select lines) (not used often)
+<C-v>          # Vertical visual mode
 o              # Switch between start/end of selection to expand.
 
 <C-w>          # Window (window selection)
@@ -48,6 +49,19 @@ zz          # Recenter screen (NEVER USE, it interferes with ZZ i.e. saving)
 :h <command>      # Manual
 :set <option>     # Set an option
 :colorscheme      # Pick a colorscheme
+```
+
+Commands can be executed over selections with `!`.
+
+```bash
+:'<'> ! sort | uniq
+
+# :        Command prompt
+# '<'>     Represent the selection
+# !        Tells that a command is to be run
+# sort     Command for sorting
+# |        Pipe
+# uniq     Command for filtering
 ```
 
 # Save + Exit
@@ -95,15 +109,14 @@ k    # Up
 h    # Left (not used often)
 l    # Right (not used often)
 
-w    # Forward one word.
+w    # Jump one word/delimitation.
+W    # Jump to next whitespace
 b    # Back one word.
 e    # End of word.
 
 _    # Jump to first non-whitespace character in line
 0    # Beginning of line.
 $    # End of line.
-
-%    # Jump between matching tags i.e. ), }, ].
 
 f + char    # Jump to first character. F is reversed.
 t + char    # Jump to before first character. T is reversed.
@@ -115,6 +128,8 @@ gg   # Beginning of file.
 G    # End of file.
 nG   # Jump to line n.
 
+%    # Jump between matching tags i.e. ), }, ].
+o    # Jump between start/end of selection to expand.
 
 <C-d>   # Jump down by half page
 <C-u>   # Jump up by half page
@@ -138,6 +153,7 @@ X       # Backspace.
 r + char   # Change character under cursor without INS mode.
 
 <C-a>   # Increment number.
+<C-x>   # Decrement number.
 ```
 
 # Selection
