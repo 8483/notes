@@ -3,6 +3,12 @@
 -   Do not hold down motion keys, it's an anti-pattern.
 -   Multi-cursors are an anti-pattern.
 
+# Version
+
+```bash
+:version
+```
+
 # Terminology
 
 ```bash
@@ -18,7 +24,7 @@
 # Modes
 
 ```bash
-ESC / <C-C>    # Normal (commands)    █ Thick cursor
+ESC / <C-c>    # Normal (commands)    █ Thick cursor
 i              # Insert (editing)     │ Thin cursor
 
 v              # Visual (selection) (not used often)
@@ -34,9 +40,10 @@ o              # Switch between start/end of selection to expand.
 
 ```bash
 :           # Command
-.           # Repeat previous command
+.           # Repeat last command
+
 u           # UNDO
-<C-r>    # REDO
+<C-r>       # REDO
 
 zz          # Recenter screen (NEVER USE, it interferes with ZZ i.e. saving)
 ```
@@ -73,14 +80,6 @@ Commands can be executed over selections with `!`.
 :q!    # Force quit
 ```
 
-# Tabs
-
-```bash
-:tabe FILEPATH    # Open file in new tab
-:tabn             # Next tab
-:tabp             # Previous tab
-```
-
 # File navigation
 
 ```bash
@@ -92,9 +91,9 @@ vim <file>    # Open file directly.
 :e            # Show files in directory
 
 :jumps        # Show navigation history
-<C-o>      # Navigate back
-<C-i>      # Navigate forward
-<C-^>      # Switch between current and last opened file.
+<C-o>         # Navigate back
+<C-i>         # Navigate forward
+<C-^>         # Switch between current and last opened file.
 ```
 
 # Motions
@@ -104,32 +103,32 @@ All of these can be used in **visual (selection)** mode too.
 Motions are composable i.e. `5dd` and `d4j` will both delete 5 lines.
 
 ```bash
-j    # Down
-k    # Up
-h    # Left (not used often)
-l    # Right (not used often)
+j       # Down
+k       # Up
+h       # Left (not used often)
+l       # Right (not used often)
 
-w    # Jump one word/delimitation.
-W    # Jump to next whitespace
-b    # Back one word.
-e    # End of word.
+w       # Jump one word/delimitation.
+W       # Jump to next whitespace
+b       # Back one word.
+e       # End of word.
 
-_    # Jump to first non-whitespace character in line
-0    # Beginning of line.
-$    # End of line.
+_       # Jump to first non-whitespace character in line
+0       # Beginning of line.
+$       # End of line.
 
 f + char    # Jump to first character. F is reversed.
 t + char    # Jump to before first character. T is reversed.
 
-;    # Next occurrence of character.
-,    # Previous occurrence of character.
+;       # Next occurrence of character.
+,       # Previous occurrence of character.
 
-gg   # Beginning of file.
-G    # End of file.
-nG   # Jump to line n.
+gg      # Beginning of file.
+G       # End of file.
+nG      # Jump to line n.
 
-%    # Jump between matching tags i.e. ), }, ].
-o    # Jump between start/end of selection to expand.
+%       # Jump between matching tags i.e. ), }, ].
+o       # Jump between start/end of selection to expand.
 
 <C-d>   # Jump down by half page
 <C-u>   # Jump up by half page
@@ -185,8 +184,6 @@ I + text + esc # Multi line insertion.
 Enter **visual mode** and select text.
 
 ```bash
-CTRL + SHIFT + p    # Paste from outside
-
 y            # Copy (yank) selected.
 
 d            # Cut selected.
@@ -209,6 +206,16 @@ S            # Delete whole line from indent + insert mode
 dg           # Delete to end of file.
 
 :reg         # Register i.e. list of yanks and deletions
+```
+
+# Indentation
+
+```bash
+>>      # Add indentation.
+<<      # Remove indentantion.
+
+<C-t>   # Add indentation at start of line (insert mode).
+<C-d>   # Remove indentation at start of line (insert mode).
 ```
 
 # Search
@@ -269,14 +276,41 @@ q           # Stop recording
 A key value store. Macros are stored here, can be edited.
 
 ```bash
-# \ is for escaping.
+# \" is an escaped "
 
-\" + char          # Access register at char, ex. "b
-\" + char + y      # Copy into register
-\" + char + p      # Paste from register
+\"a       # Access register for a
+\"b       # Access register for b
 
-\"_                # Void register i.e. dev/null
-\"+                # System clipboard
+\"ay      # Copy into register a
+\"by      # Copy into register b
+
+\"ap      # Paste from register a
+\"bp      # Paste from register b
+
+\"+       # System clipboard
+\"_       # Void register i.e. dev/null
+```
+
+# Tabs
+
+```bash
+:tabe FILEPATH    # Open file in new tab
+
+gt                # Next tab
+gT                # Previous tab
+
+:tabn             # Next tab
+:tabp             # Previous tab
+```
+
+# Suspend
+
+```bash
+<C-z>          # Suspend vim i.e. show terminal
+fg + Enter     # Open back vim
+
+:sh            # Suspend vim i.e. show terminal
+exit           # Open back vim
 ```
 
 # Source/Reload configuration
@@ -315,23 +349,27 @@ When vim is opened, it will automatically check the current user's home director
 
 Configurations can be made inside `vim` by using `:set number`.
 
-```bash
-:set scrolloff=8      # Screen auto-scrolls to follow you, avoid recentering.
-:set number           # Show line numbers.
-:set relativenumber   # Line numbers are relative to the current line.
+```vim
+:set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
+:set number           " Show line numbers.
+:set relativenumber   " Line numbers are relative to the current line.
 
-:set nocompatible     # Set compatibility to Vim only.
-:set visualbell	      # Use visual bell (no beeping)
-:set wrap             # Word wrap.
+:set nocompatible     " Set compatibility to Vim only.
+:set visualbell	      " Use visual bell (no beeping)
+:set wrap             " Word wrap.
 
-:set autoindent	      # Auto-indent new lines
-:set shiftwidth=4     # Number of auto-indent spaces
-:set smartindent	  # Enable smart-indent
-:set smarttab	      # Enable smart-tabs
-:set softtabstop=4    # TAB is 4 spaces.
-:set expandtab        # Converts tabs into spaces.
-:set tabstop=4        # Converts tabs into spaces.
+:set autoindent	      " Auto-indent new lines
+:set shiftwidth=4     " Number of auto-indent spaces
+:set smartindent	  " Enable smart-indent
+:set smarttab	      " Enable smart-tabs
+:set softtabstop=4    " TAB is 4 spaces.
+:set expandtab        " Converts tabs into spaces.
+:set tabstop=4        " Converts tabs into spaces.
+
+:set t_u7=            " Fix buy where vim starts in replace mode.
 ```
+
+**NOTE:** Commenting in `.vimrc` files is done with a single `" ` character (no closing).
 
 # Plugins
 
