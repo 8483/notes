@@ -146,15 +146,15 @@
 
 ### **Tools**
 
--   [bash - scripting](./topics/linux/bash.md)
 -   [vim - editor](./topics/linux/vim.md)
+-   [tmux - terminal windows multiplexer](./topics/linux/tmux.md)
+-   [bash - scripting](./topics/linux/bash.md)
 -   [ssh - remote access](./topics/linux/ssh.md)
 -   [rsync - file transfer](./topics/linux/rsync.md)
--   [tmux - terminal windows multiplexer](./topics/linux/tmux.md)
 -   [cron - scheduling](./topics/linux/cron.md)
--   [systemd - daemons](./topics/linux/systemd.md)
 -   [gzip - compression](./topics/linux/gzip.md)
 -   [ffmpeg - video & audio](./topics/linux/ffmpeg.md)
+-   [systemd - daemons](./topics/linux/systemd.md)
 
 # Networking
 

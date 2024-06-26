@@ -27,6 +27,9 @@ alt + shift + click         # Multiple selections in range
 alt + shit + i              # Add cursor to each line in selection
 alt + shift + left/right    # Select everything between brackets
 
+fn + left                   # Beginning of line
+fn + right                   # End of line
+
 # Jumping
 
 ctl + click (variable)      # Jump to definition

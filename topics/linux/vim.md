@@ -155,10 +155,42 @@ r + char   # Change character under cursor without INS mode.
 <C-x>   # Decrement number.
 ```
 
+# Autocomplete
+
+```bash
+# Insert mode
+
+:h ins-completion       # Manual
+
+<C-n>                   # Next suggestion
+<C-p>                   # Previous suggestion
+
+<C-x><C-n>              # Next suggestion
+<C-x><C-p>              # Previous suggestion
+
+<Cx><C-f>               # Complete path
+
+<Cx><C-l>               # Complete line
+
+
+# Omnicomplete - language specific
+
+<Cx><C-o>               # Show suggestions
+
+:set omnifunc=javascriptcomplete#CompleteJS
+:set omnifunc=htmlcomplete#CompleteTags
+:set omnifunc=csscomplete#CompleteCSS
+```
+
 # Selection
 
 ```bash
 o       # Switch between start/end of selection.
+
+*       # Search forward for word under cursor
+gn      # Search forward for word under cursor
+
+\#      # Search backward for word under cursor
 
 viw     # Select whole word.
 viW     # Select every character between whitespaces.
@@ -184,6 +216,8 @@ I + text + esc # Multi line insertion.
 Enter **visual mode** and select text.
 
 ```bash
+right click  # Paste from system clipboard (insert mode)
+
 y            # Copy (yank) selected.
 
 d            # Cut selected.
@@ -223,11 +257,11 @@ dg           # Delete to end of file.
 Works with regex.
 
 ```bash
+n                   # Next occurrence of string.
+N                   # Previous occurrence of string.
+
 / + string + Enter  # Search for string forwards.
 ? + string + Enter  # Search for string backwards.
-
-n                   # Next occurrence.
-N                   # Previous occurrence.
 
 grep foo \**/*js    # Every single files that ends with `.js`
 ```
@@ -236,27 +270,53 @@ grep foo \**/*js    # Every single files that ends with `.js`
 
 ```bash
 :s/text/replacement        # Only first occurence.
-:s/text/replacement/g      # Only on current line.
-:%s/text/replacement/g     # Every line in file.
+:s/text/replacement/g      # Every occurence in line.
+:%s/text/replacement/g     # Every occurence in file.
 
 v + select + : + s/text    # Only in selected range.
 ```
 
-# Quickfixlist
-
-This is a list with your `grep` search results.
+# grep
 
 ```bash
-:copen   # Show current (first) result
-:cnext   # Show next result. Remap to <C-j>.
-:cprev   # Show previous result. Remap to <C-k>.
+:grep              # External (terminal) search
+
+:vimgrep           # Internal (vim) search, add to quickfix list
+:vim               # Internal (vim) search, add to quickfix list
+
+:vim foo *         # Current directory
+:vim foo **        # Current directory and subdirectories
+:vim foo **/*js    # Current directory and subdirectories only in js files
 ```
 
-Perform an action/macro on all results.
+# Quickfix List
+
+This is a list with your `vimgrep` search results.
 
 ```bash
-:cdo    # Run
-:wa     # Save changes
+:vim foo **       # Current directory and subdirectories
+
+:copen            # Show current (first) result
+
+# Navigate while inside of window
+
+j            # Show next result.
+k            # Show previous result.
+
+# Navigate while outside of window
+
+:cnext            # Show next result. Remap to <C-j>.
+:cprev            # Show previous result. Remap to <C-k>.
+
+# Previous lists. Up to 10 saved.
+
+:colder           # Previous list
+:cnewer           # Next list
+
+# Perform an action/macro on the list
+
+:cdo command      # Run
+:wa               # Save changes
 ```
 
 # Macro
@@ -291,6 +351,37 @@ A key value store. Macros are stored here, can be edited.
 \"_       # Void register i.e. dev/null
 ```
 
+# Windows
+
+```bash
+<C-w>           # Window commands.
+
+<C-w> w         # Cycle through open windows.
+<C-w> <C-w>:    # Cycle through open windows.
+
+<C-w> s         # Split the current window horizontally.
+<C-w> v         # Split the current window vertically.
+
+<C-w> c         # Close the current window.
+<C-w> o         # Close all other windows except the current one.
+
+<C-w> h         # Move to the window on the left.
+<C-w> j         # Move to the window below.
+<C-w> k         # Move to the window above.
+<C-w> l         # Move to the window on the right.
+
+<C-w> q         # Quit the current window.
+
+<C-w> =         # Make all windows equal size.
+<C-w> _         # Maximize the current window height.
+<C-w> |         # Maximize the current window width.
+
+<C-w> +         # Increase the height of the current window.
+<C-w> -         # Decrease the height of the current window.
+<C-w> >         # Increase the width of the current window.
+<C-w> <         # Decrease the width of the current window.
+```
+
 # Tabs
 
 ```bash
@@ -316,7 +407,7 @@ exit           # Open back vim
 # Source/Reload configuration
 
 ```bash
-:so
+:so %     # % refers to the current file
 ```
 
 There are also special directories that auto-source.
@@ -347,29 +438,30 @@ You should create a local `.vimrc` file in the `home` directory for customizatio
 
 When vim is opened, it will automatically check the current user's home directory for a `.vimrc` file. All settings specified in this file will override the global settings.
 
-Configurations can be made inside `vim` by using `:set number`.
-
 ```vim
-:set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
-:set number           " Show line numbers.
-:set relativenumber   " Line numbers are relative to the current line.
+set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
+set number           " Show line numbers.
+set relativenumber   " Line numbers are relative to the current line.
 
-:set nocompatible     " Set compatibility to Vim only.
-:set visualbell	      " Use visual bell (no beeping)
-:set wrap             " Word wrap.
+set nocompatible     " Set compatibility to Vim only.
+set visualbell	     " Use visual bell (no beeping)
+set wrap             " Word wrap.
 
-:set autoindent	      " Auto-indent new lines
-:set shiftwidth=4     " Number of auto-indent spaces
-:set smartindent	  " Enable smart-indent
-:set smarttab	      " Enable smart-tabs
-:set softtabstop=4    " TAB is 4 spaces.
-:set expandtab        " Converts tabs into spaces.
-:set tabstop=4        " Converts tabs into spaces.
+set autoindent	     " Auto-indent new lines
+set shiftwidth=4     " Number of auto-indent spaces
+set smartindent	     " Enable smart-indent
+set smarttab	     " Enable smart-tabs
+set softtabstop=4    " TAB is 4 spaces.
+set expandtab        " Converts tabs into spaces.
+set tabstop=4        " Converts tabs into spaces.
 
-:set t_u7=            " Fix buy where vim starts in replace mode.
+set t_u7=            " Fix buy where vim starts in replace mode.
 ```
 
-**NOTE:** Commenting in `.vimrc` files is done with a single `" ` character (no closing).
+**NOTE:**
+
+-   Configurations can be made inside `vim` by using `:set number`.
+-   Commenting in `.vimrc` files is done with a single `" ` character (no closing).
 
 # Plugins
 
@@ -404,7 +496,7 @@ call plug#end()
 ### 3. Source/reload `vimrc`
 
 ```
-:so
+:so ~/.vimrc
 ```
 
 ### 4. Install the plugins
@@ -420,6 +512,50 @@ nnoremap <C-p> :GFiles<CR>        # <C-p> to start fuzzy finder
 nnoremap <leader>pf :Files<CR>    # SPACE + pf for another way
 ```
 
-# Themes
+# vimrc example
 
-ayu, gruvbox, monokai, dracula...
+```vim
+set number           " Show line numbers.
+set relativenumber   " Line numbers are relative to the current line.
+set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
+set hlsearch         " Highligt searches
+
+set nocompatible     " Set compatibility to Vim only.
+set visualbell       " Use visual bell (no beeping)
+set wrap             " Word wrap.
+
+set autoindent       " Auto-indent new lines
+set shiftwidth=4     " Number of auto-indent spaces
+set smartindent      " Enable smart-indent
+set smarttab         " Enable smart-tabs
+set softtabstop=4    " TAB is 4 spaces.
+set expandtab        " Converts tabs into spaces.
+set tabstop=4        " Converts tabs into spaces.
+
+set t_u7=            " Fix buy where vim starts in replace mode.
+
+call plug#begin()
+
+" Interface
+Plug 'vim-airline/vim-airline'
+
+" Syntax hihglighting
+Plug 'evanleck/vim-svelte'
+Plug 'pangloss/vim-javascript'
+
+" Autocomplete
+Plug 'lifepillar/vim-mucomplete'
+
+" Themes
+Plug 'tomasiser/vim-code-dark'
+
+call plug#end()
+
+" Autocomplete settings
+
+set completeopt+=menuone
+set completeopt+=noselect
+let g:mucomplete#enable_auto_at_startup = 1
+
+colorscheme codedark
+```
