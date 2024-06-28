@@ -1,3 +1,31 @@
+# Executable
+
+1. Create file ex. `script.sh`.
+
+```bash
+touch script.sh
+```
+
+2. Add `#!/bin/bash` to the top.
+
+```bash
+#!/bin/bash
+
+echo foo
+```
+
+3.Make the script executable.
+
+```bash
+chmod u+x script.sh
+```
+
+4. Run script
+
+```bash
+./script.sh
+```
+
 # Line breaks
 
 If the statement is correct without continuation, you need to use `\`. Therefore, the following works without a backslash, as you can't end a command with a `&&`.

@@ -95,27 +95,53 @@ rm -r FOLDER     # Delete a directory and its files
 # Find
 
 ```bash
-# Global i.e. start searching from root.
+find                    # Show everything (files and directories).
+find /                  # Everything starting from root.
+find .                  # Everything in current directory.
 
-sudo find / -name "filename"          # File
-sudo find / -type d -name "dirname"   # Directory
+find / -name foo        # Show everything name foo starting from root
+find . -name foo        # Show everything name foo in current directory.
 
-which PROGRAM                         # Path to program.
+# Types
 
-# In directory
+find / -name foo -type d           # Show only directories
+find / -name foo -type f           # Show only files
 
-find .                          # Show all files in directory.
+# Directories
+
+find ~/app ~/project -name foo     # Searches in multiple directories
+
+# Filtering
+
 find . -name "*.txt"            # Find all text files.
 find . -size +5M                # Find files above 5mb.
 find . -mtime +3                # Files older than 3 days.
 
 find . -iname FILE_NAME         # Find case insensitive.
 find . | grep "string"          # Find files in directory.
+```
 
-grep STRING FILE_NAME           # Find string in specific file.
-grep -r STRING .                # Find string in all directory files.
-grep -i STRING                  # Search without case sensitivity.
-command | grep "foo"            # Search output of a command.
+**Exclude**
+
+`-prune` excludes the directory's contents, but not the directory itself. This happens if `-prune` is the only action in a find command.
+
+If there were any other action (ex. `-exec` or `-print`), it would not output the pruned directory names. So you just have to add an explicit `-print` in the end of your find command.
+
+You also have to add `-o` (OR) to actually print. `-o` is ambigus, when find finds a directory, the `-prune` is true, so `-print` is not evaluated
+
+```bash
+# Directories
+
+find ~ -name foo -name "node_modules" -prune -o -name ".git" -prune -o -print
+
+# Files
+
+find ~ -name foo -not -name "*.log" -not -name "*.tmp"
+
+# Both
+
+find ~ -name foo -name "node_modules" -prune -o -name ".git" -prune -o -not -name "*.mp3" -not -name "*.png" -not -name "*.jpg" -not -name "*.svg" -print
+
 ```
 
 # System

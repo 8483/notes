@@ -9,38 +9,41 @@ This can be done by opening a directory from a WSL terminal with `code .` or by 
 ```bash
 # General
 
-ctrl + ,                    # Settings
-ctrl + shift + p            # Commands palette
-ctrl + p                    # Search files
+CTRL + p                       # Search files
+CTRL + SHIFT + p               # Command palette
+CTRL + ,                       # Settings
 
 # Selection
 
-alt + click (empty)         # Multiple cursors
+ALT + click (empty)            # Multiple cursors
 
-ctrl + d                    # Select next duplicate value
-ctrl + u                    # Unselect duplicate value
-ctrl + shift + L            # Select all duplicate values
+CTRL + d                       # Select next duplicate value
+CTRL + u                       # Unselect duplicate value
+CTRL + SHIFT + L               # Select all duplicate values
+CTRL + k & CTRL + d            # Skip next duplicate value
 
-ctrl + L                    # Select line. Press again selects next line
+CTRL + L                       # Select line. Press again selects next line
 
-alt + shift + click         # Multiple selections in range
-alt + shit + i              # Add cursor to each line in selection
-alt + shift + left/right    # Select everything between brackets
+ALT + SHIFT + click            # Multiple selections in range
+ALT + SHIFT + i                # Add cursor to each line in selection
+ALT + SHIFT + left/right       # Select everything between brackets
+ALT + SHIFT + left/right       # Select everything between brackets
+CTRL + ALT + up/down           # Add cursor above/below
 
-fn + left                   # Beginning of line
-fn + right                   # End of line
+FN + left                      # Beginning of line
+FN + right                     # End of line
 
 # Jumping
 
-ctl + click (variable)      # Jump to definition
-alt + left/right            # Jumpt to previous/next editing location
+CTRL + click (variable)        # Jump to definition
+ALT + left/right               # Jumpt to previous/next editing location
 
 # Utility
 
-alt + up/down               # Move line up or down
-alt + shift + up/down       # Duplicate line
+ALT + up/down                  # Move line up or down
+ALT + SHIFT + up/down          # Duplicate line
 
-ctrl + i                    # Show code completion suggestions
+CTRL + i                       # Show code completion suggestions
 ```
 
 # Settings

@@ -2,6 +2,7 @@
 
 -   Do not hold down motion keys, it's an anti-pattern.
 -   Multi-cursors are an anti-pattern.
+-   Spend as little time in insert mode as possible.
 
 # Version
 
@@ -24,16 +25,14 @@
 # Modes
 
 ```bash
-ESC / <C-c>    # Normal (commands)    █ Thick cursor
+Esc / <C-c> / <C-[>    # Normal (commands)    █ Thick cursor
+
 i              # Insert (editing)     │ Thin cursor
 
 v              # Visual (selection) (not used often)
 V              # Visual Line (select lines) (not used often)
-<C-v>          # Vertical visual mode
+<C-v>          # Visual block (vertical) mode
 o              # Switch between start/end of selection to expand.
-
-<C-w>          # Window (window selection)
-<C-o>          # Close all windows
 ```
 
 # Normal mode
@@ -76,7 +75,7 @@ Commands can be executed over selections with `!`.
 ```bash
 :w     # Save
 :q     # Quit
-:wq    # Save & quit
+:wq    # Save and quit
 :q!    # Force quit
 ```
 
@@ -94,6 +93,8 @@ vim <file>    # Open file directly.
 <C-o>         # Navigate back
 <C-i>         # Navigate forward
 <C-^>         # Switch between current and last opened file.
+
+<C-g>         # Show current file name
 ```
 
 # Motions
@@ -114,6 +115,7 @@ b       # Back one word.
 e       # End of word.
 
 _       # Jump to first non-whitespace character in line
+^       # Beginning of line.
 0       # Beginning of line.
 $       # End of line.
 
@@ -132,16 +134,18 @@ o       # Jump between start/end of selection to expand.
 
 <C-d>   # Jump down by half page
 <C-u>   # Jump up by half page
+
+}       # Jump to next block/paragraph
 ```
 
 # Insert
 
 ```bash
-i       # Inserting with cursor on inside.
-I       # Inserting with cursos at begining of line.
+i       # Inserting with cursor on inside i.e prepend.
+I       # Inserting with cursor at begining of line.
 
 a       # Inserting with cursor on outside i.e. append.
-A       # Inserting with cursos at end of line.
+A       # Inserting with cursor at end of line.
 
 o       # Create new line under cursor + insert mode.
 O       # Create new line above cursor + insert mode.
@@ -202,7 +206,7 @@ ci{     # Delete + insert mode inside {}.
 
 va{     # Select outside {}.
 
-ESC v   # visual mode for selection.
+Esc v   # visual mode for selection.
 <C-v>   # block selection i.e. multi-line column, good for commenting.
 
 I + text + esc # Multi line insertion.
@@ -211,7 +215,7 @@ I + text + esc # Multi line insertion.
 '>      # Text representation for end of selection.
 ```
 
-# Copy & Paste
+# Copy and Paste
 
 Enter **visual mode** and select text.
 
@@ -257,8 +261,8 @@ dg           # Delete to end of file.
 Works with regex.
 
 ```bash
-n                   # Next occurrence of string.
-N                   # Previous occurrence of string.
+n                   # Next occurrence of string under cursor.
+N                   # Previous occurrence of string under cursor.
 
 / + string + Enter  # Search for string forwards.
 ? + string + Enter  # Search for string backwards.
@@ -274,6 +278,30 @@ grep foo \**/*js    # Every single files that ends with `.js`
 :%s/text/replacement/g     # Every occurence in file.
 
 v + select + : + s/text    # Only in selected range.
+
+&                          # Repeat replace for string under cursor. (n + &)
+g&                         # Repeat replace for all
+```
+
+# Multiple selection
+
+Tries to simulate `CTRL` + `d` (find duplicate) functionality.
+
+```bash
+# 1. Go to top of file.
+gg
+
+# 2. Search
+/foo
+
+# 3. Change first found
+cgn bar
+
+# 4. Repeat for next occurence
+.
+
+# 5. Skip occurence
+n
 ```
 
 # grep
@@ -315,8 +343,27 @@ k            # Show previous result.
 
 # Perform an action/macro on the list
 
-:cdo command      # Run
+:cdo command      # Run on every match individually in the quickfix list.
+:cfdo command     # Run on the entire file containing a match in the quickfix list.
 :wa               # Save changes
+```
+
+**Example**
+
+```bash
+:vimgrep foo %           # Find foo in current file, put results in quickfix list
+:copen                   # Open the quickfix list
+:cfdo %s/foo/bar/g       # Apply search and replace to every list item
+```
+
+# Commenting
+
+```bash
+<C-v>        # Enter visial block mode
+jk / }       # Go up/down or jump to end of block
+I            # Insert at beginning of line
+//           # Add commenting characters
+ESC          # Apply to all lines
 ```
 
 # Macro
@@ -354,7 +401,8 @@ A key value store. Macros are stored here, can be edited.
 # Windows
 
 ```bash
-<C-w>           # Window commands.
+<C-w>           # Window commands/mode.
+<C-o>           # Close all windows
 
 <C-w> w         # Cycle through open windows.
 <C-w> <C-w>:    # Cycle through open windows.
@@ -515,9 +563,13 @@ nnoremap <leader>pf :Files<CR>    # SPACE + pf for another way
 # vimrc example
 
 ```vim
+filetype plugin on
+set path+=**         " Find searches recursively in subdirectories.
+set wildmenu         " Show autocompletion suggestions.
+
+set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
 set number           " Show line numbers.
 set relativenumber   " Line numbers are relative to the current line.
-set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
 set hlsearch         " Highligt searches
 
 set nocompatible     " Set compatibility to Vim only.
@@ -539,23 +591,31 @@ call plug#begin()
 " Interface
 Plug 'vim-airline/vim-airline'
 
+" Functionality
+Plug 'lifepillar/vim-mucomplete'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
+
 " Syntax hihglighting
 Plug 'evanleck/vim-svelte'
 Plug 'pangloss/vim-javascript'
 
-" Autocomplete
-Plug 'lifepillar/vim-mucomplete'
+" Formatting
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " Themes
 Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
-" Autocomplete settings
-
 set completeopt+=menuone
 set completeopt+=noselect
 let g:mucomplete#enable_auto_at_startup = 1
 
 colorscheme codedark
+
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'all'
+let g:prettier#exec_cmd_async = 1
+let g:prettier#exec_cmd_path = 'prettier'
 ```

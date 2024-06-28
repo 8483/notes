@@ -68,6 +68,12 @@ To create global variables, for all users, you do the same in `/etc/environment`
 
 Each time you run a command, the shell checks all the directories for the executable.
 
+You can also check if an execuatable is in the path.
+
+```bash
+which executable_name
+```
+
 Directories that include executables are usually named `bin`.
 
 ```bash
