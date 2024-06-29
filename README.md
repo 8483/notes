@@ -316,6 +316,12 @@ filetype:pdf query       - Search just for file type
 
 ---
 
+Dependency 2
+
+![Dependency 2](./pics/comics/dependency_2.jpg)
+
+---
+
 [Standards](https://xkcd.com/927/)
 
 ![Standards](./pics/comics/standards.png)

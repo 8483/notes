@@ -1,9 +1,9 @@
 # Executable
 
-1. Create file ex. `script.sh`.
+1. Create file ex. `script` or `script.sh`.
 
 ```bash
-touch script.sh
+touch script
 ```
 
 2. Add `#!/bin/bash` to the top.
@@ -17,13 +17,31 @@ echo foo
 3.Make the script executable.
 
 ```bash
-chmod u+x script.sh
+chmod u+x script
 ```
 
 4. Run script
 
 ```bash
-./script.sh
+./script
+```
+
+# Command
+
+1. Put the script in a `~/bin` directory.
+
+2. Add this into `~/.bashrc`
+
+-   Make it a command
+
+```bash
+alias script='cd $(~/bin/script)'
+```
+
+-   Make it a shortcut (CTRL + F)
+
+```bash
+bind -x '"\C-f":"cd $(~/bin/script)"'
 ```
 
 # Line breaks

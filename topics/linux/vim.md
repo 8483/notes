@@ -1,8 +1,17 @@
+# Learning
+
+If you want to use vim as you'd use VS Code, just go with VS Code.
+
+Vim works a different way, for a reason, don't try to make it VS Code.
+
+When you’re working don’t try speed all the time, slow down and see if there’s a way to accomplish what you want easier.
+
 # Tips
 
+-   Live in normal mode. Spend as little time as possible in insert mode.
+-   Avoid using plugins as much as possible.
+-   Avoid using multi-cursors, learn the built in ways.
 -   Do not hold down motion keys, it's an anti-pattern.
--   Multi-cursors are an anti-pattern.
--   Spend as little time in insert mode as possible.
 
 # Version
 
@@ -85,14 +94,18 @@ Commands can be executed over selections with `!`.
 vim <path>    # Open directory inside vim and select a file.
 vim <file>    # Open file directly.
 
-:Ex           # Show current directory
+:e path       # Navigate to directory/file. Use TAB and CTRL + d to choose.
+
+:e.           # Show directory
+:E            # Show directory
+:Ex           # Show directory
+
 :Vex          # Show directory in a new window
-:e            # Show files in directory
 
 :jumps        # Show navigation history
 <C-o>         # Navigate back
 <C-i>         # Navigate forward
-<C-^>         # Switch between current and last opened file.
+<C-^>         # Switch between current and last navigation.
 
 <C-g>         # Show current file name
 ```
@@ -119,11 +132,10 @@ _       # Jump to first non-whitespace character in line
 0       # Beginning of line.
 $       # End of line.
 
-f + char    # Jump to first character. F is reversed.
-t + char    # Jump to before first character. T is reversed.
-
-;       # Next occurrence of character.
-,       # Previous occurrence of character.
+f + char    # Jump to first character in line. F is reversed.
+t + char    # Jump to before first character in line. T is reversed.
+;           # Next occurrence of character.
+,           # Previous occurrence of character.
 
 gg      # Beginning of file.
 G       # End of file.
@@ -452,6 +464,13 @@ fg + Enter     # Open back vim
 exit           # Open back vim
 ```
 
+# Terminal
+
+```bash
+! command      # Run a command with vim in the background
+:term          # Open terminal in new window
+```
+
 # Source/Reload configuration
 
 ```bash
@@ -560,12 +579,25 @@ nnoremap <C-p> :GFiles<CR>        # <C-p> to start fuzzy finder
 nnoremap <leader>pf :Files<CR>    # SPACE + pf for another way
 ```
 
+### 6. Delete plugins
+
+Remove plugin from `~/.vimrc`.
+
+```bash
+:PlugClean
+```
+
 # vimrc example
 
 ```vim
-filetype plugin on
+" SETTINGS ========================================================================
+
+filetype plugin on   " Detect filetypes and load relevant plugins.
 set path+=**         " Find searches recursively in subdirectories.
-set wildmenu         " Show autocompletion suggestions.
+set wildmenu         " Show command autocompletion suggestions.
+
+" set cursorcolumn     " Show vertical line to locate cursor.
+" set cursorline       " Show horizontal line to locate cursor.
 
 set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
 set number           " Show line numbers.
@@ -586,36 +618,53 @@ set tabstop=4        " Converts tabs into spaces.
 
 set t_u7=            " Fix buy where vim starts in replace mode.
 
+set completeopt+=menuone     " Always show autocompletion
+set completeopt+=noselect    " Manual selection required
+
+" PLUGINS ========================================================================
+
 call plug#begin()
-
-" Interface
-Plug 'vim-airline/vim-airline'
-
-" Functionality
-Plug 'lifepillar/vim-mucomplete'
-" Plug 'terryma/vim-multiple-cursors'
-Plug 'mg979/vim-visual-multi'
-
-" Syntax hihglighting
-Plug 'evanleck/vim-svelte'
-Plug 'pangloss/vim-javascript'
-
-" Formatting
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " Themes
 Plug 'tomasiser/vim-code-dark'
 
+" Interface
+Plug 'vim-airline/vim-airline'
+" Plug 'blueyed/vim-diminactive'
+
+" Syntax hihglighting
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte'
+
+" Functionality
+" Plug 'lifepillar/vim-mucomplete'
+" Plug 'mg979/vim-visual-multi'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+
+" Formatting
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
 call plug#end()
 
-set completeopt+=menuone
-set completeopt+=noselect
-let g:mucomplete#enable_auto_at_startup = 1
+" PLUGIN SETTINGS =======================================================================
+
+" let g:mucomplete#enable_auto_at_startup = 1
 
 colorscheme codedark
 
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'all'
-let g:prettier#exec_cmd_async = 1
-let g:prettier#exec_cmd_path = 'prettier'
+" REMAPS ========================================================================
+
+" nnoremap oo o<ESC>
+" nnoremap OO O<ESC>
+
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
+
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+" noremap <C-p> :Files<CR>
 ```
