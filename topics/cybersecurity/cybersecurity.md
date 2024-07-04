@@ -1,0 +1,5 @@
+-   **SSL** - Let's encrypt.
+-   **Encryption** - Password hashing.
+-   **JWT** - Tokens vs cookies.
+-   **Reverse-proxy** - Localhost vs direct.
+-   **User groups** - Linux permissions.

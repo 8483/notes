@@ -13,6 +13,8 @@ CTRL + p                       # Search files
 CTRL + SHIFT + p               # Command palette
 CTRL + ,                       # Settings
 
+CTRL + TAB                     # Cycle through tabs
+
 # Selection
 
 ALT + click (empty)            # Multiple cursors

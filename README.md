@@ -2,6 +2,8 @@
 
 > # **90% of real-world programs are database frontends, held by duct tape.**
 
+> # **Most of programming is really just taking data from place A, transforming it, and putting it in place B.**
+
 # Programming
 
 ### **Javascript**
@@ -65,12 +67,20 @@
 -   [SQL Server](./topics/database/sqlserver.md)
     -   [node mssql](./topics/database/node-mssql.md)
 
+### **Cybersecurity**
+
+-   [Best practices](./topics/cybersecurity/cybersecurity.md)
+-   [SQL Injection](./topics/cybersecurity/sqlinjection.md)
+-   [Cross Site Scripting (XSS)](./topics/cybersecurity/xss.md)
+-   [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
+-   [Cross-origin resource sharing (CORS)](./topics/cybersecurity/cors.md)
+
 ### **Tooling**
 
+-   [VS Code](./topics/vscode.md)
 -   [Git](./topics/git.md)
 -   [Babel](./topics/babel.md)
 -   [Webpack](./topics/webpack.md)
--   [VS Code](./topics/vscode.md)
 
 ### **Architecture**
 
@@ -86,7 +96,6 @@
 -   [Code quality and performance](./topics/codeQuality.md)
 -   [UI/UX](./topics/uiux.md)
 -   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
--   [Security](./topics/security.md)
 -   [Testing](./topics/testing.md)
     -   [Jest](./topics/testingJest.md)
     -   [Mocha](./topics/testingMocha.md)
