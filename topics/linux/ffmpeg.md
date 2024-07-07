@@ -30,13 +30,18 @@ Bitrate (in bits per second) = 4194304000 bits / 7200 seconds
 
 Video:
 
--   4K: 30-60+ Mbps
--   HD: 5-10 Mbps
--   1080p: 3,000 kbps
--   720p: 1,500 kbps (standard)
--   480p: 1,000 kbps
--   360p: 600 kbps
--   240p: 400 kbps
+1080p is the most commonly used one.
+
+| Quality       | Bitrate        | Resolution      |
+| ------------- | -------------- | --------------- |
+| 4K            | 30+ Mbps       | 3840 x 2160     |
+| QHD 1440p     | 13,000 kbps    | 2560 x 1440     |
+| **FHD 1080p** | **6,000 kbps** | **1920 x 1080** |
+| HD 720p       | 4,000 kbps     | 1280 x 720      |
+| SD 720p       | 2,000 kbps     | 640 x 480       |
+| SD 480p       | 1,000 kbps     | 854 x 480       |
+| SD 360p       | 600 kbps       | 640 x 360       |
+| SD 240p       | 400 kbps       | 426 x 240       |
 
 Audio:
 
