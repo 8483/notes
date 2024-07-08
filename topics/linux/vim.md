@@ -124,8 +124,8 @@ l       # Right (not used often)
 
 w       # Jump one word/delimitation.
 W       # Jump to next whitespace
-b       # Back one word.
 e       # End of word.
+b       # Back one word.
 
 _       # Jump to first non-whitespace character in line
 ^       # Beginning of line.
@@ -150,52 +150,33 @@ o       # Jump between start/end of selection to expand.
 }       # Jump to next block/paragraph
 ```
 
-# Insert
+# Editing
 
 ```bash
-i       # Inserting with cursor on inside i.e prepend.
-I       # Inserting with cursor at begining of line.
+i           # Inserting with cursor on inside i.e prepend.
+I           # Inserting with cursor at begining of line.
 
-a       # Inserting with cursor on outside i.e. append.
-A       # Inserting with cursor at end of line.
+a           # Inserting with cursor on outside i.e. append.
+A           # Inserting with cursor at end of line.
 
-o       # Create new line under cursor + insert mode.
-O       # Create new line above cursor + insert mode.
+c + motion  # Change value in selection ex. cw, c_, ci, ca...
 
-x       # Delete character.
-X       # Backspace.
+C           # Delete after cursor + insert mode
+cc          # Delete line + insert mode
 
-r + char   # Change character under cursor without INS mode.
+o           # Create new line under cursor + insert mode.
+O           # Create new line above cursor + insert mode.
 
-<C-a>   # Increment number.
-<C-x>   # Decrement number.
-```
+x           # Delete character.
+X           # Backspace.
 
-# Autocomplete
+s           # Delete single character + insert mode
+S           # Delete whole line from indent + insert mode
 
-```bash
-# Insert mode
+r + char    # Change character under cursor without INS mode.
 
-:h ins-completion       # Manual
-
-<C-n>                   # Next suggestion
-<C-p>                   # Previous suggestion
-
-<C-x><C-n>              # Next suggestion
-<C-x><C-p>              # Previous suggestion
-
-<Cx><C-f>               # Complete path
-
-<Cx><C-l>               # Complete line
-
-
-# Omnicomplete - language specific
-
-<Cx><C-o>               # Show suggestions
-
-:set omnifunc=javascriptcomplete#CompleteJS
-:set omnifunc=htmlcomplete#CompleteTags
-:set omnifunc=csscomplete#CompleteCSS
+<C-a>       # Increment number.
+<C-x>       # Decrement number.
 ```
 
 # Selection
@@ -247,12 +228,6 @@ x            # Delete selecttion/charcater.
 yy           # Copy (yank) line in normal mode.
 dd           # Cut line in normal mode. (Shift + d)
 
-cc           # Delete line + insert mode
-C            # Delete after cursor + insert mode
-
-s            # Delete single character + insert mode
-S            # Delete whole line from indent + insert mode
-
 dg           # Delete to end of file.
 
 :reg         # Register i.e. list of yanks and deletions
@@ -268,13 +243,40 @@ dg           # Delete to end of file.
 <C-d>   # Remove indentation at start of line (insert mode).
 ```
 
+# Autocomplete
+
+```bash
+# Insert mode
+
+:h ins-completion       # Manual
+
+<C-n>                   # Next suggestion
+<C-p>                   # Previous suggestion
+
+<C-x><C-n>              # Next suggestion
+<C-x><C-p>              # Previous suggestion
+
+<Cx><C-f>               # Complete path
+
+<Cx><C-l>               # Complete line
+
+
+# Omnicomplete - language specific
+
+<Cx><C-o>               # Show suggestions
+
+:set omnifunc=javascriptcomplete#CompleteJS
+:set omnifunc=htmlcomplete#CompleteTags
+:set omnifunc=csscomplete#CompleteCSS
+```
+
 # Search
 
 Works with regex.
 
 ```bash
-n                   # Next occurrence of string under cursor.
-N                   # Previous occurrence of string under cursor.
+n    # Next occurrence of string under cursor (Works without searching)
+N    # Previous occurrence of string under cursor Works without searching
 
 / + string + Enter  # Search for string forwards.
 ? + string + Enter  # Search for string backwards.
@@ -306,14 +308,27 @@ gg
 # 2. Search
 /foo
 
-# 3. Change first found
-cgn bar
+# 3. Edit
+i / a / c       # Edit however you want ex. "cgn" change first from top.
 
-# 4. Repeat for next occurence
-.
-
-# 5. Skip occurence
+# 4. Jump to next occurence
 n
+
+# 5. Repeat last edit
+.
+```
+
+Another approach
+
+```bash
+# 1. Change any occurence
+i / a / c
+
+# 2. Apply change to all other occurences
+:g/foo/norm .
+
+:g/foo/   # Repeat command on every line that has foo.
+norm .    # Execute the normal mode command . (repeats the last change)
 ```
 
 # grep

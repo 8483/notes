@@ -1,13 +1,22 @@
 # Content
 
+Svelte:
+
 -   [Terminology](#terminology)
 -   [Svelte](#svelte)
+
+Install:
+
 -   [Install via Vite](#install-via-vite)
 -   [Use Vite in existing Svelte app](#use-vite-in-existing-svelte-app)
 -   [Install via Degit - Old deprecated](#install-via-degit---old-deprecated)
+-   [Rollup](#rollup)
 -   [VS Code extensions](#vs-code-extensions)
 -   [Formatter](#formatter)
 -   [Injected components](#injected-components)
+
+Language:
+
 -   [Basics](#basics)
 -   [Reactivity](#reactivity)
 -   [Props](#props)
@@ -16,17 +25,20 @@
 -   [Binding](#binding)
 -   [Lifecycle](#lifecycle)
 -   [Stores](#stores)
+-   [Actions](#actions)
 -   [Motions](#motions)
 -   [Transitions](#transitions)
 -   [CSS](#css)
 -   [Slots](#slots)
 -   [Context API](#context-api)
 -   [Special elements](#special-elements)
+
+Utilities:
+
 -   [Debugging](#debugging)
 -   [Routing](#routing)
--   [Rollup](#rollup)
 -   [SvelteKit](#sveltekit)
--   [UI component libraries](#ui-component-libraries)
+-   [Libraries](#libraries)
 
 # Terminology
 
@@ -243,6 +255,29 @@ HOST=127.0.0.1 PORT=4444 npm run dev
 
 # create a production-ready version of your app in /public/bundle.js.
 npm run build
+```
+
+# Rollup
+
+Remove `console.log` and `comments` in production.
+
+```js
+// rollup.config.js
+
+import { terser } from "rollup-plugin-terser";
+
+export default {
+    input: "src/main.js",
+    output: {
+        //
+    },
+    plugins: [
+        terser({
+            compress: { drop_console: true },
+            output: { comments: false },
+        }),
+    ],
+};
 ```
 
 # VS Code extensions
@@ -1449,6 +1484,41 @@ export async function addToCart(sku, quantity) {
 }
 ```
 
+# Actions
+
+Regular javascripts functions that are called when an element is created, with a reference to the element.
+
+```html
+<script>
+    function clickOutside(element) {
+        const handleClick = (event) => {
+            if (element && !element.contains(event.target) && !event.defaultPrevented) {
+                element.dispatchEvent(new CustomEvent("click-outside", element));
+            }
+        };
+
+        document.addEventListener("click", handleClick, true);
+
+        return {
+            destroy() {
+                document.removeEventListener("click", handleClick, true);
+            },
+        };
+    }
+</script>
+
+<div
+    use:clickOutside
+    on:click-outside={() => {
+       console.log("clicked outside");
+    }}
+>
+   <span>
+        foo
+    </span>
+</div>
+```
+
 # Motions
 
 Tweening = inbeTweening i.e adding an effect between a start and end state ex. progress bar.
@@ -2138,36 +2208,15 @@ About.svelte
 <div class="container">ABOUT</div>
 ```
 
-# Rollup
-
-Remove `console.log` and `comments` in production.
-
-```js
-// rollup.config.js
-
-import { terser } from "rollup-plugin-terser";
-
-export default {
-    input: "src/main.js",
-    output: {
-        //
-    },
-    plugins: [
-        terser({
-            compress: { drop_console: true },
-            output: { comments: false },
-        }),
-    ],
-};
-```
-
 # SvelteKit
 
 SvelteKit is to Svelte, what Next.js is to React.
 
 Sveltekit uses vitejs for the build process, but vitejs can also generate multiple starter projects, including svelte. This is old school svelte, where you can install your own router and keep it a simple SPA. I agree its frustrating, there's a constant "upsell" from svelte to sveltekit. But not everybody wants its weird file based routing, and SSR is completely unnecessary for many SPA apps (and many SPA's that use SSR shouldn't even be SPAs in the first place because they are web sites, not web apps.). And even if you can turn off SSR with some kind of "adapter", why should you even bother with it in the first place?
 
-# UI component libraries
+# Libraries
+
+UI:
 
 -   https://svelte-mui.ibbf.ru/textfield
 -   https://illright.github.io/attractions/
@@ -2178,3 +2227,10 @@ Sveltekit uses vitejs for the build process, but vitejs can also generate multip
 -   https://madewithsvelte.com/
 -   https://svelte-community.netlify.app/code/
 -   https://framework7.io/
+
+Actions:
+
+-   [Code editor](https://github.com/PuruVJ/neocodemirror)
+-   [Draggable](https://github.com/PuruVJ/neodrag)
+-   [Picker](https://github.com/kodaicoder/svelte-flatpickr-plus)
+-   [Masking](https://github.com/Hugos68/svelte-maskify)
