@@ -34,6 +34,7 @@
     -   [Various](./topics/libraries-frontend.md)
 -   Other
     -   [CSS](./topics/css.md)
+    -   [Web Components](./topics/webComponents.md)
 
 ### **Backend**
 
