@@ -2,6 +2,8 @@
 
 Custom components **MUST** include a hyphen in the name. Since there are no html elements with hyphens, this is how custom ones are identified.
 
+The shadow DOM is used to achieve encapsulation i.e. everything is scoped to the web component only.
+
 ```js
 // customComponent.js
 

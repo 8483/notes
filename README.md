@@ -39,14 +39,16 @@
 ### **Backend**
 
 -   Technologies
+
     -   [Node](./topics/node.md)
         -   [npm/npx](./topics/npm.md)
         -   [Express](./topics/express.md)
             -   [Code Structure](./topics/express-structure.md)
         -   [Middleware](./topics/middleware.md)
         -   [.env](./topics/dotenv.md)
-    -   [GraphQL](./topics/graphql.md)
     -   [Web Sockets](./topics/websockets.md)
+    -   [GraphQL](./topics/graphql.md)
+
 -   Web server
     -   [nginx](./topics/nginx.md)
         -   [SSL](./topics/ssl.md)
@@ -60,13 +62,22 @@
 
 ### **Database**
 
--   [Design](./topics/database/design.md)
--   [Indexing](./topics/database/indexing.md)
--   [Useful queries](./topics/database/usefulQueries.md)
--   [MySQL](./topics/database/mysql.md)
-    -   [node mysql](./topics/database/node-mysql.md)
--   [SQL Server](./topics/database/sqlserver.md)
-    -   [node mssql](./topics/database/node-mssql.md)
+-   Concepts
+    -   [Design](./topics/database/design.md)
+    -   [Indexing](./topics/database/indexing.md)
+    -   [Optimization](./topics/database/optimization.md)
+-   Queries
+    -   [Utilities](./topics/database/queriesUtilities.md)
+    -   [CRUD](./topics/database/queriesCRUD.md)
+    -   [Aggregate](./topics/database/queriesAggregate.md)
+    -   [Window](./topics/database/queriesWindow.md)
+    -   [Logic](./topics/database/queriesLogic.md)
+    -   [Pivot](./topics/database/queriesPivot.md)
+-   Systems
+    -   [MySQL](./topics/database/mysql.md)
+        -   [node mysql](./topics/database/node-mysql.md)
+    -   [SQL Server](./topics/database/sqlserver.md)
+        -   [node mssql](./topics/database/node-mssql.md)
 
 ### **Cybersecurity**
 

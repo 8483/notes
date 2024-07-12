@@ -1,3 +1,5 @@
+It's a query language for APIs.
+
 GraphQL solves a people problem, not a technical one. If you don't have the problem of too many people working with the same data model, you don't need GraphQL
 
 GraphQL sounds like the ORM of HTTP APIs.
