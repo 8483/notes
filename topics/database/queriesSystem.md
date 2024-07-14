@@ -1,3 +1,27 @@
+# Database sizes
+
+```sql
+-- MySQL
+
+SELECT table_schema AS 'Database',
+       ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Size (MB)'
+FROM information_schema.tables
+GROUP BY table_schema;
+
+-- SQL Server
+
+SELECT
+	name,
+	SUM(size * 8 / 1024) AS SizeMB
+FROM sys.master_files
+WHERE type = 0
+GROUP BY name;
+
+-- Or this one
+
+EXEC sp_spaceused;
+```
+
 # All tables with row counts
 
 ```sql

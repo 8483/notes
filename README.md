@@ -74,6 +74,7 @@
     -   [Aggregate](./topics/database/queriesAggregate.md)
     -   [Window](./topics/database/queriesWindow.md)
     -   [Logic](./topics/database/queriesLogic.md)
+    -   [System](./topics/database/queriesSystem.md)
     -   [Pivot](./topics/database/queriesPivot.md)
 -   Systems
     -   [MySQL](./topics/database/mysql.md)
