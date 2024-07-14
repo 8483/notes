@@ -63,9 +63,11 @@
 ### **Database**
 
 -   Concepts
-    -   [Design](./topics/database/design.md)
-    -   [Indexing](./topics/database/indexing.md)
+    -   [Terminology](./topics/database/terminology.md)
+    -   [Conventions](./topics/database/conventions.md)
+    -   [Normalization](./topics/database/normalization.md)
     -   [Optimization](./topics/database/optimization.md)
+    -   [Indexing](./topics/database/indexing.md)
 -   Queries
     -   [Utilities](./topics/database/queriesUtilities.md)
     -   [CRUD](./topics/database/queriesCRUD.md)

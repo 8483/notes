@@ -105,39 +105,3 @@ FROM
     customer_salesrep
 ORDER BY customerName;
 ```
-
-# All tables with row counts
-
-```sql
--- SQL Server
-
-select *
-from (
-	select
-		s.name schemaName,
-		t.name tableName,
-		sum(p.rows) rowCounts,
-		max(isnull(ref.ReferencingTableCount, 0)) referencingTableCount
-	from sys.tables t
-		inner join sys.schemas s on s.schema_id = t.schema_id
-		inner join sys.indexes i on t.object_id = i.object_id
-		inner join sys.partitions p on i.object_id = p.object_id and i.index_id = p.index_id
-		LEFT JOIN (
-			select
-				referenced_object_id,
-				count(distinct parent_object_id) referencingTableCount
-			 from sys.foreign_key_columns
-			 group by referenced_object_id
-		) ref on t.object_id = ref.referenced_object_id
-	where
-		t.type = 'U' -- User tables
-		and i.index_id < 2 -- Filters out heaps and indexes
-	group by s.name, t.name
-) t1
--- where rowCounts > 0
-order by
-	case when referencingTableCount > 0 then 1 else 0 end desc,
-    schemaName asc,
-	rowCounts desc,
-	referencingTableCount desc;
-```
