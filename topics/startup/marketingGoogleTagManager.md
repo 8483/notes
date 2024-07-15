@@ -9,7 +9,7 @@ Super useful, even if you are a developer.
 
 # Account
 
-![](../pics/startup/marketing/tag-manager_account.jpg)
+![](../../pics/startup/marketing/tag-manager_account.jpg)
 
 Container = Property in Google Analytics
 
@@ -17,7 +17,7 @@ Create a separate container for each website.
 
 # Components
 
-![](../pics/startup/marketing/tag-manager_tags.jpg)
+![](../../pics/startup/marketing/tag-manager_tags.jpg)
 
 -   **Event** - An actual generic event like button click.
 -   **Tag** - Micro code injections/embeds.

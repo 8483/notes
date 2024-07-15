@@ -12,7 +12,7 @@ This is the prime real estate of your profile. It's the first thing prospects se
 -   Make sure your headshot is clean and professional. Use Secta.ai for a low-cost AI headshot (like mine).
 -   Your banner should speak to your target buyers. Use a simple title + subtitle that tells your buyers about the outcome you can achieve for them.
 
-![](../pics/startup/sales/linkedin_banner.jpg)
+![](../../pics/startup/sales/linkedin_banner.jpg)
 
 _The banner speaks to the desires of the target prospects._
 
@@ -24,7 +24,7 @@ This is what prospects see right next to your name any time you post something o
 -   I like this formula: I help ((target buyers)) ((achieve this outcome/result)) without ((this negative thing)). Instead of yet-another-sales rep, you position yourself as a subject matter expert.
 -   Keep it short: prospects can only see the first 42 characters can on mobile (68 on desktop).
 
-![](../pics/startup/sales/linkedin_headline.jpg)
+![](../../pics/startup/sales/linkedin_headline.jpg)
 
 _Notice how I maximise the first 42 characters? Then I give more context who I help, how I help them and the bad thing to avoid._
 
@@ -40,7 +40,7 @@ Whatever it is, don't assume they know it. TELL THEM.
 
 No better way than doing that with a custom link. It sits right below your headshot and banner.
 
-![](../pics/startup/sales/linkedin_custom-button.jpg)
+![](../../pics/startup/sales/linkedin_custom-button.jpg)
 
 ## 4. Featured Section
 
@@ -51,7 +51,7 @@ Limit yourself to 3 call to action steps. Better 2. Best would be 1.
 -   Use a 1920x1080 thumbnail. You can create it on Canva.
 -   Use a title, and leave the description BLANK. If you do that, the thumbnail will link with 1 click, otherwise 2 clicks needed. (These small details matter!)
 
-![](../pics/startup/sales/linkedin_fatures.jpg)
+![](../../pics/startup/sales/linkedin_fatures.jpg)
 
 ## 5. About Section
 
@@ -68,7 +68,7 @@ I recommend the COSTAR formula.
 -   Articulate the offer: your product/service value proposition
 -   Request - your call to action! what should the prospect do now?!
 
-![](../pics/startup/sales/linkedin_about.jpg)
+![](../../pics/startup/sales/linkedin_about.jpg)
 
 ```
 💰Do you want to make $100-200k in SAAS SALES?
@@ -122,7 +122,7 @@ But if NOT, the only people you should attract is target buyers.
 
 Design your experience section accordingly. Make it a marketing pitch, not a CV. Guide them to your website or a valuable asset.
 
-![](../pics/startup/sales/linkedin_experience.jpg)
+![](../../pics/startup/sales/linkedin_experience.jpg)
 
 ## 7. Get Client Recommendations
 
@@ -134,7 +134,7 @@ This sends a strong signal to your target buyers: you are competent and credible
 
 Homework: ask your 10 best clients for a recommendation, and offer to return the favor. I'm sure 2 or 3 of them will do it!
 
-![](../pics/startup/sales/linkedin_recommendation.jpg)
+![](../../pics/startup/sales/linkedin_recommendation.jpg)
 
 # Prospecting
 
@@ -180,7 +180,7 @@ Plus, it takes time to craft a meaningful message.
 
 Better: warm them up with soft touches. Let your headshot and headline speak for itself. Now you see why LinkedIn profile optimisation is so important?
 
-![](../pics/startup/sales/linkedin_connection.jpg)
+![](../../pics/startup/sales/linkedin_connection.jpg)
 
 ## 3. Thank you & Opener
 

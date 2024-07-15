@@ -21,7 +21,7 @@ The classic and most popular. The gold standard and basis for all other framewor
 
 Grabbing your reader's attention is key in the AIDA framework. Make sure to hook your reader with a headline that stands out. A good headline formula could be novel, controversial, and big. This is the foundation of direct response copywriting.
 
-![](../pics/startup/marketing/copywriting_framework_aida.webp)
+![](../../pics/startup/marketing/copywriting_framework_aida.webp)
 
 # PAS - Problem, Agitate, Solution
 
@@ -39,7 +39,7 @@ People want to reduce pain over seek pleasure.
 
 The bigger the problem, the stronger the drive to take your solution. Your goal is to find a common and THE BIGGEST problem your target audience has and provide your solution to it.
 
-![](../pics/startup/marketing/copywriting_framework_pas.webp)
+![](../../pics/startup/marketing/copywriting_framework_pas.webp)
 
 # BAB - Before, After, Bridge
 
@@ -57,7 +57,7 @@ Example for an email.
 
 Make the "after" as desirable as possible. The more realistic, attainable, and desirable the "after" can get, the more effective this framework will be.
 
-![](../pics/startup/marketing/copywriting_framework_bab.webp)
+![](../../pics/startup/marketing/copywriting_framework_bab.webp)
 
 # 4Cs
 
@@ -78,7 +78,7 @@ Made just for you.
 
 Keep your goal in mind. Say what your target audience wants to read, not what you want to say.
 
-![](../pics/startup/marketing/copywriting_framework_4cs.webp)
+![](../../pics/startup/marketing/copywriting_framework_4cs.webp)
 
 # So What?
 
@@ -98,7 +98,7 @@ Take a Look.
 
 You should focus on the reader's benefit, not your product's features. Empathy is king in this copywriting framework.
 
-![](../pics/startup/marketing/copywriting_framework_4cs.webp)
+![](../../pics/startup/marketing/copywriting_framework_4cs.webp)
 
 # PPPP - Problem, Promise, Proof, Proposal
 
@@ -119,7 +119,7 @@ It works by solving a problem they have, painting a picture of their life with y
 
 Backing your claims with facts is key to making this copywriting framework successful. Be specific, use numbers, statistics, and testimonials to make your promise more convincing.
 
-![](../pics/startup/marketing/copywriting_framework_pppp.webp)
+![](../../pics/startup/marketing/copywriting_framework_pppp.webp)
 
 # SSS - Star, Story, Solution
 
@@ -135,7 +135,7 @@ The SSS formula builds trust by telling your readers they can achieve their goal
 
 Relatability is the key to writing copy based on the SSS copywriting framework. The more relatable it is to the masses, the more believable it is to your target audience.
 
-![](../pics/startup/marketing/copywriting_framework_sss.webp)
+![](../../pics/startup/marketing/copywriting_framework_sss.webp)
 
 # FAB - Feature, Advantage, Benefit
 
@@ -149,7 +149,7 @@ Communicating your value via a list of features.
 
 FAB works well on product descriptions because it's a feature-heavy copywriting framework. But be careful not to overdo the features without listing their benefits to the customer. Remember, people don't care about what you offer unless you show them how they will benefit.
 
-![](../pics/startup/marketing/copywriting_framework_fab.webp)
+![](../../pics/startup/marketing/copywriting_framework_fab.webp)
 
 # SLAP - Stop, Look, Action, Purchase
 
@@ -162,4 +162,4 @@ Make conversions quickly. Good for low-ticket sales. It encourages the reader to
 | Action   | Convert them while they're still hot                                                                                       | Buy now                                                                                                                                                                                      |
 | Purchase | Crush all possible objections on why the reader will not purchase (offer discounts, show them customer testimonials, etc.) | 15% discount from August 25 -28                                                                                                                                                              |
 
-![](../pics/startup/marketing/copywriting_framework_slap.webp)
+![](../../pics/startup/marketing/copywriting_framework_slap.webp)

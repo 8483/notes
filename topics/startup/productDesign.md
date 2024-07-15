@@ -151,13 +151,13 @@ The goal here is to make a conceptual object model, not a database model. This i
 
 > `Customer` confirms `items` in `shopping cart`. Customer provides `payment` and `address` to process `sale`. `System` validates payment and responds by confirming `order`, and provides `order number` that Customer can use to check on `order status`. System will send Customer a copy of `order details` by `email`.
 
-![Object Model](../pics/startup/product_design/object_model.jpg)
+![Object Model](../../pics/startup/product_design/object_model.jpg)
 
 ## Responsibilities
 
 > Customer `confirms items` in shopping cart. Customer `provides payment and address` to `process sale`. System `validates payment` and responds by `confirming order`, and `provides order number` that Customer can use to `check on order status`. System will `send` Customer a copy of order details by `email`.
 
-![Responsibilities](../pics/startup/product_design/responsibilities.jpg)
+![Responsibilities](../../pics/startup/product_design/responsibilities.jpg)
 
 It may sound like many of these should be under the customer, but keep in mind that the customer is the initiator.
 

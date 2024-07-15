@@ -48,7 +48,7 @@ Or via Google Tag Manager. In this case, you need to add this code as well, in o
 Google Account > GA Account > Property > Data Stream (generates new tracking ID)
 ```
 
-![](../pics/startup/marketing/analytics-account.jpg)
+![](../../pics/startup/marketing/analytics-account.jpg)
 
 **Create separate properties for each product. A web app and a website for the same product are separate properties.**
 

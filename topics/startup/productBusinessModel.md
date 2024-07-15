@@ -27,7 +27,7 @@ The best businesses:
 
 # Top 100 Y Combinator companies
 
-![Top 100 YC](../pics/startup/business/business_startup_top100YC.jpg)
+![Top 100 YC](../../pics/startup/business/business_startup_top100YC.jpg)
 
 Marketplaces are the most likely to build winner-takes-all companies.
 

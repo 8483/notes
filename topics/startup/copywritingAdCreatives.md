@@ -77,7 +77,7 @@ Use this existing post from the Facebook page AS THE AD.
 
 "pin the comment" (stays on yop) by going to account / settings & privacy / settings / privacy / public posts / comment ranking (turn ON)
 
-![](../pics/startup/marketing/advertising_stealth_ad.jpg)
+![](../../pics/startup/marketing/advertising_stealth_ad.jpg)
 
 **Ad formula #3 - Long-form founder's story**
 
@@ -85,7 +85,7 @@ People want to hear a good story, a behind the scenes look for the motivation an
 
 These can be done as a video (reel) as well!
 
-![](../pics/startup/marketing/advertising_long_form_founder_ad.jpg)
+![](../../pics/startup/marketing/advertising_long_form_founder_ad.jpg)
 
 **Ad formula #4 - Testimonial**
 
@@ -113,13 +113,13 @@ Structure:
 2. Headline
 3. Description
 
-![](../pics/startup/marketing/advertising_creative_order.jpg)
+![](../../pics/startup/marketing/advertising_creative_order.jpg)
 
 **Value formula**
 
 People never buy the thing you are selling. They buy the result, the feeling.
 
-![](../pics/startup/marketing/advertising_value_formula.jpg)
+![](../../pics/startup/marketing/advertising_value_formula.jpg)
 
 Source: $100M Offers - Alex Hormozi
 
@@ -130,7 +130,7 @@ The more you maximize the top part, and minimize the bottom, the more valuable t
 -   How **long** will it take?
 -   How much **effort** do they need to put into it?
 
-![](../pics/startup/marketing/advertising_value_formula_example.jpg)
+![](../../pics/startup/marketing/advertising_value_formula_example.jpg)
 
 **1. Image**
 
@@ -196,7 +196,7 @@ Add a quick snippet mentioning the parts from the value equation.
 Click here to schedule your top-to-bottom home cleaning today: https://domain.com/schedule
 ```
 
-![](../pics/startup/marketing/advertising_value_formula_ad_example.jpg)
+![](../../pics/startup/marketing/advertising_value_formula_ad_example.jpg)
 
 # Use AI to write copy
 

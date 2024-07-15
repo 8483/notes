@@ -57,7 +57,7 @@ February 2010. Jason Cohen had an idea for a new WordPress hosting service. He l
 
 Today, WP Engine, makes $100M / year.
 
-![Email](../pics/startup/sales/email_example.jpg)
+![Email](../../pics/startup/sales/email_example.jpg)
 
 # Timing
 
@@ -67,9 +67,9 @@ Emails sent between 08:00 and 11:00 represented 46% of the total, yet they accou
 
 Best days are Tuesday, Wednesday, Thursday because Monday's are super busy while on Friday's people shut off for the weekend.
 
-![Sales](../pics/startup/sales/email_open_hour.jpg)
+![Sales](../../pics/startup/sales/email_open_hour.jpg)
 
-![Sales](../pics/startup/sales/email_response_hour.jpg)
+![Sales](../../pics/startup/sales/email_response_hour.jpg)
 
 https://sopro.io/best-time-to-send-prospecting-emails  
 https://sopro.io/six-simple-steps-to-prospecting-success  

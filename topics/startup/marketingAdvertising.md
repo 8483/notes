@@ -2,7 +2,7 @@
 
 Buyers go through 80% of the decision making process without ever talking to sales.
 
-![](../pics/startup/sales/sales_marketing-buyer-journey.jpg)
+![](../../pics/startup/sales/sales_marketing-buyer-journey.jpg)
 
 Marketing is so important because the buyer has already made up his mind when sales gets involved.
 

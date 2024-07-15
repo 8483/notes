@@ -1,6 +1,6 @@
 # Startup curve
 
-![Startup curve](../pics/startup/market_fit/market_fit_startup_curve.jpg)
+![Startup curve](../../pics/startup/market_fit/market_fit_startup_curve.jpg)
 
 # Product Market Fit - David Rusenko
 
@@ -10,7 +10,7 @@ Product Market Fit = Make something **a lot** of people want.
 
 Startup Stages
 
-![Startup Stages](../pics/startup/market_fit/market_fit_startup_stages.jpg)
+![Startup Stages](../../pics/startup/market_fit/market_fit_startup_stages.jpg)
 
 Top early challenges at a startup:
 

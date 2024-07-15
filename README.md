@@ -266,109 +266,50 @@ You need 3 things:
 
 ---
 
-### **Overview**
+### **Startup**
 
--   [Focus](./topics/startupFocus.md)
--   [Ideas](./topics/startupIdeas.md)
--   [Equity](./topics/startupEquity.md)
-
-### **Business**
-
--   [Product Market Fit](./topics/startupMarketFit.md)
--   [Business Model](./topics/startupBusinessModel.md)
--   [Pricing](./topics/startupPricing.md)
+-   [Ideas](./topics/startup/startupIdeas.md)
+-   [Motivation](./topics/startup/startupMotivation.md)
+-   [Focus](./topics/startup/startupFocus.md)
+-   [Equity](./topics/startup/startupEquity.md)
 
 ### **Product**
 
--   [MVP](./topics/startupMVP.md)
--   [Product Desgin](./topics/startupProductDesign.md)
+-   [Market Fit](./topics/startup/productMarketFit.md)
+-   [Business Model](./topics/startup/productBusinessModel.md)
+-   [Pricing](./topics/startup/productPricing.md)
+-   [MVP](./topics/startup/productMVP.md)
+-   [Desgin](./topics/startup/productDesign.md)
 
 ### **Sales**
 
--   [Sales](./topics/startupSales.md)
--   [Cold Calling](./topics/startupSalesColdCalling.md)
--   [Email](./topics/startupSalesEmail.md)
--   [Objection Handling](./topics/startupSalesObjectionHandling.md)
--   [Meetings](./topics/startupSalesMeetings.md)
+-   [Overview](./topics/startup/salesOverview.md)
+-   [Enterprise](./topics/startup/salesEnterprise.md)
+-   [Cold Calling](./topics/startup/salesColdCalling.md)
+-   [Email](./topics/startup/salesEmail.md)
+-   [Objections](./topics/startup/salesObjections.md)
+-   [Linkedin](./topics/startup/salesLinkedin.md)
+-   [Meetings](./topics/startup/salesMeetings.md)
 
 ### Copywriting
 
--   [Guide](./topics/startupCopywritingGuide.md)
--   [Frameworks](./topics/startupCopywritingFrameworks.md)
--   [Direct Response](./topics/startupCopywritingDirectResponse.md)
--   [Ad Creatives](./topics/startupCopywritingAdCreatives.md)
+-   [Guide](./topics/startup/copywritingGuide.md)
+-   [Frameworks](./topics/startup/copywritingFrameworks.md)
+-   [Direct Response](./topics/startup/copywritingDirectResponse.md)
+-   [Ad Creatives](./topics/startup/copywritingAdCreatives.md)
 
 ### Marketing
 
--   [SEO](./topics/startupMarketingSeo.md)
--   [Advertising](./topics/startupMarketingAdvertising.md)
--   [Google Analytics](./topics/startupMarketingGoogleAnalytics.md)
--   [Google Tag Manager](./topics/startupMarketingGoogleTagManager.md)
+-   [SEO](./topics/startup/MarketingSeo.md)
+-   [Advertising](./topics/startup/MarketingAdvertising.md)
+-   [Google Analytics](./topics/startup/MarketingGoogleAnalytics.md)
+-   [Google Tag Manager](./topics/startup/MarketingGoogleTagManager.md)
 
 # Random
 
 -   [Excel](./topics/excel.md)
--   [Statistics](./topics/stats.md)
-
-# Googling
-
-These are called advanced search operators.
-
-```bash
-# Keywords
-
-"keyword"                # Must include keyword
-"foo bar baz"            # Must include phrase
-
--keyword                 # Must exclude keyword
--foo -bar -baz           # Must exclude keywords
-
-# Content
-
-intitle: foo             # Single
-allintitle: foo bar      # Multiple
-
-inurl: foo             # Single
-allinurl: foo bar      # Multiple
-
-intext: foo             # Single
-allintext: foo bar      # Multiple
-
-# Specific website
-
-website.com: query
-site:website.com query
-link:example.com        # Sites linking to example.com
-
-# Files
-
-filetype: pdf
-ext: pdf
-
-# Period
-
-after: 2017
-before: 2018
-
-2017..2018               # Between dates
-
-# Utilities
-
-define: meaning
-weather: berlin
-map: place
-stocks: aapl
-```
-
-Google Dorking, also known as Google Hacking, is a technique that utilizes advanced search operators to uncover information on the internet that may not be readily available through standard search queries.
-
-Examples:
-
-```bash
-intitle: webcampxp 5
-
-filetype:env "DB_PASSWORD"
-```
+-   [Statistics](./topics/statistics.md)
+-   [Googling](./topics/googling.md)
 
 # Comics
 

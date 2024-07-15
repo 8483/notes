@@ -28,15 +28,15 @@ Learning the tactics of sales is good. Realizing that it all comes down to you, 
 
 Outbound sales is ultimately a numbers game. You cannot close 5 customers from 10 leads. You need a ton of data to confirm a product is bad before stopping with sales.
 
-![Sales conversions](../pics/startup/sales/sales_conversions.jpg)
+![Sales conversions](../../pics/startup/sales/sales_conversions.jpg)
 
 # How to Sell - Tyler Bosemy (Y Combinator)
 
 [How to Sell - Tyler Bosemy](https://www.youtube.com/watch?v=xZi4kTJG-LE)
 
-![Sales](../pics/startup/sales/sales_expectations.jpg)
+![Sales](../../pics/startup/sales/sales_expectations.jpg)
 
-![Sales](../pics/startup/sales/sales_reality.jpg)
+![Sales](../../pics/startup/sales/sales_reality.jpg)
 
 _You should be spending every moment, of every day, doing one of two things... Bulding product or talking to users_ - Paul Graham
 
@@ -103,7 +103,7 @@ Tyler
 
 ## Conversations
 
-![Converstaions](../pics/startup/sales/sales_conversations_phone.jpg)
+![Converstaions](../../pics/startup/sales/sales_conversations_phone.jpg)
 
 When you get them on the phone, remember to **SHUT UP AND LISTEN!**.
 
@@ -119,7 +119,7 @@ Ask questions:
 
 ### Religious Follow Up
 
-![Converstaions](../pics/startup/sales/sales_follow_up.jpg)
+![Converstaions](../../pics/startup/sales/sales_follow_up.jpg)
 _This is 2 months of work for closing a \$100,000/year customer_
 
 ...And this is for someone that wants to buy the product! It's not over till they say no.
@@ -170,7 +170,7 @@ If you're ever going to **not** charge someone, put together an invoice anyway, 
 
 ## Looking forward
 
-![Cycle](../pics/startup/sales/sales_cycle.jpg)
+![Cycle](../../pics/startup/sales/sales_cycle.jpg)
 
 5 ways to build a big business:
 
@@ -214,7 +214,7 @@ Some people think that if you build a product, and you put it out on the market,
 
 On average, sales people spend 28% of their time selling. It should be the reverse.
 
-![](../pics/startup/sales/sales_time_spent.jpg)
+![](../../pics/startup/sales/sales_time_spent.jpg)
 
 ## 2. Your onboarding is product centric.
 
@@ -232,7 +232,7 @@ Talk about their goals, challenges, pain points. Talk in their language, use the
 
 Break down annual quotas into daily activities for greater accountability. You will realize you are not doing enough.
 
-![](../pics/startup/sales/sales_process.jpg)
+![](../../pics/startup/sales/sales_process.jpg)
 
 ## 4. You lack the pipeline to make quota.
 
@@ -372,7 +372,7 @@ You reverse engineer from their desired live date to define all the meetings tha
 
 This provides an incredible amount of commitment. It is also a great qualification tool as it uncovers a lot of BS (red flags, friction). It will disqualify a lot of deals, which will allow you to focus on the real ones.
 
-![](../pics/startup/sales/sales_map.jpg)
+![](../../pics/startup/sales/sales_map.jpg)
 
 ## 9. Prospects don't see the value.
 

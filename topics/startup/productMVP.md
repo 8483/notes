@@ -13,7 +13,7 @@ Take the worst estimate and multiply it with 3.
 
 # Building Product
 
-![MVP](../pics/startup/mvp/mvp.jpg)
+![MVP](../../pics/startup/mvp/mvp.jpg)
 
 An app needs to be:
 
@@ -202,11 +202,11 @@ On iteration, it's like your making a screwdriver, and the mechanic tells you it
 -   Appeal to a small set of users. Have a vision of everyone, make an MVP for a few.
 -   Base to iterate from. Your MVP is not special.
 
-![MVP](../pics/startup/mvp/mvp_airbnb.jpg)
+![MVP](../../pics/startup/mvp/mvp_airbnb.jpg)
 
-![MVP](../pics/startup/mvp/mvp_twitch.jpg)
+![MVP](../../pics/startup/mvp/mvp_twitch.jpg)
 
-![MVP](../pics/startup/mvp/mvp_stripe.jpg)
+![MVP](../../pics/startup/mvp/mvp_stripe.jpg)
 
 ## Heavy MPV (very few cases)
 
