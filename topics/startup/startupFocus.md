@@ -26,7 +26,7 @@ By creative we mean programmers, musicians, actors...
 
 Eliminate meetings. Define a goal, and follow up each week on it instead.
 
-The makes schedule works for managers as well.
+The maker's schedule works for managers as well.
 
 ### Manager schedule
 
@@ -75,7 +75,7 @@ There are two sets of tools:
 
 ## De-risking
 
-The collection of mentors, startup events, tutorials... It makes it look like your are doing work.
+The collection of mentors, startup events, tutorials... **It makes it look like your are doing work.**
 
 ```
 The two things that ridiculously de-risk your startup are:
@@ -110,7 +110,9 @@ Intensity is contagious.
 
 Everyone should pick ONLY ONE priority, not a todo list, and sticking to it.
 
-The problem with multiple priorities is that the first one is always difficult and lacks a clear solution, so you distract yourself with the second one. Leave the room if someone talks about anything else than his only priority. Don't explain why, demonstrate.
+The problem with multiple priorities is that the first one is always difficult and lacks a clear solution, so you distract yourself with the second one.
+
+Leave the room if someone talks about anything else than his only priority. Don't explain why, demonstrate.
 
 ## Intensity
 

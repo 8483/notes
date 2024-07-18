@@ -269,9 +269,9 @@ You need 3 things:
 ### **Startup**
 
 -   [Ideas](./topics/startup/startupIdeas.md)
+-   [Equity](./topics/startup/startupEquity.md)
 -   [Motivation](./topics/startup/startupMotivation.md)
 -   [Focus](./topics/startup/startupFocus.md)
--   [Equity](./topics/startup/startupEquity.md)
 
 ### **Product**
 

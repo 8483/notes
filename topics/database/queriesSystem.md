@@ -173,3 +173,28 @@ PRINT @SQL
 -- Execute the dynamic SQL
 EXEC sp_executesql @SQL
 ```
+
+# Expensive queries
+
+```sql
+-- SQL Server
+
+select *
+from (
+	SELECT TOP 100
+		last_execution_time,
+		dest.text,
+		round((deqs.total_elapsed_time / deqs.execution_count) / 1000000, 0) AS avg_elapsed_time_seconds,
+		round((deqs.total_worker_time / deqs.execution_count) / 1000000, 0) AS avg_worker_time_seconds,
+		deqs.execution_count,
+		round(deqs.total_elapsed_time / 1000000, 0) AS total_elapsed_time_seconds,
+		round(deqs.total_worker_time / 1000000, 0) AS total_worker_time_seconds
+	FROM sys.dm_exec_query_stats AS deqs
+		CROSS APPLY sys.dm_exec_sql_text(deqs.sql_handle) AS dest
+	WHERE deqs.last_execution_time >= DATEADD(hour, -8, GETDATE())
+	ORDER BY
+		avg_elapsed_time_seconds DESC
+) t1
+order by last_execution_time desc
+;
+```
