@@ -54,6 +54,15 @@ INSERT INTO table2 (column1, column2, column3, ...)
 SELECT column1, column2, column3, ...
 FROM table1
 WHERE condition;
+
+-- Select
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1 t1
+    LEFT JOIN table2 t2 ON t2.foo = t1.foo
+    LEFT JOIN table3 t3 ON t3.bar = t1.bar
+WHERE
+    baz = `qux`
 ```
 
 # UPSERT / ON DUPLICATE KEY UPDATE

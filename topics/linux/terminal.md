@@ -67,10 +67,10 @@ cd -        # Go back to last working directory
 
 ```bash
 # List
-ls -a       # List all files, including hidden
-ls -l       # List in a list format
-ll          # Shorthand for ls -l
-ls -lh      # Show file size
+ls          # Show files
+ls -a       # All files, including hidden
+ls -l       # In a list format
+ls -lh      # In a list format with human readable file sizes
 
 # Read
 cat FILE       # Show the file content in terminal

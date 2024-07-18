@@ -146,3 +146,30 @@ JOIN
     AND a.counter_name = 'Buffer cache hit ratio'
     AND b.counter_name = 'Buffer cache hit ratio base';
 ```
+
+# Find value in all tables
+
+```sql
+-- SQL Server
+
+DECLARE @SearchValue NVARCHAR(255) = 'foo'
+DECLARE @SQL NVARCHAR(MAX)
+
+SET @SQL = ''
+
+SELECT @SQL = @SQL +
+    'SELECT ''' + TABLE_SCHEMA + '.' + TABLE_NAME + ''' AS TableName, ''' + COLUMN_NAME + ''' AS ColumnName
+    FROM ' + TABLE_SCHEMA + '.' + TABLE_NAME + '
+    WHERE ' + COLUMN_NAME + ' LIKE ''%' + @SearchValue + '%'' UNION ALL '
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE DATA_TYPE IN ('char', 'nchar', 'varchar', 'nvarchar', 'text', 'ntext')
+
+-- Remove the last UNION ALL
+IF LEN(@SQL) > 0
+    SET @SQL = LEFT(@SQL, LEN(@SQL) - 10)
+
+PRINT @SQL
+
+-- Execute the dynamic SQL
+EXEC sp_executesql @SQL
+```

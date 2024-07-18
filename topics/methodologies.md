@@ -1,9 +1,11 @@
 # Shitting on them
 
+> DO NOT use SCRUM. You really don't want a SCRUM master, meetings, planning poker, retros, post-mortems, standups, or any other bullshit... When probably all you reall need is three developers to meet once a week for 15 minutes and say "Hey, these are the things I'm doing, see you next week."
+
 -   [268% Higher Failure Rates For Agile
     ](https://youtu.be/w5Wr3j4h_1I?si=5okWyAcXMrLvQmm9)
 -   [Sprints - The Biggest Mistake Of Software Engineering](https://youtu.be/_p1Q4c3TF3c?si=nfxd-QoJlBkCdzU9)
--   [Scrum IS AWESOME
+-   [Scrum IS "AWESOME"
     ](https://youtu.be/Q25lwSfVwF8?si=JY0VJV3K56eBcY5l)
 
 # General
