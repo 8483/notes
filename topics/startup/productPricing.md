@@ -1,6 +1,8 @@
 > # Never charge for time. Charge for outcome.
->
+
 > # Never charge for benefits. Charge for results.
+
+# Startup Pricing 101
 
 [Kevin Hale - Startup Pricing 101](https://www.youtube.com/watch?v=jwXlo9gy_k4)
 
@@ -134,7 +136,7 @@ Similarly, a company may use a decoy to make an expensive product look affordabl
 
 # Never Compete on Price
 
-[source](https://old.reddit.com/r/Entrepreneur/comments/jepg60/never_compete_on_price_why_clients_pay_us_7500mo/)
+[Reddit source](https://old.reddit.com/r/Entrepreneur/comments/jepg60/never_compete_on_price_why_clients_pay_us_7500mo/)
 
 In a way, you’re not just setting a price tag for what you built. You’re putting a price on yourself. _"What if no one else thinks I’m worth this much?"_, _"What if they laugh at me?"_... It’s these moments where the imposter syndrome, self-doubt, and fear start to take hold.
 
@@ -169,3 +171,123 @@ You need to extract the value and turn it into a specific, desirable result that
 "Freelance coding" is a commodity. "Coding that Drives Business Growth" is a benefit.
 
 **Your differentiator is not your price. It’s your ability to deliver the results.**
+
+# How To Price For B2B
+
+[How To Price For B2B - Tom Blomfield](https://youtu.be/4hjiRmgmHiU)
+
+> It's more important to START signing deals, than to have the perfect pricing.
+
+The first 2-3 customers are the hardest to close. Just get them closed ASAP.
+
+Instead of over-analyzing pricing beforehand, learn from the first customers.
+
+The first customers will only be a small fraction of your total revenue. You can always increase the price as the product evolves.
+
+## 1. The value equation
+
+> Charge 25% - 50% of the value delivered.
+
+This accounts for 90% of the pricing.
+
+Your product can do 3 things:
+
+-   Save time.
+-   Reduce cost.
+-   Increase revenue.
+
+Write down the expected value i.e. talk to your champion to figure out what they expect the product to do.
+
+Write everthing down in detail and have the champion challenge the assumptions, because this is what he will use to justify the purchase to his superiors.
+
+```
+Ex. Customer Service tool
+
+The company has 100 service agents, each paid $100k, i.e. total cost of $10m.
+
+Your tool will save them 20% of the time, i.e. $2m of savings.
+
+Your price is $700k i.e. 1/3 (33%) of the value delivered.
+```
+
+This approach is good because **it is a metric**. You can have the customer try the product for a month with limited scope to verify the value assumptions, and possibly adjust the pricing.
+
+```
+The customer can use 10 agents to test the product for a month to verify the 20% time savings.
+```
+
+## 2. Never start with cost
+
+> In software, aim for gross margins of 80% - 90%.
+
+You always end up underpricing yourself if you take the `cost + margin` approach. Cost should only serve as a floor.
+
+```
+$700k revenue - $200k cost = 71% gross margin
+```
+
+The only time you can price below cost is when trying to rapidly gain market share.
+
+## 3. Competition
+
+> Competing solely on pricing is a losing game. Engaging in a price war is a race to the bottom.
+
+> Set your product apart with functionality and value.
+
+Ask your champion what they pay for similar software.
+
+> Pick a pricing strategy the customer is used to.
+
+## 4. Simple pricing
+
+Don't over-complicate it. Complex pricing kills the sales process.
+
+## 5. Recurring revenue
+
+Monthly/annual recurring revenue is preferable to usage-based pricing.
+
+Usage-based pricing is good for testing purposes, i.e. start a customer with usage-based pricing for a month before moving to a commited recurring one.
+
+```
+If a used does $15k in usage-based pricing in the first month, offer them a flat $12k/month fee if they commit for a full year.
+```
+
+## 6. Contact sales for enterprise
+
+> You are leaving money on the table without "contact sales".
+
+The value equation is different for each customer.
+
+You are over-pricing the product for a ton of customers who don't get much value, and under-pricing it for the ones that get a lot of value.
+
+Have 1 or 2 cheaper plans for individuals and small-teams that contain the basic functionalities, which exclude the core functionalities the enterprises really want, like special reports, single sign-on etc. Enterprises sometiems pay 10 times more for this.
+
+## 7. Pricing dictates sales channels
+
+At this level, is there enough money to have a sales team?
+
+> There is a 5:1 ration between new ARR and sales total compensation.
+
+```
+$100k sales rep should bring $500k in annual recurring revenue.
+```
+
+This $500k ARR can be comprised of:
+
+-   5 x $100k - Hunting whales. Closing contracts every 3 months.
+-   20 x $25k - $2,000 MRR. Closing 2 per month.
+-   500 x $1,000 - $83 MRR. Closing 42 per month, 2 per day. This is not outbound sales, this is inside sales.
+
+## 8. Demos, trials, pilots
+
+> Have them sign an annual contract with a 30-60 days money back guarantee.
+
+> Long trials are counter-productive.
+
+Limit them to a couple of weeks, maximum of a month.
+
+# 9. Just pick a number
+
+> Increase it by 50% every time you pitch a new customer. When you start losing 25% of the deals, you're in the right ball-park.
+
+If you are closing every single deal straight away, you are certainly under-pricing.

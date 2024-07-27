@@ -1,12 +1,11 @@
-# Shitting on them
+# Shitting on Agile
 
 > DO NOT use SCRUM. You really don't want a SCRUM master, meetings, planning poker, retros, post-mortems, standups, or any other bullshit... When probably all you reall need is three developers to meet once a week for 15 minutes and say "Hey, these are the things I'm doing, see you next week."
 
--   [268% Higher Failure Rates For Agile
-    ](https://youtu.be/w5Wr3j4h_1I?si=5okWyAcXMrLvQmm9)
+-   [268% Higher Failure Rates For Agile](https://youtu.be/w5Wr3j4h_1I?si=5okWyAcXMrLvQmm9)
 -   [Sprints - The Biggest Mistake Of Software Engineering](https://youtu.be/_p1Q4c3TF3c?si=nfxd-QoJlBkCdzU9)
--   [Scrum IS "AWESOME"
-    ](https://youtu.be/Q25lwSfVwF8?si=JY0VJV3K56eBcY5l)
+-   [Scrum IS "AWESOME"](https://youtu.be/Q25lwSfVwF8?si=JY0VJV3K56eBcY5l)
+-   [Creator Of Agile Manifesto Doesn't Like Agile???](https://youtu.be/SHU9dViaFoM)
 
 # General
 
@@ -90,8 +89,8 @@ The general philosophy is that by working in short sprints with regular collabor
 
 # Organize
 
-![SCRUM](../pics/methodologies/scrum.jpg)
-![Kanban](../pics/methodologies/kanban.jpg)
+![SCRUM](../pics/agile/scrum.jpg)
+![Kanban](../pics/agile/kanban.jpg)
 
 **Waterfall**: This is the original software project management system. You figure out what you need to do, how long it's going to take, who is going to do it, build a big [Gantt chart](http://en.wikipedia.org/wiki/Gantt_chart) of all the steps and dependenecies and you're set. You know what you're going to build, when it's going to be done, and how much it's going to cost. Great, huh?
 

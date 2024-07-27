@@ -108,9 +108,9 @@
 
 ### **Concepts**
 
+-   [Agile](./topics/agile.md)
 -   [Code quality and performance](./topics/codeQuality.md)
 -   [UI/UX](./topics/uiux.md)
--   [Methodologies (Agile/SCRUM)](./topics/methodologies.md)
 -   [Testing](./topics/testing.md)
     -   [Jest](./topics/testingJest.md)
     -   [Mocha](./topics/testingMocha.md)
@@ -278,8 +278,8 @@ You need 3 things:
 -   [Market Fit](./topics/startup/productMarketFit.md)
 -   [Business Model](./topics/startup/productBusinessModel.md)
 -   [Pricing](./topics/startup/productPricing.md)
--   [MVP](./topics/startup/productMVP.md)
 -   [Desgin](./topics/startup/productDesign.md)
+-   [MVP](./topics/startup/productMVP.md)
 
 ### **Sales**
 

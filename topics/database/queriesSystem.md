@@ -195,6 +195,6 @@ from (
 	ORDER BY
 		avg_elapsed_time_seconds DESC
 ) t1
-order by last_execution_time desc
+order by avg_elapsed_time_seconds desc
 ;
 ```
