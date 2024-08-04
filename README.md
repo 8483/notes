@@ -272,6 +272,7 @@ You need 3 things:
 -   [Equity](./topics/startup/startupEquity.md)
 -   [Motivation](./topics/startup/startupMotivation.md)
 -   [Focus](./topics/startup/startupFocus.md)
+-   [Problem-solving](./topics/startup/startupProblemSolving.md)
 
 ### **Product**
 
