@@ -4,6 +4,29 @@ Custom components **MUST** include a hyphen in the name. Since there are no html
 
 The shadow DOM is used to achieve encapsulation i.e. everything is scoped to the web component only.
 
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="customComponent.js"></script>
+    </head>
+
+    <body>
+        <todo-item>
+            Todo 1
+            <span slot="description">Some text</span>
+        </todo-item>
+
+        <todo-item>
+            Todo 3
+            <span slot="description">Some text 2</span>
+        </todo-item>
+    </body>
+</html>
+```
+
+# Approach #1
+
 ```js
 // customComponent.js
 
@@ -70,28 +93,7 @@ customElements.define("todo-item", TodoItem);
 const item = document.querySelector("todo-item");
 ```
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="customComponent.js"></script>
-    </head>
-
-    <body>
-        <todo-item>
-            Todo 1
-            <span slot="description">Some text</span>
-        </todo-item>
-
-        <todo-item>
-            Todo 3
-            <span slot="description">Some text 2</span>
-        </todo-item>
-    </body>
-</html>
-```
-
-Another way to code the component.
+# Approach #2
 
 ```js
 class TodoItem extends HTMLElement {

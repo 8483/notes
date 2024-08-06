@@ -1,5 +1,9 @@
 # Cross-origin resource sharing (CORS)
 
+CORS is a security feature implemented by web browsers to control how web pages can request resources from a different domain than the one that served the web page. This is crucial for preventing malicious websites from accessing sensitive data from another site.
+
+CORS allows servers to specify who can access their resources and how they can be accessed. Without CORS, websites would be unable to interact with APIs or resources on different domains, severely limiting the functionality of modern web applications.
+
 It's a security feature that prevents a malicious site from making unauthorized requests to another site on behalf of a user.
 
 It allows servers to specify who (i.e. which origins) can access their resources.
@@ -55,3 +59,11 @@ CORS, or Cross Origin Resource Sharing, is a way to restrict what origins are al
 It's used to provide extra security and to protect against DDoS attacks.
 
 CORS prevents one website domain from being able to request data from another website domain. Example: A phishing site called FooBar.com can't access your secure information from Megaglobalbank.com using malicious Javascript because CORS recognizes they are separate domains/origins.
+
+# How it works
+
+When a web page makes a request to a different domain (a cross-origin request), the browser sends an HTTP request with an Origin header. The server then responds with specific CORS headers to indicate whether the request is allowed. Here are the main headers involved:
+
+-   `Access-Control-Allow-Origin`: Specifies which origins are permitted to access the resource.
+-   `Access-Control-Allow-Methods`: Indicates the HTTP methods allowed for the resource.
+-   `Access-Control-Allow-Headers`: Lists the headers that can be used during the actual request.

@@ -1,3 +1,5 @@
+> # If it's a core business functionality - do it yourself, no matter what. - Joel Spolsky
+
 # Most important
 
 -   Launch in 3 months MVP.
