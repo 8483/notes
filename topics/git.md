@@ -4,6 +4,22 @@ A commit in a git repository records a snapshot of all the files in your directo
 
 Git wants to keep commits as lightweight as possible though, so it doesn't just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a "delta", from one version of the repository to the next.
 
+# Feature branches vs Trunk-based development
+
+Feature branches i.e. Main is deployed.
+
+![](../pics/git/git_feature1.png)
+
+![](../pics/git/git_feature2.jpg)
+
+Trunk-based i.e. Branches are deployed.
+
+![](../pics/git/git_trunk1a.png)
+
+![](../pics/git/git_trunk1b.png)
+
+![](../pics/git/git_trunk2.jpg)
+
 # Rules
 
 1. Create a Git repository for every new project.
@@ -16,7 +32,7 @@ Git wants to keep commits as lightweight as possible though, so it doesn't just 
 [Source 2](https://www.freecodecamp.org/news/how-to-use-git-efficiently-54320a236369/)
 [Source 3](https://pathof.dev/blog/making-sense-of-git-and-github)
 
-# Quick Edit
+# Git Workflow
 
 Download from repository and set user.
 
