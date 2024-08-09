@@ -9,43 +9,67 @@ This can be done by opening a directory from a WSL terminal with `code .` or by 
 ```bash
 # General
 
-CTRL + p                       # Search files
-CTRL + SHIFT + p               # Command palette
-CTRL + ,                       # Settings
+CTRL + p                    # Search files fuzzy finder
+CTRL + SHIFT + p            # Command palette
+CTRL + ,                    # Settings
 
-CTRL + TAB                     # Cycle through tabs
+CTRL + TAB                  # Cycle through tabs
+CTRL + w                    # Close tab
 
-# Selection
+# Search and replace
 
-ALT + click (empty)            # Multiple cursors
+CTRL + f                    # Search in file. ENTER = show next
 
-CTRL + d                       # Select next duplicate value
-CTRL + u                       # Unselect duplicate value
-CTRL + SHIFT + L               # Select all duplicate values
-CTRL + k & CTRL + d            # Skip next duplicate value
+CTRL + SHIFT + f            # Find all occurences of selection in project
+SHIFT + F12                 # Show all occurences of selection
+F2                          # Bulk renaming across whole project
 
-CTRL + L                       # Select line. Press again selects next line
+# Duplicates
 
-ALT + SHIFT + click            # Multiple selections in range
-ALT + SHIFT + i                # Add cursor to each line in selection
-ALT + SHIFT + left/right       # Select everything between brackets
-ALT + SHIFT + left/right       # Select everything between brackets
-CTRL + ALT + up/down           # Add cursor above/below
+CTRL + d                    # Select next duplicate value
+CTRL + u                    # Unselect duplicate value
+CTRL + SHIFT + l            # Select all duplicate values
+CTRL + k & CTRL + d         # Skip next duplicate value
 
-FN + left                      # Beginning of line
-FN + right                     # End of line
+# Multiple cursors
+
+ALT + click (empty)         # Multiple cursors
+ALT + SHIFT + click         # Multiple selections in range
+CTRL + ALT + up/down        # Add cursor above/below
+
+ALT + SHIFT + i             # Add cursor to each line in selection
+ALT + SHIFT + left/right    # Select everything between brackets
+ALT + SHIFT + left/right    # Select everything between brackets
+
+# Line
+
+ALT + up/down               # Move line up or down
+ALT + SHIFT + up/down       # Duplicate line
+
+FN + left                   # Beginning of line
+FN + right                  # End of line
+
+CTRL + l                    # Select line. Press again selects next line
+CTRL + g                    # Jump to line
 
 # Jumping
 
-CTRL + click (variable)        # Jump to definition
-ALT + left/right               # Jumpt to previous/next editing location
+CTRL + click (variable)     # Jump to definition
+ALT + left/right            # Jumpt to previous/next editing location
+
+CTRL + FN + home            # Jump to beginning of file
+CTRL + FN + end             # Jump to end of file
+
+CTRL + SHIFT + o            # Jump to symbols (variables, functions)
 
 # Utility
 
-ALT + up/down                  # Move line up or down
-ALT + SHIFT + up/down          # Duplicate line
+CTRL + i                    # Show code completion suggestions
+CTRL + SPACE                # Show code completion suggestions
 
-CTRL + i                       # Show code completion suggestions
+# Terminal
+
+CTRL + ~                    # Toggle terminal
 ```
 
 # Settings
