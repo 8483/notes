@@ -222,6 +222,10 @@
 -   [Embeddings & Vector Databases](./topics/aiEmbeddings.md)
 -   [Prompt Engineering](./topics/aiPromptEngineering.md)
 
+# Blockchain
+
+[Overview](./topics/blockchain.md)
+
 # Electronics
 
 ### **General**
