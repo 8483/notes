@@ -1,6 +1,9 @@
 # Login
 
 ```bash
+# Show all users
+less /etc/passwd
+
 # Login as user
 su - <USERNAME>
 
@@ -12,13 +15,6 @@ CTRL + d # or exit
 
 # Change password
 sudo passwd <USERNAME>
-```
-
-# List
-
-```bash
-# Show all users
-less /etc/passwd
 ```
 
 # Add

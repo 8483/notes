@@ -2,6 +2,8 @@
 
 > **DO NOT start building new application as microservices!**
 
+> Micro-\* is largely about separating deployment for big teams.
+
 Focus on building a modular, decoupled, easy to change application first.
 
 When we have semi-stable decoupled modules - and there is a real business need - only then we should think about breaking it into microservices.
