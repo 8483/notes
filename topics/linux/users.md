@@ -21,16 +21,26 @@ sudo passwd <USERNAME>
 
 ```bash
 # Guided user creation
-adduser <USERNAME>
+sudo adduser <USERNAME>
 
 # Add sudo access
-usermod -aG sudo <USERNAME>
+sudo usermod -aG sudo <USERNAME>
 
 # remove sudo access
 sudo deluser <USERNAME> sudo
 
 # Scripted user creation
 useradd --uid <UID> --gid <GID> -m -s /usr/bin/zsh -d /var/www/<USERNAME> --password <PASSWORD> <USERNAME>
+```
+
+# Change
+
+```bash
+# Username
+sudo usermod -l new-name old-name
+
+# Password
+sudo passwd
 ```
 
 # Access
