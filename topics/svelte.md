@@ -80,11 +80,13 @@ Vite uses the native ES modules feature in the browser to handle imports, while 
 ```bash
 # Create scaffold via a Vite CLI install prompt
 npm create vite@latest
+
+# Choose: y > app > Svelte > Javascript 
 ```
 
 ![Vite](../pics/svelte/svelte_vite.jpg)
 
-One thing you may have noticed is that in a Vite project, `index.html` is front-and-central instead of being tucked away inside public. This is intentional: during development Vite is a server, and `index.html` is the entry point to your application.
+In a Vite project, `index.html` is front-and-center instead of being tucked away inside public. This is intentional, because during development Vite is a server, and `index.html` is the entry point to your application.
 
 Vite treats `index.html` as source code and part of the module graph. It resolves `<script type="module" src="...">` that references your JavaScript source code. Even inline `<script type="module">` and CSS referenced via `<link href>` also enjoy Vite-specific features. In addition, URLs inside index.html are automatically rebased so there's no need for special `%PUBLIC_URL%` placeholders.
 
@@ -122,9 +124,7 @@ npm run dev
 npm run build
 ```
 
-**IMPORTANT:** Setup Vite to work with server API on different port.
-
-Also, don't show `console.log` in production.
+**IMPORTANT: Setup Vite to work with server API on different port.**
 
 ```js
 import { defineConfig } from "vite";
@@ -144,7 +144,7 @@ export default defineConfig({
         },
     },
     esbuild: {
-        drop: ["console", "debugger"],
+        drop: ["console", "debugger"], // Don't show `console.log` in production.
     },
 });
 ```

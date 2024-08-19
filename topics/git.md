@@ -4,6 +4,31 @@ A commit in a git repository records a snapshot of all the files in your directo
 
 Git wants to keep commits as lightweight as possible though, so it doesn't just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a "delta", from one version of the repository to the next.
 
+# Setup
+
+```bash
+# Initialize git for current repository
+git init
+
+# Configure owner of changes just for current repo
+git config user.name "NAME"
+git config user.email "EMAIL"
+
+# Configure DEFAULT owner of changes for all repos
+git config --global user.name "NAME"
+git config --global user.email "EMAIL"
+
+# Configure password toke
+# Generated in developer settings / personal access tokens / classic
+git config credential.username "NAME"
+git config credential.helper store # Asks for password on first push
+
+# Show all configurations for current repo
+git config --list
+```
+
+Github contributions count only with the github email.
+
 # Feature branches vs Trunk-based development
 
 Feature branches i.e. Main is deployed.
@@ -128,14 +153,6 @@ git help
 
 # Explain a specific command.
 git help COMMAND
-```
-
-# Configuration
-
-```bash
-# Setting up owner of changes for all repos. Github contributions count only with the github email.
-git config --global user.name "NAME"
-git config --global user.email "EMAIL"
 ```
 
 # Diff (See Changes)
