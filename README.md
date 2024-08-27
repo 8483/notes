@@ -87,6 +87,7 @@
 ### **Cybersecurity**
 
 -   [Best practices](./topics/cybersecurity/cybersecurity.md)
+-   [JSON Web Tokens (JWT)](./topics/cybersecurity/jwt.md)
 -   [SQL Injection](./topics/cybersecurity/sqlinjection.md)
 -   [Cross Site Scripting (XSS)](./topics/cybersecurity/xss.md)
 -   [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
@@ -169,6 +170,7 @@
 -   [Terminal](./topics/linux/terminal.md)
 -   [Filesystem](./topics/linux/filesystem.md)
 -   [Users](./topics/linux/users.md)
+-   [Services](./topics/linux/services.md)
 
 ### **Tools**
 
@@ -181,7 +183,6 @@
 -   [cron - scheduling](./topics/linux/cron.md)
 -   [gzip - compression](./topics/linux/gzip.md)
 -   [ffmpeg - video & audio](./topics/linux/ffmpeg.md)
--   [systemd - daemons](./topics/linux/systemd.md)
 
 # Networking
 

@@ -23,6 +23,9 @@ git config --global user.email "EMAIL"
 git config credential.username "NAME"
 git config credential.helper store # Asks for password on first push
 
+# Passwords are stored here
+less ~/.git-credentials
+
 # Show all configurations for current repo
 git config --list
 ```

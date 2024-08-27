@@ -1,8 +1,18 @@
-# Do something
+> Procrastination is the result of a task feeling overwhelming.
 
 > "I haven't missed a workout in 45 years and two weeks... you know what I consider the worst disability of all? Procrastination and laziness. Give me blindness over that any day of the week." - Richard Turner (Penn & Teller video)
 
-The "do something" principle. (No zero days)
+# Minimum Viable Action (Do something principle)
+
+This is the single most useful productivity hack.
+
+Mimimum Viable Actions is the smallest viable action that feels doable to you in this moment. It takes advantage of a psychology quirk where:
+
+```
+Motivation is not just he cause of action, but also the effect.
+```
+
+This makes it more difficult to stop doing the task than to continue... so you continue.
 
 Instead of:
 
@@ -18,12 +28,25 @@ Action > Inspiration > Motivation > Action
 
 What this means is, do something... And it will lead to more.
 
+```
 -   Read a book? Just read one chapter.
 -   Meet new people? Just go out for a beer.
 -   Write a book? Start with the outline.
 -   Go running? Get dressed.
+```
 
 Success is tied less to knowledge or talent, and more to action supplemented by them. You can become successful at something without knowing what you're doing, or without much talent... But you can never become successful at anything without taking action. Ever.
+
+---
+
+Example goal: Writing a memo
+
+Steps:
+
+-   ~~Begin writing the memo~~
+-   ~~Start with the outline~~
+-   ~~Start with a sentence~~
+-   Create a document and give it a title
 
 # Mark Manson on habits
 

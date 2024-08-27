@@ -1,5 +1,27 @@
 # Cross-origin resource sharing (CORS)
 
+[CORS is stupid](https://kevincox.ca/2024/08/24/cors/)
+
+It prevents malicious injection in the frontend to have the backend send data where it shouldn't.
+
+The reason CORS exists, is so you can't visit my cool website and execute my JS script which deletes your Facebook account on your behalf and also steals all your Gmail inbox data.
+
+1. Log in to `https://your-bank.example.`
+2. Visit `https://fun-games.example`.
+3. `https://fun-games.example` runs `fetch("https://your-bank.example/profile")` to read sensitive information about you like your address and current balance.
+
+This is where CORS comes in. It describes a policy for how cross-origin requests can be made and used. It is both incredibly flexible and completely insufficient.
+
+The default policy allows making requests, but you can’t read the results. So fun-games.example is blocked from reading your address from `https://your-bank.example/profile`. It can also use side channels such as latency and if the request succeeded or failed to learn things.
+
+But despite being incredibly annoying this doesn’t actually solve the problem! While fun-games.example can’t read the result, the request is still sent. This means that it can execute `POST https://your-bank.example/transfer?to=fungames&amount=1000000000` to transfer one billion dollars to their account.
+
+This must be one of the biggest security compromises ever made in the name of backwards compatibility. The TL;DR is that the automatically provided cross-origin protections are completely broken. Every single site that uses cookies needs to explicitly handle it.
+
+Yes, every single site.
+
+---
+
 CORS is a security feature implemented by web browsers to control how web pages can request resources from a different domain than the one that served the web page. This is crucial for preventing malicious websites from accessing sensitive data from another site.
 
 CORS allows servers to specify who can access their resources and how they can be accessed. Without CORS, websites would be unable to interact with APIs or resources on different domains, severely limiting the functionality of modern web applications.
