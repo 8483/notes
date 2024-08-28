@@ -6,6 +6,8 @@ Git wants to keep commits as lightweight as possible though, so it doesn't just 
 
 # Setup
 
+Github contributions count only with the github email.
+
 ```bash
 # Initialize git for current repository
 git init
@@ -14,23 +16,28 @@ git init
 git config user.name "NAME"
 git config user.email "EMAIL"
 
-# Configure DEFAULT owner of changes for all repos
-git config --global user.name "NAME"
-git config --global user.email "EMAIL"
-
-# Configure password toke
-# Generated in developer settings / personal access tokens / classic
-git config credential.username "NAME"
-git config credential.helper store # Asks for password on first push
-
-# Passwords are stored here
-less ~/.git-credentials
-
 # Show all configurations for current repo
 git config --list
 ```
 
-Github contributions count only with the github email.
+# Config
+
+```bash
+# Configure DEFAULT owner of changes for all repos
+git config --global user.name "NAME"
+git config --global user.email "EMAIL"
+
+# Configure password token
+# Generated in developer settings / personal access tokens / classic
+git config credential.username "NAME"
+git config credential.helper store # Asks for password on first push
+
+# Allows multiple repositories on the same host to use different credentials. By default (false) it uses the first match.
+git config --global credential.useHttpPath true
+
+# Passwords are stored here
+less ~/.git-credentials
+```
 
 # Feature branches vs Trunk-based development
 
