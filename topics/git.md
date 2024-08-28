@@ -245,7 +245,17 @@ git push --tags
 
 # Undo
 
-DON'T DO THESE AFTER PUSHING!
+Unstaged
+
+```bash
+# Tracked files
+git restore .
+
+# Untracked files
+git clean -f
+```
+
+Staged (DON'T DO THESE AFTER PUSHING!)
 
 ```bash
 # Revert a file to the last commit version.
