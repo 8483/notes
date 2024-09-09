@@ -76,12 +76,12 @@ Fastest to slowest:
 # Video
 
 ```bash
- ffmpeg -i input.mp4 -vf "scale=1280:-1" -b:v 583k -b:a 128k -preset medium output.mp4
+ ffmpeg -i input.mp4 -vf "scale=1280:-1" -b:v 5000k -b:a 128k -preset medium output.mp4
 ```
 
 -   `-i` stands for input.
 -   `-vf "scale=1280:-1"` scales the video width to 1280 pixels while maintaining the aspect ratio. Adjust the resolution as needed.
--   `-b:v 583k` sets the video bitrate to 583 kbps.
+-   `-b:v 5000k` sets the video bitrate to 5,000 kbps.
 -   `-b:a 128k` sets the audio bitrate to 128 kbps. Adjust this value if necessary based on the audio quality required.
 -   `-preset medium` sets the encoding speed/quality balance.
 

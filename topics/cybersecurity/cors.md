@@ -1,5 +1,11 @@
 # Cross-origin resource sharing (CORS)
 
+CORS is only required when a web page makes a request to a domain different from the one that served the web page.
+
+If everything is on the same origin, the browser doesn't consider it a cross-origin request, and CORS is not needed.
+
+---
+
 [CORS is stupid](https://kevincox.ca/2024/08/24/cors/)
 
 It prevents malicious injection in the frontend to have the backend send data where it shouldn't.

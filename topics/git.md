@@ -4,23 +4,37 @@ A commit in a git repository records a snapshot of all the files in your directo
 
 Git wants to keep commits as lightweight as possible though, so it doesn't just blindly copy the entire directory every time you commit. It can (when possible) compress a commit as a set of changes, or a "delta", from one version of the repository to the next.
 
-# Setup
+# Config
 
-Github contributions count only with the github email.
+You start a git repo with:
 
 ```bash
-# Initialize git for current repository
 git init
+```
 
-# Configure owner of changes just for current repo
-git config user.name "NAME"
-git config user.email "EMAIL"
+Each repo has its own configurations. You can see them with:
 
-# Show all configurations for current repo
+```bash
 git config --list
 ```
 
-# Config
+Here are the essential configurations you need to add:
+
+```bash
+# Configure owner of changes just for current repo
+git config user.name "NAME"
+git config user.email "EMAIL"
+```
+
+Github contributions count only if the repo email is the same as the github email.
+
+When doing `git push`, this gets the password from the `.git-credentials` file, or adds it there on first push .
+
+```bash
+git config credential.helper store
+```
+
+# Global
 
 ```bash
 # Configure DEFAULT owner of changes for all repos
@@ -29,14 +43,11 @@ git config --global user.email "EMAIL"
 
 # Configure password token
 # Generated in developer settings / personal access tokens / classic
-git config credential.username "NAME"
-git config credential.helper store # Asks for password on first push
+# Get the password from the .git-credentials file, or add it there on first push
+git config --global credential.helper store
 
 # Allows multiple repositories on the same host to use different credentials. By default (false) it uses the first match.
 git config --global credential.useHttpPath true
-
-# Passwords are stored here
-less ~/.git-credentials
 ```
 
 # Feature branches vs Trunk-based development

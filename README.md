@@ -1,10 +1,8 @@
 # Reality
 
-> # **90% of real-world programs are database frontends, held by duct tape.**
-
 > # **Most of programming is really just taking data from place A, transforming it, and putting it in place B.**
 
-> # Most of the web is just a very fancy looking form.
+> # **90% of real-world programs are database frontends, held by duct tape.**
 
 # Programming
 
