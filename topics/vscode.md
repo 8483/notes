@@ -1,8 +1,24 @@
-# Starting VS Code in WSL (Ubuntu)
+# Connect VS Code to WSL (Ubuntu)
 
 If developing with the Windows Subystem for Linux (WSL), it's a good idea to connect VS Code to it to **avoid errors** and get more functionalities.
 
 This can be done by opening a directory from a WSL terminal with `code .` or by `CTRL` + `Shift` + `P` and choosing `WSL: Connect to WSL`.
+
+When VS Code connects to a remote WSL environment, it sets up a remote development workspace inside your WSL distribution.
+
+-   Extension Host Setup: VS Code installs a small server (vscode-server) on the WSL machine. This server is responsible for running extensions and communicating with the VS Code client on Windows.
+
+-   File System Access: It gives VS Code direct access to your WSL file system. You can open files and folders from within the WSL environment, and VS Code treats them as local files.
+
+-   Terminal Integration: The VS Code terminal connects directly to WSL, so when you open a terminal, it's running in WSL, not Windows. This allows you to run Linux commands and interact with your Linux environment directly.
+
+-   Language and Debugging Support: The extensions installed in the remote environment handle language features, IntelliSense, and debugging. For example, if you're using Node.js inside WSL, VS Code will run the Node.js debugger from within WSL as well.
+
+-   Seamless Extension Support: When you install extensions, VS Code will prompt you to install the extension either in the WSL environment or locally, depending on where it's needed. Extensions that work with WSL are installed directly inside WSL.
+
+-   Network and Proxy Configuration: VS Code manages network configurations for the remote connection, including handling SSH keys, proxies, and other connection details.
+
+In essence, the WSL remote connection allows you to work within your Linux environment while benefiting from the GUI and features of the Windows version of VS Code.
 
 # Shortcuts
 

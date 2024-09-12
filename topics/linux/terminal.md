@@ -127,7 +127,7 @@ find . | grep "string"          # Find files in directory.
 
 If there were any other action (ex. `-exec` or `-print`), it would not output the pruned directory names. So you just have to add an explicit `-print` in the end of your find command.
 
-You also have to add `-o` (OR) to actually print. `-o` is ambigus, when find finds a directory, the `-prune` is true, so `-print` is not evaluated
+You also have to add `-o` (OR) to actually print. `-o` is ambiguous, when `find` finds a directory, the `-prune` is true, so `-print` is not evaluated
 
 ```bash
 # Directories

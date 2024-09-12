@@ -215,6 +215,8 @@ Enter **visual mode** and select text.
 ```bash
 right click  # Paste from system clipboard (insert mode)
 
+:set paste + <S-i> # Formatted paste
+
 y            # Copy (yank) selected.
 
 d            # Cut selected.

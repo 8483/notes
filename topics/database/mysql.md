@@ -19,6 +19,9 @@ sudo mysql_secure_installation; # Makes mysql more secure
 
 ```bash
 sudo apt remove --purge mysql*
+sudo apt-get remove --purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+sudo rm -rf /etc/mysql /var/lib/mysql
+sudo rm -rf /var/log/mysql /var/log/mysql.*
 sudo apt purge mysql*
 sudo apt autoremove
 sudo apt autoclean

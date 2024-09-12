@@ -30,19 +30,19 @@ You can also create a separate configuration for each, which should be placed in
 nginx -t
 
 # Reload changes made to nginx.conf
-systemctl reload nginx
+service nginx reload
 
 # Check if nginx is running.
-systemctl status nginx
+service nginx status
 
 # Start nginx.
-systemctl start nginx
+service nginx start
 
 # Stop nginx.
-systemctl stop nginx
+service nginx stop
 
 # Reload nginx.
-systemctl restart nginx
+service nginx restart
 
 # Start a server with this custom configuration.
 sudo nginx -c /home/user/elm-seed/nginx.conf
@@ -55,6 +55,9 @@ ps -ef | grep nginx
 
 # Kill a server with a PID 2847.
 kill -9 2847
+
+# Kill every nginx process.
+killall nginx
 ```
 
 The default location nginx looks in for the configuration file is `/etc/nginx/nginx.conf`, but you can pass in an arbitrary path with the `-c` flag. Ex. `nginx -c /usr/local/nginx/conf`.
@@ -135,7 +138,7 @@ http {
 }
 ```
 
-After that, reload with `systemctl reload nginx`.
+After that, reload with `service nginx reload`.
 
 ```nginx
 events {}                                         # Needed to be a valid conf file.

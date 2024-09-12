@@ -40,7 +40,7 @@ sudo ls /etc/letsencrypt/live/domain.com
 
 # Issue SSL
 
-**IMPORTANT: Must disable nginx! Certbot runs its own instance.**
+**IMPORTANT: MUST DISABLE NGINX! CERTBOT RUNS ITS OWN INSTANCE.**
 
 **Issue certificate, before modifying nginx.conf.**
 
@@ -52,12 +52,12 @@ sudo killall nginx
 sudo certbot certonly --nginx -d subdomain.domain.com
 
 # Start listening to port 80
-sudo systemctl start nginx
+sudo service nginx start
 ```
 
 # Renew SSL
 
-**IMPORTANT: Must disable nginx**
+**IMPORTANT: MUST DISABLE NGINX.**
 
 ```bash
 # Stop all nginx processes
@@ -70,14 +70,14 @@ sudo certbot renew
 sudo certbot renew --cert-name domain.com
 
 # Start listening to port 80
-systemctl start nginx
+sudo service nginx start
 ```
 
 # Errors
 
 ```
 sudo killall -9 nginx
-sudo systemctl start nginx
+sudo service nginx start
 ```
 
 # Nginx configuration
@@ -125,7 +125,7 @@ http {
 sudo nginx -t
 
 # Restart nginx with new configuration
-systemctl start nginx
+sudo service nginx restart
 
 # Schedule task
 crontab -e
