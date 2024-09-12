@@ -175,6 +175,7 @@
 -   [vim - editor](./topics/linux/vim.md)
 -   [tmux - terminal windows multiplexer](./topics/linux/tmux.md)
 -   [grep - search](./topics/linux/grep.md)
+-   [fzf - fuzzy finder](./topics/linux/fzf.md)
 -   [bash - scripting](./topics/linux/bash.md)
 -   [ssh - remote access](./topics/linux/ssh.md)
 -   [rsync - file transfer](./topics/linux/rsync.md)
