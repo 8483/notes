@@ -307,10 +307,10 @@ You need 3 things:
 
 ### Marketing
 
--   [SEO](./topics/startup/MarketingSeo.md)
--   [Advertising](./topics/startup/MarketingAdvertising.md)
--   [Google Analytics](./topics/startup/MarketingGoogleAnalytics.md)
--   [Google Tag Manager](./topics/startup/MarketingGoogleTagManager.md)
+-   [SEO](./topics/startup/marketingSeo.md)
+-   [Advertising](./topics/startup/marketingAdvertising.md)
+-   [Google Analytics](./topics/startup/marketingGoogleAnalytics.md)
+-   [Google Tag Manager](./topics/startup/marketingGoogleTagManager.md)
 
 # Random
 
