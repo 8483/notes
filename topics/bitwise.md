@@ -28,7 +28,8 @@ console.log(1 & 2)
 Sets each bit to 1 if only one of two bits is 1.
 
 ```javascript
-// 10 = 00001010
+// 1 = 001000011
+// 2 = 001000101
 
 console.log(1 ^ 2)
 // 6 = 000000110
