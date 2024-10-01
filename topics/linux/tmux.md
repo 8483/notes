@@ -40,16 +40,20 @@ CTRL + C   # Exit scrolling mode.
 
 In order to configurate tmux, a `.tmux.conf` file is needed, as it doesn't exist. We can create this with `sudo touch /etc/.tmux.conf`, or `sudo touch ~/.tmux.conf` for a user specific one.
 
-`.tmux.conf`
+**.tmux.conf**
 
 ```bash
 # Activate mouse (Scrolling, selecting, re-sizing)
 set -g mouse on
+
+bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "xclip -selection clipboard"
 ```
 
-**IMPORTANT:** Reload the configuration.
+**IMPORTANT:** You must reload the configuration.
 
 ```bash
+tmux source-file ~/.tmux.conf
+
 # Inside tmux (CTRL + B + :)
 source-file ~/.tmux.conf
 ```

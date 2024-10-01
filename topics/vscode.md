@@ -135,6 +135,17 @@ These are located in the `settings.json` file, opened with `CTRL + SHIFT + P + '
 }
 ```
 
+# Extensions
+
+-   Autorenametag
+-   Simple Alignment
+-   Markdown Preview Enhanced
+-   Multiple cursor case preserve
+-   es6-string-html
+-   WSL
+-   DotEnv
+-   Auto Rename Tag
+
 # Workspace
 
 The workspace folder order is controlled by a `.code-workspace` file.

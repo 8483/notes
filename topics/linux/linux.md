@@ -13,6 +13,21 @@ C:\Users\User\AppData\Local\Microsoft\WindowsApps\CanonicalGroupLimited.Ubuntu22
 cd /mnt/
 ```
 
+Install via PowerShell:
+
+```text
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+wsl --set-default-version 2
+wsl --install -d Ubuntu-24.04
+
+wsl -l -v
+
+wsl --set-version Ubuntu-24.04 2
+
+lsb_release -a
+```
+
 # Command errors
 
 Sometimes commands don't run with `systemctl` i.e. `systemd`...

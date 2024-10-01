@@ -26,7 +26,7 @@ When you’re working don’t try speed all the time, slow down and see if there
 <CR>      # Enter i.e. carret return
 <tab>     # Tab
 <esc>     # Escape
-<space>   # Space
+<space>   # Space / Leader
 ```
 
 **NOTE:** Capital letters = SHIFT + letter
@@ -94,12 +94,14 @@ Commands can be executed over selections with `!`.
 vim <path>    # Open directory inside vim and select a file.
 vim <file>    # Open file directly.
 
-:e path       # Navigate to directory/file. Use TAB and CTRL + d to choose.
+:e <path>     # Navigate to directory/file. Use TAB and CTRL + d to choose.
+:find <path>  # Navigate to directory/file.
 
 :e.           # Show directory
 :E            # Show directory
 :Ex           # Show directory
 
+:Lex          # Show directory in a side window
 :Vex          # Show directory in a new window
 
 :jumps        # Show navigation history
@@ -109,6 +111,54 @@ vim <file>    # Open file directly.
 
 <C-g>         # Show current file name
 ```
+
+# Wildmenu
+
+Command autocompletion.
+
+```bash
+:set wildmenu           # Turns the feature on.
+
+:e string               # Search in current directory.
+:e **/*string           # Search recursively from root.
+
+<tab>                   # Show wildmenu. Go forward.
+<s-tab>                 # Go backward.
+
+<c-d>                   # Print ALL suggestions.
+
+<Left> / <Right>        # Traverse options.
+<Down> / <Up>           # Drill out/down directories.
+
+:set wildoptions=pum    # Makes the menu vertical. Traversal is reversed.
+:set wildignore+=**/node_modules/**,**/.git/** # Ignore directories
+:set wildignorecase     # Case insensitive
+```
+
+Wldignore is only applied after the search.
+
+# path
+
+When using `**/*`, it means:
+
+-   `**` - Look inside all directories from where I am.
+-   `/*` - Look for all files (and directories) within the directories found by `**`.
+
+# :e vs :find
+
+`find` search the `'path'` in vim. Whereas :edit only takes the current working directory as the root.
+
+`:edit` is restricted by default to the working directory: if you need to edit a file that is not under your working directory you will have to provide its absolute path or a path relative to the working directory. Also, you need to provide the necessary globs.
+
+`:find` is superficially very similar to `:edit` but the (big) difference is that it finds files in the directories specified in the `path` option. `path` is what makes `:find` a lot more interesting than `:edit`.
+
+With `set path=,,` you essentially get the same behavior as `:e foo`.
+
+With `set path=**` you essentially get the same behavior as `:e **/foo` except you don't have to use any glob.
+
+With `set path=.,**` you also get access to files in the same directory as the current file.
+
+With `set path=.,**,/path/to/some/central/vendor/directory` you also get access to files from that directory… and so on.
 
 # Motions
 
@@ -335,15 +385,23 @@ norm .    # Execute the normal mode command . (repeats the last change)
 
 # grep
 
+Search for text inside of currently open file, or specified files.
+
 ```bash
 :grep              # External (terminal) search
 
 :vimgrep           # Internal (vim) search, add to quickfix list
 :vim               # Internal (vim) search, add to quickfix list
 
+:vim foo           # Current file, first occurence.
+:vim /foo/г        # Current file, every occurence.
+
 :vim foo *         # Current directory
 :vim foo **        # Current directory and subdirectories
+:vim foo **/*      # Current directory and subdirectories
 :vim foo **/*js    # Current directory and subdirectories only in js files
+
+:vimgrep /foo/g ~/bar.js ~/baz.js # Every foo in these files
 ```
 
 # Quickfix List
@@ -539,7 +597,7 @@ set softtabstop=4    " TAB is 4 spaces.
 set expandtab        " Converts tabs into spaces.
 set tabstop=4        " Converts tabs into spaces.
 
-set t_u7=            " Fix buy where vim starts in replace mode.
+set t_u7=            " Fix where vim starts in replace mode.
 ```
 
 **NOTE:**
@@ -609,19 +667,19 @@ Remove plugin from `~/.vimrc`.
 ```vim
 " SETTINGS ========================================================================
 
-filetype plugin on   " Detect filetypes and load relevant plugins.
+set nocompatible     " Set compatibility to Vim only.
 set path+=**         " Find searches recursively in subdirectories.
-set wildmenu         " Show command autocompletion suggestions.
 
-" set cursorcolumn     " Show vertical line to locate cursor.
-" set cursorline       " Show horizontal line to locate cursor.
+set wildmenu         " Show command autocompletion suggestions.
+set wildoptions=pum  " Vertical wildmenu
+set wildignorecase   " Case insensitive
+set wildignore+=**/node_modules/**,**/.git/**  " Ignore directories
 
 set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
 set number           " Show line numbers.
 set relativenumber   " Line numbers are relative to the current line.
 set hlsearch         " Highligt searches
 
-set nocompatible     " Set compatibility to Vim only.
 set visualbell       " Use visual bell (no beeping)
 set wrap             " Word wrap.
 
@@ -637,6 +695,11 @@ set t_u7=            " Fix buy where vim starts in replace mode.
 
 set completeopt+=menuone     " Always show autocompletion
 set completeopt+=noselect    " Manual selection required
+
+filetype plugin on   " Detect filetypes and load relevant plugins.
+
+" set cursorcolumn     " Show vertical line to locate cursor.
+" set cursorline       " Show horizontal line to locate cursor.
 
 " PLUGINS ========================================================================
 
