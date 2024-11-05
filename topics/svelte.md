@@ -32,6 +32,7 @@ Language:
 -   [Slots](#slots)
 -   [Context API](#context-api)
 -   [Special elements](#special-elements)
+-   [Runes](#runes)
 
 Utilities:
 
@@ -81,7 +82,7 @@ Vite uses the native ES modules feature in the browser to handle imports, while 
 # Create scaffold via a Vite CLI install prompt
 npm create vite@latest
 
-# Choose: y > app > Svelte > Javascript 
+# Choose: y > app > Svelte > Javascript
 ```
 
 ![Vite](../pics/svelte/svelte_vite.jpg)
@@ -2100,6 +2101,69 @@ Insert elements inside the `<head>` of your document.
 <svelte:head>
 	<link rel="stylesheet" href="tutorial/dark-theme.css">
 </svelte:head>
+```
+
+# Runes
+
+They tell Svelte to do something special that doesn't behave like regular Javascript or HTML.
+
+They allow using reactivity outside of `.svelte` files.
+
+90% of what you need to know is in these 4 runes: `state`, `derived`, `effect`, `props`.
+
+Svelte 5 should be a drop-in replacement for almost everyone. The new features are opt-in — your existing components will continue to work.
+
+## state
+
+```js
+// NEW
+let count = $state(0);
+
+// OLD
+let count = 0;
+```
+
+## derived
+
+```js
+// NEW
+let doubled = $derived(count * 2);
+
+// OLD
+$: doubled = count * 2;
+```
+
+## effect
+
+Run some code when the referenced values change.
+
+```js
+// NEW
+$effect(() => {
+    console.log(`count changed to: ${count}`);
+});
+
+// OLD
+$: {
+    console.log(`count changed to: ${count}`);
+}
+```
+
+## props
+
+```html
+<UserProfile name="John" age={20} colors={["green", "blue", "red"]} isAvailable />
+```
+
+```js
+// NEW
+const { name = "", age = null, colors = [], isAvailable = false } = $props();
+
+// OLD
+export let name = "";
+export let age = null;
+export let colors = [];
+export let isAvailable = false;
 ```
 
 # Debugging

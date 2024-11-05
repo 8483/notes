@@ -17,15 +17,18 @@ sudo apt install ffmpeg
 The amount of data (bits) processed per second (bps) i.e. the quality and size of the file.
 
 ```
-File size (in bits) = 500 MB * 8 * 1024 * 1024
-                           = 4194304000 bits
+File size (in bits)
+  = 500 MB * 8 * 1024 * 1024
+  = 4194304000 bits
 
-Duration (in seconds) = 2 hours * 60 minutes * 60 seconds
-                      = 7200 seconds
+Duration (in seconds)
+  = 2 hours * 60 minutes * 60 seconds
+  = 7200 seconds
 
-Bitrate (in bits per second) = 4194304000 bits / 7200 seconds
-                                    ≈ 582500 bps
-                                    ≈ 583 kbps
+Bitrate (in bits per second)
+  = 4194304000 bits / 7200 seconds
+  ≈ 582500 bps
+  ≈ 583 kbps
 ```
 
 Video:
@@ -60,18 +63,18 @@ Depends on:
 
 Fastest to slowest:
 
-| Preset     | Speed                     | File Size              |
-| ---------- | ------------------------- | ---------------------- |
-| ultrafast  | 10-20 times faster        | 2-3 times larger       |
-| superfast  | 5-10 times faster         | 1.5-2.5 times larger   |
-| veryfast   | 3-5 times faster          | 1.3-2 times larger     |
-| faster     | 2-3 times faster          | 1.2-1.8 times larger   |
-| fast       | 1.5-2 times faster        | 1.1-1.5 times larger   |
-| **medium** | **Baseline speed**        | **Baseline file size** |
-| slow       | 1.5-2 times slower        | 0.8-0.9 times smaller  |
-| slower     | 2-3 times slower          | 0.7-0.85 times smaller |
-| veryslow   | 3-5 times slower          | 0.6-0.8 times smaller  |
-| placebo    | 5-10 times slower or more | 0.5-0.75 times smaller |
+| Preset     | Speed                     |          | File Size              |        |
+| ---------- | ------------------------- | -------- | ---------------------- | ------ |
+| ultrafast  | 10-20 times faster        | 3 min    | 2-3 times larger       | 3 GB   |
+| superfast  | 5-10 times faster         | 6 min    | 1.5-2.5 times larger   | 2.5 GB |
+| veryfast   | 3-5 times faster          | 15 min   | 1.3-2 times larger     | 2 GB   |
+| faster     | 2-3 times faster          | 20 min   | 1.2-1.8 times larger   | 1.8 GB |
+| fast       | 1.5-2 times faster        | 30 min   | 1.1-1.5 times larger   | 1.5 GB |
+| **medium** | **Baseline speed**        | 1 hour   | **Baseline file size** | 1 GB   |
+| slow       | 1.5-2 times slower        | 2 hours  | 0.8-0.9 times smaller  | 900 MB |
+| slower     | 2-3 times slower          | 3 hours  | 0.7-0.85 times smaller | 800 MB |
+| veryslow   | 3-5 times slower          | 5 hours  | 0.6-0.8 times smaller  | 700 MB |
+| placebo    | 5-10 times slower or more | 10 hours | 0.5-0.75 times smaller | 600 MB |
 
 # Video
 
@@ -88,22 +91,22 @@ Fastest to slowest:
 **Result**
 
 ```
-Preset:                       medium       superfast
-Processing:                   1 hour       20 min
+Preset:                         medium       superfast
+Processing:                     1 hour       20 min
 
-Duration:      2 hours        same         same
-Size:          2 GB           554 MB       554 MB
-Width:         1280           same         same
-Height:        720            same         same
+Duration:      2 hours          same         same
+Size:          2 GB             554 MB       554 MB
+Width:         1280             same         same
+Height:        720              same         same
 
 Video
-Data rate:      2,572 kbps    584 kbps     584 kbps
-Bit rate:       2,700 kbps    712 kbps     712 kbps
-Frame rate:     25 fps        same         same
+Data rate:      2,572 kbps      584 kbps     584 kbps
+Bit rate:       2,700 kbps      712 kbps     712 kbps
+Frame rate:     25 fps          same         same
 
 Audio
-Bitrate:       128kbps        same         same
-Sample rate:   44.100 kHz     same         same
+Bitrate:        128kbps         same         same
+Sample rate:    44.100 kHz      same         same
 ```
 
 # Audio
@@ -115,12 +118,12 @@ ffmpeg -i input.wav -b:a 320k output.mp3
 **Result**
 
 ```
-Processing:                   4 min
+Processing:                    4 min
 
-Duration:      3 hours        same
-Size:          1.9 GB         428 MB
+Duration:       3 hours        same
+Size:           1.9 GB         428 MB
 
-Bit rate:       1,411 kbps    320 kbps
+Bit rate:       1,411 kbps     320 kbps
 ```
 
 # Batch script
