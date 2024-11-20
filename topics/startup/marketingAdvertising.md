@@ -2,9 +2,9 @@
 
 Buyers go through 80% of the decision making process without ever talking to sales.
 
-![](../../pics/startup/sales/sales_marketing-buyer-journey.jpg)
-
 Marketing is so important because the buyer has already made up his mind when sales gets involved.
+
+![](../../pics/startup/sales/sales_marketing-buyer-journey.jpg)
 
 # Setup
 
@@ -63,10 +63,13 @@ The targeting works as `OR`, meaning it includes everyone that matches some of t
 2. Custom audience from pixel
 3. Lookalike audience based on pixel custom audience
 4. Custom audience from customer list (emails)
-5. Lookalike audience based customer list custom audience
+5. Lookalike audience based on "Custom audience from customer list"
 
-Custom and lookalike audiences update automatically.  
-Lookalike audiences are COLD audiences. WARM audience = Website visitors, email lists, page engagers, video viewers...
+Notes:
+
+-   Custom and lookalike audiences update automatically.
+-   Lookalike audiences are COLD audiences.
+-   WARM audience = Website visitors, email lists, page engagers, video viewers...
 
 For lookalike audiences, choose 1% when targeting larger countries, and 10% for smaller countries.
 
@@ -97,20 +100,20 @@ Notes:
 
 # Objectives
 
-**Campaging objectives don't really matter**. What they do is d**etermine the conversion options you have in the ad set optimizaion and delivery** section. These are the actual objectives Facebook's algorithms is based on.
+**Campaging objectives don't really matter**. What they do is d**etermine the conversion options you have in the AD SET optimizaion and delivery** section. These are the actual objectives Facebook's algorithms is based on.
 
 > **Conversions are twice as powerful as traffic. Always use this.**
 
-Conversion
+**Conversion**
 
 -   Conversions - 90% of campagins should use this (Pixel required).
 
-Awareness
+**Awareness**
 
 -   Brand Awareness - Top of mind, large budgets
 -   Reach - Small audience, high ad frequency
 
-Consideration
+**Consideration**
 
 -   Traffic - When we can't track the end result i.e. conversions
 -   Engagement - People likely to like and comment

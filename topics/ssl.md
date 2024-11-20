@@ -55,6 +55,24 @@ sudo certbot certonly --nginx -d subdomain.domain.com
 sudo service nginx start
 ```
 
+**Wildcard**
+
+```bash
+sudo certbot certonly --manual --preferred-challenges=dns --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.domain.com
+```
+
+Before continuing, it will ask you to:
+
+```txt
+Please deploy a DNS TXT record under the name:
+
+_acme-challenge.domain.com.
+
+with the following value:
+
+cz4pZ2VYGypLyjBMrpDR8Af4JrRhhZhQ1Vtjj0tSwv4
+```
+
 # Renew SSL
 
 **IMPORTANT: MUST DISABLE NGINX.**
