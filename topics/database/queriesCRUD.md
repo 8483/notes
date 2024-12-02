@@ -1,6 +1,6 @@
 # UPDATE from SELECT / TABLE
 
-SQL server
+SQL Server
 
 ```sql
 -- select
@@ -66,6 +66,32 @@ WHERE
 ```
 
 # UPSERT / ON DUPLICATE KEY UPDATE
+
+SQL Server
+
+```sql
+IF EXISTS (
+    select *
+    from tableName
+    where
+        sku = @sku
+        and warehouse = '00051'
+)
+BEGIN
+    UPDATE tableName
+    SET location = @location
+    WHERE
+        sku = @sku
+        and warehouse = '00051';
+END
+ELSE
+BEGIN
+    INSERT INTO tableName (code, location, warehouse)
+    VALUES (@sku, @location, '00051');
+END;
+```
+
+MySQL
 
 ```sql
 -- values

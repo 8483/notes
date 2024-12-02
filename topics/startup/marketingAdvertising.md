@@ -65,20 +65,6 @@ The targeting works as `OR`, meaning it includes everyone that matches some of t
 4. Custom audience from customer list (emails)
 5. Lookalike audience based on "Custom audience from customer list"
 
-Notes:
-
--   Custom and lookalike audiences update automatically.
--   Lookalike audiences are COLD audiences.
--   WARM audience = Website visitors, email lists, page engagers, video viewers...
-
-For lookalike audiences, choose 1% when targeting larger countries, and 10% for smaller countries.
-
-Notes:
-
--   **Always click on suggestions when filtering**
--   **IMPORTANT: Exclude pixel audiences so that you ensure you are targeting new people**
--   Try to move away from interest based targeting towards lookalike audiences
-
 **Performance**
 
 1.  Best:
@@ -91,6 +77,16 @@ Notes:
     -   Small business owners (digital activities)
     -   Job titles ex. CEO, owner, founder...
 
+**Notes:**
+
+-   **Always click on suggestions when filtering**
+-   **IMPORTANT: Exclude pixel audiences so that you ensure you are targeting new people**
+-   Custom and lookalike audiences update automatically.
+-   Lookalike audiences are COLD audiences.
+-   WARM audience = Website visitors, email lists, page engagers, video viewers...
+-   For lookalike audiences, choose 1% when targeting larger countries, and 10% for smaller countries.
+-   Try to move away from interest based targeting towards lookalike audiences.
+
 # Datasets (Pixels)
 
 1. Create dataset under data sources.
@@ -100,23 +96,18 @@ Notes:
 
 # Objectives
 
-**Campaging objectives don't really matter**. What they do is d**etermine the conversion options you have in the AD SET optimizaion and delivery** section. These are the actual objectives Facebook's algorithms is based on.
+**Campaging objectives don't really matter**. What they do is **determine the conversion options you have in the AD SET optimizaion and delivery** section, which are the actual objectives Facebook's algorithms is based on.
 
 > **Conversions are twice as powerful as traffic. Always use this.**
 
-**Conversion**
-
--   Conversions - 90% of campagins should use this (Pixel required).
-
-**Awareness**
-
--   Brand Awareness - Top of mind, large budgets
--   Reach - Small audience, high ad frequency
-
-**Consideration**
-
--   Traffic - When we can't track the end result i.e. conversions
--   Engagement - People likely to like and comment
+-   **Conversion**
+    -   Conversions - 90% of campagins should use this (Pixel required).
+-   **Awareness**
+    -   Brand Awareness - Top of mind, large budgets
+    -   Reach - Small audience, high ad frequency
+-   **Consideration**
+    -   Traffic - When we can't track the end result i.e. conversions
+    -   Engagement - People likely to like and comment
 
 **Objective names**
 
@@ -140,9 +131,9 @@ Notes:
 - 1 Campaign pet product/offer.
     - 3-5 ad sets per campaign (1-2 interest per ad set).
         - 3-4 ads per ad set (duplicate across ad sets).
-
-* Put remarketing in a separate campaign.
 ```
+
+-   Put remarketing in a separate campaign.
 
 **Test the ads and pick the best performer. Add new ads to test against the best performer. Repeat while iterating over different creatives, headlines and copy until you find the perfect ad.**
 
@@ -163,13 +154,13 @@ Website/app - Conversions - COLD (leads, interests, admins, others)
 
 Website/app - Conversions - WARM (Remarketing)
     - Website visitors pixel (Remarketing)
-
-* In remarketing and lookalike, exclude the Advantage+ option (reach people beyond audience)
-* Each ad set, in each campaign, has the same 4 ads.
-* In each ad set, exclude every other ad set.
-* Leads are a "customer list" of emails of businesses.
-* Users list is emails from your existing users.
 ```
+
+-   In remarketing and lookalike, exclude the Advantage+ option (reach people beyond audience)
+-   Each ad set, in each campaign, has the same 4 ads.
+-   In each ad set, exclude every other ad set.
+-   Leads are a "customer list" of emails of businesses.
+-   Users list is emails from your existing users.
 
 **Or simply...**
 

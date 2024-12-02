@@ -308,9 +308,9 @@ You need 3 things:
 ### Marketing
 
 -   [SEO](./topics/startup/marketingSeo.md)
--   [Advertising](./topics/startup/marketingAdvertising.md)
 -   [Google Analytics](./topics/startup/marketingGoogleAnalytics.md)
 -   [Google Tag Manager](./topics/startup/marketingGoogleTagManager.md)
+-   [Advertising](./topics/startup/marketingAdvertising.md)
 
 # Random
 
