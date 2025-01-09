@@ -142,9 +142,9 @@ This CSS would result in:
 # Grid Area
 
 ```html
-<div class="header" style="grid-area: header">Header</div>
-<div class="sidebar" style="grid-area: sidebar">Sidebar</div>
-<div class="main" style="grid-area: main">Main</div>
+<div style="grid-area: header">Header</div>
+<div style="grid-area: sidebar">Sidebar</div>
+<div style="grid-area: main">Main</div>
 
 <div class="section">Section</div>
 <div class="content">Content</div>
@@ -170,8 +170,6 @@ This CSS would result in:
 ```css
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr 2fr 1fr;
     grid-template-areas:
         "header header header"
         "sidebar main main"
@@ -185,8 +183,6 @@ This CSS would result in:
 ```css
 .container {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 10% 30% 30% 10%;
     grid-template-areas:
         "header"
         "sidebar"

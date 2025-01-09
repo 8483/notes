@@ -309,6 +309,7 @@ You need 3 things:
 
 -   [SEO](./topics/startup/marketingSeo.md)
 -   [Google Analytics](./topics/startup/marketingGoogleAnalytics.md)
+-   [Facebook Pixel](./topics/startup/marketingFacebookPixel.md)
 -   [Google Tag Manager](./topics/startup/marketingGoogleTagManager.md)
 -   [Advertising](./topics/startup/marketingAdvertising.md)
 

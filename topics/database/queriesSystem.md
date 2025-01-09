@@ -94,6 +94,15 @@ FROM sys.dm_os_buffer_descriptors AS bd
 WHERE bd.database_id = DB_ID('DATABASE_NAME')
 GROUP BY obj.name, ind.name
 ORDER BY cached_size_MB DESC;
+
+SELECT
+    db_name(database_id) AS database_name,
+    COUNT(*) AS cached_pages_count,
+	COUNT(*) * 8 / 1024 AS cached_size_MB
+FROM sys.dm_os_buffer_descriptors
+WHERE database_id > 4 -- Exclude system databases
+GROUP BY database_id
+ORDER BY cached_pages_count DESC;
 ```
 
 # Index size (Optimal RAM)
@@ -124,6 +133,40 @@ FROM sys.tables AS t
 WHERE i.type_desc <> 'HEAP'
 GROUP BY s.name, t.name, i.name
 ORDER BY [Index Size (MB)] DESC;
+```
+
+# Frequently Accessed Tables and Indexes
+
+Most accessed indexes. High `USER_SEEKS` or `USER_SCANS` indicates frequent reads.
+
+```sql
+-- SQL Server
+SELECT
+    OBJECT_NAME(S.[OBJECT_ID]) AS TableName,
+    I.[NAME] AS IndexName,
+    USER_SEEKS, USER_SCANS, USER_LOOKUPS, USER_UPDATES
+FROM SYS.DM_DB_INDEX_USAGE_STATS AS S
+INNER JOIN SYS.INDEXES AS I
+    ON I.[OBJECT_ID] = S.[OBJECT_ID] AND I.INDEX_ID = S.INDEX_ID
+WHERE OBJECTPROPERTY(S.[OBJECT_ID], 'IsUserTable') = 1
+ORDER BY USER_SEEKS DESC;
+```
+
+Most accessed tables. Table access frequency in the plan cache.
+
+```sql
+SELECT
+    qs.execution_count,
+    qs.total_logical_reads AS Reads,
+    qs.total_logical_writes AS Writes,
+    SUBSTRING(st.text, (qs.statement_start_offset/2)+1,
+              ((CASE qs.statement_end_offset
+                  WHEN -1 THEN DATALENGTH(st.text)
+                  ELSE qs.statement_end_offset
+                END - qs.statement_start_offset)/2)+1) AS QueryText
+FROM sys.dm_exec_query_stats qs
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) st
+ORDER BY qs.total_logical_reads DESC;
 ```
 
 # Buffer Pool Hit Ratio

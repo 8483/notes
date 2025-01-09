@@ -92,23 +92,15 @@ sudo apt install nginx -y;
 ```bash
 sudo apt install mysql-server;
 
-sudo /etc/init.d/mysql start;
-# sudo service mysql start
-# systemctl restart mysql
-
-sudo mysql_secure_installation; # Makes mysql more secure
-# Change root password to more secure.
-# Remove anonymous users.
-# Disable remote root login. Root should only connect via `localhost`.
-# Remove test database and access to it.
-# Reload privilege tables.
+sudo service mysql start
+# sudo /etc/init.d/mysql start;
 ```
 
-If needed...
+Add a password to the `root` user.
 
 ```bash
 # Login
-sudo mysql -u root -p;
+sudo mysql;
 
 # Change root password
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
@@ -116,8 +108,17 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
 # Reload the privileges after password change.
 FLUSH PRIVILEGES;
 
-# Change timezone
-sudo vim /etc/mysql/my.cnf
+# Login with password
+sudo mysql -u root -p;
+```
 
-# Change default-time-zone = "+01:00" to desired
+Change time zone.
+
+```
+sudo vim /etc/mysql/my.cnf
+```
+
+```
+[mysqld]
+default-time-zone = "+01:00"
 ```
