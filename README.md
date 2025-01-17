@@ -319,6 +319,10 @@ You need 3 things:
 -   [Statistics](./topics/statistics.md)
 -   [Googling](./topics/googling.md)
 
+# Commits
+
+![Automation](./pics/github_commits.jpg)
+
 # Comics
 
 [Automation](https://xkcd.com/1319/)
