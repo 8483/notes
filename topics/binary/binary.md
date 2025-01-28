@@ -1,3 +1,9 @@
+# Converting
+
+Windows has a cool calculator for conversions, you just choose the `Programmer` mode.
+
+![Binary Calculator](../../pics/binary/binary_calculator.jpg)
+
 # Bases
 
 > A way to represent the same binary data in different ways i.e. characters. base = how bytes are represented.
