@@ -1,5 +1,4 @@
-
-# Bitwise OR
+# OR
 
 Sets each bit to 1 if one of two bits is 1.
 
@@ -7,7 +6,7 @@ Sets each bit to 1 if one of two bits is 1.
 // 1 = 00000001
 // 2 = 00000010
 
-console.log(1 | 2)
+console.log(1 | 2);
 // 3 = 00000011
 ```
 
@@ -19,7 +18,7 @@ Sets each bit to 1 if both bits are 1.
 // 1 = 00000001
 // 2 = 00000010
 
-console.log(1 & 2)
+console.log(1 & 2);
 // 0 = 00000000
 ```
 
@@ -30,7 +29,7 @@ Sets each bit to 1 if only one of two bits is 1.
 ```javascript
 // 10 = 00001010
 
-console.log(1 ^ 2)
+console.log(1 ^ 2);
 // 6 = 000000110
 ```
 
