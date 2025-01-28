@@ -120,9 +120,9 @@
 
 -   [Algorithms](./topics/algos.md)
     -   [Graph Theory](./topics/graphTheory.md)
--   [Binary](./topics/binary.md)
-    -   [ASCII](./topics/ascii.md)
-    -   [Bitwise](./topics/bitwise.md)
+-   [Binary](./topics/binary/binary.md)
+    -   [ASCII](./topics/binary/ascii.md)
+    -   [Bitwise](./topics/binary/bitwise.md)
 -   [Assembly](./topics/assembly.md)
     -   [WebAssembly](./topics/wasm.md)
 -   [.NET](./topics/dotnet.md)
