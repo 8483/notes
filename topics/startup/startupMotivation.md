@@ -9,7 +9,7 @@ This is the single most useful productivity hack.
 Mimimum Viable Actions is the smallest viable action that feels doable to you in this moment. It takes advantage of a psychology quirk where:
 
 ```
-Motivation is not just he cause of action, but also the effect.
+Motivation is not just the cause of action, but also the effect.
 ```
 
 This makes it more difficult to stop doing the task than to continue... so you continue.

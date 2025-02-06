@@ -4,7 +4,7 @@
 
 -   Launch in 3 months MVP.
 -   Ship early, ship often. Build new every 2 weeks.
--   Dogfood your product
+-   Dogfood your product.
 -   Build your team. Hire slow. Fire Fast.
 
 # Build time estimation
@@ -298,7 +298,7 @@ Don't ask
 -   Will you use our product?
 -   Which features would make our product better?
 -   Yes/No questions.
--   How woulad a better product look like to you?
+-   How would a better product look like to you?
 -   Two questions at the same time.
 
 It's even better to watch them how they solve their problem now.

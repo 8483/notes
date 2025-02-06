@@ -286,7 +286,7 @@ You need 3 things:
 -   [Market Fit](./topics/startup/productMarketFit.md)
 -   [Business Model](./topics/startup/productBusinessModel.md)
 -   [Pricing](./topics/startup/productPricing.md)
--   [Desgin](./topics/startup/productDesign.md)
+-   [Design](./topics/startup/productDesign.md)
 -   [MVP](./topics/startup/productMVP.md)
 
 ### **Sales**
@@ -301,7 +301,7 @@ You need 3 things:
 
 ### Copywriting
 
--   [Guide](./topics/startup/copywritingGuide.md)
+-   [Best Practices](./topics/startup/copywritingBestPractices.md)
 -   [Frameworks](./topics/startup/copywritingFrameworks.md)
 -   [Direct Response](./topics/startup/copywritingDirectResponse.md)
 -   [Ad Creatives](./topics/startup/copywritingAdCreatives.md)

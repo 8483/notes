@@ -286,8 +286,144 @@ This $500k ARR can be comprised of:
 
 Limit them to a couple of weeks, maximum of a month.
 
-# 9. Just pick a number
+## 9. Just pick a number
 
 > Increase it by 50% every time you pitch a new customer. When you start losing 25% of the deals, you're in the right ball-park.
 
 If you are closing every single deal straight away, you are certainly under-pricing.
+
+# The Most Important Questions to Ask Your Clients
+
+https://www.youtube.com/watch?v=-0m7iy7Rrn0  
+https://www.youtube.com/watch?v=unj2R10OP60
+
+The goal of all of the questions is to figure out what value they will get, to base your pricing on.
+
+-   What kind of outcome are you looking for?
+-   How will we know things improved?
+-   What are you currently measuring?
+-   Where are you currently at?
+-   What is your dream outcome?
+
+If you still can't get a value. Ask these:
+
+-   I don't see the value to you in this solution. Please help me understand why you want to invest money into this?
+-   How much are you willing to invest in this?
+
+# Communicating Your Value to Clients
+
+https://www.youtube.com/watch?v=LLPTnucqAEc
+
+-   Why do you want this solved?
+-   Why do this now?
+-   Why do you want this solved in this manner?
+-   Why do you want me to solve it?
+
+Don't convince clients to work with you. In fact, try to convince them why they SHOULDN'T work with you. In a way, they will convince themselves to hire you.
+
+# Setting Your Price for a Large Project
+
+https://www.youtube.com/watch?v=TOJzqcBtZR0
+
+There are 3 layers of involvements:
+
+-   Top layer: Planning/Design
+-   Middle layer: Implementation/Building
+-   Bottom layer: Maintenance
+
+How do you value a project without knowing the scope?
+
+Instead of doing estimations i.e. focusing on the cost, do the reverse, and focus on the value of the outcome.
+
+Find out how much solving their problem is worth, take 10% of that, and see if that number is worth it for you, an what you can do with it.
+
+Set your initial price to 150% fo the 10%, so you can be "priced down" to your desired price.
+
+Ex. If your solution will help them increase their revenue by $10,000,000... You can charge them at least $1,000,000. Tell them $1,500,000 instead so you can be "priced down". The less it actually costs you to make the solution, the better.
+
+Also, their risk is small because they only "lose" 10% if it fails.
+
+In the case where they ask for an hourly rate, tell them that you don't work that way and that you'd be happy to talk more to figure out a ballpark figure.
+
+# How to Budget for Custom Software Projects
+
+https://youtu.be/4QU_QO00K34
+
+Developer:
+
+Average dev salary: $94,000/year  
+Work overhead: +30%  
+Margin: +30%
+
+Total annual: $158,860 ($53,000)  
+per month: $13,238 ($4,400)  
+per week: $3,055 ($1,018)  
+per day: $601 ($200)  
+per hour: $75 ($25)
+
+Team:
+
+-   1 business analyst
+-   1 project manager
+-   1 designer
+-   2 developers
+-   1 customer success manager
+
+Total annual: $953,160 ($317,720)  
+per month: $79,430 ($26,476)  
+per week: $18,330 (6,100)  
+per day: $3,610 (1,203)  
+per hour: $451 ($150)
+
+Stages:
+
+1. Brief - Understanding the problem - free
+
+    - Problem statement
+    - Recommended scope time-frame
+    - Initial product strategy
+
+2. Scoping - Finding the solution
+
+    - Backlog
+    - Prototype
+    - Estimations
+    - Development proposal
+
+    Prices:
+
+    - Proof of concept: $5,000
+    - MVP: $10,000
+    - Product: $30,000+
+
+3. Development
+
+    - Proof of concept: $30,000 - $50,000
+    - MVP: $70,000 - $80,000
+    - Product: $100,000+
+
+4. Maintenance
+
+    - 20% of the cost of development.
+
+Average project length:
+
+-   Scoping: 3 weeks.
+-   Development: 10 weeks.
+-   Cost: $120,000
+
+# 3 Ways to Respond When a Client Says Your Prices Are Too High
+
+https://www.youtube.com/watch?v=LdFlWI0acZ0
+
+3 responses from a client to your price:
+
+-   When can we start? - You priced too low.
+-   Hmmmmm... Can you explain how you calculate the price. - They are looking for a way to either talk you down, or justify their purchase.
+-   Total shock. Missed by order of magnitude, expected a zero less. - Prices too high, hard to recover from.
+
+3 responses to a client about high price complaints:
+
+1. What do you propose? Ask this instead of caving in on your price. Ask what to remove from the solution to reach that price. This is a value negotiation instead of a price one.
+2. I am suprised it seems like an expensive investment for something that is mission critical. Can you please help me understand? - Call out the contradiction in their behavior.
+3. I gave it some thought, and I really can't make a business case for that. Do you want me to recommend some other options?
