@@ -137,6 +137,22 @@ where id in (
 )
 ```
 
+# DELETE from CTE
+
+```sql
+with
+    duplicates as (
+        select *
+        from (
+            select
+                id,
+                row_number() over(partition by date, name order by date asc) rn
+            from items
+        ) t1 where rn > 1
+    )
+delete from duplicates
+```
+
 # DELETE from LEFT JOIN
 
 ```sql
