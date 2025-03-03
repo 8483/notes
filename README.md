@@ -6,17 +6,19 @@
 
 # Programming
 
+### **Styles**
+
+-   [Object Oriented Programming (OOP)](./topics/oop.md)
+-   [Functional Programming (FP)](./topics/fp.md)
+
 ### **Javascript**
 
--   [Language](./topics/javascriptLanguage.md)
--   [Basics](./topics/javascriptBasics.md)
--   [ES6](./topics/javascriptEs6.md)
--   [Document Object Model (DOM)](./topics/javascriptDom.md)
--   [Async](./topics/javascriptAsync.md)
--   [Object Oriented Programming (OOP)](./topics/oop.md)
--   [Functional Programming](./topics/fp.md)
--   [Debugging](./topics/javascriptDebugging.md)
--   [Code Golf](./topics/javascriptCodeGolf.md)
+-   [Language](./topics/javascript/basics.md)
+-   [Basics](./topics/javascript/basics.md)
+-   [ES6](./topics/javascript/es6.md)
+-   [Document Object Model (DOM)](./topics/javascript/dom.md)
+-   [Async](./topics/javascript/async.md)
+-   [Debugging](./topics/javascript/Debugging.md)
 
 ### **Frontend**
 
@@ -35,11 +37,13 @@
 -   Other
     -   [CSS](./topics/css.md)
     -   [Web Components](./topics/webComponents.md)
+-   Bundlers
+    -   [Babel](./topics/babel.md)
+    -   [Webpack](./topics/webpack.md)
 
 ### **Backend**
 
 -   Technologies
-
     -   [Node](./topics/node.md)
         -   [npm/npx](./topics/npm.md)
         -   [Express](./topics/express.md)
@@ -48,10 +52,6 @@
         -   [.env](./topics/dotenv.md)
     -   [Web Sockets](./topics/websockets.md)
     -   [GraphQL](./topics/graphql.md)
-
--   Web server
-    -   [nginx](./topics/nginx.md)
-        -   [SSL](./topics/ssl.md)
 -   Libraries
     -   [cryptojs](./topics/cryptojs.md)
     -   [nodemailer](./topics/nodemailer.md)
@@ -60,14 +60,17 @@
     -   [Caching](./topics/caching.md)
     -   [Logging](./topics/logging.md)
 
+### **Web Server**
+
+-   [nginx](./topics/webserver/nginx.md)
+-   [SSL](./topics/webserver/ssl.md)
+
 ### **Database**
 
 -   Concepts
     -   [Terminology](./topics/database/terminology.md)
     -   [Conventions](./topics/database/conventions.md)
     -   [Normalization](./topics/database/normalization.md)
-    -   [Optimization](./topics/database/optimization.md)
-    -   [Indexing](./topics/database/indexing.md)
 -   Queries
     -   [Utilities](./topics/database/queriesUtilities.md)
     -   [CRUD](./topics/database/queriesCRUD.md)
@@ -76,6 +79,10 @@
     -   [Logic](./topics/database/queriesLogic.md)
     -   [System](./topics/database/queriesSystem.md)
     -   [Pivot](./topics/database/queriesPivot.md)
+-   Optimization
+    -   [Hardware](./topics/database/optimizationHardware.md)
+    -   [Engine](./topics/database/optimizationEngine.md)
+    -   [Indexing](./topics/database/optimizationIndexing.md)
 -   Systems
     -   [MySQL](./topics/database/mysql.md)
         -   [node mysql](./topics/database/node-mysql.md)
@@ -95,8 +102,6 @@
 
 -   [VS Code](./topics/vscode.md)
 -   [Git](./topics/git.md)
--   [Babel](./topics/babel.md)
--   [Webpack](./topics/webpack.md)
 
 ### **Architecture**
 
@@ -107,24 +112,32 @@
 -   [Serverless](./topics/serverless.md)
 -   [Message Brokers](./topics/messageBrokers.md)
 
+### **Optimization**
+
+-   [Premature Optimzation](./topics/optimization/premature.md)
+-   [Graphs](./topics/optimization/graphs.md)
+-   [Dependency Injection](./topics/optimization/dependencyInjection.md)
+-   [Naming Conventions](./topics/optimization/naming.md)
+-   [No nesting](./topics/optimization/nesting.md)
+-   [No comments](./topics/optimization/comments.md)
+-   [Algorithms](./topics/optimization/algorithms.md)
+-   [Code Golf](./topics/optimization/codeGolf.md)
+
 ### **Concepts**
 
--   [Agile](./topics/agile.md)
--   [Code quality and performance](./topics/codeQuality.md)
--   [UI/UX](./topics/uiux.md)
--   [Testing](./topics/testing.md)
-    -   [Jest](./topics/testingJest.md)
-    -   [Mocha](./topics/testingMocha.md)
-
-### **Useful**
-
--   [Algorithms](./topics/algos.md)
-    -   [Graph Theory](./topics/graphTheory.md)
 -   [Binary](./topics/binary/binary.md)
     -   [ASCII](./topics/binary/ascii.md)
     -   [Bitwise](./topics/binary/bitwise.md)
 -   [Assembly](./topics/assembly.md)
     -   [WebAssembly](./topics/wasm.md)
+
+### **Random**
+
+-   [Agile](./topics/agile.md)
+-   [UI/UX](./topics/uiux.md)
+-   [Testing](./topics/testing.md)
+    -   [Jest](./topics/testingJest.md)
+    -   [Mocha](./topics/testingMocha.md)
 -   [.NET](./topics/dotnet.md)
 -   [Notifications](./topics/notifications.md)
 
