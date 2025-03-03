@@ -130,7 +130,6 @@
     -   [ASCII](./topics/binary/ascii.md)
     -   [Bitwise](./topics/binary/bitwise.md)
 -   [Assembly](./topics/assembly.md)
-
     -   [WebAssembly](./topics/wasm.md)
 
 ### **Tooling**
