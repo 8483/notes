@@ -89,20 +89,6 @@
     -   [SQL Server](./topics/database/sqlserver.md)
         -   [node mssql](./topics/database/node-mssql.md)
 
-### **Cybersecurity**
-
--   [Best practices](./topics/cybersecurity/cybersecurity.md)
--   [JSON Web Tokens (JWT)](./topics/cybersecurity/jwt.md)
--   [SQL Injection](./topics/cybersecurity/sqlinjection.md)
--   [Cross Site Scripting (XSS)](./topics/cybersecurity/xss.md)
--   [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
--   [Cross-origin resource sharing (CORS)](./topics/cybersecurity/cors.md)
-
-### **Tooling**
-
--   [VS Code](./topics/vscode.md)
--   [Git](./topics/git.md)
-
 ### **Architecture**
 
 -   [MVC](./topics/mvc.md)
@@ -123,21 +109,39 @@
 -   [Algorithms](./topics/optimization/algorithms.md)
 -   [Code Golf](./topics/optimization/codeGolf.md)
 
+### **Cybersecurity**
+
+-   [Best practices](./topics/cybersecurity/cybersecurity.md)
+-   [JSON Web Tokens (JWT)](./topics/cybersecurity/jwt.md)
+-   [SQL Injection](./topics/cybersecurity/sqlinjection.md)
+-   [Cross Site Scripting (XSS)](./topics/cybersecurity/xss.md)
+-   [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
+-   [Cross-origin resource sharing (CORS)](./topics/cybersecurity/cors.md)
+
+### **Testing**
+
+-   [Testing](./topics/testing/testing.md)
+    -   [Jest](./topics/testing/jest.md)
+    -   [Mocha](./topics/testing/mocha.md)
+
 ### **Concepts**
 
 -   [Binary](./topics/binary/binary.md)
     -   [ASCII](./topics/binary/ascii.md)
     -   [Bitwise](./topics/binary/bitwise.md)
 -   [Assembly](./topics/assembly.md)
+
     -   [WebAssembly](./topics/wasm.md)
+
+### **Tooling**
+
+-   [VS Code](./topics/vscode.md)
+-   [Git](./topics/git.md)
 
 ### **Random**
 
 -   [Agile](./topics/agile.md)
 -   [UI/UX](./topics/uiux.md)
--   [Testing](./topics/testing.md)
-    -   [Jest](./topics/testingJest.md)
-    -   [Mocha](./topics/testingMocha.md)
 -   [.NET](./topics/dotnet.md)
 -   [Notifications](./topics/notifications.md)
 

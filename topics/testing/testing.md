@@ -19,13 +19,8 @@ This requires an initial time investment, which is quickly paid back in the time
 
 The following is needed to test code.
 
-1. **Test runner**  
-   Executes tests and summarizes results. Ex. `Jest`, `Mocha`.
-
-2. **Assertion library**  
-   Define testing logic and conditions. Ex. `Jest`, `Chai`.
-
-3. **Headless browser** - E2E testing  
-   Simulate browser interactions. Ex. `Puppeteer`, `Cypress`.
+1. **Test runner** - Executes tests and summarizes results. Ex. `Jest`, `Mocha`.
+2. **Assertion library** - Define testing logic and conditions. Ex. `Jest`, `Chai`.
+3. **Headless browser** - E2E testing - Simulate browser interactions. Ex. `Puppeteer`, `Cypress`.
 
 `Jest` is both a test runner and an assertion library.
