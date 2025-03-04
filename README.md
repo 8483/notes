@@ -92,7 +92,7 @@
 ### **Architecture**
 
 -   [MVC](./topics/mvc.md)
--   [Architecture](./topics/architecture.md)
+-   [Multi-tenancy](./topics/multiTenancy.md)
 -   [RESTful](./topics/restful.md)
 -   [Microservices](./topics/microservices.md)
 -   [Serverless](./topics/serverless.md)
