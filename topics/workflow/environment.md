@@ -118,7 +118,15 @@ Change time zone.
 sudo vim /etc/mysql/my.cnf
 ```
 
+Add this:
+
 ```
 [mysqld]
 default-time-zone = "+01:00"
+```
+
+Restart the MySQL server:
+
+```
+sudo systemctl restart mysql
 ```

@@ -176,6 +176,8 @@ find . -type f -name '*.txt' -mtime +3 -exec rm {} \;       # DELETE
 ```bash
 # apt <--- apt-get <--- dpkg <--- aptitude
 
+apt list --installed            # A list of installed packages.
+
 apt search PACKAGE              # Search packages.
 apt madison PACKAGE             # List versions.
 
@@ -183,9 +185,9 @@ apt update                      # Update the packages list.
 apt install PACKAGE             # Install specified package.
 apt upgrade                     # Actually update the packages.
 
-apt list --installed            # A list of installed packages.
-
 apt remove PACKAGE              # Remove a specified package.
+sudo apt-get purge --auto-remove PACKAGE
+
 add-apt-repository REPO         # Add 3rd party repository or PPA (Personal Package Archive).
 ```
 

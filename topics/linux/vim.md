@@ -748,3 +748,7 @@ noremap <Right> <nop>
 
 " noremap <C-p> :Files<CR>
 ```
+
+# Cheat sheet
+
+![](../../pics/vim/vim_graphical_cheat_sheet.jpg)

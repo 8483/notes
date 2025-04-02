@@ -1,3 +1,7 @@
+> You don't do any token validation on the client. The client shouldn't even be aware of the token. localStorage is bad.
+
+> Server middleware validates tokens, and redirects to login page if invalid.
+
 Storing JWTs in localStorage or sessionStorage in a browser can make them vulnerable to XSS attacks. Storing them in a secure, HttpOnly cookie is generally safer.
 
 After generating the JWT, send it to the client in an HttpOnly cookie. This ensures that the token cannot be accessed via JavaScript (protecting against XSS attacks).
