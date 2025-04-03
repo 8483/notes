@@ -231,7 +231,7 @@
 # Artificial Intelligence (AI)
 
 -   [Concepts](./topics/ai/concepts.md)
--   [Prompt Engineering](./topics/aiPromptEngineering.md)
+-   [Prompt Engineering](./topics/ai/prompting.md)
 -   [Embeddings](./topics/ai/embeddings.md)
 -   [Langchain](./topics/ai/langchain.md)
 -   API
