@@ -1,3 +1,22 @@
+Forward propagation = Prediction  
+Back propagation = Measuring i.e. learning
+
+# IDE
+
+jupyter - Online IDE
+
+# Datasets
+
+kaggle - datasets
+
+# Frameworks
+
+Wrappers to simplify using AI models to do tasks. Basically write and orchestrate prompts indirectly.
+
+OpenAI API is quite easy to use directly and gives you the most control, I don’t see much benefit of a wrapper langChain here tbh.
+
+Example: Langchain, Haystack, Microsoft Guidance
+
 # autoGPT
 
 An agent talking to itself. A recursive LLM.
@@ -26,3 +45,22 @@ Ex.
 -   web browser (e.g. given a URL, fetch its content)
 -   bash executor
 -   calculator
+
+# Transformer
+
+A transformer is a type of neural network, which have numbers as inputs. Both the input and output words need to be turned into numbers.
+
+There are many ways to do the conversion, with the most common being word embedding.
+
+# LLM
+
+LLMs (Large language models) are text completion engines
+
+Examples: gpt-3.5, gpt-4, hugginface, llama
+
+# Custom AI
+
+2 ways to do this:
+
+1. Finetune LLM (Behave a certain way ex. talk like Trump) - Re-train the model. More complex, saves cost.
+2. Knowledge base. (Gain domain knowledge) - Create embeddings and store them in a vector database, which is the searched for and fed into an LLM prompt.

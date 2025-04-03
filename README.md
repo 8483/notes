@@ -230,14 +230,13 @@
 
 # Artificial Intelligence (AI)
 
--   [AI](./topics/ai.md)
--   [Models](./topics/aiModels.md)
-    -   [OpenAI GPT API](./topics/aiGptApi.md)
--   [Concepts](./topics/aiConcepts.md)
--   [Tools](./topics/aiTools.md)
--   [Langchain](./topics/aiLangchain.md)
--   [Embeddings & Vector Databases](./topics/aiEmbeddings.md)
+-   [Concepts](./topics/ai/concepts.md)
 -   [Prompt Engineering](./topics/aiPromptEngineering.md)
+-   [Embeddings](./topics/ai/embeddings.md)
+-   [Langchain](./topics/ai/langchain.md)
+-   API
+    -   [OpenAI - ChatGPT](./topics/ai/apiChatGPT.md)
+    -   [Model Context Protocol (MCP)](./topics/ai/mcp.md)
 
 # Blockchain
 
