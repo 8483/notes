@@ -2,7 +2,7 @@
 
 ## Current
 
-![](../pics/electronics/khan_current.jpg)
+![](../../pics/electronics/khan_current.jpg)
 
 Opposite charges attract. Electrons are negatively (-) charged, while protons are positively (+).
 
@@ -24,7 +24,7 @@ Over at the negative terminal of the battery there is a different chemical react
 
 ## Voltage
 
-![](../pics/electronics/khan_voltage.jpg)
+![](../../pics/electronics/khan_voltage.jpg)
 
 If a rock is put on top of a mountain, it has a potential energy, which is converted into kinetic energy as soon as it starts falling. The rock does work each time it hits an object like trees.
 

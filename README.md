@@ -246,17 +246,17 @@
 
 ### **General**
 
--   [Electronics](./topics/electronics.md)
+-   [Electronics](./topics/electronics/electronics.md)
 -   Terminology
 -   Communication Protocols
 -   Components
--   [RFID](./topics/rfid.md)
+-   [RFID](./topics/electronics/rfid.md)
 
 ### **Embedded**
 
--   [Raspberry Pi](./topics/raspberrypi.md)
--   [Arduino](./topics/arduino.md)
--   [NodeMCU](./topics/nodemcu.md)
+-   [Raspberry Pi](./topics/electronics/raspberrypi.md)
+-   [Arduino](./topics/electronics/arduino.md)
+-   [NodeMCU](./topics/electronics/nodemcu.md)
 
 ### **Electricity**
 

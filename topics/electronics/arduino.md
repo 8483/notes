@@ -77,7 +77,7 @@ void loop() {
 }
 ```
 
-![Arduino LED](../pics/arduino_led.jpg)
+![Arduino LED](../../pics/arduino_led.jpg)
 
 # Cop Car
 

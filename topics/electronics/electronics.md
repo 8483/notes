@@ -124,10 +124,11 @@ This is, essentially, a serial communications interface. The "universal" part me
 
 It's one of the most used serial protocols. Most controllers have a hardware UART on board. It uses a single data line for transmitting and one for receiving data.
 
-Most often 8-bit data is transferred, as follows:  
-- 1 start bit (low level)
-- 8 data bits
-- 1 stop bit (high level)
+Most often 8-bit data is transferred, as follows:
+
+-   1 start bit (low level)
+-   8 data bits
+-   1 stop bit (high level)
 
 The low level start bit and high level stop bit mean that there's always a high to low transition to start the communication. That's what describes UART. No voltage level, so you can have it at 3.3 V or 5 V, whichever your microcontroller uses.
 
@@ -152,7 +153,7 @@ Blue - Ground
 Green - Tie-points (Do not cross the trench)  
 Trench - Middle
 
-![TEA](../pics/breadboard.png)
+![](../../pics/breadboard.png)
 
 # Components
 
