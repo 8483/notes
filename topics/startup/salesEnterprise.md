@@ -4,7 +4,7 @@ https://youtu.be/0fKYVl12VTA?si=HzpZus5f2gBo4_G9
 
 Book recommendation: "Founding Sales" - Petre Kazanjy (FREE Online)
 
-# Intro
+## Intro
 
 Sales is a learnable skill.
 
@@ -25,7 +25,7 @@ Does that mean if you are a technical founder that you need a business co-founde
 
 > Sales isn't about tricking people... It's about helping people solve their problems.
 
-# Prospecting
+## Prospecting
 
 Finding potential customers. The output of this step is a list of companies that might need your product AND the specific humans in those companies you think might buy it.
 
@@ -41,7 +41,7 @@ Marketers at small and medium tech, media and ecommerce companies want to run A/
 
 Get a list of companies and start qualifying them to narrow your target list. You need a list of specific humans that are likely to buy and you need to get their attention.
 
-# Outreach
+## Outreach
 
 The goal is to schedule a meeting with a prospect.
 
@@ -77,7 +77,7 @@ Don't waste time chasing bad prospects that want to just talk to you. They give 
 
 > You need to find people who have the problem you are solving AND the budget and decision authority to buy.
 
-# Qualification
+## Qualification
 
 > DO NOT sell your product on your first call.
 
@@ -114,7 +114,7 @@ If you discover that the prospect doesn't have the problem, or they have it but 
 
 If the prospect does qualify, you can now show them how the product works.
 
-# Product Demo
+## Product Demo
 
 Most founders think of the demo as a chance to finally show off their product... This is a huge mistake and will lead to a bad demo.
 
@@ -148,7 +148,7 @@ Their prospects' eyes lit up.
 
 If you do a good job, the audience should be convinced you will solve their problems.
 
-# Pricing
+## Pricing
 
 There isn't a simple formula.
 
@@ -185,7 +185,7 @@ You can make their job easier by giving them documents explaining how the pricin
 
 > It's ok to be negotiated down. In the first few sales, you optimize for learning, not unit economics.
 
-# Closing
+## Closing
 
 > Closing is not a single conversation. It's a bunch of things that need to happen from the moment they decide to buy, to the moment they actually buy.
 
@@ -205,7 +205,7 @@ Your prospect now becomes your champion and your biggest ally.
 
 You should be in constant communication with them, and when you need someting getting unstuck, you should inform them. They can't solve their problem until the procurement is done, so they are heavily incentivized to help you out.
 
-# Implemetation
+## Implemetation
 
 > The single biggest mistake founders make is thinking that implementation is the customer's job.
 
@@ -228,3 +228,83 @@ Ask what is required to start using the product. Build detailed implementation p
 Put together a shared roadmap with an owner to every task and hold regular check-ups to hold everyone accountable on both sides.
 
 > Your sales funnel only really ends when the customer is using your product habitually.
+
+# How We Went from Zero Buyers to One of the Fastest-Growing B2B Startups
+
+https://youtu.be/VGPUg24tsQ8
+
+## REALLY understand your customer
+
+Use the first 2-3 customers to build the product.
+
+Offer to be their extended engineering team, that will let them vent and solve their problems.
+
+## Salespeople
+
+-   Founder led sales for the first 20-30 customers.
+-   Between 30 and a 100 customers, you should get your first seller, a generalist that does everything like generating pipeline (sales developer), running the deal (account executive), sales engineering (demo-ing), contracting etc... It's super important to find the best hire, even if it requires slowing down.
+-   Above 100 customers, you build a team of specialized people.
+
+## Value and pricing
+
+Make pricing super iterative i.e. keep experimenting until you have enough data to realize the full value.
+
+Start as high as possible. most founders are shocked what the market is willing to pay. dont feel guilty/greedy asking for certain numbers.
+
+Articulate your product's value drivers to your customer (how much revenue will you drive, how much costs will you cut), because he will do it regardless to get it approved.
+
+Your price should be 1/4 or 1/3 of the value drivers.
+
+# How to Become Great at Startup Sales
+
+https://youtu.be/zFE51Sgl8hM
+
+## Be an expert in your field
+
+Understand your product on a deep level.
+
+People only trust experts. You can't hold a conversation with a surface-level understanding.
+
+## Don't sell first, give value instead
+
+Before asking for a meeting, provide value first around a pain point you thing somebody has. This gains trust..
+
+Ex. If you were to sell "sales consulting", instead of saying...
+
+```
+Do you want to get on a call to learn about sales
+```
+
+try saying...
+
+```
+Hey, I wrote something about the three mistakes salespeople make, do you want to see it?
+```
+
+The goal is to build rapport first. Have them gain something from the guide, and possibly research you further to get more.
+
+Only after they've built some trust, then you can about the call.
+
+Enterprise sales is a trust building exercise.
+
+## Continue providing value to your user.
+
+```
+Hey, I know you signed up for our product six months ago. I'd love to get on a call to show you a few more things about the product, talk about where we are headed and get your feedback.
+```
+
+Think about what will get them excited to join the call, like a new feature.
+
+## Where do people talk about the problem you solve
+
+Is it a conference? Is it Linkedin? Reddit? Twitter?
+
+Emailing is getting very, very noisy.
+
+## Be vulnerable
+
+If you talk honestly about your situation, they will open up back and reciprocate with useful info.
+
+```
+I'm a little nervouse about this deal because I don't feel I did a great job with the demo on the last call. Do you feel that's the case.
+```
