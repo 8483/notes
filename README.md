@@ -159,18 +159,18 @@
 
 -   [Overview](./topics/mobile.md)
 
-**Native**
+### **Native**
 
 -   [Android (Kotlin, Java) - Android Studio / Google](./topics/mobileAndroid.md)
 -   [iOS (Swift, Objective-C) - XCode / Apple](./topics/mobileiOS.md)
 
-**Compiled**
+### **Compiled**
 
 -   React Native (React, Javascript)
 -   Native Script (XML, Javascript)
 -   Flutter (Dart)
 
-**Hybrid (HTML, CSS, Javascript)**
+### **Hybrid (HTML, CSS, Javascript)**
 
 -   [Cordova](./topics/mobileCordova.md)
 -   [Capacitor](./topics/mobileCapacitor.md)
@@ -203,21 +203,25 @@
 # Networking
 
 -   [Overview](./topics/networkingOverview.md)
-    -   [OSI Model](./topics/networkingModelOSI.md)
-    -   [TCP/IP Model](./topics/networkingModelTCPIP.md)
-        -   [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
-        -   [3. Network - IP, Subnet, Gateway, DHCP](./topics/networkingLayer3NetworkIP.md)
-        -   [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
-        -   [5. Application - HTTP, DNS, DDNS](./topics/networkingLayer5ApplicationHTTP.md)
+-   [OSI Model](./topics/networkingModelOSI.md)
+-   [TCP/IP Model](./topics/networkingModelTCPIP.md)
+    -   [2. Link - MAC](./topics/networkingLayer2LinkMAC.md)
+    -   [3. Network - IP, Subnet, Gateway, DHCP](./topics/networkingLayer3NetworkIP.md)
+    -   [4. Transfer - TCP, Ports ](./topics/networkingLayer4TransferTCP.md)
+    -   [5. Application - HTTP, DNS, DDNS](./topics/networkingLayer5ApplicationHTTP.md)
 -   [Tools](./topics/networkingTools.md)
 -   [Devices](./topics/networkingDevices.md)
 -   [Roles](./topics/networkingRoles.md)
 
 # DevOps
 
+### **FTP**
+
+-   [File Transfer Protocol (FTP)](./topics/ftp.md)
+
 ### **Virtualization**
 
--   [VM](./topics/vm.md)
+-   [Virtual Machine (VM)](./topics/vm.md)
 -   [Vagrant](./topics/vagrant.md)
 
 ### **Containerization**
@@ -300,12 +304,12 @@ You need 3 things:
 
 -   [Market Fit](./topics/startup/productMarketFit.md)
 -   [Business Model](./topics/startup/productBusinessModel.md)
--   [Pricing](./topics/startup/productPricing.md)
 -   [Design](./topics/startup/productDesign.md)
 -   [MVP](./topics/startup/productMVP.md)
 
 ### **Sales**
 
+-   [Pricing](./topics/startup/salesPricing.md)
 -   [Overview](./topics/startup/salesOverview.md)
 -   [Enterprise](./topics/startup/salesEnterprise.md)
 -   [Cold Calling](./topics/startup/salesColdCalling.md)
