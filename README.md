@@ -72,17 +72,21 @@
     -   [Conventions](./topics/database/conventions.md)
     -   [Normalization](./topics/database/normalization.md)
 -   Queries
-    -   [Utilities](./topics/database/queriesUtilities.md)
+    -   [Admin](./topics/database/queriesAdmin.md)
+    -   [Schema](./topics/database/queriesSchema.md)
     -   [CRUD](./topics/database/queriesCRUD.md)
     -   [Aggregate](./topics/database/queriesAggregate.md)
     -   [Window](./topics/database/queriesWindow.md)
+    -   [Various](./topics/database/queriesVarious.md)
     -   [Logic](./topics/database/queriesLogic.md)
-    -   [System](./topics/database/queriesSystem.md)
     -   [Pivot](./topics/database/queriesPivot.md)
+    -   [Utilities](./topics/database/queriesUtilities.md)
 -   Optimization
     -   [Hardware](./topics/database/optimizationHardware.md)
     -   [Engine](./topics/database/optimizationEngine.md)
+    -   [Querying](./topics/database/optimizationQuerying.md)
     -   [Indexing](./topics/database/optimizationIndexing.md)
+    -   [Diagnostics](./topics/database/optimizationDiagnostics.md)
 -   Systems
     -   [MySQL](./topics/database/mysql.md)
         -   [node mysql](./topics/database/node-mysql.md)

@@ -37,21 +37,24 @@ CTRL + w                    # Close tab
 CTRL + f                    # Search in file. ENTER = show next
 
 CTRL + SHIFT + f            # Find all occurences of selection in project
-SHIFT + F12                 # Show all occurences of selection
-F2                          # Bulk renaming across whole project
+F12                         # Go to definition
+SHIFT + F12                 # Show all occurences of selection inline
+SHIFT + ALT + F12           # Show all occurences of selection in sidebar
+F2                          # Bulk selected symbol rename across project
 
-# Duplicates
+# Selection
 
 CTRL + d                    # Select next duplicate value
 CTRL + u                    # Unselect duplicate value
 CTRL + SHIFT + l            # Select all duplicate values
 CTRL + k & CTRL + d         # Skip next duplicate value
+CTRL + ALT + left/right     # Nested selection outwards/inwards
 
 # Multiple cursors
 
 ALT + click (empty)         # Multiple cursors
 ALT + SHIFT + click         # Multiple selections in range
-CTRL + ALT + up/down        # Add cursor above/below
+CTRL + ALT + up/down        # Add cursor directly above/below
 
 ALT + SHIFT + i             # Add cursor to each line in selection
 ALT + SHIFT + left/right    # Select everything between brackets
@@ -68,6 +71,9 @@ FN + right                  # End of line
 CTRL + l                    # Select line. Press again selects next line
 CTRL + g                    # Jump to line
 
+CTRL + Enter                # New line below
+CTRL + SHIFT + Enter        # New line above
+
 # Jumping
 
 CTRL + click (variable)     # Jump to definition
@@ -82,6 +88,14 @@ CTRL + SHIFT + o            # Jump to symbols (variables, functions)
 
 CTRL + i                    # Show code completion suggestions
 CTRL + SPACE                # Show code completion suggestions
+SHIFT + ALT + A             # Comment out highlighted
+
+# Tabs
+
+CTRL + TAB                  # Toggle between open tabs
+CTRL + ALT + TAB + right    # Split tab to right
+CTRL + W                    # Close tab
+ALT + left/right            # Navigate tabs
 
 # Terminal
 

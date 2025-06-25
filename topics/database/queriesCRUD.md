@@ -1,3 +1,26 @@
+# Basics
+
+```sql
+-- Get records.
+SELECT * FROM tableName;
+
+-- Add record.
+INSERT INTO tableName (column1, column2) VALUES (value1, value2);
+
+-- Example
+INSERT INTO user (id, name, pass)
+VALUES (NULL, 'john', 'abc123');
+
+-- Modify record.
+UPDATE tableName SET columnName = 'value' WHERE criteria;
+
+-- Example
+UPDATE user SET name = 'Mike' WHERE id = 1;
+
+-- Delete record.
+DELETE FROM tableName WHERE columnName = <value>;
+```
+
 # UPDATE from SELECT / TABLE
 
 SQL Server
@@ -65,7 +88,35 @@ WHERE
     baz = `qux`
 ```
 
-# UPSERT / ON DUPLICATE KEY UPDATE
+# UPSERT / INSERT ON DUPLICATE KEY UPDATE
+
+Insert if `id` doesn't exit. Else, update the data at said `id`.
+
+```sql
++----+--------------+
+| id | columnName   |
++----+--------------+
+|  1 | foo          |
+|  2 | bar          |
+|  3 | baz          |
++----+--------------+
+
+INSERT INTO table (id, columnName)
+VALUES
+    (1, 'qux'),
+    (null, 'hex')
+ON DUPLICATE KEY UPDATE
+    columnName = values(columnName);
+
++----+--------------+
+| id | columnName   |
++----+--------------+
+|  1 | qux          | -- Value updated
+|  2 | bar          |
+|  3 | baz          |
+|  4 | hex          | -- Inserted row
++----+--------------+
+```
 
 SQL Server
 
