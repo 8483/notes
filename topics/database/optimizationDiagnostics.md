@@ -1,6 +1,6 @@
 # First Responder Kit - Brent Ozar
 
-> If you run sp_Blitz and you do what the high priorities say... And then you run sp_BlitzFirst to find out why performance is bad, read the URL advice and follow the instructions... You won't need me - Brent Ozar
+> If you run `sp_Blitz` and you do what the high priorities say... And then you run `sp_BlitzFirst` to find out why performance is bad, read the URL advice and follow the instructions... You won't need me - Brent Ozar
 
 https://training.brentozar.com/p/how-i-use-the-first-responder-kit
 
@@ -35,7 +35,7 @@ It will install the stored procedures if they don't already exist, or update the
 | sp_Blitz                    | Is my SQL Server healthy, or sick?                     |
 | sp_BlitzFirst               | Why is my SQL Server slow right now?                   |
 | sp_BlitzCache               | Which queries have been using the most resources?      |
-| sp_BlitzWho, sp_WhoIsActive | Who’s running what queries right now?                  |
+| sp_BlitzWho, sp_WhoIsActive | Who’s running which queries right now?                 |
 | sp_BlitzLock                | What queries and tables are involved in deadlocks?     |
 | sp_BlitzIndex               | How could I tune indexes to make this database faster? |
 | sp_DatabaseRestore          | Restore databases.                                     |
@@ -45,13 +45,18 @@ Everything here has a link column for further research.
 ### Quick reference
 
 ```sql
-sp_Blitz @CheckServerInfo = 1; -- Health check
-sp_BlitzFirst @SinceStartup = 1; -- Top wait stats
-sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 90; -- Top 10 queries causing those wait stats
-sp_BlitzCache @SortOrder = 'query hash'; -- Repeating queries causing waits
+-- Health check
+sp_Blitz @CheckServerInfo = 1;
+
+-- Top wait stats
+sp_BlitzFirst @SinceStartup = 1;
+
+-- Top 10 queries causing those wait stats in the past 24 hours
+sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 1440;
+sp_BlitzCache @SortOrder = 'query hash', @MinutesBack = 1440;;
 ```
 
-# sp_Blitz
+# `sp_Blitz` - Is my SQL Server healthy, or sick?
 
 Overall health check. Is the server configured optimally.
 
@@ -87,7 +92,7 @@ DBCC CHECKDB('StackOverflow') WITH NO_INFOMSGS, ALL_ERRORMSGS;
 -- 40 min execution time
 ```
 
-# sp_BlitzFirst
+# `sp_BlitzFirst` - Why is my SQL Server slow right now?
 
 Performance health check. Find the top server bottlenecks.
 
@@ -123,7 +128,7 @@ Base the stats on the complete server uptime. Good when you don't have an Agent 
 
 ### Wait types
 
-Use the result of this to solve with sp_BlitzCache.
+Use the result of this to solve with `sp_BlitzCache`.
 
 ```
 sp_BlitzFirst @sinceStartup = 1, @OutputType = 'Top10'
@@ -131,7 +136,7 @@ sp_BlitzFirst @sinceStartup = 1, @OutputType = 'Top10'
 
 A quick wait types report (try to have at least 24 hours of hours sample/wait time). Solve the top wait times first for the most improvement. There are links explaining each one.
 
-# sp_BlitzCache
+# `sp_BlitzCache` - Which queries have been using the most resources?
 
 Find the queries causing the top bottlenecks (wait types).
 
@@ -139,9 +144,9 @@ It shows the top 10 most resource-intensive queries.
 
 IMPORTANT: Run it after finding your top wait times with `sp_BlitzFirst @sinceStartup = 1, @OutputType = 'Top10'`.
 
-By default it shows the most expensive by CPU usage, but the problem might be of another wait type, so modify the @SortOrder parameter based on your top wait type.
+By default it shows the most expensive by CPU usage, but the problem might be of another wait type, so modify the `@SortOrder` parameter based on your top wait type.
 
-Based on your top wait in sp_BlitzFirst, here's a decoder ring for the 6 most common wait types, and how you should use sp_BlitzCache's @SortOrder parameter:
+Based on your top wait in `sp_BlitzFirst`, here's a decoder ring for the 6 most common wait types, and how you should use `sp_BlitzCache`'s `@SortOrder` parameter:
 
 | wait type                      | sort         | description                                                                                                                            |
 | ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -171,11 +176,111 @@ A lot of times, over-night maintenance jobs will turn up as the most expensive q
 sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 90 -- How many minutes since 8AM (start of work) have passed?
 ```
 
-# sp_BlitzIndex
+# `sp_BlitzWho` - Who’s running which queries right now?
+
+It lists currently runnig queries, sorted from longest running, to shortest.
+
+Use when people are complaining that SQL Server is slow, or in emergencies.
+
+`sp_WhoIsActive` is a similar script, used when the server is so slow, `sp_BlitzWho` doesn't respond.
+
+```sql
+sp_BlitzWho @ExpertMode = 1 -- Show extra columns like logical reads, CPU usage
+```
+
+# `sp_BlitzLock` - What queries and tables are involved in deadlocks?
+
+Analyzes recent deadlocks, and groups them by table, query, app, login...
+
+SQL Servers deadlock monitor wakes up every 5 seconds, looks for this scenario, and when it finds it, it kills the query that's easiest to roll back, called the victim.
+
+Run when:
+
+-   When `sp_Blitz` warns you about a high number of deadlocks per day.
+-   When users complain about deadlock errors.
+
+```sql
+sp_BlitzLock
+```
+
+Usage:
+
+1. Run with no parameters.
+2. Jump to the bottom result set.
+3. Identify the 1-3 tables involved in most deadlocks and tune their indexes.
+4. Identify the top 1-3 queries, tune them, make them more SARGable, make their transactions short and sweet, change their isolation level.
+
+To avoid deadlocks, you want to **use the tables in the same order** everywhere. Otherwise, deadlocks happen like this (executed in sequence):
+
+**LEFT SIDE**
+
+```sql
+BEGIN TRAN
+
+-- Runs 1st
+UPDATE dbo.Lefty
+    SET Numbers = Numbers + 1;
+GO
+
+-- Runs 3rd -- BLOCKING HAPPENS HERE, NOT DEADLOCK!
+UPDATE dbo.Righty
+    SET Numbers = Numbers + 1;
+GO
+```
+
+**RIGHT SIDE**
+
+```sql
+BEGIN TRAN
+
+-- Runs 2nd
+UPDATE dbo.Righty
+    SET Numbers = Numbers + 1;
+GO
+
+-- Runs 4th - DEADLOCK HAPPENS HERE!!!!!!
+UPDATE dbo.Lefty
+    SET Numbers = Numbers + 1;
+GO
+```
+
+### Explanation of Deadlock
+
+#### Scenario:
+
+-   **LEFT SIDE session**: starts first, updates `Lefty`, then `Righty`
+-   **RIGHT SIDE session**: starts second, updates `Righty`, then `Lefty`
+
+#### Timeline:
+
+1. **LEFT SIDE begins transaction**
+
+    - Locks rows in `Lefty` table (`UPDATE dbo.Lefty`)
+
+2. **RIGHT SIDE begins transaction**
+
+    - Locks rows in `Righty` table (`UPDATE dbo.Righty`)
+
+3. **LEFT SIDE tries to update `Righty`**
+
+    - Blocked, because `RIGHT SIDE` holds lock on `Righty`
+
+4. **RIGHT SIDE tries to update `Lefty`**
+    - Blocked, because `LEFT SIDE` holds lock on `Lefty`
+
+#### Result:
+
+-   LEFT SIDE waits for `Righty` (locked by RIGHT SIDE)
+-   RIGHT SIDE waits for `Lefty` (locked by LEFT SIDE)
+-   **Circular wait condition met → deadlock**
+
+SQL Server detects the cycle and terminates one session to break the deadlock.
+
+# `sp_BlitzIndex` - How could I tune indexes to make this database faster?
 
 Analyzes desing issues with indexes. This is not a quick-fix script.
 
-Index tuning is the fastest way to make queries go faster without buying hardware or spending time in development. Indexing is as much an art as a science, though: there are a lot of vague guidelines, and sometimes you have to break those guidelines in order to get better performance. sp_BlitzIndex is about analyzing your database's overall issues, understanding which indexes are just holding you back, and which indexes Clippy wants to add.
+Index tuning is the fastest way to make queries go faster without buying hardware or spending time in development. Indexing is as much an art as a science, though: there are a lot of vague guidelines, and sometimes you have to break those guidelines in order to get better performance. `sp_BlitzIndex` is about analyzing your database's overall issues, understanding which indexes are just holding you back, and which indexes Clippy wants to add.
 
 ```sql
 -- returns prioritized findings based on the D.E.A.T.H. optimization method.
@@ -265,78 +370,6 @@ GO
 
     The CREATE queries for the ORIGINAL 3 indexes.
 */
-```
-
-# sp_BlitzLock
-
-Analyzes recent deadlocks, and groups them by table, query, app, login...
-
-SQL Servers deadlock monitor wakes up every 5 seconds, looks for this scenario, and when it finds it, it kills the query that's easiest to roll back, called the victim.
-
-Run when:
-
--   When sp_Blitz warns you about a high number of deadlocks per day.
--   When users complain about deadlock errors.
-
-```sql
-sp_BlitzLock
-```
-
-Usage:
-
-1. Run with no parameters.
-2. Jump to the bottom result set.
-3. Identify the 1-3 tables involved in most deadlocks and tune their indexes.
-4. Identify the top 1-3 queries, tune them, make them more SARGable, make their transactions short and sweet, change their isolation level.
-
-To avoid deadlocks, you want to use tables in the same order everywhere. Otherwise, deadlocks happen like this (executed in sequence):
-
-**LEFT SIDE**
-
-```sql
-BEGIN TRAN
-
--- Run 1st
-UPDATE dbo.Lefty
-    SET Numbers = Numbers + 1;
-GO
-
--- Run 3rd -- BLOCKING HAPPENS HERE, NOT DEADLOCK!
-UPDATE dbo.Righty
-    SET Numbers = Numbers + 1;
-GO
-```
-
-**RIGHT SIDE**
-
-```sql
-BEGIN TRAN
-
--- Run 2nd
-UPDATE dbo.Righty
-    SET Numbers = Numbers + 1;
-GO
-
--- Run 4th - DEADLOCK HAPPENS HERE!!!!!!
-UPDATE dbo.Lefty
-    SET Numbers = Numbers + 1;
-GO
-```
-
-# sp_BlitzWho
-
-It lists currently runnig queries, sorted from longest running, to shortest.
-
-Useful in EMERGENCIES.
-
-Use when:
-
--   When people are complaining that SQL Server is slow.
-
-sp_WhoIsActive is a similar script, used when the server is so slow, sp_BlitzWho doesn't respond.
-
-```sql
-sp_BlitzWho @ExpertMode = 1 -- Show extra columns like logical reads, CPU usage
 ```
 
 # Identifying slow queries in MySQL
