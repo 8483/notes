@@ -118,6 +118,25 @@ GROUP BY database_id
 ORDER BY cached_pages_count DESC;
 ```
 
+# List of all indexes
+
+```sql
+SELECT
+    t.name AS table_name,
+    i.type_desc AS index_type,
+    i.name AS index_name,
+    i.is_primary_key,
+    i.is_unique,
+    i.is_disabled
+FROM sys.indexes i
+	JOIN sys.tables t ON i.object_id = t.object_id
+	JOIN sys.schemas s ON t.schema_id = s.schema_id
+WHERE i.name IS NOT NULL
+ORDER BY
+	t.name ASC,
+	i.is_primary_key DESC;
+```
+
 # Index size (Optimal RAM)
 
 ```sql

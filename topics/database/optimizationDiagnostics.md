@@ -36,8 +36,8 @@ It will install the stored procedures if they don't already exist, or update the
 | sp_BlitzFirst               | Why is my SQL Server slow right now?                   |
 | sp_BlitzCache               | Which queries have been using the most resources?      |
 | sp_BlitzWho, sp_WhoIsActive | Who’s running which queries right now?                 |
-| sp_BlitzLock                | What queries and tables are involved in deadlocks?     |
 | sp_BlitzIndex               | How could I tune indexes to make this database faster? |
+| sp_BlitzLock                | What queries and tables are involved in deadlocks?     |
 | sp_DatabaseRestore          | Restore databases.                                     |
 
 Everything here has a link column for further research.
@@ -188,6 +188,108 @@ Use when people are complaining that SQL Server is slow, or in emergencies.
 sp_BlitzWho @ExpertMode = 1 -- Show extra columns like logical reads, CPU usage
 ```
 
+# `sp_BlitzIndex` - How could I tune indexes to make this database faster?
+
+Analyzes design issues with indexes. This is not a quick-fix script.
+
+> Index tuning is the fastest way to make queries go faster without buying hardware or spending time in development.
+
+Indexing is as much an art as is a science, despite there being a lot of vague guidelines, and sometimes having to break them in order to get better performance.
+
+`sp_BlitzIndex` is about analyzing your database's overall issues, understanding which indexes are just holding you back, and which indexes Clippy wants to add.
+
+```sql
+-- returns prioritized findings based on the D.E.A.T.H. optimization method.
+sp_BlitzIndex
+
+-- Inventory of existing indexes, good for copy/paste in Excel for offline analysis. Has a @SortOrder parameter for things like rows, size, reads, writes, lock time...
+sp_BlitzIndex @Mode = 2, @SortOrder = 'rows'
+```
+
+### READS vs WRITES (Usage column)
+
+The amount of times the index made the query go:
+
+-   Reads = FASTER
+-   Writes = SLOWER (because of the INSERT/UPDATE/DELETE to keep the index in sync)
+
+> **Remove indexes that have 0 reads, or a low read high write ratio.**
+
+Before you do any tuning, you want to server to have been up for at least 1 business cycle i.e. a full month. If the business is the same all the time (like a stock exchange), a day is enough. Avoid longer than a month.
+
+### One table analysis
+
+```sql
+EXEC dbo.sp_BlitzIndex @DatabaseName='DATABASE_NAME', @SchemaName='dbo', @TableName='TABLE_NAME';
+```
+
+Results:
+
+-   1st: Indexes we already have.
+-   2nd: Desperately needed indexes.
+-   3rd: Table structure.
+-   4th: Foreign keys
+-   5th: Table statistics. Histogram (how pages are batched) for query tuning.
+
+### Tuning indexes
+
+You can tune indexes with the D.E.A.T.H. method:
+
+-   Dedupe (remove duplicates).
+-   Eliminate overlaps and unused indexes.
+-   Add desperately needed indexes.
+-   Tune indexes for specific queries.
+-   Heaps i.e. Clustered indexes.
+
+Look for `Est. benefit per day` above 1,000,000 as these are worth solving.
+
+Ex. A finding of `Index Suggestion: High Value Missing Index` and a usage of `27,425 uses, Impact: 100%; Avg query cost: 810` says that this index should be created because it will speed up the query by 100%.
+
+SQL Server, under definition, gives just the columns in the table, and NOT the order they should be in. Look for the Size column to try and be around the 5 indexes with 5 columns per index, per table best practice.
+
+If you have this query:
+
+```sql
+SELECT * FROM Phonebook WHERE LastName = 'Ozar';
+```
+
+And these indexes:
+
+```
+LastName, FirstName, MiddleName INCLUDE Address, PhoneNumber
+
+LastName, PhoneNumber
+```
+
+You are better off with using just the first one.
+
+### Index tuning example workflow
+
+Create a change script:
+
+```sql
+-- The DROP and CREATE statements are generated for copying in the sp_BlitzIndex report.
+
+/* Merge these 3 indexes into 1:
+
+    The CURRENT definitions of the 3 indexes.
+
+    into this new one:
+*/
+
+CREATE INDEX DownVotes_DisplayName_LastAccessDate ON dbo.Users(DownVotes, DisplayName, LastAccessDate)
+GO
+DROP INDEX [Index_DownVotes] ON [StackOverflow].[dbo].[Users];
+DROP INDEX [DownVotes] ON [StackOverflow].[dbo].[Users];
+DROP INDEX [IX_DV_LAD_DN] ON [StackOverflow].[dbo].[Users];
+GO
+
+/* Undo script (if you make a mistake and want to revert):
+
+    The CREATE queries for the ORIGINAL 3 indexes.
+*/
+```
+
 # `sp_BlitzLock` - What queries and tables are involved in deadlocks?
 
 Analyzes recent deadlocks, and groups them by table, query, app, login...
@@ -275,102 +377,6 @@ GO
 -   **Circular wait condition met → deadlock**
 
 SQL Server detects the cycle and terminates one session to break the deadlock.
-
-# `sp_BlitzIndex` - How could I tune indexes to make this database faster?
-
-Analyzes desing issues with indexes. This is not a quick-fix script.
-
-Index tuning is the fastest way to make queries go faster without buying hardware or spending time in development. Indexing is as much an art as a science, though: there are a lot of vague guidelines, and sometimes you have to break those guidelines in order to get better performance. `sp_BlitzIndex` is about analyzing your database's overall issues, understanding which indexes are just holding you back, and which indexes Clippy wants to add.
-
-```sql
--- returns prioritized findings based on the D.E.A.T.H. optimization method.
-sp_BlitzIndex
-
--- Inventory of existing indexes, good for copy/paste in Excel for offline analysis. Has a @SortOrder parameter for things like rows, size, reads, writes, lock time...
-sp_BlitzIndex @Mode = 2, @SortOrder = 'rows'
-```
-
-You can tune indexes with the D.E.A.T.H. method:
-
--   Dedupe.
--   Eliminate Overlaps and unused indexes.
--   Add desperately needed indexes.
--   Tune indexes for specific queries.
--   Heaps i.e. Clustered indexes.
-
-Look for `Est. benefit per day` above 1,000,000 as these are worth solving.
-
-Ex. A finding of `Index Suggestion: High Value Missing Index` and a usage of `27,425 uses, Impact: 100%; Avg query cost: 810` says that this index should be created because it will speed up the query by 100%. SQL Server, under definition, gives just the columns in the table, and NOT the order they should be in. Look for the Size column to try and be around the 5 indexes with 5 columns per index, per table best practice.
-
-If you have this query:
-
-```sql
-SELECT * FROM Phonebook WHERE LastName = 'Ozar';
-```
-
-And these indexes:
-
-```
-LastName, FirstName, MiddleName INCLUDE Address, PhoneNumber
-
-LastName, PhoneNumber
-```
-
-You are better off with just using the first one.
-
-### One table analysis
-
-```sql
-EXEC dbo.sp_BlitzIndex @DatabaseName='DATABASE_NAME', @SchemaName='dbo', @TableName='TABLE_NAME';
-```
-
-Results:
-
--   1st: Indexes we already have.
--   2nd: Desperately needed indexes.
--   3rd: Table structure.
--   4th: Foreign keys
--   5th: Table statistics. Histogram (how pages are batched) for query tuning.
-
-### Usage stats
-
-The amount of times the index made the query go:
-
--   Reads = FASTER
--   Writes = SLOWER (because of the INSERT/UPDATE/DELETE to keep the index in sync)
-
-Remove indexes that have 0 reads, or a low read high write ratio.
-
-Before you do any tuning, you want to server to have been up for at least 1 business cycle i.e. a full month. If the business is the same all the time (like a stock exchange), a day is enough. Avoid longer than a month.
-
-This is an Excel friendly way to see the indexes.
-
-### Index tuning example workflow
-
-Create a change script:
-
-```sql
--- The DROP and CREATE statements are generated for copying in the sp_BlitzIndex report.
-
-/* Merge these 3 indexes into 1:
-
-    The CURRENT definitions of the 3 indexes.
-
-    into this new one:
-*/
-
-CREATE INDEX DownVotes_DisplayName_LastAccessDate ON dbo.Users(DownVotes, DisplayName, LastAccessDate)
-GO
-DROP INDEX [Index_DownVotes] ON [StackOverflow].[dbo].[Users];
-DROP INDEX [DownVotes] ON [StackOverflow].[dbo].[Users];
-DROP INDEX [IX_DV_LAD_DN] ON [StackOverflow].[dbo].[Users];
-GO
-
-/* Undo script (if you make a mistake and want to revert):
-
-    The CREATE queries for the ORIGINAL 3 indexes.
-*/
-```
 
 # Identifying slow queries in MySQL
 
