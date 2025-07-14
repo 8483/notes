@@ -1,13 +1,15 @@
+# Uptime
+
+```sql
+SELECT
+	sqlserver_start_time,
+	DATEDIFF(DAY, sqlserver_start_time, GETDATE()) days
+FROM sys.dm_os_sys_info;
+```
+
 # Database sizes
 
 ```sql
--- MySQL
-
-SELECT table_schema AS 'Database',
-       ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Size (MB)'
-FROM information_schema.tables
-GROUP BY table_schema;
-
 -- SQL Server
 
 SELECT
@@ -20,6 +22,13 @@ GROUP BY name;
 -- Or this one
 
 EXEC sp_spaceused;
+
+-- MySQL
+
+SELECT table_schema AS 'Database',
+       ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Size (MB)'
+FROM information_schema.tables
+GROUP BY table_schema;
 ```
 
 # Table sizes
@@ -76,19 +85,18 @@ order by
 Cached data pages and indexes.
 
 ```sql
--- MySQL
+-- SQL Server
 
 SELECT
-	TABLE_NAME AS object_name,
-    CONCAT(FLOOR(SUM(DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), ' MB') AS cached_size_MB
-FROM INFORMATION_SCHEMA.TABLES
-WHERE
-    TABLE_SCHEMA = 'DATABASE_NAME'
-    AND TABLE_TYPE = 'BASE TABLE'  -- Filter for base tables (not views)
-GROUP BY TABLE_NAME
-ORDER BY cached_size_MB DESC;
+    db_name(database_id) AS database_name,
+    COUNT(*) AS cached_pages_count,
+	COUNT(*) * 8 / 1024 AS cached_size_MB
+FROM sys.dm_os_buffer_descriptors
+WHERE database_id > 4 -- Exclude system databases
+GROUP BY database_id
+ORDER BY cached_pages_count DESC;
 
--- SQL Server
+-- Per table
 
 SELECT
     COUNT(*) * 8 / 1024 AS cached_size_MB,
@@ -108,48 +116,77 @@ WHERE bd.database_id = DB_ID('DATABASE_NAME')
 GROUP BY obj.name, ind.name
 ORDER BY cached_size_MB DESC;
 
+
+-- MySQL
+
 SELECT
-    db_name(database_id) AS database_name,
-    COUNT(*) AS cached_pages_count,
-	COUNT(*) * 8 / 1024 AS cached_size_MB
-FROM sys.dm_os_buffer_descriptors
-WHERE database_id > 4 -- Exclude system databases
-GROUP BY database_id
-ORDER BY cached_pages_count DESC;
+	TABLE_NAME AS object_name,
+    CONCAT(FLOOR(SUM(DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), ' MB') AS cached_size_MB
+FROM INFORMATION_SCHEMA.TABLES
+WHERE
+    TABLE_SCHEMA = 'DATABASE_NAME'
+    AND TABLE_TYPE = 'BASE TABLE'  -- Filter for base tables (not views)
+GROUP BY TABLE_NAME
+ORDER BY cached_size_MB DESC;
 ```
 
 # List of all indexes
 
 ```sql
-SELECT
-    t.name AS table_name,
-    i.type_desc AS index_type,
-    i.name AS index_name,
-    i.is_primary_key,
-    i.is_unique,
-    i.is_disabled
-FROM sys.indexes i
-	JOIN sys.tables t ON i.object_id = t.object_id
-	JOIN sys.schemas s ON t.schema_id = s.schema_id
-WHERE i.name IS NOT NULL
+with
+	sizes as (
+		select
+			object_id,
+			index_id,
+			used_page_count pages,
+			used_page_count * 8 / 1024 index_size_mb
+		from sys.dm_db_partition_stats
+		where used_page_count * 8 / 1024 > 0
+	)
+select
+	*,
+	concat('DROP INDEX [', index_name, '] ON [', table_name, '];') drop_command
+from (
+	SELECT
+		t.name table_name,
+		i.type_desc index_type,
+		i.name index_name,
+		STRING_AGG(
+			CAST(
+				CASE
+					WHEN ic.is_included_column = 1 THEN '[INCLUDE] ' + c.name
+					ELSE c.name
+				END AS VARCHAR(MAX)
+			), ', '
+		) WITHIN GROUP (ORDER BY ic.key_ordinal, ic.index_column_id) AS columns_in_index,
+		i.is_primary_key,
+		i.is_unique_constraint,
+		max(pages) pages,
+		max(index_size_mb) index_size_mb,
+		max(o.create_date) created,
+		max(o.modify_date) modified
+	FROM sys.indexes i
+		JOIN sys.objects o on o.object_id = i.object_id
+		JOIN sys.tables t ON i.object_id = t.object_id
+		JOIN sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
+		JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+		LEFT JOIN sizes s on s.object_id = i.object_id AND s.index_id = i.index_id
+	WHERE i.name IS NOT NULL
+	GROUP BY
+		t.name,
+		i.name,
+		i.type_desc,
+		i.is_primary_key,
+		is_unique_constraint
+) t1
 ORDER BY
-	t.name ASC,
-	i.is_primary_key DESC;
+    table_name ASC,
+    index_type ASC;
 ```
 
 # Index size (Optimal RAM)
 
 ```sql
--- MySQL
-
-SELECT
-    table_schema AS `Database`,
-    table_name AS `Table`,
-    ROUND(index_length / 1024 / 1024, 2) AS `Index Size (MB)`
-FROM information_schema.TABLES
-WHERE table_schema = 'database_name' -- <------------
-ORDER BY `Index Size (MB)` DESC;
-
 -- SQL Server
 
 SELECT
@@ -165,9 +202,19 @@ FROM sys.tables AS t
 WHERE i.type_desc <> 'HEAP'
 GROUP BY s.name, t.name, i.name
 ORDER BY [Index Size (MB)] DESC;
+
+-- MySQL
+
+SELECT
+    table_schema AS `Database`,
+    table_name AS `Table`,
+    ROUND(index_length / 1024 / 1024, 2) AS `Index Size (MB)`
+FROM information_schema.TABLES
+WHERE table_schema = 'database_name' -- <------------
+ORDER BY `Index Size (MB)` DESC;
 ```
 
-# Frequently Accessed Tables and Indexes
+# Frequently Accessed Indexes
 
 Most accessed indexes. High `USER_SEEKS` or `USER_SCANS` indicates frequent reads.
 
@@ -183,6 +230,8 @@ INNER JOIN SYS.INDEXES AS I
 WHERE OBJECTPROPERTY(S.[OBJECT_ID], 'IsUserTable') = 1
 ORDER BY USER_SEEKS DESC;
 ```
+
+# Frequently Accessed Tables
 
 Most accessed tables. Table access frequency in the plan cache.
 
@@ -206,10 +255,6 @@ ORDER BY qs.total_logical_reads DESC;
 What % of operations are done from RAM vs disk. 100 means everything is in RAM i.e. good.
 
 ```sql
--- MySQL
-
-Show Engine InnoDB Status -- It shows a log, look for Buffer pool hit rate
-
 -- SQL Server
 
 SELECT
@@ -220,6 +265,35 @@ JOIN
     sys.dm_os_performance_counters b ON a.object_name = b.object_name
     AND a.counter_name = 'Buffer cache hit ratio'
     AND b.counter_name = 'Buffer cache hit ratio base';
+
+-- MySQL
+
+Show Engine InnoDB Status -- It shows a log, look for Buffer pool hit rate
+```
+
+# Expensive queries
+
+```sql
+-- SQL Server
+
+select *
+from (
+	SELECT TOP 100
+		last_execution_time,
+		dest.text,
+		round((deqs.total_elapsed_time / deqs.execution_count) / 1000000, 0) AS avg_elapsed_time_seconds,
+		round((deqs.total_worker_time / deqs.execution_count) / 1000000, 0) AS avg_worker_time_seconds,
+		deqs.execution_count,
+		round(deqs.total_elapsed_time / 1000000, 0) AS total_elapsed_time_seconds,
+		round(deqs.total_worker_time / 1000000, 0) AS total_worker_time_seconds
+	FROM sys.dm_exec_query_stats AS deqs
+		CROSS APPLY sys.dm_exec_sql_text(deqs.sql_handle) AS dest
+	WHERE deqs.last_execution_time >= DATEADD(hour, -8, GETDATE())
+	ORDER BY
+		avg_elapsed_time_seconds DESC
+) t1
+order by avg_elapsed_time_seconds desc
+;
 ```
 
 # Find value in all tables
@@ -247,29 +321,4 @@ PRINT @SQL
 
 -- Execute the dynamic SQL
 EXEC sp_executesql @SQL
-```
-
-# Expensive queries
-
-```sql
--- SQL Server
-
-select *
-from (
-	SELECT TOP 100
-		last_execution_time,
-		dest.text,
-		round((deqs.total_elapsed_time / deqs.execution_count) / 1000000, 0) AS avg_elapsed_time_seconds,
-		round((deqs.total_worker_time / deqs.execution_count) / 1000000, 0) AS avg_worker_time_seconds,
-		deqs.execution_count,
-		round(deqs.total_elapsed_time / 1000000, 0) AS total_elapsed_time_seconds,
-		round(deqs.total_worker_time / 1000000, 0) AS total_worker_time_seconds
-	FROM sys.dm_exec_query_stats AS deqs
-		CROSS APPLY sys.dm_exec_sql_text(deqs.sql_handle) AS dest
-	WHERE deqs.last_execution_time >= DATEADD(hour, -8, GETDATE())
-	ORDER BY
-		avg_elapsed_time_seconds DESC
-) t1
-order by avg_elapsed_time_seconds desc
-;
 ```

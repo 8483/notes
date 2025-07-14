@@ -1,8 +1,19 @@
 [source](https://databasedive.com/mysql-indexing-best-practices-779282b0995b)
 
+# Terminology
+
+-   **lookup** - Extra read to fetch non-indexed columns. Occurs when index lacks needed data, forcing access to the base table or clustered index.
+-   **seek**
+    Targeted access using index keys. Fast. Narrow predicate matches specific index values.
+-   **scan** - Full traversal of table or index. Slow. Used when predicate is broad or no usable index exists.
+-   **heap** - Table without a clustered index. Data is unordered. Row lookups use RID (Row Identifier). Slower for large reads or key lookups.
+-   **clustered index** - Defines physical row order. One per table. Table is the index. Faster for range queries and order-based filters.
+-   **nonclustered index** - Separate structure with pointers to data (heap or clustered). Can have many per table. Faster for specific column searches.
+-   **index include** - Extra non-key columns stored in the index leaf level. Eliminates lookups by covering more queries. Improves read performance.
+
 # What is an index?
 
-> A table pointing to primary keys, sorted by a commonly used criterium. Ex. First name, last name, sku...
+> A copy of table that is pre-sorted by commonly used columns. Ex. First name, last name, sku...
 
 It's like the index of a book. It has a list of words or phrases in alphabetical order, which makes searching easier and faster. Then it has pages number pointing you to where the words appear in the actual content of the book.
 
@@ -69,7 +80,7 @@ What to index?
 -   Columns you'll JOINs on.
 -   Columns you ORDER/GROUP BYs.
 
-# Is there an index?
+# Check if there is an index
 
 You can see if queries are slow **only** due to the lack of an index with `EXPLAIN`, which shows the query execution plan i.e. which index to pick, how to join tables and in which order for optimal performance.
 
