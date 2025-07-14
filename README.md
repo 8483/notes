@@ -60,11 +60,6 @@
     -   [Caching](./topics/caching.md)
     -   [Logging](./topics/logging.md)
 
-### **Web Server**
-
--   [nginx](./topics/webserver/nginx.md)
--   [SSL](./topics/webserver/ssl.md)
-
 ### **Database**
 
 -   Concepts
@@ -93,25 +88,10 @@
     -   [SQL Server](./topics/database/sqlserver.md)
         -   [node mssql](./topics/database/node-mssql.md)
 
-### **Architecture**
+### **Web Server**
 
--   [MVC](./topics/mvc.md)
--   [Multi-tenancy](./topics/multiTenancy.md)
--   [RESTful](./topics/restful.md)
--   [Microservices](./topics/microservices.md)
--   [Serverless](./topics/serverless.md)
--   [Message Brokers](./topics/messageBrokers.md)
-
-### **Optimization**
-
--   [Premature Optimzation](./topics/optimization/premature.md)
--   [Graphs](./topics/optimization/graphs.md)
--   [Dependency Injection](./topics/optimization/dependencyInjection.md)
--   [Naming Conventions](./topics/optimization/naming.md)
--   [No nesting](./topics/optimization/nesting.md)
--   [No comments](./topics/optimization/comments.md)
--   [Algorithms](./topics/optimization/algorithms.md)
--   [Code Golf](./topics/optimization/codeGolf.md)
+-   [nginx](./topics/webserver/nginx.md)
+-   [SSL](./topics/webserver/ssl.md)
 
 ### **Cybersecurity**
 
@@ -122,42 +102,55 @@
 -   [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
 -   [Cross-origin resource sharing (CORS)](./topics/cybersecurity/cors.md)
 
-### **Testing**
+### **Code Optimization**
 
--   [Testing](./topics/testing/testing.md)
-    -   [Jest](./topics/testing/jest.md)
-    -   [Mocha](./topics/testing/mocha.md)
-
-### **Concepts**
-
--   [Binary](./topics/binary/binary.md)
-    -   [ASCII](./topics/binary/ascii.md)
-    -   [Bitwise](./topics/binary/bitwise.md)
--   [Assembly](./topics/assembly.md)
-    -   [WebAssembly](./topics/wasm.md)
+-   [Premature Optimzation](./topics/optimization/premature.md)
+-   [Graphs](./topics/optimization/graphs.md)
+-   [Dependency Injection](./topics/optimization/dependencyInjection.md)
+-   [Naming Conventions](./topics/optimization/naming.md)
+-   [No nesting](./topics/optimization/nesting.md)
+-   [No comments](./topics/optimization/comments.md)
+-   [Algorithms](./topics/optimization/algorithms.md)
+-   [Code Golf](./topics/optimization/codeGolf.md)
 
 ### **Tooling**
 
 -   [VS Code](./topics/vscode.md)
 -   [Git](./topics/git.md)
 
-### **Random**
+### **Testing**
+
+-   [Testing](./topics/testing/testing.md)
+    -   [Jest](./topics/testing/jest.md)
+    -   [Mocha](./topics/testing/mocha.md)
+
+# **Binary**
+
+-   [Binary](./topics/binary/binary.md)
+    -   [ASCII](./topics/binary/ascii.md)
+    -   [Bitwise](./topics/binary/bitwise.md)
+-   [Assembly](./topics/assembly.md)
+
+    -   [WebAssembly](./topics/wasm.md)
+
+# **Theory**
+
+### **Architecture**
+
+-   [MVC](./topics/mvc.md)
+-   [Multi-tenancy](./topics/multiTenancy.md)
+-   [RESTful](./topics/restful.md)
+-   [Microservices](./topics/microservices.md)
+-   [Serverless](./topics/serverless.md)
+-   [Message Brokers](./topics/messageBrokers.md)
+
+### **Methodologies**
 
 -   [Agile](./topics/agile.md)
--   [UI/UX](./topics/uiux.md)
+
+### **Other**
+
 -   [.NET](./topics/dotnet.md)
--   [Notifications](./topics/notifications.md)
-
-### **APIs**
-
--   [Google API](./topics/googleapi.md)
--   [Reddit API](./topics/reddit.md)
-
-# Workflow
-
--   [Environment](./topics/workflow/environment.md)
--   [Development](./topics/workflow/development.md)
--   [Deployment](./topics/workflow/deployment.md)
 
 # Mobile
 
@@ -179,6 +172,12 @@
 -   [Cordova](./topics/mobileCordova.md)
 -   [Capacitor](./topics/mobileCapacitor.md)
 -   [PWA](./topics/mobilePWA.md)
+
+# Workflow
+
+-   [Environment](./topics/workflow/environment.md)
+-   [Development](./topics/workflow/development.md)
+-   [Deployment](./topics/workflow/deployment.md)
 
 # Linux
 
@@ -342,6 +341,11 @@ You need 3 things:
 -   [Excel](./topics/excel.md)
 -   [Statistics](./topics/statistics.md)
 -   [Googling](./topics/googling.md)
+
+# **APIs**
+
+-   [Google API](./topics/googleapi.md)
+-   [Reddit API](./topics/reddit.md)
 
 # Commits
 

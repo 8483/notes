@@ -4,24 +4,51 @@
 
 https://training.brentozar.com/p/how-i-use-the-first-responder-kit
 
-| Procedure                   | Description                         |
-| --------------------------- | ----------------------------------- |
-| sp_Blitz                    | Server-wide health check.           |
-| sp_BlitzFirst               | Performance check.                  |
-| sp_BlitzCache               | Find the queries causing the waits. |
-| sp_BlitzWho, sp_WhoIsActive | What's running now.                 |
-| sp_BlitzLock                | Analyzing deadlocks.                |
-| sp_BlitzIndex               | Checking indexes that help queries. |
-| sp_DatabaseRestore          | Restore databases.                  |
+# Instructions
+
+[FULL GUIDE HERE](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit)
+
+Training class on how to use this stuff:
+https://www.brentozar.com/product/how-i-use-the-first-responder-kit/
+
+# Download
+
+Page:
+https://www.BrentOzar.com/first-aid
+
+Direct download: https://downloads.brentozar.com/FirstResponderKit.zip
+
+# Install
+
+For SQL Server, to install all of the scripts at once:
+
+1. Open `Install-All-Scripts.sql` in SSMS.
+2. Switch to the database where you want to install the procs.
+3. Run the query.
+
+It will install the stored procedures if they don't already exist, or update them to the current version if they do exist.
+
+# Overview
+
+| Procedure                   | Description                                            |
+| --------------------------- | ------------------------------------------------------ |
+| sp_Blitz                    | Is my SQL Server healthy, or sick?                     |
+| sp_BlitzFirst               | Why is my SQL Server slow right now?                   |
+| sp_BlitzCache               | Which queries have been using the most resources?      |
+| sp_BlitzWho, sp_WhoIsActive | Who’s running what queries right now?                  |
+| sp_BlitzLock                | What queries and tables are involved in deadlocks?     |
+| sp_BlitzIndex               | How could I tune indexes to make this database faster? |
+| sp_DatabaseRestore          | Restore databases.                                     |
 
 Everything here has a link column for further research.
 
 ### Quick reference
 
 ```sql
-sp_Blitz @CheckServerInfo = 1 -- Health check
-sp_BlitzFirst @SinceStartup = 1 -- Top wait stats
-sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 90 -- Top 10 queries causing those wait stats
+sp_Blitz @CheckServerInfo = 1; -- Health check
+sp_BlitzFirst @SinceStartup = 1; -- Top wait stats
+sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 90; -- Top 10 queries causing those wait stats
+sp_BlitzCache @SortOrder = 'query hash'; -- Repeating queries causing waits
 ```
 
 # sp_Blitz
