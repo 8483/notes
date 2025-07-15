@@ -76,6 +76,7 @@
     -   [Various](./topics/database/queriesVarious.md)
     -   [Logic](./topics/database/queriesLogic.md)
     -   [Pivot](./topics/database/queriesPivot.md)
+    -   [Indexes](./topics/database/queriesIndexes.md)
     -   [Utilities](./topics/database/queriesUtilities.md)
 -   Optimization
     -   [Hardware](./topics/database/optimizationHardware.md)
