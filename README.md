@@ -8,8 +8,9 @@
 
 ### **Styles**
 
--   [Object Oriented Programming (OOP)](./topics/oop.md)
--   [Functional Programming (FP)](./topics/fp.md)
+-   [Overview](./topics/styles/overview.md)
+    -   [Object Oriented Programming (OOP)](./topics/styles/oop.md)
+    -   [Functional Programming (FP)](./topics/styles/fp.md)
 
 ### **Javascript**
 
