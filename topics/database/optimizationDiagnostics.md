@@ -30,16 +30,14 @@ It will install the stored procedures if they don't already exist, or update the
 
 # Overview
 
-| Procedure          | Description                                            |
-| ------------------ | ------------------------------------------------------ |
-| sp_Blitz           | Is my SQL Server healthy, or sick?                     |
-| sp_BlitzFirst      | Why is my SQL Server slow right now?                   |
-| sp_BlitzCache      | Which queries have been using the most resources?      |
-| sp_WhoIsActive     | Who’s running which queries right now?                 |
-| sp_BlitzWho        | Similar to sp_WhoIsActive.                             |
-| sp_BlitzIndex      | How could I tune indexes to make this database faster? |
-| sp_BlitzLock       | What queries and tables are involved in deadlocks?     |
-| sp_DatabaseRestore | Restore databases.                                     |
+| Procedure      | Description                                            |
+| -------------- | ------------------------------------------------------ |
+| sp_Blitz       | Is my SQL Server healthy, or sick?                     |
+| sp_BlitzFirst  | Why is my SQL Server slow right now?                   |
+| sp_BlitzCache  | Which queries have been using the most resources?      |
+| sp_WhoIsActive | Who's running which queries right now?                 |
+| sp_BlitzIndex  | How could I tune indexes to make this database faster? |
+| sp_BlitzLock   | What queries and tables are involved in deadlocks?     |
 
 ### Examples
 
@@ -53,6 +51,9 @@ sp_BlitzFirst @SinceStartup = 1;
 -- Top 10 queries causing those wait stats in the past 24 hours
 sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 1440;
 sp_BlitzCache @SortOrder = 'query hash', @MinutesBack = 1440;;
+
+-- Indexes for a table
+EXEC sp_BlitzIndex @DatabaseName='DATABASE_NAME', @TableName='TABLE_NAME';
 ```
 
 # `sp_Blitz` - Is my SQL Server healthy, or sick?
