@@ -20,6 +20,8 @@ from (
 			), ', '
 		) WITHIN GROUP (ORDER BY ic.is_included_column, ic.key_ordinal, ic.index_column_id) columns_in_index,
 
+        count(c.name) columns_count,
+
 		isnull(max(used_page_count * 8 / 1024), 0) index_size_mb,
 
 		isnull(max(used_page_count), 0) pages,
