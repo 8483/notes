@@ -30,14 +30,20 @@ It will install the stored procedures if they don't already exist, or update the
 
 # Overview
 
-| Procedure      | Description                                            |
-| -------------- | ------------------------------------------------------ |
-| sp_Blitz       | Is my SQL Server healthy, or sick?                     |
-| sp_BlitzFirst  | Why is my SQL Server slow right now?                   |
-| sp_BlitzCache  | Which queries have been using the most resources?      |
-| sp_WhoIsActive | Who's running which queries right now?                 |
-| sp_BlitzIndex  | How could I tune indexes to make this database faster? |
-| sp_BlitzLock   | What queries and tables are involved in deadlocks?     |
+| Procedure                                                     | Description                                            |
+| ------------------------------------------------------------- | ------------------------------------------------------ |
+| [sp_Blitz](https://www.brentozar.com/blitz/)                  | Is my SQL Server healthy, or sick?                     |
+| [sp_BlitzFirst](https://www.brentozar.com/askbrent/)          | Why is my SQL Server slow right now?                   |
+| [sp_BlitzCache](https://www.brentozar.com/blitzcache/)        | Which queries have been using the most resources?      |
+| [sp_WhoIsActive](https://github.com/amachanic/sp_whoisactive) | Who's running which queries right now?                 |
+| [sp_BlitzIndex](https://www.brentozar.com/blitzindex/)        | How could I tune indexes to make this database faster? |
+| sp_BlitzLock                                                  | What queries and tables are involved in deadlocks?     |
+
+### Tutorials
+
+-   [How I Use the First Responder Kit (FREE)](https://training.brentozar.com/p/how-i-use-the-first-responder-kit)
+-   [Fundamentals of Index Tuning (PAID)](https://training.brentozar.com/p/fundamentals-of-index-tuning)
+-   [Fundamentals of Query Tuning (PAID)](https://training.brentozar.com/p/fundamentals-of-query-tuning)
 
 ### Examples
 
@@ -57,6 +63,8 @@ EXEC sp_BlitzIndex @DatabaseName='DATABASE_NAME', @TableName='TABLE_NAME';
 ```
 
 # `sp_Blitz` - Is my SQL Server healthy, or sick?
+
+https://www.brentozar.com/blitz
 
 Overall health check. Is the server configured optimally.
 
@@ -93,6 +101,8 @@ DBCC CHECKDB('StackOverflow') WITH NO_INFOMSGS, ALL_ERRORMSGS;
 ```
 
 # `sp_BlitzFirst` - Why is my SQL Server slow right now?
+
+https://www.brentozar.com/askbrent
 
 Performance health check. Find the top server bottlenecks.
 
@@ -138,6 +148,8 @@ A quick wait types report (try to have at least 24 hours of hours sample/wait ti
 
 # `sp_BlitzCache` - Which queries have been using the most resources?
 
+https://www.brentozar.com/blitzcache
+
 Find the queries causing the top bottlenecks (wait types).
 
 It shows the top 10 most resource-intensive queries.
@@ -178,6 +190,8 @@ sp_BlitzCache @SortOrder = 'avg duration', @MinutesBack = 90 -- How many minutes
 
 # `sp_BlitzWho` - Who’s running which queries right now?
 
+https://www.brentozar.com/first-aid/sp_blitzwho
+
 It lists currently runnig queries, sorted from longest running, to shortest.
 
 Use when people are complaining that SQL Server is slow, or in emergencies.
@@ -189,6 +203,8 @@ sp_BlitzWho @ExpertMode = 1 -- Show extra columns like logical reads, CPU usage
 ```
 
 # `sp_BlitzIndex` - How could I tune indexes to make this database faster?
+
+https://www.brentozar.com/blitzindex
 
 Analyzes design issues with indexes. This is not a quick-fix script.
 

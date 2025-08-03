@@ -1,9 +1,3 @@
-# Converting
-
-Windows has a cool calculator for conversions, you just choose the `Programmer` mode.
-
-![Binary Calculator](../../pics/binary/binary_calculator.jpg)
-
 # Bases
 
 > A way to represent the same binary data in different ways i.e. characters. base = how bytes are represented.
@@ -138,3 +132,9 @@ So 24 bits (3 full bytes of input) / 6 bits (base64 alphabet) = 4 bytes of base6
 You may think "Why not base128 (7 bits of input = 8 bits of output), at just 14% size growth when encoding?". The answer for that is that base64 is the best we can find, since the lower 128 ASCII characters aren't all printable. Many are control characters such as NULL etc.
 
 There are obviously ways to create other systems such as perhaps "base81" etc, since you can do anything you want if you create a custom encoding algorithm. But the beauty of base64 is how it encodes data so cleanly in chunks of 6 bits. So that encoding scheme became popular.
+
+# Converting
+
+Windows has a cool calculator for conversions, you just choose the `Programmer` mode.
+
+![Binary Calculator](../../pics/binary/binary_calculator.jpg)
