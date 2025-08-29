@@ -2,14 +2,16 @@
 
 # Terminology
 
--   **lookup** - Extra read to fetch non-indexed columns. Occurs when index lacks needed data, forcing access to the base table or clustered index.
--   **seek**
-    Targeted access using index keys. Fast. Narrow predicate matches specific index values.
--   **scan** - Full traversal of table or index. Slow. Used when predicate is broad or no usable index exists.
 -   **heap** - Table without a clustered index. Data is unordered. Row lookups use RID (Row Identifier). Slower for large reads or key lookups.
--   **clustered index** - Defines physical row order. One per table. Table is the index. Faster for range queries and order-based filters.
+-   **clustered index** - The actual table itself is the "index" (one per table). Defines physical row order. Faster for range queries and order-based filters.
+-   **scan** - Full traversal of table or index. Slow. Used when predicate is broad or no usable index exists.
+-   **lookup** - Extra read to fetch non-indexed columns. Occurs when index lacks needed data, forcing access to the base table or clustered index.
+
+---
+
 -   **nonclustered index** - Separate structure with pointers to data (heap or clustered). Can have many per table. Faster for specific column searches.
 -   **index include** - Extra non-key columns stored in the index leaf level. Eliminates lookups by covering more queries. Improves read performance.
+-   **seek** - Targeted access using index keys. Fast. Narrow predicate matches specific index values.
 
 # What is an index?
 
@@ -19,27 +21,27 @@ It's like the index of a book. It has a list of words or phrases in alphabetical
 
 A database index is an extra bit added to the database that has the specified fields sorted in some way for quick and easy searching, and it points back to the actual record in the database.
 
-To give a more concrete example, imagine you have a book (like the telephone directory) which is laid out with all the entries sorted by last name and then first name. If you're trying to find an entry for someone whose last name starts with a K, that's nice and simple. However, what happens if you want to find all the people called Joshua in the book? You'd have to literally read through every entry on every page and mark the ones you're interested in.
+To give a more concrete example, imagine you have a book (like the telephone directory) which is laid out with all the entries sorted by **last name** and then **first name**. If you're trying to find an entry for someone whose **last name** starts with a `K`, that's nice and simple. However, what happens if you want to find all the people with the **first name** Joshua? You'd have to literally read through every entry on every page and mark the ones you're interested in.
 
-If the telephone book also had an index of first names--so it tells you the first Joshua is the 22nd entry on page 2, and so on--it would make this task _much_ faster and more efficient. This is exactly what an index in a database does. It obviously only works for particular queries, because this hypothetical first name index isn't going to help you find the person who lives at 21 Jump Street, so you have to set up your indexes according to what queries you want to speed up.
+If the telephone book also had an index of **first name**s - so it tells you the first Joshua is the 22nd entry on page 2, and so on - it would make this task _much_ faster and more efficient. This is exactly what an index in a database does. It obviously only works for particular queries, because this hypothetical first name index isn't going to help you find the person who lives at the **address** 21 Jump Street, so you have to set up your indexes according to what queries you want to speed up.
 
 It is an extra table telling the db engine where to find a primary key. It reduces search times by being sorted in a specific way, and often has some extra, useful information.
 
 If you have a table with products, and you have maybe 5-8 columns, and products are not sorted in any specific way, just added one after another.
 
-And you realize that users often give a product number and want to get the name. So instead of having to load the large table, and traverse it looking for this id, you design it so,
+And you realize that users often give a product number and want to get the name. So instead of having to load the large table, and traverse it looking for this id, you design it so.
 
 That such search goes to the index, which only has PK, prod Nr and name, and is sorted ASC.
 
 The search is much quicker.
 
-But indexes can also mess a db up, if they are too old, long, complex etc
+But indexes can also mess a db up, if they are too old, long, complex etc.
 
 # How indexing works
 
 > A MySQL select query consists of two phases. A query phase and a fetch phase. In the query phase, MySQL tries to find primary key values of all matching rows using the index. In the fetch phase, MySQL uses these retrieved primary keys to fetch the actual row values.
 
-If you have a MySQL with InnoDB engine, you will commonly use indexes such as **Clustered index** and **secondary index**.
+If you have a MySQL with InnoDB engine, you will commonly use indexes such as **Clustered index** and **secondary (non-clustered) index**.
 
 > When you define a PRIMARY KEY on your table, InnoDB uses it as the clustered index. InnoDB table storage is organized based on the values of the primary key columns, to speed up queries and sorts involving the primary key columns. All indexes other than the clustered index are known as secondary indexes.
 
@@ -130,9 +132,9 @@ By adding several columns into an index you can narrow down the number of rows M
 ALTER TABLE users ADD INDEX index_co1_col2(column1, column2, column3,...)
 ```
 
-**Column ordering matters!**. The column which has the smallest cardinality, i.e. The least distinctive values, should always be positioned as the left-most side in a composite index. Applies for the rest of the columns.
+**Column ordering matters!** The column which has the smallest cardinality, i.e. The least distinctive values, should always be positioned as the left-most side in a composite index. Applies for the rest of the columns.
 
-To find the cardinality, use `DISTINCT`
+To find the cardinality, use `DISTINCT`.
 
 ```sql
 select count(distinct(email)) from users;         -- 138,279

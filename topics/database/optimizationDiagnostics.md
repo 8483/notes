@@ -39,6 +39,8 @@ It will install the stored procedures if they don't already exist, or update the
 | [sp_BlitzIndex](https://www.brentozar.com/blitzindex/)        | How could I tune indexes to make this database faster? |
 | sp_BlitzLock                                                  | What queries and tables are involved in deadlocks?     |
 
+You can see the available `@parameters` inside `Programmability / Stored Procedures`.
+
 ### Tutorials
 
 -   [How I Use the First Responder Kit (FREE)](https://training.brentozar.com/p/how-i-use-the-first-responder-kit)
@@ -212,26 +214,19 @@ Analyzes design issues with indexes. This is not a quick-fix script.
 
 Indexing is as much an art as is a science, despite there being a lot of vague guidelines, and sometimes having to break them in order to get better performance.
 
-`sp_BlitzIndex` is about analyzing your database's overall issues, understanding which indexes are just holding you back, and which indexes Clippy wants to add.
+`sp_BlitzIndex` is about analyzing your database's overall issues, understanding which indexes are just holding you back, and which indexes to add.
 
 ```sql
--- returns prioritized findings based on the D.E.A.T.H. optimization method.
+-- List of findings and suggestions.
 sp_BlitzIndex
 
--- Inventory of existing indexes, good for copy/paste in Excel for offline analysis. Has a @SortOrder parameter for things like rows, size, reads, writes, lock time...
+-- Inventory of existing indexes, good for copy/paste in Excel for offline analysis.
+-- Has a @SortOrder parameter for things like rows, size, reads, writes, lock time...
 sp_BlitzIndex @Mode = 2, @SortOrder = 'rows'
+
+-- Indexes SQL Server wishes it had
+sp_BlitzIndex @Mode = 3
 ```
-
-### READS vs WRITES (Usage column)
-
-The amount of times the index made the query go:
-
--   Reads = FASTER
--   Writes = SLOWER (because of the INSERT/UPDATE/DELETE to keep the index in sync)
-
-> **Remove indexes that have 0 reads, or a low read high write ratio.**
-
-Before you do any tuning, you want to server to have been up for at least 1 business cycle i.e. a full month. If the business is the same all the time (like a stock exchange), a day is enough. Avoid longer than a month.
 
 ### One table analysis
 
@@ -249,6 +244,10 @@ Results:
 
 ### Tuning indexes
 
+> **Before you do any tuning, you want the server to have been up for at least 1 business cycle i.e. a full month.**
+
+This gives you a pretty good idea which indexes are used. If the business is the same all the time (like a stock exchange), a day is enough. Avoid longer than a month.
+
 You can tune indexes with the D.E.A.T.H. method:
 
 -   Dedupe (remove duplicates).
@@ -257,11 +256,20 @@ You can tune indexes with the D.E.A.T.H. method:
 -   Tune indexes for specific queries.
 -   Heaps i.e. Clustered indexes.
 
-Look for `Est. benefit per day` above 1,000,000 as these are worth solving.
+### READS vs WRITES (Usage column)
+
+The amount of times the index made the query go:
+
+-   Reads = FASTER
+-   Writes = SLOWER (because of the INSERT/UPDATE/DELETE to keep the index in sync)
+
+> **Remove indexes that have 0 reads, or a low-read high-write ratio.**
+
+Look for `Est. benefit per day` above 1,000,000 as these are worth solving. Lower than that does more harm than good because it's like creating an index for every single query i.e. it will take forever to update the needless indexes.
 
 Ex. A finding of `Index Suggestion: High Value Missing Index` and a usage of `27,425 uses, Impact: 100%; Avg query cost: 810` says that this index should be created because it will speed up the query by 100%.
 
-SQL Server, under definition, gives just the columns in the table, and NOT the order they should be in. Look for the Size column to try and be around the 5 indexes with 5 columns per index, per table best practice.
+> **Aim for 5 indexes (or less) per table, with around 5 columns (or less) per index.**
 
 If you have this query:
 
@@ -278,6 +286,19 @@ LastName, PhoneNumber
 ```
 
 You are better off with using just the first one.
+
+The suggested index columns (undex definition) are **NOT** in the right order! This is your job to do! Also, the create index column does not take into account the order.
+
+The column which has the smallest cardinality, i.e. The least distinctive values, should always be positioned as the left-most side in a composite index. Applies for the rest of the columns.
+
+To find the cardinality, use `DISTINCT`.
+
+```sql
+select count(distinct(category_id)) from users;   -- 16
+select count(distinct(email)) from users;         -- 138,279
+```
+
+`category_id` should come before `email` in this case.
 
 ### Index tuning example workflow
 

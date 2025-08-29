@@ -10,7 +10,7 @@ This requires an initial time investment, which is quickly paid back in the time
     Testing single functions with no dependencies (thousands).
 
 -   **Integration test**  
-    Testing single functions with dependencies i.e. functions that call other functions (couple). Does the combination of single functions work?
+    Testing single functions with dependencies i.e. functions that call other functions (couple) Ex. Testing APIs. Does the combination of single functions work?
 
 -   **End-to-end (E2E) / UI test**  
     Testing by simulating a literal manual UI interaction (few).
