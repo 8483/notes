@@ -224,7 +224,7 @@ sp_BlitzIndex
 -- Has a @SortOrder parameter for things like rows, size, reads, writes, lock time...
 sp_BlitzIndex @Mode = 2, @SortOrder = 'rows'
 
--- Indexes SQL Server wishes it had
+-- List of missing high value indexes (create these)
 sp_BlitzIndex @Mode = 3
 ```
 
@@ -300,6 +300,18 @@ select count(distinct(email)) from users;         -- 138,279
 
 `category_id` should come before `email` in this case.
 
+Index keys: Determine the index order. Used in filtering, join conditions, grouping and ordering.
+
+Include: Stored only in leaf level, not part of the key, does not affect ordering, used to cover queries by supplying additional fields without forcing lookups.
+
+> **Rule: Put in columns the fields you filter, join, group, or sort by. Put in include the fields you only need returned in the SELECT list.**
+
+Equality columns first, inequality next, order/grouping columns last. Order does not matter for includes: they are unordered payload at the leaf level.
+
+When multiple equality columns exist, cardinality guides their sequence. Put the most selective (highest cardinality) equality column first, then the next most selective, and so on—unless query ordering/grouping requirements dictate a different sequence.
+
+Cardinality is the count of distinct values in a column. High cardinality = many unique values (e.g., GUID, ID). Low cardinality = few distinct values (e.g., Boolean, gender). Selectivity derives from cardinality: higher cardinality generally means more selective predicates.
+
 ### Index tuning example workflow
 
 Create a change script:
@@ -327,7 +339,7 @@ GO
 */
 ```
 
-# `sp_BlitzLock` - What queries and tables are involved in deadlocks?
+# `sp_BlitzLock` - Which queries and tables are involved in deadlocks?
 
 Analyzes recent deadlocks, and groups them by table, query, app, login...
 
