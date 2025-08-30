@@ -229,6 +229,8 @@ sp_BlitzIndex @Mode = 2, @SortOrder = 'rows'
 sp_BlitzIndex @Mode = 3
 ```
 
+**[Use this custom query for filterable indexes](https://github.com/8483/notes/blob/master/topics/database/queriesIndexes.md#list-of-all-indexes-with-various-stats)**
+
 ### One table analysis
 
 ```sql

@@ -1,69 +1,98 @@
 # List of all indexes with various stats
 
 ```sql
-SELECT
-	t.name table_name,
-	i.name index_name,
+with
+	indexes as (
+		SELECT
+			case
+				when user_scans > user_seeks then '1. delete - scans'
+				when user_updates > user_seeks then '1. delete - writes'
+				when CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) > 0.3 then '2. improve'
+				when frag.avg_fragmentation_in_percent > 30 then '3. rebuild'
+				else ''
+			end status,
 
-	user_seeks seeks,
-	user_scans scans,
-	user_lookups lookups,
-	user_updates updates,
+			t.name table_name,
+			i.name index_name,
 
-	cols,
-	columns,
+			user_seeks seeks,
 
-	isnull(used_page_count * 8 / 1024, 0) size_mb,
-	isnull(used_page_count, 0) pages,
-	round(frag.avg_fragmentation_in_percent, 0) frag_prcnt,
+			user_scans scans,
+			round(CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) * 100, 0) SCvSK,
 
-	case when frag.avg_fragmentation_in_percent > 30 then 'yes' else 'no' end rebuild,
+			user_lookups lookups,
 
-	o.create_date created,
-	o.modify_date modified,
+			user_updates writes,
+			round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0) WRvSK,
 
-	last_user_seek,
-	last_user_scan,
-	last_user_lookup,
-	last_user_update,
+			cols,
+			keys,
+			isnull(includes, '') includes,
 
-	i.type_desc index_type,
-	i.is_primary_key,
-	i.is_unique_constraint,
+			isnull(used_page_count * 8 / 1024, 0) size_mb,
+			isnull(used_page_count, 0) pages,
+			round(frag.avg_fragmentation_in_percent, 0) frag_prcnt,
 
-	concat('ALTER INDEX ', i.name, ' ON ', t.name, ' REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
-	concat('DROP INDEX [', i.name, '] ON [', t.name, '];') drop_command
+			o.create_date created,
+			o.modify_date modified,
 
-FROM sys.indexes i
-	JOIN sys.objects o on o.object_id = i.object_id
-	JOIN sys.tables t ON i.object_id = t.object_id
+			last_user_seek,
+			last_user_scan,
+			last_user_lookup,
+			last_user_update,
 
-	JOIN (
-		select
-			ic.object_id,
-			ic.index_id,
-			count(c.name) cols,
-			STRING_AGG(
-				CAST(
-					CASE
-						WHEN ic.is_included_column = 0 THEN c.name
-						ELSE '+' + c.name
-					END AS VARCHAR(MAX)
-				), ', '
-			) WITHIN GROUP (ORDER BY ic.is_included_column, ic.key_ordinal, ic.index_column_id) columns
-		from sys.index_columns ic
-			join sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
-		group by
-			ic.object_id,
-			ic.index_id
-	) c on c.object_id = i.object_id AND c.index_id = i.index_id
+		fk.object_id,
+			/*
+			i.type_desc index_type,
+			i.is_primary_key,
+			i.is_unique_constraint,
+			*/
 
-	JOIN sys.dm_db_index_physical_stats(DB_ID(), NULL, NULL, NULL, 'LIMITED') frag on frag.object_id = i.object_id and frag.index_id = i.index_id and fragment_count is not null
-	JOIN sys.dm_db_partition_stats ps on ps.object_id = i.object_id and ps.index_id = i.index_id
-	JOIN sys.dm_db_index_usage_stats st on st.object_id = i.object_id and st.index_id = i.index_id
+			concat('ALTER INDEX ', i.name, ' ON ', t.name, ' REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
+			concat('DROP INDEX [', i.name, '] ON [', t.name, '];') drop_command
+
+		FROM sys.indexes i
+			JOIN sys.objects o on o.object_id = i.object_id
+			JOIN sys.tables t ON i.object_id = t.object_id
+
+			JOIN (
+				select
+					ic.object_id,
+					ic.index_id,
+					count(c.name) cols,
+					STRING_AGG(
+						CAST(CASE WHEN ic.is_included_column = 0 THEN c.name END AS VARCHAR(MAX)), ', '
+					) WITHIN GROUP (ORDER BY ic.is_included_column, ic.key_ordinal, ic.index_column_id) keys,
+					STRING_AGG(
+						CAST(CASE WHEN ic.is_included_column = 1 THEN c.name END AS VARCHAR(MAX)), ', '
+					) WITHIN GROUP (ORDER BY ic.is_included_column, ic.key_ordinal, ic.index_column_id) includes
+				from sys.index_columns ic
+					join sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+				group by
+					ic.object_id,
+					ic.index_id
+			) c on c.object_id = i.object_id AND c.index_id = i.index_id
+
+			JOIN sys.dm_db_index_physical_stats(DB_ID(), NULL, NULL, NULL, 'LIMITED') frag on frag.object_id = i.object_id and frag.index_id = i.index_id and fragment_count is not null
+			JOIN sys.dm_db_partition_stats ps on ps.object_id = i.object_id and ps.index_id = i.index_id
+			JOIN sys.dm_db_index_usage_stats st on st.object_id = i.object_id and st.index_id = i.index_id
+			LEFT JOIN sys.foreign_keys fk ON fk.referenced_object_id = i.object_id AND fk.key_index_id = i.index_id
+		where
+			i.type_desc = 'NONCLUSTERED' -- Actual indexes. CLUSTERED = tables
+			and fk.object_id is null -- Remove indexes created automatically from foreign key constraints
+	)
+select *
+from indexes
+order by
+	case when status <> '' then 1 else 2 end asc,
+	status asc,
+	seeks desc
+
+/*
 ORDER BY
-	sum(used_page_count) over (partition by t.name) desc, -- running total
-	used_page_count desc
+	sum(pages) over (partition by table_name) desc, -- running total
+	pages desc
+*/
 ;
 ```
 
