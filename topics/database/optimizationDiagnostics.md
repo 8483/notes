@@ -30,14 +30,15 @@ It will install the stored procedures if they don't already exist, or update the
 
 # Overview
 
-| Procedure                                                     | Description                                            |
-| ------------------------------------------------------------- | ------------------------------------------------------ |
-| [sp_Blitz](https://www.brentozar.com/blitz/)                  | Is my SQL Server healthy, or sick?                     |
-| [sp_BlitzFirst](https://www.brentozar.com/askbrent/)          | Why is my SQL Server slow right now?                   |
-| [sp_BlitzCache](https://www.brentozar.com/blitzcache/)        | Which queries have been using the most resources?      |
-| [sp_WhoIsActive](https://github.com/amachanic/sp_whoisactive) | Who's running which queries right now?                 |
-| [sp_BlitzIndex](https://www.brentozar.com/blitzindex/)        | How could I tune indexes to make this database faster? |
-| sp_BlitzLock                                                  | What queries and tables are involved in deadlocks?     |
+| Procedure                                                      | Description                                            |
+| -------------------------------------------------------------- | ------------------------------------------------------ |
+| [sp_Blitz](https://www.brentozar.com/blitz/)                   | Is my SQL Server healthy, or sick?                     |
+| [sp_BlitzFirst](https://www.brentozar.com/askbrent/)           | Why is my SQL Server slow right now?                   |
+| [sp_BlitzCache](https://www.brentozar.com/blitzcache/)         | Which queries have been using the most resources?      |
+| [sp_BlitzWho](https://www.brentozar.com/first-aid/sp_blitzwho) | Which queries are running right now?                   |
+| [sp_WhoIsActive](https://github.com/amachanic/sp_whoisactive)  | Which queries are running right now?                   |
+| [sp_BlitzIndex](https://www.brentozar.com/blitzindex/)         | How could I tune indexes to make this database faster? |
+| sp_BlitzLock                                                   | What queries and tables are involved in deadlocks?     |
 
 You can see the available `@parameters` inside `Programmability / Stored Procedures`.
 

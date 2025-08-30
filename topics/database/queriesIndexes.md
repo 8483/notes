@@ -1,57 +1,69 @@
 # List of all indexes with various stats
 
 ```sql
-select
-	*,
-	concat('ALTER INDEX ', index_name, ' ON ', table_name, ' REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
-	concat('DROP INDEX [', index_name, '] ON [', table_name, '];') drop_command
-from (
-	SELECT
-		t.name table_name,
-		i.type_desc index_type,
-		i.name index_name,
+SELECT
+	t.name table_name,
+	i.name index_name,
 
-		STRING_AGG(
-			CAST(
-				CASE
-					WHEN ic.is_included_column = 0 THEN c.name
-					ELSE '[INCLUDE] ' + c.name
-				END AS VARCHAR(MAX)
-			), ', '
-		) WITHIN GROUP (ORDER BY ic.is_included_column, ic.key_ordinal, ic.index_column_id) columns_in_index,
+	user_seeks seeks,
+	user_scans scans,
+	user_lookups lookups,
+	user_updates updates,
 
-		count(c.name) columns_count,
+	cols,
+	columns,
 
-		isnull(max(used_page_count * 8 / 1024), 0) index_size_mb,
+	isnull(used_page_count * 8 / 1024, 0) size_mb,
+	isnull(used_page_count, 0) pages,
+	round(frag.avg_fragmentation_in_percent, 0) frag_prcnt,
 
-		isnull(max(used_page_count), 0) pages,
-		round(max(frag.avg_fragmentation_in_percent), 0) frag_percent,
-		round(max((frag.avg_fragmentation_in_percent / 100) * used_page_count), 0) fragged_pages,
-		max(case when frag.avg_fragmentation_in_percent > 30 then 'yes' else 'no' end) should_rebuild,
+	case when frag.avg_fragmentation_in_percent > 30 then 'yes' else 'no' end rebuild,
 
-		max(o.create_date) created,
-		max(o.modify_date) modified,
+	o.create_date created,
+	o.modify_date modified,
 
-		i.is_primary_key,
-		i.is_unique_constraint
+	last_user_seek,
+	last_user_scan,
+	last_user_lookup,
+	last_user_update,
 
-	FROM sys.indexes i
-		JOIN sys.objects o on o.object_id = i.object_id
-		JOIN sys.tables t ON i.object_id = t.object_id
-		JOIN sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
-		JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
-		JOIN sys.dm_db_index_physical_stats(DB_ID(), NULL, NULL, NULL, 'LIMITED') frag on frag.object_id = i.object_id and frag.index_id = i.index_id
-		JOIN sys.dm_db_partition_stats ps on ps.object_id = i.object_id and ps.index_id = i.index_id
-	GROUP BY
-		t.name,
-		i.name,
-		i.type_desc,
-		i.is_primary_key,
-		is_unique_constraint
-) t1
+	i.type_desc index_type,
+	i.is_primary_key,
+	i.is_unique_constraint,
+
+	concat('ALTER INDEX ', i.name, ' ON ', t.name, ' REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
+	concat('DROP INDEX [', i.name, '] ON [', t.name, '];') drop_command
+
+FROM sys.indexes i
+	JOIN sys.objects o on o.object_id = i.object_id
+	JOIN sys.tables t ON i.object_id = t.object_id
+
+	JOIN (
+		select
+			ic.object_id,
+			ic.index_id,
+			count(c.name) cols,
+			STRING_AGG(
+				CAST(
+					CASE
+						WHEN ic.is_included_column = 0 THEN c.name
+						ELSE '+' + c.name
+					END AS VARCHAR(MAX)
+				), ', '
+			) WITHIN GROUP (ORDER BY ic.is_included_column, ic.key_ordinal, ic.index_column_id) columns
+		from sys.index_columns ic
+			join sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+		group by
+			ic.object_id,
+			ic.index_id
+	) c on c.object_id = i.object_id AND c.index_id = i.index_id
+
+	JOIN sys.dm_db_index_physical_stats(DB_ID(), NULL, NULL, NULL, 'LIMITED') frag on frag.object_id = i.object_id and frag.index_id = i.index_id and fragment_count is not null
+	JOIN sys.dm_db_partition_stats ps on ps.object_id = i.object_id and ps.index_id = i.index_id
+	JOIN sys.dm_db_index_usage_stats st on st.object_id = i.object_id and st.index_id = i.index_id
 ORDER BY
-	sum(pages) over (partition by table_name) desc, -- running total
-    pages desc
+	sum(used_page_count) over (partition by t.name) desc, -- running total
+	used_page_count desc
 ;
 ```
 
