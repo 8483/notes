@@ -18,12 +18,12 @@ with
 			user_seeks seeks,
 
 			user_scans scans,
-			round(CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) * 100, 0) SCvSK,
+			isnull(round(CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) * 100, 0), 0) SCvSK,
 
 			user_lookups lookups,
 
 			user_updates writes,
-			round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0) WRvSK,
+			isnull(round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0), 0) WRvSK,
 
 			cols,
 			keys,
@@ -33,20 +33,20 @@ with
 			isnull(used_page_count, 0) pages,
 			round(frag.avg_fragmentation_in_percent, 0) frag_prcnt,
 
-			o.create_date created,
-			o.modify_date modified,
-
 			last_user_seek,
 			last_user_scan,
 			last_user_lookup,
 			last_user_update,
 
-		fk.object_id,
 			/*
-			i.type_desc index_type,
-			i.is_primary_key,
-			i.is_unique_constraint,
+				fk.object_id,
+				i.type_desc index_type,
+				i.is_primary_key,
+				i.is_unique_constraint,
 			*/
+
+			o.create_date created,
+			o.modify_date modified,
 
 			concat('ALTER INDEX ', i.name, ' ON ', t.name, ' REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
 			concat('DROP INDEX [', i.name, '] ON [', t.name, '];') drop_command
@@ -87,13 +87,32 @@ order by
 	case when status <> '' then 1 else 2 end asc,
 	status asc,
 	seeks desc
-
-/*
-ORDER BY
-	sum(pages) over (partition by table_name) desc, -- running total
-	pages desc
-*/
 ;
+```
+
+# List of missing indexes
+
+```sql
+select *
+from (
+    SELECT
+        round(migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans), 0) AS [index_advantage],
+        migs.avg_total_user_cost,
+        migs.avg_user_impact,
+        migs.user_seeks,
+        migs.user_scans,
+        mid.statement AS [table],
+        mid.equality_columns,
+        mid.inequality_columns,
+        mid.included_columns,
+        migs.last_user_seek
+    FROM sys.dm_db_missing_index_groups AS mig
+        JOIN sys.dm_db_missing_index_group_stats AS migs ON migs.group_handle = mig.index_group_handle
+        JOIN sys.dm_db_missing_index_details AS mid ON mig.index_handle = mid.index_handle
+) t1
+ORDER BY
+    sum(index_advantage) over (partition by [table]) desc,
+    index_advantage DESC;
 ```
 
 # Index size (Optimal RAM)
