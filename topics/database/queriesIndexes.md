@@ -51,7 +51,7 @@ with
 			o.create_date created,
 			o.modify_date modified,
 
-			concat('ALTER INDEX [', i.name, '] ON [', t.name, '] REBUILD WITH (FILLFACTOR = 100);') rebuild_command,
+			concat('ALTER INDEX [', i.name, '] ON [', t.name, '] REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
 			concat('DROP INDEX [', i.name, '] ON [', t.name, '];') drop_command
 
 		FROM sys.indexes i
@@ -87,14 +87,12 @@ with
 select *
 from indexes
 order by
-	case when status <> '' then 1 else 2 end asc,
-	status asc,
-	sum(pages) over (partition by table_name) desc, -- running total
+	sum(seeks) over (partition by table_name) desc, -- running total
 	seeks desc
 ;
 ```
 
-# List of missing indexes
+# List of missing/desired indexes
 
 ```sql
 select *
@@ -116,7 +114,69 @@ from (
 ) t1
 ORDER BY
     sum(index_advantage) over (partition by [table]) desc,
-    index_advantage DESC;
+    index_advantage DESC
+;
+```
+
+# Column importance for missing indexes
+
+```sql
+WITH MissingIndexes AS (
+    SELECT
+        mid.statement AS [table],
+        mid.equality_columns,
+        mid.inequality_columns,
+        mid.included_columns,
+        migs.user_seeks,
+        ROUND(migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans), 0) AS index_advantage
+    FROM sys.dm_db_missing_index_groups AS mig
+    JOIN sys.dm_db_missing_index_group_stats AS migs
+        ON migs.group_handle = mig.index_group_handle
+    JOIN sys.dm_db_missing_index_details AS mid
+        ON mig.index_handle = mid.index_handle
+),
+sums as (
+    select
+        [table],
+        sum(user_seeks) user_seeksTotal,
+        max(user_seeks) user_seeksMax,
+        sum(index_advantage) index_advantageTotal,
+        max(index_advantage) index_advantageMax
+    from MissingIndexes
+    group by [table]
+),
+Unpivoted AS (
+    SELECT [table], LTRIM(RTRIM(value)) AS col
+    FROM MissingIndexes
+    CROSS APPLY STRING_SPLIT(COALESCE(equality_columns, ''), ',')
+    UNION ALL
+    SELECT [table], LTRIM(RTRIM(value)) AS col
+    FROM MissingIndexes
+    CROSS APPLY STRING_SPLIT(COALESCE(inequality_columns, ''), ',')
+    UNION ALL
+    SELECT [table], LTRIM(RTRIM(value)) AS col
+    FROM MissingIndexes
+    CROSS APPLY STRING_SPLIT(COALESCE(included_columns, ''), ',')
+),
+Counts AS (
+    SELECT [table], col, COUNT(*) AS occurrences
+    FROM Unpivoted
+    WHERE col <> ''
+    GROUP BY [table], col
+)
+SELECT
+    c.[table],
+    STRING_AGG(CONCAT(col, ' (', occurrences, ')'), ', ')
+        WITHIN GROUP (ORDER BY occurrences DESC, col) AS column_counts,
+    max(s.user_seeksTotal) user_seeksTotal,
+    max(s.user_seeksMax) user_seeksMax,
+    max(s.index_advantageTotal) index_advantageTotal,
+    max(s.index_advantageMax) index_advantageMax
+FROM Counts c
+    join sums s on s.[table] = c.[table]
+GROUP BY c.[table]
+ORDER BY index_advantageTotal desc
+;
 ```
 
 # Index size (Optimal RAM)
