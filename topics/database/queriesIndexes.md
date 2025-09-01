@@ -8,7 +8,8 @@ with
 				when user_scans > user_seeks then '1. delete - scans'
 				when user_updates > user_seeks then '1. delete - writes'
 				when CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) > 0.3 then '2. improve'
-				when frag.avg_fragmentation_in_percent > 30 then '3. rebuild'
+				when frag.avg_fragmentation_in_percent > 30 then '4. rebuild - defragment'
+				when i.fill_factor < 100 and isnull(round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0), 0) < 10 then '4. rebuild - fill factor 100'
 				else ''
 			end status,
 
@@ -25,6 +26,8 @@ with
 			user_updates writes,
 			isnull(round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0), 0) WRvSK,
 
+			i.fill_factor fill,
+
 			cols,
 			keys,
 			isnull(includes, '') includes,
@@ -39,16 +42,16 @@ with
 			last_user_update,
 
 			/*
-				fk.object_id,
-				i.type_desc index_type,
-				i.is_primary_key,
-				i.is_unique_constraint,
+			fk.object_id,
+			i.type_desc index_type,
+			i.is_primary_key,
+			i.is_unique_constraint,
 			*/
 
 			o.create_date created,
 			o.modify_date modified,
 
-			concat('ALTER INDEX ', i.name, ' ON ', t.name, ' REBUILD WITH (FILLFACTOR = 80);') rebuild_command,
+			concat('ALTER INDEX [', i.name, '] ON [', t.name, '] REBUILD WITH (FILLFACTOR = 100);') rebuild_command,
 			concat('DROP INDEX [', i.name, '] ON [', t.name, '];') drop_command
 
 		FROM sys.indexes i
@@ -86,6 +89,7 @@ from indexes
 order by
 	case when status <> '' then 1 else 2 end asc,
 	status asc,
+	sum(pages) over (partition by table_name) desc, -- running total
 	seeks desc
 ;
 ```
