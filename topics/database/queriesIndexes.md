@@ -4,27 +4,10 @@
 with
 	indexes as (
 		SELECT
-			case
-				when user_scans > user_seeks then '1. delete - scans'
-				when user_updates > user_seeks then '1. delete - writes'
-				when CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) > 0.3 then '2. improve'
-				when frag.avg_fragmentation_in_percent > 30 then '4. rebuild - defragment'
-				when i.fill_factor < 100 and isnull(round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0), 0) < 10 then '4. rebuild - fill factor 100'
-				else ''
-			end status,
+			used_page_count * 8 / 1024 size_mb,
 
 			t.name table_name,
 			i.name index_name,
-
-			user_seeks seeks,
-
-			user_scans scans,
-			isnull(round(CAST(user_scans AS float)  / nullif(user_seeks + user_scans, 0) * 100, 0), 0) SCvSK,
-
-			user_lookups lookups,
-
-			user_updates writes,
-			isnull(round(CAST(user_updates AS float)  / nullif(user_seeks + user_updates, 0) * 100, 0), 0) WRvSK,
 
 			i.fill_factor fill,
 
@@ -32,9 +15,16 @@ with
 			keys,
 			isnull(includes, '') includes,
 
-			isnull(used_page_count * 8 / 1024, 0) size_mb,
-			isnull(used_page_count, 0) pages,
-			round(frag.avg_fragmentation_in_percent, 0) frag_prcnt,
+			nullif(cast(user_seeks + user_scans + user_lookups + user_updates as float), 0) usage,
+			nullif(cast(user_seeks + user_scans + user_lookups as float), 0) reads,
+
+			cast(user_seeks as float) seeks,
+			cast(user_scans as float) scans,
+			cast(user_updates as float) writes,
+			cast(user_lookups as float) lookups,
+
+			used_page_count pages,
+			round(frag.avg_fragmentation_in_percent, 0) fragP,
 
 			last_user_seek,
 			last_user_scan,
@@ -83,12 +73,35 @@ with
 		where
 			i.type_desc = 'NONCLUSTERED' -- Actual indexes. CLUSTERED = tables
 			and fk.object_id is null -- Remove indexes created automatically from foreign key constraints
+	),
+	indexes2 as (
+		select
+			round(usage / sum(usage) over () * 100, 0) usagePT,
+			round(usage / sum(usage) over (partition by table_name) * 100, 0) usageP,
+			round(seeks / usage * 100, 0) seeksP,
+			round(scans / usage * 100, 0) scansP,
+			round(writes / usage * 100, 0) writesP,
+			*
+		from indexes
+	),
+	final as (
+		select
+			case
+				when writesP > 50 then '1. HIGH WRITES'
+				when scans > seeks then '2. HIGH SCANS'
+				when fill < 100 and writesP < 10 then '3. FILL 100'
+				when fill > 80 and writesP > 10 then '4. FILL 80'
+				when fragP > 30 then '5. DEFRAGMENT'
+				else ''
+			end status,
+			*
+		from indexes2
 	)
 select *
-from indexes
+from final
 order by
-	sum(seeks) over (partition by table_name) desc, -- running total
-	seeks desc
+	sum(usage) over (partition by table_name) desc, -- running total
+	usage desc
 ;
 ```
 
@@ -171,7 +184,8 @@ SELECT
     max(s.user_seeksTotal) user_seeksTotal,
     max(s.user_seeksMax) user_seeksMax,
     max(s.index_advantageTotal) index_advantageTotal,
-    max(s.index_advantageMax) index_advantageMax
+    max(s.index_advantageMax) index_advantageMax,
+    round(max(index_advantageTotal / s.user_seeksTotal), 0) index_advantageAverage
 FROM Counts c
     join sums s on s.[table] = c.[table]
 GROUP BY c.[table]

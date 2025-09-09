@@ -328,3 +328,13 @@ Show your product and DO NOT TELL THE USER WHAT TO DO, GIVE THEM A GOAL instead.
 Tell them to speak their mind while they are using it, and take notes.
 
 Make them feel special, like they are a part of a special club.
+
+# RimWorld: Contrarian, Ridiculous, and Impossible Game Design Methods
+
+source: https://youtu.be/VdqhHKjepiE
+
+Good task selection can save a lot of effort.
+
+Instead of asking "Would this be cool to add?", ask "Of every possible idea, what would add the most value per cost?".
+
+Is it possible to ship my project without this feature?
