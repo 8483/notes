@@ -349,6 +349,22 @@ v + select + : + s/text    # Only in selected range.
 g&                         # Repeat replace for all
 ```
 
+# Global replace
+
+```bash
+:args **/*.* | argdo %s/oldstring/newstring/ge | update
+```
+
+`:args` loads explicit files, then `:argdo` applies edits.
+
+```bash
+:grep -R oldstring . | cfdo %s/oldstring/newstring/ge | update
+```
+
+`:grep` builds quickfix from search results, then `:cfdo` edits only matching files.
+
+`ge` flag avoids errors on no matches. `update` writes only changed buffers.
+
 # Multiple selection
 
 Tries to simulate `CTRL` + `d` (find duplicate) functionality.
