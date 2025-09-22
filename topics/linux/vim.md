@@ -88,6 +88,17 @@ Commands can be executed over selections with `!`.
 :q!    # Force quit
 ```
 
+# File tree
+
+```bash
+:e.           # Show tree
+:E            # Show tree
+:Ex           # Show tree
+
+:Lex          # Show tree in a side window
+:Vex          # Show tree in a new window
+```
+
 # File navigation
 
 ```bash
@@ -97,20 +108,37 @@ vim <file>    # Open file directly.
 :e <path>     # Navigate to directory/file. Use TAB and CTRL + d to choose.
 :find <path>  # Navigate to directory/file.
 
-:e.           # Show directory
-:E            # Show directory
-:Ex           # Show directory
-
-:Lex          # Show directory in a side window
-:Vex          # Show directory in a new window
-
 :jumps        # Show navigation history
 <C-o>         # Navigate back
 <C-i>         # Navigate forward
 <C-^>         # Switch between current and last navigation.
 
 <C-g>         # Show current file name
+:pwd          # Show current path
 ```
+
+# path
+
+When using `**/*`, it means:
+
+-   `**` - Look inside all directories from where I am.
+-   `/*` - Look for all files (and directories) within the directories found by `**`.
+
+# :e vs :find
+
+`:find` search the `'path'` in vim. Whereas `:edit` only takes the current working directory as the root.
+
+`:edit` is restricted by default to the working directory: if you need to edit a file that is not under your working directory you will have to provide its absolute path or a path relative to the working directory. Also, you need to provide the necessary globs.
+
+`:find` is superficially very similar to `:edit` but the (big) difference is that it finds files in the directories specified in the `path` option. `path` is what makes `:find` a lot more interesting than `:edit`.
+
+With `set path=,,` you essentially get the same behavior as `:e foo`.
+
+With `set path=**` you essentially get the same behavior as `:e **/foo` except you don't have to use any glob.
+
+With `set path=.,**` you also get access to files in the same directory as the current file.
+
+With `set path=.,**,/path/to/some/central/vendor/directory` you also get access to files from that directory… and so on.
 
 # Wildmenu
 
@@ -136,29 +164,6 @@ Command autocompletion.
 ```
 
 Wldignore is only applied after the search.
-
-# path
-
-When using `**/*`, it means:
-
--   `**` - Look inside all directories from where I am.
--   `/*` - Look for all files (and directories) within the directories found by `**`.
-
-# :e vs :find
-
-`find` search the `'path'` in vim. Whereas :edit only takes the current working directory as the root.
-
-`:edit` is restricted by default to the working directory: if you need to edit a file that is not under your working directory you will have to provide its absolute path or a path relative to the working directory. Also, you need to provide the necessary globs.
-
-`:find` is superficially very similar to `:edit` but the (big) difference is that it finds files in the directories specified in the `path` option. `path` is what makes `:find` a lot more interesting than `:edit`.
-
-With `set path=,,` you essentially get the same behavior as `:e foo`.
-
-With `set path=**` you essentially get the same behavior as `:e **/foo` except you don't have to use any glob.
-
-With `set path=.,**` you also get access to files in the same directory as the current file.
-
-With `set path=.,**,/path/to/some/central/vendor/directory` you also get access to files from that directory… and so on.
 
 # Motions
 
@@ -477,7 +482,7 @@ I            # Insert at beginning of line
 ESC          # Apply to all lines
 ```
 
-# Macro
+# Macros
 
 Replay keystrokes.
 
@@ -553,21 +558,18 @@ gT                # Previous tab
 :tabp             # Previous tab
 ```
 
-# Suspend
-
-```bash
-<C-z>          # Suspend vim i.e. show terminal
-fg + Enter     # Open back vim
-
-:sh            # Suspend vim i.e. show terminal
-exit           # Open back vim
-```
-
 # Terminal
 
 ```bash
-! <command>      # Run a command with vim in the background
 :term            # Open terminal in new window
+
+! <command>      # Run a command and minimize terminal
+
+<C-z>            # Suspend vim i.e. show terminal
+fg + Enter       # Open back vim
+
+:sh              # Suspend vim i.e. show terminal
+exit             # Open back vim
 ```
 
 # Source/Reload configuration
@@ -594,15 +596,20 @@ nore   # No recursive execution i.e. prevent remaps activating other remaps
 map    # Mapping left:right (replace left with right command)
 ```
 
-# vimrc - Customization
+# Customization
 
-Settings are not saved in vim. They need to be persisted in a `.vimrc` file.
+They can be done in 2 ways:
+
+1. Inside `vim` with `:set` ex. `:set number`. (non-persistent)
+2. Via a `.vimrc` file. (persisted)
 
 The global `.vimrc` file is located in `/etc/vim/vimrc` or `/etc/vimrc`.
 
 You should create a local `.vimrc` file in the `home` directory for customizations.
 
 When vim is opened, it will automatically check the current user's home directory for a `.vimrc` file. All settings specified in this file will override the global settings.
+
+**Useful settings**
 
 ```vim
 set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
@@ -629,7 +636,6 @@ set t_u7=            " Fix where vim starts in replace mode.
 
 **NOTE:**
 
--   Configurations can be made inside `vim` by using `:set number`.
 -   Commenting in `.vimrc` files is done with a single `" ` character (no closing).
 
 # Plugins
