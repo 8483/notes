@@ -293,6 +293,8 @@ dg           # Delete to end of file.
 
 <C-t>   # Add indentation at start of line (insert mode).
 <C-d>   # Remove indentation at start of line (insert mode).
+
+==      # Try to indent as best as possible (visual).
 ```
 
 # Autocomplete
@@ -308,14 +310,12 @@ dg           # Delete to end of file.
 <C-x><C-n>              # Next suggestion
 <C-x><C-p>              # Previous suggestion
 
-<Cx><C-f>               # Complete path
-
-<Cx><C-l>               # Complete line
-
+<C-x><C-f>              # Complete path
+<C-x><C-l>              # Complete line
 
 # Omnicomplete - language specific
 
-<Cx><C-o>               # Show suggestions
+<C-x><C-o>              # Show suggestions
 
 :set omnifunc=javascriptcomplete#CompleteJS
 :set omnifunc=htmlcomplete#CompleteTags
@@ -403,21 +403,27 @@ norm .    # Execute the normal mode command . (repeats the last change)
 
 Search for text inside of currently open file, or specified files.
 
+The search is relative to where vim was opened. You can either specify search paths, or just open root project directories instead of files directly.
+
 ```bash
 :grep              # External (terminal) search
 
 :vimgrep           # Internal (vim) search, add to quickfix list
 :vim               # Internal (vim) search, add to quickfix list
 
-:vim foo           # Current file, first occurence.
-:vim /foo/г        # Current file, every occurence.
+:vim foo           # Search for ANY foo
+:vim / foo /       # Search for JUST foo with spaces around (regex)
+
+:vim foo           # Current file, first occurence
+:vim /foo/г        # Current file, every occurence
 
 :vim foo *         # Current directory
 :vim foo **        # Current directory and subdirectories
 :vim foo **/*      # Current directory and subdirectories
 :vim foo **/*js    # Current directory and subdirectories only in js files
 
-:vimgrep /foo/g ~/bar.js ~/baz.js # Every foo in these files
+:vim /foo/g ~/bar.js ~/baz.js   # Every foo in these files
+:vim foo app/src/**/*.js        # Every foo in specific directory and files
 ```
 
 # Quickfix List
@@ -427,9 +433,11 @@ This is a list with your `vimgrep` search results.
 ```bash
 :vim foo **       # Current directory and subdirectories
 
-:copen            # Show current (first) result
+:copen            # Show list
+:cclose           # Close list
+:ccl              # Close list
 
-# Navigate while inside of window
+# Navigate while inside of window (<C-w> jk to selct window)
 
 j            # Show next result.
 k            # Show previous result.
@@ -558,8 +566,8 @@ exit           # Open back vim
 # Terminal
 
 ```bash
-! command      # Run a command with vim in the background
-:term          # Open terminal in new window
+! <command>      # Run a command with vim in the background
+:term            # Open terminal in new window
 ```
 
 # Source/Reload configuration
@@ -590,7 +598,7 @@ map    # Mapping left:right (replace left with right command)
 
 Settings are not saved in vim. They need to be persisted in a `.vimrc` file.
 
-The global `.vimrc` file is located in `/etc/vim/vimrc` or `etc/vimrc`.
+The global `.vimrc` file is located in `/etc/vim/vimrc` or `/etc/vimrc`.
 
 You should create a local `.vimrc` file in the `home` directory for customizations.
 
@@ -600,6 +608,9 @@ When vim is opened, it will automatically check the current user's home director
 set scrolloff=8      " Screen auto-scrolls to follow you, avoid recentering.
 set number           " Show line numbers.
 set relativenumber   " Line numbers are relative to the current line.
+
+set cursorline       " Highlight current line/row (:set nocursorline)
+set cursorcolumn     " Highlight current column (:set nocursorline)
 
 set nocompatible     " Set compatibility to Vim only.
 set visualbell	     " Use visual bell (no beeping)

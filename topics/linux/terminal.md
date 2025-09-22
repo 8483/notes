@@ -1,13 +1,19 @@
-# Terminal vs shell
-
-A shell is a user interface for accessing an operating system's services. Most often the user interacts with the shell using a command-line interface (CLI). The terminal is a program that opens a graphical window and lets you interact with the shell.
+# Terminology
 
 ```
 Terminal --> shell --> kernel --> hardware
 ```
 
-Terminal - It is not a shell, but rather a window interacting with a shell (xterm, konsole).  
-Shell - The actual CLI that executes commands (bash, zsh)
+-   **Terminal** - Short for Terminal Emulator i.e. the program/window interacting with a shell that's floating on your screen. Handles scrolling, copying, pasting... Some popular ones are `Alacritty`, `Kitty`, `Konsole`, `Ghostty`.
+-   **Shell** - The UI/language running inside terminal emulators, used for accessing an operating system's services i.e. kernel. Default is bash. You can check what you are running with `echo $SHELL` or `echo $0`. Some other shells are `zsh` and `fish`. They also have plugins/themes to further customizations.
+-   **Command line** - Used by users to interact with the shell by typing things in it.
+-   **Prompt** - The actual input for commands. The look can be customized via the shell dotfiles like `.bashrc` or `.profile`.
+
+Terminals and shells have separate key bindings which usually don't overlap.
+
+When choosing shells, check if they are POSIX compliant i.e. commands will work everywhere identically.
+
+`ohmyzsh` is a plugin manager for `zsh`.
 
 # Configuration
 
@@ -29,7 +35,7 @@ But, if you want them to be there with or without a terminal open, add them to t
 .     # Current directory
 pwd   # Full path to current directory
 
-# WSL / Ubuntu subsystem on Windows
+# WSL / Linux subsystem on Windows
 cd /mnt/c     # Navigate to My Computer/C:
 # C:\Users\User\AppData\Local\lxss (WSL location in windows)
 ```
