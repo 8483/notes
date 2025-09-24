@@ -64,6 +64,9 @@ zz          # Recenter screen (NEVER USE, it interferes with ZZ i.e. saving)
 :h <command>      # Manual
 :set <option>     # Set an option
 :colorscheme      # Pick a colorscheme
+
+:g/               # Run an operation on every line that matches a pattern
+:g/var/d          # Delete all lines containing "var".
 ```
 
 Commands can be executed over selections with `!`.
@@ -79,10 +82,16 @@ Commands can be executed over selections with `!`.
 # uniq     Command for filtering
 ```
 
-# Save + Exit
+# Save
 
 ```bash
 :w     # Save
+:wa    # Save all
+```
+
+# Exit
+
+```bash
 :q     # Quit
 :wq    # Save and quit
 :q!    # Force quit
@@ -115,6 +124,22 @@ vim <file>    # Open file directly.
 
 <C-g>         # Show current file name
 :pwd          # Show current path
+```
+
+# Buffers
+
+File contents stored in memory. In Vim, you use the windows and tabs to view file buffers, so in reality, you just switch between buffers.
+
+```bash
+:buffers             # Show all opened buffers
+:ls                  # Show all opened buffers
+
+:bprev               # Previous buffer
+:bnext               # Next buffer
+
+:b <buffer-name>     # Show specific buffer. Use tab to autocomplete.
+
+:bufdo               # Execute command over all buffers
 ```
 
 # path
@@ -172,37 +197,45 @@ All of these can be used in **visual (selection)** mode too.
 Motions are composable i.e. `5dd` and `d4j` will both delete 5 lines.
 
 ```bash
-j       # Down
-k       # Up
-h       # Left (not used often)
-l       # Right (not used often)
+{count}{operation}{motion} # 3dw = 3 x delete word
+```
 
-w       # Jump one word/delimitation.
-W       # Jump to next whitespace
-e       # End of word.
-b       # Back one word.
+```bash
+j           # Down
+k           # Up
+h           # Left (not used often)
+l           # Right (not used often)
 
-_       # Jump to first non-whitespace character in line
-^       # Beginning of line.
-0       # Beginning of line.
-$       # End of line.
+w           # Jump one word/delimitation.
+W           # Jump to next whitespace
+e           # End of word.
+b           # Back one word.
+
+_           # Jump to first non-whitespace character in line
+^           # Beginning of line.
+0           # Beginning of line.
+$           # End of line.
 
 f + char    # Jump to first character in line. F is reversed.
 t + char    # Jump to before first character in line. T is reversed.
 ;           # Next occurrence of character.
 ,           # Previous occurrence of character.
 
-gg      # Beginning of file.
-G       # End of file.
-nG      # Jump to line n.
+gg          # Beginning of file.
+G           # End of file.
+nG          # Jump to line n.
 
-%       # Jump between matching tags i.e. ), }, ].
-o       # Jump between start/end of selection to expand.
+[ + tag     # Jump to surrounding tag i.e. ), }, ].
+%           # Jump to next closest tag i.e. ), }, ].
+o           # Jump between start/end of selection to expand.
 
-<C-d>   # Jump down by half page
-<C-u>   # Jump up by half page
+<C-d>       # Jump down by half page
+<C-u>       # Jump up by half page
 
-}       # Jump to next block/paragraph
+<C-i>       # Jump to previous position
+<C-o>       # Jump to next position
+
+}           # Jump to next block/paragraph
 ```
 
 # Editing
@@ -249,8 +282,9 @@ viW     # Select every character between whitespaces.
 
 vi`     # Select everything inside ``.
 xi(     # Delete everything inside ().
-di[     # Cut everything inside [].
-ci{     # Delete + insert mode inside {}.
+di[     # Cut (Delete) everything inside [].
+ci{     # Delete (Change) + insert mode inside {}.
+cib     # Delete (Change) + insert mode inside block i.e ().
 
 va{     # Select outside {}.
 
@@ -329,14 +363,16 @@ dg           # Delete to end of file.
 
 # Search
 
-Works with regex.
+Case SENSITIVE. Use `:set ignorecase` for insensitive.
+
+Some characters are treated as regex, so they need to be escaped with `\`.
 
 ```bash
+/ + string    # Search for string forwards.
+? + string    # Search for string backwards.
+
 n    # Next occurrence of string under cursor (Works without searching)
 N    # Previous occurrence of string under cursor Works without searching
-
-/ + string + Enter  # Search for string forwards.
-? + string + Enter  # Search for string backwards.
 
 grep foo \**/*js    # Every single files that ends with `.js`
 ```
@@ -346,7 +382,9 @@ grep foo \**/*js    # Every single files that ends with `.js`
 ```bash
 :s/text/replacement        # Only first occurence.
 :s/text/replacement/g      # Every occurence in line.
+
 :%s/text/replacement/g     # Every occurence in file.
+:%s/text/replacement/gc    # Every occurence in file, confirmation for each.
 
 v + select + : + s/text    # Only in selected range.
 
@@ -357,18 +395,15 @@ g&                         # Repeat replace for all
 # Global replace
 
 ```bash
-:args **/*.* | argdo %s/oldstring/newstring/ge | update
+:vim foo **/*
+:cfdo %s/oldstring/newstring/gc | update
 ```
 
-`:args` loads explicit files, then `:argdo` applies edits.
+`:vim` (short for `:vimgrep`) builds quickfix with all findings, and then `:cfdo` edits each item in the list.
 
-```bash
-:grep -R oldstring . | cfdo %s/oldstring/newstring/ge | update
-```
-
-`:grep` builds quickfix from search results, then `:cfdo` edits only matching files.
-
-`ge` flag avoids errors on no matches. `update` writes only changed buffers.
+-   `gc` flag asks for confirmation before each change.
+-   `ge` flag avoids errors on no matches.
+-   `update` writes only changed buffers.
 
 # Multiple selection
 
@@ -518,7 +553,7 @@ A key value store. Macros are stored here, can be edited.
 
 ```bash
 <C-w>           # Window commands/mode.
-<C-o>           # Close all windows
+<C-o>           # Close all windows.
 
 <C-w> w         # Cycle through open windows.
 <C-w> <C-w>:    # Cycle through open windows.
@@ -546,7 +581,7 @@ A key value store. Macros are stored here, can be edited.
 <C-w> <         # Decrease the width of the current window.
 ```
 
-# Tabs
+# Tabs/panes
 
 ```bash
 :tabe FILEPATH    # Open file in new tab
@@ -571,6 +606,18 @@ fg + Enter       # Open back vim
 :sh              # Suspend vim i.e. show terminal
 exit             # Open back vim
 ```
+
+# Marks (bookmarks)
+
+```bash
+m + letter a-z   # Adds mark on current position
+' + letter a-z   # Jumps to the line of the marked position
+` + letter a-z   # Jumps to the character of the marked position
+
+:delmarks a-z    # Delete all bookmarks
+```
+
+Ex. `ma` and `ms`, and then `'a` and `'s` to jump between the two marks.
 
 # Source/Reload configuration
 
@@ -695,6 +742,45 @@ Remove plugin from `~/.vimrc`.
 :PlugClean
 ```
 
+# Useful plugins
+
+-   https://github.com/junegunn/vim-plug
+-   https://github.com/junegunn/fzf.vim
+-   https://github.com/yegappan/lsp
+-   https://github.com/sheerun/vim-polyglot
+-   https://github.com/joshdick/onedark.vim
+-   https://github.com/vim-airline/vim-airline
+-   https://github.com/rstacruz/vim-closer
+-   https://github.com/junegunn/rainbow_parentheses.vim
+-   https://github.com/mattn/emmet-vim
+-   https://github.com/ap/vim-css-color
+
+# Language Server Protocol (LSP)
+
+Handles the communication between an editor (client) and a specific language server, in order to provide functionalities like auto-complete, linting, hovering, jump-to-definitions etc.
+
+# Utilities
+
+**Asynchronous Lint Engine (ALE)**
+
+https://github.com/w0rp/ale
+
+```bash
+# Using vim-plug
+Plug 'dense-analysis/ale'
+
+# Manual
+mkdir -p ~/.vim/pack/git-plugins/start
+git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale
+```
+
+Others:
+
+-   https://github.com/neoclide/coc.nvim
+-   https://github.com/prabirshrestha/vim-lsp
+-   https://github.com/natebosch/vim-lsc
+-   https://github.com/autozimu/LanguageClient-neovim
+
 # vimrc example
 
 ```vim
@@ -723,6 +809,8 @@ set smarttab         " Enable smart-tabs
 set softtabstop=4    " TAB is 4 spaces.
 set expandtab        " Converts tabs into spaces.
 set tabstop=4        " Converts tabs into spaces.
+
+set laststatus=2     " Always show status line
 
 set t_u7=            " Fix buy where vim starts in replace mode.
 
