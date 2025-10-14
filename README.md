@@ -304,6 +304,7 @@ You need 3 things:
 -   [Motivation](./topics/startup/startupMotivation.md)
 -   [Focus](./topics/startup/startupFocus.md)
 -   [Problem-solving](./topics/startup/startupProblemSolving.md)
+-   [Game Plan](./topics/startup/startupGamePlan.md)
 
 ### **Product**
 
@@ -314,6 +315,7 @@ You need 3 things:
 
 ### **Sales**
 
+-   [Pitch](./topics/startup/salesPitch.md)
 -   [Pricing](./topics/startup/salesPricing.md)
 -   [Overview](./topics/startup/salesOverview.md)
 -   [Enterprise](./topics/startup/salesEnterprise.md)

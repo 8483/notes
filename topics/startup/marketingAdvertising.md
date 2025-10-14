@@ -1,6 +1,8 @@
 # Overview
 
-Buyers go through 80% of the decision making process without ever talking to sales.
+> Buyers go through 80% of the decision making process without ever talking to sales.
+
+> People notice you for the first time when they see you the 11th time within 90 days. [source](https://youtu.be/WiTIgjYxWbE?t=310)
 
 Marketing is so important because the buyer has already made up his mind when sales gets involved.
 
@@ -90,7 +92,9 @@ The targeting works as `OR`, meaning it includes everyone that matches some of t
 # Datasets (Pixels)
 
 1. Create dataset under data sources.
-2. Assign dataset to ad account (assign assets).
+2. Assign dataset:
+    - Under `People` choose yourself.
+    - Under `Connected Assets` choose a business account.
 3. Setup Meta Pixel.
 4. Disable ad blocker in target website to send first event.
 
