@@ -8,7 +8,7 @@ Ex. In Instagram, every `user` is a `node`, and every `follow` is an `edge`. Ins
 
 Ex. In Google Maps, every intersection is a `node`, and every road is a `weighted edge` (distance).
 
-![Graphs](../pics/graphTheory/graphTheory_graphs.jpg)
+![Graphs](../../pics/graphTheory/graphTheory_graphs.jpg)
 
 # Adjacency list
 
@@ -42,7 +42,7 @@ let weightedGraph = {
 
 They show if we can travel to some node.
 
-![Traversal](../pics/graphTheory/graphTheory_traversal.jpg)
+![Traversal](../../pics/graphTheory/graphTheory_traversal.jpg)
 
 ## Depth First Search (DFS)
 
@@ -50,7 +50,7 @@ Exploring one direction as far as possible before switching directions.
 
 Best data structure: **Stack** (FILO)
 
-![Depth traversal](../pics/graphTheory/graphTheory_traversal_depth.jpg)
+![Depth traversal](../../pics/graphTheory/graphTheory_traversal_depth.jpg)
 
 ### Iterative
 
@@ -90,7 +90,7 @@ Explore all directions evenly.
 
 Best data structure: **Queue** (FIFO)
 
-![Breadth](../pics/graphTheory/graphTheory_traversal_breadth.jpg)
+![Breadth](../../pics/graphTheory/graphTheory_traversal_breadth.jpg)
 
 ### Iterative
 
