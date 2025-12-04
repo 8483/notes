@@ -19,3 +19,18 @@ Pain: Entrepreneurship is a very difficult journey, many people struggle with it
 Aim: My aim is to help entrepreneurs stand out, scale up and make a positive impact.
 Game: Solve the world's most meaningful problems by getting entrepreneurs to make a dent in the universe.
 ```
+
+# Components
+
+-   Intro
+-   Problem
+-   Solution
+-   Competition
+-   Market size
+-   Business model
+-   Go to market
+-   Traction
+-   CTA
+-   Investment
+-   Team
+-   Thank you, links
