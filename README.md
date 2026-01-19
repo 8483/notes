@@ -246,6 +246,7 @@
 -   API
     -   [OpenAI - ChatGPT](./topics/ai/apiChatGPT.md)
     -   [Model Context Protocol (MCP)](./topics/ai/mcp.md)
+-   [Agents](./topics/ai/agents.md)
 
 # Blockchain
 

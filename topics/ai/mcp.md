@@ -1,6 +1,8 @@
 # Model Context Protocol (MCP)
 
-A new standard for building APIs.
+> MCP makes it easier to expose new tools to LLMs.
+
+An open-source standard for building APIs in a way that makes it easier for LLMs to connect to them.
 
 Other standards include REST, RPC, SOAP and GraphQL.
 

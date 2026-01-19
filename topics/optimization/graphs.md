@@ -294,3 +294,91 @@ function depthFirstSearch(startingAirport, destinationAirport, visited = new Set
 
 depthFirstSearch("PHX", "BKK");
 ```
+
+# A\*
+
+Best-first search that uses heuristics to find optimal path in weighted graphs.
+
+Combines actual cost (like Dijkstra) with estimated cost to goal (heuristic).
+
+Best data structure: **Priority Queue** (min-heap)
+
+```js
+function aStar(graph, start, goal, heuristic) {
+    const openSet = [start];
+    const cameFrom = {};
+
+    // g(n) = actual cost from start to node n
+    const gScore = {};
+    for (const node in graph) {
+        gScore[node] = Infinity;
+    }
+    gScore[start] = 0;
+
+    // f(n) = g(n) + h(n), where h(n) is heuristic estimate to goal
+    const fScore = {};
+    for (const node in graph) {
+        fScore[node] = Infinity;
+    }
+    fScore[start] = heuristic[start];
+
+    while (openSet.length > 0) {
+        // Get node with lowest fScore
+        let current = openSet.reduce((lowest, node) => (fScore[node] < fScore[lowest] ? node : lowest));
+
+        if (current === goal) {
+            // Reconstruct path
+            const path = [current];
+            while (cameFrom[current]) {
+                current = cameFrom[current];
+                path.unshift(current);
+            }
+            return { path, cost: gScore[goal] };
+        }
+
+        // Remove current from openSet
+        openSet.splice(openSet.indexOf(current), 1);
+
+        // Check all neighbors
+        for (const neighbor in graph[current]) {
+            const tentativeGScore = gScore[current] + graph[current][neighbor];
+
+            if (tentativeGScore < gScore[neighbor]) {
+                // This path to neighbor is better
+                cameFrom[neighbor] = current;
+                gScore[neighbor] = tentativeGScore;
+                fScore[neighbor] = gScore[neighbor] + heuristic[neighbor];
+
+                if (!openSet.includes(neighbor)) {
+                    openSet.push(neighbor);
+                }
+            }
+        }
+    }
+
+    return null; // No path found
+}
+
+// Example usage: City navigation with straight-line distances as heuristic
+const cityGraph = {
+    a: { b: 1, c: 4 },
+    b: { a: 1, d: 2, e: 3 },
+    c: { a: 4, e: 1 },
+    d: { b: 2, f: 5 },
+    e: { b: 3, c: 1, f: 1 },
+    f: { d: 5, e: 1 },
+};
+
+// Heuristic: estimated distance to goal (node 'f')
+const heuristic = {
+    a: 7,
+    b: 6,
+    c: 2,
+    d: 1,
+    e: 1,
+    f: 0,
+};
+
+const result = aStar(cityGraph, "a", "f", heuristic);
+console.log(result); // { path: ['a', 'c', 'e', 'f'], cost: 6 }
+```
