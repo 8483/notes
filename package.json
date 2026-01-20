@@ -1,0 +1,25 @@
+{
+    "name": "notes",
+    "version": "0.1.0",
+    "description": "Full-stack web development notes.",
+    "main": "index.js",
+    "scripts": {
+        "deploy": "npm run docs:build && gh-pages gh-pages -d .vuepress/dist",
+        "docs:build": "vuepress build",
+        "docs:dev": "vuepress dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/8483/notes.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/8483/notes/issues"
+    },
+    "homepage": "https://github.com/8483/notes#readme",
+    "dependencies": {
+        "gh-pages": "^2.0.1",
+        "vuepress": "^1.0.0-alpha.47"
+    }
+}
