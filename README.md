@@ -20,6 +20,7 @@
 - [Document Object Model (DOM)](./topics/javascript/dom.md)
 - [Async](./topics/javascript/async.md)
 - [Debugging](./topics/javascript/Debugging.md)
+- [Typescript](./topics/javascript/typescript.md)
 
 ### **Frontend**
 
@@ -89,20 +90,14 @@
         - [node mysql](./topics/database/node-mysql.md)
     - [SQL Server](./topics/database/sqlserver.md)
         - [node mssql](./topics/database/node-mssql.md)
+    - [PostgreSQL](./topics/database/postgresql.md)
+- ORMs
+    - [Drizzle](./topics/database/ormDrizzle.md)
 
 ### **Web Server**
 
 - [nginx](./topics/webserver/nginx.md)
 - [SSL](./topics/webserver/ssl.md)
-
-### **Cybersecurity**
-
-- [Best practices](./topics/cybersecurity/cybersecurity.md)
-- [JSON Web Tokens (JWT)](./topics/cybersecurity/jwt.md)
-- [SQL Injection](./topics/cybersecurity/sqlinjection.md)
-- [Cross Site Scripting (XSS)](./topics/cybersecurity/xss.md)
-- [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
-- [Cross-origin resource sharing (CORS)](./topics/cybersecurity/cors.md)
 
 ### **Code Optimization**
 
@@ -184,8 +179,8 @@
 
 ### **System**
 
-- [WSL](./topics/linux/wsl.md)
-- [Environment](./topics/linux/environment.md)
+- [Windows Subsystem for Linux (WSL)](./topics/linux/wsl.md)
+- [Environment Variables](./topics/linux/environment.md)
 - [Filesystem](./topics/linux/filesystem.md)
 
 ### **Administration**
@@ -220,6 +215,15 @@
 - [Tools](./topics/networkingTools.md)
 - [Devices](./topics/networkingDevices.md)
 - [Roles](./topics/networkingRoles.md)
+
+# Cybersecurity
+
+- [Best practices](./topics/cybersecurity/cybersecurity.md)
+- [JSON Web Tokens (JWT)](./topics/cybersecurity/jwt.md)
+- [SQL Injection](./topics/cybersecurity/sqlinjection.md)
+- [Cross Site Scripting (XSS)](./topics/cybersecurity/xss.md)
+- [Cross Site Request Forgery (CSRF)](./topics/cybersecurity/csrf.md)
+- [Cross-origin resource sharing (CORS)](./topics/cybersecurity/cors.md)
 
 # DevOps
 

@@ -50,6 +50,10 @@ git config --global credential.helper store
 git config --global credential.useHttpPath true
 ```
 
+# Simple git branching model
+
+https://gist.github.com/chalasr/fd195d83a0a01e4291a8
+
 # Feature branches vs Trunk-based development
 
 Feature branches i.e. Main is deployed.
@@ -491,9 +495,9 @@ Once a pull request is accepted, the actual act of publishing a feature is much 
 
 Cloning does:
 
--   Download entire repo into a new local one.
--   Add "origin" remote, pointing to the clone URL.
--   Check out initial branch. (Set head to master)
+- Download entire repo into a new local one.
+- Add "origin" remote, pointing to the clone URL.
+- Check out initial branch. (Set head to master)
 
 # Example Workflows
 

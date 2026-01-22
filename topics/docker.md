@@ -6,9 +6,9 @@ Docker is used to run apps/processes without actually installing them. This is u
 Dockerfile > (build) Image > (run) Container.
 ```
 
--   **Dockerfile** - List of steps to build an image. Ex. configure the OS, install packages, copy project files into the right places.
--   **Image** - A template for an environment, a snapshot of a system at a certain time. It has the OS, software and application code all bundled in one file.
--   **Container** - A running instance of an image.
+- **Dockerfile** - List of steps to build an image. Ex. configure the OS, install packages, copy project files into the right places.
+- **Image** - A template for an environment, a snapshot of a system at a certain time. It has the OS, software and application code all bundled in one file.
+- **Container** - A running instance of an image.
 
 # Install
 
@@ -35,6 +35,24 @@ Install Docker.
 ```
 sudo apt-get install -y docker-ce
 ```
+
+# WSL
+
+`WSL 2` must be used together with the `Docker Desktop` (Windows) app in order to be able to run the containers in the linux terminal.
+
+The desktop app provides:
+
+- WSL 2 integration layer
+- The Docker daemon
+- Engine lifecycle management
+- Networking and volume plumbing
+- Updates and settings
+
+> **Docker Desktop must be running in the background.**
+
+All real work is done in the terminal. Docker Desktop stays in the background managing the engine.
+
+> **If Docker Desktop is not running, docker commands fail because the daemon is not available.**
 
 # Commands
 
@@ -170,9 +188,9 @@ Visit the website in the host via `127.0.0.1:3000`.
 
 # Volume
 
--   Independent from containers
--   Mapped to storage
--   Multiple containers can access the same volume
+- Independent from containers
+- Mapped to storage
+- Multiple containers can access the same volume
 
 ## Commands
 
@@ -272,9 +290,9 @@ services:
 
 When you run docker-compose up, the following happens:
 
--   A network called `myapp_default` is created.
--   A container is created using web's configuration. It joins the network `myapp_default` under the name `web`.
--   A container is created using db's configuration. It joins the network `myapp_default` under the name `db`.
+- A network called `myapp_default` is created.
+- A container is created using web's configuration. It joins the network `myapp_default` under the name `web`.
+- A container is created using db's configuration. It joins the network `myapp_default` under the name `db`.
 
 Each container can now look up the hostname `web` or `db` and get back the appropriate container’s IP address. For example, web's application code could connect to the URL `postgres://db:5432` and start using the Postgres database.
 
