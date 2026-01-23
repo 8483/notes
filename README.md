@@ -39,6 +39,7 @@
     - [Various](./topics/libraries-frontend.md)
 - Other
     - [CSS](./topics/css.md)
+    - [Tailwind](./topics/tailwind.md)
     - [Web Components](./topics/webComponents.md)
 - Bundlers
     - [Babel](./topics/babel.md)
