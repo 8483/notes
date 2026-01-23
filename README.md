@@ -26,6 +26,7 @@
 
 - Frameworks
     - [Svelte](./topics/svelte.md)
+    - [Solidjs](./topics/solidjs.md)
     - [React](./topics/react.md)
     - [Vue](./topics/vue.md)
     - [Electron](./topics/electron.md)

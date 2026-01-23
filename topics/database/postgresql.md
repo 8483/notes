@@ -181,11 +181,7 @@ values
     ('Marge Simpson', ('{"city": "Springfield", "age": 36, "interests": ["Reading", "Cooking"]}')),
     ('Jane Doe', ('{"city": "Shelbyville", "age": 32, "occupation": "Developer"}'))
 ;
-```
 
-Selecting
-
-```sql
 select * from users;
 
 /*
@@ -196,8 +192,11 @@ select * from users;
   3 | Marge Simpson | {"age": 36, "city": "Springfield", "interests": ["Reading", "Cooking"]}
   4 | Jane Doe      | {"age": 32, "city": "Shelbyville", "occupation": "Developer"}
 */
+```
 
--- Return rows that have a specific JSON property value
+Return rows that have a specific JSON property value
+
+```sql
 select * from users where profile ->> 'city' = 'Springfield';
 
 /*
@@ -206,8 +205,11 @@ select * from users where profile ->> 'city' = 'Springfield';
  Homer | ("123 Maple str",Springfield)
  Marge | ("123 Maple str",Springfield)
 */
+```
 
--- Return rows that have a specific JSON key value pair
+Return rows that have a specific JSON key value pair
+
+```sql
 select * from users where profile @> '{"age": 13}';
 
 /*
@@ -215,8 +217,11 @@ select * from users where profile @> '{"age": 13}';
 ----+--------------+------------------------------------
   2 | Bart Simpson | {"age": 13, "city": "Springfield"}
 */
+```
 
--- Return rows that have a specific JSON property. Extremely useful for filtering unstructured data.
+Return rows that have a specific JSON property. Extremely useful for filtering unstructured data.
+
+```sql
 select * from users where profile ? 'interests';
 
 /*
@@ -271,7 +276,7 @@ VALUES (
 
 SELECT *
 FROM documents
-WHERE data->'author'->>'name' = 'John Smith';
+WHERE data->'author' ->> 'name' = 'John Smith';
 
 -- INTs must be cast
 SELECT *
