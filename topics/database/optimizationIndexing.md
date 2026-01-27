@@ -2,16 +2,16 @@
 
 # Terminology
 
--   **heap** - Table without a clustered index. Data is unordered. Row lookups use RID (Row Identifier). Slower for large reads or key lookups.
--   **clustered index** - The actual table itself is the "index" (one per table). Defines physical row order. Faster for range queries and order-based filters.
--   **scan** - Full traversal of table or index. Slow. Used when predicate is broad or no usable index exists.
--   **lookup** - Extra read to fetch non-indexed columns. Occurs when index lacks needed data, forcing access to the base table or clustered index.
+- **heap** - Table without a clustered index. Data is unordered. Row lookups use RID (Row Identifier). Slower for large reads or key lookups.
+- **clustered index** - The actual table itself is the "index" (one per table). Defines physical row order. Faster for range queries and order-based filters.
+- **scan** - Full traversal of table or index. Slow. Used when predicate is broad or no usable index exists.
+- **lookup** - Extra read to fetch non-indexed columns. Occurs when index lacks needed data, forcing access to the base table or clustered index.
 
 ---
 
--   **nonclustered index** - Separate structure with pointers to data (heap or clustered). Can have many per table. Faster for specific column searches.
--   **index include** - Extra non-key columns stored in the index leaf level. Eliminates lookups by covering more queries. Improves read performance.
--   **seek** - Targeted access using index keys. Fast. Narrow predicate matches specific index values.
+- **nonclustered index** - Separate structure with pointers to data (heap or clustered). Can have many per table. Faster for specific column searches.
+- **index include** - Extra non-key columns stored in the index leaf level. Eliminates lookups by covering more queries. Improves read performance.
+- **seek** - Targeted access using index keys. Fast. Narrow predicate matches specific index values.
 
 # What is an index?
 
@@ -68,8 +68,8 @@ Using above index, MySQL can easily retrieve the Primary Key values for all the 
 
 # When to index
 
--   Do not create indexes unless you know you'll need them.
--   Don't index each column in the table separately.
+- Do not create indexes unless you know you'll need them.
+- Don't index each column in the table separately.
 
 > MySQL can only use one index per table in a query, for all WHERE, JOIN, GROUP BY and ORDER BY. It's a common mistake to think that you need an index on each of the columns used by them.
 
@@ -78,9 +78,9 @@ Indexing is not a one-time process. It is advised to conduct weekly or monthly c
 
 What to index?
 
--   Columns you're going to query.
--   Columns you'll JOINs on.
--   Columns you ORDER/GROUP BYs.
+- Columns you're going to query.
+- Columns you'll JOINs on.
+- Columns you ORDER/GROUP BYs.
 
 # Check if there is an index
 
@@ -164,3 +164,23 @@ select * from users where status = 1 and category_id = 3 and email = "foo@bar.co
 select * from users where category_id = 3;
 select * from users where category_id = 3 and email = "foo@bar.com";
 ```
+
+# Notes
+
+make sure that the first column is something that you are searching for
+
+it doesnt matter if the values are index keys or includes, the size difference is negligeble.
+
+WHERE without a supporting index (with first key as the search value) = table scan
+
+ORDER BY without a supporting index = CPU work to rebuild pages
+
+SQL Server caches pages, not query results
+
+Singleton lookups are key lookups that return exactly one row.
+
+Occur when a nonclustered index partially satisfies a query.
+
+SQL Server uses the index to locate the row in the base table or clustered index to fetch additional columns.
+
+Returning a single row is more efficient than scanning, but still adds overhead compared to a fully covering index.

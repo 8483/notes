@@ -75,3 +75,21 @@ C:\Users\User\AppData\Local\Microsoft\WindowsApps\CanonicalGroupLimited.Ubuntu22
 # My Computer (C:/D:)
 cd /mnt/
 ```
+
+# Development
+
+Add this in `vite.config.js`:
+
+```js
+server: {
+    watch: {
+        usePolling: true,
+    }
+}
+```
+
+Start `nodemon` like this:
+
+```bash
+nodemon -L server.js
+```

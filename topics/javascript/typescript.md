@@ -485,6 +485,8 @@ employee.employeeId = 123456; // Error
 
 > **Interfaces are mostly used for objects.**
 
+> type is like a primitive i.e. type is an object (instance of a class), and interface is a class.
+
 Both `interface` and `type` can be used to define object shapes, but they have some key differences:
 
 **Main Differences**

@@ -13,6 +13,12 @@ Can replace:
 sudo apt install -y postgresql
 ```
 
+Check if it runs
+
+```
+sudo service postgresql status
+```
+
 Terminal syntax highlighting. Replace `psql` with `pgcli` in commands.
 
 ```
