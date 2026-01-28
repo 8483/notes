@@ -32,3 +32,5 @@ fzf_cd() {
 
 bind -x '"\C-f": "fzf_cd"'
 ```
+
+Need to do `source ~/.bashrc` to refresh and get it working.
