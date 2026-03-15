@@ -250,6 +250,7 @@
 
 # Artificial Intelligence (AI)
 
+- [Models](./topics/ai/models.md)
 - [Concepts](./topics/ai/concepts.md)
 - [Prompting](./topics/ai/prompting.md)
 - [GSD](./topics/ai/gsd.md)

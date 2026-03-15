@@ -7,9 +7,9 @@ A transformer is a type of neural network, which have numbers as inputs. Both th
 
 There are many ways to do the conversion, with the most common being word embedding.
 
-# LLM
+# Large language models (LLM)
 
-LLMs (Large language models) are text completion engines i.e. fancy auto-completes. They have ZERO intelligence.
+LLMs are text completion engines i.e. fancy auto-completes. They have ZERO intelligence.
 
 Examples: chat gpt, claude code, gemini, hugginface, llama
 
@@ -24,7 +24,13 @@ Wrappers to simplify using AI models to do tasks. Basically write and orchestrat
 
 OpenAI API is quite easy to use directly and gives you the most control, I don’t see much benefit of a wrapper langChain here tbh.
 
-Example: Langchain, Haystack, Microsoft Guidance
+Example: GSD, Superpowers, OpenSpec, BMAD
+
+# Product Requirements Document (PRD)
+
+Outlines the key elements of a product. Also called spec.
+
+PRD tools, such as ChatPRD, Miro, and Figma, transform ideas into structured documentation, user stories, and technical specifications.
 
 # Agent
 
@@ -50,6 +56,10 @@ So use subagents to keep your context clean when you want an actual full agent i
 
 # Skill
 
+Skills are just prompts that are saved in files the agent can access as needed.
+
+For every task and document type you do, you can have a standard prompt with all your customizations.
+
 Skills is basically just breaking a claude.md file into usable chunks so it can access them when needed instead of having to review an entire huge document every time. Makes things run smoother with less ADHD.
 
 Skills are specialized instructions you may want to provide to Claude in certain circumstances, but may not always be relevant.
@@ -59,6 +69,8 @@ Use skills when you want to sometimes provide instructions to your primary agent
 They are “packages” of prompts and tools.
 
 They are more a lightweight form of MCP as they are easier to put together and share. Also, they run in context, whereas subagents create their own context.
+
+Skills are an encapsulation of instructions. Prompts are among them. But my "skill" could be to share a Powerpoint template with my fonts, styling, samples of tables, samples of visuals and infographics. I can then point to that skill in my usual prompts and ask to create slides in powerpoint. This way I don't need to create the .pptx file at all, my prompt will do it while using my specific ppt skill.
 
 # Model Context Protocol (MCP)
 
