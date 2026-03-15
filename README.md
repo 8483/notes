@@ -1,8 +1,10 @@
-# Reality
+# Wisdoms
 
-> # **Most of programming is really just taking data from place A, transforming it, and putting it in place B.**
+> **Most of programming is really just taking data from place A, transforming it, and putting it in place B.**
 
-> # **90% of real-world programs are database frontends, held by duct tape.**
+> **90% of real-world programs are database frontends, held by duct tape.**
+
+> **The march of nines: Achieving 90%, 99%, 99.9%, or 99.99%... means stacking nines — and each new one takes as much work as all the previous ones combined.**
 
 # Programming
 
@@ -249,13 +251,10 @@
 # Artificial Intelligence (AI)
 
 - [Concepts](./topics/ai/concepts.md)
-- [Prompt Engineering](./topics/ai/prompting.md)
-- [Embeddings](./topics/ai/embeddings.md)
+- [Prompting](./topics/ai/prompting.md)
+- [GSD](./topics/ai/gsd.md)
+- [ChatGPT API](./topics/ai/apiChatGPT.md)
 - [Langchain](./topics/ai/langchain.md)
-- API
-    - [OpenAI - ChatGPT](./topics/ai/apiChatGPT.md)
-    - [Model Context Protocol (MCP)](./topics/ai/mcp.md)
-- [Agents](./topics/ai/agents.md)
 
 # Blockchain
 

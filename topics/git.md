@@ -41,7 +41,9 @@ sudo apt install git bash-completion
 
 # Add this inside `~/.bashrc`.
 source /etc/bash_completion.d/git-prompt
-export PS1='\u@\h:\w$(__git_ps1 " (%s)")\$ '
+export GIT_PS1_SHOWCOLORHINTS=1
+export PS1='\[\e[0;32m\]\u@\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]$(__git_ps1 " \[\e[0;33m\](%s)\[\e[0m\]")\$ '
+
 
 # Reload settings
 source ~/.bashrc
@@ -88,7 +90,7 @@ git push origin master
 
 A previously cloned repo on a server can now pull just the changes (clone is used only the first time to create the local repo).
 
-`git pull` - (`git fetch` + `git merge`)
+`git pull` = `git fetch` + `git merge`
 
 Github repo > Clone to local > Push to Github > Pull changes to server
 
@@ -178,6 +180,18 @@ git log --oneline --decorate --all --graph
 
 # Add the "tree" alias as a shortcut.
 git config --global alias.tree "log --oneline --decorate --all --graph"
+```
+
+**Detached HEAD**
+
+If checkout a commit, and you end up with a detached HEAD, you can't see the "future" commits from your point.
+
+Here's how you can see them and checkout back.
+
+```bash
+git log --all --graph --oneline --decorate
+
+git checkout main
 ```
 
 # Diff (See Changes)
