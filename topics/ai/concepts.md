@@ -58,6 +58,8 @@ So use subagents to keep your context clean when you want an actual full agent i
 
 Skills are just prompts that are saved in files the agent can access as needed.
 
+They are literally just markdown files, used to lazily load some extra context into the agent.
+
 For every task and document type you do, you can have a standard prompt with all your customizations.
 
 Skills is basically just breaking a claude.md file into usable chunks so it can access them when needed instead of having to review an entire huge document every time. Makes things run smoother with less ADHD.
