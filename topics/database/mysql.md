@@ -15,7 +15,7 @@ sudo mysql_secure_installation; # Makes mysql more secure
 # Reload privilege tables.
 ```
 
-### Remove MySQL
+**Uninstall**
 
 ```bash
 sudo apt remove --purge mysql*
@@ -43,6 +43,15 @@ sudo /etc/init.d/mysql start
 ```bash
 # Log into MySQL as root, with password.
 sudo mysql -u root -p
+```
+
+# User
+
+Fixes `does not support authentication protocol requested by server; consider upgrading MySQL client`
+
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'rootroot';
+FLUSH PRIVILEGES;
 ```
 
 # Run script
