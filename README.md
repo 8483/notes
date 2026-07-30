@@ -16,7 +16,6 @@
 
 ### **Javascript**
 
-- [Language](./topics/javascript/basics.md)
 - [Basics](./topics/javascript/basics.md)
 - [ES6](./topics/javascript/es6.md)
 - [Document Object Model (DOM)](./topics/javascript/dom.md)
